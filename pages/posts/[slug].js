@@ -8,6 +8,7 @@ import {
   getFeaturedImage,
   cleanContentHtml,
   getExcerptText,
+  getPostCategories,
   formatDate,
 } from "../../lib/wordpress";
 
@@ -44,6 +45,7 @@ export default function Post({ post }) {
   const plainTitle = stripHtml(post.title.rendered);
   const description = getExcerptText(post, 160);
   const content = cleanContentHtml(post.content.rendered);
+  const categories = getPostCategories(post);
 
   return (
     <>
@@ -69,6 +71,19 @@ export default function Post({ post }) {
             <img src={image} alt="" className="post-hero" />
           )}
           <time className="post-date">{formatDate(post.date)}</time>
+          {categories.length > 0 && (
+            <div className="category-pills">
+              {categories.map((cat) => (
+                <Link
+                  key={cat.id}
+                  href={`/category/${cat.slug}`}
+                  className="category-pill"
+                >
+                  {cat.name}
+                </Link>
+              ))}
+            </div>
+          )}
           <h1 dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
           <div
             className="post-content"
