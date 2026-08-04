@@ -9,8 +9,10 @@ export default function SiteHeader() {
 
   const navItems = [
     { href: "/", label: "Home" },
-    { href: "/categories", label: "Topics" },
-    { href: "/about", label: "About" },
+    { href: "/gallery", label: "Gallery" },
+    { href: "/resource", label: "Resource" },
+    { href: "/articles", label: "Article" },
+    { href: "/about", label: "About Us" },
     { href: "/contact", label: "Contact" },
   ];
 
