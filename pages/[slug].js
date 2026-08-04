@@ -12,13 +12,18 @@ const RESERVED_SLUGS = new Set([
   "about",
   "contact",
   "categories",
+  "articles",
+  "resource",
   "index",
   "404",
   "500",
 ]);
 
 function stripHtml(html) {
-  return (html || "").replace(/<[^>]+>/g, "").trim();
+  return (html || "")
+    .replace(/<!--[\s\S]*?-->/g, "")
+    .replace(/<[^>]+>/g, "")
+    .trim();
 }
 
 export async function getStaticPaths() {
