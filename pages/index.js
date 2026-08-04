@@ -1,6 +1,8 @@
 import Head from "next/head";
 import Link from "next/link";
-import { getPosts, getFeaturedImage } from "../lib/wordpress";
+import SiteHeader from "../components/SiteHeader";
+import SiteFooter from "../components/SiteFooter";
+import { getPosts, getFeaturedImage, getExcerptText, formatDate } from "../lib/wordpress";
 
 export async function getStaticProps() {
   try {
@@ -12,16 +14,26 @@ export async function getStaticProps() {
 }
 
 export default function Home({ posts, error }) {
+  const description =
+    "Reflections on faith, scripture, and everyday life from hunchet.blog.";
+
   return (
     <>
       <Head>
-        <title>hunchet.blog</title>
+        <title>hunchet.blog — Faith &amp; Reflections</title>
+        <meta name="description" content={description} />
+        <meta property="og:title" content="hunchet.blog" />
+        <meta property="og:description" content={description} />
+        <meta property="og:type" content="website" />
       </Head>
+
+      <SiteHeader />
+
       <main className="container">
-        <header className="site-header">
-          <h1>hunchet.blog</h1>
-          <p>Powered by WordPress, hosted on Vercel</p>
-        </header>
+        <section className="hero-banner">
+          <h1>Faith, scripture, and everyday reflections</h1>
+          <p>Written from the heart in Khmer, published here for everyone.</p>
+        </section>
 
         {error && (
           <p className="error">
@@ -29,26 +41,42 @@ export default function Home({ posts, error }) {
           </p>
         )}
 
+        {!error && posts.length === 0 && (
+          <p className="empty-state">No posts yet — check back soon.</p>
+        )}
+
         <div className="post-grid">
           {posts.map((post) => {
             const image = getFeaturedImage(post);
             return (
-              <article key={post.id} className="post-card">
-                {image && (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img src={image} alt="" className="post-thumb" />
-                )}
-                <h2 dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
-                <div
-                  className="excerpt"
-                  dangerouslySetInnerHTML={{ __html: post.excerpt.rendered }}
-                />
-                <Link href={`/posts/${post.slug}`}>Read more →</Link>
-              </article>
+              <Link
+                key={post.id}
+                href={`/posts/${post.slug}`}
+                className="post-card"
+              >
+                <div className="post-thumb-wrap">
+                  {image ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img src={image} alt="" className="post-thumb" />
+                  ) : (
+                    <div className="post-thumb post-thumb-placeholder">
+                      <span>H</span>
+                    </div>
+                  )}
+                </div>
+                <div className="post-card-body">
+                  <time className="post-date">{formatDate(post.date)}</time>
+                  <h2 dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
+                  <p className="excerpt">{getExcerptText(post)}</p>
+                  <span className="read-more">Read more →</span>
+                </div>
+              </Link>
             );
           })}
         </div>
       </main>
+
+      <SiteFooter />
     </>
   );
 }
