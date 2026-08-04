@@ -11,7 +11,7 @@ export default function Document() {
           href="https://fonts.googleapis.com/css2?family=Noto+Sans+Khmer:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap"
           rel="stylesheet"
         />
-        <meta name="theme-color" content="#1A202C" />
+        <meta name="theme-color" content="#1e3a8a" />
       </Head>
       <body>
         <Main />
