@@ -2,7 +2,13 @@ import Head from "next/head";
 import Link from "next/link";
 import SiteHeader from "../components/SiteHeader";
 import SiteFooter from "../components/SiteFooter";
-import { getPosts, getFeaturedImage, getExcerptText, formatDate } from "../lib/wordpress";
+import {
+  getPosts,
+  getFeaturedImage,
+  getExcerptText,
+  getPostCategories,
+  formatDate,
+} from "../lib/wordpress";
 
 export async function getStaticProps() {
   try {
@@ -66,6 +72,15 @@ export default function Home({ posts, error }) {
                 </div>
                 <div className="post-card-body">
                   <time className="post-date">{formatDate(post.date)}</time>
+                  {getPostCategories(post).length > 0 && (
+                    <div className="category-pills">
+                      {getPostCategories(post).map((cat) => (
+                        <span key={cat.id} className="category-pill">
+                          {cat.name}
+                        </span>
+                      ))}
+                    </div>
+                  )}
                   <h2 dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
                   <p className="excerpt">{getExcerptText(post)}</p>
                   <span className="read-more">Read more →</span>
