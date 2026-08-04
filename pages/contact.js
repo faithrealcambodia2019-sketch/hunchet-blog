@@ -7,7 +7,7 @@ export default function Contact() {
   return (
     <>
       <Head>
-        <title>Contact — hunchet.blog</title>
+        <title>Contact — Hun Chet</title>
         <meta
           name="description"
           content="Get in touch with Hun Chet — phone, Telegram, and Facebook."
@@ -16,16 +16,21 @@ export default function Contact() {
 
       <SiteHeader />
 
-      <main className="container">
-        <section className="page-header">
-          <h1>Get in touch</h1>
+      <section className="page-hero">
+        <div className="container">
+          <span className="eyebrow">Connect</span>
+          <h1>Get in Touch</h1>
           <p>
             Questions, prayer requests, or just want to say hello? Reach out
             through any of the channels below.
           </p>
-        </section>
+        </div>
+      </section>
 
-        <AuthorCard />
+      <main className="section">
+        <div className="container-narrow">
+          <AuthorCard />
+        </div>
       </main>
 
       <SiteFooter />
