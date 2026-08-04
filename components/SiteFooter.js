@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { LOGO } from "../lib/media";
 
 export default function SiteFooter() {
   return (
@@ -6,7 +7,10 @@ export default function SiteFooter() {
       <div className="footer-grid">
         <div className="footer-col">
           <Link href="/" className="footer-brand">
-            <span className="site-logo-mark">H</span>
+            <span className="brand-mark">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={LOGO} alt="Hun Chet" />
+            </span>
             <span className="footer-brand-text">Hun Chet</span>
           </Link>
           <p>
