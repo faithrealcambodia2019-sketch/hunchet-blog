@@ -5,7 +5,13 @@ import SiteFooter from "../components/SiteFooter";
 import { getPages } from "../lib/wordpress";
 
 function stripHtml(html) {
-  return (html || "").replace(/<[^>]+>/g, "").trim();
+  return (html || "")
+    .replace(/<!--[\s\S]*?-->/g, "")
+    .replace(/<[^>]+>/g, "")
+    .replace(/&#8211;/g, "-")
+    .replace(/&amp;/g, "&")
+    .replace(/&nbsp;/g, " ")
+    .trim();
 }
 
 export async function getStaticProps() {
@@ -21,29 +27,41 @@ export default function AllPages({ pages, error }) {
   return (
     <>
       <Head>
-        <title>All Pages — hunchet.blog</title>
-        <meta name="description" content="Every page from hunchet.blog, all in one place." />
+        <title>All Pages — Hun Chet</title>
+        <meta
+          name="description"
+          content="Every page from the site, all in one place."
+        />
       </Head>
 
       <SiteHeader />
 
-      <main className="container">
-        <section className="page-header">
-          <h1>All pages</h1>
+      <section className="page-hero">
+        <div className="container">
+          <span className="eyebrow">Index</span>
+          <h1>All Pages</h1>
           <p>Every page carried over from the WordPress site.</p>
-        </section>
+        </div>
+      </section>
 
-        {error && <p className="error">Couldn&apos;t load pages: {error}</p>}
+      <main className="section">
+        <div className="container">
+          {error && <p className="error">Couldn&apos;t load pages: {error}</p>}
 
-        <div className="category-grid">
-          {pages.map((page) => {
-            const title = stripHtml(page.title?.rendered) || page.slug;
-            return (
-              <Link key={page.id} href={`/${page.slug}`} className="category-card">
-                <span className="category-card-name">{title}</span>
-              </Link>
-            );
-          })}
+          <div className="category-grid">
+            {pages.map((page) => {
+              const title = stripHtml(page.title?.rendered) || page.slug;
+              return (
+                <Link
+                  key={page.id}
+                  href={`/${page.slug}`}
+                  className="category-card"
+                >
+                  <span className="category-card-name">{title}</span>
+                </Link>
+              );
+            })}
+          </div>
         </div>
       </main>
 
