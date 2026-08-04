@@ -35,7 +35,7 @@ const TIMELINE = [
     title: "Sharing what we learned",
     org: "EFC — Evangelical Fellowship of Cambodia",
     body:
-      "Presented CV's digital ministry model to around 400 pastors and church leaders. Closing a decade at Doung Preng the same year was hard, but it made room for what came next.",
+      "Presented CV's digital ministry model to pastors and church leaders from across the country. Closing a decade at Doung Preng the same year was hard, but it made room for what came next.",
     image: `${MEDIA}/cddf7-481059789_1321611435728127_993577711556320171_n.jpg`,
   },
   {
@@ -147,10 +147,6 @@ export default function About() {
             <div>
               <span className="stat-num">12+</span>
               <span className="stat-label">Years in ministry</span>
-            </div>
-            <div>
-              <span className="stat-num">400</span>
-              <span className="stat-label">Leaders reached at EFC</span>
             </div>
             <div>
               <span className="stat-num">5</span>
