@@ -1,12 +1,12 @@
 import { Html, Head, Main, NextScript } from "next/document";
-import { FAVICON, APPLE_ICON } from "../lib/media";
+import { APPLE_ICON } from "../lib/media";
 
 export default function Document() {
   return (
     <Html lang="km">
       <Head>
-        <link rel="icon" href={FAVICON} type="image/png" sizes="any" />
-        <link rel="shortcut icon" href={FAVICON} type="image/png" />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any" />
+        <link rel="shortcut icon" href="/favicon.svg" type="image/svg+xml" />
         <link rel="apple-touch-icon" href={APPLE_ICON} />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
