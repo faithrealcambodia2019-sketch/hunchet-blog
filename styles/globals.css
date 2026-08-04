@@ -1,85 +1,586 @@
-* { box-sizing: border-box; }
+:root {
+  --ink: #1a202c;
+  --text: #3f4a5a;
+  --muted: #6b7684;
+  --accent: #c0392b;
+  --accent-soft: #fbe9e7;
+  --bg: #fafafa;
+  --card-bg: #ffffff;
+  --border: #e7e9ec;
+  --radius: 10px;
+  --font-body: "Inter", "Noto Sans Khmer", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  color: #1a1a1a;
-  background: #fafafa;
+  font-family: var(--font-body);
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
 }
 
 .container {
-  max-width: 780px;
+  max-width: 860px;
   margin: 0 auto;
-  padding: 2rem 1.25rem 4rem;
+  padding: 0 1.25rem;
 }
+
+/* ---------- Header ---------- */
 
 .site-header {
+  border-bottom: 1px solid var(--border);
+  background: var(--card-bg);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.site-header-inner {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.site-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--ink);
+}
+
+.site-logo-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  background: var(--ink);
+  color: var(--accent);
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 700;
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  font-size: 0.92rem;
+}
+
+.site-nav a {
+  text-decoration: none;
+  color: var(--muted);
+  font-weight: 500;
+  transition: color 0.15s ease;
+}
+
+.site-nav a:hover {
+  color: var(--ink);
+}
+
+/* ---------- Homepage hero ---------- */
+
+.hero-banner {
+  padding: 3rem 0 1.5rem;
   text-align: center;
-  margin-bottom: 2.5rem;
 }
 
-.site-header h1 {
+.hero-banner h1 {
   font-size: 2rem;
-  margin-bottom: 0.25rem;
+  line-height: 1.25;
+  margin: 0 0 0.6rem;
+  color: var(--ink);
 }
 
-.site-header p {
-  color: #666;
+.hero-banner p {
+  color: var(--muted);
   margin: 0;
+  font-size: 1.05rem;
 }
 
 .error {
   background: #fff3f3;
   border: 1px solid #f3c2c2;
   padding: 1rem;
-  border-radius: 8px;
+  border-radius: var(--radius);
   color: #a33;
+  margin-bottom: 2rem;
 }
 
+.empty-state {
+  text-align: center;
+  color: var(--muted);
+  padding: 3rem 0;
+}
+
+/* ---------- Post grid / cards ---------- */
+
 .post-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.5rem;
+  padding: 1rem 0 4rem;
 }
 
 .post-card {
-  border-bottom: 1px solid #eee;
-  padding-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
 }
 
-.post-thumb, .post-hero {
+.post-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(26, 32, 44, 0.08);
+  border-color: transparent;
+}
+
+.post-thumb-wrap {
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: var(--accent-soft);
+}
+
+.post-thumb {
   width: 100%;
-  height: auto;
-  border-radius: 8px;
-  margin-bottom: 1rem;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.post-thumb-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.post-card-body {
+  padding: 1.1rem 1.25rem 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.post-date {
+  font-size: 0.78rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 
 .post-card h2 {
-  margin: 0 0 0.5rem;
-  font-size: 1.4rem;
-}
-
-.excerpt {
-  color: #444;
-  margin-bottom: 0.5rem;
-}
-
-.excerpt p {
   margin: 0;
+  font-size: 1.2rem;
+  line-height: 1.4;
+  color: var(--ink);
 }
 
-article a {
-  color: #0070f3;
-  text-decoration: none;
+.post-card .excerpt {
+  margin: 0;
+  color: var(--text);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.read-more {
+  margin-top: auto;
+  padding-top: 0.4rem;
   font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--accent);
+}
+
+/* ---------- Single post page ---------- */
+
+.back-link {
+  display: inline-block;
+  margin: 1.75rem 0 1rem;
+  text-decoration: none;
+  color: var(--muted);
+  font-weight: 500;
+  font-size: 0.92rem;
+}
+
+.back-link:hover {
+  color: var(--ink);
+}
+
+.post-page {
+  padding-bottom: 4rem;
+}
+
+.post-hero,
+.post-page > img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+  margin-bottom: 1.25rem;
+}
+
+.post-page h1 {
+  font-size: 2rem;
+  line-height: 1.3;
+  color: var(--ink);
+  margin: 0.4rem 0 1.25rem;
+}
+
+.post-content {
+  line-height: 1.8;
+  font-size: 1.05rem;
 }
 
 .post-content img {
   max-width: 100%;
   height: auto;
-  border-radius: 8px;
+  border-radius: var(--radius);
 }
 
-.post-content {
+.post-content p {
+  margin: 0 0 1.25rem;
+}
+
+/* ---------- Footer ---------- */
+
+.site-footer {
+  border-top: 1px solid var(--border);
+  padding: 2rem 1.25rem;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+/* =====================================================================
+   Styling for markup embedded inside WordPress post content.
+   These class names come from the posts themselves (fyi-article-wrapper,
+   prayer-box, scripture-card, etc). We style them here directly since the
+   original inline <style> block in the source content isn't valid CSS
+   after WordPress re-encoded it.
+   ===================================================================== */
+
+.fyi-article-wrapper {
+  font-family: var(--font-body);
+  color: var(--text);
+  line-height: 1.85;
+}
+
+.fyi-article-wrapper a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.fyi-article-wrapper h1,
+.fyi-article-wrapper h2,
+.fyi-article-wrapper h3,
+.fyi-article-wrapper h4 {
+  color: var(--ink);
+  line-height: 1.4;
+}
+
+.article-hero {
+  position: relative;
+  background: linear-gradient(135deg, #1a202c, #2b3743);
+  padding: 3.5rem 1.5rem;
+  text-align: center;
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-bottom: -2.5rem;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(43, 55, 67, 0.18);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.article-category {
+  display: inline-block;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.35rem 0.9rem;
+  border-radius: 4px;
+  margin-bottom: 1.25rem;
+}
+
+.article-title {
+  color: #fff !important;
+  font-size: 2rem;
+  font-weight: 900;
+  margin-bottom: 1rem;
+}
+
+.article-meta {
+  color: rgba(255, 255, 255, 0.82);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.article-container {
+  position: relative;
+  z-index: 2;
+  max-width: 100%;
+  margin: 0 auto;
+  background: var(--card-bg);
+  padding: 2.25rem 1.75rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+}
+
+.article-body p {
+  font-size: 1.05rem;
+  margin-bottom: 1.5rem;
+}
+
+.article-body h2 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin: 2.25rem 0 1rem;
+  border-bottom: 2px solid var(--border);
+  padding-bottom: 0.6rem;
+}
+
+.article-body h3 {
+  font-size: 1.2rem;
+  font-weight: 800;
+  margin: 1.5rem 0 0.75rem;
+}
+
+.scripture-grid {
+  display: grid;
+  gap: 1.25rem;
+  margin: 1.5rem 0;
+}
+
+.scripture-card {
+  border: 1px solid var(--border);
+  padding: 1.5rem;
+  border-radius: 8px;
+  background: #f8fafc;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.scripture-card:hover {
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.05);
+  transform: translateY(-2px);
+}
+
+.sc-verse {
+  font-size: 1rem;
+  color: var(--ink);
+  font-weight: 600;
+  margin-bottom: 1rem;
+  line-height: 1.8;
+}
+
+.sc-ref {
+  display: inline-block;
+  background: rgba(43, 55, 67, 0.06);
+  color: var(--ink);
+  font-weight: 700;
+  font-size: 0.8rem;
+  padding: 0.3rem 0.7rem;
+  border-radius: 4px;
+}
+
+.prayer-box {
+  background: #f8fafc;
+  border-left: 5px solid var(--accent);
+  padding: 1.75rem;
+  margin: 2rem 0;
+  border-radius: 0 8px 8px 0;
+}
+
+.prayer-box h3 {
+  font-size: 1.3rem;
+  font-weight: 800;
+  margin-bottom: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.prayer-box p,
+.prayer-box li {
+  font-size: 1.02rem;
+  color: var(--ink);
+  margin-bottom: 0.6rem;
+}
+
+.think-list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0;
+}
+
+.think-list li {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.85rem 1rem;
+  margin-bottom: 0.65rem;
+}
+
+.think-list strong {
+  color: var(--accent);
+  font-weight: 900;
+}
+
+.author-bio {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.75rem;
+  margin-top: 2.25rem;
+  padding: 2rem;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.author-avatar {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.author-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  margin: 0 !important;
+}
+
+.author-text {
+  flex: 1;
+}
+
+.author-text strong {
+  display: block;
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--ink);
+  margin-bottom: 0.6rem;
+}
+
+.author-text span {
+  display: block;
+  font-size: 0.98rem;
   line-height: 1.7;
+  color: var(--text);
+  margin-bottom: 1.1rem;
+}
+
+.author-social-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.author-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.9rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  border: 1px solid transparent;
+  transition: opacity 0.15s ease;
+}
+
+.author-btn:hover {
+  opacity: 0.85;
+}
+
+.btn-phone {
+  background: #e6f8f1;
+  color: #2ba98d;
+}
+
+.btn-telegram {
+  background: #ebf8ff;
+  color: #2b93c9;
+}
+
+.btn-facebook {
+  background: #eef2ff;
+  color: #4c56c9;
+}
+
+@media (max-width: 640px) {
+  .article-hero {
+    padding: 2.5rem 1.25rem;
+  }
+
+  .article-title {
+    font-size: 1.5rem;
+  }
+
+  .article-container {
+    padding: 1.5rem 1.1rem;
+  }
+
+  .author-bio {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 1.5rem;
+  }
+
+  .author-social-links {
+    justify-content: center;
+  }
+
+  .site-nav {
+    gap: 0.85rem;
+    font-size: 0.85rem;
+  }
 }
