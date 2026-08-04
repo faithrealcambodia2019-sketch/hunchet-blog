@@ -1,0 +1,582 @@
+/* =====================================================================
+   Typography, brand mark, gallery and life-story styles.
+   Loaded after globals.css so :root overrides here win.
+   Latin glyphs resolve to Playfair Display / Inter; Khmer glyphs fall
+   through to Koh Santepheap automatically (per-glyph font fallback).
+   ===================================================================== */
+
+:root {
+  --font-display: "Playfair Display", "Koh Santepheap", Georgia,
+    "Times New Roman", serif;
+  --font-body: "Inter", "Koh Santepheap", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, sans-serif;
+  --font-khmer: "Koh Santepheap", serif;
+}
+
+/* Khmer needs extra vertical room for stacked diacritics */
+.post-content,
+.article-body,
+.excerpt,
+.post-card h2,
+.sc-verse,
+.prayer-box p,
+.prayer-box li {
+  line-height: 1.95;
+}
+
+.post-page h1,
+.post-card h2 {
+  line-height: 1.45;
+}
+
+/* ---------------- Brand mark ---------------- */
+
+.brand-mark {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: var(--navy);
+  border: 2px solid var(--navy);
+  display: block;
+}
+
+.brand-mark img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.site-footer .brand-mark {
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+/* ---------------- Gallery ---------------- */
+
+.gallery-intro {
+  max-width: 760px;
+  margin: 0 auto 3rem;
+  text-align: center;
+  color: var(--muted);
+  font-size: 1.05rem;
+}
+
+.gallery-filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-bottom: 3rem;
+}
+
+.filter-chip {
+  appearance: none;
+  border: 1px solid var(--border);
+  background: #fff;
+  color: var(--muted);
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.7rem 1.3rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease;
+}
+
+.filter-chip:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.filter-chip.is-active {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: #fff;
+}
+
+.album {
+  margin-bottom: 4.5rem;
+}
+
+.album:last-child {
+  margin-bottom: 0;
+}
+
+.album-head {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding-bottom: 1rem;
+  margin-bottom: 1.75rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.album-head h2 {
+  font-size: 1.6rem;
+  margin: 0;
+  line-height: 1.25;
+}
+
+.album-years {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+.album-note {
+  width: 100%;
+  margin: 0.35rem 0 0;
+  color: var(--muted);
+  font-size: 0.98rem;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.1rem;
+}
+
+.gallery-item {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius);
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+  background: var(--bg-alt);
+  cursor: zoom-in;
+  box-shadow: var(--shadow);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.55s ease;
+}
+
+.gallery-item:hover img,
+.gallery-item:focus-visible img {
+  transform: scale(1.07);
+}
+
+.gallery-item::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(8, 20, 45, 0) 45%,
+    rgba(8, 20, 45, 0.78) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.gallery-item:hover::after,
+.gallery-item:focus-visible::after {
+  opacity: 1;
+}
+
+.gallery-caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  padding: 1rem 1.1rem;
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: 0.86rem;
+  font-weight: 600;
+  line-height: 1.45;
+  text-align: left;
+  transform: translateY(8px);
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.gallery-item:hover .gallery-caption,
+.gallery-item:focus-visible .gallery-caption {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.gallery-item.is-tall {
+  aspect-ratio: 3 / 4;
+}
+
+.gallery-item.is-wide {
+  grid-column: span 2;
+  aspect-ratio: 16 / 10;
+}
+
+/* ---------------- Lightbox ---------------- */
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(6, 14, 32, 0.94);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem 1.25rem 4.5rem;
+  animation: lb-fade 0.2s ease;
+}
+
+@keyframes lb-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.lightbox-figure {
+  max-width: 1100px;
+  max-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.1rem;
+}
+
+.lightbox-figure img {
+  max-width: 100%;
+  max-height: 76vh;
+  object-fit: contain;
+  border-radius: var(--radius);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+}
+
+.lightbox-cap {
+  color: rgba(255, 255, 255, 0.92);
+  font-family: var(--font-body);
+  font-size: 0.98rem;
+  text-align: center;
+  max-width: 640px;
+  margin: 0;
+}
+
+.lightbox-meta {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.lb-btn {
+  position: absolute;
+  appearance: none;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  font-size: 1.35rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.18s ease;
+}
+
+.lb-btn:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.lb-close {
+  top: 1.5rem;
+  right: 1.5rem;
+}
+
+.lb-prev {
+  left: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.lb-next {
+  right: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.lb-count {
+  position: absolute;
+  bottom: 1.6rem;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(255, 255, 255, 0.6);
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+}
+
+/* ---------------- Life story ---------------- */
+
+.story-lede {
+  max-width: 760px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.story-lede p {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  line-height: 1.75;
+  color: var(--ink);
+  margin: 0;
+}
+
+.story-portrait-wrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2.5rem;
+}
+
+.story-portrait {
+  width: 168px;
+  height: 168px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 5px solid #fff;
+  box-shadow: var(--shadow-lg);
+  background: var(--bg-alt);
+}
+
+.story-portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.timeline {
+  position: relative;
+  max-width: 860px;
+  margin: 0 auto;
+  padding-left: 2.5rem;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 9px;
+  top: 8px;
+  bottom: 8px;
+  width: 2px;
+  background: linear-gradient(
+    180deg,
+    var(--accent) 0%,
+    var(--border) 100%
+  );
+}
+
+.tl-item {
+  position: relative;
+  padding-bottom: 3rem;
+}
+
+.tl-item:last-child {
+  padding-bottom: 0;
+}
+
+.tl-item::before {
+  content: "";
+  position: absolute;
+  left: -2.5rem;
+  top: 6px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #fff;
+  border: 3px solid var(--accent);
+  box-shadow: 0 0 0 4px rgba(29, 78, 216, 0.1);
+}
+
+.tl-year {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+
+.tl-item h3 {
+  font-size: 1.4rem;
+  margin: 0 0 0.3rem;
+  line-height: 1.3;
+}
+
+.tl-org {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--muted);
+  margin-bottom: 0.8rem;
+}
+
+.tl-item p {
+  margin: 0 0 1rem;
+  color: var(--text);
+}
+
+.tl-media {
+  margin-top: 1.1rem;
+  border-radius: var(--radius);
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  box-shadow: var(--shadow);
+  max-width: 520px;
+}
+
+.tl-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ---------------- Values ---------------- */
+
+.value-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.75rem;
+}
+
+.value-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--gold);
+  border-radius: var(--radius);
+  padding: 2rem 1.75rem;
+}
+
+.value-card h3 {
+  font-size: 1.22rem;
+  margin: 0 0 0.6rem;
+  line-height: 1.3;
+}
+
+.value-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.96rem;
+  line-height: 1.7;
+}
+
+.stat-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 2rem;
+  text-align: center;
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.stat-num {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 2.9rem;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.stat-label {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.68);
+}
+
+/* ---------------- Responsive ---------------- */
+
+@media (max-width: 860px) {
+  .brand-mark {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (max-width: 640px) {
+  .gallery-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 0.7rem;
+  }
+
+  .gallery-item.is-wide {
+    grid-column: span 2;
+  }
+
+  .gallery-caption {
+    font-size: 0.76rem;
+    padding: 0.7rem 0.8rem;
+  }
+
+  .timeline {
+    padding-left: 1.9rem;
+  }
+
+  .tl-item::before {
+    left: -1.9rem;
+    width: 16px;
+    height: 16px;
+  }
+
+  .timeline::before {
+    left: 7px;
+  }
+
+  .story-lede p {
+    font-size: 1.15rem;
+  }
+
+  .story-portrait {
+    width: 132px;
+    height: 132px;
+  }
+
+  .lb-prev {
+    left: 0.5rem;
+  }
+
+  .lb-next {
+    right: 0.5rem;
+  }
+
+  .lb-close {
+    top: 0.8rem;
+    right: 0.8rem;
+  }
+}
