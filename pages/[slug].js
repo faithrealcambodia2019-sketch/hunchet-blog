@@ -14,6 +14,7 @@ const RESERVED_SLUGS = new Set([
   "categories",
   "articles",
   "resource",
+  "gallery",
   "index",
   "404",
   "500",
