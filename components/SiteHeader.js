@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { LOGO } from "../lib/media";
 
 const navItems = [
   { href: "/", label: "Home" },
@@ -20,7 +21,10 @@ export default function SiteHeader() {
     <header className="site-header">
       <div className="site-header-inner">
         <Link href="/" className="site-logo">
-          <span className="site-logo-mark">H</span>
+          <span className="brand-mark">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={LOGO} alt="Hun Chet" />
+          </span>
           <span>
             <span className="site-logo-text">Hun Chet</span>
             <span className="site-logo-sub">Faith &amp; Ministry</span>
