@@ -26,13 +26,18 @@ export async function getStaticProps({ params }) {
   return { props: { post }, revalidate: 60 };
 }
 
+function stripHtml(html) {
+  return html.replace(/<[^>]+>/g, "").trim();
+}
+
 export default function Post({ post }) {
   const image = getFeaturedImage(post);
+  const plainTitle = stripHtml(post.title.rendered);
 
   return (
     <>
       <Head>
-        <title dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
+        <title>{plainTitle}</title>
       </Head>
       <main className="container">
         <Link href="/">← Back to all posts</Link>
