@@ -8,10 +8,10 @@ export default function Document() {
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Noto+Sans+Khmer:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Inter:wght@400;500;600;700&family=Noto+Sans+Khmer:wght@400;600;700&family=Noto+Serif+Khmer:wght@600;700&display=swap"
           rel="stylesheet"
         />
-        <meta name="theme-color" content="#1e3a8a" />
+        <meta name="theme-color" content="#0f2a5c" />
       </Head>
       <body>
         <Main />
