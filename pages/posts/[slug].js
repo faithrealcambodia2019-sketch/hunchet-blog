@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import SiteHeader from "../../components/SiteHeader";
 import SiteFooter from "../../components/SiteFooter";
+import AuthorCard from "../../components/AuthorCard";
 import {
   getAllSlugs,
   getPostBySlug,
@@ -37,7 +38,10 @@ export async function getStaticProps({ params }) {
 }
 
 function stripHtml(html) {
-  return html.replace(/<[^>]+>/g, "").trim();
+  return (html || "")
+    .replace(/<!--[\s\S]*?-->/g, "")
+    .replace(/<[^>]+>/g, "")
+    .trim();
 }
 
 export default function Post({ post }) {
@@ -50,7 +54,7 @@ export default function Post({ post }) {
   return (
     <>
       <Head>
-        <title>{plainTitle} — hunchet.blog</title>
+        <title>{plainTitle} — Hun Chet</title>
         <meta name="description" content={description} />
         <meta property="og:title" content={plainTitle} />
         <meta property="og:description" content={description} />
@@ -61,8 +65,8 @@ export default function Post({ post }) {
       <SiteHeader />
 
       <main className="container">
-        <Link href="/" className="back-link">
-          ← Back to all posts
+        <Link href="/articles" className="back-link">
+          ← All articles
         </Link>
 
         <article className="post-page">
@@ -72,7 +76,7 @@ export default function Post({ post }) {
           )}
           <time className="post-date">{formatDate(post.date)}</time>
           {categories.length > 0 && (
-            <div className="category-pills">
+            <div className="category-pills" style={{ marginTop: "0.5rem" }}>
               {categories.map((cat) => (
                 <Link
                   key={cat.id}
@@ -89,6 +93,10 @@ export default function Post({ post }) {
             className="post-content"
             dangerouslySetInnerHTML={{ __html: content }}
           />
+
+          <div style={{ marginTop: "3.5rem" }}>
+            <AuthorCard />
+          </div>
         </article>
       </main>
 
