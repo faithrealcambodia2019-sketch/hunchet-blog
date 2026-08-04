@@ -1,6 +1,15 @@
 import Head from "next/head";
 import Link from "next/link";
-import { getAllSlugs, getPostBySlug, getFeaturedImage } from "../../lib/wordpress";
+import SiteHeader from "../../components/SiteHeader";
+import SiteFooter from "../../components/SiteFooter";
+import {
+  getAllSlugs,
+  getPostBySlug,
+  getFeaturedImage,
+  cleanContentHtml,
+  getExcerptText,
+  formatDate,
+} from "../../lib/wordpress";
 
 export async function getStaticPaths() {
   let slugs = [];
@@ -33,26 +42,42 @@ function stripHtml(html) {
 export default function Post({ post }) {
   const image = getFeaturedImage(post);
   const plainTitle = stripHtml(post.title.rendered);
+  const description = getExcerptText(post, 160);
+  const content = cleanContentHtml(post.content.rendered);
 
   return (
     <>
       <Head>
-        <title>{plainTitle}</title>
+        <title>{plainTitle} — hunchet.blog</title>
+        <meta name="description" content={description} />
+        <meta property="og:title" content={plainTitle} />
+        <meta property="og:description" content={description} />
+        <meta property="og:type" content="article" />
+        {image && <meta property="og:image" content={image} />}
       </Head>
+
+      <SiteHeader />
+
       <main className="container">
-        <Link href="/">← Back to all posts</Link>
-        <article>
+        <Link href="/" className="back-link">
+          ← Back to all posts
+        </Link>
+
+        <article className="post-page">
           {image && (
             // eslint-disable-next-line @next/next/no-img-element
             <img src={image} alt="" className="post-hero" />
           )}
+          <time className="post-date">{formatDate(post.date)}</time>
           <h1 dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
           <div
             className="post-content"
-            dangerouslySetInnerHTML={{ __html: post.content.rendered }}
+            dangerouslySetInnerHTML={{ __html: content }}
           />
         </article>
       </main>
+
+      <SiteFooter />
     </>
   );
 }
