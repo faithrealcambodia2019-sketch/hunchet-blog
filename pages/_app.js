@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useRouter } from "next/router";
 import "../styles/globals.css";
 import "../styles/extra.css";
+import "../styles/library.css";
 import "../styles/motion.css";
 
 // Elements that fade + rise into view as you scroll. Listed here rather than
@@ -13,6 +14,7 @@ const REVEAL = [
   ".feature-card",
   ".value-card",
   ".category-card",
+  ".book-card",
   ".tl-item",
   ".gallery-item",
   ".author-bio",
