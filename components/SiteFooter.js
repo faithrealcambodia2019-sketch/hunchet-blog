@@ -74,6 +74,9 @@ export default function SiteFooter() {
               <Link href="/gallery">Gallery</Link>
             </li>
             <li>
+              <Link href="/library">Library</Link>
+            </li>
+            <li>
               <Link href="/resource">Resource</Link>
             </li>
             <li>
@@ -81,9 +84,6 @@ export default function SiteFooter() {
             </li>
             <li>
               <Link href="/about">About Us</Link>
-            </li>
-            <li>
-              <Link href="/all-pages">All Pages</Link>
             </li>
           </ul>
         </div>
