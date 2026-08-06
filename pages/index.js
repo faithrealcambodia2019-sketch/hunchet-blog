@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import SiteHeader from "../components/SiteHeader";
 import SiteFooter from "../components/SiteFooter";
+import { useT } from "../lib/i18n";
 import {
   getPosts,
   getFeaturedImage,
@@ -16,53 +17,26 @@ const HERO_IMAGE = `${MEDIA}/bb8f0-img_0633.jpeg`;
 
 const BANDS = [
   {
-    eyebrow: "Ministry",
-    title: "Leading a community that grows in Christ",
-    body:
-      "Serving as Ministry Lead at All Nations Church — directing community outreach, Sunday services, and building a strong spiritual and digital presence for the church family.",
+    key: "ministry",
     image: `${MEDIA}/5d72f-img_0564.jpeg`,
     href: "/gallery",
-    cta: "See the Gallery",
   },
   {
-    eyebrow: "Teaching",
-    title: "Scripture that speaks to everyday life",
-    body:
-      "Devotionals, biblical teaching, and honest reflection written in Khmer — on faith, prayer, forgiveness, mental health, and walking with God through real difficulty.",
+    key: "teaching",
     image: `${MEDIA}/e5ee6-img_0270.jpeg`,
     href: "/articles",
-    cta: "Read Articles",
   },
   {
-    eyebrow: "Outreach",
-    title: "Faith put into action",
-    body:
-      "Taking the Gospel beyond Sunday through community service, local support initiatives, and hands-on ministry work across Cambodia.",
+    key: "outreach",
     image: `${MEDIA}/4262e-img_20251226_130309_154.jpeg`,
     href: "/about",
-    cta: "About the Ministry",
   },
 ];
 
 const FEATURES = [
-  {
-    title: "Gallery",
-    desc: "Photos and milestones from ministry, worship, and community life.",
-    image: `${MEDIA}/9fe4e-img_0972.jpeg`,
-    href: "/gallery",
-  },
-  {
-    title: "Resource",
-    desc: "Guides, devotionals, and encouragement gathered in one place.",
-    image: `${MEDIA}/6ff1d-img_0266.jpeg`,
-    href: "/resource",
-  },
-  {
-    title: "Article",
-    desc: "Every reflection and teaching post, newest first.",
-    image: `${MEDIA}/66666-img_0549.jpeg`,
-    href: "/articles",
-  },
+  { key: "gallery", image: `${MEDIA}/9fe4e-img_0972.jpeg`, href: "/gallery" },
+  { key: "resource", image: `${MEDIA}/6ff1d-img_0266.jpeg`, href: "/resource" },
+  { key: "article", image: `${MEDIA}/66666-img_0549.jpeg`, href: "/articles" },
 ];
 
 export async function getStaticProps() {
@@ -75,8 +49,8 @@ export async function getStaticProps() {
 }
 
 export default function Home({ posts, error }) {
-  const description =
-    "Biblical encouragement, Christian teaching, and ministry from Hun Chet — written in Khmer, shared with everyone.";
+  const t = useT();
+  const description = t("home.sub");
 
   return (
     <>
@@ -96,18 +70,15 @@ export default function Home({ posts, error }) {
         <img src={HERO_IMAGE} alt="" className="hero-img" />
         <div className="hero-scrim" />
         <div className="hero-inner">
-          <span className="eyebrow">Welcome to hunchet.blog</span>
-          <h1>Encouragement and truth for every season of faith</h1>
-          <p className="hero-sub">
-            Biblical teaching, prayer, and honest reflection — written from the
-            heart in Khmer, and shared here for anyone who needs hope.
-          </p>
+          <span className="eyebrow">{t("home.eyebrow")}</span>
+          <h1>{t("home.title")}</h1>
+          <p className="hero-sub">{t("home.sub")}</p>
           <div className="hero-actions">
             <Link href="/articles" className="btn btn-light">
-              Read Articles
+              {t("home.readArticles")}
             </Link>
             <Link href="/about" className="btn btn-outline-light">
-              About Us
+              {t("home.aboutUs")}
             </Link>
           </div>
         </div>
@@ -117,14 +88,14 @@ export default function Home({ posts, error }) {
         <section className="section">
           <div className="container">
             <div className="section-head">
-              <span className="eyebrow">What we do</span>
-              <h2>A ministry rooted in scripture and community</h2>
+              <span className="eyebrow">{t("home.whatWeDo")}</span>
+              <h2>{t("home.whatWeDoTitle")}</h2>
               <hr className="rule" />
             </div>
 
             {BANDS.map((band, i) => (
               <div
-                key={band.title}
+                key={band.key}
                 className={i % 2 === 1 ? "band band-reverse" : "band"}
               >
                 <div className="band-media">
@@ -132,11 +103,11 @@ export default function Home({ posts, error }) {
                   <img src={band.image} alt="" />
                 </div>
                 <div className="band-body">
-                  <span className="eyebrow">{band.eyebrow}</span>
-                  <h3>{band.title}</h3>
-                  <p>{band.body}</p>
+                  <span className="eyebrow">{t(`band.${band.key}`)}</span>
+                  <h3>{t(`band.${band.key}Title`)}</h3>
+                  <p>{t(`band.${band.key}Body`)}</p>
                   <Link href={band.href} className="btn btn-outline">
-                    {band.cta}
+                    {t(`band.${band.key}Cta`)}
                   </Link>
                 </div>
               </div>
@@ -147,15 +118,15 @@ export default function Home({ posts, error }) {
         <section className="section section-alt">
           <div className="container">
             <div className="section-head">
-              <span className="eyebrow">Latest</span>
-              <h2>Recent Articles</h2>
-              <p>New reflections on faith, scripture, and everyday life.</p>
+              <span className="eyebrow">{t("home.latest")}</span>
+              <h2>{t("home.recent")}</h2>
+              <p>{t("home.recentSub")}</p>
               <hr className="rule" />
             </div>
 
             {error && (
               <p className="error">
-                Couldn&apos;t load posts from WordPress: {error}
+                {t("common.loadError")} {error}
               </p>
             )}
 
@@ -195,7 +166,7 @@ export default function Home({ posts, error }) {
                         }}
                       />
                       <p className="excerpt">{getExcerptText(post)}</p>
-                      <span className="read-more">Read more →</span>
+                      <span className="read-more">{t("common.readMore")}</span>
                     </div>
                   </Link>
                 );
@@ -204,7 +175,7 @@ export default function Home({ posts, error }) {
 
             <div style={{ textAlign: "center", marginTop: "3rem" }}>
               <Link href="/articles" className="btn btn-primary">
-                View All Articles
+                {t("home.viewAll")}
               </Link>
             </div>
           </div>
@@ -213,8 +184,8 @@ export default function Home({ posts, error }) {
         <section className="section">
           <div className="container">
             <div className="section-head">
-              <span className="eyebrow">Explore</span>
-              <h2>Find what you&apos;re looking for</h2>
+              <span className="eyebrow">{t("home.explore")}</span>
+              <h2>{t("home.exploreTitle")}</h2>
               <hr className="rule" />
             </div>
 
@@ -226,9 +197,11 @@ export default function Home({ posts, error }) {
                     <img src={f.image} alt="" />
                   </div>
                   <div className="feature-card-body">
-                    <h3>{f.title}</h3>
-                    <p>{f.desc}</p>
-                    <span className="feature-card-link">Explore →</span>
+                    <h3>{t(`feat.${f.key}`)}</h3>
+                    <p>{t(`feat.${f.key}Desc`)}</p>
+                    <span className="feature-card-link">
+                      {t("common.explore")}
+                    </span>
                   </div>
                 </Link>
               ))}
@@ -239,15 +212,15 @@ export default function Home({ posts, error }) {
         <section className="section section-navy">
           <div className="container">
             <div className="section-head">
-              <span className="eyebrow">Connect</span>
-              <h2>Questions, prayer requests, or just want to say hello?</h2>
+              <span className="eyebrow">{t("home.connect")}</span>
+              <h2>{t("home.connectTitle")}</h2>
               <p style={{ color: "rgba(255,255,255,0.8)" }}>
-                Reach out any time — by phone, Telegram, or Facebook.
+                {t("home.connectSub")}
               </p>
             </div>
             <div style={{ textAlign: "center" }}>
               <Link href="/contact" className="btn btn-light">
-                Get in Touch
+                {t("home.getInTouch")}
               </Link>
             </div>
           </div>
