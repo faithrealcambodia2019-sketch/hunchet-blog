@@ -5,6 +5,7 @@ import { LOGO } from "../lib/media";
 const navItems = [
   { href: "/", label: "Home" },
   { href: "/gallery", label: "Gallery" },
+  { href: "/library", label: "Library" },
   { href: "/resource", label: "Resource" },
   { href: "/articles", label: "Article" },
   { href: "/about", label: "About Us" },
