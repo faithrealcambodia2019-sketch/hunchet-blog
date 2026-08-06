@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import "../styles/globals.css";
 import "../styles/extra.css";
 import "../styles/library.css";
+import "../styles/video.css";
 import "../styles/motion.css";
 
 // Elements that fade + rise into view as you scroll. Listed here rather than
@@ -15,6 +16,7 @@ const REVEAL = [
   ".value-card",
   ".category-card",
   ".book-card",
+  ".video-card",
   ".tl-item",
   ".gallery-item",
   ".author-bio",
