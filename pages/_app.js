@@ -4,6 +4,7 @@ import "../styles/globals.css";
 import "../styles/extra.css";
 import "../styles/library.css";
 import "../styles/video.css";
+import "../styles/lang.css";
 import "../styles/motion.css";
 
 // Elements that fade + rise into view as you scroll. Listed here rather than
@@ -72,7 +73,7 @@ export default function App({ Component, pageProps }) {
 
     els.forEach((el) => io.observe(el));
     return () => io.disconnect();
-  }, [router.asPath]);
+  }, [router.asPath, router.locale]);
 
   return <Component {...pageProps} />;
 }
