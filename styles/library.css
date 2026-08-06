@@ -1,0 +1,237 @@
+/* =====================================================================
+   Library page — book cards.
+   Also carries the footer icon sizing fix (inline SVGs ship without
+   width/height, so they stretch to fill their container unless bounded).
+   ===================================================================== */
+
+/* ---------------- Book grid ---------------- */
+
+.book-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.75rem;
+}
+
+.book-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--gold);
+  border-radius: var(--radius);
+  padding: 2rem 1.75rem;
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.book-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.book-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  flex: none;
+  border-radius: 12px;
+  background: rgba(15, 42, 92, 0.08);
+  color: var(--navy);
+}
+
+.book-icon svg {
+  width: 22px;
+  height: 22px;
+  flex: none;
+  fill: currentColor;
+}
+
+.book-body {
+  flex: 1;
+}
+
+.book-card h3 {
+  font-size: 1.22rem;
+  margin: 0 0 0.3rem;
+  line-height: 1.35;
+}
+
+.book-khmer {
+  margin: 0 0 0.6rem;
+  font-family: var(--font-khmer);
+  font-size: 1rem;
+  line-height: 1.9;
+  color: var(--navy);
+  opacity: 0.8;
+}
+
+.book-desc {
+  margin: 0 0 0.9rem;
+  color: var(--muted);
+  font-size: 0.96rem;
+  line-height: 1.7;
+}
+
+.book-meta {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+/* ---------------- Buttons ---------------- */
+
+.book-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.book-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.6rem 1.15rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--muted);
+  background: #fff;
+  transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease;
+}
+
+.book-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.book-btn svg {
+  width: 14px;
+  height: 14px;
+  flex: none;
+  fill: currentColor;
+}
+
+.book-btn.is-primary {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: #fff;
+}
+
+.book-btn.is-primary:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+/* ---------------- Footer icon fix ---------------- */
+
+.social-btn {
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  transition: background 0.2s ease;
+}
+
+.social-btn:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.social-btn svg {
+  width: 20px;
+  height: 20px;
+  flex: none;
+  fill: currentColor;
+}
+
+.contact-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.contact-list li {
+  margin: 0;
+  padding: 0;
+}
+
+.contact-list a {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.95rem;
+  line-height: 1.4;
+  transition: color 0.18s ease;
+}
+
+.contact-list a:hover {
+  color: #fff;
+}
+
+.contact-list a:hover .ci {
+  background: rgba(255, 255, 255, 0.16);
+  color: var(--gold);
+}
+
+.ci {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  flex: none;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.07);
+  color: rgba(255, 255, 255, 0.8);
+  transition: background 0.18s ease, color 0.18s ease;
+}
+
+.ci svg {
+  width: 15px;
+  height: 15px;
+  flex: none;
+  fill: currentColor;
+}
+
+/* Safety net: never let an unsized inline SVG expand to fill its box */
+.site-footer svg {
+  max-width: 100%;
+  max-height: 2rem;
+}
+
+/* ---------------- Responsive ---------------- */
+
+@media (max-width: 640px) {
+  .book-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .book-card {
+    padding: 1.6rem 1.35rem;
+  }
+}
