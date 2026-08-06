@@ -1,19 +1,46 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { LOGO } from "../lib/media";
+import { LOCALES, useT } from "../lib/i18n";
 
 const navItems = [
-  { href: "/", label: "Home" },
-  { href: "/gallery", label: "Gallery" },
-  { href: "/library", label: "Library" },
-  { href: "/resource", label: "Resource" },
-  { href: "/articles", label: "Article" },
-  { href: "/about", label: "About Us" },
-  { href: "/contact", label: "Contact" },
+  { href: "/", key: "nav.home" },
+  { href: "/gallery", key: "nav.gallery" },
+  { href: "/library", key: "nav.library" },
+  { href: "/resource", key: "nav.resource" },
+  { href: "/articles", key: "nav.article" },
+  { href: "/about", key: "nav.about" },
+  { href: "/contact", key: "nav.contact" },
 ];
+
+function LanguageSwitch() {
+  const router = useRouter();
+  const t = useT();
+  const current = router.locale || "en";
+
+  return (
+    <div className="lang-switch" role="group" aria-label={t("lang.switch")}>
+      {LOCALES.map((l) => (
+        <Link
+          key={l.code}
+          href={router.asPath}
+          locale={l.code}
+          hrefLang={l.code}
+          lang={l.code}
+          className={l.code === current ? "is-active" : ""}
+          aria-current={l.code === current ? "true" : undefined}
+          title={l.name}
+        >
+          {l.short}
+        </Link>
+      ))}
+    </div>
+  );
+}
 
 export default function SiteHeader() {
   const router = useRouter();
+  const t = useT();
 
   const isActive = (href) =>
     href === "/" ? router.pathname === "/" : router.pathname.startsWith(href);
@@ -38,9 +65,10 @@ export default function SiteHeader() {
               href={item.href}
               className={isActive(item.href) ? "active" : ""}
             >
-              {item.label}
+              {t(item.key)}
             </Link>
           ))}
+          <LanguageSwitch />
         </nav>
       </div>
     </header>
