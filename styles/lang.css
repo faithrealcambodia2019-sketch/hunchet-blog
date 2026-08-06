@@ -1,0 +1,88 @@
+/* =====================================================================
+   EN / ខ្មែរ language switcher, and Khmer typography adjustments.
+   ===================================================================== */
+
+.lang-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 3px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--bg-alt);
+  margin-left: 0.4rem;
+}
+
+.lang-switch a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 38px;
+  padding: 0.32rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1.4;
+  text-transform: none;
+  text-decoration: none;
+  color: var(--muted);
+  white-space: nowrap;
+  transition: background 0.18s ease, color 0.18s ease;
+}
+
+/* The nav gives every link an underline sweep — not wanted in here. */
+.site-nav .lang-switch a::after {
+  display: none;
+}
+
+.lang-switch a:hover {
+  color: var(--accent);
+}
+
+.lang-switch a.is-active {
+  background: var(--navy);
+  color: #fff;
+}
+
+.lang-switch a[lang="km"] {
+  font-family: var(--font-khmer, "Koh Santepheap", serif);
+  font-size: 0.74rem;
+}
+
+/* Khmer script sits taller than Latin — give it room to breathe wherever
+   a whole page is rendered in Khmer. */
+html[lang="km"] body {
+  line-height: 1.9;
+}
+
+html[lang="km"] h1,
+html[lang="km"] h2,
+html[lang="km"] h3,
+html[lang="km"] h4 {
+  line-height: 1.5;
+}
+
+html[lang="km"] .site-nav a,
+html[lang="km"] .eyebrow,
+html[lang="km"] .book-btn,
+html[lang="km"] .book-meta,
+html[lang="km"] .footer-col h4 {
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+html[lang="km"] .site-nav a {
+  font-size: 0.86rem;
+}
+
+html[lang="km"] .book-btn,
+html[lang="km"] .video-views {
+  font-size: 0.78rem;
+}
+
+@media (max-width: 860px) {
+  .lang-switch {
+    margin-left: 0;
+  }
+}
