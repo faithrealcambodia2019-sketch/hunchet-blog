@@ -1,57 +1,114 @@
 /* =====================================================================
-   EN / ខ្មែរ language switcher, and Khmer typography adjustments.
+   Language switcher (EN / ខ្មែរ / 한국어 / 中文) and per-script typography.
    ===================================================================== */
 
 .lang-switch {
+  position: relative;
+  margin-left: 0.5rem;
+  flex: none;
+}
+
+.lang-trigger {
   display: inline-flex;
   align-items: center;
-  gap: 2px;
-  padding: 3px;
+  gap: 0.4rem;
+  padding: 0.42rem 0.7rem;
   border: 1px solid var(--border);
   border-radius: 999px;
   background: var(--bg-alt);
-  margin-left: 0.4rem;
-}
-
-.lang-switch a {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 38px;
-  padding: 0.32rem 0.6rem;
-  border-radius: 999px;
-  font-size: 0.7rem;
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 0.74rem;
   font-weight: 700;
-  letter-spacing: 0.08em;
   line-height: 1.4;
-  text-transform: none;
-  text-decoration: none;
-  color: var(--muted);
+  cursor: pointer;
   white-space: nowrap;
-  transition: background 0.18s ease, color 0.18s ease;
+  transition: border-color 0.18s ease, color 0.18s ease, background 0.18s ease;
 }
 
-/* The nav gives every link an underline sweep — not wanted in here. */
-.site-nav .lang-switch a::after {
-  display: none;
-}
-
-.lang-switch a:hover {
+.lang-trigger:hover {
+  border-color: var(--accent);
   color: var(--accent);
 }
 
-.lang-switch a.is-active {
+.lang-trigger svg {
+  width: 15px;
+  height: 15px;
+  flex: none;
+  fill: currentColor;
+}
+
+.lang-caret {
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 5px solid currentColor;
+  opacity: 0.6;
+}
+
+/* --- Menu --- */
+
+.lang-menu {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  z-index: 60;
+  min-width: 168px;
+  list-style: none;
+  margin: 0;
+  padding: 0.35rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: var(--shadow-lg);
+}
+
+.lang-menu li {
+  margin: 0;
+}
+
+.lang-menu a {
+  display: block;
+  padding: 0.55rem 0.8rem;
+  border-radius: 7px;
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  font-weight: 600;
+  line-height: 1.5;
+  text-decoration: none;
+  text-transform: none;
+  letter-spacing: 0;
+  color: var(--text);
+  white-space: nowrap;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+/* The nav gives every link an underline sweep — not wanted in here. */
+.site-nav .lang-menu a::after,
+.site-nav .lang-trigger::after {
+  display: none;
+}
+
+.lang-menu a:hover {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.lang-menu a.is-active {
   background: var(--navy);
   color: #fff;
 }
 
-.lang-switch a[lang="km"] {
+.lang-menu a[lang="km"] {
   font-family: var(--font-khmer, "Koh Santepheap", serif);
-  font-size: 0.74rem;
+  line-height: 1.9;
 }
 
-/* Khmer script sits taller than Latin — give it room to breathe wherever
-   a whole page is rendered in Khmer. */
+/* --- Per-script typography ------------------------------------------
+   Khmer and CJK both sit taller than Latin and read badly with the
+   uppercase letter-spacing this theme uses on nav items and buttons. */
+
 html[lang="km"] body {
   line-height: 1.9;
 }
@@ -63,26 +120,87 @@ html[lang="km"] h4 {
   line-height: 1.5;
 }
 
+html[lang="ko"] body,
+html[lang="zh"] body {
+  line-height: 1.8;
+}
+
+html[lang="ko"] h1,
+html[lang="ko"] h2,
+html[lang="ko"] h3,
+html[lang="ko"] h4,
+html[lang="zh"] h1,
+html[lang="zh"] h2,
+html[lang="zh"] h3,
+html[lang="zh"] h4 {
+  line-height: 1.4;
+  letter-spacing: 0;
+}
+
+/* CJK has no serif display face loaded, so fall back to the system stack
+   rather than letting Playfair substitute glyph by glyph. */
+html[lang="ko"] h1,
+html[lang="ko"] h2,
+html[lang="ko"] h3,
+html[lang="ko"] h4,
+html[lang="ko"] .site-logo-text,
+html[lang="ko"] .story-lede p {
+  font-family: "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR",
+    var(--font-body);
+}
+
+html[lang="zh"] h1,
+html[lang="zh"] h2,
+html[lang="zh"] h3,
+html[lang="zh"] h4,
+html[lang="zh"] .site-logo-text,
+html[lang="zh"] .story-lede p {
+  font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans SC",
+    var(--font-body);
+}
+
 html[lang="km"] .site-nav a,
 html[lang="km"] .eyebrow,
 html[lang="km"] .book-btn,
 html[lang="km"] .book-meta,
-html[lang="km"] .footer-col h4 {
+html[lang="km"] .footer-col h4,
+html[lang="ko"] .site-nav a,
+html[lang="ko"] .eyebrow,
+html[lang="ko"] .book-btn,
+html[lang="ko"] .book-meta,
+html[lang="ko"] .footer-col h4,
+html[lang="zh"] .site-nav a,
+html[lang="zh"] .eyebrow,
+html[lang="zh"] .book-btn,
+html[lang="zh"] .book-meta,
+html[lang="zh"] .footer-col h4 {
   letter-spacing: 0;
   text-transform: none;
 }
 
-html[lang="km"] .site-nav a {
+html[lang="km"] .site-nav a,
+html[lang="ko"] .site-nav a,
+html[lang="zh"] .site-nav a {
   font-size: 0.86rem;
 }
 
 html[lang="km"] .book-btn,
-html[lang="km"] .video-views {
+html[lang="km"] .video-views,
+html[lang="ko"] .book-btn,
+html[lang="ko"] .video-views,
+html[lang="zh"] .book-btn,
+html[lang="zh"] .video-views {
   font-size: 0.78rem;
 }
 
 @media (max-width: 860px) {
   .lang-switch {
     margin-left: 0;
+  }
+
+  .lang-menu {
+    right: auto;
+    left: 50%;
+    transform: translateX(-50%);
   }
 }
