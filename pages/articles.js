@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import SiteHeader from "../components/SiteHeader";
 import SiteFooter from "../components/SiteFooter";
+import { useT } from "../lib/i18n";
 import {
   getPosts,
   getFeaturedImage,
@@ -20,25 +21,22 @@ export async function getStaticProps() {
 }
 
 export default function Articles({ posts, error }) {
+  const t = useT();
+
   return (
     <>
       <Head>
-        <title>Article — Hun Chet</title>
-        <meta
-          name="description"
-          content="All articles, devotionals, and biblical teaching from Hun Chet."
-        />
+        <title>{`${t("articles.title")} — Hun Chet`}</title>
+        <meta name="description" content={t("articles.intro")} />
       </Head>
 
       <SiteHeader />
 
       <section className="page-hero">
         <div className="container">
-          <span className="eyebrow">Writing</span>
-          <h1>Article</h1>
-          <p>
-            Reflections, devotionals, and biblical teaching — all in one place.
-          </p>
+          <span className="eyebrow">{t("articles.eyebrow")}</span>
+          <h1>{t("articles.title")}</h1>
+          <p>{t("articles.intro")}</p>
         </div>
       </section>
 
@@ -46,12 +44,12 @@ export default function Articles({ posts, error }) {
         <div className="container">
           {error && (
             <p className="error">
-              Couldn&apos;t load posts from WordPress: {error}
+              {t("common.loadError")} {error}
             </p>
           )}
 
           {!error && posts.length === 0 && (
-            <p className="empty-state">No posts yet — check back soon.</p>
+            <p className="empty-state">{t("articles.empty")}</p>
           )}
 
           <div className="post-grid">
@@ -88,7 +86,7 @@ export default function Articles({ posts, error }) {
                       dangerouslySetInnerHTML={{ __html: post.title.rendered }}
                     />
                     <p className="excerpt">{getExcerptText(post)}</p>
-                    <span className="read-more">Read more →</span>
+                    <span className="read-more">{t("common.readMore")}</span>
                   </div>
                 </Link>
               );
