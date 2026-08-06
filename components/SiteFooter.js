@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { LOGO } from "../lib/media";
+import { useT } from "../lib/i18n";
 import {
   PhoneIcon,
   TelegramIcon,
@@ -31,6 +32,8 @@ const SOCIALS = [
 ];
 
 export default function SiteFooter() {
+  const t = useT();
+
   return (
     <footer className="site-footer">
       <div className="footer-grid">
@@ -42,11 +45,7 @@ export default function SiteFooter() {
             </span>
             <span className="footer-brand-text">Hun Chet</span>
           </Link>
-          <p>
-            Sharing the Gospel through biblical encouragement, Christian
-            teaching, prayer, and ministry content that points hearts to Jesus
-            Christ.
-          </p>
+          <p>{t("footer.tagline")}</p>
 
           <div className="social-row">
             {SOCIALS.map(({ label, href, Icon, external }) => (
@@ -65,31 +64,31 @@ export default function SiteFooter() {
         </div>
 
         <div className="footer-col">
-          <h4>Explore</h4>
+          <h4>{t("footer.explore")}</h4>
           <ul className="footer-links">
             <li>
-              <Link href="/articles">Article</Link>
+              <Link href="/articles">{t("nav.article")}</Link>
             </li>
             <li>
-              <Link href="/gallery">Gallery</Link>
+              <Link href="/gallery">{t("nav.gallery")}</Link>
             </li>
             <li>
-              <Link href="/library">Library</Link>
+              <Link href="/library">{t("nav.library")}</Link>
             </li>
             <li>
-              <Link href="/resource">Resource</Link>
+              <Link href="/resource">{t("nav.resource")}</Link>
             </li>
             <li>
-              <Link href="/categories">Topics</Link>
+              <Link href="/categories">{t("footer.topics")}</Link>
             </li>
             <li>
-              <Link href="/about">About Us</Link>
+              <Link href="/about">{t("nav.about")}</Link>
             </li>
           </ul>
         </div>
 
         <div className="footer-col">
-          <h4>Get in Touch</h4>
+          <h4>{t("footer.getInTouch")}</h4>
           <ul className="contact-list">
             <li>
               <a href="tel:0966875886">
@@ -128,7 +127,7 @@ export default function SiteFooter() {
                 <span className="ci">
                   <GlobeIcon />
                 </span>
-                <span>Send a message</span>
+                <span>{t("footer.sendMessage")}</span>
               </Link>
             </li>
           </ul>
@@ -136,7 +135,9 @@ export default function SiteFooter() {
       </div>
 
       <div className="footer-bottom">
-        <p>© {new Date().getFullYear()} hunchet.blog — All rights reserved.</p>
+        <p>
+          © {new Date().getFullYear()} hunchet.blog — {t("footer.rights")}
+        </p>
       </div>
     </footer>
   );
