@@ -1,4 +1,8 @@
+import { useT } from "../lib/i18n";
+
 export default function AuthorCard() {
+  const t = useT();
+
   return (
     <div className="author-bio">
       <div className="author-avatar">
@@ -10,11 +14,7 @@ export default function AuthorCard() {
       </div>
       <div className="author-text">
         <strong>Hun Chet</strong>
-        <span>
-          Sharing the Gospel through biblical encouragement, Christian
-          teaching, prayer, and ministry content that points hearts to Jesus
-          Christ.
-        </span>
+        <span>{t("footer.tagline")}</span>
         <div className="author-social-links">
           <a href="tel:0966875886" className="author-btn btn-phone">
             096 687 5886
