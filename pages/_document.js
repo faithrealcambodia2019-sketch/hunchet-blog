@@ -1,9 +1,13 @@
 import { Html, Head, Main, NextScript } from "next/document";
 import { APPLE_ICON } from "../lib/media";
 
-export default function Document() {
+export default function Document(props) {
+  // Follows the active locale so screen readers and Google get the right
+  // language for the page they are actually on.
+  const locale = props?.__NEXT_DATA__?.locale || "en";
+
   return (
-    <Html lang="km">
+    <Html lang={locale}>
       <Head>
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any" />
         <link rel="shortcut icon" href="/favicon.svg" type="image/svg+xml" />
