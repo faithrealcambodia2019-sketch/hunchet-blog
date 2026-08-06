@@ -3,70 +3,74 @@ import Link from "next/link";
 import SiteHeader from "../components/SiteHeader";
 import SiteFooter from "../components/SiteFooter";
 import { BOOKS } from "../lib/books";
+import { useT, useLocale, pick } from "../lib/i18n";
 
 export default function Library() {
+  const t = useT();
+  const locale = useLocale();
+
   return (
     <>
       <Head>
-        <title>Library — Hun Chet</title>
-        <meta
-          name="description"
-          content="Free books, commentaries, and study resources from Hun Chet's ministry — read online or download."
-        />
+        <title>{`${t("library.eyebrow")} — Hun Chet`}</title>
+        <meta name="description" content={t("library.intro")} />
       </Head>
 
       <SiteHeader />
 
       <section className="page-hero">
         <div className="container">
-          <span className="eyebrow">Library</span>
-          <h1>Books &amp; Study Resources</h1>
-          <p>
-            Free to read and download — written and gathered for anyone growing
-            in faith, in Khmer and in English.
-          </p>
+          <span className="eyebrow">{t("library.eyebrow")}</span>
+          <h1>{t("library.title")}</h1>
+          <p>{t("library.intro")}</p>
         </div>
       </section>
 
       <main className="section">
         <div className="container">
           <ul className="book-grid">
-            {BOOKS.map((book) => (
-              <li key={book.slug} className="book-card">
-                <Link href={`/library/${book.slug}`} className="book-cover">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={book.cover} alt="" loading="lazy" />
-                  <span className="book-badge">PDF</span>
-                  <span className="book-cover-text">
-                    <span className="book-cover-title">{book.title}</span>
-                    <span className="book-cover-sub">{book.subtitle}</span>
-                  </span>
-                </Link>
+            {BOOKS.map((book) => {
+              const title = pick(book.title, locale);
+              const href = `/library/${book.slug}`;
 
-                <div className="book-body">
-                  <h3>
-                    <Link href={`/library/${book.slug}`}>{book.title}</Link>
-                  </h3>
-                  {book.khmer && <p className="book-khmer">{book.khmer}</p>}
-                  <p className="book-desc">{book.desc}</p>
-                  <span className="book-meta">
-                    {book.lang} · {book.size}
-                  </span>
-                </div>
-
-                <div className="book-actions">
-                  <Link
-                    href={`/library/${book.slug}`}
-                    className="book-btn is-primary"
-                  >
-                    Read online
+              return (
+                <li key={book.slug} className="book-card">
+                  <Link href={href} className="book-cover">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={book.cover} alt="" loading="lazy" />
+                    <span className="book-badge">PDF</span>
+                    <span className="book-cover-text">
+                      <span className="book-cover-title">{title}</span>
+                      <span className="book-cover-sub">
+                        {pick(book.subtitle, locale)}
+                      </span>
+                    </span>
                   </Link>
-                  <a className="book-btn" href={book.file} download>
-                    Download
-                  </a>
-                </div>
-              </li>
-            ))}
+
+                  <div className="book-body">
+                    <h3>
+                      <Link href={href}>{title}</Link>
+                    </h3>
+                    {book.khmer && locale !== "km" && (
+                      <p className="book-khmer">{book.khmer}</p>
+                    )}
+                    <p className="book-desc">{pick(book.desc, locale)}</p>
+                    <span className="book-meta">
+                      {pick(book.lang, locale)} · {book.size}
+                    </span>
+                  </div>
+
+                  <div className="book-actions">
+                    <Link href={href} className="book-btn is-primary">
+                      {t("library.readOnline")}
+                    </Link>
+                    <a className="book-btn" href={book.file} download>
+                      {t("library.download")}
+                    </a>
+                  </div>
+                </li>
+              );
+            })}
           </ul>
         </div>
       </main>
