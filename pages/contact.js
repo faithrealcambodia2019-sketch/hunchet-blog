@@ -2,28 +2,25 @@ import Head from "next/head";
 import SiteHeader from "../components/SiteHeader";
 import SiteFooter from "../components/SiteFooter";
 import AuthorCard from "../components/AuthorCard";
+import { useT } from "../lib/i18n";
 
 export default function Contact() {
+  const t = useT();
+
   return (
     <>
       <Head>
-        <title>Contact — Hun Chet</title>
-        <meta
-          name="description"
-          content="Get in touch with Hun Chet — phone, Telegram, and Facebook."
-        />
+        <title>{`${t("contact.title")} — Hun Chet`}</title>
+        <meta name="description" content={t("contact.intro")} />
       </Head>
 
       <SiteHeader />
 
       <section className="page-hero">
         <div className="container">
-          <span className="eyebrow">Connect</span>
-          <h1>Get in Touch</h1>
-          <p>
-            Questions, prayer requests, or just want to say hello? Reach out
-            through any of the channels below.
-          </p>
+          <span className="eyebrow">{t("contact.eyebrow")}</span>
+          <h1>{t("contact.title")}</h1>
+          <p>{t("contact.intro")}</p>
         </div>
       </section>
 
