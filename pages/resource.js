@@ -55,14 +55,20 @@ function VideoCard({ video, rank, t, locale }) {
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src={`https://i.ytimg.com/vi/${video.id}/hqdefault.jpg`}
+              src={`https://i.ytimg.com/vi/${video.id}/maxresdefault.jpg`}
               alt=""
+              width="1280"
+              height="720"
               loading="lazy"
+              onError={(e) => {
+                const img = e.currentTarget;
+                if (!img.dataset.fallback) {
+                  img.dataset.fallback = "1";
+                  img.src = `https://i.ytimg.com/vi/${video.id}/hqdefault.jpg`;
+                }
+              }}
             />
             <span className="video-rank">{rank}</span>
-            <span className="video-views">
-              {video.views} {t("resource.views")}
-            </span>
             <span className="video-play-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24">
                 <path d="M8 5.14v13.72a1 1 0 0 0 1.54.84l10.3-6.86a1 1 0 0 0 0-1.68L9.54 4.3A1 1 0 0 0 8 5.14z" />
@@ -74,7 +80,10 @@ function VideoCard({ video, rank, t, locale }) {
 
       <div className="video-body">
         <h3>{heading}</h3>
-        <p>{sub}</p>
+        <p className="video-sub">{sub}</p>
+        <p className="video-meta">
+          {video.views} {t("resource.views")}
+        </p>
       </div>
     </li>
   );
@@ -101,7 +110,7 @@ export default function Resource() {
         </div>
       </section>
 
-      <main className="section">
+      <main className="section video-section">
         <div className="container">
           <div className="section-head">
             <h2>{t("resource.mostWatched")}</h2>
@@ -112,6 +121,7 @@ export default function Resource() {
               </a>{" "}
               {t("resource.ranked")}
             </p>
+            <hr className="rule" />
           </div>
 
           <ul className="video-grid">
@@ -143,6 +153,7 @@ export default function Resource() {
         <div className="container">
           <div className="section-head">
             <h2>{t("resource.more")}</h2>
+            <hr className="rule" />
           </div>
 
           <div className="feature-grid">
