@@ -1,7 +1,47 @@
 /* =====================================================================
    Video grid for the Resource page. Thumbnails load from YouTube and the
    iframe is only mounted on click, so the page stays fast.
+
+   Editorial treatment: hairline borders, no hover lift, restrained blue
+   accents drawn from the site palette (--accent / --navy).
    ===================================================================== */
+
+/* --- Section header --------------------------------------------------- */
+
+.video-section .section-head {
+  max-width: 620px;
+}
+
+.video-section .section-head h2 {
+  font-size: clamp(1.7rem, 2.8vw, 2.25rem);
+  margin-bottom: 0.85rem;
+}
+
+.video-section .section-head p {
+  font-size: 1rem;
+}
+
+.video-section .section-head a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  font-weight: 600;
+  transition: color 0.18s ease;
+}
+
+.video-section .section-head a:hover {
+  color: var(--accent-dark);
+}
+
+.video-section .rule {
+  background: var(--accent);
+  width: 48px;
+  height: 2px;
+  margin-top: 1.75rem;
+}
+
+/* --- Grid ------------------------------------------------------------- */
 
 .video-grid {
   list-style: none;
@@ -9,43 +49,22 @@
   padding: 0;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 2rem;
+  gap: 2.75rem 2rem;
 }
 
 .video-card {
-  position: relative;
   display: flex;
   flex-direction: column;
   background: var(--card-bg);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   overflow: hidden;
-  transition: transform 0.25s ease, box-shadow 0.25s ease,
-    border-color 0.25s ease;
-}
-
-.video-card::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 3px;
-  background: var(--accent);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.3s ease;
-  z-index: 3;
+  transition: border-color 0.22s ease, box-shadow 0.22s ease;
 }
 
 .video-card:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-lg);
-  border-color: #cdd9f5;
-}
-
-.video-card:hover::after {
-  transform: scaleX(1);
+  border-color: #c6d4ee;
+  box-shadow: var(--shadow);
 }
 
 .video-frame {
@@ -62,7 +81,7 @@
   border: 0;
 }
 
-/* --- Poster button --- */
+/* --- Poster button ---------------------------------------------------- */
 
 .video-play {
   position: absolute;
@@ -78,8 +97,8 @@
 }
 
 .video-play:focus-visible {
-  outline: 3px solid var(--accent);
-  outline-offset: -3px;
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
 }
 
 .video-play img {
@@ -87,64 +106,51 @@
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform 0.5s ease;
 }
 
-.video-card:hover .video-play img {
-  transform: scale(1.05);
-}
-
+/* Even tint instead of a heavy bottom gradient - clears on hover. */
 .video-play::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    180deg,
-    rgba(8, 20, 49, 0.42) 0%,
-    rgba(8, 20, 49, 0.08) 42%,
-    rgba(8, 20, 49, 0.8) 100%
-  );
+  background: rgba(8, 20, 49, 0.16);
+  transition: background 0.25s ease;
 }
+
+.video-card:hover .video-play::after {
+  background: rgba(8, 20, 49, 0.04);
+}
+
+/* --- Rank numeral ----------------------------------------------------- */
 
 .video-rank {
   position: absolute;
-  top: 0.85rem;
-  left: 0.85rem;
+  top: 0.75rem;
+  left: 0.75rem;
   z-index: 2;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 32px;
-  height: 32px;
-  padding: 0 0.5rem;
+  min-width: 28px;
+  height: 28px;
+  padding: 0 0.4rem;
   border-radius: 2px;
-  background: var(--accent);
-  color: #fff;
-  font-family: var(--font-body);
-  font-size: 0.82rem;
+  background: rgba(255, 255, 255, 0.95);
+  color: var(--accent);
+  font-family: var(--font-display);
+  font-size: 0.95rem;
   font-weight: 700;
   line-height: 1;
-  box-shadow: 0 2px 10px rgba(8, 20, 49, 0.32);
-  transition: background 0.2s ease;
+  box-shadow: 0 1px 4px rgba(8, 20, 49, 0.22);
+  transition: background 0.2s ease, color 0.2s ease;
 }
 
 .video-card:hover .video-rank {
-  background: var(--accent-dark);
+  background: var(--accent);
+  color: #fff;
 }
 
-.video-views {
-  position: absolute;
-  bottom: 0.85rem;
-  left: 0.85rem;
-  z-index: 2;
-  color: #fff;
-  font-family: var(--font-body);
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  text-shadow: 0 1px 6px rgba(8, 20, 49, 0.6);
-}
+/* --- Play button ------------------------------------------------------ */
 
 .video-play-icon {
   position: absolute;
@@ -155,26 +161,26 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 62px;
-  height: 62px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.94);
-  box-shadow: 0 6px 20px rgba(8, 20, 49, 0.35);
-  transition: transform 0.2s ease, background 0.2s ease;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 2px 12px rgba(8, 20, 49, 0.28);
+  transition: background 0.2s ease, transform 0.2s ease;
 }
 
 .video-play-icon svg {
-  width: 24px;
-  height: 24px;
-  margin-left: 3px;
+  width: 18px;
+  height: 18px;
+  margin-left: 2px;
   fill: var(--accent);
   transition: fill 0.2s ease;
 }
 
 .video-play:hover .video-play-icon,
 .video-play:focus-visible .video-play-icon {
-  transform: translate(-50%, -50%) scale(1.09);
   background: var(--accent);
+  transform: translate(-50%, -50%) scale(1.06);
 }
 
 .video-play:hover .video-play-icon svg,
@@ -182,16 +188,19 @@
   fill: #fff;
 }
 
-/* --- Body --- */
+/* --- Body ------------------------------------------------------------- */
 
 .video-body {
-  padding: 1.4rem 1.6rem 1.7rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 1.45rem 1.5rem 1.35rem;
 }
 
 .video-body h3 {
   margin: 0 0 0.4rem;
-  font-size: 1.12rem;
-  line-height: 1.4;
+  font-size: 1.18rem;
+  line-height: 1.35;
   color: var(--ink);
   transition: color 0.2s ease;
 }
@@ -200,50 +209,62 @@
   color: var(--accent);
 }
 
-.video-body p {
+.video-sub {
   margin: 0;
   color: var(--muted);
   font-size: 0.9rem;
-  line-height: 1.65;
+  line-height: 1.7;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.video-meta {
+  margin: 1.15rem 0 0;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
 }
 
 .video-cta {
   display: flex;
   justify-content: center;
-  margin-top: 3rem;
+  margin-top: 3.5rem;
 }
+
+/* --- Responsive ------------------------------------------------------- */
 
 @media (max-width: 640px) {
   .video-grid {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
+    gap: 1.75rem;
   }
 
-  .video-play-icon {
-    width: 52px;
-    height: 52px;
+  .video-body {
+    padding: 1.25rem 1.35rem 1.2rem;
   }
 
-  .video-play-icon svg {
-    width: 21px;
-    height: 21px;
+  .video-body h3 {
+    font-size: 1.1rem;
+  }
+
+  .video-cta {
+    margin-top: 2.5rem;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .video-card,
-  .video-card::after,
-  .video-play img,
-  .video-play-icon {
+  .video-play::after,
+  .video-play-icon,
+  .video-rank {
     transition: none;
-  }
-
-  .video-card:hover {
-    transform: none;
-  }
-
-  .video-card:hover .video-play img {
-    transform: none;
   }
 
   .video-play:hover .video-play-icon {
