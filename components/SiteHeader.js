@@ -11,6 +11,7 @@ const navItems = [
   { href: "/resource", key: "nav.resource" },
   { href: "/articles", key: "nav.article" },
   { href: "/about", key: "nav.about" },
+  { href: "/partner-with-us", key: "nav.partner" },
   { href: "/contact", key: "nav.contact" },
 ];
 
