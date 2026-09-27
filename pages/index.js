@@ -106,16 +106,22 @@ export default function Home({ posts = [], error }) {
         <img src={HERO_IMAGE} alt="Hun Chet Faith & Ministry" className="hero-img" />
         <div className="hero-scrim" />
         <div className="hero-inner">
-          <div className="hero-badge">
-            <span className="hero-pulse-dot" />
-            <span>Faith • Scripture • Hope in Cambodia</span>
-          </div>
+          <span className="hero-eyebrow-classic">
+            {t("home.eyebrow")}
+          </span>
 
-          <h1>{t("home.title")}</h1>
-          <p className="hero-sub">{t("home.sub")}</p>
+          <h1 className="hero-title-classic">
+            {t("home.title")}
+          </h1>
+
+          <h2 className="hero-sub-classic">
+            {t("home.sub")}
+          </h2>
+
+          <div className="hero-divider-classic" />
 
           <div className="hero-actions">
-            <Link href="/articles" className="btn btn-light">
+            <Link href="/articles" className="btn btn-primary">
               {t("home.readArticles")} →
             </Link>
             <Link href="/about" className="btn btn-outline-light">

@@ -6,11 +6,9 @@
    ===================================================================== */
 
 :root {
-  --font-display: "Playfair Display", "Kantumruy Pro", "Suwannaphum", Georgia,
-    "Times New Roman", serif;
-  --font-body: "Plus Jakarta Sans", "Kantumruy Pro", "Suwannaphum", -apple-system,
-    BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-khmer: "Kantumruy Pro", "Suwannaphum", sans-serif;
+  --font-display: "Source Serif 4", "Playfair Display", "Koh Santepheap", Georgia, serif;
+  --font-body: "Inter", "Koh Santepheap", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-khmer: "Koh Santepheap", serif;
 }
 
 /* Khmer needs extra vertical room for stacked diacritics */
