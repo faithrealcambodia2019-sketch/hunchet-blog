@@ -1,24 +1,23 @@
 :root {
-  --ink: #0b1b3a;
-  --navy: #0f2a5c;
-  --navy-deep: #081431;
-  --text: #3f4a5a;
-  --muted: #7b8794;
-  --accent: #1d4ed8;
-  --accent-dark: #14329b;
-  --accent-soft: #eef3fd;
-  --gold: #c9a227;
+  --ink: #0f172a;
+  --navy: #000000;
+  --navy-deep: #000000;
+  --text: #334155;
+  --muted: #64748b;
+  --accent: #2563eb;
+  --accent-dark: #1d4ed8;
+  --accent-soft: #eff6ff;
+  --gold: #d97706;
   --bg: #ffffff;
-  --bg-alt: #f5f7fa;
+  --bg-alt: #f8fafc;
   --card-bg: #ffffff;
-  --border: #e3e8ef;
-  --radius: 4px;
-  --font-display: "Playfair Display", "Noto Serif Khmer", Georgia,
-    "Times New Roman", serif;
-  --font-body: "Inter", "Noto Sans Khmer", -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, sans-serif;
-  --shadow: 0 1px 3px rgba(11, 27, 58, 0.06), 0 8px 24px rgba(11, 27, 58, 0.06);
-  --shadow-lg: 0 2px 6px rgba(11, 27, 58, 0.08), 0 20px 48px rgba(11, 27, 58, 0.1);
+  --border: #e2e8f0;
+  --radius: 12px;
+  --font-display: "Playfair Display", "Suwannaphum", Georgia, "Times New Roman", serif;
+  --font-body: "Plus Jakarta Sans", "Suwannaphum", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025);
+  --shadow-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
 }
 
 * {
@@ -73,11 +72,14 @@ img {
 /* ============ Header ============ */
 
 .site-header {
-  background: #fff;
-  border-bottom: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.8);
   position: sticky;
   top: 0;
   z-index: 50;
+  transition: all 0.3s ease;
 }
 
 .site-header-inner {
@@ -180,29 +182,37 @@ img {
 /* ============ Buttons ============ */
 
 .btn {
-  display: inline-block;
-  padding: 0.9rem 2.1rem;
-  border-radius: 2px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.85rem 1.8rem;
+  border-radius: 9999px;
   font-family: var(--font-body);
-  font-size: 0.76rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
   text-decoration: none;
-  border: 2px solid transparent;
-  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  border: 1px solid transparent;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
+  box-shadow: var(--shadow);
+}
+
+.btn:active {
+  transform: scale(0.97);
 }
 
 .btn-primary {
-  background: var(--accent);
-  border-color: var(--accent);
+  background: var(--navy);
+  border-color: var(--navy);
   color: #fff;
 }
 
 .btn-primary:hover {
-  background: var(--accent-dark);
-  border-color: var(--accent-dark);
+  background: var(--ink);
+  border-color: var(--ink);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
 }
 
 .btn-light {
@@ -212,38 +222,43 @@ img {
 }
 
 .btn-light:hover {
-  background: transparent;
-  color: #fff;
+  background: #f8fafc;
+  color: var(--ink);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
 }
 
 .btn-outline-light {
   background: transparent;
-  border-color: rgba(255, 255, 255, 0.75);
+  border-color: rgba(255, 255, 255, 0.4);
   color: #fff;
+  box-shadow: none;
 }
 
 .btn-outline-light:hover {
-  background: #fff;
+  background: rgba(255, 255, 255, 0.1);
   border-color: #fff;
-  color: var(--navy);
+  color: #fff;
 }
 
 .btn-outline {
   background: transparent;
-  border-color: var(--accent);
-  color: var(--accent);
+  border-color: var(--border);
+  color: var(--ink);
+  box-shadow: none;
 }
 
 .btn-outline:hover {
-  background: var(--accent);
-  color: #fff;
+  border-color: var(--navy);
+  background: var(--bg-alt);
+  color: var(--navy);
 }
 
 /* ============ Hero ============ */
 
 .hero {
   position: relative;
-  min-height: 620px;
+  min-height: 680px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -259,6 +274,7 @@ img {
   height: 100%;
   object-fit: cover;
   display: block;
+  filter: saturate(1.2) contrast(1.1);
 }
 
 .hero-scrim {
@@ -266,10 +282,11 @@ img {
   inset: 0;
   background: linear-gradient(
     180deg,
-    rgba(8, 20, 45, 0.62) 0%,
-    rgba(8, 20, 45, 0.5) 45%,
-    rgba(8, 20, 45, 0.75) 100%
+    rgba(0, 0, 0, 0.4) 0%,
+    rgba(0, 0, 0, 0.5) 50%,
+    rgba(0, 0, 0, 0.85) 100%
   );
+  backdrop-filter: blur(2px);
 }
 
 .hero-inner {
