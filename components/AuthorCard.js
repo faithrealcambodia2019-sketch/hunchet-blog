@@ -1,4 +1,5 @@
 import { useT } from "../lib/i18n";
+import { LOGO } from "../lib/media";
 
 export default function AuthorCard() {
   const t = useT();
@@ -8,7 +9,7 @@ export default function AuthorCard() {
       <div className="author-avatar">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="https://hunchetblog.wordpress.com/wp-content/uploads/2026/06/d3270-untitled-design-1-1.png"
+          src={LOGO}
           alt="Hun Chet"
         />
       </div>

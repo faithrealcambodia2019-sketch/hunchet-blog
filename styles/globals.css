@@ -2406,3 +2406,669 @@ img {
     width: 100%;
   }
 }
+
+/* ==========================================================================
+   All Nations Church Classic Style Extensions
+   ========================================================================== */
+
+/* Hero Dynamic Video & Controls */
+.hero-video-wrap {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.70);
+}
+
+.hero-vignette {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(11, 25, 44, 0.88) 0%,
+    rgba(15, 39, 68, 0.76) 50%,
+    rgba(11, 25, 44, 0.94) 100%
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hero-media-controls {
+  position: absolute;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.hero-ctrl-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.4rem 0.9rem;
+  border-radius: 9999px;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  color: #fff;
+  font-size: 0.74rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s ease;
+}
+
+.hero-ctrl-btn:hover {
+  background: rgba(0, 0, 0, 0.9);
+  border-color: var(--gold);
+}
+
+.hero-ctrl-btn svg {
+  width: 14px;
+  height: 14px;
+}
+
+.btn-gold-glass {
+  background: rgba(0, 0, 0, 0.45);
+  border: 2px solid rgba(184, 155, 94, 0.85);
+  color: #ffffff;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.btn-gold-glass:hover {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--navy-dark);
+}
+
+.btn-gold-glass svg {
+  width: 15px;
+  height: 15px;
+  margin-right: 0.5rem;
+  fill: var(--gold);
+}
+
+.btn-gold-glass:hover svg {
+  fill: var(--navy-dark);
+}
+
+/* Modal Overlay & Modal Box */
+.anc-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(4, 10, 20, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.anc-modal-box {
+  position: relative;
+  max-width: 880px;
+  width: 100%;
+  background: #0b192c;
+  border: 2px solid var(--gold);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  max-height: 94vh;
+  color: #ffffff;
+  border-radius: var(--radius-sm);
+}
+
+.anc-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem 1.25rem;
+  background: #081322;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  flex-shrink: 0;
+}
+
+.anc-modal-header h3 {
+  color: #ffffff;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  margin: 0;
+}
+
+.anc-modal-close {
+  width: 34px;
+  height: 34px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.anc-modal-close:hover {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--navy-dark);
+}
+
+.anc-modal-close svg {
+  width: 18px;
+  height: 18px;
+}
+
+.anc-video-player-wrap {
+  position: relative;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-height: 52vh;
+  overflow: hidden;
+}
+
+.anc-video-player-wrap video {
+  width: 100%;
+  height: 100%;
+  max-height: 52vh;
+  object-fit: contain;
+}
+
+.anc-video-playlist-bar {
+  background: #071526;
+  padding: 0.75rem 1.25rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  flex-shrink: 0;
+}
+
+.anc-playlist-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.anc-playlist-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.6rem 0.85rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.05);
+  color: #e2e8f0;
+  font-size: 0.8rem;
+  text-align: left;
+  cursor: pointer;
+  border-radius: 3px;
+  transition: all 0.2s ease;
+}
+
+.anc-playlist-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: var(--gold);
+}
+
+.anc-playlist-btn.is-active {
+  background: var(--gold);
+  color: var(--navy-dark);
+  border-color: var(--gold);
+  font-weight: 700;
+}
+
+.anc-modal-footer {
+  padding: 1rem 1.25rem;
+  background: #081322;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-shrink: 0;
+}
+
+/* Weekly Gathering & Worship Announcement */
+.announcement-box {
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-top: 4px solid var(--gold);
+  box-shadow: var(--shadow);
+  padding: 2.25rem 2.5rem;
+  border-radius: var(--radius-sm);
+  margin-bottom: 3.5rem;
+}
+
+.announcement-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.announcement-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  border-left: 2px solid var(--border-light);
+  padding-left: 2rem;
+}
+
+.announcement-meta-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+}
+
+.announcement-meta-icon {
+  color: var(--gold);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.announcement-meta-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Pulpit & Pastoral Showcase Section */
+.pulpit-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 3.5rem;
+  align-items: center;
+}
+
+.pulpit-frame {
+  position: relative;
+  padding: 0.75rem;
+  background: #ffffff;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+
+.pulpit-frame-inner {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: #0f172a;
+}
+
+.pulpit-frame-inner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.pulpit-frame:hover .pulpit-frame-inner img {
+  transform: scale(1.03);
+}
+
+.pulpit-caption-bar {
+  position: absolute;
+  bottom: 0;
+  inset-x: 0;
+  background: linear-gradient(to top, rgba(11, 25, 44, 0.95), rgba(11, 25, 44, 0.6) 70%, transparent);
+  padding: 1.25rem 1rem 0.85rem;
+  color: #ffffff;
+}
+
+.pulpit-caption-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.95rem;
+  display: block;
+}
+
+.pulpit-caption-sub {
+  font-size: 0.75rem;
+  color: var(--gold);
+  display: block;
+  margin-top: 2px;
+}
+
+/* Daily Devotion Stately Banner */
+.devotion-banner {
+  background: linear-gradient(135deg, #071424 0%, #0d2544 50%, #071424 100%);
+  border-top: 4px solid var(--gold);
+  border-bottom: 4px solid var(--gold);
+  color: #ffffff;
+  padding: 3.5rem 0;
+  position: relative;
+  overflow: hidden;
+  margin: 3.5rem 0;
+}
+
+.devotion-banner-bg {
+  position: absolute;
+  inset: 0;
+  background-image: url('/images/worship-service.jpg');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.12;
+  mix-blend-mode: luminosity;
+  pointer-events: none;
+}
+
+.devotion-inner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.devotion-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.95rem;
+  border-radius: 9999px;
+  background: rgba(184, 155, 94, 0.18);
+  border: 1px solid rgba(184, 155, 94, 0.4);
+  color: var(--gold);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  width: fit-content;
+}
+
+.devotion-badge svg {
+  width: 14px;
+  height: 14px;
+}
+
+.devotion-quote {
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 2.8vw, 1.85rem);
+  line-height: 1.6;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+}
+
+.devotion-ref {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--gold);
+}
+
+/* Featured Short Sermon Spotlight (5 Keys) */
+.sermon-spotlight-box {
+  background: linear-gradient(to bottom, #091524 0%, #0d1f35 50%, #091524 100%);
+  border-top: 4px solid var(--gold);
+  border-bottom: 4px solid var(--gold);
+  color: #ffffff;
+  padding: 4.5rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.sermon-spotlight-grid {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  gap: 3rem;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+.sermon-key-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  color: #ffffff;
+  transition: all 0.22s ease;
+  margin-bottom: 0.65rem;
+}
+
+.sermon-key-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--gold);
+  transform: translateX(4px);
+}
+
+.sermon-key-num {
+  width: 32px;
+  height: 32px;
+  background: var(--gold);
+  color: var(--navy-dark);
+  font-weight: 900;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.sermon-quote-card {
+  background: rgba(5, 12, 22, 0.92);
+  border: 1px solid rgba(184, 155, 94, 0.35);
+  border-radius: var(--radius-sm);
+  padding: 1.75rem 2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  position: relative;
+}
+
+.sermon-quote-card blockquote {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: #f1f5f9;
+  margin: 0 0 1rem;
+  font-style: italic;
+}
+
+.sermon-quote-card cite {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-style: normal;
+}
+
+/* Church Life Authentic Photo Grid */
+.anc-photo-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+}
+
+.anc-photo-card {
+  padding: 0.5rem;
+  background: #ffffff;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  transition: all 0.28s ease;
+  position: relative;
+}
+
+.anc-photo-card:hover {
+  border-color: var(--gold);
+  box-shadow: var(--shadow);
+  transform: translateY(-3px);
+}
+
+.anc-photo-thumb-wrap {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: #0f172a;
+}
+
+.anc-photo-thumb-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.anc-photo-card:hover .anc-photo-thumb-wrap img {
+  transform: scale(1.06);
+}
+
+.anc-photo-badge {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  background: var(--gold);
+  color: var(--navy-dark);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.5rem;
+  border-radius: 2px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.anc-photo-title-bar {
+  position: absolute;
+  bottom: 0;
+  inset-x: 0;
+  background: rgba(11, 25, 44, 0.9);
+  padding: 0.5rem 0.65rem;
+  color: #ffffff;
+}
+
+.anc-photo-title {
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+}
+
+.anc-photo-card:hover .anc-photo-title {
+  color: var(--gold);
+}
+
+/* Lightbox Photo Preview Modal */
+.anc-lightbox-content {
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  max-height: 70vh;
+}
+
+.anc-lightbox-content img {
+  max-height: 68vh;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.anc-lightbox-info {
+  padding: 1.5rem;
+  background: #0b192c;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.anc-lightbox-info h3 {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  color: #ffffff;
+  margin: 0.35rem 0 0.5rem;
+}
+
+.anc-lightbox-info p {
+  color: #cbd5e1;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Next Steps & Giving / Partnership Banner */
+.anc-partnership-banner {
+  background: #0f172a;
+  border-bottom: 8px solid var(--gold);
+  color: #ffffff;
+  padding: 4.5rem 0;
+}
+
+.anc-partnership-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2.5rem;
+}
+
+@media (max-width: 980px) {
+  .announcement-grid,
+  .pulpit-grid,
+  .sermon-spotlight-grid,
+  .anc-partnership-inner {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .announcement-meta {
+    border-left: none;
+    border-top: 2px solid var(--border-light);
+    padding-left: 0;
+    padding-top: 1.5rem;
+  }
+
+  .anc-photo-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .anc-photo-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-media-controls {
+    bottom: 0.75rem;
+    right: 0.75rem;
+  }
+
+  .anc-partnership-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+

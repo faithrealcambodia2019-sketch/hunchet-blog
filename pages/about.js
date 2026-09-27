@@ -11,7 +11,7 @@ const TIMELINE = [
   { year: "2019", image: `${MEDIA}/ef58f-481097535_1317882432767694_175058885625152371_n.jpg` },
   { year: "2021", image: `${MEDIA}/a631c-481577673_1321022952453642_5665127949675965574_n.jpg` },
   { year: "2024", image: `${MEDIA}/cddf7-481059789_1321611435728127_993577711556320171_n.jpg` },
-  { year: "2025", image: `${MEDIA}/bb8f0-img_0633.jpeg` },
+  { year: "2025", image: "/images/pastors-pulpit.jpg" },
 ];
 
 const VALUES = ["1", "2", "3", "4"];
