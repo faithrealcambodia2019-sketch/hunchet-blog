@@ -260,84 +260,23 @@ img {
   padding-top: 0.75rem;
 }
 
-/* ============ Hero Badge & Highlights ============ */
+/* ============ Hero Badge & Classic Framing ============ */
 
 .hero-badge {
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
   font-family: var(--font-body);
-  font-size: 0.76rem;
+  font-size: 0.74rem;
   font-weight: 700;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   margin: 0 0 1.5rem;
-  padding: 0.45rem 1.25rem;
-  border-radius: 9999px;
-  background: rgba(255, 255, 255, 0.12);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  color: #fff;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
-}
-
-.hero-pulse-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #10b981;
-  box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
-  animation: pulseGreen 2s infinite;
-}
-
-@keyframes pulseGreen {
-  0% {
-    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
-  }
-  70% {
-    box-shadow: 0 0 0 8px rgba(16, 185, 129, 0);
-  }
-  100% {
-    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
-  }
-}
-
-.hero-highlights {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 1rem;
-  max-width: 920px;
-  margin: 3.5rem auto 0;
-  padding: 0 1rem;
-}
-
-.hero-highlight-pill {
-  display: flex;
-  align-items: center;
-  gap: 0.7rem;
-  padding: 0.85rem 1.15rem;
-  border-radius: var(--radius);
-  background: rgba(15, 23, 42, 0.6);
-  border: 1px solid rgba(184, 155, 94, 0.4);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  color: #fff;
-  font-size: 0.84rem;
-  font-weight: 600;
-  text-align: left;
-  transition: all 0.25s ease;
-}
-
-.hero-highlight-pill:hover {
-  background: rgba(15, 23, 42, 0.85);
-  border-color: var(--gold);
-  transform: translateY(-2px);
-}
-
-.hero-highlight-icon {
-  font-size: 1.3rem;
-  line-height: 1;
+  padding: 0.35rem 0.95rem;
+  border-radius: var(--radius-sm);
+  background: rgba(184, 155, 94, 0.18);
+  border: 1px solid var(--gold);
+  color: var(--gold);
 }
 
 /* ============ Scripture Banner ============ */
@@ -659,7 +598,7 @@ img {
   align-items: center;
   gap: 0.6rem;
   padding: 0.85rem 1.5rem;
-  border-radius: 9999px;
+  border-radius: var(--radius-sm);
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.22);
   color: #fff;
@@ -812,13 +751,11 @@ img {
   letter-spacing: 0.16em;
   text-transform: uppercase;
   margin: 0 0 1.4rem;
-  padding: 0.4rem 1.1rem;
-  border-radius: 9999px;
-  background: rgba(255, 255, 255, 0.12);
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  backdrop-filter: blur(10px);
-  color: #fff;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-sm);
+  background: rgba(184, 155, 94, 0.15);
+  border: 1px solid var(--gold);
+  color: var(--gold);
 }
 
 .hero-eyebrow-classic {
@@ -922,11 +859,11 @@ img {
   letter-spacing: 0.14em;
   text-transform: uppercase;
   margin: 0 0 0.85rem;
-  padding: 0.35rem 0.95rem;
-  border-radius: 9999px;
-  background: var(--accent-soft);
-  color: var(--accent);
-  border: 1px solid rgba(37, 99, 235, 0.15);
+  padding: 0.3rem 0.75rem;
+  border-radius: var(--radius-sm);
+  background: rgba(184, 155, 94, 0.12);
+  color: var(--navy);
+  border: 1px solid var(--border);
   box-shadow: none;
 }
 
@@ -2457,8 +2394,8 @@ img {
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
-  padding: 0.4rem 0.9rem;
-  border-radius: 9999px;
+  padding: 0.4rem 0.85rem;
+  border-radius: var(--radius-sm);
   background: rgba(0, 0, 0, 0.7);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
@@ -2787,8 +2724,8 @@ img {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.35rem 0.95rem;
-  border-radius: 9999px;
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-sm);
   background: rgba(184, 155, 94, 0.18);
   border: 1px solid rgba(184, 155, 94, 0.4);
   color: var(--gold);

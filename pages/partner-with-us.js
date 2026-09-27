@@ -149,7 +149,7 @@ export default function PartnerWithUs() {
             <div className="partner-other-grid">
               {["pray", "share", "collaborate"].map((way) => (
                 <article key={way}>
-                  <span aria-hidden="true">{way === "pray" ? "✦" : way === "share" ? "↗" : "◎"}</span>
+                  <span aria-hidden="true">{way === "pray" ? "—" : way === "share" ? "↗" : "•"}</span>
                   <h3>{t(`partner.other.${way}.title`)}</h3>
                   <p>{t(`partner.other.${way}.body`)}</p>
                 </article>

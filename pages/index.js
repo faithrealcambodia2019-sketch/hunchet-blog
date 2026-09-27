@@ -497,49 +497,6 @@ export default function Home({ posts = [], error }) {
               {t("home.aboutUs")}
             </Link>
           </div>
-
-          {/* Quick Ministry Highlights */}
-          <div className="hero-highlights">
-            <div className="hero-highlight-pill">
-              <span className="hero-highlight-icon">📖</span>
-              <div>
-                <strong>{locale === "km" ? "ការបង្រៀនព្រះបន្ទូល" : "Biblical Teaching"}</strong>
-                <div style={{ fontSize: "0.72rem", opacity: 0.85 }}>
-                  {locale === "km" ? "អត្ថបទ និងសៀវភៅ" : "Articles & Devotionals"}
-                </div>
-              </div>
-            </div>
-
-            <div className="hero-highlight-pill">
-              <span className="hero-highlight-icon">⛪</span>
-              <div>
-                <strong>{locale === "km" ? "ក្រុមជំនុំ All Nations" : "All Nations Church"}</strong>
-                <div style={{ fontSize: "0.72rem", opacity: 0.85 }}>
-                  {locale === "km" ? "វេទិកាផ្សាយព្រះបន្ទូល" : "Pulpit Preaching"}
-                </div>
-              </div>
-            </div>
-
-            <div className="hero-highlight-pill">
-              <span className="hero-highlight-icon">🎥</span>
-              <div>
-                <strong>{locale === "km" ? "ព័ន្ធកិច្ចឌីជីថល" : "Digital Outreach"}</strong>
-                <div style={{ fontSize: "0.72rem", opacity: 0.85 }}>
-                  {locale === "km" ? "មិត្តពិតកម្ពុជា" : "True Friend Cambodia"}
-                </div>
-              </div>
-            </div>
-
-            <div className="hero-highlight-pill">
-              <span className="hero-highlight-icon">🤝</span>
-              <div>
-                <strong>{locale === "km" ? "ចូលរួមជាដៃគូ" : "Kingdom Partner"}</strong>
-                <div style={{ fontSize: "0.72rem", opacity: 0.85 }}>
-                  {locale === "km" ? "កសាងនគរព្រះ" : "Building the Church"}
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </section>
 
@@ -1047,7 +1004,7 @@ export default function Home({ posts = [], error }) {
                 </div>
                 <div className="featured-story-body">
                   <div className="featured-badge">
-                    <span>★</span> {locale === "km" ? "អត្ថបទពិសេស" : "Featured Reflection"}
+                    {locale === "km" ? "អត្ថបទពិសេស" : "Featured Reflection"}
                   </div>
                   <time className="post-date">{formatDate(leadPost.date)}</time>
                   {getPostCategories(leadPost).length > 0 && (
@@ -1283,7 +1240,7 @@ export default function Home({ posts = [], error }) {
           <div className="anc-modal-box" onClick={(e) => e.stopPropagation()}>
             <div className="anc-modal-header">
               <div style={{ display: "flex", alignItems: "center", gap: "0.6rem", overflow: "hidden" }}>
-                <span style={{ width: 8, height: 8, borderRadius: "50%", background: "#10b981", flexShrink: 0 }} />
+                <PlayIcon style={{ width: 14, height: 14, color: "var(--gold)", flexShrink: 0 }} />
                 <h3 style={{ whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
                   {loc(selectedVideo.title)}
                 </h3>
