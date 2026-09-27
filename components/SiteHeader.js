@@ -91,9 +91,15 @@ function LanguageSwitch() {
 export default function SiteHeader() {
   const router = useRouter();
   const t = useT();
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   const isActive = (href) =>
     href === "/" ? router.pathname === "/" : router.pathname.startsWith(href);
+
+  // Close mobile drawer on route change
+  useEffect(() => {
+    setMobileOpen(false);
+  }, [router.asPath]);
 
   return (
     <header className="site-header">
@@ -108,7 +114,9 @@ export default function SiteHeader() {
             <span className="site-logo-sub">Faith &amp; Ministry</span>
           </span>
         </Link>
-        <nav className="site-nav">
+
+        {/* Desktop Navigation */}
+        <nav className="site-nav desktop-nav">
           {navItems.map((item) => (
             <Link
               key={item.href}
@@ -120,7 +128,54 @@ export default function SiteHeader() {
           ))}
           <LanguageSwitch />
         </nav>
+
+        {/* Mobile controls: Language Switcher + Hamburger */}
+        <div className="mobile-header-actions">
+          <LanguageSwitch />
+          <button
+            type="button"
+            className="mobile-menu-btn"
+            onClick={() => setMobileOpen((v) => !v)}
+            aria-label="Toggle navigation menu"
+            aria-expanded={mobileOpen}
+          >
+            {mobileOpen ? (
+              <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" strokeWidth="2" fill="none">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            ) : (
+              <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" strokeWidth="2" fill="none">
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+              </svg>
+            )}
+          </button>
+        </div>
       </div>
+
+      {/* Mobile Drawer */}
+      {mobileOpen && (
+        <div className="mobile-nav-drawer">
+          <nav className="mobile-nav-list">
+            {navItems.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={isActive(item.href) ? "mobile-nav-link active" : "mobile-nav-link"}
+              >
+                {t(item.key)}
+              </Link>
+            ))}
+            <div className="mobile-nav-cta">
+              <Link href="/contact" className="btn btn-primary" style={{ width: "100%" }}>
+                {t("home.getInTouch")}
+              </Link>
+            </div>
+          </nav>
+        </div>
+      )}
     </header>
   );
 }

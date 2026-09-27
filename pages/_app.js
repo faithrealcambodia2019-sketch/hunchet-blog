@@ -24,6 +24,11 @@ const REVEAL = [
   ".album-head",
   ".stat-row > div",
   ".post-page > .post-content",
+  ".scripture-banner",
+  ".featured-story",
+  ".pillar-card",
+  ".connect-banner",
+  ".hero-highlight-pill",
 ].join(",");
 
 export default function App({ Component, pageProps }) {
