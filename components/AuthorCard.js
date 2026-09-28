@@ -1,5 +1,6 @@
 import { useT } from "../lib/i18n";
 import { LOGO } from "../lib/media";
+import { PhoneIcon, TelegramIcon, FacebookIcon } from "./Icons";
 
 export default function AuthorCard() {
   const t = useT();
@@ -18,7 +19,8 @@ export default function AuthorCard() {
         <span>{t("footer.tagline")}</span>
         <div className="author-social-links">
           <a href="tel:0966875886" className="author-btn btn-phone">
-            096 687 5886
+            <PhoneIcon width="14" height="14" />
+            <span>096 687 5886</span>
           </a>
           <a
             href="https://t.me/+855966875886"
@@ -26,7 +28,8 @@ export default function AuthorCard() {
             rel="noreferrer"
             className="author-btn btn-telegram"
           >
-            Telegram
+            <TelegramIcon width="14" height="14" />
+            <span>Telegram</span>
           </a>
           <a
             href="https://www.facebook.com/hunchet2024/"
@@ -34,7 +37,8 @@ export default function AuthorCard() {
             rel="noreferrer"
             className="author-btn btn-facebook"
           >
-            Facebook
+            <FacebookIcon width="14" height="14" />
+            <span>Facebook</span>
           </a>
         </div>
       </div>

@@ -1626,11 +1626,24 @@ img {
   color: #fff;
 }
 
+.author-btn svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  fill: currentColor;
+}
+
 .btn-phone,
 .btn-telegram,
 .btn-facebook {
   background: #fff;
   color: var(--ink);
+}
+
+/* Suppress any embedded legacy author-bio blocks in WordPress HTML so only the canonical AuthorCard shows */
+.post-content .author-bio,
+.fyi-article-wrapper .author-bio {
+  display: none !important;
 }
 
 /* ============ Embedded WordPress content ============ */
