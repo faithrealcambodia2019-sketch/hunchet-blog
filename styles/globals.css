@@ -4,12 +4,9 @@
   --navy-deep: #0b192c;      /* Deep Midnight */
   --navy-dark: #0f172a;      /* Deep Slate */
   --crimson: #8b1c1c;        /* Traditional Crimson/Burgundy */
-  --gold: #2563eb;           /* Classic Royal Blue / Steel Blue */
-  --gold-hover: #1d4ed8;     /* Deep Royal Blue */
-  --gold-soft: #eff6ff;      /* Soft Royal Ice Tint */
-  --royal: #2563eb;
-  --royal-hover: #1d4ed8;
-  --royal-soft: #eff6ff;
+  --gold: #b89b5e;           /* Antique Gold */
+  --gold-hover: #9e824c;
+  --gold-soft: #fcf8ee;
   --bg: #fcfbf9;             /* Warm Cream / Parchment */
   --bg-alt: #f7f5f0;         /* Soft Cream */
   --card-bg: #ffffff;
