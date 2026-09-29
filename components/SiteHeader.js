@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { LOGO } from "../lib/media";
@@ -16,6 +17,13 @@ import {
   CloseIcon,
   CheckIcon,
 } from "./Icons";
+
+const LANG_DISPLAY = {
+  en: "English",
+  km: "ខ្មែរ",
+  ko: "한국어",
+  zh: "中文",
+};
 
 const NAV_GROUPS = {
   teaching: {
@@ -250,9 +258,14 @@ export default function SiteHeader() {
   const t = useT();
   const locale = router.locale || "en";
 
+  const [mounted, setMounted] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(null);
   const dropdownTimeoutRef = useRef(null);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const loc = (obj) => {
     if (!obj) return "";
@@ -270,16 +283,29 @@ export default function SiteHeader() {
     setOpenDropdown(null);
   }, [router.asPath, router.locale]);
 
-  // Lock body scroll when mobile drawer is active
+  // Lock body and html scroll when mobile drawer is active
   useEffect(() => {
     if (mobileOpen) {
+      const origBodyOverflow = document.body.style.overflow;
+      const origHtmlOverflow = document.documentElement.style.overflow;
       document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
+      document.documentElement.style.overflow = "hidden";
+      return () => {
+        document.body.style.overflow = origBodyOverflow;
+        document.documentElement.style.overflow = origHtmlOverflow;
+      };
     }
-    return () => {
-      document.body.style.overflow = "";
+    return undefined;
+  }, [mobileOpen]);
+
+  // Close on Escape key
+  useEffect(() => {
+    if (!mobileOpen) return undefined;
+    const onKey = (e) => {
+      if (e.key === "Escape") setMobileOpen(false);
     };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
   }, [mobileOpen]);
 
   // Hover handlers with debounce for desktop dropdowns
@@ -468,223 +494,230 @@ export default function SiteHeader() {
             </button>
           </div>
         </div>
+      </header>
 
-        {/* 3. Luxury Mobile Slide-Over Drawer */}
-        {mobileOpen && (
-          <div className="mobile-drawer-overlay" onClick={() => setMobileOpen(false)}>
-            <div
-              className="mobile-drawer-sheet"
-              onClick={(e) => e.stopPropagation()}
-            >
-              {/* Drawer Top Header */}
-              <div className="mobile-drawer-top">
-                <Link href="/" className="mobile-drawer-brand" onClick={() => setMobileOpen(false)}>
-                  <span className="brand-mark" style={{ width: 34, height: 34 }}>
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={LOGO} alt="" />
-                  </span>
-                  <div>
-                    <strong style={{ fontSize: "1.05rem", display: "block", lineHeight: 1.1 }}>Hun Chet</strong>
-                    <span style={{ fontSize: "0.65rem", color: "var(--gold)", letterSpacing: "0.08em" }}>All Nations Church</span>
+      {/* 3. Luxury Mobile Slide-Over Drawer — Portaled directly to body to prevent backdrop-filter stacking context bugs on iOS Safari */}
+      {mounted && typeof document !== "undefined" && mobileOpen && createPortal(
+        <div
+          className="mobile-drawer-overlay"
+          onClick={() => setMobileOpen(false)}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Navigation Menu"
+        >
+          <div
+            className="mobile-drawer-sheet"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Drawer Top Header */}
+            <div className="mobile-drawer-top">
+              <Link href="/" className="mobile-drawer-brand" onClick={() => setMobileOpen(false)}>
+                <span className="brand-mark" style={{ width: 34, height: 34 }}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={LOGO} alt="" />
+                </span>
+                <div>
+                  <strong style={{ fontSize: "1.05rem", display: "block", lineHeight: 1.1 }}>Hun Chet</strong>
+                  <span style={{ fontSize: "0.65rem", color: "var(--gold)", letterSpacing: "0.08em" }}>All Nations Church</span>
+                </div>
+              </Link>
+
+              <button
+                type="button"
+                className="mobile-drawer-close-btn"
+                onClick={() => setMobileOpen(false)}
+                aria-label="Close navigation drawer"
+              >
+                <CloseIcon style={{ width: 18, height: 18 }} />
+              </button>
+            </div>
+
+            {/* 1-Tap Quick Language Selector Pills */}
+            <div className="mobile-drawer-lang-bar">
+              {LOCALES.map((l) => (
+                <Link
+                  key={l.code}
+                  href={router.asPath}
+                  locale={l.code}
+                  className={`mobile-drawer-lang-btn ${locale === l.code ? "is-active" : ""}`}
+                  onClick={() => setMobileOpen(false)}
+                >
+                  {LANG_DISPLAY[l.code] || l.name}
+                </Link>
+              ))}
+            </div>
+
+            {/* Categorized Drawer Navigation */}
+            <div className="mobile-drawer-content">
+              {/* Section 1: Home & Daily Bread */}
+              <div className="mobile-drawer-group">
+                <span className="mobile-drawer-kicker">
+                  {locale === "km" ? "ព្រះបន្ទូលប្រចាំថ្ងៃ" : "Daily Bread & Sanctuary"}
+                </span>
+
+                <Link
+                  href="/"
+                  className={`mobile-drawer-item ${router.pathname === "/" ? "active" : ""}`}
+                  onClick={() => setMobileOpen(false)}
+                >
+                  <div className="mobile-drawer-item-left">
+                    <span className="mobile-drawer-item-icon">
+                      <CheckIcon style={{ width: 14, height: 14 }} />
+                    </span>
+                    <div>
+                      <strong className="mobile-drawer-item-text">{t("nav.home")}</strong>
+                      <span className="mobile-drawer-item-sub">
+                        {locale === "km" ? "ទំព័រដើម និងព័ត៌មានទូទៅ" : "Sanctuary overview & welcome"}
+                      </span>
+                    </div>
                   </div>
                 </Link>
 
-                <button
-                  type="button"
-                  className="mobile-drawer-close-btn"
+                <Link
+                  href="/devotions"
+                  className={`mobile-drawer-item ${isRouteActive("/devotions") ? "active" : ""}`}
                   onClick={() => setMobileOpen(false)}
-                  aria-label="Close navigation drawer"
                 >
-                  <CloseIcon style={{ width: 18, height: 18 }} />
-                </button>
+                  <div className="mobile-drawer-item-left">
+                    <span className="mobile-drawer-item-icon">
+                      <BookOpenIcon style={{ width: 15, height: 15 }} />
+                    </span>
+                    <div>
+                      <strong className="mobile-drawer-item-text">{t("nav.devotions")}</strong>
+                      <span className="mobile-drawer-item-sub">
+                        {locale === "km" ? "៣៦៥ ថ្ងៃ & ៥០០ ខគម្ពីរ ១៩៥៤" : "365-Day journey & 500 verses"}
+                      </span>
+                    </div>
+                  </div>
+                  <span className="nav-badge-pill" style={{ flexShrink: 0 }}>
+                    {devotionsBadge}
+                  </span>
+                </Link>
               </div>
 
-              {/* 1-Tap Quick Language Selector Pills */}
-              <div className="mobile-drawer-lang-bar">
-                {LOCALES.map((l) => (
+              {/* Section 2: Biblical Teaching & Media */}
+              <div className="mobile-drawer-group">
+                <span className="mobile-drawer-kicker">
+                  {loc(NAV_GROUPS.teaching.label)}
+                </span>
+
+                {NAV_GROUPS.teaching.items.map((item) => (
                   <Link
-                    key={l.code}
-                    href={router.asPath}
-                    locale={l.code}
-                    className={`mobile-drawer-lang-btn ${locale === l.code ? "is-active" : ""}`}
+                    key={item.href}
+                    href={item.href}
+                    className={`mobile-drawer-item ${isRouteActive(item.href) ? "active" : ""}`}
                     onClick={() => setMobileOpen(false)}
                   >
-                    {l.short} • {l.name}
+                    <div className="mobile-drawer-item-left">
+                      <span className="mobile-drawer-item-icon">
+                        <NavIcon type={item.icon} />
+                      </span>
+                      <div>
+                        <strong className="mobile-drawer-item-text">{loc(item.title)}</strong>
+                        <span className="mobile-drawer-item-sub">{loc(item.desc)}</span>
+                      </div>
+                    </div>
                   </Link>
                 ))}
               </div>
 
-              {/* Categorized Drawer Navigation */}
-              <div className="mobile-drawer-content">
-                {/* Section 1: Home & Daily Bread */}
-                <div className="mobile-drawer-group">
-                  <span className="mobile-drawer-kicker">
-                    {locale === "km" ? "ព្រះបន្ទូលប្រចាំថ្ងៃ" : "Daily Bread & Sanctuary"}
-                  </span>
+              {/* Section 3: Church Life & Heritage */}
+              <div className="mobile-drawer-group">
+                <span className="mobile-drawer-kicker">
+                  {loc(NAV_GROUPS.churchLife.label)}
+                </span>
 
+                {NAV_GROUPS.churchLife.items.map((item) => (
                   <Link
-                    href="/"
-                    className={`mobile-drawer-item ${router.pathname === "/" ? "active" : ""}`}
+                    key={item.href}
+                    href={item.href}
+                    className={`mobile-drawer-item ${isRouteActive(item.href) ? "active" : ""}`}
                     onClick={() => setMobileOpen(false)}
                   >
                     <div className="mobile-drawer-item-left">
                       <span className="mobile-drawer-item-icon">
-                        <CheckIcon style={{ width: 14, height: 14 }} />
+                        <NavIcon type={item.icon} />
                       </span>
                       <div>
-                        <strong className="mobile-drawer-item-text">{t("nav.home")}</strong>
-                        <span className="mobile-drawer-item-sub">
-                          {locale === "km" ? "ទំព័រដើម និងព័ត៌មានទូទៅ" : "Sanctuary overview & welcome"}
-                        </span>
+                        <strong className="mobile-drawer-item-text">{loc(item.title)}</strong>
+                        <span className="mobile-drawer-item-sub">{loc(item.desc)}</span>
                       </div>
                     </div>
                   </Link>
+                ))}
 
-                  <Link
-                    href="/devotions"
-                    className={`mobile-drawer-item ${isRouteActive("/devotions") ? "active" : ""}`}
-                    onClick={() => setMobileOpen(false)}
-                  >
-                    <div className="mobile-drawer-item-left">
-                      <span className="mobile-drawer-item-icon">
-                        <BookOpenIcon style={{ width: 15, height: 15 }} />
-                      </span>
-                      <div>
-                        <strong className="mobile-drawer-item-text">{t("nav.devotions")}</strong>
-                        <span className="mobile-drawer-item-sub">
-                          {locale === "km" ? "៣៦៥ ថ្ងៃ & ៥០០ ខគម្ពីរ ១៩៥៤" : "365-Day journey & 500 verses"}
-                        </span>
-                      </div>
-                    </div>
-                    <span className="nav-badge-pill" style={{ flexShrink: 0 }}>
-                      {devotionsBadge}
+                <Link
+                  href="/contact"
+                  className={`mobile-drawer-item ${isRouteActive("/contact") ? "active" : ""}`}
+                  onClick={() => setMobileOpen(false)}
+                >
+                  <div className="mobile-drawer-item-left">
+                    <span className="mobile-drawer-item-icon">
+                      <MapPinIcon style={{ width: 14, height: 14 }} />
                     </span>
-                  </Link>
-                </div>
-
-                {/* Section 2: Biblical Teaching & Media */}
-                <div className="mobile-drawer-group">
-                  <span className="mobile-drawer-kicker">
-                    {loc(NAV_GROUPS.teaching.label)}
-                  </span>
-
-                  {NAV_GROUPS.teaching.items.map((item) => (
-                    <Link
-                      key={item.href}
-                      href={item.href}
-                      className={`mobile-drawer-item ${isRouteActive(item.href) ? "active" : ""}`}
-                      onClick={() => setMobileOpen(false)}
-                    >
-                      <div className="mobile-drawer-item-left">
-                        <span className="mobile-drawer-item-icon">
-                          <NavIcon type={item.icon} />
-                        </span>
-                        <div>
-                          <strong className="mobile-drawer-item-text">{loc(item.title)}</strong>
-                          <span className="mobile-drawer-item-sub">{loc(item.desc)}</span>
-                        </div>
-                      </div>
-                    </Link>
-                  ))}
-                </div>
-
-                {/* Section 3: Church Life & Heritage */}
-                <div className="mobile-drawer-group">
-                  <span className="mobile-drawer-kicker">
-                    {loc(NAV_GROUPS.churchLife.label)}
-                  </span>
-
-                  {NAV_GROUPS.churchLife.items.map((item) => (
-                    <Link
-                      key={item.href}
-                      href={item.href}
-                      className={`mobile-drawer-item ${isRouteActive(item.href) ? "active" : ""}`}
-                      onClick={() => setMobileOpen(false)}
-                    >
-                      <div className="mobile-drawer-item-left">
-                        <span className="mobile-drawer-item-icon">
-                          <NavIcon type={item.icon} />
-                        </span>
-                        <div>
-                          <strong className="mobile-drawer-item-text">{loc(item.title)}</strong>
-                          <span className="mobile-drawer-item-sub">{loc(item.desc)}</span>
-                        </div>
-                      </div>
-                    </Link>
-                  ))}
-
-                  <Link
-                    href="/contact"
-                    className={`mobile-drawer-item ${isRouteActive("/contact") ? "active" : ""}`}
-                    onClick={() => setMobileOpen(false)}
-                  >
-                    <div className="mobile-drawer-item-left">
-                      <span className="mobile-drawer-item-icon">
-                        <MapPinIcon style={{ width: 14, height: 14 }} />
+                    <div>
+                      <strong className="mobile-drawer-item-text">{t("nav.contact")}</strong>
+                      <span className="mobile-drawer-item-sub">
+                        {locale === "km" ? "ម៉ោងថ្វាយបង្គំ & ទីតាំងក្រុមជំនុំ" : "Sunday 8:30 AM & Campus Directions"}
                       </span>
-                      <div>
-                        <strong className="mobile-drawer-item-text">{t("nav.contact")}</strong>
-                        <span className="mobile-drawer-item-sub">
-                          {locale === "km" ? "ម៉ោងថ្វាយបង្គំ & ទីតាំងក្រុមជំនុំ" : "Sunday 8:30 AM & Campus Directions"}
-                        </span>
-                      </div>
                     </div>
-                  </Link>
-                </div>
+                  </div>
+                </Link>
+              </div>
 
-                {/* Section 4: Kingdom Partnership */}
-                <div className="mobile-drawer-group">
-                  <span className="mobile-drawer-kicker">
-                    {locale === "km" ? "ការចូលរួមចំណែកក្នុងព្រះរាជ្យ" : "Kingdom Stewardship"}
-                  </span>
+              {/* Section 4: Kingdom Partnership */}
+              <div className="mobile-drawer-group">
+                <span className="mobile-drawer-kicker">
+                  {locale === "km" ? "ការចូលរួមចំណែកក្នុងព្រះរាជ្យ" : "Kingdom Stewardship"}
+                </span>
 
-                  <Link
-                    href="/partner-with-us"
-                    className={`mobile-drawer-item ${isRouteActive("/partner-with-us") ? "active" : ""}`}
-                    style={{ borderColor: "var(--gold)", background: "rgba(184, 155, 94, 0.06)" }}
-                    onClick={() => setMobileOpen(false)}
-                  >
-                    <div className="mobile-drawer-item-left">
-                      <span className="mobile-drawer-item-icon" style={{ background: "var(--gold)", color: "#081424" }}>
-                        <HeartIcon style={{ width: 14, height: 14 }} />
+                <Link
+                  href="/partner-with-us"
+                  className={`mobile-drawer-item ${isRouteActive("/partner-with-us") ? "active" : ""}`}
+                  style={{ borderColor: "var(--gold)", background: "rgba(184, 155, 94, 0.06)" }}
+                  onClick={() => setMobileOpen(false)}
+                >
+                  <div className="mobile-drawer-item-left">
+                    <span className="mobile-drawer-item-icon" style={{ background: "var(--gold)", color: "#081424" }}>
+                      <HeartIcon style={{ width: 14, height: 14 }} />
+                    </span>
+                    <div>
+                      <strong className="mobile-drawer-item-text" style={{ color: "var(--navy-dark)" }}>
+                        {partnerBtnLabel}
+                      </strong>
+                      <span className="mobile-drawer-item-sub">
+                        {locale === "km" ? "ចូលរួមចំណែកពង្រីកដំណឹងល្អ" : "Support Gospel outreach & discipleship"}
                       </span>
-                      <div>
-                        <strong className="mobile-drawer-item-text" style={{ color: "var(--navy-dark)" }}>
-                          {partnerBtnLabel}
-                        </strong>
-                        <span className="mobile-drawer-item-sub">
-                          {locale === "km" ? "ចូលរួមចំណែកពង្រីកដំណឹងល្អ" : "Support Gospel outreach & discipleship"}
-                        </span>
-                      </div>
                     </div>
-                  </Link>
-                </div>
+                  </div>
+                </Link>
+              </div>
 
-                {/* Pastoral Contact Footer Card */}
-                <div className="mobile-drawer-footer-card">
-                  <strong className="mobile-drawer-footer-title">
-                    {locale === "km" ? "ចូលរួមថ្វាយបង្គំថ្ងៃអាទិត្យ" : "Join Sunday Service: 8:30 AM"}
-                  </strong>
-                  <p className="mobile-drawer-footer-desc">
-                    {locale === "km"
-                      ? "សូមស្វាគមន៍មកកាន់ក្រុមជំនុំអលណេសិន រាជធានីភ្នំពេញ។"
-                      : "All Nations Church Campus, Trapaing Krasang, Phnom Penh."}
-                  </p>
-                  <a
-                    href="https://t.me/+855966875886"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="mobile-drawer-telegram-btn"
-                  >
-                    <TelegramIcon style={{ width: 15, height: 15 }} />
-                    <span>{locale === "km" ? "ទាក់ទងគ្រូគង្វាលតាម Telegram" : "Pastoral Telegram Hotline"}</span>
-                  </a>
-                </div>
+              {/* Pastoral Contact Footer Card */}
+              <div className="mobile-drawer-footer-card">
+                <strong className="mobile-drawer-footer-title">
+                  {locale === "km" ? "ចូលរួមថ្វាយបង្គំថ្ងៃអាទិត្យ" : "Join Sunday Service: 8:30 AM"}
+                </strong>
+                <p className="mobile-drawer-footer-desc">
+                  {locale === "km"
+                    ? "សូមស្វាគមន៍មកកាន់ក្រុមជំនុំអលណេសិន រាជធានីភ្នំពេញ។"
+                    : "All Nations Church Campus, Trapaing Krasang, Phnom Penh."}
+                </p>
+                <a
+                  href="https://t.me/+855966875886"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mobile-drawer-telegram-btn"
+                >
+                  <TelegramIcon style={{ width: 15, height: 15 }} />
+                  <span>{locale === "km" ? "ទាក់ទងគ្រូគង្វាលតាម Telegram" : "Pastoral Telegram Hotline"}</span>
+                </a>
               </div>
             </div>
           </div>
-        )}
-      </header>
+        </div>,
+        document.body
+      )}
     </>
   );
 }
