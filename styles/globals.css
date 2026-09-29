@@ -104,78 +104,127 @@ iframe {
   padding: 0 1.75rem;
 }
 
-/* ============ Top Sanctuary Notice Bar ============ */
+/* ============ All Nations Church Top Notice Bar ============ */
 
+.top-church-bar,
 .top-utility-bar {
   background: #081424;
-  color: rgba(255, 255, 255, 0.86);
-  border-bottom: 1px solid rgba(179, 146, 78, 0.28);
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.03em;
-  padding: 0.42rem 0;
+  color: rgba(255, 255, 255, 0.9);
+  border-bottom: 1px solid rgba(179, 146, 78, 0.35);
+  font-family: var(--font-body);
   position: relative;
   z-index: 52;
 }
 
+.top-church-inner,
 .top-utility-inner {
   max-width: 1240px;
   margin: 0 auto;
-  padding: 0 1.75rem;
+  padding: 0.38rem 1.75rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
+  font-size: 0.72rem;
 }
 
+.top-church-left,
 .top-utility-left {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.55rem;
+  min-width: 0;
+  overflow: hidden;
 }
 
-.top-utility-church-seal {
+.anc-btn-megaphone {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  color: var(--gold);
+  gap: 0.35rem;
+  padding: 0.16rem 0.55rem;
+  background: var(--gold);
+  color: #081424;
+  border-radius: 3px;
+  font-size: 0.64rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  flex-shrink: 0;
 }
 
+.anc-btn-megaphone svg {
+  color: #081424;
+}
+
+.anc-worship-text,
 .top-utility-text {
-  font-size: 0.72rem;
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(255, 255, 255, 0.92);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 0.74rem;
 }
 
+.top-church-right,
 .top-utility-right {
   display: flex;
   align-items: center;
   gap: 0.75rem;
+  flex-shrink: 0;
 }
 
-.top-utility-location {
-  display: inline-flex;
-  align-items: center;
-  color: rgba(255, 255, 255, 0.72);
+.anc-view-flyer-btn {
+  background: transparent;
+  border: none;
+  color: var(--gold-light);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.18s ease;
+  white-space: nowrap;
 }
 
+.anc-view-flyer-btn:hover {
+  color: #ffffff;
+}
+
+.top-church-sep,
 .top-utility-sep {
   color: rgba(179, 146, 78, 0.4);
 }
 
+.top-church-link,
 .top-utility-link {
   display: inline-flex;
   align-items: center;
-  color: var(--gold-light);
+  color: #38bdf8;
   text-decoration: none;
+  font-weight: 600;
+  font-size: 0.72rem;
   transition: color 0.18s ease;
 }
 
+.top-church-link:hover,
 .top-utility-link:hover {
   color: #ffffff;
 }
 
 @media (max-width: 768px) {
-  .top-utility-bar {
+  .top-church-inner,
+  .top-utility-inner {
+    padding: 0.32rem 0.85rem;
+  }
+  .anc-btn-megaphone span {
+    display: none;
+  }
+  .anc-btn-megaphone {
+    padding: 0.18rem 0.35rem;
+  }
+  .top-church-link,
+  .top-church-sep {
     display: none !important;
   }
 }
@@ -412,7 +461,47 @@ iframe {
   line-height: 1.45;
 }
 
-/* Nav CTA Partner Button */
+/* ============ Nav Primary Buttons ============ */
+
+.btn-plan-visit {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.52rem 1.15rem;
+  background: var(--gold);
+  color: #081424;
+  border: 1px solid var(--gold-border);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.22s ease;
+  box-shadow: 0 2px 6px rgba(184, 155, 94, 0.25);
+  white-space: nowrap;
+}
+
+.btn-plan-visit svg {
+  color: #081424;
+  width: 14px;
+  height: 14px;
+  transition: transform 0.2s ease;
+}
+
+.btn-plan-visit:hover {
+  background: #d4af37;
+  color: #081424;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(184, 155, 94, 0.35);
+}
+
+.btn-plan-visit:hover svg {
+  transform: scale(1.15);
+}
+
+/* Nav CTA Partner Button (Legacy Alias) */
 .btn-nav-partner {
   display: inline-flex;
   align-items: center;
@@ -475,13 +564,13 @@ iframe {
   color: var(--accent);
 }
 
-/* ============ Modern Slide-Over Drawer ============ */
+/* ============ All Nations Church Card-Grouped Mobile Drawer ============ */
 
 .mobile-drawer-overlay {
   position: fixed;
   inset: 0;
   z-index: 99999;
-  background: rgba(4, 10, 20, 0.72);
+  background: rgba(4, 10, 20, 0.75);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   display: flex;
@@ -501,12 +590,12 @@ iframe {
 
 .mobile-drawer-sheet {
   width: 100%;
-  max-width: min(340px, 86vw);
+  max-width: min(360px, 90vw);
   height: 100%;
   height: 100dvh;
   max-height: 100dvh;
-  background: #ffffff;
-  box-shadow: -8px 0 32px rgba(0, 0, 0, 0.4);
+  background: #f8fafc;
+  box-shadow: -8px 0 36px rgba(0, 0, 0, 0.45);
   display: flex;
   flex-direction: column;
   overflow-y: auto;
@@ -564,176 +653,616 @@ iframe {
   color: #081424;
 }
 
-/* Quick Language Selector Bar */
-.mobile-drawer-lang-bar {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 0.4rem;
-  padding: 0.75rem 1rem;
-  background: #f8fafc;
-  border-bottom: 1px solid var(--border);
-}
-
-.mobile-drawer-lang-btn {
-  padding: 0.5rem 0.25rem;
-  font-size: 0.75rem;
-  font-weight: 700;
-  text-align: center;
-  text-decoration: none;
-  color: var(--navy);
-  background: #ffffff;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  transition: all 0.2s ease;
-  white-space: nowrap;
-  min-height: 38px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.mobile-drawer-lang-btn.is-active {
-  background: #081424;
-  color: #ffffff;
-  border-color: var(--gold);
-}
-
-/* Drawer Content & Sections */
-.mobile-drawer-content {
+/* Mobile Drawer Body: Canvas with White Cards */
+.anc-mobile-drawer-body {
+  padding: 0.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
   flex: 1;
-  padding: 1rem 1rem 2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
 }
 
-.mobile-drawer-group {
-  display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
-}
-
-.mobile-drawer-kicker {
-  font-size: 0.65rem;
-  font-weight: 800;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--gold);
-  padding: 0.25rem 0.5rem;
-  margin-bottom: 0.2rem;
-}
-
-.mobile-drawer-item {
+/* Quick Actions Bar (Language Pills + Plan Visit CTA) */
+.anc-quick-bar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.75rem 0.85rem;
-  border-radius: var(--radius);
-  text-decoration: none;
-  color: var(--navy-dark);
+  gap: 0.45rem;
   background: #ffffff;
-  border: 1px solid var(--border-light);
-  transition: all 0.2s ease;
+  padding: 0.55rem 0.65rem;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
 }
 
-.mobile-drawer-item:hover,
-.mobile-drawer-item.active {
-  background: #f1f5fa;
-  border-color: var(--gold-border);
-  color: var(--navy);
-}
-
-.mobile-drawer-item-left {
+.anc-lang-pills {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  min-width: 0;
-  flex: 1;
+  gap: 0.25rem;
+  flex-wrap: wrap;
 }
 
-.mobile-drawer-item-left > div {
-  min-width: 0;
-  flex: 1;
-}
-
-.mobile-drawer-item-icon {
-  width: 32px;
-  height: 32px;
-  border-radius: var(--radius-sm);
-  background: rgba(17, 43, 74, 0.06);
+.anc-lang-pill {
+  padding: 0.32rem 0.55rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  border-radius: 6px;
+  text-decoration: none;
   color: var(--navy);
+  border: 1px solid var(--border);
+  background: #f8fafc;
+  transition: all 0.15s ease;
+}
+
+.anc-lang-pill.is-active {
+  background: #081424;
+  color: #ffffff;
+  border-color: #081424;
+}
+
+.anc-quick-plan-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  padding: 0.45rem 0.75rem;
+  background: var(--gold);
+  color: #081424;
+  font-size: 0.74rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  box-shadow: 0 1px 3px rgba(184, 155, 94, 0.25);
+  white-space: nowrap;
+}
+
+.anc-quick-plan-btn:hover {
+  background: #d4af37;
+}
+
+.anc-quick-plan-btn:active {
+  transform: scale(0.97);
+}
+
+/* Nav Card Containers */
+.anc-nav-card {
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  padding: 0.4rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.anc-card-kicker {
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 0.35rem 0.55rem 0.15rem;
+  display: block;
+}
+
+.anc-nav-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.6rem 0.7rem;
+  border-radius: 8px;
+  text-decoration: none;
+  color: var(--navy-dark);
+  font-weight: 600;
+  font-size: 0.86rem;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.anc-nav-link:hover {
+  background: #f1f5f9;
+  color: var(--navy);
+}
+
+.anc-nav-link.is-active {
+  background: var(--navy);
+  color: #ffffff;
+}
+
+.anc-nav-link.is-active .anc-link-icon-box {
+  background: rgba(255, 255, 255, 0.2) !important;
+  color: #ffffff !important;
+}
+
+.anc-nav-link.is-active .anc-link-title {
+  color: #ffffff;
+}
+
+.anc-nav-link-left {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-width: 0;
+}
+
+.anc-link-icon-box {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
 }
 
-.mobile-drawer-item:hover .mobile-drawer-item-icon,
-.mobile-drawer-item.active .mobile-drawer-item-icon {
-  background: var(--navy);
-  color: #ffffff;
+.anc-link-title {
+  font-size: 0.86rem;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.mobile-drawer-item-text {
-  font-size: 0.88rem;
+.anc-pill-badge {
+  font-size: 0.65rem;
+  font-weight: 800;
+  background: var(--gold);
+  color: #081424;
+  padding: 0.15rem 0.45rem;
+  border-radius: 9999px;
+  letter-spacing: 0.04em;
+  line-height: 1;
+}
+
+/* Accordion Card */
+.anc-accordion-card {
+  overflow: hidden;
+  padding: 0;
+}
+
+.anc-accordion-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 0.85rem;
+  background: transparent;
+  border: none;
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: var(--navy-dark);
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.15s ease;
+}
+
+.anc-accordion-header:hover {
+  background: #f8fafc;
+}
+
+.anc-accordion-left {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.anc-accordion-chevron {
+  width: 16px;
+  height: 16px;
+  color: var(--muted);
+  transition: transform 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+  flex-shrink: 0;
+}
+
+.anc-accordion-chevron.is-open {
+  transform: rotate(180deg);
+  color: var(--gold);
+}
+
+.anc-accordion-body {
+  background: #f8fafc;
+  border-top: 1px solid var(--border-light);
+  padding: 0.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  animation: fadeInDrawer 0.18s ease;
+}
+
+.anc-sub-link {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem 0.7rem;
+  border-radius: 6px;
+  text-decoration: none;
+  color: var(--navy-dark);
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.anc-sub-link:hover {
+  background: #ffffff;
+  color: var(--navy);
+}
+
+.anc-sub-link.is-active {
+  background: #ffffff;
+  border-left: 3px solid var(--gold);
+}
+
+.anc-sub-link-title {
+  font-size: 0.82rem;
   font-weight: 700;
   line-height: 1.3;
   color: var(--navy-dark);
-  display: block;
 }
 
-.mobile-drawer-item-sub {
-  display: block;
-  font-size: 0.72rem;
+.anc-sub-link-desc {
+  font-size: 0.68rem;
   color: var(--muted);
-  font-weight: 400;
   line-height: 1.35;
-  white-space: normal;
-  word-break: break-word;
+  margin-top: 0.15rem;
 }
 
-.mobile-drawer-footer-card {
+/* Mobile Drawer Bottom CTA Section */
+.anc-drawer-footer-card {
   margin-top: auto;
-  padding: 1rem;
+  padding: 0.85rem;
   background: #081424;
-  border-radius: var(--radius);
-  border: 1px solid var(--gold-border);
-  color: #ffffff;
+  border-radius: 12px;
+  border: 1px solid rgba(184, 155, 94, 0.4);
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
 }
 
-.mobile-drawer-footer-title {
-  display: block;
-  font-size: 0.82rem;
-  font-weight: 700;
-  color: var(--gold);
-  margin-bottom: 0.25rem;
-}
-
-.mobile-drawer-footer-desc {
-  font-size: 0.75rem;
-  color: rgba(255, 255, 255, 0.78);
-  line-height: 1.5;
-  margin: 0 0 0.85rem;
-}
-
-.mobile-drawer-telegram-btn {
+.anc-bottom-plan-btn {
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  width: 100%;
-  padding: 0.6rem;
-  background: #229ed9;
+  padding: 0.75rem 1rem;
+  background: var(--navy);
+  border: 1px solid var(--gold);
+  border-radius: 8px;
   color: #ffffff;
-  border-radius: var(--radius-sm);
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.anc-bottom-plan-btn:hover {
+  background: #153155;
+  border-color: #d4af37;
+  transform: translateY(-1px);
+}
+
+.anc-bottom-telegram-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  padding: 0.65rem 0.9rem;
+  background: #229ed9;
+  border-radius: 8px;
+  color: #ffffff;
   font-size: 0.78rem;
   font-weight: 700;
   text-decoration: none;
-  transition: background 0.2s ease;
+  transition: background 0.18s ease;
 }
 
-.mobile-drawer-telegram-btn:hover {
+.anc-bottom-telegram-btn:hover {
   background: #1c88bd;
+}
+
+/* ============ All Nations Church Announcement Flyer Modal ============ */
+
+.anc-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 100000;
+  background: rgba(0, 0, 0, 0.82);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  animation: fadeInModal 0.2s ease;
+}
+
+@keyframes fadeInModal {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.anc-modal-container {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  max-height: 90vh;
+  background: #ffffff;
+  border: 4px solid var(--gold);
+  border-radius: 14px;
+  box-shadow: 0 25px 60px -12px rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: zoomInModal 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes zoomInModal {
+  from {
+    transform: scale(0.94);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@media (min-width: 768px) {
+  .anc-modal-container {
+    flex-direction: row;
+  }
+}
+
+.anc-modal-close-btn {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  z-index: 25;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(8, 20, 36, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.anc-modal-close-btn:hover {
+  background: var(--gold);
+  color: #081424;
+}
+
+.anc-modal-poster-wrap {
+  background: #081424;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  flex-shrink: 0;
+}
+
+@media (min-width: 768px) {
+  .anc-modal-poster-wrap {
+    width: 48%;
+    padding: 1.5rem;
+  }
+}
+
+.anc-modal-poster-img {
+  max-width: 100%;
+  max-height: 38vh;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+@media (min-width: 768px) {
+  .anc-modal-poster-img {
+    max-height: 75vh;
+  }
+}
+
+.anc-modal-info-wrap {
+  padding: 1.25rem 1.25rem 1.5rem;
+  background: #fdfbf7;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.25rem;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  flex: 1;
+}
+
+@media (min-width: 768px) {
+  .anc-modal-info-wrap {
+    padding: 2rem;
+  }
+}
+
+.anc-modal-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.6rem;
+  background: var(--gold);
+  color: #081424;
+  font-size: 0.68rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+}
+
+.anc-modal-title {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--navy);
+  line-height: 1.2;
+  margin: 0 0 0.25rem;
+}
+
+@media (min-width: 768px) {
+  .anc-modal-title {
+    font-size: 1.6rem;
+  }
+}
+
+.anc-modal-subtitle {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--muted);
+  margin: 0 0 1rem;
+}
+
+.anc-modal-kicker {
+  display: block;
+  font-size: 0.65rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--gold);
+  margin-bottom: 0.25rem;
+}
+
+.anc-modal-preacher-card {
+  padding: 0.75rem 0.9rem;
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--navy);
+  border-radius: 6px;
+  margin-bottom: 0.85rem;
+}
+
+.anc-modal-preacher-name {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--navy-dark);
+  line-height: 1.3;
+}
+
+.anc-modal-schedule-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  margin-bottom: 0.85rem;
+}
+
+.anc-modal-schedule-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  padding: 0.65rem 0.85rem;
+  background: #ffffff;
+  border: 1px solid var(--border-light);
+  border-radius: 6px;
+}
+
+.anc-modal-sch-title {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1.25;
+}
+
+.anc-modal-sch-time {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--gold);
+  font-family: var(--font-mono, monospace);
+  margin: 0.15rem 0;
+}
+
+.anc-modal-sch-desc {
+  font-size: 0.7rem;
+  color: var(--muted);
+  line-height: 1.35;
+}
+
+.anc-modal-loc-box {
+  padding: 0.65rem 0.85rem;
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+
+.anc-modal-loc-text {
+  font-size: 0.72rem;
+  color: var(--navy-dark);
+  line-height: 1.4;
+  margin: 0;
+}
+
+.anc-modal-actions-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border);
+}
+
+@media (min-width: 480px) {
+  .anc-modal-actions-row {
+    flex-direction: row;
+  }
+}
+
+.anc-modal-directions-btn {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  padding: 0.65rem 0.9rem;
+  background: #ffffff;
+  border: 1px solid var(--navy);
+  color: var(--navy);
+  border-radius: 6px;
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  text-align: center;
+}
+
+.anc-modal-directions-btn:hover {
+  background: var(--navy);
+  color: #ffffff;
+}
+
+.anc-modal-telegram-btn {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  padding: 0.65rem 0.9rem;
+  background: #229ed9;
+  border: 1px solid #229ed9;
+  color: #ffffff;
+  border-radius: 6px;
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 0.2s ease;
+  text-align: center;
+}
+
+.anc-modal-telegram-btn:hover {
+  background: #1b86b8;
 }
 
 /* ============ Hero Badge & Classic Framing ============ */
