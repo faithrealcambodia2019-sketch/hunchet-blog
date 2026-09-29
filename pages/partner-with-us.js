@@ -23,7 +23,7 @@ function GivingCard({ region, methods, href, externalLabel, featured = false }) 
   const t = useT();
 
   return (
-    <article className={`giving-card${featured ? " giving-card-featured" : ""}`} style={{ borderRadius: "2px", borderTop: "4px solid var(--gold)" }}>
+    <article className={`giving-card${featured ? " giving-card-featured" : ""}`} style={{ borderRadius: "var(--radius-lg)", borderTop: "3px solid var(--gold)" }}>
       <div className="giving-card-head">
         <span className="giving-region" style={{ color: "var(--gold)", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.12em" }}>
           {t(`partner.${region}.label`)}
@@ -171,7 +171,7 @@ export default function PartnerWithUs() {
               <GivingCard region="global" methods={GLOBAL_METHODS} href={MESSENGER_URL} externalLabel="Messenger" />
             </div>
 
-            <aside style={{ maxWidth: 720, margin: "3rem auto 0", padding: "1.5rem 1.75rem", background: "#ffffff", border: "1px solid var(--border)", borderLeft: "4px solid var(--gold)", borderRadius: "2px", display: "flex", gap: "1rem", alignItems: "flex-start" }}>
+            <aside style={{ maxWidth: 720, margin: "3rem auto 0", padding: "1.5rem 1.75rem", background: "#ffffff", border: "1px solid var(--border)", borderLeft: "3px solid var(--gold)", borderRadius: "var(--radius-lg)", boxShadow: "var(--shadow-sm)", display: "flex", gap: "1rem", alignItems: "flex-start" }}>
               <div style={{ color: "var(--gold)", marginTop: "2px" }}>
                 <CheckIcon />
               </div>

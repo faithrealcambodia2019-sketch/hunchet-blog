@@ -16,7 +16,7 @@
   background-color: #0b192c;
   color: #ffffff;
   padding: 4.5rem 1.5rem 3.75rem;
-  border-bottom: 8px solid var(--gold);
+  border-bottom: 3px solid var(--gold);
   text-align: center;
   overflow: hidden;
 }
@@ -243,11 +243,11 @@
   gap: 2.5rem;
   background: #ffffff;
   border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-lg);
   overflow: hidden;
   box-shadow: var(--shadow-md);
   margin-bottom: 3.5rem;
-  border-left: 6px solid var(--gold);
+  border-left: 3px solid var(--gold);
 }
 
 .library-featured-cover {
@@ -478,16 +478,16 @@
   flex-direction: column;
   background: #ffffff;
   border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius);
   overflow: hidden;
   box-shadow: var(--shadow-sm);
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.25s ease;
 }
 
 .library-card:hover {
   transform: translateY(-4px);
-  box-shadow: var(--shadow-md);
-  border-color: var(--gold);
+  box-shadow: var(--shadow-hover);
+  border-color: rgba(179, 146, 78, 0.45);
 }
 
 .library-card-cover {
@@ -497,7 +497,6 @@
   overflow: hidden;
   background: #0b192c;
   text-decoration: none;
-  border-top: 4px solid var(--gold);
 }
 
 .library-card-cover img {
@@ -887,7 +886,7 @@
 .library-mission-banner {
   background: #0b192c;
   color: #ffffff;
-  border-top: 6px solid var(--gold);
+  border-top: 3px solid var(--gold);
   border-bottom: 1px solid var(--border);
   padding: 3.5rem 1.5rem;
   margin-top: 4.5rem;

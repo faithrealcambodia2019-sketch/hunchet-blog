@@ -73,7 +73,7 @@ export default function Categories({ categories, error }) {
                 key={cat.id}
                 href={`/category/${cat.slug}`}
                 className="category-card"
-                style={{ borderTop: "3px solid var(--gold)", borderRadius: "2px" }}
+                style={{ borderTop: "3px solid var(--gold)", borderRadius: "var(--radius)" }}
               >
                 <span className="category-card-name" style={{ fontFamily: "var(--font-display)", color: "var(--navy-dark)" }}>
                   {cat.name}

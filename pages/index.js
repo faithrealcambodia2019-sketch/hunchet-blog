@@ -468,7 +468,6 @@ export default function Home({ posts = [], error }) {
               maxWidth: "680px",
               margin: "0 auto 2.5rem",
               lineHeight: 1.7,
-              textShadow: "0 2px 8px rgba(0,0,0,0.5)",
             }}
           >
             {locale === "km"
@@ -799,7 +798,7 @@ export default function Home({ posts = [], error }) {
                   alignItems: "center",
                   gap: "0.45rem",
                   padding: "0.35rem 0.95rem",
-                  borderRadius: "2px",
+                  borderRadius: "var(--radius-sm)",
                   background: "rgba(184, 155, 94, 0.2)",
                   border: "1px solid rgba(184, 155, 94, 0.4)",
                   color: "var(--gold)",
@@ -891,7 +890,7 @@ export default function Home({ posts = [], error }) {
                     background: "rgba(184, 155, 94, 0.12)",
                     border: "1px solid rgba(184, 155, 94, 0.3)",
                     padding: "1.5rem",
-                    borderRadius: "2px",
+                    borderRadius: "var(--radius-lg)",
                     display: "flex",
                     flexDirection: "column",
                     gap: "0.85rem",
@@ -917,7 +916,7 @@ export default function Home({ posts = [], error }) {
                         alignItems: "center",
                         gap: "0.4rem",
                         padding: "0.6rem 1.1rem",
-                        borderRadius: "2px",
+                        borderRadius: "var(--radius-sm)",
                         background: "rgba(14, 165, 233, 0.2)",
                         border: "1px solid rgba(14, 165, 233, 0.4)",
                         color: "#38bdf8",

@@ -134,7 +134,7 @@ export default function Post({ post }) {
 
           {/* Featured Image */}
           {image && (
-            <div style={{ marginBottom: "2.5rem", borderRadius: "2px", overflow: "hidden", borderBottom: "4px solid var(--gold)", boxShadow: "var(--shadow)" }}>
+            <div style={{ marginBottom: "2.5rem", borderRadius: "var(--radius-lg)", overflow: "hidden", borderBottom: "3px solid var(--gold)", boxShadow: "var(--shadow-md)" }}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={image}

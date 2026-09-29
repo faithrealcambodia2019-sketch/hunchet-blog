@@ -275,7 +275,7 @@ export default function Gallery() {
                           fontSize: "0.68rem",
                           fontWeight: 700,
                           padding: "0.15rem 0.45rem",
-                          borderRadius: "2px",
+                          borderRadius: "var(--radius-sm)",
                           border: "1px solid rgba(255, 255, 255, 0.2)",
                         }}
                       >
@@ -296,7 +296,7 @@ export default function Gallery() {
                         letterSpacing: "0.08em",
                         textTransform: "uppercase",
                         padding: "0.2rem 0.5rem",
-                        borderRadius: "2px",
+                        borderRadius: "var(--radius-sm)",
                         boxShadow: "0 2px 6px rgba(0, 0, 0, 0.3)",
                       }}
                     >
@@ -395,14 +395,14 @@ export default function Gallery() {
               >
                 <span
                   style={{
-                    padding: "0.2rem 0.55rem",
+                    padding: "0.25rem 0.65rem",
                     background: "var(--gold)",
                     color: "var(--navy-dark)",
                     fontSize: "0.68rem",
                     fontWeight: 700,
                     textTransform: "uppercase",
                     letterSpacing: "0.08em",
-                    borderRadius: "2px",
+                    borderRadius: "var(--radius-sm)",
                     flexShrink: 0,
                   }}
                 >
@@ -483,7 +483,7 @@ export default function Gallery() {
                       transform: "translateY(-50%)",
                       width: "42px",
                       height: "42px",
-                      borderRadius: "2px",
+                      borderRadius: "var(--radius-full)",
                       background: "rgba(0, 0, 0, 0.7)",
                       border: "1px solid rgba(255, 255, 255, 0.25)",
                       color: "#ffffff",
@@ -511,7 +511,7 @@ export default function Gallery() {
                       transform: "translateY(-50%)",
                       width: "42px",
                       height: "42px",
-                      borderRadius: "2px",
+                      borderRadius: "var(--radius-full)",
                       background: "rgba(0, 0, 0, 0.7)",
                       border: "1px solid rgba(255, 255, 255, 0.25)",
                       color: "#ffffff",
