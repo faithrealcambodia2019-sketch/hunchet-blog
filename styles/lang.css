@@ -110,14 +110,26 @@
    uppercase letter-spacing this theme uses on nav items and buttons. */
 
 html[lang="km"] body {
-  line-height: 1.9;
+  font-family: var(--font-khmer, "Kantumruy Pro", -apple-system, sans-serif);
+  line-height: 1.85;
 }
 
 html[lang="km"] h1,
 html[lang="km"] h2,
 html[lang="km"] h3,
 html[lang="km"] h4 {
-  line-height: 1.5;
+  font-family: var(--font-khmer-serif, var(--font-khmer, "Koh Santepheap", serif));
+  line-height: 1.45;
+  letter-spacing: 0;
+}
+
+html[lang="km"] .devotion-scripture-quote,
+html[lang="km"] .reading-scripture-box p,
+html[lang="km"] .devotion-prayer-quote,
+html[lang="km"] .devotion-quote,
+html[lang="km"] .scripture-banner p {
+  font-family: var(--font-khmer-serif, "Koh Santepheap", "Hanuman", serif);
+  line-height: 2.05;
 }
 
 html[lang="ko"] body,
@@ -160,9 +172,16 @@ html[lang="zh"] .story-lede p {
 }
 
 html[lang="km"] .site-nav a,
+html[lang="km"] .mobile-nav-link,
 html[lang="km"] .eyebrow,
+html[lang="km"] .btn,
 html[lang="km"] .book-btn,
 html[lang="km"] .book-meta,
+html[lang="km"] .library-btn,
+html[lang="km"] .resource-btn,
+html[lang="km"] .devotion-tab-btn,
+html[lang="km"] .devotion-action-btn,
+html[lang="km"] .devotion-nav-btn,
 html[lang="km"] .footer-col h4,
 html[lang="ko"] .site-nav a,
 html[lang="ko"] .eyebrow,

@@ -484,7 +484,7 @@
 .devotion-scripture-quote {
   position: relative;
   z-index: 2;
-  font-family: var(--font-khmer), serif;
+  font-family: var(--font-khmer-serif, var(--font-khmer)), serif;
   font-size: clamp(1.35rem, 2.5vw, 1.85rem);
   line-height: 2.05;
   color: #0b1a2d;

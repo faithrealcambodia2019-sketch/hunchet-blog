@@ -24,9 +24,11 @@
   --radius-lg: 12px;
   --radius-xl: 16px;
   --radius-full: 9999px;
-  --font-display: "Source Serif 4", "Playfair Display", "Koh Santepheap", Georgia, serif;
-  --font-body: "Inter", "Koh Santepheap", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-khmer: "Koh Santepheap", serif;
+  --font-display: "Playfair Display", "Cinzel", "Koh Santepheap", Georgia, serif;
+  --font-body: "Plus Jakarta Sans", "Inter", "Kantumruy Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-khmer: "Kantumruy Pro", "Koh Santepheap", -apple-system, sans-serif;
+  --font-khmer-serif: "Koh Santepheap", "Hanuman", serif;
+  --font-khmer-display: "Moul", "Koh Santepheap", "Hanuman", serif;
   --shadow-sm: 0 1px 3px 0 rgba(15, 23, 42, 0.04);
   --shadow: 0 4px 16px -2px rgba(15, 23, 42, 0.06), 0 2px 4px -1px rgba(15, 23, 42, 0.03);
   --shadow-md: 0 10px 28px -4px rgba(15, 23, 42, 0.08), 0 4px 10px -2px rgba(15, 23, 42, 0.04);
