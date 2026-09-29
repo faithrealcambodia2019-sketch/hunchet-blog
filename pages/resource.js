@@ -16,6 +16,24 @@ import {
 
 const CORE_RESOURCES = [
   {
+    key: "devotions",
+    title: {
+      en: "Daily Devotions & 365 Sanctuary",
+      km: "ព្រះបន្ទូលប្រចាំថ្ងៃ & ទីជម្រក ៣៦៥ ថ្ងៃ",
+      ko: "매일 묵상과 365일 안식처",
+      zh: "每日灵修与365天圣经安息地",
+    },
+    desc: {
+      en: "Verbatim 1954 Old Khmer Version scripture, daily reflections, application questions, and pastoral prayers.",
+      km: "ព្រះគម្ពីរខ្មែរបកប្រែចាស់ ១៩៥៤ Verbatim ការពិចារណា សំណួរអនុវត្ត និងសេចក្តីអធិស្ឋានប្រចាំថ្ងៃ។",
+      ko: "1954 크메르어 고역 성경 원문 묵상, 나눔 질문 및 매일의 목회 기도문.",
+      zh: "1954高棉传统圣经原文经文、每日灵修省思、生活应用与教牧代祷。",
+    },
+    image: "/images/nature/sunrise.jpg",
+    href: "/devotions",
+    badge: "Daily Bread",
+  },
+  {
     key: "library",
     title: {
       en: "Theological Library & Books",

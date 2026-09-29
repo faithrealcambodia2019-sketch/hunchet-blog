@@ -4,6 +4,7 @@ import "../styles/globals.css";
 import "../styles/extra.css";
 import "../styles/library.css";
 import "../styles/video.css";
+import "../styles/devotion.css";
 import "../styles/lang.css";
 import "../styles/motion.css";
 

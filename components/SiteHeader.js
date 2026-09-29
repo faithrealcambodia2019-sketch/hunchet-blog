@@ -6,11 +6,13 @@ import { LOCALES, useT } from "../lib/i18n";
 
 const navItems = [
   { href: "/", key: "nav.home" },
+  { href: "/devotions", key: "nav.devotions" },
   { href: "/gallery", key: "nav.gallery" },
   { href: "/library", key: "nav.library" },
   { href: "/resource", key: "nav.resource" },
   { href: "/articles", key: "nav.article" },
   { href: "/about", key: "nav.about" },
+  { href: "/contact", key: "nav.contact" },
   { href: "/partner-with-us", key: "nav.partner" },
 ];
 

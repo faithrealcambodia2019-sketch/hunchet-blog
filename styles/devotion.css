@@ -1,0 +1,885 @@
+/* =====================================================================
+   Daily Devotions & 365 Scripture Sanctuary Styles
+   All Nations Church Classic Ministry Aesthetic
+   ===================================================================== */
+
+/* ---------------- Hero Section ---------------- */
+.devotion-hero {
+  position: relative;
+  background-color: #0b192c;
+  color: #ffffff;
+  padding: 4.5rem 1.5rem 3.75rem;
+  border-bottom: 8px solid var(--gold);
+  text-align: center;
+  overflow: hidden;
+}
+
+.devotion-hero-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.24) contrast(1.1);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.devotion-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(11, 25, 44, 0.88) 0%,
+    rgba(15, 39, 68, 0.82) 50%,
+    rgba(11, 25, 44, 0.94) 100%
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
+.devotion-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.devotion-badge-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.9rem;
+  background: rgba(184, 155, 94, 0.16);
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border-radius: var(--radius-sm);
+  margin-bottom: 1.25rem;
+}
+
+.devotion-badge-tag svg {
+  width: 14px;
+  height: 14px;
+  flex: none;
+}
+
+.devotion-hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4.5vw, 3.25rem);
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 0.85rem;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.devotion-hero-sub {
+  font-family: var(--font-khmer), var(--font-display);
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  color: rgba(255, 255, 255, 0.88);
+  margin: 0 auto 1.5rem;
+  max-width: 720px;
+  line-height: 1.85;
+}
+
+.devotion-gold-divider {
+  width: 5rem;
+  height: 3px;
+  background: var(--gold);
+  margin: 0 auto 1.75rem;
+}
+
+.devotion-stats-strip {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.devotion-stat-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.devotion-stat-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--gold);
+}
+
+/* ---------------- Tabs Navigation Bar ---------------- */
+.devotion-tabs-bar {
+  position: sticky;
+  top: 72px;
+  z-index: 25;
+  background: rgba(252, 251, 249, 0.96);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 4px 12px rgba(11, 25, 44, 0.04);
+  padding: 0.85rem 0;
+  margin-bottom: 2.5rem;
+}
+
+.devotion-tabs-list {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.devotion-tab-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.25rem;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--navy-dark);
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.devotion-tab-btn:hover {
+  border-color: var(--gold);
+  color: var(--navy);
+}
+
+.devotion-tab-btn.is-active {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: #ffffff;
+}
+
+.devotion-tab-btn svg {
+  width: 15px;
+  height: 15px;
+}
+
+/* ---------------- Today Devotion Card ---------------- */
+.devotion-today-card {
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-top: 4px solid var(--gold);
+  border-radius: 2px;
+  box-shadow: var(--shadow);
+  padding: 3rem 2.5rem;
+  margin-bottom: 3.5rem;
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .devotion-today-card {
+    padding: 2rem 1.5rem;
+  }
+}
+
+.devotion-today-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border-light);
+  margin-bottom: 2rem;
+}
+
+.devotion-date-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.devotion-topic-tag {
+  padding: 0.25rem 0.75rem;
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--navy);
+}
+
+.devotion-scripture-quote {
+  font-family: var(--font-khmer), var(--font-display);
+  font-size: clamp(1.2rem, 2.4vw, 1.65rem);
+  line-height: 1.85;
+  color: var(--navy-dark);
+  margin: 0 0 1.25rem;
+  font-weight: 600;
+}
+
+.devotion-scripture-en {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: var(--text);
+  font-style: italic;
+  margin: 0 0 1rem;
+  padding-left: 1.25rem;
+  border-left: 3px solid var(--border);
+}
+
+.devotion-scripture-ko {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--muted);
+  margin: 0 0 1.5rem;
+  padding-left: 1.25rem;
+  border-left: 3px solid var(--border-light);
+}
+
+.devotion-scripture-ref {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--gold);
+  margin-bottom: 2rem;
+}
+
+.devotion-actions-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  padding: 1.25rem 0;
+  border-top: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light);
+  margin-bottom: 2.5rem;
+}
+
+.devotion-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.55rem 1.1rem;
+  font-family: var(--font-body);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--navy-dark);
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.devotion-action-btn:hover {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: #ffffff;
+}
+
+.devotion-action-btn.is-active {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: #ffffff;
+}
+
+.devotion-action-btn svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+/* Meditation & Reflection Columns */
+.devotion-reflection-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+@media (max-width: 768px) {
+  .devotion-reflection-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.devotion-reflection-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 1.75rem;
+}
+
+.devotion-reflection-card h4 {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--navy-dark);
+  margin: 0 0 0.85rem;
+}
+
+.devotion-reflection-card p {
+  font-size: 0.94rem;
+  line-height: 1.75;
+  color: var(--text);
+  margin: 0 0 0.75rem;
+}
+
+/* Guided Prayer Box */
+.devotion-prayer-card {
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-left: 5px solid var(--gold);
+  border-radius: 2px;
+  padding: 2rem;
+  margin-top: 2rem;
+}
+
+.devotion-prayer-card h4 {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--navy-dark);
+  margin: 0 0 0.75rem;
+}
+
+.devotion-prayer-card p {
+  font-family: var(--font-khmer), var(--font-display);
+  font-size: 1.05rem;
+  line-height: 1.85;
+  color: var(--text);
+  margin: 0 0 0.5rem;
+  font-style: italic;
+}
+
+.devotion-prayer-card small {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* Jump Navigation Strip */
+.devotion-nav-strip {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-light);
+  margin-top: 2.5rem;
+}
+
+.devotion-nav-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.6rem 1.25rem;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--navy);
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.devotion-nav-btn:hover {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: #ffffff;
+}
+
+/* ---------------- 365-Day Calendar Explorer ---------------- */
+.devotion-progress-box {
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 1.5rem 2rem;
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.devotion-progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--navy-dark);
+  font-size: 0.95rem;
+}
+
+.devotion-progress-bar-wrap {
+  width: 100%;
+  height: 8px;
+  background: var(--bg-alt);
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid var(--border-light);
+}
+
+.devotion-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--gold) 0%, #d4bc78 100%);
+  transition: width 0.4s ease;
+}
+
+.devotion-theme-banner {
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--gold);
+  border-radius: 2px;
+  padding: 1.75rem 2rem;
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.devotion-theme-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.4rem;
+}
+
+.devotion-theme-title {
+  font-family: var(--font-khmer), var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--navy-dark);
+  margin: 0 0 0.5rem;
+}
+
+.devotion-theme-desc {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--text);
+  margin: 0;
+}
+
+.devotion-months-grid {
+  display: flex;
+  gap: 0.45rem;
+  overflow-x: auto;
+  padding-bottom: 0.75rem;
+  margin-bottom: 1.75rem;
+}
+
+.devotion-month-btn {
+  flex: 0 0 auto;
+  padding: 0.6rem 1.1rem;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--navy-dark);
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.devotion-month-btn:hover {
+  border-color: var(--gold);
+}
+
+.devotion-month-btn.is-active {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: #0b192c;
+}
+
+.devotion-days-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(44px, 1fr));
+  gap: 0.45rem;
+  margin-bottom: 2.5rem;
+}
+
+.devotion-day-btn {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 700;
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  cursor: pointer;
+  color: var(--navy-dark);
+  transition: all 0.15s ease;
+  position: relative;
+}
+
+.devotion-day-btn:hover {
+  border-color: var(--navy);
+  color: var(--navy);
+}
+
+.devotion-day-btn.is-active {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: #ffffff;
+}
+
+.devotion-day-btn.is-today {
+  border: 2px solid var(--navy-dark);
+  font-weight: 900;
+}
+
+.devotion-day-btn.is-completed::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--gold);
+}
+
+/* ---------------- 500 Verses Grid & Cards ---------------- */
+.devotion-search-row {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.devotion-search-input-wrap {
+  position: relative;
+  flex: 1;
+  min-width: 260px;
+}
+
+.devotion-search-input-wrap svg {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  color: var(--muted);
+  pointer-events: none;
+}
+
+.devotion-search-input {
+  width: 100%;
+  padding: 0.75rem 1rem 0.75rem 2.6rem;
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  background: #ffffff;
+  color: var(--navy-dark);
+  transition: border-color 0.2s ease;
+}
+
+.devotion-search-input:focus {
+  outline: none;
+  border-color: var(--gold);
+  box-shadow: 0 0 0 2px rgba(184, 155, 94, 0.15);
+}
+
+.devotion-category-pills {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.devotion-cat-pill {
+  padding: 0.45rem 1rem;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 700;
+  border: 1px solid var(--border);
+  background: #ffffff;
+  color: var(--navy-dark);
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.devotion-cat-pill:hover {
+  border-color: var(--gold);
+  color: var(--navy);
+}
+
+.devotion-cat-pill.is-active {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: #ffffff;
+}
+
+.devotion-results-count {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--muted);
+  margin-bottom: 1.5rem;
+}
+
+.devotion-verses-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.75rem;
+  margin-top: 1rem;
+}
+
+.devotion-verse-card {
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--gold);
+  border-radius: 2px;
+  padding: 1.75rem;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.devotion-verse-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+  border-color: var(--gold);
+}
+
+.devotion-verse-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.devotion-verse-ref {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--navy);
+}
+
+.devotion-verse-text-km {
+  font-family: var(--font-khmer), serif;
+  font-size: 1rem;
+  line-height: 1.85;
+  color: var(--navy-dark);
+  margin: 0 0 0.85rem;
+}
+
+.devotion-verse-text-en {
+  font-size: 0.88rem;
+  line-height: 1.65;
+  color: var(--muted);
+  font-style: italic;
+  margin: 0 0 1.25rem;
+}
+
+.devotion-verse-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--border-light);
+}
+
+.devotion-verse-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--navy);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.3rem 0.5rem;
+  border-radius: 2px;
+  transition: all 0.15s ease;
+}
+
+.devotion-verse-action-btn:hover {
+  color: var(--gold);
+  background: var(--bg-alt);
+}
+
+.devotion-verse-action-btn svg {
+  width: 13px;
+  height: 13px;
+}
+
+.devotion-load-more-wrap {
+  text-align: center;
+  margin-top: 2.75rem;
+}
+
+.devotion-load-more-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 2.25rem;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--navy-dark);
+  background: #ffffff;
+  border: 2px solid var(--gold);
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.devotion-load-more-btn:hover {
+  background: var(--gold);
+  color: #0b192c;
+}
+
+/* ---------------- Toast Notification ---------------- */
+.devotion-toast {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background: var(--navy-dark);
+  color: #ffffff;
+  border-left: 4px solid var(--gold);
+  padding: 0.85rem 1.5rem;
+  border-radius: 2px;
+  box-shadow: 0 8px 24px rgba(11, 25, 44, 0.25);
+  font-size: 0.85rem;
+  font-weight: 600;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  animation: devotionFadeUp 0.25s ease;
+}
+
+@keyframes devotionFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---------------- Ministry Crosslink Section ---------------- */
+.devotion-crosslink-section {
+  background: var(--bg-alt);
+  border-top: 1px solid var(--border);
+  padding: 4rem 1.5rem;
+  margin-top: 4rem;
+}
+
+.devotion-crosslink-title {
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: 1.85rem;
+  color: var(--navy-dark);
+  margin-bottom: 0.75rem;
+}
+
+.devotion-crosslink-sub {
+  text-align: center;
+  font-size: 1rem;
+  color: var(--muted);
+  max-width: 600px;
+  margin: 0 auto 2.5rem;
+}
+
+.devotion-crosslink-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.devotion-crosslink-card {
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--gold);
+  border-radius: 2px;
+  padding: 2rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.devotion-crosslink-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+  border-color: var(--gold);
+}
+
+.devotion-crosslink-card h4 {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  color: var(--navy-dark);
+  margin: 0 0 0.65rem;
+}
+
+.devotion-crosslink-card p {
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: var(--text);
+  margin: 0 0 1.25rem;
+}
+
+.devotion-crosslink-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
+}

@@ -67,6 +67,9 @@ export default function SiteFooter() {
           <h4>{t("footer.explore")}</h4>
           <ul className="footer-links">
             <li>
+              <Link href="/devotions">{t("nav.devotions")}</Link>
+            </li>
+            <li>
               <Link href="/articles">{t("nav.article")}</Link>
             </li>
             <li>

@@ -678,7 +678,7 @@ export default function Home({ posts = [], error }) {
                 <cite className="devotion-ref">— {currentScripture.ref}</cite>
 
                 <Link
-                  href="/articles"
+                  href="/devotions"
                   className="btn btn-primary"
                   style={{ padding: "0.65rem 1.4rem", fontSize: "0.72rem" }}
                 >
