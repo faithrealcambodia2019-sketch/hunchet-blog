@@ -2509,6 +2509,18 @@ img {
   .partner-final .partner-btn {
     width: 100%;
   }
+
+  .pulpit-stats-strip {
+    gap: 0.65rem !important;
+  }
+
+  .pulpit-stats-strip strong {
+    font-size: 1.25rem !important;
+  }
+
+  .pulpit-stats-strip span {
+    font-size: 0.68rem !important;
+  }
 }
 
 /* ==========================================================================

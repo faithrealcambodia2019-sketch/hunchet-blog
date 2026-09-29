@@ -745,6 +745,7 @@ export default function Home({ posts = [], error }) {
                 </p>
 
                 <div
+                  className="pulpit-stats-strip"
                   style={{
                     display: "grid",
                     gridTemplateColumns: "repeat(3, 1fr)",

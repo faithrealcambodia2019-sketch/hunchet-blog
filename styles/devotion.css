@@ -1412,3 +1412,329 @@
   text-transform: uppercase;
   color: var(--gold);
 }
+
+/* ========================================================
+   COMPREHENSIVE MOBILE OPTIMIZATIONS (Smartphones & Tablets)
+   ======================================================== */
+@media (max-width: 768px) {
+  .devotion-hero {
+    padding: 4rem 1.25rem 3.25rem;
+  }
+
+  .devotion-today-card {
+    padding: 2rem 1.5rem;
+  }
+
+  .devotion-scripture-showcase {
+    padding: 2.25rem 1.5rem 1.75rem;
+  }
+
+  .devotion-reflection-grid {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+  }
+
+  .devotion-prayer-card {
+    padding: 2rem 1.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .devotion-hero {
+    padding: 3.5rem 1.15rem 2.75rem;
+  }
+
+  .devotion-hero-title {
+    font-size: clamp(1.75rem, 7vw, 2.3rem);
+    line-height: 1.22;
+  }
+
+  .devotion-hero-sub {
+    font-size: 0.95rem;
+    line-height: 1.75;
+    margin-bottom: 1.25rem;
+  }
+
+  .devotion-stats-strip {
+    gap: 0.65rem 1rem;
+    font-size: 0.72rem;
+  }
+
+  /* Floating Segment Controller */
+  .devotion-tabs-bar {
+    padding: 0.5rem 0;
+    margin-bottom: 1.5rem;
+  }
+
+  .devotion-tabs-list {
+    width: 100%;
+    display: flex;
+    gap: 0.25rem;
+    padding: 0.25rem;
+    border-radius: var(--radius);
+  }
+
+  .devotion-tab-btn {
+    flex: 1 1 0;
+    padding: 0.55rem 0.35rem;
+    font-size: 0.68rem;
+    letter-spacing: 0.02em;
+    gap: 0.3rem;
+    justify-content: center;
+    border-radius: var(--radius-sm);
+  }
+
+  .devotion-tab-badge {
+    display: none;
+  }
+
+  .devotion-main-container {
+    padding: 0 0.85rem 3rem;
+  }
+
+  /* Sanctuary Devotion Card */
+  .devotion-today-card {
+    padding: 1.75rem 1.15rem;
+    margin-bottom: 2.25rem;
+    border-radius: var(--radius);
+  }
+
+  .devotion-today-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.65rem;
+    padding-bottom: 1.15rem;
+    margin-bottom: 1.5rem;
+  }
+
+  /* Action Buttons Toolbar */
+  .devotion-actions-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+    padding: 0.75rem;
+    margin-bottom: 1.75rem;
+  }
+
+  .devotion-actions-left,
+  .devotion-actions-right {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    gap: 0.5rem;
+  }
+
+  .devotion-action-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 0.6rem 0.4rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.02em;
+  }
+
+  /* Scripture Showcase */
+  .devotion-scripture-showcase {
+    padding: 1.75rem 1.15rem 1.5rem;
+    margin-bottom: 2rem;
+    border-radius: var(--radius);
+  }
+
+  .devotion-watermark-quote {
+    font-size: 4.5rem;
+    top: -0.5rem;
+    right: 0.5rem;
+  }
+
+  .devotion-scripture-top-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin-bottom: 1.35rem;
+  }
+
+  .devotion-scripture-ref-seal {
+    font-size: 0.95rem;
+    padding: 0.35rem 0.85rem;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .devotion-lang-pills {
+    width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    padding: 0.2rem;
+    justify-content: flex-start;
+  }
+
+  .devotion-lang-pill {
+    flex-shrink: 0;
+    padding: 0.3rem 0.65rem;
+    font-size: 0.68rem;
+  }
+
+  .devotion-scripture-quote {
+    font-size: 1.22rem;
+    line-height: 1.95;
+    padding: 0;
+    margin-bottom: 1.5rem;
+    text-align: left;
+  }
+
+  .devotion-trans-card {
+    padding: 1rem 1.15rem;
+  }
+
+  /* Reflection & Application */
+  .devotion-reflection-grid {
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .devotion-reflection-card {
+    padding: 1.5rem 1.15rem;
+    border-radius: var(--radius);
+  }
+
+  .devotion-key-truth-box {
+    padding: 1rem 1.15rem;
+  }
+
+  .devotion-app-card {
+    padding: 1rem 1.15rem;
+  }
+
+  /* Prayer Card */
+  .devotion-prayer-card {
+    padding: 1.75rem 1.15rem;
+    margin-bottom: 2.25rem;
+    outline-offset: 3px;
+    border-radius: var(--radius);
+  }
+
+  .devotion-prayer-quote {
+    font-size: 1.05rem;
+    line-height: 1.9;
+  }
+
+  /* Navigation Stepper */
+  .devotion-nav-strip {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.65rem;
+    padding-top: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .devotion-nav-btn {
+    justify-content: center;
+    padding: 0.65rem 0.5rem;
+    font-size: 0.72rem;
+    width: 100%;
+  }
+
+  .devotion-nav-btn:nth-child(2):not(:last-child) {
+    grid-column: span 2;
+    order: -1;
+  }
+
+  /* Calendar View */
+  .devotion-progress-box {
+    padding: 1.35rem 1.15rem;
+    border-radius: var(--radius);
+  }
+
+  .devotion-progress-header {
+    font-size: 0.95rem;
+  }
+
+  .devotion-theme-banner {
+    padding: 1.35rem 1.15rem;
+    border-radius: var(--radius);
+  }
+
+  .devotion-theme-title {
+    font-size: 1.2rem;
+  }
+
+  .devotion-days-grid {
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.3rem;
+  }
+
+  .devotion-day-btn {
+    font-size: 0.8rem;
+    border-radius: 4px;
+  }
+
+  .devotion-day-spotlight {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 1.35rem 1.15rem;
+    gap: 1rem;
+    border-radius: var(--radius);
+  }
+
+  /* 500 Verses View */
+  .devotion-search-row {
+    margin-bottom: 1.25rem;
+  }
+
+  .devotion-search-input {
+    padding: 0.75rem 1rem 0.75rem 2.6rem;
+    font-size: 0.88rem;
+  }
+
+  .devotion-category-pills {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .devotion-cat-pill {
+    flex: 0 0 auto;
+    padding: 0.45rem 0.9rem;
+    font-size: 0.72rem;
+  }
+
+  .devotion-verses-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .devotion-verse-card {
+    padding: 1.35rem 1.15rem;
+    border-radius: var(--radius);
+  }
+
+  /* Toast Notification */
+  .devotion-toast {
+    left: 1rem;
+    right: 1rem;
+    bottom: 1rem;
+    padding: 0.85rem 1.25rem;
+    font-size: 0.82rem;
+    justify-content: center;
+  }
+
+  .devotion-crosslink-section {
+    padding: 3rem 1.15rem;
+    margin-top: 3rem;
+  }
+
+  .devotion-crosslink-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .devotion-crosslink-card {
+    padding: 1.75rem 1.25rem;
+    border-radius: var(--radius);
+  }
+}
