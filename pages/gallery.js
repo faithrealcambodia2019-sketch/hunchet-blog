@@ -104,25 +104,16 @@ export default function Gallery() {
       <SiteHeader />
 
       {/* 1. STATELY HERO SECTION */}
-      <section className="gallery-hero">
-        <div className="container">
-          <div
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "0.5rem",
-              padding: "0.35rem 0.85rem",
-              borderRadius: "2px",
-              background: "rgba(184, 155, 94, 0.18)",
-              border: "1px solid var(--gold)",
-              color: "var(--gold)",
-              fontSize: "0.72rem",
-              fontWeight: 700,
-              letterSpacing: "0.14em",
-              textTransform: "uppercase",
-              marginBottom: "1rem",
-            }}
-          >
+      <section className="sanctuary-hero">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/images/youth-fellowship-2025-group.jpg"
+          alt="All Nations Church Family and Youth"
+          className="sanctuary-hero-bg"
+        />
+        <div className="sanctuary-hero-overlay" />
+        <div className="sanctuary-hero-content">
+          <div className="sanctuary-badge-tag">
             <CameraIcon style={{ width: 14, height: 14 }} />
             <span>
               {locale === "km"
@@ -131,50 +122,50 @@ export default function Gallery() {
             </span>
           </div>
 
-          <h1
-            style={{
-              fontFamily: "var(--font-display)",
-              fontSize: "clamp(2rem, 4.5vw, 3.4rem)",
-              color: "#ffffff",
-              margin: "0 0 0.75rem",
-              fontWeight: 700,
-              lineHeight: 1.2,
-            }}
-          >
+          <h1 className="sanctuary-hero-title">
             {locale === "km"
               ? "កម្រងរូបភាពព័ន្ធកិច្ច និងក្រុមជំនុំ"
               : "Ministry & Church Gallery"}
           </h1>
 
-          <p
-            style={{
-              fontFamily: "var(--font-display)",
-              fontStyle: "italic",
-              color: "var(--gold)",
-              fontSize: "clamp(1.1rem, 2vw, 1.4rem)",
-              margin: "0 auto 1.25rem",
-            }}
-          >
+          <p className="sanctuary-hero-subtitle">
             {locale === "km"
               ? "ក្រុមជំនុំអលណេសិន • ព័ន្ធកិច្ចឌីជីថល • ការបណ្តុះសិស្សជំនាន់ក្រោយ"
               : "All Nations Church • Digital Outreach • Generational Discipleship"}
           </p>
 
-          <div className="hero-divider-classic" style={{ margin: "0 auto 1.5rem" }} />
-
-          <p
-            style={{
-              color: "#e2e8f0",
-              maxWidth: "680px",
-              margin: "0 auto",
-              fontSize: "0.98rem",
-              lineHeight: 1.7,
-            }}
-          >
+          <p className="sanctuary-hero-lead">
             {locale === "km"
               ? "ទិដ្ឋភាពពិតនៃការថ្វាយបង្គំ ការផ្សាយព្រះបន្ទូលលើវេទិកា ពិធីបុណ្យជ្រមុជទឹក ការប្រកបគ្នារបស់យុវជន និងថ្នាក់រៀនព្រះគម្ពីរកុមារ នៅរាជធានីភ្នំពេញ។"
               : "Authentic glimpses of heartfelt worship, pastoral preaching from the pulpit, water baptism celebrations, and loving fellowship at All Nations Church."}
           </p>
+
+          <div className="sanctuary-stat-strip">
+            <div className="sanctuary-stat-card">
+              <span className="sanctuary-stat-num">8</span>
+              <span className="sanctuary-stat-label">
+                {locale === "km" ? "អាល់ប៊ុមព័ន្ធកិច្ច" : "Ministry Albums"}
+              </span>
+            </div>
+            <div className="sanctuary-stat-card">
+              <span className="sanctuary-stat-num">48+</span>
+              <span className="sanctuary-stat-label">
+                {locale === "km" ? "រូបភាព និងវីដេអូពិត" : "Curated Photos"}
+              </span>
+            </div>
+            <div className="sanctuary-stat-card">
+              <span className="sanctuary-stat-num">2013–2026</span>
+              <span className="sanctuary-stat-label">
+                {locale === "km" ? "ប្រវត្តិព័ន្ធកិច្ច" : "Ministry Timeline"}
+              </span>
+            </div>
+            <div className="sanctuary-stat-card">
+              <span className="sanctuary-stat-num">HD</span>
+              <span className="sanctuary-stat-label">
+                {locale === "km" ? "គុណភាពច្បាស់" : "Full Resolution"}
+              </span>
+            </div>
+          </div>
         </div>
       </section>
 

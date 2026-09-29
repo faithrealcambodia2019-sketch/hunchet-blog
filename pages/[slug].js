@@ -11,6 +11,8 @@ const RESERVED_SLUGS = new Set([
   "articles",
   "resource",
   "gallery",
+  "devotions",
+  "partner-with-us",
   "index",
   "404",
   "500",
