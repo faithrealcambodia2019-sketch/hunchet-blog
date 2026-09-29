@@ -423,7 +423,7 @@ export default function DevotionsPage() {
           property="og:description"
           content={pick(STRINGS.heroSub, locale)}
         />
-        <meta property="og:image" content="/images/nature/sunrise.jpg" />
+        <meta property="og:image" content="/images/open-bible-morning.jpg" />
       </Head>
 
       <SiteHeader />
@@ -432,7 +432,7 @@ export default function DevotionsPage() {
       <section className="devotion-hero">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="/images/nature/sunrise.jpg"
+          src="/images/open-bible-morning.jpg"
           alt="Sanctuary Devotions"
           className="devotion-hero-bg"
           aria-hidden="true"

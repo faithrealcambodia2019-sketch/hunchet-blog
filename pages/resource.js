@@ -29,7 +29,7 @@ const CORE_RESOURCES = [
       ko: "1954 크메르어 고역 성경 원문 묵상, 나눔 질문 및 매일의 목회 기도문.",
       zh: "1954高棉传统圣经原文经文、每日灵修省思、生活应用与教牧代祷。",
     },
-    image: "/images/nature/sunrise.jpg",
+    image: "/images/open-bible-morning.jpg",
     href: "/devotions",
     badge: "Daily Bread",
   },
