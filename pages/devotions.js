@@ -17,6 +17,9 @@ import {
   CheckIcon,
   ChevronLeftIcon,
   ChevronRightIcon,
+  TelegramIcon,
+  UserIcon,
+  CloseIcon,
 } from "../components/Icons";
 import {
   YEAR_MONTHS,
@@ -45,7 +48,7 @@ const STRINGS = {
     zh: "每日灵修与365天圣经安息地",
   },
   heroSub: {
-    en: "Verbatim 1954/1962 Old Khmer Version scripture, daily reflections, application questions, and pastoral prayers for quiet time and discipleship.",
+    en: "Verbatim 1954/1962 Old Khmer Version scripture, daily biblical reflections, life applications, and pastoral prayers for quiet time and discipleship.",
     km: "ព្រះគម្ពីរភាសាខ្មែរបកប្រែចាស់ ១៩៥៤ Verbatim ការពិចារណាព្រះបន្ទូល សំណួរអនុវត្ត និងសេចក្តីអធិស្ឋានប្រចាំថ្ងៃ សម្រាប់ជីវិតស្ងប់ស្ងាត់ និងការបណ្តុះសិស្ស។",
     ko: "1954/1962 크메르어 고역 성경 원문과 묵상, 나눔 질문 및 목회 기도문.",
     zh: "1954/1962高棉语传统圣经原文经文、每日默想、应用省思与教牧祷告。",
@@ -86,6 +89,12 @@ const STRINGS = {
     ko: "말씀 복사",
     zh: "复制经文",
   },
+  btnShareTelegram: {
+    en: "Telegram",
+    km: "Telegram",
+    ko: "텔레그램",
+    zh: "Telegram",
+  },
   btnMarkRead: {
     en: "Mark as Read",
     km: "សម្គាល់ថាបានអាន",
@@ -122,8 +131,20 @@ const STRINGS = {
     ko: "말씀 묵상과 교훈",
     zh: "真理默想与反思",
   },
+  pastorInsight: {
+    en: "Leader Hun Chet's Pastoral Exposition",
+    km: "ការពិចារណា និងពន្លឺព្រះបន្ទូល • លោកគ្រូ ហ៊ុន ចិត្ត",
+    ko: "훈 쳇 목회자 강해와 묵상",
+    zh: "洪哲牧者解经与默想",
+  },
+  keyTruth: {
+    en: "Foundational Truth",
+    km: "សេចក្តីពិតគ្រឹះ",
+    ko: "핵심 진리",
+    zh: "核心真理",
+  },
   applicationTitle: {
-    en: "Practical Application",
+    en: "Practical Life Application",
     km: "សំណួរអនុវត្តជីវិត",
     ko: "삶의 적용과 실천",
     zh: "生活应用与问答",
@@ -133,6 +154,12 @@ const STRINGS = {
     km: "សេចក្តីអធិស្ឋានដឹកនាំ",
     ko: "목회자 인도 기도문",
     zh: "教牧导引祷告",
+  },
+  amenSeal: {
+    en: "In Jesus' Holy Name, Amen.",
+    km: "ក្នុងព្រះនាមព្រះអម្ចាស់យេស៊ូវគ្រីស្ទ អាម៉ែន។",
+    ko: "예수 그리스도의 이름으로 기도합니다. 아멘.",
+    zh: "奉主耶稣基督圣名祈求，阿们。",
   },
   progressTitle: {
     en: "Annual Spiritual Journey Progress",
@@ -158,28 +185,67 @@ const STRINGS = {
     ko: "묵상 보기",
     zh: "查看灵修",
   },
+  langAll: {
+    en: "All Translations",
+    km: "គ្រប់ភាសា",
+    ko: "모든 번역",
+    zh: "全部语言",
+  },
+  langKm: {
+    en: "Khmer (1954)",
+    km: "ភាសាខ្មែរ (១៩៥៤)",
+    ko: "크메르어 (1954)",
+    zh: "高棉语 (1954)",
+  },
+  langEn: {
+    en: "English (WEB)",
+    km: "អង់គ្លេស (WEB)",
+    ko: "영어 (WEB)",
+    zh: "英语 (WEB)",
+  },
+  langKo: {
+    en: "Korean (한국어)",
+    km: "កូរ៉េ (한국어)",
+    ko: "한국어",
+    zh: "韩语",
+  },
+  dayPreviewTitle: {
+    en: "Selected Day Scripture Preview",
+    km: "មើលព្រះបន្ទូលសង្ខេបនៃថ្ងៃជ្រើសរើស",
+    ko: "선택한 날짜 말씀 미리보기",
+    zh: "所选日期经文预览",
+  },
+  readFullDevotion: {
+    en: "Read Full Day Devotion →",
+    km: "អានការពិចារណាពេញលេញ →",
+    ko: "전체 묵상 읽기 →",
+    zh: "阅读完整灵修 →",
+  },
 };
 
 export default function DevotionsPage() {
   const t = useT();
   const locale = useLocale();
 
-  // Active state
+  // Active navigation states
   const [activeTab, setActiveTab] = useState("today"); // 'today' | 'calendar' | 'verses'
   const [currentDevotion, setCurrentDevotion] = useState(() => getTodayDevotion());
   const [selectedMonth, setSelectedMonth] = useState(1);
+  const [previewDay, setPreviewDay] = useState(null);
   const [activeCategory, setActiveCategory] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
   const [visibleVersesCount, setVisibleVersesCount] = useState(24);
   const [completedDays, setCompletedDays] = useState([]);
   const [isPlayingAudio, setIsPlayingAudio] = useState(false);
   const [toastMessage, setToastMessage] = useState(null);
+  const [activeScriptureLang, setActiveScriptureLang] = useState("all"); // 'all' | 'km' | 'en' | 'ko'
 
   // Initialize client-side state
   useEffect(() => {
     const today = getTodayDevotion();
     setCurrentDevotion(today);
     setSelectedMonth(today.month || 1);
+    setPreviewDay(today);
 
     try {
       const saved = localStorage.getItem("anc_devotions_completed");
@@ -231,7 +297,7 @@ export default function DevotionsPage() {
       next.includes(id)
         ? pick(
             {
-              en: "Marked day as completed in your journey.",
+              en: "Marked day as completed in your spiritual journey.",
               km: "បានកត់ត្រាការអានរួចរាល់ក្នុងដំណើររបស់អ្នក។",
               ko: "오늘의 묵상을 완료로 표시했습니다.",
               zh: "已标记今日灵修已完成。",
@@ -270,6 +336,20 @@ export default function DevotionsPage() {
           locale
         )
       );
+    }
+  };
+
+  // Share to Telegram
+  const handleShareTelegram = (dev) => {
+    if (!dev) return;
+    const ref = dev.verse?.ref?.km || dev.verse?.ref?.en || "";
+    const km = dev.verse?.text?.km || "";
+    const en = dev.verse?.text?.en || "";
+    const text = `📖 ព្រះបន្ទូលប្រចាំថ្ងៃ • All Nations Church\n【${ref}】\n\n«${km}»\n\n“${en}”\n\nដឹកនាំដោយលោកគ្រូ ហ៊ុន ចិត្ត (Leader Hun Chet)`;
+    const url = typeof window !== "undefined" ? window.location.href : "https://hunchet.org/devotions";
+    const shareUrl = `https://t.me/share/url?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`;
+    if (typeof window !== "undefined") {
+      window.open(shareUrl, "_blank", "noopener,noreferrer");
     }
   };
 
@@ -332,13 +412,14 @@ export default function DevotionsPage() {
   };
 
   // Jump to specific day
-  const handleSelectDay = (dayOfYear) => {
+  const handleSelectDay = (dayOfYear, shouldScroll = true) => {
     const target = getDevotionByDayOfYear(dayOfYear);
     if (target) {
       setCurrentDevotion(target);
+      setPreviewDay(target);
       setActiveTab("today");
-      if (typeof window !== "undefined") {
-        window.scrollTo({ top: 400, behavior: "smooth" });
+      if (shouldScroll && typeof window !== "undefined") {
+        window.scrollTo({ top: 380, behavior: "smooth" });
       }
     }
   };
@@ -359,6 +440,7 @@ export default function DevotionsPage() {
   const handleJumpToday = () => {
     const today = getTodayDevotion();
     setCurrentDevotion(today);
+    setPreviewDay(today);
   };
 
   // Filter 500 verses
@@ -457,15 +539,15 @@ export default function DevotionsPage() {
           <div className="devotion-stats-strip">
             <div className="devotion-stat-item">
               <span className="devotion-stat-dot" />
-              <span>365 Daily Journeys</span>
+              <span>365 Daily Bread Journeys</span>
             </div>
             <div className="devotion-stat-item">
               <span className="devotion-stat-dot" />
-              <span>500 Old Khmer Verses</span>
+              <span>1954 Verbatim Old Khmer</span>
             </div>
             <div className="devotion-stat-item">
               <span className="devotion-stat-dot" />
-              <span>1954 Verbatim Scripture</span>
+              <span>Audio Scripture Listening</span>
             </div>
             <div className="devotion-stat-item">
               <span className="devotion-stat-dot" />
@@ -475,9 +557,9 @@ export default function DevotionsPage() {
         </div>
       </section>
 
-      {/* 2. STICKY TABS NAVIGATION */}
+      {/* 2. STICKY FLOATING TABS CONTROLLER */}
       <nav className="devotion-tabs-bar" aria-label="Devotions Navigation">
-        <div className="container">
+        <div className="container devotion-tabs-container">
           <div className="devotion-tabs-list">
             <button
               type="button"
@@ -488,6 +570,7 @@ export default function DevotionsPage() {
             >
               <ClockIcon />
               <span>{pick(STRINGS.tabToday, locale)}</span>
+              {isTodayActive && <span className="devotion-stat-dot" style={{ background: "var(--gold)" }} />}
             </button>
 
             <button
@@ -499,6 +582,9 @@ export default function DevotionsPage() {
             >
               <CalendarIcon />
               <span>{pick(STRINGS.tabCalendar, locale)}</span>
+              <span className="devotion-tab-badge">
+                {progress.percentage}%
+              </span>
             </button>
 
             <button
@@ -510,6 +596,9 @@ export default function DevotionsPage() {
             >
               <BookOpenIcon />
               <span>{pick(STRINGS.tabVerses, locale)}</span>
+              <span className="devotion-tab-badge">
+                500
+              </span>
             </button>
           </div>
         </div>
@@ -522,7 +611,7 @@ export default function DevotionsPage() {
            ======================================================== */}
         {activeTab === "today" && currentDevotion && (
           <article className="devotion-today-card">
-            {/* Header info */}
+            {/* Sanctuary Header info */}
             <div className="devotion-today-header">
               <div className="devotion-date-tag">
                 <CalendarIcon />
@@ -531,120 +620,235 @@ export default function DevotionsPage() {
                 </span>
               </div>
               <div className="devotion-topic-tag">
-                {currentDevotion.theme?.en || "Daily Meditation"}
+                <BookOpenIcon style={{ width: 14, height: 14, color: "var(--gold)" }} />
+                <span>{currentDevotion.theme?.km || currentDevotion.theme?.en || "Daily Meditation"}</span>
               </div>
             </div>
 
-            {/* Scripture Title & Scripture Passages */}
-            <div className="devotion-scripture-box">
-              <div className="devotion-scripture-ref">
-                {currentDevotion.verse?.ref?.km} •{" "}
-                {currentDevotion.verse?.ref?.en}
-              </div>
-
-              {/* Old Khmer Verbatim */}
-              <blockquote className="devotion-scripture-quote">
-                «{currentDevotion.verse?.text?.km}»
-              </blockquote>
-
-              {/* English Scripture */}
-              <p className="devotion-scripture-en">
-                “{currentDevotion.verse?.text?.en}”
-              </p>
-
-              {/* Korean Scripture if available */}
-              {currentDevotion.verse?.text?.ko && (
-                <p className="devotion-scripture-ko">
-                  {currentDevotion.verse?.text?.ko}
-                </p>
-              )}
-            </div>
-
-            {/* Action Buttons Toolbar */}
+            {/* Action Buttons Toolbar with Soundwave Audio & Telegram */}
             <div className="devotion-actions-row">
-              <button
-                type="button"
-                className={`devotion-action-btn ${isPlayingAudio ? "is-active" : ""}`}
-                onClick={handleToggleAudio}
-                title="Listen to scripture reading"
-              >
-                {isPlayingAudio ? <PauseIcon /> : <PlayIcon />}
-                <span>
-                  {isPlayingAudio
-                    ? pick(STRINGS.btnStop, locale)
-                    : pick(STRINGS.btnListen, locale)}
-                </span>
-              </button>
+              <div className="devotion-actions-left">
+                <button
+                  type="button"
+                  className={`devotion-action-btn ${isPlayingAudio ? "is-active" : ""}`}
+                  onClick={handleToggleAudio}
+                  title="Listen to scripture reading in English"
+                >
+                  {isPlayingAudio ? <PauseIcon /> : <PlayIcon />}
+                  <span>
+                    {isPlayingAudio
+                      ? pick(STRINGS.btnStop, locale)
+                      : pick(STRINGS.btnListen, locale)}
+                  </span>
+                  {isPlayingAudio && (
+                    <span className="devotion-soundwave" aria-hidden="true">
+                      <span className="devotion-soundwave-bar" />
+                      <span className="devotion-soundwave-bar" />
+                      <span className="devotion-soundwave-bar" />
+                      <span className="devotion-soundwave-bar" />
+                    </span>
+                  )}
+                </button>
 
-              <button
-                type="button"
-                className="devotion-action-btn"
-                onClick={() => handleCopyScripture(currentDevotion)}
-                title="Copy scripture and reference"
-              >
-                <CopyIcon />
-                <span>{pick(STRINGS.btnCopy, locale)}</span>
-              </button>
+                <button
+                  type="button"
+                  className="devotion-action-btn"
+                  onClick={() => handleCopyScripture(currentDevotion)}
+                  title="Copy scripture and reference"
+                >
+                  <CopyIcon />
+                  <span>{pick(STRINGS.btnCopy, locale)}</span>
+                </button>
+              </div>
 
-              <button
-                type="button"
-                className={`devotion-action-btn ${
-                  isCurrentCompleted ? "is-active" : ""
-                }`}
-                onClick={() => handleToggleRead(currentDevotion.id)}
-                title="Record completion"
-              >
-                {isCurrentCompleted ? <CheckIcon /> : <BookmarkIcon />}
-                <span>
-                  {isCurrentCompleted
-                    ? pick(STRINGS.btnReadCompleted, locale)
-                    : pick(STRINGS.btnMarkRead, locale)}
-                </span>
-              </button>
+              <div className="devotion-actions-right">
+                <button
+                  type="button"
+                  className="devotion-action-btn"
+                  onClick={() => handleShareTelegram(currentDevotion)}
+                  title="Share devotion to Telegram"
+                  style={{ color: "#0ea5e9" }}
+                >
+                  <TelegramIcon />
+                  <span>{pick(STRINGS.btnShareTelegram, locale)}</span>
+                </button>
+
+                <button
+                  type="button"
+                  className={`devotion-action-btn ${
+                    isCurrentCompleted ? "is-active" : ""
+                  }`}
+                  onClick={() => handleToggleRead(currentDevotion.id)}
+                  title="Record completion in your annual journey"
+                >
+                  {isCurrentCompleted ? <CheckIcon /> : <BookmarkIcon />}
+                  <span>
+                    {isCurrentCompleted
+                      ? pick(STRINGS.btnReadCompleted, locale)
+                      : pick(STRINGS.btnMarkRead, locale)}
+                  </span>
+                </button>
+              </div>
             </div>
 
-            {/* Reflection & Application Grid */}
+            {/* THE ILLUMINATED SCRIPTURE SHOWCASE (FOCAL PIECE) */}
+            <section className="devotion-scripture-showcase" aria-label="Scripture Passage">
+              <div className="devotion-watermark-quote" aria-hidden="true">“</div>
+
+              <div className="devotion-scripture-top-bar">
+                <div className="devotion-scripture-ref-seal">
+                  <span>«</span>
+                  <strong>{currentDevotion.verse?.ref?.km || currentDevotion.verse?.ref?.en}</strong>
+                  {currentDevotion.verse?.ref?.en && (
+                    <span style={{ fontSize: "0.85rem", opacity: 0.7 }}>
+                      • {currentDevotion.verse?.ref?.en}
+                    </span>
+                  )}
+                  <span>»</span>
+                </div>
+
+                {/* Multi-language Selector Pills */}
+                <div className="devotion-lang-pills">
+                  <button
+                    type="button"
+                    className={`devotion-lang-pill ${activeScriptureLang === "all" ? "is-active" : ""}`}
+                    onClick={() => setActiveScriptureLang("all")}
+                  >
+                    {pick(STRINGS.langAll, locale)}
+                  </button>
+                  <button
+                    type="button"
+                    className={`devotion-lang-pill ${activeScriptureLang === "km" ? "is-active" : ""}`}
+                    onClick={() => setActiveScriptureLang("km")}
+                  >
+                    {pick(STRINGS.langKm, locale)}
+                  </button>
+                  <button
+                    type="button"
+                    className={`devotion-lang-pill ${activeScriptureLang === "en" ? "is-active" : ""}`}
+                    onClick={() => setActiveScriptureLang("en")}
+                  >
+                    {pick(STRINGS.langEn, locale)}
+                  </button>
+                  {currentDevotion.verse?.text?.ko && (
+                    <button
+                      type="button"
+                      className={`devotion-lang-pill ${activeScriptureLang === "ko" ? "is-active" : ""}`}
+                      onClick={() => setActiveScriptureLang("ko")}
+                    >
+                      {pick(STRINGS.langKo, locale)}
+                    </button>
+                  )}
+                </div>
+              </div>
+
+              {/* Primary 1954 Old Khmer Verbatim Scripture */}
+              {(activeScriptureLang === "all" || activeScriptureLang === "km") && (
+                <blockquote className="devotion-scripture-quote">
+                  «{currentDevotion.verse?.text?.km}»
+                </blockquote>
+              )}
+
+              {/* Secondary Bilingual Deck */}
+              {(activeScriptureLang === "all" || activeScriptureLang === "en" || activeScriptureLang === "ko") && (
+                <div className="devotion-scripture-bilingual">
+                  {(activeScriptureLang === "all" || activeScriptureLang === "en") && currentDevotion.verse?.text?.en && (
+                    <div className="devotion-trans-card">
+                      <span className="devotion-trans-label">World English Bible / ESV</span>
+                      <p className="devotion-scripture-en">
+                        “{currentDevotion.verse?.text?.en}”
+                      </p>
+                    </div>
+                  )}
+
+                  {(activeScriptureLang === "all" || activeScriptureLang === "ko") && currentDevotion.verse?.text?.ko && (
+                    <div className="devotion-trans-card">
+                      <span className="devotion-trans-label">Korean Revised Version • 한국어 성경</span>
+                      <p className="devotion-scripture-ko">
+                        {currentDevotion.verse?.text?.ko}
+                      </p>
+                    </div>
+                  )}
+                </div>
+              )}
+            </section>
+
+            {/* PASTORAL REFLECTION & LIFE APPLICATION GRID */}
             <div className="devotion-reflection-grid">
+              {/* Left: Biblical Truth & Pastoral Exposition */}
               <div className="devotion-reflection-card">
-                <h4>{pick(STRINGS.reflectionTitle, locale)}</h4>
-                <p>
-                  <strong>
+                <div className="devotion-card-header">
+                  <UserIcon />
+                  <h4>{pick(STRINGS.pastorInsight, locale)}</h4>
+                </div>
+
+                <div className="devotion-key-truth-box">
+                  <span className="devotion-key-truth-label">{pick(STRINGS.keyTruth, locale)}</span>
+                  <p className="devotion-key-truth-text">
                     {currentDevotion.reflection?.keyTruth?.[locale === "km" ? "km" : "en"] ||
                       currentDevotion.reflection?.keyTruth?.km}
-                  </strong>
-                </p>
-                {currentDevotion.reflection?.points?.map((pt, idx) => (
-                  <p key={idx}>
-                    {pt[locale === "km" ? "km" : "en"] || pt.km}
                   </p>
-                ))}
+                </div>
+
+                <div className="devotion-points-list">
+                  {currentDevotion.reflection?.points?.map((pt, idx) => (
+                    <div key={idx} className="devotion-point-item">
+                      <span className="devotion-point-num">{idx + 1}</span>
+                      <span>{pt[locale === "km" ? "km" : "en"] || pt.km}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
 
+              {/* Right: Practical Life Application Questions */}
               <div className="devotion-reflection-card">
-                <h4>{pick(STRINGS.applicationTitle, locale)}</h4>
-                {currentDevotion.applicationQuestions?.map((q, idx) => (
-                  <p key={idx}>
-                    <strong>Q{idx + 1}:</strong> {q[locale === "km" ? "km" : "en"] || q.km}
-                  </p>
-                ))}
+                <div className="devotion-card-header">
+                  <CheckIcon />
+                  <h4>{pick(STRINGS.applicationTitle, locale)}</h4>
+                </div>
+
+                <div className="devotion-app-list">
+                  {currentDevotion.applicationQuestions?.map((q, idx) => (
+                    <div key={idx} className="devotion-app-card">
+                      <span className="devotion-app-badge">Q{idx + 1}</span>
+                      <p className="devotion-app-text">
+                        {q[locale === "km" ? "km" : "en"] || q.km}
+                      </p>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
 
-            {/* Guided Pastoral Prayer */}
+            {/* GUIDED LITURGICAL ALTAR PRAYER */}
             {currentDevotion.guidedPrayer && (
-              <div className="devotion-prayer-card">
+              <section className="devotion-prayer-card" aria-label="Pastoral Guided Prayer">
+                <div className="devotion-prayer-emblem" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M12 2v20M2 12h20" />
+                  </svg>
+                </div>
+
                 <h4>{pick(STRINGS.prayerTitle, locale)}</h4>
-                <p>
-                  {currentDevotion.guidedPrayer[locale === "km" ? "km" : "en"] ||
-                    currentDevotion.guidedPrayer.km}
+
+                <p className="devotion-prayer-quote">
+                  «{currentDevotion.guidedPrayer[locale === "km" ? "km" : "en"] ||
+                    currentDevotion.guidedPrayer.km}»
                 </p>
+
                 {locale !== "en" && currentDevotion.guidedPrayer.en && (
-                  <small>{currentDevotion.guidedPrayer.en}</small>
+                  <p className="devotion-prayer-en">
+                    “{currentDevotion.guidedPrayer.en}”
+                  </p>
                 )}
-              </div>
+
+                <div className="devotion-prayer-seal">
+                  {pick(STRINGS.amenSeal, locale)}
+                </div>
+              </section>
             )}
 
-            {/* Jump Navigation Strip */}
+            {/* BOTTOM DAY NAVIGATION STEPPER */}
             <div className="devotion-nav-strip">
               <button
                 type="button"
@@ -660,6 +864,7 @@ export default function DevotionsPage() {
                   type="button"
                   className="devotion-nav-btn"
                   onClick={handleJumpToday}
+                  style={{ borderColor: "var(--gold)", color: "var(--gold)" }}
                 >
                   <ClockIcon />
                   <span>{pick(STRINGS.btnTodayJump, locale)}</span>
@@ -682,12 +887,13 @@ export default function DevotionsPage() {
             TAB 2: 365-DAY CALENDAR JOURNEY
            ======================================================== */}
         {activeTab === "calendar" && (
-          <section className="devotion-calendar-view">
-            {/* Progress summary card */}
+          <section className="devotion-calendar-view" aria-label="365-Day Devotional Journey">
+            {/* Spiritual Progress Dashboard */}
             <div className="devotion-progress-box">
               <div className="devotion-progress-header">
                 <span>{pick(STRINGS.progressTitle, locale)}</span>
-                <span>
+                <span className="devotion-progress-stats">
+                  <CheckIcon style={{ width: 14, height: 14 }} />
                   {progress.completedCount} / {progress.total} Days ({progress.percentage}%)
                 </span>
               </div>
@@ -699,7 +905,7 @@ export default function DevotionsPage() {
               </div>
             </div>
 
-            {/* Horizontal Months Selector */}
+            {/* Horizontal Months Selector Carousel */}
             <div className="devotion-months-grid" role="tablist">
               {YEAR_MONTHS.map((m) => {
                 const isActive = selectedMonth === m.month;
@@ -710,7 +916,11 @@ export default function DevotionsPage() {
                     className={`devotion-month-btn ${
                       isActive ? "is-active" : ""
                     }`}
-                    onClick={() => setSelectedMonth(m.month)}
+                    onClick={() => {
+                      setSelectedMonth(m.month);
+                      const firstDay = getDevotionByDate(m.month, 1);
+                      setPreviewDay(firstDay);
+                    }}
                   >
                     {m.name.km} ({m.name.en})
                   </button>
@@ -718,10 +928,10 @@ export default function DevotionsPage() {
               })}
             </div>
 
-            {/* Active Month Theme Banner */}
+            {/* Active Month Theme Spotlight */}
             <div className="devotion-theme-banner">
               <div className="devotion-theme-badge">
-                Month {activeMonthData.month} Theme
+                Month {activeMonthData.month} Spiritual Focus • {activeMonthData.name.en}
               </div>
               <h3 className="devotion-theme-title">
                 {activeMonthData.theme[locale === "km" ? "km" : "en"] ||
@@ -734,11 +944,11 @@ export default function DevotionsPage() {
               </p>
             </div>
 
-            {/* Month Days Grid */}
+            {/* Month Days Matrix */}
             <div className="devotion-days-grid">
               {Array.from({ length: activeMonthData.days }, (_, i) => i + 1).map((d) => {
                 const item = getDevotionByDate(selectedMonth, d);
-                const isSelected = currentDevotion?.id === item.id;
+                const isSelected = previewDay?.id === item.id;
                 const isCompleted = completedDays.includes(item.id);
                 const isToday =
                   new Date().getMonth() + 1 === selectedMonth &&
@@ -753,14 +963,54 @@ export default function DevotionsPage() {
                     } ${isCompleted ? "is-completed" : ""} ${
                       isToday ? "is-today" : ""
                     }`}
-                    onClick={() => handleSelectDay(item.dayOfYear)}
+                    onClick={() => setPreviewDay(item)}
                     title={`Day ${d}: ${item.verse?.ref?.km || ""}`}
                   >
-                    {d}
+                    <span>{d}</span>
                   </button>
                 );
               })}
             </div>
+
+            {/* Instant Day Scripture Spotlight Drawer */}
+            {previewDay && (
+              <div className="devotion-day-spotlight">
+                <div className="devotion-day-spotlight-left">
+                  <div className="devotion-day-spotlight-date">
+                    {previewDay.dateFull} • Day {previewDay.dayOfYear} of 365
+                  </div>
+                  <div className="devotion-day-spotlight-ref">
+                    {previewDay.verse?.ref?.km} • {previewDay.verse?.ref?.en}
+                  </div>
+                  <p className="devotion-day-spotlight-snippet">
+                    «{previewDay.verse?.text?.km}»
+                  </p>
+                </div>
+
+                <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", alignItems: "center" }}>
+                  <button
+                    type="button"
+                    className="btn btn-primary"
+                    onClick={() => handleSelectDay(previewDay.dayOfYear, true)}
+                  >
+                    {pick(STRINGS.readFullDevotion, locale)}
+                  </button>
+
+                  <button
+                    type="button"
+                    className={`devotion-action-btn ${completedDays.includes(previewDay.id) ? "is-active" : ""}`}
+                    onClick={() => handleToggleRead(previewDay.id)}
+                  >
+                    <CheckIcon />
+                    <span>
+                      {completedDays.includes(previewDay.id)
+                        ? pick(STRINGS.btnReadCompleted, locale)
+                        : pick(STRINGS.btnMarkRead, locale)}
+                    </span>
+                  </button>
+                </div>
+              </div>
+            )}
           </section>
         )}
 
@@ -768,8 +1018,8 @@ export default function DevotionsPage() {
             TAB 3: 500 FAMOUS SCRIPTURE VERSES
            ======================================================== */}
         {activeTab === "verses" && (
-          <section className="devotion-verses-view">
-            {/* Search Input */}
+          <section className="devotion-verses-view" aria-label="500 Famous Bible Verses">
+            {/* Search Input Suite */}
             <div className="devotion-search-row">
               <div className="devotion-search-input-wrap">
                 <SearchIcon />
@@ -783,6 +1033,27 @@ export default function DevotionsPage() {
                     setVisibleVersesCount(24);
                   }}
                 />
+                {searchQuery && (
+                  <button
+                    type="button"
+                    onClick={() => setSearchQuery("")}
+                    style={{
+                      position: "absolute",
+                      right: "1.25rem",
+                      top: "50%",
+                      transform: "translateY(-50%)",
+                      background: "none",
+                      border: "none",
+                      color: "var(--muted)",
+                      cursor: "pointer",
+                      display: "flex",
+                      alignItems: "center",
+                    }}
+                    aria-label="Clear search"
+                  >
+                    <CloseIcon style={{ width: 16, height: 16 }} />
+                  </button>
+                )}
               </div>
             </div>
 
@@ -821,10 +1092,10 @@ export default function DevotionsPage() {
                 <div key={v.id} className="devotion-verse-card">
                   <div>
                     <div className="devotion-verse-head">
-                      <span className="devotion-date-tag">
+                      <span className="devotion-verse-num">
                         #{v.kmNum || v.id}
                       </span>
-                      <span className="devotion-topic-tag">
+                      <span className="devotion-verse-cat-pill">
                         {v.category}
                       </span>
                     </div>
@@ -862,7 +1133,6 @@ export default function DevotionsPage() {
                         if (targetDev) {
                           handleSelectDay(targetDev.dayOfYear);
                         } else {
-                          // Jump to day 1 fallback
                           handleSelectDay(1);
                         }
                       }}
@@ -885,7 +1155,7 @@ export default function DevotionsPage() {
                     setVisibleVersesCount((prev) => prev + 24)
                   }
                 >
-                  <BookOpenIcon />
+                  <BookOpenIcon style={{ width: 16, height: 16 }} />
                   <span>{pick(STRINGS.showMore, locale)}</span>
                 </button>
               </div>
@@ -894,7 +1164,7 @@ export default function DevotionsPage() {
         )}
       </main>
 
-      {/* 4. MINISTRY CROSS-LINK SECTION */}
+      {/* 4. MINISTRY SANCTUARY CROSS-LINK SECTION */}
       <section className="devotion-crosslink-section">
         <div className="container">
           <h3 className="devotion-crosslink-title">
@@ -944,10 +1214,10 @@ export default function DevotionsPage() {
         </div>
       </section>
 
-      {/* Toast Feedback */}
+      {/* Toast Notification */}
       {toastMessage && (
         <div className="devotion-toast" role="status">
-          <CheckIcon />
+          <CheckIcon style={{ width: 16, height: 16, color: "var(--gold)" }} />
           <span>{toastMessage}</span>
         </div>
       )}
