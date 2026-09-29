@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import Head from "next/head";
 import { useRouter } from "next/router";
 import "../styles/globals.css";
 import "../styles/extra.css";
@@ -81,5 +82,12 @@ export default function App({ Component, pageProps }) {
     return () => io.disconnect();
   }, [router.asPath, router.locale]);
 
-  return <Component {...pageProps} />;
+  return (
+    <>
+      <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+      </Head>
+      <Component {...pageProps} />
+    </>
+  );
 }

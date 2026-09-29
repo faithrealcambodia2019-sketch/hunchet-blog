@@ -913,17 +913,48 @@
 }
 
 @media (max-width: 640px) {
-  .resource-grid {
+  .resource-grid,
+  .resource-series-grid {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
 
   .resource-filter-row {
     flex-direction: column;
     align-items: stretch;
+    gap: 0.75rem;
+  }
+
+  .resource-category-tabs {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding-bottom: 0.35rem;
+    -webkit-overflow-scrolling: touch;
   }
 
   .resource-search-box {
+    min-width: 0;
     max-width: 100%;
+    width: 100%;
+  }
+
+  .resource-featured-card {
+    grid-template-columns: 1fr;
+    margin-bottom: 2.25rem;
+  }
+
+  .resource-featured-body {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .resource-featured-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .resource-featured-actions .resource-btn {
+    width: 100%;
+    justify-content: center;
   }
 
   .resource-card-actions {

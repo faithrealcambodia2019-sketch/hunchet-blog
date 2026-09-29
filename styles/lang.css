@@ -199,8 +199,9 @@ html[lang="zh"] .video-views {
   }
 
   .lang-menu {
-    right: auto;
-    left: 50%;
-    transform: translateX(-50%);
+    right: 0;
+    left: auto;
+    transform: none;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
   }
 }

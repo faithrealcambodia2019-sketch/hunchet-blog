@@ -1524,6 +1524,13 @@
     gap: 0.5rem;
   }
 
+  @media (max-width: 380px) {
+    .devotion-actions-left,
+    .devotion-actions-right {
+      grid-template-columns: 1fr;
+    }
+  }
+
   .devotion-action-btn {
     width: 100%;
     justify-content: center;
@@ -1679,7 +1686,21 @@
 
   /* 500 Verses View */
   .devotion-search-row {
+    flex-direction: column;
     margin-bottom: 1.25rem;
+  }
+
+  .devotion-search-input-wrap {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .devotion-search-select-wrap {
+    width: 100%;
+  }
+
+  .devotion-search-select {
+    width: 100%;
   }
 
   .devotion-search-input {
