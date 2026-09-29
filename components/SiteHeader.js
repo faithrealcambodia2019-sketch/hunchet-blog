@@ -68,16 +68,16 @@ const STRINGS = {
     zh: "欢迎新朋友",
   },
   churchName: {
-    en: "All Nations Church",
-    km: "ក្រុមជំនុំអលណេសិន",
-    ko: "올네이션스 교회",
-    zh: "万民教会",
+    en: "Hun Chet",
+    km: "Hun Chet",
+    ko: "Hun Chet",
+    zh: "Hun Chet",
   },
   churchSubtitle: {
-    en: "Faith & Ministry • Phnom Penh",
-    km: "ជំនឿ និងព័ន្ធកិច្ច • រាជធានីភ្នំពេញ",
-    ko: "믿음과 사역 • 프놈펜",
-    zh: "信仰与事工 • 金边",
+    en: "Faith & Ministry",
+    km: "ជំនឿ និងព័ន្ធកិច្ច",
+    ko: "믿음과 사역",
+    zh: "信仰与事工",
   },
   telegramHotline: {
     en: "Pastoral Telegram Hotline",
@@ -480,14 +480,14 @@ export default function SiteHeader() {
       {/* 2. Main Sticky Navigation Header */}
       <header className="site-header">
         <div className="site-header-inner">
-          {/* Logo & All Nations Church Identity */}
-          <Link href="/" className="site-logo">
+          {/* Logo & Pastor Hun Chet Personal Ministry Brand */}
+          <Link href="/" className="site-logo" aria-label="Hun Chet - Faith & Ministry">
             <span className="brand-mark">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={LOGO} alt={churchName} />
             </span>
             <span className="site-logo-text-group">
-              <span className="site-logo-text font-khmer">{churchName}</span>
+              <span className="site-logo-text">{churchName}</span>
               <span className="site-logo-sub">{churchSubtitle}</span>
             </span>
           </Link>
@@ -684,8 +684,8 @@ export default function SiteHeader() {
                   <img src={LOGO} alt={churchName} />
                 </span>
                 <div>
-                  <strong style={{ fontSize: "1.05rem", display: "block", lineHeight: 1.15 }}>{churchName}</strong>
-                  <span style={{ fontSize: "0.65rem", color: "var(--gold)", letterSpacing: "0.08em" }}>{churchSubtitle}</span>
+                  <strong style={{ fontSize: "1.15rem", display: "block", lineHeight: 1.15, fontFamily: "var(--font-display)" }}>{churchName}</strong>
+                  <span style={{ fontSize: "0.62rem", color: "var(--gold)", letterSpacing: "0.14em", textTransform: "uppercase", fontWeight: 700 }}>{churchSubtitle}</span>
                 </div>
               </Link>
 

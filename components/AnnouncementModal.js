@@ -48,10 +48,10 @@ export default function AnnouncementModal({ isOpen, onClose, locale = "en" }) {
       zh: "主日崇拜与真理传讲",
     },
     subTitle: {
-      en: "All Nations Church • Phnom Penh Campus",
-      km: "ក្រុមជំនុំ អល ណេសិន ភ្នំពេញ",
-      ko: "올네이션스 교회 (프놈펜 성전)",
-      zh: "万民教会（金边崇拜堂）",
+      en: "Sanctuary Worship • Phnom Penh Campus",
+      km: "ការថ្វាយបង្គំនៅព្រះវិហារ • រាជធានីភ្នំពេញ",
+      ko: "주일 예배 • 프놈펜 성전",
+      zh: "主日崇拜 • 金边崇拜堂",
     },
     preacherLabel: {
       en: "Preachers & Pulpit Ministry",
@@ -114,10 +114,10 @@ export default function AnnouncementModal({ isOpen, onClose, locale = "en" }) {
       zh: "教会地址",
     },
     locationDesc: {
-      en: "All Nations Church Campus, Trapaing Krasang, Por Senchey, Phnom Penh, Cambodia",
-      km: "វិទ្យាស្ថាន និងក្រុមជំនុំគ្រប់ប្រជាជាតិ ភូមិត្រពាំងក្រសាំង ខណ្ឌពោធិ៍សែនជ័យ រាជធានីភ្នំពេញ",
-      ko: "올네이션스 교회 성전 (캄보디아 프놈펜 트라파잉 ក្រសាំង)",
-      zh: "万民教会园区，金边市菩森芷区 Trapaing Krasang",
+      en: "Sanctuary Campus, Trapaing Krasang, Por Senchey, Phnom Penh, Cambodia",
+      km: "វិទ្យាស្ថាន និងព្រះវិហារ ភូមិត្រពាំងក្រសាំង ខណ្ឌពោធិ៍សែនជ័យ រាជធានីភ្នំពេញ",
+      ko: "성전 (캄보디아 프놈펜 트라파잉 ក្រសាំង)",
+      zh: "教会园区，金边市菩森芷区 Trapaing Krasang",
     },
     directionsBtn: {
       en: "View Campus Map & Directions",
@@ -160,7 +160,7 @@ export default function AnnouncementModal({ isOpen, onClose, locale = "en" }) {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/images/church-announcement.jpg"
-            alt="All Nations Church Sunday Worship Flyer"
+            alt="Sunday Worship Sanctuary Flyer"
             className="anc-modal-poster-img"
           />
         </div>
