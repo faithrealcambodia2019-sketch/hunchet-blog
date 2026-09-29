@@ -525,7 +525,7 @@ export default function Resource() {
                         </span>
                         <span>
                           {video.type === "local"
-                            ? "All Nations Church"
+                            ? "Hun Chet Ministry"
                             : "True Friend Cambodia"}
                         </span>
                       </div>

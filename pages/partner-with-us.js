@@ -77,7 +77,7 @@ export default function PartnerWithUs() {
   return (
     <>
       <Head>
-        <title>{`${t("partner.title")} — All Nations Church & Hun Chet`}</title>
+        <title>{`${t("partner.title")} — Hun Chet`}</title>
         <meta name="description" content={t("partner.intro")} />
       </Head>
 
@@ -89,7 +89,7 @@ export default function PartnerWithUs() {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/images/church-family.jpg"
-            alt="All Nations Church Family"
+            alt="Hun Chet Ministry Family"
             className="sanctuary-hero-bg"
           />
           <div className="sanctuary-hero-overlay" />
@@ -119,9 +119,9 @@ export default function PartnerWithUs() {
                 </span>
               </div>
               <div className="sanctuary-stat-card">
-                <span className="sanctuary-stat-num">All Nations</span>
+                <span className="sanctuary-stat-num">Hun Chet</span>
                 <span className="sanctuary-stat-label">
-                  {isKm ? "កម្ពុជា និងគ្រប់ប្រជាជាតិ" : "Local & Global Reach"}
+                  {isKm ? "ព័ន្ធកិច្ចលោកគ្រូ ហ៊ុន ចិត្ត" : "Ministry Stewardship"}
                 </span>
               </div>
             </div>

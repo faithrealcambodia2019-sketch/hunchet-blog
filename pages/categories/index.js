@@ -19,8 +19,8 @@ export default function Categories({ categories, error }) {
   return (
     <>
       <Head>
-        <title>Topics & Sermon Categories — All Nations Church & Hun Chet</title>
-        <meta name="description" content="Browse All Nations Church sermon archives and articles by topic." />
+        <title>Topics & Sermon Categories — Hun Chet</title>
+        <meta name="description" content="Browse Hun Chet sermon archives and articles by topic." />
       </Head>
 
       <SiteHeader />
@@ -30,7 +30,7 @@ export default function Categories({ categories, error }) {
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="/images/sermon-purpose-congregation.jpg"
-          alt="All Nations Church Sanctuary"
+          alt="Hun Chet Ministry Sanctuary"
           className="sanctuary-hero-bg"
         />
         <div className="sanctuary-hero-overlay" />
@@ -56,8 +56,8 @@ export default function Categories({ categories, error }) {
               <span className="sanctuary-stat-label">Total Articles</span>
             </div>
             <div className="sanctuary-stat-card">
-              <span className="sanctuary-stat-num">All Nations</span>
-              <span className="sanctuary-stat-label">Church Teaching</span>
+              <span className="sanctuary-stat-num">Hun Chet</span>
+              <span className="sanctuary-stat-label">Faith & Teaching</span>
             </div>
           </div>
         </div>

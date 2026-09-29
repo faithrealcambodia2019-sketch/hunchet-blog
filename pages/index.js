@@ -59,10 +59,10 @@ const CHURCH_VIDEOS = [
     src: "/videos/church-intro-480p.mp4",
     poster: "/images/hero-cover.jpg",
     description: {
-      en: "Heartfelt praise and worship led by our ministry team in the main sanctuary at All Nations Church.",
-      km: "ការថ្វាយបង្គំ និងការអធិស្ឋានចេញពីដួងចិត្ត ដឹកនាំដោយក្រុមព័ន្ធកិច្ចនៅក្នុងព្រះវិហារអលណេសិន។",
+      en: "Heartfelt praise and worship led by our ministry team in the main sanctuary with Hun Chet.",
+      km: "ការថ្វាយបង្គំ និងការអធិស្ឋានចេញពីដួងចិត្ត ដឹកនាំដោយក្រុមព័ន្ធកិច្ចលោកគ្រូ ហ៊ុន ចិត្ត នៅក្នុងព្រះវិហារ។",
       ko: "본당에서 사역팀이 인도하는 진심 어린 찬양과 예배.",
-      zh: "在全教会主会堂由服侍团队带领发自内心的赞美与敬拜。",
+      zh: "在主会堂由服侍团队带领发自内心的赞美与敬拜。",
     },
   },
   {
@@ -117,7 +117,7 @@ const CHURCH_PHOTOS = [
     src: CHURCH_FAMILY,
     title: {
       en: "Our Church Family Gathered",
-      km: "គ្រួសារក្រុមជំនុំអលណេសិនជួបជុំគ្នា",
+      km: "គ្រួសារព័ន្ធកិច្ចលោកគ្រូ ហ៊ុន ចិត្ត ជួបជុំគ្នា",
       ko: "함께 모인 교회 가족",
       zh: "齐聚一堂的教会大家庭",
     },
@@ -306,9 +306,9 @@ export default function Home({ posts = [], error }) {
     const icsContent = [
       "BEGIN:VCALENDAR",
       "VERSION:2.0",
-      "PRODID:-//All Nations Church//Sunday Service//EN",
+      "PRODID:-//Hun Chet Ministry//Sunday Service//EN",
       "BEGIN:VEVENT",
-      "SUMMARY:All Nations Church Sunday Worship Service (ក្រុមជំនុំអលណេសិន)",
+      "SUMMARY:Sunday Worship Service with Hun Chet (ការថ្វាយបង្គំថ្ងៃអាទិត្យ)",
       "DESCRIPTION:Sunday Worship: 10:00 AM – 11:30 AM | Sunday School: 10:00 AM – 11:00 AM | Small Groups: 1:00 PM – 2:00 PM. Meet us at Trapaing Krasang Village, Khan Por Senchey, Phnom Penh. Simultaneous Khmer and English translation available.",
       "LOCATION:Trapaing Krasang Village, Sangkat Trapeang Krasaing, Khan Por Senchey, Phnom Penh",
       "RRULE:FREQ=WEEKLY;BYDAY=SU",
@@ -320,7 +320,7 @@ export default function Home({ posts = [], error }) {
     const blob = new Blob([icsContent], { type: "text/calendar;charset=utf-8" });
     const link = document.createElement("a");
     link.href = window.URL.createObjectURL(blob);
-    link.setAttribute("download", "all-nations-church-sunday.ics");
+    link.setAttribute("download", "hun-chet-sunday-service.ics");
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -374,15 +374,15 @@ export default function Home({ posts = [], error }) {
   return (
     <>
       <Head>
-        <title>Hun Chet — Faith, Scripture &amp; All Nations Ministry</title>
+        <title>Hun Chet — Faith, Scripture &amp; Pastoral Ministry</title>
         <meta
           name="description"
-          content="Biblical teaching, pulpit preaching, and faith resources by Leader Hun Chet at All Nations Church, Phnom Penh, Cambodia."
+          content="Biblical teaching, pulpit preaching, and faith resources by Leader Hun Chet, Phnom Penh, Cambodia."
         />
         <meta property="og:title" content="Hun Chet — Faith &amp; Ministry" />
         <meta
           property="og:description"
-          content="Biblical teaching, pulpit preaching, and faith resources by Leader Hun Chet at All Nations Church."
+          content="Biblical teaching, pulpit preaching, and faith resources by Leader Hun Chet."
         />
         <meta property="og:type" content="website" />
         <meta property="og:image" content={HERO_COVER} />
@@ -471,8 +471,8 @@ export default function Home({ posts = [], error }) {
             }}
           >
             {locale === "km"
-              ? "សូមស្វាគមន៍មកកាន់គេហទំព័រផ្លូវការរបស់លោកគ្រូ ហ៊ុន ចិត្ត — ដឹកនាំព័ន្ធកិច្ចនៅក្រុមជំនុំអលណេសិន (All Nations Church) ជាមួយការបង្រៀនព្រះគម្ពីរ ធនធានសៀវភៅ និងការលើកទឹកចិត្តសម្រាប់ដំណើរជំនឿរបស់អ្នក។"
-              : "Official website of Leader Hun Chet — ministering and preaching at All Nations Church in Phnom Penh, sharing scripture devotionals, digital media, and Christ-centered hope."}
+              ? "សូមស្វាគមន៍មកកាន់គេហទំព័រផ្លូវការរបស់លោកគ្រូ ហ៊ុន ចិត្ត — ដឹកនាំព័ន្ធកិច្ចលោកគ្រូ ហ៊ុន ចិត្ត (Hun Chet Ministry) ជាមួយការបង្រៀនព្រះគម្ពីរ ធនធានសៀវភៅ និងការលើកទឹកចិត្តសម្រាប់ដំណើរជំនឿរបស់អ្នក។"
+              : "Official website of Leader Hun Chet — ministering and preaching in Phnom Penh, sharing scripture devotionals, digital media, and Christ-centered hope."}
           </p>
 
           <div className="hero-actions" style={{ gap: "1rem" }}>
@@ -536,7 +536,7 @@ export default function Home({ posts = [], error }) {
                 </h3>
                 <p style={{ color: "var(--text)", fontSize: "0.95rem", lineHeight: 1.6, margin: 0 }}>
                   {locale === "km"
-                    ? "ជួបជុំគ្នាជាមួយគ្រួសារក្រុមជំនុំអលណេសិន (All Nations Church) ក្រោមព្រះបន្ទូលនៃសេចក្តីពិត ការថ្វាយបង្គំដោយស្មោះ និងការប្រកបគ្នាយ៉ាងកក់ក្តៅ។"
+                    ? "ជួបជុំគ្នាជាមួយគ្រួសារព័ន្ធកិច្ចលោកគ្រូ ហ៊ុន ចិត្ត ក្រោមព្រះបន្ទូលនៃសេចក្តីពិត ការថ្វាយបង្គំដោយស្មោះ និងការប្រកបគ្នាយ៉ាងកក់ក្តៅ។"
                     : "Experience uplifting praise, faithful biblical preaching, and genuine fellowship with our church family in Phnom Penh."}
                 </p>
               </div>
@@ -740,8 +740,8 @@ export default function Home({ posts = [], error }) {
 
                 <p style={{ color: "var(--text)", lineHeight: 1.75, marginBottom: "1.25rem" }}>
                   {locale === "km"
-                    ? "លោកគ្រូ ហ៊ុន ចិត្ត បានបូជាជីវិត និងព័ន្ធកិច្ចក្នុងការបង្រៀនព្រះបន្ទូលដ៏ស្មោះត្រង់ ការបណ្តុះបណ្តាលសិស្ស និងការដឹកនាំយុវជននៅក្រុមជំនុំអលណេសិន (All Nations Church)។ តាមរយៈការអធិប្បាយ ការនិពន្ធសៀវភៅ និងព័ន្ធកិច្ចឌីជីថល «មិត្តពិតកម្ពុជា» ព្រះបន្ទូលនៃព្រះត្រូវបានផ្សព្វផ្សាយទៅកាន់មនុស្សរាប់ពាន់នាក់នៅទូទាំងកម្ពុជា។"
-                    : "Serving as Ministry Lead and Pulpit Preacher at All Nations Church alongside Senior Pastor Kim Jong Ho, Hun Chet is devoted to biblical clarity, discipleship of young leaders, and reaching the nation through digital media and theological literature."}
+                    ? "លោកគ្រូ ហ៊ុន ចិត្ត បានបូជាជីវិត និងព័ន្ធកិច្ចក្នុងការបង្រៀនព្រះបន្ទូលដ៏ស្មោះត្រង់ ការបណ្តុះបណ្តាលសិស្ស និងការដឹកនាំយុវជនក្នុងព័ន្ធកិច្ចលោកគ្រូ ហ៊ុន ចិត្ត (Hun Chet Ministry)។ តាមរយៈការអធិប្បាយ ការនិពន្ធសៀវភៅ និងព័ន្ធកិច្ចឌីជីថល «មិត្តពិតកម្ពុជា» ព្រះបន្ទូលនៃព្រះត្រូវបានផ្សព្វផ្សាយទៅកាន់មនុស្សរាប់ពាន់នាក់នៅទូទាំងកម្ពុជា។"
+                    : "Serving in pulpit preaching and ministry leadership alongside Senior Pastor Kim Jong Ho, Hun Chet is devoted to biblical clarity, discipleship of young leaders, and reaching the nation through digital media and theological literature."}
                 </p>
 
                 <div
@@ -946,8 +946,8 @@ export default function Home({ posts = [], error }) {
               <h2>{locale === "km" ? "ទិដ្ឋភាពនៃព័ន្ធកិច្ច និងសហគមន៍" : "Our Church in Action"}</h2>
               <p style={{ maxWidth: "640px", margin: "0 auto" }}>
                 {locale === "km"
-                  ? "ទិដ្ឋភាពពិតនៃការថ្វាយបង្គំ ការអធិស្ឋាន ពិធីបុណ្យជ្រមុជទឹក និងការបណ្តុះសិស្សនៅក្រុមជំនុំអលណេសិន។"
-                  : "Authentic glimpses of worship, prayer, water baptism, and generational discipleship at All Nations Church."}
+                  ? "ទិដ្ឋភាពពិតនៃការថ្វាយបង្គំ ការអធិស្ឋាន ពិធីបុណ្យជ្រមុជទឹក និងការបណ្តុះសិស្សក្នុងព័ន្ធកិច្ចលោកគ្រូ ហ៊ុន ចិត្ត។"
+                  : "Authentic glimpses of worship, prayer, water baptism, and generational discipleship with Hun Chet."}
               </p>
               <div className="hero-divider-classic" style={{ margin: "1rem auto 0" }} />
             </div>

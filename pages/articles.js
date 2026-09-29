@@ -69,7 +69,7 @@ export default function Articles({ posts, error }) {
   return (
     <>
       <Head>
-        <title>{`${t("articles.title")} — All Nations Church & Hun Chet`}</title>
+        <title>{`${t("articles.title")} — Hun Chet`}</title>
         <meta name="description" content={t("articles.intro")} />
       </Head>
 
@@ -80,7 +80,7 @@ export default function Articles({ posts, error }) {
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="/images/sermon-purpose-congregation.jpg"
-          alt="Congregation at All Nations Church"
+          alt="Congregation in Worship — Hun Chet Ministry"
           className="sanctuary-hero-bg"
         />
         <div className="sanctuary-hero-overlay" />

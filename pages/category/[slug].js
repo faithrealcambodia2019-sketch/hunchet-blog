@@ -41,7 +41,7 @@ export default function CategoryPage({ category, posts }) {
   return (
     <>
       <Head>
-        <title>{`${category.name} — All Nations Church & Hun Chet`}</title>
+        <title>{`${category.name} — Hun Chet`}</title>
         <meta name="description" content={`Biblical expositions and articles on ${category.name}.`} />
       </Head>
 
@@ -52,7 +52,7 @@ export default function CategoryPage({ category, posts }) {
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="/images/sermon-purpose-congregation.jpg"
-          alt="All Nations Church Sanctuary"
+          alt="Hun Chet Ministry Sanctuary"
           className="sanctuary-hero-bg"
         />
         <div className="sanctuary-hero-overlay" />
@@ -78,8 +78,8 @@ export default function CategoryPage({ category, posts }) {
               <span className="sanctuary-stat-label">{category.name}</span>
             </div>
             <div className="sanctuary-stat-card">
-              <span className="sanctuary-stat-num">Church</span>
-              <span className="sanctuary-stat-label">All Nations Church</span>
+              <span className="sanctuary-stat-num">Ministry</span>
+              <span className="sanctuary-stat-label">Hun Chet</span>
             </div>
           </div>
         </div>

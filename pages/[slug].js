@@ -62,7 +62,7 @@ export default function WordPressPage({ page }) {
   return (
     <>
       <Head>
-        <title>{plainTitle} — All Nations Church & Hun Chet</title>
+        <title>{plainTitle} — Hun Chet</title>
       </Head>
 
       <SiteHeader />

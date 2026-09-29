@@ -14,7 +14,7 @@ export default function Contact() {
   return (
     <>
       <Head>
-        <title>{`${t("contact.title")} — All Nations Church & Hun Chet`}</title>
+        <title>{`${t("contact.title")} — Hun Chet`}</title>
         <meta name="description" content={t("contact.intro")} />
       </Head>
 
@@ -25,13 +25,13 @@ export default function Contact() {
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="/images/all-nations-institute-campus.jpg"
-          alt="All Nations Church Campus"
+          alt="Sanctuary Campus"
           className="sanctuary-hero-bg"
         />
         <div className="sanctuary-hero-overlay" />
         <div className="sanctuary-hero-content">
           <div className="sanctuary-badge-tag">
-            <span>{isKm ? "ក្រុមជំនុំ និងវិទ្យាស្ថានគ្រប់ប្រជាជាតិ" : "All Nations Church & Institute"}</span>
+            <span>{isKm ? "វិទ្យាស្ថាន និងកន្លែងថ្វាយបង្គំព្រះ" : "Sanctuary & Campus Ministry"}</span>
           </div>
           <h1 className="sanctuary-hero-title">{t("contact.title")}</h1>
           <p className="sanctuary-hero-subtitle">
@@ -141,11 +141,11 @@ export default function Contact() {
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src="/images/all-nations-institute-campus.jpg"
-                  alt="All Nations Church Campus"
+                  alt="Sanctuary Campus"
                 />
               </div>
               <div className="contact-campus-body">
-                <h3>{isKm ? "វិទ្យាស្ថាន និងក្រុមជំនុំគ្រប់ប្រជាជាតិ" : "All Nations Church & Institute Campus"}</h3>
+                <h3>{isKm ? "វិទ្យាស្ថាន និងកន្លែងថ្វាយបង្គំព្រះ" : "Institute & Sanctuary Campus"}</h3>
                 <p>
                   {isKm
                     ? "ទីតាំងស្ថិតក្នុងរាជធានីភ្នំពេញ មានចំណតយានយន្តធំទូលាយ បរិយាកាសស្ងប់ស្ងាត់ និងក្រុមការងារទទួលស្វាគមន៍ដោយភាពកក់ក្តៅ។"
@@ -183,8 +183,8 @@ export default function Contact() {
                 <h3>{isKm ? "លោកគ្រូ ហ៊ុន ចិត្ត (Hun Chet)" : "Leader Hun Chet"}</h3>
                 <p style={{ marginBottom: "1.25rem" }}>
                   {isKm
-                    ? "ចែករំលែកដំណឹងល្អ ដឹកនាំការថ្វាយបង្គំ បង្រៀនព្រះគម្ពីរ និងការបណ្តុះបណ្តាលសិស្សនៅក្រុមជំនុំគ្រប់ប្រជាជាតិ។"
-                    : "Ministry Lead serving in preaching, discipleship, and gospel communication at All Nations Church."}
+                    ? "ចែករំលែកដំណឹងល្អ ដឹកនាំការថ្វាយបង្គំ បង្រៀនព្រះគម្ពីរ និងការបណ្តុះបណ្តាលសិស្សក្នុងព័ន្ធកិច្ចលោកគ្រូ ហ៊ុន ចិត្ត។"
+                    : "Ministry Lead serving in preaching, discipleship, and gospel communication in Hun Chet Ministry."}
                 </p>
                 <AuthorCard />
               </div>

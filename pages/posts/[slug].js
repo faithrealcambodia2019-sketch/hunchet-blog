@@ -61,7 +61,7 @@ export default function Post({ post }) {
   return (
     <>
       <Head>
-        <title>{`${plainTitle} — All Nations Church & Hun Chet`}</title>
+        <title>{`${plainTitle} — Hun Chet`}</title>
         <meta name="description" content={description} />
         <meta property="og:title" content={plainTitle} />
         <meta property="og:description" content={description} />

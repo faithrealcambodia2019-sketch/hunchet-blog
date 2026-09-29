@@ -31,9 +31,9 @@ export default function About() {
   return (
     <>
       <Head>
-        <title>{`${t("about.title")} — All Nations Church & Hun Chet`}</title>
+        <title>{`${t("about.title")} — Hun Chet`}</title>
         <meta name="description" content={description} />
-        <meta property="og:title" content="About Ministry Lead Hun Chet — All Nations Church" />
+        <meta property="og:title" content="About Ministry Lead Hun Chet" />
         <meta property="og:description" content={description} />
         <meta property="og:image" content={PORTRAIT} />
       </Head>
@@ -45,7 +45,7 @@ export default function About() {
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="/images/history-sanctuary-worship.jpg"
-          alt="All Nations Church Sanctuary"
+          alt="Hun Chet Ministry Sanctuary"
           className="sanctuary-hero-bg"
         />
         <div className="sanctuary-hero-overlay" />
@@ -56,8 +56,8 @@ export default function About() {
           <h1 className="sanctuary-hero-title">{t("about.title")}</h1>
           <p className="sanctuary-hero-subtitle">
             {isKm
-              ? "លោកគ្រូ ហ៊ុន ចិត្ត — អ្នកដឹកនាំកិច្ចការបម្រើព្រះ ក្រុមជំនុំគ្រប់ប្រជាជាតិ"
-              : "Leader Hun Chet — Ministry Lead & Preacher at All Nations Church"}
+              ? "លោកគ្រូ ហ៊ុន ចិត្ត — អ្នកដឹកនាំកិច្ចការបម្រើព្រះ និងការបង្រៀនព្រះបន្ទូល"
+              : "Leader Hun Chet — Ministry Lead & Preacher"}
           </p>
           <p className="sanctuary-hero-lead">{description}</p>
 
@@ -104,7 +104,7 @@ export default function About() {
         <div className="container">
           <div className="section-head" style={{ textAlign: "center" }}>
             <span className="eyebrow">{isKm ? "វេទិកាទេសនា និងកិច្ចការគង្វាល" : "Pulpit & Pastoral Ministry"}</span>
-            <h2>{isKm ? "កិច្ចការបម្រើព្រះរួមគ្នានៅលើវេទិកាទេសនា" : "Joint Pulpit Leadership at All Nations Church"}</h2>
+            <h2>{isKm ? "កិច្ចការបម្រើព្រះរួមគ្នានៅលើវេទិកាទេសនា" : "Joint Pulpit Leadership & Preaching"}</h2>
             <hr className="rule" />
           </div>
 
@@ -118,7 +118,7 @@ export default function About() {
             </div>
             <div className="about-pulpit-body">
               <span className="article-spotlight-tag">
-                {isKm ? "ក្រុមជំនុំគ្រប់ប្រជាជាតិ" : "All Nations Church Pulpit"}
+                {isKm ? "វេទិកាទេសនា និងការបង្រៀន" : "Pulpit Preaching & Teaching"}
               </span>
               <h3>
                 {isKm

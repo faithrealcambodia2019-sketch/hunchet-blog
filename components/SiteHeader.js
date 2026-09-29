@@ -275,7 +275,7 @@ function NavIcon({ type }) {
   return <CheckIcon style={{ width: 16, height: 16 }} />;
 }
 
-// 1. All Nations Church Top Announcement Notice Bar
+// 1. Hun Chet Ministry Top Announcement Notice Bar
 function TopChurchBar({ locale, onOpenFlyer }) {
   const tStr = (key) => STRINGS[key]?.[locale] || STRINGS[key]?.en || "";
 
@@ -381,7 +381,7 @@ function LanguageSwitch() {
   );
 }
 
-// 3. Main All Nations Church Style Site Header Component
+// 3. Main Hun Chet Ministry Site Header Component
 export default function SiteHeader() {
   const router = useRouter();
   const t = useT();
@@ -471,7 +471,7 @@ export default function SiteHeader() {
 
   return (
     <>
-      {/* 1. All Nations Church Top Notice Bar */}
+      {/* 1. Hun Chet Ministry Top Notice Bar */}
       <TopChurchBar
         locale={locale}
         onOpenFlyer={() => setIsAnnouncementModalOpen(true)}
@@ -492,7 +492,7 @@ export default function SiteHeader() {
             </span>
           </Link>
 
-          {/* Desktop Navigation Menu (All Nations Church Structure) */}
+          {/* Desktop Navigation Menu (Hun Chet Ministry Structure) */}
           <nav className="site-nav desktop-nav" aria-label="Main Navigation">
             {/* 1. Home */}
             <Link
@@ -663,7 +663,7 @@ export default function SiteHeader() {
         </div>
       </header>
 
-      {/* 3. All Nations Church Card-Grouped Mobile Drawer */}
+      {/* 3. Hun Chet Ministry Card-Grouped Mobile Drawer */}
       {mounted && typeof document !== "undefined" && mobileOpen && createPortal(
         <div
           className="mobile-drawer-overlay"

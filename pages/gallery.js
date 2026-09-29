@@ -87,8 +87,8 @@ export default function Gallery() {
           name="description"
           content={
             locale === "km"
-              ? "ទិដ្ឋភាពពិតនៃការថ្វាយបង្គំ ការផ្សាយព្រះបន្ទូល ពិធីបុណ្យជ្រមុជទឹក យុវជន និងព័ន្ធកិច្ចឌីជីថលនៅក្រុមជំនុំអលណេសិន រាជធានីភ្នំពេញ។"
-              : "Authentic photography and video records of Sunday worship, pastoral preaching, holy baptism, and next-gen youth ministry at All Nations Church, Phnom Penh."
+              ? "ទិដ្ឋភាពពិតនៃការថ្វាយបង្គំ ការផ្សាយព្រះបន្ទូល ពិធីបុណ្យជ្រមុជទឹក យុវជន និងព័ន្ធកិច្ចឌីជីថលលោកគ្រូ ហ៊ុន ចិត្ត រាជធានីភ្នំពេញ។"
+              : "Authentic photography and video records of Sunday worship, pastoral preaching, holy baptism, and next-gen youth ministry in Hun Chet Ministry, Phnom Penh."
           }
         />
         <meta
@@ -108,7 +108,7 @@ export default function Gallery() {
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="/images/youth-fellowship-2025-group.jpg"
-          alt="All Nations Church Family and Youth"
+          alt="Hun Chet Ministry Family and Youth"
           className="sanctuary-hero-bg"
         />
         <div className="sanctuary-hero-overlay" />
@@ -130,14 +130,14 @@ export default function Gallery() {
 
           <p className="sanctuary-hero-subtitle">
             {locale === "km"
-              ? "ក្រុមជំនុំអលណេសិន • ព័ន្ធកិច្ចឌីជីថល • ការបណ្តុះសិស្សជំនាន់ក្រោយ"
-              : "All Nations Church • Digital Outreach • Generational Discipleship"}
+              ? "ព័ន្ធកិច្ចលោកគ្រូ ហ៊ុន ចិត្ត • ព័ន្ធកិច្ចឌីជីថល • ការបណ្តុះសិស្សជំនាន់ក្រោយ"
+              : "Hun Chet Ministry • Digital Outreach • Generational Discipleship"}
           </p>
 
           <p className="sanctuary-hero-lead">
             {locale === "km"
               ? "ទិដ្ឋភាពពិតនៃការថ្វាយបង្គំ ការផ្សាយព្រះបន្ទូលលើវេទិកា ពិធីបុណ្យជ្រមុជទឹក ការប្រកបគ្នារបស់យុវជន និងថ្នាក់រៀនព្រះគម្ពីរកុមារ នៅរាជធានីភ្នំពេញ។"
-              : "Authentic glimpses of heartfelt worship, pastoral preaching from the pulpit, water baptism celebrations, and loving fellowship at All Nations Church."}
+              : "Authentic glimpses of heartfelt worship, pastoral preaching from the pulpit, water baptism celebrations, and loving fellowship in Hun Chet Ministry."}
           </p>
 
           <div className="sanctuary-stat-strip">

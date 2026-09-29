@@ -36,10 +36,10 @@ import {
 
 const STRINGS = {
   heroEyebrow: {
-    en: "All Nations Church Phnom Penh • Daily Bread",
-    km: "ក្រុមជំនុំ អល ណេសិន ភ្នំពេញ • ព្រះបន្ទូលប្រចាំថ្ងៃ",
-    ko: "프놈펜 올네이션스 교회 • 매일의 양식",
-    zh: "金边万民教会 • 每日旷野吗哪",
+    en: "Hun Chet Ministry • Daily Bread",
+    km: "ព័ន្ធកិច្ចលោកគ្រូ ហ៊ុន ចិត្ត • ព្រះបន្ទូលប្រចាំថ្ងៃ",
+    ko: "훈 쳇 사역 • 매일의 양식",
+    zh: "Hun Chet 事工 • 每日灵修",
   },
   heroTitle: {
     en: "Daily Devotions & 365 Scripture Sanctuary",
@@ -322,7 +322,7 @@ export default function DevotionsPage() {
     const ref = dev.verse?.ref?.km || dev.verse?.ref?.en || "";
     const km = dev.verse?.text?.km || "";
     const en = dev.verse?.text?.en || "";
-    const shareText = `【${ref}】\n\n${km}\n\n${en}\n\nAll Nations Church Phnom Penh • Daily Devotion`;
+    const shareText = `【${ref}】\n\n${km}\n\n${en}\n\nHun Chet • Daily Devotion`;
     if (navigator?.clipboard?.writeText) {
       navigator.clipboard.writeText(shareText);
       setToastMessage(
@@ -345,7 +345,7 @@ export default function DevotionsPage() {
     const ref = dev.verse?.ref?.km || dev.verse?.ref?.en || "";
     const km = dev.verse?.text?.km || "";
     const en = dev.verse?.text?.en || "";
-    const text = `📖 ព្រះបន្ទូលប្រចាំថ្ងៃ • All Nations Church\n【${ref}】\n\n«${km}»\n\n“${en}”\n\nដឹកនាំដោយលោកគ្រូ ហ៊ុន ចិត្ត (Leader Hun Chet)`;
+    const text = `📖 ព្រះបន្ទូលប្រចាំថ្ងៃ • Hun Chet\n【${ref}】\n\n«${km}»\n\n“${en}”\n\nដឹកនាំដោយលោកគ្រូ ហ៊ុន ចិត្ត (Leader Hun Chet)`;
     const url = typeof window !== "undefined" ? window.location.href : "https://hunchet.org/devotions";
     const shareUrl = `https://t.me/share/url?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`;
     if (typeof window !== "undefined") {
@@ -359,7 +359,7 @@ export default function DevotionsPage() {
     const ref = v.ref?.km || v.ref?.en || "";
     const km = v.text?.km || "";
     const en = v.text?.en || "";
-    const shareText = `【${ref}】\n\n${km}\n\n${en}\n\n1954 Old Khmer Version • All Nations Church`;
+    const shareText = `【${ref}】\n\n${km}\n\n${en}\n\n1954 Old Khmer Version • Hun Chet`;
     if (navigator?.clipboard?.writeText) {
       navigator.clipboard.writeText(shareText);
       setToastMessage(
@@ -492,7 +492,7 @@ export default function DevotionsPage() {
   return (
     <>
       <Head>
-        <title>{`${pick(STRINGS.heroTitle, locale)} — Hun Chet • All Nations Church`}</title>
+        <title>{`${pick(STRINGS.heroTitle, locale)} — Hun Chet`}</title>
         <meta
           name="description"
           content={pick(STRINGS.heroSub, locale)}
@@ -1168,7 +1168,7 @@ export default function DevotionsPage() {
       <section className="devotion-crosslink-section">
         <div className="container">
           <h3 className="devotion-crosslink-title">
-            All Nations Church Ministry Sanctuary
+            Hun Chet Ministry Sanctuary
           </h3>
           <p className="devotion-crosslink-sub">
             Explore our sermon archives, theological library, and video productions.

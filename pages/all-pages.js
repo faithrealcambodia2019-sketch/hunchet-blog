@@ -27,10 +27,10 @@ export default function AllPages({ pages, error }) {
   return (
     <>
       <Head>
-        <title>All Pages Directory — All Nations Church & Hun Chet</title>
+        <title>All Pages Directory — Hun Chet</title>
         <meta
           name="description"
-          content="Complete sitemap and directory of All Nations Church resources."
+          content="Complete sitemap and directory of Hun Chet ministry resources."
         />
       </Head>
 
@@ -41,7 +41,7 @@ export default function AllPages({ pages, error }) {
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="/images/history-prayer-fellowship.jpg"
-          alt="All Nations Church Ministry"
+          alt="Hun Chet Ministry"
           className="sanctuary-hero-bg"
         />
         <div className="sanctuary-hero-overlay" />
@@ -63,8 +63,8 @@ export default function AllPages({ pages, error }) {
               <span className="sanctuary-stat-label">Published Pages</span>
             </div>
             <div className="sanctuary-stat-card">
-              <span className="sanctuary-stat-num">All Nations</span>
-              <span className="sanctuary-stat-label">Church Campus</span>
+              <span className="sanctuary-stat-num">Hun Chet</span>
+              <span className="sanctuary-stat-label">Faith & Ministry</span>
             </div>
           </div>
         </div>
