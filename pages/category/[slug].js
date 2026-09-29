@@ -41,30 +41,62 @@ export default function CategoryPage({ category, posts }) {
   return (
     <>
       <Head>
-        <title>{category.name} — Hun Chet</title>
-        <meta name="description" content={`Articles about ${category.name}.`} />
+        <title>{`${category.name} — All Nations Church & Hun Chet`}</title>
+        <meta name="description" content={`Biblical expositions and articles on ${category.name}.`} />
       </Head>
 
       <SiteHeader />
 
-      <section className="page-hero">
-        <div className="container">
-          <span className="eyebrow">Topic</span>
-          <h1>{category.name}</h1>
-          <p>
-            {posts.length} {posts.length === 1 ? "article" : "articles"} in this
-            topic.
+      {/* Stately Sanctuary Hero */}
+      <section className="sanctuary-hero">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/images/sermon-purpose-congregation.jpg"
+          alt="All Nations Church Sanctuary"
+          className="sanctuary-hero-bg"
+        />
+        <div className="sanctuary-hero-overlay" />
+        <div className="sanctuary-hero-content">
+          <div className="sanctuary-badge-tag">
+            <span>Topic Archives</span>
+          </div>
+          <h1 className="sanctuary-hero-title">{category.name}</h1>
+          <p className="sanctuary-hero-subtitle">
+            Sanctuary Sermons and Biblical Expositions
           </p>
+          <p className="sanctuary-hero-lead">
+            Explore {posts.length} {posts.length === 1 ? "article" : "articles"} in this category.
+          </p>
+
+          <div className="sanctuary-stat-strip">
+            <div className="sanctuary-stat-card">
+              <span className="sanctuary-stat-num">{posts.length}</span>
+              <span className="sanctuary-stat-label">Published Articles</span>
+            </div>
+            <div className="sanctuary-stat-card">
+              <span className="sanctuary-stat-num">Topic</span>
+              <span className="sanctuary-stat-label">{category.name}</span>
+            </div>
+            <div className="sanctuary-stat-card">
+              <span className="sanctuary-stat-num">Church</span>
+              <span className="sanctuary-stat-label">All Nations Church</span>
+            </div>
+          </div>
         </div>
       </section>
 
       <main className="section">
         <div className="container">
-          <Link href="/categories" className="back-link">
-            ← All topics
-          </Link>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "2rem" }}>
+            <Link href="/categories" className="btn btn-ghost" style={{ fontSize: "0.82rem" }}>
+              ← All Topics
+            </Link>
+            <Link href="/articles" className="btn btn-ghost" style={{ fontSize: "0.82rem" }}>
+              All Articles →
+            </Link>
+          </div>
 
-          <div className="post-grid" style={{ marginTop: "2rem" }}>
+          <div className="post-grid">
             {posts.map((post) => {
               const image = getFeaturedImage(post);
               return (
@@ -89,7 +121,7 @@ export default function CategoryPage({ category, posts }) {
                       dangerouslySetInnerHTML={{ __html: post.title.rendered }}
                     />
                     <p className="excerpt">{getExcerptText(post)}</p>
-                    <span className="read-more">Read more →</span>
+                    <span className="read-more">Read Exposition →</span>
                   </div>
                 </Link>
               );

@@ -4,10 +4,6 @@ import SiteHeader from "../components/SiteHeader";
 import SiteFooter from "../components/SiteFooter";
 import { getAllPageSlugs, getPageBySlug, cleanContentHtml } from "../lib/wordpress";
 
-// Slugs already handled by their own dedicated file under /pages, so we don't
-// want this catch-all clobbering them (Next.js prefers static routes over
-// dynamic ones automatically, but we skip generating duplicate static paths
-// for these to keep the build clean).
 const RESERVED_SLUGS = new Set([
   "about",
   "contact",
@@ -64,22 +60,43 @@ export default function WordPressPage({ page }) {
   return (
     <>
       <Head>
-        <title>{plainTitle} — hunchet.blog</title>
+        <title>{plainTitle} — All Nations Church & Hun Chet</title>
       </Head>
 
       <SiteHeader />
 
-      <main className="container">
-        <Link href="/" className="back-link">
-          ← Back to home
-        </Link>
+      <main className="container" style={{ paddingBottom: "5rem" }}>
+        <div className="reading-room-breadcrumbs" style={{ marginTop: "2.5rem" }}>
+          <Link href="/">Home</Link>
+          <span>/</span>
+          <span style={{ color: "var(--navy-dark)", fontWeight: 700 }}>{plainTitle}</span>
+        </div>
 
-        <article className="post-page">
-          <h1>{plainTitle}</h1>
+        <article className="post-page" style={{ paddingTop: "0.5rem" }}>
+          <header className="reading-room-header">
+            <h1
+              style={{
+                fontFamily: "var(--font-display)",
+                fontSize: "clamp(2rem, 4vw, 2.75rem)",
+                lineHeight: 1.25,
+                color: "var(--navy-dark)",
+                margin: "0 0 1rem",
+              }}
+            >
+              {plainTitle}
+            </h1>
+          </header>
+
           <div
             className="post-content"
             dangerouslySetInnerHTML={{ __html: content }}
           />
+
+          <div style={{ marginTop: "3.5rem" }}>
+            <Link href="/" className="btn btn-primary" style={{ fontSize: "0.82rem" }}>
+              ← Return to Home
+            </Link>
+          </div>
         </article>
       </main>
 

@@ -2,7 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import SiteHeader from "../components/SiteHeader";
 import SiteFooter from "../components/SiteFooter";
-import { useT } from "../lib/i18n";
+import { useT, useLocale } from "../lib/i18n";
 
 const TELEGRAM_URL = "https://t.me/+855966875886";
 const MESSENGER_URL = "https://m.me/hunchet2024";
@@ -13,8 +13,8 @@ const GLOBAL_METHODS = ["card", "transfer", "monthly"];
 
 function CheckIcon() {
   return (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="m5 12.5 4.2 4.2L19 7" />
+    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <polyline points="20 6 9 17 4 12" />
     </svg>
   );
 }
@@ -23,20 +23,32 @@ function GivingCard({ region, methods, href, externalLabel, featured = false }) 
   const t = useT();
 
   return (
-    <article className={`giving-card${featured ? " giving-card-featured" : ""}`}>
+    <article className={`giving-card${featured ? " giving-card-featured" : ""}`} style={{ borderRadius: "2px", borderTop: "4px solid var(--gold)" }}>
       <div className="giving-card-head">
-        <span className="giving-region">{t(`partner.${region}.label`)}</span>
-        <h3>{t(`partner.${region}.title`)}</h3>
-        <p>{t(`partner.${region}.description`)}</p>
+        <span className="giving-region" style={{ color: "var(--gold)", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.12em" }}>
+          {t(`partner.${region}.label`)}
+        </span>
+        <h3 style={{ fontFamily: "var(--font-display)", color: "var(--navy-dark)", margin: "0.5rem 0" }}>
+          {t(`partner.${region}.title`)}
+        </h3>
+        <p style={{ color: "var(--text)", fontSize: "0.95rem", lineHeight: 1.65 }}>
+          {t(`partner.${region}.description`)}
+        </p>
       </div>
 
-      <ul className="giving-methods">
+      <ul className="giving-methods" style={{ margin: "1.5rem 0" }}>
         {methods.map((method) => (
-          <li key={method}>
-            <span className="giving-check"><CheckIcon /></span>
+          <li key={method} style={{ display: "flex", gap: "0.75rem", alignItems: "flex-start", marginBottom: "1rem" }}>
+            <span style={{ color: "var(--gold)", marginTop: "2px", flexShrink: 0 }}>
+              <CheckIcon />
+            </span>
             <span>
-              <strong>{t(`partner.${region}.${method}`)}</strong>
-              <small>{t(`partner.${region}.${method}Note`)}</small>
+              <strong style={{ display: "block", color: "var(--navy-dark)", fontSize: "0.95rem" }}>
+                {t(`partner.${region}.${method}`)}
+              </strong>
+              <small style={{ color: "var(--muted)", fontSize: "0.85rem" }}>
+                {t(`partner.${region}.${method}Note`)}
+              </small>
             </span>
           </li>
         ))}
@@ -46,10 +58,11 @@ function GivingCard({ region, methods, href, externalLabel, featured = false }) 
         href={href}
         target="_blank"
         rel="noreferrer"
-        className={featured ? "partner-btn partner-btn-primary" : "partner-btn partner-btn-dark"}
+        className={featured ? "btn btn-primary" : "btn btn-ghost"}
+        style={{ width: "100%", justifyContent: "center", fontSize: "0.82rem" }}
       >
         {t(`partner.${region}.cta`)}
-        <span aria-hidden="true">→</span>
+        <span aria-hidden="true" style={{ marginLeft: 6 }}>→</span>
         <span className="sr-only"> {externalLabel}</span>
       </a>
     </article>
@@ -58,55 +71,81 @@ function GivingCard({ region, methods, href, externalLabel, featured = false }) 
 
 export default function PartnerWithUs() {
   const t = useT();
+  const locale = useLocale();
+  const isKm = locale === "km";
 
   return (
     <>
       <Head>
-        <title>{`${t("partner.title")} — Hun Chet`}</title>
+        <title>{`${t("partner.title")} — All Nations Church & Hun Chet`}</title>
         <meta name="description" content={t("partner.intro")} />
       </Head>
 
       <SiteHeader />
 
       <main className="partner-page">
-        <section className="partner-hero">
-          <div className="partner-hero-glow" aria-hidden="true" />
-          <div className="container partner-hero-inner">
-            <span className="partner-kicker">{t("partner.eyebrow")}</span>
-            <h1>{t("partner.title")}</h1>
-            <p>{t("partner.intro")}</p>
-            <div className="partner-hero-actions">
-              <a href="#give" className="partner-btn partner-btn-primary">
-                {t("partner.primaryCta")} <span aria-hidden="true">↓</span>
-              </a>
-              <a href="#impact" className="partner-btn partner-btn-ghost">
-                {t("partner.secondaryCta")}
-              </a>
+        {/* Stately Sanctuary Hero */}
+        <section className="sanctuary-hero">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/images/church-family.jpg"
+            alt="All Nations Church Family"
+            className="sanctuary-hero-bg"
+          />
+          <div className="sanctuary-hero-overlay" />
+          <div className="sanctuary-hero-content">
+            <div className="sanctuary-badge-tag">
+              <span>{isKm ? "ការចូលរួមចំណែកក្នុងព្រះរាជ្យព្រះ" : "Kingdom Mission & Stewardship"}</span>
             </div>
+            <h1 className="sanctuary-hero-title">{t("partner.title")}</h1>
+            <p className="sanctuary-hero-subtitle">
+              {isKm
+                ? "ការរួមចំណែកពង្រីកដំណឹងល្អ ការបង្រៀនព្រះបន្ទូល និងការបម្រើសហគមន៍ក្នុងប្រទេសកម្ពុជា"
+                : "Advancing the Gospel, Biblical Teaching, and Christian Outreach Across Cambodia"}
+            </p>
+            <p className="sanctuary-hero-lead">{t("partner.intro")}</p>
 
-            <div className="partner-trust-row" aria-label={t("partner.trustLabel")}>
-              {["verified", "options", "direct"].map((item) => (
-                <div key={item}>
-                  <CheckIcon />
-                  <span>{t(`partner.trust.${item}`)}</span>
-                </div>
-              ))}
+            <div className="sanctuary-stat-strip">
+              <div className="sanctuary-stat-card">
+                <span className="sanctuary-stat-num">Kingdom</span>
+                <span className="sanctuary-stat-label">
+                  {isKm ? "បេសកកម្មដំណឹងល្អ" : "Gospel Mission"}
+                </span>
+              </div>
+              <div className="sanctuary-stat-card">
+                <span className="sanctuary-stat-num">100%</span>
+                <span className="sanctuary-stat-label">
+                  {isKm ? "ភាពស្មោះត្រង់ និងតម្លាភាព" : "Faithful Stewardship"}
+                </span>
+              </div>
+              <div className="sanctuary-stat-card">
+                <span className="sanctuary-stat-num">All Nations</span>
+                <span className="sanctuary-stat-label">
+                  {isKm ? "កម្ពុជា និងគ្រប់ប្រជាជាតិ" : "Local & Global Reach"}
+                </span>
+              </div>
             </div>
           </div>
         </section>
 
-        <section className="partner-section" id="impact">
+        {/* Why Partner / Impact Pillars */}
+        <section className="section" id="impact">
           <div className="container">
-            <div className="partner-section-head">
-              <span className="partner-kicker partner-kicker-dark">{t("partner.impactEyebrow")}</span>
+            <div className="section-head" style={{ textAlign: "center" }}>
+              <span className="eyebrow">{t("partner.impactEyebrow")}</span>
               <h2>{t("partner.impactTitle")}</h2>
-              <p>{t("partner.impactIntro")}</p>
+              <hr className="rule" />
+              <p style={{ maxWidth: 660, margin: "0.75rem auto 0", color: "var(--muted)" }}>
+                {t("partner.impactIntro")}
+              </p>
             </div>
 
-            <div className="partner-impact-grid">
+            <div className="value-grid" style={{ marginTop: "2.5rem" }}>
               {IMPACT_AREAS.map((area, index) => (
-                <article className="partner-impact-card" key={area}>
-                  <span className="impact-number">0{index + 1}</span>
+                <article className="value-card" key={area}>
+                  <span style={{ display: "block", fontFamily: "var(--font-display)", fontSize: "1.4rem", fontWeight: 700, color: "var(--gold)", marginBottom: "0.5rem" }}>
+                    0{index + 1}
+                  </span>
                   <h3>{t(`partner.impact.${area}.title`)}</h3>
                   <p>{t(`partner.impact.${area}.body`)}</p>
                 </article>
@@ -115,41 +154,54 @@ export default function PartnerWithUs() {
           </div>
         </section>
 
-        <section className="partner-section partner-give-section" id="give">
+        {/* Ways to Give Section */}
+        <section className="section section-alt" id="give">
           <div className="container">
-            <div className="partner-section-head">
-              <span className="partner-kicker partner-kicker-dark">{t("partner.giveEyebrow")}</span>
+            <div className="section-head" style={{ textAlign: "center" }}>
+              <span className="eyebrow">{t("partner.giveEyebrow")}</span>
               <h2>{t("partner.giveTitle")}</h2>
-              <p>{t("partner.giveIntro")}</p>
+              <hr className="rule" />
+              <p style={{ maxWidth: 660, margin: "0.75rem auto 0", color: "var(--muted)" }}>
+                {t("partner.giveIntro")}
+              </p>
             </div>
 
-            <div className="partner-giving-grid">
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "2rem", marginTop: "2.5rem" }}>
               <GivingCard region="cambodia" methods={CAMBODIA_METHODS} href={TELEGRAM_URL} externalLabel="Telegram" featured />
               <GivingCard region="global" methods={GLOBAL_METHODS} href={MESSENGER_URL} externalLabel="Messenger" />
             </div>
 
-            <aside className="partner-safety-note">
-              <div className="safety-icon" aria-hidden="true">✓</div>
+            <aside style={{ maxWidth: 720, margin: "3rem auto 0", padding: "1.5rem 1.75rem", background: "#ffffff", border: "1px solid var(--border)", borderLeft: "4px solid var(--gold)", borderRadius: "2px", display: "flex", gap: "1rem", alignItems: "flex-start" }}>
+              <div style={{ color: "var(--gold)", marginTop: "2px" }}>
+                <CheckIcon />
+              </div>
               <div>
-                <strong>{t("partner.safetyTitle")}</strong>
-                <p>{t("partner.safetyBody")}</p>
+                <strong style={{ display: "block", color: "var(--navy-dark)", fontSize: "1rem", marginBottom: "0.25rem" }}>
+                  {t("partner.safetyTitle")}
+                </strong>
+                <p style={{ color: "var(--text)", fontSize: "0.92rem", lineHeight: 1.65, margin: 0 }}>
+                  {t("partner.safetyBody")}
+                </p>
               </div>
             </aside>
           </div>
         </section>
 
-        <section className="partner-section partner-other-section">
+        {/* Other Ways to Partner */}
+        <section className="section">
           <div className="container">
-            <div className="partner-section-head">
-              <span className="partner-kicker partner-kicker-dark">{t("partner.otherEyebrow")}</span>
+            <div className="section-head" style={{ textAlign: "center" }}>
+              <span className="eyebrow">{t("partner.otherEyebrow")}</span>
               <h2>{t("partner.otherTitle")}</h2>
-              <p>{t("partner.otherIntro")}</p>
+              <hr className="rule" />
+              <p style={{ maxWidth: 660, margin: "0.75rem auto 0", color: "var(--muted)" }}>
+                {t("partner.otherIntro")}
+              </p>
             </div>
 
-            <div className="partner-other-grid">
+            <div className="value-grid" style={{ marginTop: "2.5rem" }}>
               {["pray", "share", "collaborate"].map((way) => (
-                <article key={way}>
-                  <span aria-hidden="true">{way === "pray" ? "—" : way === "share" ? "↗" : "•"}</span>
+                <article className="value-card" key={way}>
                   <h3>{t(`partner.other.${way}.title`)}</h3>
                   <p>{t(`partner.other.${way}.body`)}</p>
                 </article>
@@ -158,15 +210,18 @@ export default function PartnerWithUs() {
           </div>
         </section>
 
-        <section className="partner-final">
-          <div className="container partner-final-inner">
-            <div>
-              <span className="partner-kicker">{t("partner.finalEyebrow")}</span>
-              <h2>{t("partner.finalTitle")}</h2>
-              <p>{t("partner.finalBody")}</p>
-            </div>
-            <Link href="/contact" className="partner-btn partner-btn-primary">
-              {t("partner.finalCta")} <span aria-hidden="true">→</span>
+        {/* Final CTA Bar */}
+        <section className="section section-navy" style={{ borderTop: "8px solid var(--gold)", textAlign: "center", padding: "4rem 1.5rem" }}>
+          <div className="container" style={{ maxWidth: 720 }}>
+            <span className="eyebrow" style={{ color: "var(--gold)" }}>{t("partner.finalEyebrow")}</span>
+            <h2 style={{ fontFamily: "var(--font-display)", color: "#ffffff", fontSize: "clamp(1.75rem, 3.5vw, 2.5rem)", margin: "0.75rem 0" }}>
+              {t("partner.finalTitle")}
+            </h2>
+            <p style={{ color: "rgba(255, 255, 255, 0.82)", fontSize: "1.05rem", lineHeight: 1.7, marginBottom: "2rem" }}>
+              {t("partner.finalBody")}
+            </p>
+            <Link href="/contact" className="btn btn-primary" style={{ padding: "0.85rem 2rem", fontSize: "0.92rem" }}>
+              {t("partner.finalCta")} →
             </Link>
           </div>
         </section>

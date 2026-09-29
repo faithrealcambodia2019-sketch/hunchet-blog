@@ -27,20 +27,46 @@ export default function AllPages({ pages, error }) {
   return (
     <>
       <Head>
-        <title>All Pages — Hun Chet</title>
+        <title>All Pages Directory — All Nations Church & Hun Chet</title>
         <meta
           name="description"
-          content="Every page from the site, all in one place."
+          content="Complete sitemap and directory of All Nations Church resources."
         />
       </Head>
 
       <SiteHeader />
 
-      <section className="page-hero">
-        <div className="container">
-          <span className="eyebrow">Index</span>
-          <h1>All Pages</h1>
-          <p>Every page carried over from the WordPress site.</p>
+      {/* Stately Sanctuary Hero */}
+      <section className="sanctuary-hero">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/images/history-prayer-fellowship.jpg"
+          alt="All Nations Church Ministry"
+          className="sanctuary-hero-bg"
+        />
+        <div className="sanctuary-hero-overlay" />
+        <div className="sanctuary-hero-content">
+          <div className="sanctuary-badge-tag">
+            <span>Sitemap & Directory</span>
+          </div>
+          <h1 className="sanctuary-hero-title">All Pages Directory</h1>
+          <p className="sanctuary-hero-subtitle">
+            Complete Index of Ministry Pages, Archives, and Church Life
+          </p>
+          <p className="sanctuary-hero-lead">
+            Easily discover every section of our ministry, library, and biblical preaching archives.
+          </p>
+
+          <div className="sanctuary-stat-strip">
+            <div className="sanctuary-stat-card">
+              <span className="sanctuary-stat-num">{pages.length}</span>
+              <span className="sanctuary-stat-label">Published Pages</span>
+            </div>
+            <div className="sanctuary-stat-card">
+              <span className="sanctuary-stat-num">All Nations</span>
+              <span className="sanctuary-stat-label">Church Campus</span>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -56,11 +82,23 @@ export default function AllPages({ pages, error }) {
                   key={page.id}
                   href={`/${page.slug}`}
                   className="category-card"
+                  style={{ borderTop: "3px solid var(--gold)", borderRadius: "2px" }}
                 >
-                  <span className="category-card-name">{title}</span>
+                  <span className="category-card-name" style={{ fontFamily: "var(--font-display)", color: "var(--navy-dark)" }}>
+                    {title}
+                  </span>
+                  <span className="category-card-count" style={{ color: "var(--muted)" }}>
+                    /{page.slug}
+                  </span>
                 </Link>
               );
             })}
+          </div>
+
+          <div style={{ textAlign: "center", marginTop: "3.5rem" }}>
+            <Link href="/" className="btn btn-primary">
+              Return to Home
+            </Link>
           </div>
         </div>
       </main>
