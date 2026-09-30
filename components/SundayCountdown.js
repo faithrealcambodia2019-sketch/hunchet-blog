@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { CalendarIcon, ClockIcon, MapPinIcon, DownloadIcon } from "./Icons";
 
-// Calculate next Sunday at 08:30 AM UTC+7 (Indochina Time)
+// Calculate next Sunday at 10:00 AM UTC+7 (Indochina Time)
 function getNextSundayService() {
   const now = new Date();
   
@@ -15,10 +15,10 @@ function getNextSundayService() {
 
   const nextSunday = new Date(cambodiaNow);
   nextSunday.setDate(cambodiaNow.getDate() + daysUntilSunday);
-  nextSunday.setHours(8, 30, 0, 0);
+  nextSunday.setHours(10, 0, 0, 0);
 
-  // If today is Sunday and it's already past 10:30 AM, point to next Sunday
-  if (dayOfWeek === 0 && cambodiaNow.getHours() >= 11) {
+  // If today is Sunday and it's already past 12:00 PM, point to next Sunday
+  if (dayOfWeek === 0 && cambodiaNow.getHours() >= 12) {
     nextSunday.setDate(nextSunday.getDate() + 7);
   }
 
@@ -90,7 +90,7 @@ export default function SundayCountdown({ onPlanVisit }) {
       "BEGIN:VALARM",
       "TRIGGER:-PT12H",
       "ACTION:DISPLAY",
-      "DESCRIPTION:Reminder: Sunday Sanctuary Worship at 8:30 AM",
+      "DESCRIPTION:Reminder: Sunday Sanctuary Worship at 10:00 AM",
       "END:VALARM",
       "END:VEVENT",
       "END:VCALENDAR",
@@ -114,10 +114,10 @@ export default function SundayCountdown({ onPlanVisit }) {
       zh: "下一次主日崇拜",
     },
     title: {
-      en: "Sunday Sanctuary Worship at 8:30 AM",
-      km: "ការថ្វាយបង្គំថ្ងៃអាទិត្យ វេលាម៉ោង ៨:៣០ ព្រឹក",
-      ko: "주일 오전 8:30 본당 예배",
-      zh: "主日上午 8:30 圣殿崇拜",
+      en: "Sunday Sanctuary Worship at 10:00 AM",
+      km: "ការថ្វាយបង្គំថ្ងៃអាទិត្យ វេលាម៉ោង ១០:០០ ព្រឹក",
+      ko: "주일 오전 10:00 본당 예배",
+      zh: "主日上午 10:00 圣殿崇拜",
     },
     days: { en: "Days", km: "ថ្ងៃ", ko: "일", zh: "天" },
     hours: { en: "Hours", km: "ម៉ោង", ko: "시간", zh: "时" },

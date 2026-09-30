@@ -40,10 +40,10 @@ const STRINGS = {
     zh: "教会通告",
   },
   worshipText: {
-    en: "Sunday Sanctuary Worship at 8:30 AM — join us this week!",
-    km: "កម្មវិធីថ្វាយបង្គំថ្ងៃអាទិត្យ វេលាម៉ោង ៨:៣០ ព្រឹក — ចូលរួមសប្តាហ៍នេះជាមួយពួកយើង!",
-    ko: "주일 예배 오전 8:30 — 이번 주에 함께 예배드려요!",
-    zh: "主日崇拜 8:30 AM — 欢迎这周与我们同心敬拜！",
+    en: "Sunday Sanctuary Worship at 10:00 AM — join us this week!",
+    km: "កម្មវិធីថ្វាយបង្គំថ្ងៃអាទិត្យ វេលាម៉ោង ១០:០០ ព្រឹក — ចូលរួមសប្តាហ៍នេះជាមួយពួកយើង!",
+    ko: "주일 예배 오전 10:00 — 이번 주에 함께 예배드려요!",
+    zh: "主日崇拜 10:00 AM — 欢迎这周与我们同心敬拜！",
   },
   viewFlyer: {
     en: "View Flyer",
@@ -58,10 +58,10 @@ const STRINGS = {
     zh: "计划来访",
   },
   planSundayText: {
-    en: "Plan Your Visit This Sunday: 8:30 AM",
-    km: "គ្រោងមកជួបថ្ងៃអាទិត្យនេះ: ៨:៣០ ព្រឹក",
-    ko: "이번 주일 방문 계획하기 (8:30 AM)",
-    zh: "计划本主日来访：上午 8:30",
+    en: "Plan Your Visit This Sunday: 10:00 AM",
+    km: "គ្រោងមកជួបថ្ងៃអាទិត្យនេះ: ១០:០០ ព្រឹក",
+    ko: "이번 주일 방문 계획하기 (10:00 AM)",
+    zh: "计划本主日来访：上午 10:00",
   },
   welcomeKicker: {
     en: "Welcome & First Steps",

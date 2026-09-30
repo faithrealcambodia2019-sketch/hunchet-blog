@@ -43,7 +43,7 @@ export default function Contact() {
 
           <div className="sanctuary-stat-strip">
             <div className="sanctuary-stat-card">
-              <span className="sanctuary-stat-num">8:30 AM</span>
+              <span className="sanctuary-stat-num">10:00 AM</span>
               <span className="sanctuary-stat-label">
                 {isKm ? "ថ្វាយបង្គំថ្ងៃអាទិត្យ" : "Sunday Sanctuary Worship"}
               </span>
@@ -86,7 +86,7 @@ export default function Contact() {
                 {isKm ? "ការថ្វាយបង្គំធំ" : "Main Service"}
               </span>
               <h3>{isKm ? "ការថ្វាយបង្គំព្រះថ្ងៃអាទិត្យ" : "Sunday Morning Worship"}</h3>
-              <span className="contact-schedule-time">8:30 AM – 10:30 AM</span>
+              <span className="contact-schedule-time">10:00 AM – 11:30 AM</span>
               <p>
                 {isKm
                   ? "ការច្រៀងសរសើរតម្កើងព្រះ ការអធិស្ឋាន និងការស្តាប់ព្រះបន្ទូលយ៉ាងស៊ីជម្រៅ (ភាសាខ្មែរ និងអង់គ្លេស)។"

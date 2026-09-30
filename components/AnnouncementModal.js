@@ -78,10 +78,10 @@ export default function AnnouncementModal({ isOpen, onClose, locale = "en" }) {
       zh: "主日主堂崇拜",
     },
     service1Time: {
-      en: "Every Sunday at 8:30 AM",
-      km: "រៀងរាល់ថ្ងៃអាទិត្យ ម៉ោង ៨:៣០ ព្រឹក",
-      ko: "매주 주일 오전 8:30",
-      zh: "每周主日 上午 8:30",
+      en: "Every Sunday at 10:00 AM",
+      km: "រៀងរាល់ថ្ងៃអាទិត្យ ម៉ោង ១០:០០ ព្រឹក",
+      ko: "매주 주일 오전 10:00",
+      zh: "每周主日 上午 10:00",
     },
     service1Desc: {
       en: "Biblical exposition, congregational praise & prayer (Khmer & English)",
