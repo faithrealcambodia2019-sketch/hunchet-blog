@@ -660,7 +660,7 @@ export default function Home({ posts = [], error }) {
                   justifyContent: "space-between",
                   flexWrap: "wrap",
                   gap: "1.25rem",
-                  borderTop: "1px solid rgba(255, 255, 255, 0.15)",
+                  borderTop: "1px solid #e2e8f0",
                   paddingTop: "1rem",
                 }}
               >
@@ -674,13 +674,13 @@ export default function Home({ posts = [], error }) {
                     style={{
                       padding: "0.55rem 1.1rem",
                       fontSize: "0.74rem",
-                      background: "rgba(255, 255, 255, 0.12)",
-                      borderColor: "rgba(255, 255, 255, 0.25)",
-                      color: "#ffffff",
+                      background: "#ffffff",
+                      borderColor: "#cbd5e1",
+                      color: "#334155",
                     }}
                   >
                     {isCopiedVerse ? (
-                      <CheckIcon style={{ width: 14, height: 14, color: "var(--gold-light)" }} />
+                      <CheckIcon style={{ width: 14, height: 14, color: "#10b981" }} />
                     ) : (
                       <CopyIcon style={{ width: 14, height: 14 }} />
                     )}
@@ -702,9 +702,9 @@ export default function Home({ posts = [], error }) {
                     style={{
                       padding: "0.55rem 1.1rem",
                       fontSize: "0.74rem",
-                      background: "rgba(255, 255, 255, 0.12)",
-                      borderColor: "rgba(255, 255, 255, 0.25)",
-                      color: "#ffffff",
+                      background: "#ffffff",
+                      borderColor: "#cbd5e1",
+                      color: "#334155",
                     }}
                   >
                     <ShareIcon style={{ width: 14, height: 14 }} />
@@ -825,16 +825,16 @@ export default function Home({ posts = [], error }) {
                   : "Featured Short Sermon • A Path to Purpose"}
               </span>
 
-              <h2 style={{ fontFamily: "var(--font-display)", color: "#ffffff", fontSize: "clamp(1.8rem, 3.5vw, 2.5rem)" }}>
+              <h2 style={{ fontFamily: "var(--font-display)", color: "var(--navy-dark)", fontSize: "clamp(1.8rem, 3.5vw, 2.5rem)" }}>
                 {locale === "km"
                   ? "គន្លឹះ ៥ យ៉ាងដើម្បីរស់នៅប្រកបដោយអត្ថន័យក្នុងព្រះគ្រីស្ទ"
                   : "5 Keys to Living a Truly Great Life in Christ"}
               </h2>
 
-              <div style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", marginTop: "0.5rem", color: "#cbd5e1", fontSize: "0.85rem" }}>
-                <UserIcon style={{ width: 14, height: 14, color: "var(--gold)" }} />
+              <div style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", marginTop: "0.5rem", color: "#64748b", fontSize: "0.85rem" }}>
+                <UserIcon style={{ width: 14, height: 14, color: "#2563eb" }} />
                 <span>{locale === "km" ? "អធិប្បាយដោយ៖" : "Preached by:"}</span>
-                <strong style={{ color: "var(--gold)" }}>{locale === "km" ? "លោកគ្រូ ហ៊ុន ចិត្ត" : "Leader Hun Chet"}</strong>
+                <strong style={{ color: "var(--navy-dark)" }}>{locale === "km" ? "លោកគ្រូ ហ៊ុន ចិត្ត" : "Leader Hun Chet"}</strong>
               </div>
 
               <div className="hero-divider-classic" style={{ margin: "1rem auto 0" }} />
@@ -854,12 +854,12 @@ export default function Home({ posts = [], error }) {
                         <span className="sermon-key-num">{k.number}</span>
                         <div>
                           <strong style={{ display: "block", fontSize: "0.95rem" }}>{loc(k.title)}</strong>
-                          <span style={{ fontSize: "0.75rem", color: "var(--gold)", fontFamily: "var(--font-display)" }}>
+                          <span style={{ fontSize: "0.75rem", color: "#2563eb", fontFamily: "var(--font-display)", fontWeight: 600 }}>
                             {k.ref}
                           </span>
                         </div>
                       </div>
-                      <ArrowRightIcon style={{ width: 16, height: 16, color: "rgba(255,255,255,0.4)" }} />
+                      <ArrowRightIcon style={{ width: 16, height: 16, color: "#94a3b8" }} />
                     </Link>
                   ))}
                 </div>
@@ -887,8 +887,8 @@ export default function Home({ posts = [], error }) {
 
                 <div
                   style={{
-                    background: "rgba(184, 155, 94, 0.12)",
-                    border: "1px solid rgba(184, 155, 94, 0.3)",
+                    background: "#f8fafc",
+                    border: "1px solid #e2e8f0",
                     padding: "1.5rem",
                     borderRadius: "var(--radius-lg)",
                     display: "flex",
@@ -896,10 +896,10 @@ export default function Home({ posts = [], error }) {
                     gap: "0.85rem",
                   }}
                 >
-                  <strong style={{ fontSize: "0.95rem", color: "#ffffff" }}>
+                  <strong style={{ fontSize: "0.95rem", color: "var(--navy-dark)" }}>
                     {locale === "km" ? "អានអត្ថបទពេញលេញ និងចែកចាយ" : "Read Full Reflection & Share"}
                   </strong>
-                  <p style={{ fontSize: "0.82rem", color: "#cbd5e1", margin: 0, lineHeight: 1.5 }}>
+                  <p style={{ fontSize: "0.82rem", color: "#64748b", margin: 0, lineHeight: 1.5 }}>
                     {locale === "km"
                       ? "ការបកស្រាយលម្អិតតាមព្រះគម្ពីរ ការអនុវត្តជាក់ស្តែង និងសំណួរពិចារណា។"
                       : "Complete with biblical exposition, practical daily applications, and reflection questions."}
@@ -917,9 +917,9 @@ export default function Home({ posts = [], error }) {
                         gap: "0.4rem",
                         padding: "0.6rem 1.1rem",
                         borderRadius: "var(--radius-sm)",
-                        background: "rgba(14, 165, 233, 0.2)",
-                        border: "1px solid rgba(14, 165, 233, 0.4)",
-                        color: "#38bdf8",
+                        background: "#eff6ff",
+                        border: "1px solid #bfdbfe",
+                        color: "#2563eb",
                         fontSize: "0.75rem",
                         fontWeight: 700,
                         cursor: "pointer",
