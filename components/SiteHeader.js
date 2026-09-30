@@ -651,19 +651,6 @@ export default function SiteHeader() {
               <span>{planVisitLabel}</span>
             </button>
 
-            {/* Search Trigger Button */}
-            <button
-              type="button"
-              onClick={() => setIsSearchOpen(true)}
-              className="nav-search-btn"
-              aria-label="Search site (Press ⌘K)"
-              title="Search (⌘K)"
-            >
-              <SearchIcon style={{ width: 14, height: 14 }} />
-              <span>{locale === "km" ? "ស្វែងរក" : "Search"}</span>
-              <kbd className="nav-search-kbd">⌘K</kbd>
-            </button>
-
             {/* Language Switcher */}
             <LanguageSwitch />
           </nav>
