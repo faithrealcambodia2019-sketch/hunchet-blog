@@ -54,6 +54,45 @@
   box-sizing: border-box;
 }
 
+/* Luxury Royal Gold Selection */
+::selection {
+  background: rgba(179, 146, 78, 0.28);
+  color: #06111f;
+}
+
+::-moz-selection {
+  background: rgba(179, 146, 78, 0.28);
+  color: #06111f;
+}
+
+/* World-Class Slim Luxury Scrollbars */
+::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+
+::-webkit-scrollbar-track {
+  background: #06111f;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #324357;
+  border-radius: var(--radius-full);
+  border: 2px solid #06111f;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gold);
+}
+
+/* Luxury Metallic Gold Gradient Utility */
+.text-gold-gradient {
+  background: linear-gradient(135deg, #f5e4be 0%, #b3924e 50%, #8c6a2b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
 html {
   scroll-behavior: smooth;
   overflow-x: hidden;
@@ -1077,16 +1116,16 @@ iframe {
 .anc-modal-container {
   position: relative;
   width: 100%;
-  max-width: 900px;
+  max-width: 920px;
   max-height: 90vh;
   background: #ffffff;
-  border: 4px solid var(--gold);
-  border-radius: 14px;
-  box-shadow: 0 25px 60px -12px rgba(0, 0, 0, 0.6);
+  border: 1.5px solid rgba(179, 146, 78, 0.45);
+  border-radius: var(--radius-xl);
+  box-shadow: 0 32px 80px -16px rgba(0, 0, 0, 0.75), 0 0 36px rgba(179, 146, 78, 0.2);
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  animation: zoomInModal 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: zoomInModal 0.28s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @keyframes zoomInModal {
@@ -1108,12 +1147,12 @@ iframe {
 
 .anc-modal-close-btn {
   position: absolute;
-  top: 0.75rem;
-  right: 0.75rem;
+  top: 0.85rem;
+  right: 0.85rem;
   z-index: 25;
   width: 36px;
   height: 36px;
-  border-radius: 50%;
+  border-radius: var(--radius-full);
   background: rgba(8, 20, 36, 0.85);
   border: 1px solid rgba(255, 255, 255, 0.25);
   color: #ffffff;
@@ -1121,12 +1160,13 @@ iframe {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .anc-modal-close-btn:hover {
   background: var(--gold);
-  color: #081424;
+  color: #06111f;
+  transform: rotate(90deg);
 }
 
 .anc-modal-poster-wrap {
@@ -1180,15 +1220,16 @@ iframe {
 .anc-modal-badge {
   display: inline-flex;
   align-items: center;
-  padding: 0.2rem 0.6rem;
-  background: var(--gold);
-  color: #081424;
+  padding: 0.25rem 0.75rem;
+  background: linear-gradient(135deg, #dfc68f 0%, #b3924e 100%);
+  color: #06111f;
   font-size: 0.68rem;
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  border-radius: 4px;
-  margin-bottom: 0.5rem;
+  border-radius: var(--radius-full);
+  box-shadow: 0 2px 6px rgba(179, 146, 78, 0.25);
+  margin-bottom: 0.65rem;
 }
 
 .anc-modal-title {
@@ -1226,11 +1267,12 @@ iframe {
 }
 
 .anc-modal-preacher-card {
-  padding: 0.75rem 0.9rem;
+  padding: 0.85rem 1rem;
   background: #ffffff;
   border: 1px solid var(--border);
-  border-left: 3px solid var(--navy);
-  border-radius: 6px;
+  border-left: 3px solid var(--gold);
+  border-radius: var(--radius-md);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
   margin-bottom: 0.85rem;
 }
 
@@ -1252,11 +1294,18 @@ iframe {
 .anc-modal-schedule-item {
   display: flex;
   align-items: flex-start;
-  gap: 0.65rem;
-  padding: 0.65rem 0.85rem;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
   background: #ffffff;
   border: 1px solid var(--border-light);
-  border-radius: 6px;
+  border-radius: var(--radius-md);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.anc-modal-schedule-item:hover {
+  transform: translateX(2px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
 .anc-modal-sch-title {
@@ -1282,10 +1331,11 @@ iframe {
 }
 
 .anc-modal-loc-box {
-  padding: 0.65rem 0.85rem;
+  padding: 0.75rem 1rem;
   background: #ffffff;
   border: 1px solid var(--border);
-  border-radius: 6px;
+  border-radius: var(--radius-md);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
 }
 
 .anc-modal-loc-text {
@@ -1315,21 +1365,25 @@ iframe {
   align-items: center;
   justify-content: center;
   gap: 0.45rem;
-  padding: 0.65rem 0.9rem;
+  padding: 0.7rem 1.1rem;
   background: #ffffff;
-  border: 1px solid var(--navy);
+  border: 1.5px solid var(--navy);
   color: var(--navy);
-  border-radius: 6px;
+  border-radius: var(--radius-full);
   font-size: 0.76rem;
-  font-weight: 700;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
   text-decoration: none;
-  transition: all 0.2s ease;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
   text-align: center;
 }
 
 .anc-modal-directions-btn:hover {
   background: var(--navy);
   color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(15, 39, 68, 0.25);
 }
 
 .anc-modal-telegram-btn {
@@ -1338,20 +1392,25 @@ iframe {
   align-items: center;
   justify-content: center;
   gap: 0.45rem;
-  padding: 0.65rem 0.9rem;
-  background: #229ed9;
+  padding: 0.7rem 1.1rem;
+  background: linear-gradient(135deg, #28a8e9 0%, #1e88be 100%);
   border: 1px solid #229ed9;
   color: #ffffff;
-  border-radius: 6px;
+  border-radius: var(--radius-full);
   font-size: 0.76rem;
-  font-weight: 700;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
   text-decoration: none;
-  transition: background 0.2s ease;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
   text-align: center;
+  box-shadow: 0 2px 8px rgba(34, 158, 217, 0.3);
 }
 
 .anc-modal-telegram-btn:hover {
-  background: #1b86b8;
+  background: linear-gradient(135deg, #32b1f0 0%, #1b7ba9 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(34, 158, 217, 0.42);
 }
 
 /* ============ Hero Badge & Classic Framing ============ */
@@ -4053,22 +4112,22 @@ iframe {
   position: relative;
   max-width: 880px;
   width: 100%;
-  background: #0b192c;
-  border: 2px solid var(--gold);
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8);
+  background: #06111f;
+  border: 1.5px solid rgba(179, 146, 78, 0.45);
+  box-shadow: 0 32px 80px -10px rgba(0, 0, 0, 0.88), 0 0 36px rgba(179, 146, 78, 0.25);
   overflow: hidden;
   display: flex;
   flex-direction: column;
   max-height: 94vh;
   color: #ffffff;
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-xl);
 }
 
 .anc-modal-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.85rem 1.25rem;
+  padding: 1rem 1.5rem;
   background: #081322;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   flex-shrink: 0;
@@ -4077,13 +4136,14 @@ iframe {
 .anc-modal-header h3 {
   color: #ffffff;
   font-family: var(--font-display);
-  font-size: 1.05rem;
+  font-size: 1.1rem;
+  font-weight: 700;
   margin: 0;
 }
 
 .anc-modal-close {
-  width: 34px;
-  height: 34px;
+  width: 36px;
+  height: 36px;
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.2);
   color: #ffffff;
@@ -4091,14 +4151,15 @@ iframe {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  border-radius: 4px;
-  transition: all 0.2s ease;
+  border-radius: var(--radius-full);
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .anc-modal-close:hover {
   background: var(--gold);
   border-color: var(--gold);
-  color: var(--navy-dark);
+  color: #06111f;
+  transform: rotate(90deg);
 }
 
 .anc-modal-close svg {
