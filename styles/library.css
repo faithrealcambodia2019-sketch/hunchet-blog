@@ -6,7 +6,7 @@
      Antique Gold:   #b89b5e
      Warm Cream:     #fcfbf9
      Parchment Grey: #e2dfd8
-   Sharp corners: border-radius: 2px (zero pill shapes, zero AI glyphs)
+   Refined architectural geometry and luxury gold hairlines
    ===================================================================== */
 
 /* ---------------- Hero Section ---------------- */
@@ -124,7 +124,7 @@
   width: 6px;
   height: 6px;
   background: var(--gold);
-  border-radius: 1px;
+  border-radius: 50%;
 }
 
 /* ---------------- Filter & Search Navigation Bar ---------------- */
@@ -202,7 +202,7 @@
   color: var(--gold);
   font-size: 0.65rem;
   font-weight: 800;
-  border-radius: 1px;
+  border-radius: var(--radius-full);
 }
 
 .library-tab-btn.is-active .library-tab-count {
@@ -299,7 +299,7 @@
   letter-spacing: 0.12em;
   text-transform: uppercase;
   padding: 0.25rem 0.6rem;
-  border-radius: 1px;
+  border-radius: var(--radius-sm);
   margin-bottom: 0.6rem;
 }
 
@@ -393,7 +393,7 @@
   background: var(--gold);
   margin-top: 0.55rem;
   flex: none;
-  border-radius: 1px;
+  border-radius: 50%;
 }
 
 .library-featured-actions {
@@ -544,7 +544,7 @@
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  border-radius: 1px;
+  border-radius: var(--radius-sm);
 }
 
 .library-pill-format {
@@ -555,7 +555,7 @@
   font-weight: 800;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  border-radius: 1px;
+  border-radius: var(--radius-sm);
 }
 
 .library-card-cover-info {
@@ -732,7 +732,7 @@
   width: 100%;
   aspect-ratio: 16 / 10;
   object-fit: cover;
-  border-radius: 1px;
+  border-radius: var(--radius-md);
   border: 1px solid var(--border);
   border-top: 3px solid var(--gold);
   margin-bottom: 1.25rem;

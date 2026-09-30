@@ -373,7 +373,7 @@
 .devotion-soundwave-bar {
   width: 2.5px;
   background: var(--gold);
-  border-radius: 1px;
+  border-radius: var(--radius-full);
   animation: devotionWave 0.9s ease-in-out infinite alternate;
 }
 
@@ -390,13 +390,23 @@
 /* ---------------- Illuminated Scripture Showcase (Centerpiece) ---------------- */
 .devotion-scripture-showcase {
   position: relative;
-  background: #faf8f5;
-  border: 1px solid rgba(184, 155, 94, 0.3);
-  border-radius: var(--radius-lg);
-  padding: 3.25rem 2.75rem 2.75rem;
-  margin-bottom: 3.25rem;
-  box-shadow: var(--shadow-sm);
+  background: #ffffff;
+  border: 1px solid rgba(179, 146, 78, 0.25);
+  border-radius: var(--radius-xl);
+  padding: 3.5rem 3rem 3rem;
+  margin-bottom: 3.5rem;
+  box-shadow: 0 16px 40px -8px rgba(10, 22, 38, 0.08), 0 2px 6px rgba(15, 23, 42, 0.03);
   overflow: hidden;
+}
+
+.devotion-scripture-showcase::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #b3924e 0%, #dfc68f 35%, #f7ecd5 50%, #dfc68f 65%, #b3924e 100%);
 }
 
 @media (max-width: 768px) {
@@ -506,12 +516,19 @@
 }
 
 .devotion-trans-card {
-  padding: 1.25rem 1.5rem;
-  background: #ffffff;
-  border: 1px solid var(--border);
+  padding: 1.35rem 1.6rem;
+  background: var(--bg-alt);
+  border: 1px solid rgba(15, 23, 42, 0.06);
   border-left: 3px solid var(--gold);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-xs);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.25s ease;
+}
+
+.devotion-trans-card:hover {
+  background: #ffffff;
+  box-shadow: var(--shadow);
+  border-left-color: var(--gold-hover);
 }
 
 .devotion-trans-label {
