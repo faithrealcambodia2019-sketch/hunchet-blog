@@ -5,7 +5,6 @@ import { useRouter } from "next/router";
 import { LOGO } from "../lib/media";
 import { LOCALES, useT } from "../lib/i18n";
 import AnnouncementModal from "./AnnouncementModal";
-import CommandPalette from "./CommandPalette";
 import {
   GlobeIcon,
   TelegramIcon,
@@ -22,7 +21,6 @@ import {
   CompassIcon,
   PhoneIcon,
   CalendarIcon,
-  SearchIcon,
 } from "./Icons";
 
 const LANG_DISPLAY = {
@@ -394,19 +392,6 @@ export default function SiteHeader() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(null);
   const [isAnnouncementModalOpen, setIsAnnouncementModalOpen] = useState(false);
-  const [isSearchOpen, setIsSearchOpen] = useState(false);
-
-  // ⌘K or Ctrl+K shortcut to open command palette
-  useEffect(() => {
-    const handleKeyDown = (e) => {
-      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
-        e.preventDefault();
-        setIsSearchOpen((prev) => !prev);
-      }
-    };
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, []);
 
   // Mobile drawer accordion states
   const [mobileAboutOpen, setMobileAboutOpen] = useState(false);
@@ -655,16 +640,8 @@ export default function SiteHeader() {
             <LanguageSwitch />
           </nav>
 
-          {/* Mobile Header Actions (Search + Language Switcher + Hamburger) */}
+          {/* Mobile Header Actions (Language Switcher + Hamburger) */}
           <div className="mobile-header-actions">
-            <button
-              type="button"
-              className="mobile-search-btn"
-              onClick={() => setIsSearchOpen(true)}
-              aria-label="Search site"
-            >
-              <SearchIcon style={{ width: 18, height: 18 }} />
-            </button>
             <LanguageSwitch />
             <button
               type="button"
@@ -753,20 +730,6 @@ export default function SiteHeader() {
                   <span>{planVisitLabel}</span>
                 </button>
               </div>
-
-              {/* Quick Search Bar in Drawer */}
-              <button
-                type="button"
-                className="anc-drawer-search-btn"
-                onClick={() => {
-                  setMobileOpen(false);
-                  setIsSearchOpen(true);
-                }}
-              >
-                <SearchIcon style={{ width: 16, height: 16 }} />
-                <span>{locale === "km" ? "ស្វែងរកព្រះបន្ទូល វីដេអូ ឬសៀវភៅ..." : "Search devotions, sermons, books..."}</span>
-                <kbd>⌘K</kbd>
-              </button>
 
               {/* Section 1: Welcome & First Steps Card */}
               <div className="anc-nav-card">
@@ -947,12 +910,6 @@ export default function SiteHeader() {
         isOpen={isAnnouncementModalOpen}
         onClose={() => setIsAnnouncementModalOpen(false)}
         locale={locale}
-      />
-
-      {/* 5. Spotlight Search & Command Palette (⌘K) */}
-      <CommandPalette
-        isOpen={isSearchOpen}
-        onClose={() => setIsSearchOpen(false)}
       />
     </>
   );

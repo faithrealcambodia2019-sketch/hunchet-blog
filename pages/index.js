@@ -21,7 +21,6 @@ import {
   HERO_COVER,
   WORSHIP_PHOTO,
 } from "../lib/media";
-import SundayCountdown from "../components/SundayCountdown";
 import Toast from "../components/Toast";
 import AnnouncementModal from "../components/AnnouncementModal";
 import {
@@ -687,11 +686,6 @@ export default function Home({ posts = [], error }) {
                       </button>
                     </div>
                   </div>
-                </div>
-              </div>
-
-              {/* Unique Live Sunday Gathering Countdown & 1-Click Calendar Sync */}
-              <SundayCountdown onPlanVisit={() => setIsAnnouncementModalOpen(true)} />
             </div>
           </div>
         </div>
