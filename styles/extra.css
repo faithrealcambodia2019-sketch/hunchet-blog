@@ -1,7 +1,15 @@
 /* =====================================================================
    Typography, brand mark, gallery and life-story styles.
-   Inherits master typography variables defined in globals.css.
+   Loaded after globals.css so :root overrides here win.
+   Latin glyphs resolve to Playfair Display / Inter; Khmer glyphs fall
+   through to Koh Santepheap automatically (per-glyph font fallback).
    ===================================================================== */
+
+:root {
+  --font-display: "Source Serif 4", "Playfair Display", "Koh Santepheap", Georgia, serif;
+  --font-body: "Inter", "Koh Santepheap", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-khmer: "Koh Santepheap", serif;
+}
 
 /* Khmer needs extra vertical room for stacked diacritics */
 .post-content,
@@ -28,9 +36,9 @@
   overflow: hidden;
   flex-shrink: 0;
   background: var(--navy);
-  border: 1.5px solid var(--border);
+  border: 2px solid var(--gold);
   display: block;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
 
 .brand-mark img {
@@ -41,7 +49,7 @@
 }
 
 .site-footer .brand-mark {
-  border-color: rgba(255, 255, 255, 0.15);
+  border-color: var(--gold);
 }
 
 /* ---------------- Gallery ---------------- */
@@ -87,7 +95,6 @@
   background: var(--navy);
   border-color: var(--navy);
   color: #fff;
-  box-shadow: 0 4px 14px rgba(10, 20, 36, 0.22);
 }
 
 .album {
@@ -142,19 +149,13 @@
   display: block;
   width: 100%;
   padding: 0;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
+  border: 0;
+  border-radius: var(--radius);
   overflow: hidden;
   aspect-ratio: 1 / 1;
   background: var(--bg-alt);
   cursor: zoom-in;
-  box-shadow: var(--shadow-sm);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.gallery-item:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow);
 }
 
 .gallery-item img {
@@ -387,7 +388,7 @@
   background: linear-gradient(
     180deg,
     var(--accent) 0%,
-    rgba(37, 99, 235, 0.15) 100%
+    var(--border) 100%
   );
 }
 
@@ -409,15 +410,15 @@
   height: 20px;
   border-radius: 50%;
   background: #fff;
-  border: 2.5px solid var(--accent);
-  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
+  border: 3px solid var(--accent);
+  box-shadow: 0 0 0 4px rgba(29, 78, 216, 0.1);
 }
 
 .tl-year {
   display: inline-block;
   font-family: var(--font-body);
-  font-size: 0.72rem;
-  font-weight: 800;
+  font-size: 0.7rem;
+  font-weight: 700;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--accent);
@@ -446,11 +447,10 @@
 
 .tl-media {
   margin-top: 1.1rem;
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius);
   overflow: hidden;
   aspect-ratio: 16 / 9;
-  border: 1px solid var(--border);
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow);
   max-width: 520px;
 }
 
@@ -472,16 +472,9 @@
 .value-card {
   background: #fff;
   border: 1px solid var(--border);
-  border-top: 3px solid var(--accent);
-  border-radius: var(--radius-lg);
-  padding: 2.25rem 2rem;
-  box-shadow: var(--shadow-sm);
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.value-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-hover);
+  border-top: 3px solid var(--gold);
+  border-radius: var(--radius);
+  padding: 2rem 1.75rem;
 }
 
 .value-card h3 {

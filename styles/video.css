@@ -1,21 +1,22 @@
 /* =====================================================================
-   Resource & Video Media Styles — Hun Chet Ministry Clean Global Standard
+   Resource & Video Media Styles — Hun Chet Ministry Classic Aesthetic
    Color palette:
-     Slate Navy:  #0f172a
-     Royal Blue:  #2563eb
-     Border:      #e2e8f0
-     Canvas:      #ffffff
-   Clean architectural geometry, serene typography, Koh Santepheap
+     Sanctuary Navy: #0b192c
+     Deep Accent:    #15477a
+     Antique Gold:   #b89b5e
+     Warm Cream:     #fcfbf9
+     Parchment Grey: #e2dfd8
+   Sharp corners: border-radius: 2px (zero pill shapes, zero AI glyphs)
    ===================================================================== */
 
 /* ---------------- Hero Section ---------------- */
 
 .resource-hero {
   position: relative;
-  background-color: var(--navy-dark);
+  background-color: #0b192c;
   color: #ffffff;
   padding: 4.5rem 1.5rem 3.75rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 3px solid var(--gold);
   text-align: center;
   overflow: hidden;
 }
@@ -36,9 +37,9 @@
   inset: 0;
   background: linear-gradient(
     180deg,
-    rgba(15, 23, 42, 0.88) 0%,
-    rgba(15, 23, 42, 0.82) 50%,
-    rgba(15, 23, 42, 0.96) 100%
+    rgba(11, 25, 44, 0.88) 0%,
+    rgba(15, 39, 68, 0.82) 50%,
+    rgba(11, 25, 44, 0.94) 100%
   );
   z-index: 1;
   pointer-events: none;
@@ -56,15 +57,15 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.35rem 0.9rem;
-  background: rgba(37, 99, 235, 0.15);
-  border: 1px solid rgba(37, 99, 235, 0.35);
-  color: #60a5fa;
+  background: rgba(184, 155, 94, 0.16);
+  border: 1px solid var(--gold);
+  color: var(--gold);
   font-family: var(--font-body);
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  border-radius: var(--radius-full);
+  border-radius: var(--radius-sm);
   margin-bottom: 1.25rem;
 }
 
@@ -94,10 +95,9 @@
 }
 
 .resource-gold-divider {
-  width: 40px;
+  width: 5rem;
   height: 3px;
-  background: var(--accent);
-  border-radius: 9999px;
+  background: var(--gold);
   margin: 0 auto 1.75rem;
 }
 
@@ -123,8 +123,8 @@
 .resource-stat-dot {
   width: 6px;
   height: 6px;
-  background: var(--accent);
-  border-radius: 50%;
+  background: var(--gold);
+  border-radius: 1px;
 }
 
 /* ---------------- Filter & Search Navigation Bar ---------------- */
@@ -182,14 +182,14 @@
 }
 
 .resource-tab-btn:hover {
-  border-color: var(--accent);
+  border-color: var(--gold);
   color: var(--navy-dark);
 }
 
 .resource-tab-btn.is-active {
-  background: var(--navy-dark);
+  background: #0b192c;
   color: #ffffff;
-  border-color: var(--navy-dark);
+  border-color: var(--gold);
   box-shadow: var(--shadow-sm);
 }
 
@@ -198,16 +198,16 @@
   align-items: center;
   justify-content: center;
   padding: 0.1rem 0.4rem;
-  background: #eff6ff;
-  color: var(--accent);
+  background: rgba(184, 155, 94, 0.2);
+  color: var(--gold);
   font-size: 0.65rem;
   font-weight: 800;
-  border-radius: var(--radius-full);
+  border-radius: 1px;
 }
 
 .resource-tab-btn.is-active .resource-tab-count {
-  background: var(--accent);
-  color: #ffffff;
+  background: var(--gold);
+  color: #0b192c;
 }
 
 .resource-search-box {
@@ -230,8 +230,8 @@
 }
 
 .resource-search-input:focus {
-  border-color: var(--accent);
-  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+  border-color: var(--gold);
+  box-shadow: 0 0 0 2px rgba(184, 155, 94, 0.25);
   background: #ffffff;
 }
 
@@ -247,13 +247,13 @@
   overflow: hidden;
   box-shadow: var(--shadow-md);
   margin-bottom: 3.5rem;
-  border-left: 3px solid var(--accent);
+  border-left: 3px solid var(--gold);
 }
 
 .resource-featured-media {
   position: relative;
   aspect-ratio: 16 / 9;
-  background: var(--navy-dark);
+  background: #0b192c;
   overflow: hidden;
 }
 
@@ -295,9 +295,9 @@
   inset: 0;
   background: linear-gradient(
     180deg,
-    rgba(15, 23, 42, 0.2) 0%,
-    rgba(15, 23, 42, 0.6) 60%,
-    rgba(15, 23, 42, 0.85) 100%
+    rgba(11, 25, 44, 0.2) 0%,
+    rgba(11, 25, 44, 0.6) 60%,
+    rgba(11, 25, 44, 0.85) 100%
   );
 }
 
@@ -312,10 +312,10 @@
   justify-content: center;
   width: 68px;
   height: 68px;
-  background: rgba(15, 23, 42, 0.85);
-  border: 2px solid #ffffff;
-  border-radius: var(--radius-full);
-  color: #ffffff;
+  background: #0b192c;
+  border: 2px solid var(--gold);
+  border-radius: 2px;
+  color: var(--gold);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
   transition: all 0.25s ease;
 }
@@ -328,9 +328,8 @@
 }
 
 .resource-featured-poster:hover .resource-featured-play-btn {
-  background: var(--accent);
-  color: #ffffff;
-  border-color: var(--accent);
+  background: var(--gold);
+  color: #0b192c;
   transform: translate(-50%, -50%) scale(1.08);
 }
 
@@ -364,16 +363,16 @@
 }
 
 .resource-meta-tag.is-primary {
-  background: var(--navy-dark);
+  background: #0b192c;
   color: #ffffff;
-  border-color: var(--navy-dark);
+  border-color: #0b192c;
 }
 
 .resource-featured-title {
   font-family: var(--font-display);
   font-size: clamp(1.6rem, 2.5vw, 2.1rem);
   font-weight: 700;
-  color: var(--navy-dark);
+  color: var(--navy);
   margin: 0 0 0.5rem;
   line-height: 1.25;
 }
@@ -428,34 +427,34 @@
 }
 
 .resource-btn:hover {
-  border-color: var(--accent);
+  border-color: var(--gold);
   color: var(--navy-dark);
   transform: translateY(-1px);
 }
 
 .resource-btn.is-primary {
-  background: var(--navy-dark);
-  border-color: var(--navy-dark);
+  background: #0b192c;
+  border-color: #0b192c;
   color: #ffffff;
 }
 
 .resource-btn.is-primary:hover {
-  background: var(--accent);
-  border-color: var(--accent);
+  background: #15477a;
+  border-color: #15477a;
   color: #ffffff;
-  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+  box-shadow: 0 4px 12px rgba(11, 25, 44, 0.25);
 }
 
 .resource-btn.is-gold {
-  background: var(--accent);
-  border-color: var(--accent);
-  color: #ffffff;
+  background: var(--gold);
+  border-color: var(--gold);
+  color: #0b192c;
   font-weight: 800;
 }
 
 .resource-btn.is-gold:hover {
-  background: var(--accent-hover);
-  border-color: var(--accent-hover);
+  background: #a3884f;
+  border-color: #a3884f;
   color: #ffffff;
 }
 
@@ -484,13 +483,13 @@
 .resource-card:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow-hover);
-  border-color: var(--accent);
+  border-color: rgba(179, 146, 78, 0.45);
 }
 
 .resource-card-media {
   position: relative;
   aspect-ratio: 16 / 9;
-  background: var(--navy-dark);
+  background: #0b192c;
   overflow: hidden;
 }
 
@@ -532,9 +531,9 @@
   inset: 0;
   background: linear-gradient(
     180deg,
-    rgba(15, 23, 42, 0.25) 0%,
-    rgba(15, 23, 42, 0.65) 65%,
-    rgba(15, 23, 42, 0.88) 100%
+    rgba(11, 25, 44, 0.25) 0%,
+    rgba(11, 25, 44, 0.65) 65%,
+    rgba(11, 25, 44, 0.88) 100%
   );
 }
 
@@ -556,24 +555,24 @@
   min-width: 26px;
   height: 26px;
   padding: 0 0.35rem;
-  background: var(--navy-dark);
-  color: #60a5fa;
-  border: 1px solid rgba(96, 165, 250, 0.4);
+  background: #0b192c;
+  color: var(--gold);
+  border: 1px solid var(--gold);
   font-size: 0.74rem;
   font-weight: 800;
-  border-radius: var(--radius-sm);
+  border-radius: 1px;
 }
 
 .resource-category-pill {
   padding: 0.22rem 0.55rem;
-  background: rgba(15, 23, 42, 0.9);
+  background: rgba(11, 25, 44, 0.9);
   color: #ffffff;
   border: 1px solid rgba(255, 255, 255, 0.25);
   font-size: 0.62rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  border-radius: var(--radius-sm);
+  border-radius: 1px;
 }
 
 .resource-card-play-btn {
@@ -587,10 +586,10 @@
   justify-content: center;
   width: 50px;
   height: 50px;
-  background: rgba(15, 23, 42, 0.88);
-  border: 1.5px solid #ffffff;
-  border-radius: var(--radius-full);
-  color: #ffffff;
+  background: rgba(11, 25, 44, 0.92);
+  border: 1.5px solid var(--gold);
+  border-radius: 2px;
+  color: var(--gold);
   transition: all 0.25s ease;
 }
 
@@ -602,9 +601,8 @@
 }
 
 .resource-poster-btn:hover .resource-card-play-btn {
-  background: var(--accent);
-  color: #ffffff;
-  border-color: var(--accent);
+  background: var(--gold);
+  color: #0b192c;
   transform: translate(-50%, -50%) scale(1.1);
 }
 
@@ -619,7 +617,7 @@
   font-size: 0.65rem;
   font-weight: 700;
   letter-spacing: 0.06em;
-  border-radius: var(--radius-sm);
+  border-radius: 1px;
 }
 
 .resource-card-body {
@@ -632,7 +630,7 @@
 .resource-card-category {
   font-size: 0.72rem;
   font-weight: 700;
-  color: var(--accent);
+  color: var(--gold);
   text-transform: uppercase;
   letter-spacing: 0.08em;
   margin-bottom: 0.35rem;
@@ -734,14 +732,14 @@
 .resource-hub-card:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow-md);
-  border-color: var(--accent);
+  border-color: var(--gold);
 }
 
 .resource-hub-media {
   position: relative;
   aspect-ratio: 16 / 10;
   overflow: hidden;
-  border-bottom: 2px solid var(--accent);
+  border-bottom: 3px solid var(--gold);
 }
 
 .resource-hub-media img {
@@ -765,7 +763,7 @@
 .resource-hub-body h3 {
   font-family: var(--font-display);
   font-size: 1.2rem;
-  color: var(--navy-dark);
+  color: var(--navy);
   margin: 0 0 0.45rem;
 }
 
@@ -785,7 +783,7 @@
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--gold);
   margin-top: auto;
 }
 
@@ -796,9 +794,9 @@
 /* ---------------- Mission Banner ---------------- */
 
 .resource-mission-banner {
-  background: var(--navy-dark);
+  background: #0b192c;
   color: #ffffff;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 3px solid var(--gold);
   border-bottom: 1px solid var(--border);
   padding: 4rem 1.5rem;
   text-align: center;
@@ -842,8 +840,8 @@
 .resource-modal-box {
   width: 100%;
   max-width: 960px;
-  background: var(--navy-dark);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: #0b192c;
+  border: 1px solid rgba(184, 155, 94, 0.4);
   border-radius: var(--radius-sm);
   overflow: hidden;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
@@ -854,8 +852,8 @@
   align-items: center;
   justify-content: space-between;
   padding: 0.85rem 1.25rem;
-  background: #090d16;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background: #071526;
+  border-bottom: 2px solid var(--gold);
   color: #ffffff;
 }
 
@@ -881,7 +879,7 @@
 }
 
 .resource-modal-close:hover {
-  color: #ffffff;
+  color: var(--gold);
 }
 
 .resource-modal-close svg {

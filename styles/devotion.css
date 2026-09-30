@@ -6,10 +6,10 @@
 /* ---------------- Hero Section ---------------- */
 .devotion-hero {
   position: relative;
-  background-color: var(--navy-dark);
+  background-color: #081322;
   color: #ffffff;
   padding: 5rem 1.5rem 4.25rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 3px solid var(--gold);
   text-align: center;
   overflow: hidden;
 }
@@ -30,9 +30,9 @@
   inset: 0;
   background: linear-gradient(
     180deg,
-    rgba(15, 23, 42, 0.88) 0%,
-    rgba(15, 23, 42, 0.82) 50%,
-    rgba(15, 23, 42, 0.96) 100%
+    rgba(8, 19, 34, 0.88) 0%,
+    rgba(14, 32, 56, 0.82) 50%,
+    rgba(8, 19, 34, 0.95) 100%
   );
   z-index: 1;
   pointer-events: none;
@@ -50,15 +50,15 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.4rem 1.1rem;
-  background: rgba(37, 99, 235, 0.15);
-  border: 1px solid rgba(37, 99, 235, 0.35);
-  color: #60a5fa;
+  background: rgba(184, 155, 94, 0.16);
+  border: 1px solid var(--gold-border);
+  color: var(--gold-light);
   font-family: var(--font-body);
   font-size: 0.74rem;
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  border-radius: var(--radius-full);
+  border-radius: var(--radius-sm);
   margin-bottom: 1.25rem;
   backdrop-filter: blur(8px);
 }
@@ -89,10 +89,9 @@
 }
 
 .devotion-gold-divider {
-  width: 40px;
+  width: 5rem;
   height: 3px;
-  background: var(--accent);
-  border-radius: 9999px;
+  background: linear-gradient(90deg, transparent 0%, var(--gold) 50%, transparent 100%);
   margin: 0 auto 1.75rem;
 }
 
@@ -120,7 +119,7 @@
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: var(--accent);
+  background: var(--gold);
 }
 
 /* ---------------- Tabs Navigation Bar ---------------- */
@@ -181,13 +180,13 @@
 }
 
 .devotion-tab-btn.is-active {
-  background: var(--navy-dark);
+  background: linear-gradient(135deg, #0b1a2d 0%, #153155 100%);
   color: #ffffff;
-  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.25);
+  box-shadow: 0 2px 8px rgba(11, 26, 45, 0.25);
 }
 
 .devotion-tab-btn.is-active svg {
-  color: #60a5fa;
+  color: var(--gold);
 }
 
 .devotion-tab-btn svg {
@@ -205,13 +204,13 @@
   font-size: 0.68rem;
   font-weight: 800;
   border-radius: var(--radius-full);
-  background: #eff6ff;
-  color: var(--accent);
+  background: rgba(184, 155, 94, 0.18);
+  color: var(--gold);
 }
 
 .devotion-tab-btn.is-active .devotion-tab-badge {
-  background: var(--accent);
-  color: #ffffff;
+  background: var(--gold);
+  color: #0b1a2d;
 }
 
 /* ---------------- Sanctuary Devotion Layout ---------------- */
@@ -238,8 +237,8 @@
   top: 0;
   left: 0;
   right: 0;
-  height: 3px;
-  background: var(--accent);
+  height: 4px;
+  background: linear-gradient(90deg, #c4a257 0%, #dfc488 50%, #c4a257 100%);
 }
 
 @media (max-width: 768px) {
@@ -268,7 +267,7 @@
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--gold);
 }
 
 .devotion-date-tag svg {
@@ -347,13 +346,13 @@
 }
 
 .devotion-action-btn.is-active {
-  background: var(--navy-dark);
-  border-color: var(--navy-dark);
+  background: linear-gradient(135deg, #0b1a2d 0%, #153155 100%);
+  border-color: #0b1a2d;
   color: #ffffff;
 }
 
 .devotion-action-btn.is-active svg {
-  color: #60a5fa;
+  color: var(--gold);
 }
 
 .devotion-action-btn svg {
@@ -373,8 +372,8 @@
 
 .devotion-soundwave-bar {
   width: 2.5px;
-  background: var(--accent);
-  border-radius: var(--radius-full);
+  background: var(--gold);
+  border-radius: 1px;
   animation: devotionWave 0.9s ease-in-out infinite alternate;
 }
 
@@ -391,23 +390,13 @@
 /* ---------------- Illuminated Scripture Showcase (Centerpiece) ---------------- */
 .devotion-scripture-showcase {
   position: relative;
-  background: #ffffff;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-xl);
-  padding: 3.5rem 3rem 3rem;
-  margin-bottom: 3.5rem;
-  box-shadow: 0 16px 40px -8px rgba(10, 22, 38, 0.08), 0 2px 6px rgba(15, 23, 42, 0.03);
+  background: #faf8f5;
+  border: 1px solid rgba(184, 155, 94, 0.3);
+  border-radius: var(--radius-lg);
+  padding: 3.25rem 2.75rem 2.75rem;
+  margin-bottom: 3.25rem;
+  box-shadow: var(--shadow-sm);
   overflow: hidden;
-}
-
-.devotion-scripture-showcase::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: var(--accent);
 }
 
 @media (max-width: 768px) {
@@ -423,7 +412,7 @@
   font-family: var(--font-display);
   font-size: 9rem;
   line-height: 1;
-  color: rgba(37, 99, 235, 0.04);
+  color: rgba(184, 155, 94, 0.08);
   pointer-events: none;
   user-select: none;
   font-weight: 700;
@@ -445,13 +434,13 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.4rem 1.15rem;
-  background: #eff6ff;
-  border: 1px solid #bfdbfe;
+  background: rgba(184, 155, 94, 0.14);
+  border: 1px solid rgba(184, 155, 94, 0.4);
   border-radius: var(--radius-full);
   font-family: var(--font-display);
   font-size: 1.1rem;
   font-weight: 700;
-  color: var(--accent);
+  color: var(--navy);
   letter-spacing: 0.02em;
 }
 
@@ -512,24 +501,17 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: 1.25rem;
-  border-top: 1px solid var(--border);
+  border-top: 1px solid rgba(184, 155, 94, 0.25);
   padding-top: 1.75rem;
 }
 
 .devotion-trans-card {
-  padding: 1.35rem 1.6rem;
-  background: var(--bg-alt);
-  border: 1px solid rgba(15, 23, 42, 0.06);
-  border-left: 3px solid var(--accent);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-sm);
-  transition: all 0.25s ease;
-}
-
-.devotion-trans-card:hover {
+  padding: 1.25rem 1.5rem;
   background: #ffffff;
-  box-shadow: var(--shadow);
-  border-left-color: var(--accent-hover);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--gold);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-xs);
 }
 
 .devotion-trans-label {
@@ -539,14 +521,14 @@
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--gold);
   margin-bottom: 0.5rem;
 }
 
 .devotion-scripture-en {
-  font-family: var(--font-scripture, var(--font-serif));
-  font-size: 1.08rem;
-  line-height: 1.8;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  line-height: 1.75;
   color: var(--text);
   font-style: italic;
   margin: 0;
@@ -591,7 +573,7 @@
   left: 0;
   right: 0;
   height: 3px;
-  background: var(--accent);
+  background: linear-gradient(90deg, var(--gold) 0%, #d4b87d 100%);
 }
 
 .devotion-card-header {
@@ -606,7 +588,7 @@
 .devotion-card-header svg {
   width: 18px;
   height: 18px;
-  color: var(--accent);
+  color: var(--gold);
   flex-shrink: 0;
 }
 
@@ -619,8 +601,8 @@
 }
 
 .devotion-key-truth-box {
-  background: #eff6ff;
-  border-left: 3px solid var(--accent);
+  background: rgba(184, 155, 94, 0.08);
+  border-left: 3px solid var(--gold);
   padding: 1.15rem 1.35rem;
   border-radius: var(--radius-sm);
   margin-bottom: 1.5rem;
@@ -632,7 +614,7 @@
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--gold);
   margin-bottom: 0.35rem;
 }
 
@@ -741,12 +723,12 @@
   height: 44px;
   margin: 0 auto 1.25rem;
   border-radius: 50%;
-  background: #eff6ff;
-  border: 1px solid #bfdbfe;
+  background: rgba(184, 155, 94, 0.15);
+  border: 1px solid var(--gold-border);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--accent);
+  color: var(--gold);
 }
 
 .devotion-prayer-emblem svg {
@@ -774,10 +756,10 @@
 
 .devotion-prayer-en {
   display: block;
-  font-family: var(--font-scripture, var(--font-serif));
-  font-size: 1.02rem;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
   color: var(--muted);
-  line-height: 1.75;
+  line-height: 1.7;
   font-style: italic;
   max-width: 780px;
   margin: 0 auto 1.5rem;
@@ -924,14 +906,14 @@
 }
 
 .devotion-month-btn:hover {
-  border-color: var(--accent);
-  color: var(--navy-dark);
+  border-color: var(--gold);
+  color: var(--navy);
   transform: translateY(-1px);
 }
 
 .devotion-month-btn.is-active {
-  background: var(--navy-dark);
-  border-color: var(--navy-dark);
+  background: linear-gradient(135deg, #0b1a2d 0%, #153155 100%);
+  border-color: #0b1a2d;
   color: #ffffff;
   box-shadow: var(--shadow-sm);
 }
@@ -940,7 +922,7 @@
 .devotion-theme-banner {
   background: #ffffff;
   border: 1px solid var(--border);
-  border-left: 4px solid var(--accent);
+  border-left: 4px solid var(--gold);
   border-radius: var(--radius-lg);
   padding: 1.85rem 2.25rem;
   margin-bottom: 2.25rem;
@@ -952,7 +934,7 @@
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--gold);
   margin-bottom: 0.5rem;
 }
 
@@ -999,21 +981,21 @@
 }
 
 .devotion-day-btn:hover {
-  border-color: var(--accent);
-  color: var(--accent);
+  border-color: var(--navy);
+  color: var(--navy);
   transform: translateY(-2px);
   box-shadow: var(--shadow-sm);
 }
 
 .devotion-day-btn.is-active {
-  background: var(--navy-dark);
-  border-color: var(--navy-dark);
+  background: var(--navy);
+  border-color: var(--navy);
   color: #ffffff;
   box-shadow: var(--shadow-md);
 }
 
 .devotion-day-btn.is-today {
-  border: 2px solid var(--accent);
+  border: 2px solid var(--gold);
   font-weight: 900;
 }
 
@@ -1025,13 +1007,13 @@
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: var(--accent);
+  background: var(--gold);
 }
 
 /* Instant Day Preview Drawer */
 .devotion-day-spotlight {
-  background: #f8fafc;
-  border: 1px solid var(--border);
+  background: #faf8f5;
+  border: 1px solid rgba(184, 155, 94, 0.35);
   border-radius: var(--radius-lg);
   padding: 2rem 2.25rem;
   margin-top: 2rem;
@@ -1052,7 +1034,7 @@
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--gold);
   margin-bottom: 0.35rem;
 }
 
@@ -1114,8 +1096,8 @@
 
 .devotion-search-input:focus {
   outline: none;
-  border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.18);
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(184, 155, 94, 0.18);
 }
 
 .devotion-category-pills {
@@ -1140,14 +1122,14 @@
 }
 
 .devotion-cat-pill:hover {
-  border-color: var(--accent);
-  color: var(--accent);
+  border-color: var(--gold);
+  color: var(--navy);
   transform: translateY(-1px);
 }
 
 .devotion-cat-pill.is-active {
-  background: var(--navy-dark);
-  border-color: var(--navy-dark);
+  background: linear-gradient(135deg, #0b1a2d 0%, #153155 100%);
+  border-color: #0b1a2d;
   color: #ffffff;
   box-shadow: var(--shadow-sm);
 }
@@ -1296,9 +1278,9 @@
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #ffffff;
-  background: var(--accent);
-  border: 1px solid var(--accent);
+  color: var(--navy-dark);
+  background: #ffffff;
+  border: 1px solid var(--gold);
   border-radius: var(--radius-full);
   cursor: pointer;
   box-shadow: var(--shadow-sm);
@@ -1306,9 +1288,8 @@
 }
 
 .devotion-load-more-btn:hover {
-  background: var(--accent-hover);
-  border-color: var(--accent-hover);
-  color: #ffffff;
+  background: var(--gold);
+  color: #0b192c;
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);
 }
@@ -1318,9 +1299,9 @@
   position: fixed;
   bottom: 2rem;
   right: 2rem;
-  background: var(--navy-dark);
+  background: #081322;
   color: #ffffff;
-  border-left: 3px solid var(--accent);
+  border-left: 3px solid var(--gold);
   padding: 0.95rem 1.65rem;
   border-radius: var(--radius);
   box-shadow: 0 12px 36px rgba(8, 19, 34, 0.35);
@@ -1346,7 +1327,7 @@
 
 /* ---------------- Ministry Crosslink Section ---------------- */
 .devotion-crosslink-section {
-  background: #f8fafc;
+  background: #f6f4f0;
   border-top: 1px solid var(--border);
   padding: 4.5rem 1.5rem;
   margin-top: 4.5rem;
@@ -1398,13 +1379,13 @@
   left: 0;
   right: 0;
   height: 3px;
-  background: var(--accent);
+  background: linear-gradient(90deg, var(--gold) 0%, #dfc488 50%, var(--gold) 100%);
 }
 
 .devotion-crosslink-card:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow-hover);
-  border-color: var(--accent);
+  border-color: rgba(179, 146, 78, 0.45);
 }
 
 .devotion-crosslink-card h4 {
@@ -1429,7 +1410,7 @@
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--gold);
 }
 
 /* ========================================================

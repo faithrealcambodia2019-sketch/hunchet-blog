@@ -285,9 +285,8 @@ function TopChurchBar({ locale, onOpenFlyer }) {
         {/* Left: Announcement pill + Worship schedule */}
         <div className="top-church-left">
           <span className="anc-btn-megaphone" aria-hidden="true">
-            <span className="live-pulse-dot" aria-hidden="true" />
             <MegaphoneIcon style={{ width: 13, height: 13 }} />
-            <span className="anc-megaphone-label">{tStr("announcementBadge")}</span>
+            <span>{tStr("announcementBadge")}</span>
           </span>
           <span className="anc-worship-text">{tStr("worshipText")}</span>
         </div>

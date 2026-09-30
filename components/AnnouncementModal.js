@@ -38,8 +38,8 @@ export default function AnnouncementModal({ isOpen, onClose, locale = "en" }) {
     badge: {
       en: "Official Sanctuary Announcement",
       km: "សេចក្ដីប្រកាសផ្លូវការក្រុមជំនុំ",
-      ko: "훈 쳇 사역 공식 주일 안내",
-      zh: "Hun Chet 事工官方主日崇拜通告",
+      ko: "올네이션스 교회 공식 주일 안내",
+      zh: "万民教会官方主日崇拜通告",
     },
     title: {
       en: "Sunday Sanctuary Worship & Preaching",

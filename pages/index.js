@@ -21,8 +21,7 @@ import {
   HERO_COVER,
   WORSHIP_PHOTO,
 } from "../lib/media";
-import Toast from "../components/Toast";
-import AnnouncementModal from "../components/AnnouncementModal";
+import { VIDEOS } from "../lib/videos";
 import {
   PlayIcon,
   PauseIcon,
@@ -39,8 +38,6 @@ import {
   CheckIcon,
   TelegramIcon,
   FacebookIcon,
-  CopyIcon,
-  ShareIcon,
 } from "../components/Icons";
 
 const CHURCH_VIDEOS = [
@@ -277,50 +274,10 @@ export default function Home({ posts = [], error }) {
 
   const [selectedPhoto, setSelectedPhoto] = useState(null);
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
-  const [isAnnouncementModalOpen, setIsAnnouncementModalOpen] = useState(false);
   const [selectedVideo, setSelectedVideo] = useState(CHURCH_VIDEOS[0]);
   const [isHeroPlaying, setIsHeroPlaying] = useState(true);
   const [isHeroMuted, setIsHeroMuted] = useState(true);
-  const [toastMessage, setToastMessage] = useState("");
-  const [isCopiedVerse, setIsCopiedVerse] = useState(false);
   const videoRef = useRef(null);
-
-  const handleCopyVerse = (text, ref) => {
-    const fullText = `"${text}" — ${ref}`;
-    if (typeof navigator !== "undefined" && navigator.clipboard) {
-      navigator.clipboard.writeText(fullText).then(() => {
-        setIsCopiedVerse(true);
-        setToastMessage(
-          locale === "km"
-            ? `បានចម្លងខគម្ពីរ ${ref}!`
-            : `Copied scripture verse: ${ref}`
-        );
-        setTimeout(() => setIsCopiedVerse(false), 2500);
-      });
-    }
-  };
-
-  const handleShareVerse = async (text, ref) => {
-    const fullText = `"${text}" — ${ref} • Hun Chet Ministry`;
-    const url = typeof window !== "undefined" ? window.location.href : "https://hunchet.blog";
-    if (typeof navigator !== "undefined" && navigator.share) {
-      try {
-        await navigator.share({
-          title: `Verse of the Day — ${ref}`,
-          text: fullText,
-          url: url,
-        });
-        return;
-      } catch (e) {
-        // Fallback to Telegram
-      }
-    }
-    const telegramUrl = `https://t.me/share/url?url=${encodeURIComponent(url)}&text=${encodeURIComponent(fullText)}`;
-    window.open(telegramUrl, "_blank", "noopener,noreferrer");
-    setToastMessage(
-      locale === "km" ? "បើកការចែករំលែកតាម Telegram..." : "Opening Telegram share..."
-    );
-  };
 
   const leadPost = posts && posts.length > 0 ? posts[0] : null;
   const secondaryPosts = posts && posts.length > 1 ? posts.slice(1, 4) : [];
@@ -434,7 +391,7 @@ export default function Home({ posts = [], error }) {
       <SiteHeader />
 
       {/* 1. HERO SECTION — Dynamic Worship Video Background & Stately Classic Typography */}
-      <section className="hero">
+      <section className="hero" style={{ borderBottom: "8px solid var(--gold)" }}>
         <div className="hero-video-wrap">
           <video
             ref={videoRef}
@@ -548,16 +505,36 @@ export default function Home({ posts = [], error }) {
           <div className="announcement-box">
             <div className="announcement-grid">
               <div>
-                <span className="announcement-kicker">
+                <span
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: "0.4rem",
+                    color: "var(--gold)",
+                    fontSize: "0.74rem",
+                    fontWeight: 700,
+                    letterSpacing: "0.14em",
+                    textTransform: "uppercase",
+                    marginBottom: "0.5rem",
+                  }}
+                >
                   <CalendarIcon style={{ width: 14, height: 14 }} />
                   {locale === "km" ? "ការជួបជុំប្រចាំសប្តាហ៍" : "Weekly Church Gathering"}
                 </span>
-                <h3 className="announcement-heading">
+                <h3
+                  style={{
+                    fontFamily: "var(--font-display)",
+                    fontSize: "clamp(1.4rem, 2.4vw, 1.85rem)",
+                    color: "var(--navy-dark)",
+                    margin: "0 0 0.75rem",
+                    lineHeight: 1.25,
+                  }}
+                >
                   {locale === "km"
                     ? "សូមអញ្ជើញចូលរួមថ្វាយបង្គំថ្ងៃអាទិត្យនេះ"
                     : "Join Us This Sunday for Worship & Fellowship"}
                 </h3>
-                <p className="announcement-desc">
+                <p style={{ color: "var(--text)", fontSize: "0.95rem", lineHeight: 1.6, margin: 0 }}>
                   {locale === "km"
                     ? "ជួបជុំគ្នាជាមួយគ្រួសារព័ន្ធកិច្ចលោកគ្រូ ហ៊ុន ចិត្ត ក្រោមព្រះបន្ទូលនៃសេចក្តីពិត ការថ្វាយបង្គំដោយស្មោះ និងការប្រកបគ្នាយ៉ាងកក់ក្តៅ។"
                     : "Experience uplifting praise, faithful biblical preaching, and genuine fellowship with our church family in Phnom Penh."}
@@ -570,15 +547,15 @@ export default function Home({ posts = [], error }) {
                     <ClockIcon />
                   </div>
                   <div>
-                    <strong className="announcement-meta-title">
+                    <strong style={{ display: "block", color: "var(--navy-dark)", fontSize: "0.95rem" }}>
                       {locale === "km" ? "ម៉ោងថ្វាយបង្គំ" : "Service Times"}
                     </strong>
-                    <div className="announcement-meta-text">
+                    <div style={{ fontSize: "0.88rem", color: "var(--text)" }}>
                       {locale === "km"
                         ? "ព្រឹកថ្ងៃអាទិត្យ 10:00 AM – 11:30 AM (ថ្វាយបង្គំធំ)"
                         : "Sunday Worship: 10:00 AM – 11:30 AM"}
                     </div>
-                    <div className="announcement-meta-sub">
+                    <div style={{ fontSize: "0.78rem", color: "var(--gold)", fontWeight: 600, marginTop: "2px" }}>
                       {locale === "km"
                         ? "មានការបកប្រែជាភាសាខ្មែរ និងអង់គ្លេស"
                         : "Khmer & English Translation Available"}
@@ -591,33 +568,53 @@ export default function Home({ posts = [], error }) {
                     <MapPinIcon />
                   </div>
                   <div>
-                    <strong className="announcement-meta-title">
+                    <strong style={{ display: "block", color: "var(--navy-dark)", fontSize: "0.95rem" }}>
                       {locale === "km" ? "ទីតាំងក្រុមជំនុំ" : "Location"}
                     </strong>
-                    <div className="announcement-meta-text">
+                    <div style={{ fontSize: "0.85rem", color: "var(--text)" }}>
                       {locale === "km"
                         ? "ភូមិត្រពាំងក្រសាំង សង្កាត់ត្រពាំងក្រសាំង ខណ្ឌពោធិ៍សែនជ័យ រាជធានីភ្នំពេញ"
                         : "Trapaing Krasang Village, Khan Por Senchey, Phnom Penh"}
                     </div>
-                    <div className="announcement-action-row">
+                    <div style={{ display: "flex", gap: "1rem", marginTop: "0.5rem", flexWrap: "wrap" }}>
                       <a
                         href="https://maps.app.goo.gl/AzgD3Uan6RLAvyZ98"
                         target="_blank"
                         rel="noreferrer"
-                        className="announcement-action-btn"
+                        style={{
+                          color: "var(--navy)",
+                          fontWeight: 700,
+                          fontSize: "0.78rem",
+                          textTransform: "uppercase",
+                          letterSpacing: "0.08em",
+                          display: "inline-flex",
+                          alignItems: "center",
+                          gap: "0.3rem",
+                        }}
                       >
-                        <MapPinIcon style={{ width: 12, height: 12 }} />
-                        <span>{locale === "km" ? "បង្ហាញផ្លូវ" : "Get Directions"}</span>
-                        <ArrowRightIcon style={{ width: 11, height: 11 }} />
+                        {locale === "km" ? "បង្ហាញផ្លូវ" : "Get Directions"} <ArrowRightIcon style={{ width: 12, height: 12 }} />
                       </a>
 
                       <button
                         type="button"
                         onClick={handleDownloadSundayCalendar}
-                        className="announcement-action-btn"
+                        style={{
+                          background: "none",
+                          border: "none",
+                          padding: 0,
+                          color: "var(--navy)",
+                          fontWeight: 700,
+                          fontSize: "0.78rem",
+                          textTransform: "uppercase",
+                          letterSpacing: "0.08em",
+                          cursor: "pointer",
+                          display: "inline-flex",
+                          alignItems: "center",
+                          gap: "0.3rem",
+                        }}
                       >
                         <DownloadIcon style={{ width: 12, height: 12 }} />
-                        <span>{locale === "km" ? "ដាក់ក្នុងប្រតិទិន" : "Add to Calendar"}</span>
+                        {locale === "km" ? "ដាក់ក្នុងប្រតិទិន" : "Add to Calendar"}
                       </button>
 
                       <button
@@ -626,10 +623,23 @@ export default function Home({ posts = [], error }) {
                           setSelectedVideo(CHURCH_VIDEOS[1]);
                           setIsVideoModalOpen(true);
                         }}
-                        className="announcement-action-btn"
+                        style={{
+                          background: "none",
+                          border: "none",
+                          padding: 0,
+                          color: "var(--gold)",
+                          fontWeight: 700,
+                          fontSize: "0.78rem",
+                          textTransform: "uppercase",
+                          letterSpacing: "0.08em",
+                          cursor: "pointer",
+                          display: "inline-flex",
+                          alignItems: "center",
+                          gap: "0.3rem",
+                        }}
                       >
                         <PlayIcon style={{ width: 12, height: 12 }} />
-                        <span>{locale === "km" ? "វីដេអូបរិវេណព្រះវិហារ" : "Campus Tour"}</span>
+                        {locale === "km" ? "វីដេអូបរិវេណព្រះវិហារ" : "Campus Tour"}
                       </button>
                     </div>
                   </div>
@@ -660,66 +670,20 @@ export default function Home({ posts = [], error }) {
                   justifyContent: "space-between",
                   flexWrap: "wrap",
                   gap: "1.25rem",
-                  borderTop: "1px solid #e2e8f0",
+                  borderTop: "1px solid rgba(255, 255, 255, 0.15)",
                   paddingTop: "1rem",
                 }}
               >
                 <cite className="devotion-ref">— {currentScripture.ref}</cite>
 
-                <div style={{ display: "flex", alignItems: "center", gap: "0.6rem", flexWrap: "wrap" }}>
-                  <button
-                    type="button"
-                    onClick={() => handleCopyVerse(currentScripture.text, currentScripture.ref)}
-                    className="btn btn-secondary"
-                    style={{
-                      padding: "0.55rem 1.1rem",
-                      fontSize: "0.74rem",
-                      background: "#ffffff",
-                      borderColor: "#cbd5e1",
-                      color: "#334155",
-                    }}
-                  >
-                    {isCopiedVerse ? (
-                      <CheckIcon style={{ width: 14, height: 14, color: "#10b981" }} />
-                    ) : (
-                      <CopyIcon style={{ width: 14, height: 14 }} />
-                    )}
-                    <span>
-                      {isCopiedVerse
-                        ? locale === "km"
-                          ? "បានចម្លង!"
-                          : "Copied!"
-                        : locale === "km"
-                        ? "ចម្លងខគម្ពីរ"
-                        : "Copy Verse"}
-                    </span>
-                  </button>
-
-                  <button
-                    type="button"
-                    onClick={() => handleShareVerse(currentScripture.text, currentScripture.ref)}
-                    className="btn btn-secondary"
-                    style={{
-                      padding: "0.55rem 1.1rem",
-                      fontSize: "0.74rem",
-                      background: "#ffffff",
-                      borderColor: "#cbd5e1",
-                      color: "#334155",
-                    }}
-                  >
-                    <ShareIcon style={{ width: 14, height: 14 }} />
-                    <span>{locale === "km" ? "ចែករំលែក" : "Share"}</span>
-                  </button>
-
-                  <Link
-                    href="/devotions"
-                    className="btn btn-primary"
-                    style={{ padding: "0.55rem 1.3rem", fontSize: "0.74rem" }}
-                  >
-                    <BookOpenIcon style={{ width: 14, height: 14, marginRight: "0.4rem" }} />
-                    {locale === "km" ? "អានព្រះបន្ទូលប្រចាំថ្ងៃ" : "Read Daily Devotion"} →
-                  </Link>
-                </div>
+                <Link
+                  href="/devotions"
+                  className="btn btn-primary"
+                  style={{ padding: "0.65rem 1.4rem", fontSize: "0.72rem" }}
+                >
+                  <BookOpenIcon style={{ width: 14, height: 14, marginRight: "0.4rem" }} />
+                  {locale === "km" ? "អានព្រះបន្ទូលប្រចាំថ្ងៃ" : "Read Daily Devotion"} →
+                </Link>
               </div>
             </div>
           </div>
@@ -780,22 +744,33 @@ export default function Home({ posts = [], error }) {
                     : "Serving in pulpit preaching and ministry leadership alongside Senior Pastor Kim Jong Ho, Hun Chet is devoted to biblical clarity, discipleship of young leaders, and reaching the nation through digital media and theological literature."}
                 </p>
 
-                <div className="pulpit-stats-strip">
+                <div
+                  className="pulpit-stats-strip"
+                  style={{
+                    display: "grid",
+                    gridTemplateColumns: "repeat(3, 1fr)",
+                    gap: "1rem",
+                    padding: "1.25rem 0",
+                    borderTop: "1px solid var(--border)",
+                    borderBottom: "1px solid var(--border)",
+                    marginBottom: "1.75rem",
+                  }}
+                >
                   <div>
-                    <strong className="pulpit-stat-num">12+</strong>
-                    <span className="pulpit-stat-label">
+                    <strong style={{ fontSize: "1.5rem", color: "var(--navy-dark)", display: "block" }}>12+</strong>
+                    <span style={{ fontSize: "0.75rem", color: "var(--muted)", textTransform: "uppercase", letterSpacing: "0.06em" }}>
                       {locale === "km" ? "ឆ្នាំក្នុងព័ន្ធកិច្ច" : "Years Ministry"}
                     </span>
                   </div>
                   <div>
-                    <strong className="pulpit-stat-num">50K+</strong>
-                    <span className="pulpit-stat-label">
+                    <strong style={{ fontSize: "1.5rem", color: "var(--navy-dark)", display: "block" }}>50K+</strong>
+                    <span style={{ fontSize: "0.75rem", color: "var(--muted)", textTransform: "uppercase", letterSpacing: "0.06em" }}>
                       {locale === "km" ? "អ្នកទស្សនាប្រចាំខែ" : "Monthly Reach"}
                     </span>
                   </div>
                   <div>
-                    <strong className="pulpit-stat-num">100+</strong>
-                    <span className="pulpit-stat-label">
+                    <strong style={{ fontSize: "1.5rem", color: "var(--navy-dark)", display: "block" }}>100+</strong>
+                    <span style={{ fontSize: "0.75rem", color: "var(--muted)", textTransform: "uppercase", letterSpacing: "0.06em" }}>
                       {locale === "km" ? "អត្ថបទ និងសារព្រះបន្ទូល" : "Articles & Sermons"}
                     </span>
                   </div>
@@ -818,23 +793,39 @@ export default function Home({ posts = [], error }) {
         <section className="sermon-spotlight-box">
           <div className="container">
             <div className="section-head" style={{ textAlign: "center", marginBottom: "3rem" }}>
-              <span className="sermon-kicker">
+              <span
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "0.45rem",
+                  padding: "0.35rem 0.95rem",
+                  borderRadius: "var(--radius-sm)",
+                  background: "rgba(184, 155, 94, 0.2)",
+                  border: "1px solid rgba(184, 155, 94, 0.4)",
+                  color: "var(--gold)",
+                  fontSize: "0.72rem",
+                  fontWeight: 700,
+                  letterSpacing: "0.14em",
+                  textTransform: "uppercase",
+                  marginBottom: "0.75rem",
+                }}
+              >
                 <BookOpenIcon style={{ width: 14, height: 14 }} />
                 {locale === "km"
                   ? "សារព្រះបន្ទូលពិសេស • មាគ៌ាឆ្ពោះទៅកាន់គោលបំណងជីវិត"
                   : "Featured Short Sermon • A Path to Purpose"}
               </span>
 
-              <h2 style={{ fontFamily: "var(--font-display)", color: "var(--navy-dark)", fontSize: "clamp(1.8rem, 3.5vw, 2.5rem)" }}>
+              <h2 style={{ fontFamily: "var(--font-display)", color: "#ffffff", fontSize: "clamp(1.8rem, 3.5vw, 2.5rem)" }}>
                 {locale === "km"
                   ? "គន្លឹះ ៥ យ៉ាងដើម្បីរស់នៅប្រកបដោយអត្ថន័យក្នុងព្រះគ្រីស្ទ"
                   : "5 Keys to Living a Truly Great Life in Christ"}
               </h2>
 
-              <div style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", marginTop: "0.5rem", color: "#64748b", fontSize: "0.85rem" }}>
-                <UserIcon style={{ width: 14, height: 14, color: "#2563eb" }} />
+              <div style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", marginTop: "0.5rem", color: "#cbd5e1", fontSize: "0.85rem" }}>
+                <UserIcon style={{ width: 14, height: 14, color: "var(--gold)" }} />
                 <span>{locale === "km" ? "អធិប្បាយដោយ៖" : "Preached by:"}</span>
-                <strong style={{ color: "var(--navy-dark)" }}>{locale === "km" ? "លោកគ្រូ ហ៊ុន ចិត្ត" : "Leader Hun Chet"}</strong>
+                <strong style={{ color: "var(--gold)" }}>{locale === "km" ? "លោកគ្រូ ហ៊ុន ចិត្ត" : "Leader Hun Chet"}</strong>
               </div>
 
               <div className="hero-divider-classic" style={{ margin: "1rem auto 0" }} />
@@ -843,7 +834,17 @@ export default function Home({ posts = [], error }) {
             <div className="sermon-spotlight-grid">
               {/* Left: 5 Keys List */}
               <div>
-                <h3 className="sermon-keys-title">
+                <h3
+                  style={{
+                    fontFamily: "var(--font-display)",
+                    fontSize: "0.85rem",
+                    fontWeight: 700,
+                    letterSpacing: "0.12em",
+                    textTransform: "uppercase",
+                    color: "var(--gold)",
+                    marginBottom: "1rem",
+                  }}
+                >
                   {locale === "km" ? "គន្លឹះទាំង ៥ យ៉ាងសង្ខេប" : "The 5 Foundational Keys"}
                 </h3>
 
@@ -854,12 +855,12 @@ export default function Home({ posts = [], error }) {
                         <span className="sermon-key-num">{k.number}</span>
                         <div>
                           <strong style={{ display: "block", fontSize: "0.95rem" }}>{loc(k.title)}</strong>
-                          <span style={{ fontSize: "0.75rem", color: "#2563eb", fontFamily: "var(--font-display)", fontWeight: 600 }}>
+                          <span style={{ fontSize: "0.75rem", color: "var(--gold)", fontFamily: "var(--font-display)" }}>
                             {k.ref}
                           </span>
                         </div>
                       </div>
-                      <ArrowRightIcon style={{ width: 16, height: 16, color: "#94a3b8" }} />
+                      <ArrowRightIcon style={{ width: 16, height: 16, color: "rgba(255,255,255,0.4)" }} />
                     </Link>
                   ))}
                 </div>
@@ -869,7 +870,7 @@ export default function Home({ posts = [], error }) {
               <div style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
                 <div className="sermon-quote-card">
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "0.75rem" }}>
-                    <span className="sermon-ref-pill">
+                    <span style={{ fontSize: "0.72rem", color: "var(--gold)", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.12em" }}>
                       Jeremiah 29:11
                     </span>
                     <span style={{ fontSize: "0.72rem", color: "#94a3b8" }}>
@@ -887,8 +888,8 @@ export default function Home({ posts = [], error }) {
 
                 <div
                   style={{
-                    background: "#f8fafc",
-                    border: "1px solid #e2e8f0",
+                    background: "rgba(184, 155, 94, 0.12)",
+                    border: "1px solid rgba(184, 155, 94, 0.3)",
                     padding: "1.5rem",
                     borderRadius: "var(--radius-lg)",
                     display: "flex",
@@ -896,10 +897,10 @@ export default function Home({ posts = [], error }) {
                     gap: "0.85rem",
                   }}
                 >
-                  <strong style={{ fontSize: "0.95rem", color: "var(--navy-dark)" }}>
+                  <strong style={{ fontSize: "0.95rem", color: "#ffffff" }}>
                     {locale === "km" ? "អានអត្ថបទពេញលេញ និងចែកចាយ" : "Read Full Reflection & Share"}
                   </strong>
-                  <p style={{ fontSize: "0.82rem", color: "#64748b", margin: 0, lineHeight: 1.5 }}>
+                  <p style={{ fontSize: "0.82rem", color: "#cbd5e1", margin: 0, lineHeight: 1.5 }}>
                     {locale === "km"
                       ? "ការបកស្រាយលម្អិតតាមព្រះគម្ពីរ ការអនុវត្តជាក់ស្តែង និងសំណួរពិចារណា។"
                       : "Complete with biblical exposition, practical daily applications, and reflection questions."}
@@ -917,9 +918,9 @@ export default function Home({ posts = [], error }) {
                         gap: "0.4rem",
                         padding: "0.6rem 1.1rem",
                         borderRadius: "var(--radius-sm)",
-                        background: "#eff6ff",
-                        border: "1px solid #bfdbfe",
-                        color: "#2563eb",
+                        background: "rgba(14, 165, 233, 0.2)",
+                        border: "1px solid rgba(14, 165, 233, 0.4)",
+                        color: "#38bdf8",
                         fontSize: "0.75rem",
                         fontWeight: 700,
                         cursor: "pointer",
@@ -1136,11 +1137,28 @@ export default function Home({ posts = [], error }) {
           <div className="container">
             <div className="anc-partnership-inner">
               <div style={{ maxWidth: "620px" }}>
-                <span className="anc-partnership-kicker">
+                <span
+                  style={{
+                    color: "var(--gold)",
+                    fontSize: "0.76rem",
+                    fontWeight: 700,
+                    letterSpacing: "0.14em",
+                    textTransform: "uppercase",
+                    display: "block",
+                    marginBottom: "0.5rem",
+                  }}
+                >
                   {locale === "km" ? "ចូលរួមក្នុងកិច្ចការនគរព្រះ" : "Join Hands in the Gospel"}
                 </span>
 
-                <h2 className="anc-partnership-title">
+                <h2
+                  style={{
+                    fontFamily: "var(--font-display)",
+                    fontSize: "clamp(1.8rem, 3.2vw, 2.5rem)",
+                    color: "#ffffff",
+                    margin: "0 0 1rem",
+                  }}
+                >
                   {locale === "km"
                     ? "ត្រៀមខ្លួនដើម្បីដើរជាមួយគ្នាក្នុងដំណើរជំនឿ?"
                     : "Ready to partner with our ministry across Cambodia?"}
@@ -1194,7 +1212,19 @@ export default function Home({ posts = [], error }) {
             </div>
 
             <div className="anc-lightbox-info">
-              <span className="anc-lightbox-badge">
+              <span
+                style={{
+                  display: "inline-block",
+                  padding: "0.2rem 0.6rem",
+                  border: "1px solid var(--gold)",
+                  color: "var(--gold)",
+                  fontSize: "0.7rem",
+                  fontWeight: 700,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.1em",
+                  marginBottom: "0.5rem",
+                }}
+              >
                 {loc(selectedPhoto.badge)}
               </span>
               <h3>{loc(selectedPhoto.title)}</h3>
@@ -1239,7 +1269,7 @@ export default function Home({ posts = [], error }) {
 
             <div className="anc-video-playlist-bar">
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "0.25rem" }}>
-                <span className="anc-playlist-label">
+                <span style={{ fontSize: "0.72rem", color: "#94a3b8", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.08em" }}>
                   {locale === "km" ? "ជ្រើសរើសវីដេអូទស្សនា៖" : "Select Video To Watch:"}
                 </span>
                 <span style={{ fontSize: "0.72rem", color: "var(--gold)" }}>
@@ -1287,16 +1317,6 @@ export default function Home({ posts = [], error }) {
           </div>
         </div>
       )}
-
-      {/* Sunday Announcement & Service Flyer Modal */}
-      <AnnouncementModal
-        isOpen={isAnnouncementModalOpen}
-        onClose={() => setIsAnnouncementModalOpen(false)}
-        locale={locale}
-      />
-
-      {/* Floating Luxury Feedback Toast */}
-      <Toast message={toastMessage} onClose={() => setToastMessage("")} />
 
       <SiteFooter />
     </>
