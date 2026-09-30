@@ -21,7 +21,9 @@ import {
   HERO_COVER,
   WORSHIP_PHOTO,
 } from "../lib/media";
-import { VIDEOS } from "../lib/videos";
+import SundayCountdown from "../components/SundayCountdown";
+import Toast from "../components/Toast";
+import AnnouncementModal from "../components/AnnouncementModal";
 import {
   PlayIcon,
   PauseIcon,
@@ -38,6 +40,8 @@ import {
   CheckIcon,
   TelegramIcon,
   FacebookIcon,
+  CopyIcon,
+  ShareIcon,
 } from "../components/Icons";
 
 const CHURCH_VIDEOS = [
@@ -274,10 +278,50 @@ export default function Home({ posts = [], error }) {
 
   const [selectedPhoto, setSelectedPhoto] = useState(null);
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
+  const [isAnnouncementModalOpen, setIsAnnouncementModalOpen] = useState(false);
   const [selectedVideo, setSelectedVideo] = useState(CHURCH_VIDEOS[0]);
   const [isHeroPlaying, setIsHeroPlaying] = useState(true);
   const [isHeroMuted, setIsHeroMuted] = useState(true);
+  const [toastMessage, setToastMessage] = useState("");
+  const [isCopiedVerse, setIsCopiedVerse] = useState(false);
   const videoRef = useRef(null);
+
+  const handleCopyVerse = (text, ref) => {
+    const fullText = `"${text}" — ${ref}`;
+    if (typeof navigator !== "undefined" && navigator.clipboard) {
+      navigator.clipboard.writeText(fullText).then(() => {
+        setIsCopiedVerse(true);
+        setToastMessage(
+          locale === "km"
+            ? `បានចម្លងខគម្ពីរ ${ref}!`
+            : `Copied scripture verse: ${ref}`
+        );
+        setTimeout(() => setIsCopiedVerse(false), 2500);
+      });
+    }
+  };
+
+  const handleShareVerse = async (text, ref) => {
+    const fullText = `"${text}" — ${ref} • Hun Chet Ministry`;
+    const url = typeof window !== "undefined" ? window.location.href : "https://hunchet.blog";
+    if (typeof navigator !== "undefined" && navigator.share) {
+      try {
+        await navigator.share({
+          title: `Verse of the Day — ${ref}`,
+          text: fullText,
+          url: url,
+        });
+        return;
+      } catch (e) {
+        // Fallback to Telegram
+      }
+    }
+    const telegramUrl = `https://t.me/share/url?url=${encodeURIComponent(url)}&text=${encodeURIComponent(fullText)}`;
+    window.open(telegramUrl, "_blank", "noopener,noreferrer");
+    setToastMessage(
+      locale === "km" ? "បើកការចែករំលែកតាម Telegram..." : "Opening Telegram share..."
+    );
+  };
 
   const leadPost = posts && posts.length > 0 ? posts[0] : null;
   const secondaryPosts = posts && posts.length > 1 ? posts.slice(1, 4) : [];
@@ -645,6 +689,9 @@ export default function Home({ posts = [], error }) {
                   </div>
                 </div>
               </div>
+
+              {/* Unique Live Sunday Gathering Countdown & 1-Click Calendar Sync */}
+              <SundayCountdown onPlanVisit={() => setIsAnnouncementModalOpen(true)} />
             </div>
           </div>
         </div>
@@ -676,14 +723,60 @@ export default function Home({ posts = [], error }) {
               >
                 <cite className="devotion-ref">— {currentScripture.ref}</cite>
 
-                <Link
-                  href="/devotions"
-                  className="btn btn-primary"
-                  style={{ padding: "0.65rem 1.4rem", fontSize: "0.72rem" }}
-                >
-                  <BookOpenIcon style={{ width: 14, height: 14, marginRight: "0.4rem" }} />
-                  {locale === "km" ? "អានព្រះបន្ទូលប្រចាំថ្ងៃ" : "Read Daily Devotion"} →
-                </Link>
+                <div style={{ display: "flex", alignItems: "center", gap: "0.6rem", flexWrap: "wrap" }}>
+                  <button
+                    type="button"
+                    onClick={() => handleCopyVerse(currentScripture.text, currentScripture.ref)}
+                    className="btn btn-secondary"
+                    style={{
+                      padding: "0.55rem 1.1rem",
+                      fontSize: "0.74rem",
+                      background: "rgba(255, 255, 255, 0.12)",
+                      borderColor: "rgba(255, 255, 255, 0.25)",
+                      color: "#ffffff",
+                    }}
+                  >
+                    {isCopiedVerse ? (
+                      <CheckIcon style={{ width: 14, height: 14, color: "var(--gold-light)" }} />
+                    ) : (
+                      <CopyIcon style={{ width: 14, height: 14 }} />
+                    )}
+                    <span>
+                      {isCopiedVerse
+                        ? locale === "km"
+                          ? "បានចម្លង!"
+                          : "Copied!"
+                        : locale === "km"
+                        ? "ចម្លងខគម្ពីរ"
+                        : "Copy Verse"}
+                    </span>
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => handleShareVerse(currentScripture.text, currentScripture.ref)}
+                    className="btn btn-secondary"
+                    style={{
+                      padding: "0.55rem 1.1rem",
+                      fontSize: "0.74rem",
+                      background: "rgba(255, 255, 255, 0.12)",
+                      borderColor: "rgba(255, 255, 255, 0.25)",
+                      color: "#ffffff",
+                    }}
+                  >
+                    <ShareIcon style={{ width: 14, height: 14 }} />
+                    <span>{locale === "km" ? "ចែករំលែក" : "Share"}</span>
+                  </button>
+
+                  <Link
+                    href="/devotions"
+                    className="btn btn-primary"
+                    style={{ padding: "0.55rem 1.3rem", fontSize: "0.74rem" }}
+                  >
+                    <BookOpenIcon style={{ width: 14, height: 14, marginRight: "0.4rem" }} />
+                    {locale === "km" ? "អានព្រះបន្ទូលប្រចាំថ្ងៃ" : "Read Daily Devotion"} →
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
@@ -1317,6 +1410,16 @@ export default function Home({ posts = [], error }) {
           </div>
         </div>
       )}
+
+      {/* Sunday Announcement & Service Flyer Modal */}
+      <AnnouncementModal
+        isOpen={isAnnouncementModalOpen}
+        onClose={() => setIsAnnouncementModalOpen(false)}
+        locale={locale}
+      />
+
+      {/* Floating Luxury Feedback Toast */}
+      <Toast message={toastMessage} onClose={() => setToastMessage("")} />
 
       <SiteFooter />
     </>

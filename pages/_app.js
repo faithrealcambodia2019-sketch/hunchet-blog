@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
+import ScrollEnhancements from "../components/ScrollEnhancements";
 import "../styles/globals.css";
 import "../styles/extra.css";
 import "../styles/library.css";
@@ -87,6 +88,7 @@ export default function App({ Component, pageProps }) {
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
       </Head>
+      <ScrollEnhancements />
       <Component {...pageProps} />
     </>
   );
