@@ -1,15 +1,7 @@
 /* =====================================================================
    Typography, brand mark, gallery and life-story styles.
-   Loaded after globals.css so :root overrides here win.
-   Latin glyphs resolve to Playfair Display / Inter; Khmer glyphs fall
-   through to Koh Santepheap automatically (per-glyph font fallback).
+   Inherits master typography variables defined in globals.css.
    ===================================================================== */
-
-:root {
-  --font-display: "Source Serif 4", "Playfair Display", "Koh Santepheap", Georgia, serif;
-  --font-body: "Inter", "Koh Santepheap", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-khmer: "Koh Santepheap", serif;
-}
 
 /* Khmer needs extra vertical room for stacked diacritics */
 .post-content,

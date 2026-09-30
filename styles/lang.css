@@ -149,8 +149,7 @@ html[lang="zh"] h4 {
   letter-spacing: 0;
 }
 
-/* CJK has no serif display face loaded, so fall back to the system stack
-   rather than letting Playfair substitute glyph by glyph. */
+/* CJK fall back to high-quality native system stacks. */
 html[lang="ko"] h1,
 html[lang="ko"] h2,
 html[lang="ko"] h3,
