@@ -106,10 +106,22 @@
 }
 
 /* --- Per-script typography ------------------------------------------
-   Khmer and CJK both sit taller than Latin and read badly with the
-   uppercase letter-spacing this theme uses on nav items and buttons. */
+   Khmer and Asian scripts sit taller than Latin and break with uppercase 
+   or letter-spacing. Koh Santepheap is the universal sacred Khmer font. */
 
-html[lang="km"] body {
+/* Universal letter-spacing and text-transform reset for Khmer */
+html[lang="km"] *,
+html[lang="km"] *::before,
+html[lang="km"] *::after {
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+}
+
+html[lang="km"] body,
+html[lang="km"] input,
+html[lang="km"] textarea,
+html[lang="km"] select,
+html[lang="km"] button {
   font-family: var(--font-khmer, "Koh Santepheap", -apple-system, sans-serif);
   line-height: 1.85;
 }
@@ -117,19 +129,43 @@ html[lang="km"] body {
 html[lang="km"] h1,
 html[lang="km"] h2,
 html[lang="km"] h3,
-html[lang="km"] h4 {
+html[lang="km"] h4,
+html[lang="km"] h5,
+html[lang="km"] h6 {
   font-family: var(--font-khmer, "Koh Santepheap", serif);
-  line-height: 1.45;
-  letter-spacing: 0;
+  line-height: 1.55;
+  letter-spacing: 0 !important;
 }
 
 html[lang="km"] .devotion-scripture-quote,
 html[lang="km"] .reading-scripture-box p,
 html[lang="km"] .devotion-prayer-quote,
 html[lang="km"] .devotion-quote,
-html[lang="km"] .scripture-banner p {
+html[lang="km"] .scripture-banner p,
+html[lang="km"] .sermon-quote-card blockquote {
   font-family: var(--font-khmer, "Koh Santepheap", serif);
-  line-height: 2.05;
+  line-height: 2.1;
+}
+
+html[lang="km"] .site-nav a,
+html[lang="km"] .site-nav button,
+html[lang="km"] .nav-link,
+html[lang="km"] .mobile-nav-link,
+html[lang="km"] .btn-plan-visit,
+html[lang="km"] .btn {
+  font-size: 0.86rem;
+  line-height: 1.6;
+}
+
+/* Asian Typography (Korean & Chinese) */
+html[lang="ko"] *,
+html[lang="ko"] *::before,
+html[lang="ko"] *::after,
+html[lang="zh"] *,
+html[lang="zh"] *::before,
+html[lang="zh"] *::after {
+  letter-spacing: 0 !important;
+  text-transform: none !important;
 }
 
 html[lang="ko"] body,
@@ -145,8 +181,7 @@ html[lang="zh"] h1,
 html[lang="zh"] h2,
 html[lang="zh"] h3,
 html[lang="zh"] h4 {
-  line-height: 1.4;
-  letter-spacing: 0;
+  line-height: 1.45;
 }
 
 /* CJK fall back to high-quality native system stacks. */
@@ -168,38 +203,6 @@ html[lang="zh"] .site-logo-text,
 html[lang="zh"] .story-lede p {
   font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans SC",
     var(--font-body);
-}
-
-html[lang="km"] .site-nav a,
-html[lang="km"] .mobile-nav-link,
-html[lang="km"] .eyebrow,
-html[lang="km"] .btn,
-html[lang="km"] .book-btn,
-html[lang="km"] .book-meta,
-html[lang="km"] .library-btn,
-html[lang="km"] .resource-btn,
-html[lang="km"] .devotion-tab-btn,
-html[lang="km"] .devotion-action-btn,
-html[lang="km"] .devotion-nav-btn,
-html[lang="km"] .footer-col h4,
-html[lang="ko"] .site-nav a,
-html[lang="ko"] .eyebrow,
-html[lang="ko"] .book-btn,
-html[lang="ko"] .book-meta,
-html[lang="ko"] .footer-col h4,
-html[lang="zh"] .site-nav a,
-html[lang="zh"] .eyebrow,
-html[lang="zh"] .book-btn,
-html[lang="zh"] .book-meta,
-html[lang="zh"] .footer-col h4 {
-  letter-spacing: 0;
-  text-transform: none;
-}
-
-html[lang="km"] .site-nav a,
-html[lang="ko"] .site-nav a,
-html[lang="zh"] .site-nav a {
-  font-size: 0.86rem;
 }
 
 html[lang="km"] .book-btn,

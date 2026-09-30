@@ -2042,6 +2042,22 @@ iframe {
   flex-wrap: wrap;
 }
 
+.hero-actions .btn-primary {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: #06111f;
+  font-weight: 700;
+  box-shadow: 0 4px 18px rgba(179, 146, 78, 0.4);
+}
+
+.hero-actions .btn-primary:hover {
+  background: var(--gold-light);
+  border-color: var(--gold-light);
+  color: #06111f;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 26px rgba(179, 146, 78, 0.55);
+}
+
 /* ============ Sections ============ */
 
 .section {
@@ -4298,6 +4314,118 @@ iframe {
   height: 20px;
 }
 
+.announcement-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--gold);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.announcement-heading {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.4vw, 1.85rem);
+  color: var(--navy-dark);
+  margin: 0 0 0.75rem;
+  line-height: 1.25;
+}
+
+.announcement-desc {
+  color: var(--text);
+  font-size: 0.95rem;
+  line-height: 1.65;
+  margin: 0;
+}
+
+.announcement-meta-title {
+  display: block;
+  color: var(--navy-dark);
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.announcement-meta-text {
+  font-size: 0.88rem;
+  color: var(--text);
+  margin-top: 2px;
+}
+
+.announcement-meta-sub {
+  font-size: 0.78rem;
+  color: var(--gold);
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+.announcement-action-row {
+  display: flex;
+  gap: 0.85rem;
+  margin-top: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.announcement-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.38rem 0.85rem;
+  border-radius: var(--radius-sm);
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  color: var(--navy);
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.18s ease;
+}
+
+.announcement-action-btn:hover {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: #ffffff;
+}
+
+.announcement-action-btn svg {
+  width: 13px;
+  height: 13px;
+}
+
+.pulpit-stats-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  padding: 1.25rem 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 1.75rem;
+}
+
+.pulpit-stat-num {
+  font-size: 1.65rem;
+  font-weight: 800;
+  color: var(--navy-dark);
+  display: block;
+  line-height: 1.1;
+  font-family: var(--font-display);
+}
+
+.pulpit-stat-label {
+  font-size: 0.75rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 600;
+  display: block;
+  margin-top: 4px;
+}
+
 /* Pulpit & Pastoral Showcase Section */
 .pulpit-grid {
   display: grid;
@@ -4416,10 +4544,11 @@ iframe {
 }
 
 .devotion-quote {
-  font-family: var(--font-display);
+  font-family: var(--font-scripture, var(--font-serif));
   font-size: clamp(1.25rem, 2.8vw, 1.85rem);
-  line-height: 1.6;
-  font-weight: 700;
+  line-height: 1.75;
+  font-weight: 600;
+  font-style: italic;
   color: #ffffff;
   margin: 0;
 }
@@ -4516,6 +4645,40 @@ iframe {
   text-transform: uppercase;
   color: var(--gold);
   font-style: normal;
+}
+
+.sermon-ref-pill {
+  font-size: 0.72rem;
+  color: var(--gold);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.sermon-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.35rem 0.95rem;
+  border-radius: var(--radius-sm);
+  background: rgba(184, 155, 94, 0.2);
+  border: 1px solid rgba(184, 155, 94, 0.4);
+  color: var(--gold);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+.sermon-keys-title {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1rem;
 }
 
 /* Church Life Authentic Photo Grid */
@@ -4622,6 +4785,27 @@ iframe {
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+.anc-lightbox-badge {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.5rem;
+  border-radius: var(--radius-sm);
+}
+
+.anc-playlist-label {
+  font-size: 0.72rem;
+  color: #94a3b8;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
 .anc-lightbox-info h3 {
   font-family: var(--font-display);
   font-size: 1.4rem;
@@ -4658,6 +4842,23 @@ iframe {
   pointer-events: none;
 }
 
+.anc-partnership-kicker {
+  color: var(--gold);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.anc-partnership-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3.2vw, 2.5rem);
+  color: #ffffff;
+  margin: 0 0 1rem;
+}
+
 .anc-partnership-inner {
   display: flex;
   align-items: center;
@@ -4689,6 +4890,16 @@ iframe {
 @media (max-width: 640px) {
   .anc-photo-grid {
     grid-template-columns: 1fr;
+  }
+
+  .announcement-action-row {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .announcement-action-btn {
+    width: 100%;
+    justify-content: center;
   }
 
   .hero-media-controls {
