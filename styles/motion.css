@@ -45,20 +45,31 @@
   animation: kenburns 22s ease-out forwards;
 }
 
-.hero-inner > .eyebrow {
+.hero-inner > .eyebrow,
+.hero-inner > .hero-eyebrow-classic {
   animation: rise 0.9s cubic-bezier(0.22, 0.61, 0.36, 1) both 0.1s;
 }
 
-.hero-inner > h1 {
-  animation: rise 0.9s cubic-bezier(0.22, 0.61, 0.36, 1) both 0.24s;
+.hero-inner > h1,
+.hero-inner > .hero-title-classic {
+  animation: rise 0.9s cubic-bezier(0.22, 0.61, 0.36, 1) both 0.22s;
 }
 
-.hero-inner > .hero-sub {
-  animation: rise 0.9s cubic-bezier(0.22, 0.61, 0.36, 1) both 0.38s;
+.hero-inner > .hero-sub,
+.hero-inner > .hero-sub-classic {
+  animation: rise 0.9s cubic-bezier(0.22, 0.61, 0.36, 1) both 0.34s;
+}
+
+.hero-inner > .hero-divider-classic {
+  animation: rise 0.9s cubic-bezier(0.22, 0.61, 0.36, 1) both 0.44s;
+}
+
+.hero-inner > p {
+  animation: rise 0.9s cubic-bezier(0.22, 0.61, 0.36, 1) both 0.52s;
 }
 
 .hero-inner > .hero-actions {
-  animation: rise 0.9s cubic-bezier(0.22, 0.61, 0.36, 1) both 0.52s;
+  animation: rise 0.9s cubic-bezier(0.22, 0.61, 0.36, 1) both 0.62s;
 }
 
 .page-hero .eyebrow {

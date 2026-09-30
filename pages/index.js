@@ -391,7 +391,7 @@ export default function Home({ posts = [], error }) {
       <SiteHeader />
 
       {/* 1. HERO SECTION — Dynamic Worship Video Background & Stately Classic Typography */}
-      <section className="hero" style={{ borderBottom: "8px solid var(--gold)" }}>
+      <section className="hero">
         <div className="hero-video-wrap">
           <video
             ref={videoRef}
