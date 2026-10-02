@@ -318,7 +318,7 @@ iframe {
 .site-nav {
   display: flex;
   align-items: center;
-  gap: 1.15rem;
+  gap: 1.65rem;
 }
 
 .nav-link {
@@ -327,12 +327,12 @@ iframe {
   align-items: center;
   gap: 0.35rem;
   text-decoration: none;
-  color: var(--ink);
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  padding: 0.5rem 0.15rem;
+  color: #1e3a5f;
+  font-size: 0.94rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  text-transform: none;
+  padding: 0.5rem 0.1rem;
   background: transparent;
   border: none;
   cursor: pointer;
@@ -346,16 +346,17 @@ iframe {
   position: absolute;
   left: 0;
   right: 0;
-  bottom: 0;
-  height: 2px;
-  background: var(--gold);
+  bottom: -4px;
+  height: 3px;
+  background: #15477a;
+  border-radius: 9999px;
   transform: scaleX(0);
   transition: transform 0.22s cubic-bezier(0.2, 0.8, 0.2, 1);
   transform-origin: center;
 }
 
 .nav-link:hover {
-  color: var(--navy);
+  color: #0d2542;
 }
 
 .nav-link:hover::after,
@@ -364,19 +365,42 @@ iframe {
 }
 
 .nav-link.active {
-  color: var(--navy);
+  color: #15477a;
+  font-weight: 700;
 }
 
-/* Nav Badge Pill */
+/* Nav Badge 365 (Solid deep navy pill badge matching reference) */
+.nav-badge-365 {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.12rem 0.52rem;
+  background: #153a63;
+  color: #ffffff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  border-radius: 9999px;
+  line-height: 1.25;
+  margin-left: 0.35rem;
+  transition: background 0.2s ease;
+}
+
+.nav-link:hover .nav-badge-365 {
+  background: #0f2744;
+}
+
+/* Nav Badge Pill (Legacy fallback) */
 .nav-badge-pill {
-  padding: 0.12rem 0.42rem;
-  background: rgba(184, 155, 94, 0.18);
-  border: 1px solid var(--gold);
-  color: var(--gold);
-  font-size: 0.62rem;
-  font-weight: 800;
-  letter-spacing: 0.06em;
-  border-radius: var(--radius-full);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.12rem 0.45rem;
+  background: #153a63;
+  color: #ffffff;
+  font-size: 0.70rem;
+  font-weight: 700;
+  border-radius: 9999px;
   line-height: 1.2;
 }
 
@@ -386,26 +410,30 @@ iframe {
 }
 
 .nav-dropdown-caret {
-  transition: transform 0.25s ease;
-  color: var(--muted);
+  width: 12px;
+  height: 12px;
+  transition: transform 0.22s ease, color 0.2s ease;
+  color: #64748b;
+  margin-left: 0.12rem;
+  flex-shrink: 0;
 }
 
 .nav-dropdown-wrap:hover .nav-dropdown-caret,
 .nav-dropdown-wrap.is-open .nav-dropdown-caret {
   transform: rotate(180deg);
-  color: var(--gold);
+  color: #15477a;
 }
 
 /* Dropdown Menu Panel */
 .nav-dropdown-menu {
   position: absolute;
-  top: calc(100% + 0.5rem);
+  top: calc(100% + 0.65rem);
   left: 50%;
   transform: translateX(-50%) translateY(6px);
   width: 330px;
   background: #ffffff;
   border: 1px solid var(--border);
-  border-top: 3px solid var(--gold);
+  border-top: 3px solid #15477a;
   border-radius: var(--radius);
   box-shadow: 0 16px 36px -4px rgba(11, 25, 44, 0.16), 0 4px 12px rgba(11, 25, 44, 0.06);
   padding: 0.65rem;
@@ -3372,12 +3400,11 @@ iframe {
 
 @media (max-width: 1240px) {
   .site-nav {
-    gap: 0.75rem;
+    gap: 1.15rem;
   }
   .site-nav .nav-link,
   .site-nav a {
-    font-size: 0.71rem;
-    letter-spacing: 0.04em;
+    font-size: 0.88rem;
     padding: 0.4rem 0.1rem;
   }
   .btn-nav-partner {

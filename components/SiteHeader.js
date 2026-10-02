@@ -85,6 +85,24 @@ const STRINGS = {
     ko: "목회 상담 텔레그램",
     zh: "教牧 Telegram 专线",
   },
+  imNew: {
+    en: "I'm New",
+    km: "អ្នកទើបមកថ្មី",
+    ko: "새가족",
+    zh: "新朋友",
+  },
+  sermons: {
+    en: "Sermons",
+    km: "ធម្មទេសនា",
+    ko: "설교",
+    zh: "讲道影音",
+  },
+  devotion: {
+    en: "Devotion",
+    km: "ការសញ្ជឹងគិត",
+    ko: "말씀 묵상",
+    zh: "每日灵修",
+  },
 };
 
 const NAV_GROUPS = {
@@ -146,47 +164,14 @@ const NAV_GROUPS = {
       },
     ],
   },
-  teaching: {
+  ministries: {
     label: {
-      en: "Word & Devotion",
-      km: "ព្រះបន្ទូល & ការបង្រៀន",
-      ko: "말씀과 묵상",
-      zh: "真理讲道",
+      en: "Ministries",
+      km: "ព័ន្ធកិច្ច",
+      ko: "사역 안내",
+      zh: "事工介绍",
     },
     items: [
-      {
-        href: "/devotions",
-        icon: "book",
-        badge: "365",
-        title: {
-          en: "Daily Devotions (365 Days)",
-          km: "ការសញ្ជឹងគិតប្រចាំថ្ងៃ (៣៦៥ ថ្ងៃ)",
-          ko: "매일 말씀 묵상 (365일)",
-          zh: "每日灵修（365天）",
-        },
-        desc: {
-          en: "Daily Bread, 500 verses & prayer altar",
-          km: "ព្រះបន្ទូលប្រចាំថ្ងៃ និងអាសនៈអធិស្ឋាន",
-          ko: "생명의 떡, 500구절 암송 및 기도",
-          zh: "每日灵粮、500金句与祷告祭坛",
-        },
-      },
-      {
-        href: "/resource",
-        icon: "video",
-        title: {
-          en: "Sermons & Media",
-          km: "វីដេអូ និងធនធាន",
-          ko: "영상 설교 & 미디어",
-          zh: "影音与讲道",
-        },
-        desc: {
-          en: "Sunday worship recordings & video messages",
-          km: "ការថ្វាយបង្គំ និងវីដេអូបង្រៀន",
-          ko: "주일 예배 영상 및 설교 비디오",
-          zh: "主日崇拜实况与讲道影片",
-        },
-      },
       {
         href: "/library",
         icon: "book",
@@ -219,14 +204,30 @@ const NAV_GROUPS = {
           zh: "教牧解经、教义与属灵劝勉",
         },
       },
+      {
+        href: "/partner-with-us",
+        icon: "heart",
+        title: {
+          en: "Kingdom Partnership",
+          km: "ចូលរួមចំណែកក្នុងព្រះរាជ្យ",
+          ko: "사역 동역하기",
+          zh: "与我们同工",
+        },
+        desc: {
+          en: "Support Gospel outreach & discipleship",
+          km: "ចូលរួមចំណែកពង្រីកដំណឹងល្អ",
+          ko: "복음 전도와 제자 양육 동역",
+          zh: "支持福音外展与门徒训练",
+        },
+      },
     ],
   },
-  churchLife: {
+  connect: {
     label: {
-      en: "Connect & Life",
-      km: "ជីវិតក្រុមជំនុំ",
-      ko: "교제 및 갤러리",
-      zh: "教会生活",
+      en: "Connect",
+      km: "ការតភ្ជាប់",
+      ko: "교제 & 연결",
+      zh: "团契连接",
     },
     items: [
       {
@@ -259,6 +260,22 @@ const NAV_GROUPS = {
           km: "ចូលរួមចំណែកពង្រីកដំណឹងល្អ",
           ko: "복음 전도와 제자 양육 동역",
           zh: "支持福音外展与门徒训练",
+        },
+      },
+      {
+        href: "/contact",
+        icon: "compass",
+        title: {
+          en: "Sunday Sanctuary Gatherings",
+          km: "ការជួបជុំថ្វាយបង្គំថ្ងៃអាទិត្យ",
+          ko: "주일 예배 모임 안내",
+          zh: "主日实体崇拜",
+        },
+        desc: {
+          en: "Join us every Sunday at 10:00 AM",
+          km: "ចូលរួមរៀងរាល់ថ្ងៃអាទិត្យ វេលាម៉ោង ១០:០០ ព្រឹក",
+          ko: "매주 주일 오전 10:00 함께 예배",
+          zh: "每周日早晨 10:00 同心敬拜",
         },
       },
     ],
@@ -394,7 +411,7 @@ export default function SiteHeader() {
 
   // Mobile drawer accordion states
   const [mobileAboutOpen, setMobileAboutOpen] = useState(false);
-  const [mobileTeachingOpen, setMobileTeachingOpen] = useState(false);
+  const [mobileMinistriesOpen, setMobileMinistriesOpen] = useState(false);
   const [mobileConnectOpen, setMobileConnectOpen] = useState(false);
 
   const dropdownTimeoutRef = useRef(null);
@@ -466,7 +483,7 @@ export default function SiteHeader() {
   const telegramHotlineText = tStr("telegramHotline");
 
   const isAboutActive = ["/about"].some((p) => isRouteActive(p));
-  const isTeachingActive = ["/devotions", "/articles", "/library", "/resource"].some((p) => isRouteActive(p));
+  const isMinistriesActive = ["/library", "/articles"].some((p) => isRouteActive(p));
   const isConnectActive = ["/gallery", "/partner-with-us"].some((p) => isRouteActive(p));
 
   return (
@@ -492,17 +509,26 @@ export default function SiteHeader() {
             </span>
           </Link>
 
-          {/* Desktop Navigation Menu (Hun Chet Ministry Structure) */}
+          {/* Desktop Navigation Menu (Matching Reference Image) */}
           <nav className="site-nav desktop-nav" aria-label="Main Navigation">
             {/* 1. Home */}
             <Link
               href="/"
-              className={`nav-link ${isRouteActive("/") ? "active" : ""}`}
+              className={`nav-link ${router.pathname === "/" ? "active" : ""}`}
             >
               {t("nav.home")}
             </Link>
 
-            {/* 2. About Dropdown */}
+            {/* 2. I'm New */}
+            <button
+              type="button"
+              className="nav-link"
+              onClick={() => setIsAnnouncementModalOpen(true)}
+            >
+              {tStr("imNew")}
+            </button>
+
+            {/* 3. About Dropdown */}
             <div
               className={`nav-dropdown-wrap ${openDropdown === "about" ? "is-open" : ""}`}
               onMouseEnter={() => handleMouseEnter("about")}
@@ -516,7 +542,7 @@ export default function SiteHeader() {
                 aria-expanded={openDropdown === "about"}
               >
                 <span>{loc(NAV_GROUPS.about.label)}</span>
-                <ChevronDownIcon className="nav-dropdown-caret" style={{ width: 14, height: 14 }} />
+                <ChevronDownIcon className="nav-dropdown-caret" />
               </button>
 
               <div className="nav-dropdown-menu">
@@ -539,66 +565,25 @@ export default function SiteHeader() {
               </div>
             </div>
 
-            {/* 3. Word & Devotion Dropdown */}
+            {/* 4. Ministries Dropdown */}
             <div
-              className={`nav-dropdown-wrap ${openDropdown === "teaching" ? "is-open" : ""}`}
-              onMouseEnter={() => handleMouseEnter("teaching")}
+              className={`nav-dropdown-wrap ${openDropdown === "ministries" ? "is-open" : ""}`}
+              onMouseEnter={() => handleMouseEnter("ministries")}
               onMouseLeave={handleMouseLeave}
             >
               <button
                 type="button"
-                className={`nav-link ${isTeachingActive ? "active" : ""}`}
-                onClick={() => setOpenDropdown((prev) => (prev === "teaching" ? null : "teaching"))}
+                className={`nav-link ${isMinistriesActive ? "active" : ""}`}
+                onClick={() => setOpenDropdown((prev) => (prev === "ministries" ? null : "ministries"))}
                 aria-haspopup="true"
-                aria-expanded={openDropdown === "teaching"}
+                aria-expanded={openDropdown === "ministries"}
               >
-                <span>{loc(NAV_GROUPS.teaching.label)}</span>
-                <span className="nav-badge-pill" style={{ marginLeft: 4 }}>365</span>
-                <ChevronDownIcon className="nav-dropdown-caret" style={{ width: 14, height: 14 }} />
+                <span>{loc(NAV_GROUPS.ministries.label)}</span>
+                <ChevronDownIcon className="nav-dropdown-caret" />
               </button>
 
               <div className="nav-dropdown-menu">
-                {NAV_GROUPS.teaching.items.map((item) => (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className={`nav-dropdown-item ${isRouteActive(item.href) ? "active" : ""}`}
-                    onClick={() => setOpenDropdown(null)}
-                  >
-                    <span className="nav-dropdown-icon">
-                      <NavIcon type={item.icon} />
-                    </span>
-                    <span className="nav-dropdown-text">
-                      <span style={{ display: "flex", alignItems: "center", gap: 6 }}>
-                        <strong className="nav-dropdown-title">{loc(item.title)}</strong>
-                        {item.badge && <span className="nav-badge-pill">{item.badge}</span>}
-                      </span>
-                      <span className="nav-dropdown-desc">{loc(item.desc)}</span>
-                    </span>
-                  </Link>
-                ))}
-              </div>
-            </div>
-
-            {/* 4. Connect & Church Life Dropdown */}
-            <div
-              className={`nav-dropdown-wrap ${openDropdown === "churchLife" ? "is-open" : ""}`}
-              onMouseEnter={() => handleMouseEnter("churchLife")}
-              onMouseLeave={handleMouseLeave}
-            >
-              <button
-                type="button"
-                className={`nav-link ${isConnectActive ? "active" : ""}`}
-                onClick={() => setOpenDropdown((prev) => (prev === "churchLife" ? null : "churchLife"))}
-                aria-haspopup="true"
-                aria-expanded={openDropdown === "churchLife"}
-              >
-                <span>{loc(NAV_GROUPS.churchLife.label)}</span>
-                <ChevronDownIcon className="nav-dropdown-caret" style={{ width: 14, height: 14 }} />
-              </button>
-
-              <div className="nav-dropdown-menu">
-                {NAV_GROUPS.churchLife.items.map((item) => (
+                {NAV_GROUPS.ministries.items.map((item) => (
                   <Link
                     key={item.href}
                     href={item.href}
@@ -617,23 +602,67 @@ export default function SiteHeader() {
               </div>
             </div>
 
-            {/* 5. Contact */}
+            {/* 5. Sermons */}
+            <Link
+              href="/resource"
+              className={`nav-link ${isRouteActive("/resource") ? "active" : ""}`}
+            >
+              {tStr("sermons")}
+            </Link>
+
+            {/* 6. Devotion [365] */}
+            <Link
+              href="/devotions"
+              className={`nav-link ${isRouteActive("/devotions") ? "active" : ""}`}
+            >
+              <span>{tStr("devotion")}</span>
+              <span className="nav-badge-365">365</span>
+            </Link>
+
+            {/* 7. Connect Dropdown */}
+            <div
+              className={`nav-dropdown-wrap ${openDropdown === "connect" ? "is-open" : ""}`}
+              onMouseEnter={() => handleMouseEnter("connect")}
+              onMouseLeave={handleMouseLeave}
+            >
+              <button
+                type="button"
+                className={`nav-link ${isConnectActive ? "active" : ""}`}
+                onClick={() => setOpenDropdown((prev) => (prev === "connect" ? null : "connect"))}
+                aria-haspopup="true"
+                aria-expanded={openDropdown === "connect"}
+              >
+                <span>{loc(NAV_GROUPS.connect.label)}</span>
+                <ChevronDownIcon className="nav-dropdown-caret" />
+              </button>
+
+              <div className="nav-dropdown-menu">
+                {NAV_GROUPS.connect.items.map((item) => (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className={`nav-dropdown-item ${isRouteActive(item.href) ? "active" : ""}`}
+                    onClick={() => setOpenDropdown(null)}
+                  >
+                    <span className="nav-dropdown-icon">
+                      <NavIcon type={item.icon} />
+                    </span>
+                    <span className="nav-dropdown-text">
+                      <strong className="nav-dropdown-title">{loc(item.title)}</strong>
+                      <span className="nav-dropdown-desc">{loc(item.desc)}</span>
+                    </span>
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            {/* 8. Contact */}
             <Link
               href="/contact"
               className={`nav-link ${isRouteActive("/contact") ? "active" : ""}`}
             >
               {t("nav.contact")}
             </Link>
-
-            {/* Primary Action Button: Plan Visit */}
-            <button
-              type="button"
-              onClick={() => setIsAnnouncementModalOpen(true)}
-              className="btn-plan-visit"
-            >
-              <CalendarIcon style={{ width: 14, height: 14 }} />
-              <span>{planVisitLabel}</span>
-            </button>
 
             {/* Language Switcher */}
             <LanguageSwitch />
@@ -747,19 +776,22 @@ export default function SiteHeader() {
                   </div>
                 </Link>
 
-                <Link
-                  href="/devotions"
-                  className={`anc-nav-link ${router.pathname.startsWith("/devotions") ? "is-active" : ""}`}
-                  onClick={() => setMobileOpen(false)}
+                <button
+                  type="button"
+                  className="anc-nav-link"
+                  style={{ width: "100%", textAlign: "left", background: "none", border: "none", cursor: "pointer", fontFamily: "inherit" }}
+                  onClick={() => {
+                    setMobileOpen(false);
+                    setIsAnnouncementModalOpen(true);
+                  }}
                 >
                   <div className="anc-nav-link-left">
                     <span className="anc-link-icon-box" style={{ background: "rgba(184, 155, 94, 0.15)", color: "var(--gold)" }}>
-                      <BookOpenIcon style={{ width: 14, height: 14 }} />
+                      <CalendarIcon style={{ width: 14, height: 14 }} />
                     </span>
-                    <span className="anc-link-title">{loc(NAV_GROUPS.teaching.items[0].title)}</span>
+                    <span className="anc-link-title">{tStr("imNew")}</span>
                   </div>
-                  <span className="anc-pill-badge">365</span>
-                </Link>
+                </button>
               </div>
 
               {/* Section 2: About Our Church (Collapsible Accordion Card) */}
@@ -794,24 +826,24 @@ export default function SiteHeader() {
                 )}
               </div>
 
-              {/* Section 3: Word & Spiritual Life (Collapsible Accordion Card) */}
+              {/* Section 3: Ministries (Collapsible Accordion Card) */}
               <div className="anc-nav-card anc-accordion-card">
                 <button
                   type="button"
-                  onClick={() => setMobileTeachingOpen(!mobileTeachingOpen)}
+                  onClick={() => setMobileMinistriesOpen(!mobileMinistriesOpen)}
                   className="anc-accordion-header"
-                  aria-expanded={mobileTeachingOpen}
+                  aria-expanded={mobileMinistriesOpen}
                 >
                   <span className="anc-accordion-left">
                     <BookOpenIcon style={{ width: 16, height: 16, color: "var(--gold)" }} />
-                    <span>{loc(NAV_GROUPS.teaching.label)}</span>
+                    <span>{loc(NAV_GROUPS.ministries.label)}</span>
                   </span>
-                  <ChevronDownIcon className={`anc-accordion-chevron ${mobileTeachingOpen ? "is-open" : ""}`} />
+                  <ChevronDownIcon className={`anc-accordion-chevron ${mobileMinistriesOpen ? "is-open" : ""}`} />
                 </button>
 
-                {mobileTeachingOpen && (
+                {mobileMinistriesOpen && (
                   <div className="anc-accordion-body">
-                    {NAV_GROUPS.teaching.items.map((item) => (
+                    {NAV_GROUPS.ministries.items.map((item) => (
                       <Link
                         key={item.href}
                         href={item.href}
@@ -826,7 +858,37 @@ export default function SiteHeader() {
                 )}
               </div>
 
-              {/* Section 4: Connect & Church Life (Collapsible Accordion Card) */}
+              {/* Section 4: Sermons & Devotion Card */}
+              <div className="anc-nav-card">
+                <Link
+                  href="/resource"
+                  className={`anc-nav-link ${router.pathname.startsWith("/resource") ? "is-active" : ""}`}
+                  onClick={() => setMobileOpen(false)}
+                >
+                  <div className="anc-nav-link-left">
+                    <span className="anc-link-icon-box" style={{ background: "rgba(239, 68, 68, 0.1)", color: "#ef4444" }}>
+                      <PlayIcon style={{ width: 14, height: 14 }} />
+                    </span>
+                    <span className="anc-link-title">{tStr("sermons")}</span>
+                  </div>
+                </Link>
+
+                <Link
+                  href="/devotions"
+                  className={`anc-nav-link ${router.pathname.startsWith("/devotions") ? "is-active" : ""}`}
+                  onClick={() => setMobileOpen(false)}
+                >
+                  <div className="anc-nav-link-left">
+                    <span className="anc-link-icon-box" style={{ background: "rgba(21, 58, 99, 0.1)", color: "#153a63" }}>
+                      <BookOpenIcon style={{ width: 14, height: 14 }} />
+                    </span>
+                    <span className="anc-link-title">{tStr("devotion")}</span>
+                  </div>
+                  <span className="anc-pill-badge" style={{ background: "#153a63", color: "#ffffff" }}>365</span>
+                </Link>
+              </div>
+
+              {/* Section 5: Connect (Collapsible Accordion Card) */}
               <div className="anc-nav-card anc-accordion-card">
                 <button
                   type="button"
@@ -836,14 +898,14 @@ export default function SiteHeader() {
                 >
                   <span className="anc-accordion-left">
                     <CameraIcon style={{ width: 16, height: 16, color: "#059669" }} />
-                    <span>{loc(NAV_GROUPS.churchLife.label)}</span>
+                    <span>{loc(NAV_GROUPS.connect.label)}</span>
                   </span>
                   <ChevronDownIcon className={`anc-accordion-chevron ${mobileConnectOpen ? "is-open" : ""}`} />
                 </button>
 
                 {mobileConnectOpen && (
                   <div className="anc-accordion-body">
-                    {NAV_GROUPS.churchLife.items.map((item) => (
+                    {NAV_GROUPS.connect.items.map((item) => (
                       <Link
                         key={item.href}
                         href={item.href}
@@ -858,7 +920,7 @@ export default function SiteHeader() {
                 )}
               </div>
 
-              {/* Section 5: Contact Link Card */}
+              {/* Section 6: Contact Link Card */}
               <div className="anc-nav-card">
                 <Link
                   href="/contact"
@@ -874,7 +936,7 @@ export default function SiteHeader() {
                 </Link>
               </div>
 
-              {/* Section 6: Plan Your Visit Sanctuary Card */}
+              {/* Section 7: Plan Your Visit Sanctuary Card */}
               <div className="anc-drawer-footer-card">
                 <button
                   type="button"
