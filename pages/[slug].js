@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import SiteHeader from "../components/SiteHeader";
 import SiteFooter from "../components/SiteFooter";
+import { useLocale } from "../lib/i18n";
 import { getAllPageSlugs, getPageBySlug, cleanContentHtml } from "../lib/wordpress";
 
 const RESERVED_SLUGS = new Set([
@@ -56,6 +57,8 @@ export async function getStaticProps({ params }) {
 }
 
 export default function WordPressPage({ page }) {
+  const locale = useLocale();
+  const isKm = locale === "km";
   const plainTitle = stripHtml(page.title?.rendered) || page.slug;
   const content = cleanContentHtml(page.content?.rendered || "");
 
@@ -69,7 +72,7 @@ export default function WordPressPage({ page }) {
 
       <main className="container" style={{ paddingBottom: "5rem" }}>
         <div className="reading-room-breadcrumbs" style={{ marginTop: "2.5rem" }}>
-          <Link href="/">Home</Link>
+          <Link href="/">{isKm ? "ទំព័រដើម" : "Home"}</Link>
           <span>/</span>
           <span style={{ color: "var(--navy-dark)", fontWeight: 700 }}>{plainTitle}</span>
         </div>
@@ -96,7 +99,7 @@ export default function WordPressPage({ page }) {
 
           <div style={{ marginTop: "3.5rem" }}>
             <Link href="/" className="btn btn-primary" style={{ fontSize: "0.82rem" }}>
-              ← Return to Home
+              {isKm ? "← ត្រឡប់ទៅទំព័រដើម" : "← Return to Home"}
             </Link>
           </div>
         </article>

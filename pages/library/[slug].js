@@ -15,7 +15,7 @@ import {
 export async function getStaticPaths({ locales }) {
   const paths = [];
   BOOKS.forEach((b) => {
-    (locales || ["en"]).forEach((locale) => {
+    (locales || ["km"]).forEach((locale) => {
       paths.push({ params: { slug: b.slug }, locale });
     });
   });
@@ -35,6 +35,7 @@ export async function getStaticProps({ params }) {
 export default function BookReader({ book, relatedBooks }) {
   const t = useT();
   const locale = useLocale();
+  const isKm = locale === "km";
 
   if (!book) return null;
 
@@ -49,9 +50,9 @@ export default function BookReader({ book, relatedBooks }) {
   return (
     <>
       <Head>
-        <title>{`${title} — Hun Chet Theological Library`}</title>
+        <title>{`${title} — ${isKm ? "បណ្ណាល័យទេវវិទ្យា ហ៊ុន ចិត្ត" : "Hun Chet Theological Library"}`}</title>
         <meta name="description" content={desc} />
-        <meta property="og:title" content={`${title} — Hun Chet`} />
+        <meta property="og:title" content={`${title} — ${isKm ? "លោកគ្រូ ហ៊ុន ចិត្ត" : "Hun Chet"}`} />
         <meta property="og:description" content={desc} />
         <meta property="og:image" content={book.cover} />
       </Head>
@@ -131,7 +132,8 @@ export default function BookReader({ book, relatedBooks }) {
                 }}
               >
                 <div>
-                  <strong>{t("library.format")}:</strong> PDF Digital Archive
+                  <strong>{t("library.format")}:</strong>{" "}
+                  {isKm ? "បណ្ណសារឌីជីថល PDF" : "PDF Digital Archive"}
                 </div>
                 <div>
                   <strong>{t("library.pages")}:</strong> {book.pages}

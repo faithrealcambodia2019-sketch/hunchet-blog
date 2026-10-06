@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import SiteHeader from "../components/SiteHeader";
 import SiteFooter from "../components/SiteFooter";
+import { useLocale } from "../lib/i18n";
 import { getPages } from "../lib/wordpress";
 
 function stripHtml(html) {
@@ -24,13 +25,22 @@ export async function getStaticProps() {
 }
 
 export default function AllPages({ pages, error }) {
+  const locale = useLocale();
+  const isKm = locale === "km";
+
   return (
     <>
       <Head>
-        <title>All Pages Directory — Hun Chet</title>
+        <title>
+          {isKm ? "បញ្ជីទំព័រទាំងអស់ — ហ៊ុន ចិត្ត" : "All Pages Directory — Hun Chet"}
+        </title>
         <meta
           name="description"
-          content="Complete sitemap and directory of Hun Chet ministry resources."
+          content={
+            isKm
+              ? "លិបិក្រម និងបញ្ជីធនធានពេញលេញនៃព័ន្ធកិច្ចលោកគ្រូ ហ៊ុន ចិត្ត។"
+              : "Complete sitemap and directory of Hun Chet ministry resources."
+          }
         />
       </Head>
 
@@ -47,24 +57,34 @@ export default function AllPages({ pages, error }) {
         <div className="sanctuary-hero-overlay" />
         <div className="sanctuary-hero-content">
           <div className="sanctuary-badge-tag">
-            <span>Sitemap & Directory</span>
+            <span>{isKm ? "បណ្ដាញទំព័រ និងបញ្ជីធនធាន" : "Sitemap & Directory"}</span>
           </div>
-          <h1 className="sanctuary-hero-title">All Pages Directory</h1>
+          <h1 className="sanctuary-hero-title">
+            {isKm ? "បញ្ជីទំព័រទាំងអស់" : "All Pages Directory"}
+          </h1>
           <p className="sanctuary-hero-subtitle">
-            Complete Index of Ministry Pages, Archives, and Church Life
+            {isKm
+              ? "លិបិក្រមពេញលេញនៃទំព័រព័ន្ធកិច្ច បណ្ណសារ និងជីវិតក្រុមជំនុំ"
+              : "Complete Index of Ministry Pages, Archives, and Church Life"}
           </p>
           <p className="sanctuary-hero-lead">
-            Easily discover every section of our ministry, library, and biblical preaching archives.
+            {isKm
+              ? "ស្វែងរកផ្នែកនីមួយៗនៃព័ន្ធកិច្ច បណ្ណាល័យ និងបណ្ណសារផ្សាយព្រះបន្ទូលរបស់យើងយ៉ាងងាយស្រួល។"
+              : "Easily discover every section of our ministry, library, and biblical preaching archives."}
           </p>
 
           <div className="sanctuary-stat-strip">
             <div className="sanctuary-stat-card">
               <span className="sanctuary-stat-num">{pages.length}</span>
-              <span className="sanctuary-stat-label">Published Pages</span>
+              <span className="sanctuary-stat-label">
+                {isKm ? "ទំព័រដែលបានចុះផ្សាយ" : "Published Pages"}
+              </span>
             </div>
             <div className="sanctuary-stat-card">
-              <span className="sanctuary-stat-num">Hun Chet</span>
-              <span className="sanctuary-stat-label">Faith & Ministry</span>
+              <span className="sanctuary-stat-num">{isKm ? "លោកគ្រូ ហ៊ុន ចិត្ត" : "Hun Chet"}</span>
+              <span className="sanctuary-stat-label">
+                {isKm ? "ជំនឿ និងព័ន្ធកិច្ច" : "Faith & Ministry"}
+              </span>
             </div>
           </div>
         </div>
@@ -72,7 +92,12 @@ export default function AllPages({ pages, error }) {
 
       <main className="section">
         <div className="container">
-          {error && <p className="error">Couldn&apos;t load pages: {error}</p>}
+          {error && (
+            <p className="error">
+              {isKm ? "មិនអាចទាញយកទំព័របានទេ: " : "Couldn't load pages: "}
+              {error}
+            </p>
+          )}
 
           <div className="category-grid">
             {pages.map((page) => {
@@ -84,7 +109,10 @@ export default function AllPages({ pages, error }) {
                   className="category-card"
                   style={{ borderTop: "3px solid var(--gold)", borderRadius: "var(--radius)" }}
                 >
-                  <span className="category-card-name" style={{ fontFamily: "var(--font-display)", color: "var(--navy-dark)" }}>
+                  <span
+                    className="category-card-name"
+                    style={{ fontFamily: "var(--font-display)", color: "var(--navy-dark)" }}
+                  >
                     {title}
                   </span>
                   <span className="category-card-count" style={{ color: "var(--muted)" }}>
@@ -97,7 +125,7 @@ export default function AllPages({ pages, error }) {
 
           <div style={{ textAlign: "center", marginTop: "3.5rem" }}>
             <Link href="/" className="btn btn-primary">
-              Return to Home
+              {isKm ? "ត្រឡប់ទៅទំព័រដើម" : "Return to Home"}
             </Link>
           </div>
         </div>

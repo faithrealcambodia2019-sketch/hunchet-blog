@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { LOGO } from "../lib/media";
-import { useT } from "../lib/i18n";
+import { useT, useLocale } from "../lib/i18n";
 import {
   PhoneIcon,
   TelegramIcon,
@@ -33,6 +33,8 @@ const SOCIALS = [
 
 export default function SiteFooter() {
   const t = useT();
+  const locale = useLocale();
+  const isKm = locale === "km";
 
   return (
     <footer className="site-footer">
@@ -41,9 +43,9 @@ export default function SiteFooter() {
           <Link href="/" className="footer-brand">
             <span className="brand-mark">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={LOGO} alt="Hun Chet" />
+              <img src={LOGO} alt={isKm ? "លោកគ្រូ ហ៊ុន ចិត្ត" : "Hun Chet"} />
             </span>
-            <span className="footer-brand-text">Hun Chet</span>
+            <span className="footer-brand-text">{isKm ? "លោកគ្រូ ហ៊ុន ចិត្ត" : "Hun Chet"}</span>
           </Link>
           <p>{t("footer.tagline")}</p>
 

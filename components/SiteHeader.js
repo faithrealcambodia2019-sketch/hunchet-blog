@@ -340,7 +340,7 @@ function LanguageSwitch() {
   const [open, setOpen] = useState(false);
   const wrapRef = useRef(null);
 
-  const current = LOCALES.find((l) => l.code === (router.locale || "en"));
+  const current = LOCALES.find((l) => l.code === (router.locale || "km"));
 
   useEffect(() => {
     if (!open) return undefined;
@@ -402,7 +402,7 @@ function LanguageSwitch() {
 export default function SiteHeader() {
   const router = useRouter();
   const t = useT();
-  const locale = router.locale || "en";
+  const locale = router.locale || "km";
 
   const [mounted, setMounted] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -422,7 +422,7 @@ export default function SiteHeader() {
 
   const loc = (obj) => {
     if (!obj) return "";
-    return obj[locale] || obj.en || "";
+    return obj[locale] || obj.km || obj.en || "";
   };
 
   const isRouteActive = (href) => {

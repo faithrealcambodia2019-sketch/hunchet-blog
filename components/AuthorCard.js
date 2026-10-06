@@ -1,9 +1,11 @@
-import { useT } from "../lib/i18n";
+import { useT, useLocale } from "../lib/i18n";
 import { LOGO } from "../lib/media";
 import { PhoneIcon, TelegramIcon, FacebookIcon } from "./Icons";
 
 export default function AuthorCard() {
   const t = useT();
+  const locale = useLocale();
+  const isKm = locale === "km";
 
   return (
     <div className="author-bio">
@@ -11,11 +13,11 @@ export default function AuthorCard() {
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={LOGO}
-          alt="Hun Chet"
+          alt={isKm ? "លោកគ្រូ ហ៊ុន ចិត្ត" : "Hun Chet"}
         />
       </div>
       <div className="author-text">
-        <strong>Hun Chet</strong>
+        <strong>{isKm ? "លោកគ្រូ ហ៊ុន ចិត្ត" : "Hun Chet"}</strong>
         <span>{t("footer.tagline")}</span>
         <div className="author-social-links">
           <a href="tel:0966875886" className="author-btn btn-phone">

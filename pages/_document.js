@@ -4,7 +4,7 @@ import { APPLE_ICON } from "../lib/media";
 export default function Document(props) {
   // Follows the active locale so screen readers and Google get the right
   // language for the page they are actually on.
-  const locale = props?.__NEXT_DATA__?.locale || "en";
+  const locale = props?.__NEXT_DATA__?.locale || "km";
 
   return (
     <Html lang={locale}>

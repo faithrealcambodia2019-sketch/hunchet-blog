@@ -3,6 +3,7 @@ import Link from "next/link";
 import SiteHeader from "../../components/SiteHeader";
 import SiteFooter from "../../components/SiteFooter";
 import AuthorCard from "../../components/AuthorCard";
+import { useLocale } from "../../lib/i18n";
 import {
   getAllSlugs,
   getPostBySlug,
@@ -44,19 +45,24 @@ function stripHtml(html) {
     .trim();
 }
 
-function estimateReadingTime(text) {
+function estimateReadingTime(text, isKm = false) {
   const words = (text || "").trim().split(/\s+/).length;
   const minutes = Math.max(1, Math.ceil(words / 200));
-  return `${minutes} min read`;
+  return isKm ? `${minutes} នាទីនៃការអាន` : `${minutes} min read`;
 }
 
 export default function Post({ post }) {
+  const locale = useLocale();
+  const isKm = locale === "km";
   const image = getFeaturedImage(post);
   const plainTitle = stripHtml(post.title.rendered);
   const description = getExcerptText(post, 160);
   const content = cleanContentHtml(post.content.rendered);
   const categories = getPostCategories(post);
-  const readingTime = estimateReadingTime(stripHtml(post.content?.rendered || ""));
+  const readingTime = estimateReadingTime(
+    stripHtml(post.content?.rendered || ""),
+    isKm
+  );
 
   return (
     <>
@@ -74,9 +80,9 @@ export default function Post({ post }) {
       <main className="container">
         {/* Scholarly Breadcrumb Bar */}
         <div className="reading-room-breadcrumbs" style={{ marginTop: "2.5rem" }}>
-          <Link href="/">Home</Link>
+          <Link href="/">{isKm ? "ទំព័រដើម" : "Home"}</Link>
           <span>/</span>
-          <Link href="/articles">Articles</Link>
+          <Link href="/articles">{isKm ? "អត្ថបទ" : "Articles"}</Link>
           {categories.length > 0 && (
             <>
               <span>/</span>
@@ -84,24 +90,37 @@ export default function Post({ post }) {
             </>
           )}
           <span>/</span>
-          <span style={{ color: "var(--navy-dark)", fontWeight: 700 }}>Reading Room</span>
+          <span style={{ color: "var(--navy-dark)", fontWeight: 700 }}>
+            {isKm ? "បន្ទប់អានព្រះបន្ទូល" : "Reading Room"}
+          </span>
         </div>
 
         <article className="post-page" style={{ paddingTop: "0.5rem" }}>
           {/* Article Header */}
           <header className="reading-room-header">
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "0.5rem" }}>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                flexWrap: "wrap",
+                gap: "0.5rem",
+              }}
+            >
               <div className="reading-room-meta">
                 <span className="reading-room-meta-item">
                   <time className="post-date">{formatDate(post.date)}</time>
                 </span>
                 <span>•</span>
-                <span className="reading-room-meta-item" style={{ color: "var(--gold)", fontWeight: 700 }}>
+                <span
+                  className="reading-room-meta-item"
+                  style={{ color: "var(--gold)", fontWeight: 700 }}
+                >
                   {readingTime}
                 </span>
                 <span>•</span>
                 <span className="reading-room-meta-item">
-                  Leader Hun Chet
+                  {isKm ? "លោកគ្រូ ហ៊ុន ចិត្ត" : "Leader Hun Chet"}
                 </span>
               </div>
 
@@ -134,7 +153,15 @@ export default function Post({ post }) {
 
           {/* Featured Image */}
           {image && (
-            <div style={{ marginBottom: "2.5rem", borderRadius: "var(--radius-lg)", overflow: "hidden", borderBottom: "3px solid var(--gold)", boxShadow: "var(--shadow-md)" }}>
+            <div
+              style={{
+                marginBottom: "2.5rem",
+                borderRadius: "var(--radius-lg)",
+                overflow: "hidden",
+                borderBottom: "3px solid var(--gold)",
+                boxShadow: "var(--shadow-md)",
+              }}
+            >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={image}
@@ -151,24 +178,42 @@ export default function Post({ post }) {
           />
 
           {/* Canonical Author Connection */}
-          <div style={{ marginTop: "4rem", paddingTop: "2rem", borderTop: "1px solid var(--border)" }}>
-            <span className="eyebrow" style={{ textAlign: "center", display: "block", marginBottom: "1rem" }}>
-              About The Preacher & Writer
+          <div
+            style={{
+              marginTop: "4rem",
+              paddingTop: "2rem",
+              borderTop: "1px solid var(--border)",
+            }}
+          >
+            <span
+              className="eyebrow"
+              style={{ textAlign: "center", display: "block", marginBottom: "1rem" }}
+            >
+              {isKm ? "អំពីអ្នកទេសនា និងអ្នកនិពន្ធ" : "About The Preacher & Writer"}
             </span>
             <AuthorCard />
           </div>
 
           {/* Navigation Bar */}
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: "3.5rem", flexWrap: "wrap", gap: "1rem" }}>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              marginTop: "3.5rem",
+              flexWrap: "wrap",
+              gap: "1rem",
+            }}
+          >
             <Link href="/articles" className="btn btn-primary" style={{ fontSize: "0.82rem" }}>
-              ← Back to all articles
+              {isKm ? "← ត្រឡប់ទៅកាន់អត្ថបទទាំងអស់" : "← Back to all articles"}
             </Link>
             <div style={{ display: "flex", gap: "0.75rem" }}>
               <Link href="/library" className="btn btn-ghost" style={{ fontSize: "0.82rem" }}>
-                Study Library
+                {isKm ? "បណ្ណាល័យសិក្សា" : "Study Library"}
               </Link>
               <Link href="/resource" className="btn btn-ghost" style={{ fontSize: "0.82rem" }}>
-                Video Archives
+                {isKm ? "បណ្ណសារវីដេអូ" : "Video Archives"}
               </Link>
             </div>
           </div>

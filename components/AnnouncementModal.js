@@ -10,7 +10,7 @@ import {
   CheckIcon,
 } from "./Icons";
 
-export default function AnnouncementModal({ isOpen, onClose, locale = "en" }) {
+export default function AnnouncementModal({ isOpen, onClose, locale = "km" }) {
   useEffect(() => {
     if (!isOpen) return undefined;
 
@@ -32,7 +32,7 @@ export default function AnnouncementModal({ isOpen, onClose, locale = "en" }) {
 
   if (!isOpen || typeof document === "undefined") return null;
 
-  const t = (obj) => obj[locale] || obj.en;
+  const t = (obj) => obj[locale] || obj.km || obj.en;
 
   const text = {
     badge: {

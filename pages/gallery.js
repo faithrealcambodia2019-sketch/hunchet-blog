@@ -18,7 +18,7 @@ import {
 export default function Gallery() {
   const router = useRouter();
   const t = useT();
-  const locale = router.locale || "en";
+  const locale = router.locale || "km";
 
   const [activeCategory, setActiveCategory] = useState("all");
   const [selectedIndex, setSelectedIndex] = useState(null);
@@ -33,7 +33,7 @@ export default function Gallery() {
 
   const loc = (obj) => {
     if (!obj) return "";
-    return obj[locale] || obj.en || "";
+    return obj[locale] || obj.km || obj.en || "";
   };
 
   const handlePrev = useCallback(() => {

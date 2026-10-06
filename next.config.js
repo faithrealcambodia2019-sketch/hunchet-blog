@@ -1,13 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  // English is served at the root so every existing URL keeps working.
-  // Khmer, Korean and Simplified Chinese live under /km, /ko and /zh.
-  // localeDetection is off so a shared link always opens in the language
-  // it was shared in.
+  // Khmer is served at the root (/) as the primary language across all pages.
+  // English, Korean, and Simplified Chinese live under /en, /ko, and /zh.
   i18n: {
-    locales: ["en", "km", "ko", "zh"],
-    defaultLocale: "en",
+    locales: ["km", "en", "ko", "zh"],
+    defaultLocale: "km",
     localeDetection: false,
   },
   images: {

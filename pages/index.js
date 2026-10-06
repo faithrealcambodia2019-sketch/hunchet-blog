@@ -270,7 +270,7 @@ export async function getStaticProps() {
 export default function Home({ posts = [], error }) {
   const router = useRouter();
   const t = useT();
-  const locale = router.locale || "en";
+  const locale = router.locale || "km";
 
   const [selectedPhoto, setSelectedPhoto] = useState(null);
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);

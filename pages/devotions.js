@@ -238,7 +238,7 @@ export default function DevotionsPage() {
   const [completedDays, setCompletedDays] = useState([]);
   const [isPlayingAudio, setIsPlayingAudio] = useState(false);
   const [toastMessage, setToastMessage] = useState(null);
-  const [activeScriptureLang, setActiveScriptureLang] = useState("all"); // 'all' | 'km' | 'en' | 'ko'
+  const [activeScriptureLang, setActiveScriptureLang] = useState(locale === "km" ? "km" : "all"); // 'all' | 'km' | 'en' | 'ko'
 
   // Initialize client-side state
   useEffect(() => {

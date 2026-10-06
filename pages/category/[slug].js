@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import SiteHeader from "../../components/SiteHeader";
 import SiteFooter from "../../components/SiteFooter";
+import { useLocale } from "../../lib/i18n";
 import {
   getCategories,
   getCategoryBySlug,
@@ -38,11 +39,21 @@ export async function getStaticProps({ params }) {
 }
 
 export default function CategoryPage({ category, posts }) {
+  const locale = useLocale();
+  const isKm = locale === "km";
+
   return (
     <>
       <Head>
         <title>{`${category.name} — Hun Chet`}</title>
-        <meta name="description" content={`Biblical expositions and articles on ${category.name}.`} />
+        <meta
+          name="description"
+          content={
+            isKm
+              ? `អត្ថបទ និងធម្មទេសនាព្រះគម្ពីរអំពី ${category.name}។`
+              : `Biblical expositions and articles on ${category.name}.`
+          }
+        />
       </Head>
 
       <SiteHeader />
@@ -58,28 +69,36 @@ export default function CategoryPage({ category, posts }) {
         <div className="sanctuary-hero-overlay" />
         <div className="sanctuary-hero-content">
           <div className="sanctuary-badge-tag">
-            <span>Topic Archives</span>
+            <span>{isKm ? "បណ្ណសារប្រធានបទ" : "Topic Archives"}</span>
           </div>
           <h1 className="sanctuary-hero-title">{category.name}</h1>
           <p className="sanctuary-hero-subtitle">
-            Sanctuary Sermons and Biblical Expositions
+            {isKm
+              ? "អត្ថបទទេសនា និងការពន្យល់ព្រះបន្ទូលក្នុងព្រះវិហារ"
+              : "Sanctuary Sermons and Biblical Expositions"}
           </p>
           <p className="sanctuary-hero-lead">
-            Explore {posts.length} {posts.length === 1 ? "article" : "articles"} in this category.
+            {isKm
+              ? `រុករក ${posts.length} អត្ថបទក្នុងប្រធានបទនេះ។`
+              : `Explore ${posts.length} ${posts.length === 1 ? "article" : "articles"} in this category.`}
           </p>
 
           <div className="sanctuary-stat-strip">
             <div className="sanctuary-stat-card">
               <span className="sanctuary-stat-num">{posts.length}</span>
-              <span className="sanctuary-stat-label">Published Articles</span>
+              <span className="sanctuary-stat-label">
+                {isKm ? "អត្ថបទដែលបានចុះផ្សាយ" : "Published Articles"}
+              </span>
             </div>
             <div className="sanctuary-stat-card">
-              <span className="sanctuary-stat-num">Topic</span>
+              <span className="sanctuary-stat-num">{isKm ? "ប្រធានបទ" : "Topic"}</span>
               <span className="sanctuary-stat-label">{category.name}</span>
             </div>
             <div className="sanctuary-stat-card">
-              <span className="sanctuary-stat-num">Ministry</span>
-              <span className="sanctuary-stat-label">Hun Chet</span>
+              <span className="sanctuary-stat-num">{isKm ? "ព័ន្ធកិច្ច" : "Ministry"}</span>
+              <span className="sanctuary-stat-label">
+                {isKm ? "លោកគ្រូ ហ៊ុន ចិត្ត" : "Hun Chet"}
+              </span>
             </div>
           </div>
         </div>
@@ -87,12 +106,19 @@ export default function CategoryPage({ category, posts }) {
 
       <main className="section">
         <div className="container">
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "2rem" }}>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              marginBottom: "2rem",
+            }}
+          >
             <Link href="/categories" className="btn btn-ghost" style={{ fontSize: "0.82rem" }}>
-              ← All Topics
+              {isKm ? "← ប្រធានបទទាំងអស់" : "← All Topics"}
             </Link>
             <Link href="/articles" className="btn btn-ghost" style={{ fontSize: "0.82rem" }}>
-              All Articles →
+              {isKm ? "អត្ថបទទាំងអស់ →" : "All Articles →"}
             </Link>
           </div>
 
@@ -121,7 +147,9 @@ export default function CategoryPage({ category, posts }) {
                       dangerouslySetInnerHTML={{ __html: post.title.rendered }}
                     />
                     <p className="excerpt">{getExcerptText(post)}</p>
-                    <span className="read-more">Read Exposition →</span>
+                    <span className="read-more">
+                      {isKm ? "អានការពន្យល់ →" : "Read Exposition →"}
+                    </span>
                   </div>
                 </Link>
               );
