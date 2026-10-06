@@ -364,25 +364,44 @@ export default function Home({ posts = [], error }) {
     },
   };
 
-  const currentScripture = scriptureData[locale] || scriptureData.en;
+  const currentScripture = scriptureData[locale] || scriptureData.km || scriptureData.en;
 
   const loc = (obj) => {
     if (!obj) return "";
-    return obj[locale] || obj.en || "";
+    return obj[locale] || obj.km || obj.en || "";
   };
 
   return (
     <>
       <Head>
-        <title>Hun Chet — Faith, Scripture &amp; Pastoral Ministry</title>
+        <title>
+          {locale === "km"
+            ? "ហ៊ុន ចិត្ត — ជំនឿ ព្រះបន្ទូល និងព័ន្ធកិច្ច"
+            : "Hun Chet — Faith, Scripture & Pastoral Ministry"}
+        </title>
         <meta
           name="description"
-          content="Biblical teaching, pulpit preaching, and faith resources by Leader Hun Chet, Phnom Penh, Cambodia."
+          content={
+            locale === "km"
+              ? "ការបង្រៀនព្រះគម្ពីរ ការអធិប្បាយ និងធនធានជំនឿ ដោយលោកគ្រូ ហ៊ុន ចិត្ត រាជធានីភ្នំពេញ កម្ពុជា។"
+              : "Biblical teaching, pulpit preaching, and faith resources by Leader Hun Chet, Phnom Penh, Cambodia."
+          }
         />
-        <meta property="og:title" content="Hun Chet — Faith &amp; Ministry" />
+        <meta
+          property="og:title"
+          content={
+            locale === "km"
+              ? "ហ៊ុន ចិត្ត — ជំនឿ និងព័ន្ធកិច្ច"
+              : "Hun Chet — Faith & Ministry"
+          }
+        />
         <meta
           property="og:description"
-          content="Biblical teaching, pulpit preaching, and faith resources by Leader Hun Chet."
+          content={
+            locale === "km"
+              ? "ការបង្រៀនព្រះគម្ពីរ ការអធិប្បាយ និងធនធានជំនឿ ដោយលោកគ្រូ ហ៊ុន ចិត្ត។"
+              : "Biblical teaching, pulpit preaching, and faith resources by Leader Hun Chet."
+          }
         />
         <meta property="og:type" content="website" />
         <meta property="og:image" content={HERO_COVER} />

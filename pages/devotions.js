@@ -492,7 +492,7 @@ export default function DevotionsPage() {
   return (
     <>
       <Head>
-        <title>{`${pick(STRINGS.heroTitle, locale)} — Hun Chet`}</title>
+        <title>{`${pick(STRINGS.heroTitle, locale)} — ${locale === "km" ? "លោកគ្រូ ហ៊ុន ចិត្ត" : "Hun Chet"}`}</title>
         <meta
           name="description"
           content={pick(STRINGS.heroSub, locale)}

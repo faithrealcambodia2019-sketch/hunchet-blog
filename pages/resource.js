@@ -195,7 +195,7 @@ export default function Resource() {
   return (
     <>
       <Head>
-        <title>{`${t("resource.eyebrow")} — Hun Chet`}</title>
+        <title>{`${t("resource.title")} — ${locale === "km" ? "លោកគ្រូ ហ៊ុន ចិត្ត" : "Hun Chet"}`}</title>
         <meta name="description" content={t("resource.intro")} />
         <meta
           property="og:title"

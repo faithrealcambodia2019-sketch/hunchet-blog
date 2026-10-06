@@ -31,7 +31,7 @@ export default function About() {
   return (
     <>
       <Head>
-        <title>{`${t("about.title")} — Hun Chet`}</title>
+        <title>{`${t("about.title")} — ${isKm ? "លោកគ្រូ ហ៊ុន ចិត្ត" : "Hun Chet"}`}</title>
         <meta name="description" content={description} />
         <meta property="og:title" content="About Ministry Lead Hun Chet" />
         <meta property="og:description" content={description} />

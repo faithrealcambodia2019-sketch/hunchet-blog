@@ -14,7 +14,7 @@ export default function Contact() {
   return (
     <>
       <Head>
-        <title>{`${t("contact.title")} — Hun Chet`}</title>
+        <title>{`${t("contact.title")} — ${isKm ? "លោកគ្រូ ហ៊ុន ចិត្ត" : "Hun Chet"}`}</title>
         <meta name="description" content={t("contact.intro")} />
       </Head>
 

@@ -69,7 +69,7 @@ export default function Articles({ posts, error }) {
   return (
     <>
       <Head>
-        <title>{`${t("articles.title")} — Hun Chet`}</title>
+        <title>{`${t("articles.title")} — ${isKm ? "លោកគ្រូ ហ៊ុន ចិត្ត" : "Hun Chet"}`}</title>
         <meta name="description" content={t("articles.intro")} />
       </Head>
 

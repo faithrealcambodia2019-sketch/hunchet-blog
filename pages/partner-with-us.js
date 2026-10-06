@@ -77,7 +77,7 @@ export default function PartnerWithUs() {
   return (
     <>
       <Head>
-        <title>{`${t("partner.title")} — Hun Chet`}</title>
+        <title>{`${t("partner.title")} — ${isKm ? "លោកគ្រូ ហ៊ុន ចិត្ត" : "Hun Chet"}`}</title>
         <meta name="description" content={t("partner.intro")} />
       </Head>
 

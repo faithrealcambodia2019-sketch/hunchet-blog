@@ -73,7 +73,7 @@ export default function Library() {
   return (
     <>
       <Head>
-        <title>{`${t("library.eyebrow")} — Hun Chet`}</title>
+        <title>{`${t("library.title")} — ${locale === "km" ? "លោកគ្រូ ហ៊ុន ចិត្ត" : "Hun Chet"}`}</title>
         <meta name="description" content={t("library.intro")} />
         <meta property="og:title" content={`${t("library.title")} — Hun Chet`} />
         <meta property="og:description" content={t("library.intro")} />
