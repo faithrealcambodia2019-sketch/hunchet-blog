@@ -189,7 +189,7 @@ export default function Post({ post }) {
               className="eyebrow"
               style={{ textAlign: "center", display: "block", marginBottom: "1rem" }}
             >
-              {isKm ? "អំពីអ្នកទេសនា និងអ្នកនិពន្ធ" : "About The Preacher & Writer"}
+              {isKm ? "អំពីម្ចាស់ប្លុក និងអ្នកនិពន្ធ" : "About The Author"}
             </span>
             <AuthorCard />
           </div>

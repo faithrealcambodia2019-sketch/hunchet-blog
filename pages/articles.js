@@ -80,13 +80,13 @@ export default function Articles({ posts, error }) {
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="/images/sermon-purpose-congregation.jpg"
-          alt="Congregation in Worship — Hun Chet Ministry"
+          alt="Hun Chet Personal Blog Articles"
           className="sanctuary-hero-bg"
         />
         <div className="sanctuary-hero-overlay" />
         <div className="sanctuary-hero-content">
           <div className="sanctuary-badge-tag">
-            <span>{isKm ? "បណ្ណសារព្រះបន្ទូល និងអត្ថបទទេសនា" : "Sanctuary Expositions & Sermons"}</span>
+            <span>{isKm ? "អត្ថបទ និងការបង្រៀនព្រះគម្ពីរ" : "Biblical Articles & Teaching"}</span>
           </div>
           <h1 className="sanctuary-hero-title">{t("articles.title")}</h1>
           <p className="sanctuary-hero-subtitle">
@@ -106,7 +106,7 @@ export default function Articles({ posts, error }) {
             <div className="sanctuary-stat-card">
               <span className="sanctuary-stat-num">Weekly</span>
               <span className="sanctuary-stat-label">
-                {isKm ? "ទេសនារៀងរាល់សប្តាហ៍" : "Sanctuary Sermons"}
+                {isKm ? "អត្ថបទថ្មីៗជាប្រចាំ" : "Regular Reflections"}
               </span>
             </div>
             <div className="sanctuary-stat-card">

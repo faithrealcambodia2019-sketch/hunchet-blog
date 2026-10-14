@@ -246,151 +246,251 @@ export default function Home({ posts = [], error }) {
 
       <SiteHeader />
 
-      {/* 1. ELEGANT PERSONAL BLOG HERO */}
-      <section className="hero" style={{ minHeight: "620px", borderBottom: "4px solid var(--gold)" }}>
-        {/* Background photo of open Bible */}
+      {/* 1. EXECUTIVE SPLIT HERO */}
+      <section className="hero-editorial">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="/images/open-bible-morning.jpg"
           alt="Hun Chet Personal Blog"
-          className="hero-img"
-          style={{ filter: "brightness(0.35) saturate(1.15)" }}
+          className="hero-editorial-bg"
         />
-        <div className="hero-scrim" style={{ background: "radial-gradient(circle at center, rgba(11, 25, 46, 0.72) 0%, rgba(6, 14, 27, 0.94) 100%)" }} />
+        <div className="hero-editorial-scrim" />
 
-        <div className="hero-inner" style={{ maxWidth: "980px", padding: "5rem 1.75rem 4rem" }}>
-          {/* Author Portrait Avatar with Glow */}
-          <div style={{ display: "inline-block", position: "relative", marginBottom: "1.25rem" }}>
-            <div
-              style={{
-                width: 104,
-                height: 104,
-                borderRadius: "50%",
-                border: "3px solid var(--gold)",
-                boxShadow: "0 8px 30px rgba(184, 155, 94, 0.4)",
-                overflow: "hidden",
-                margin: "0 auto",
-                background: "var(--navy)",
-              }}
-            >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={PORTRAIT}
-                alt="Leader Hun Chet"
-                style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top" }}
-              />
+        <div className="container" style={{ width: "100%" }}>
+          <div className="hero-split-grid">
+            {/* Left Column: Author Narrative & Mission */}
+            <div className="hero-editorial-content">
+              <div className="hero-editorial-eyebrow">
+                <span className="hero-eyebrow-dot" />
+                <span>
+                  {isKm
+                    ? "លោកគ្រូ ហ៊ុន ចិត្ត • ប្លុកផ្ទាល់ខ្លួនផ្លូវការ"
+                    : "Leader Hun Chet • Official Personal Blog"}
+                </span>
+              </div>
+
+              <h1 className="hero-editorial-title">
+                {isKm ? (
+                  <>
+                    ចាក់ឬសក្នុងជំនឿ •{" "}
+                    <span className="gold-accent">ចែករំលែកសេចក្តីពិតនៃព្រះគ្រីស្ទ</span>
+                  </>
+                ) : (
+                  <>
+                    Rooted in Faith.{" "}
+                    <span className="gold-accent">Sharing Christ-Centered Truth.</span>
+                  </>
+                )}
+              </h1>
+
+              <p className="hero-editorial-sub">
+                {isKm
+                  ? "ការបង្រៀនព្រះគម្ពីរ អត្ថបទសញ្ជឹងគិត ដំណើរជីវិត និងការបណ្តុះសិស្ស"
+                  : "Biblical Exposition, Pastoral Reflections, Life Lessons & Discipleship"}
+              </p>
+
+              <div className="hero-editorial-divider" />
+
+              <p className="hero-editorial-lede">
+                {isKm
+                  ? "សូមស្វាគមន៍មកកាន់ប្លុកផ្ទាល់ខ្លួនរបស់ខ្ញុំ។ ទីនេះជាកន្លែងកត់ត្រា និងចែករំលែកនូវសេចក្តីពិតនៃព្រះបន្ទូល ការពន្យល់ព្រះគម្ពីរ ការរៀនសូត្រពីជីវិត និងធនធានស្មារតីសម្រាប់ការរីកចម្រើនក្នុងព្រះគ្រីស្ទ។"
+                  : "Welcome to my personal blog. A space dedicated to sharing biblical exposition, theological writings, life experiences, and resources for spiritual growth."}
+              </p>
+
+              <div className="hero-editorial-actions">
+                <Link
+                  href="/articles"
+                  className="btn btn-primary"
+                  style={{
+                    padding: "0.85rem 1.85rem",
+                    fontSize: "0.9rem",
+                    boxShadow: "0 6px 20px rgba(184, 155, 94, 0.4)",
+                  }}
+                >
+                  {isKm ? "អានអត្ថបទទាំងអស់" : "Explore All Articles"} →
+                </Link>
+
+                <Link
+                  href="/devotions"
+                  className="btn btn-gold-glass"
+                  style={{ padding: "0.85rem 1.5rem", fontSize: "0.9rem" }}
+                >
+                  <BookOpenIcon style={{ width: 16, height: 16, marginRight: "0.45rem", color: "var(--gold)" }} />
+                  <span>{isKm ? "ព្រះបន្ទូល ៣៦៥ ថ្ងៃ" : "365 Devotions"}</span>
+                </Link>
+
+                <Link
+                  href="/about"
+                  className="btn btn-outline-light"
+                  style={{ padding: "0.85rem 1.5rem", fontSize: "0.9rem" }}
+                >
+                  {isKm ? "អំពីខ្ញុំ" : "About Me"}
+                </Link>
+              </div>
+
+              <div className="hero-cred-strip">
+                <div className="hero-cred-item">
+                  <span className="cred-icon">📖</span>
+                  <span>{isKm ? "ព្រះគម្ពីរជាគ្រឹះ" : "Scripture First"}</span>
+                </div>
+                <div className="hero-cred-item">
+                  <span className="cred-icon">✍️</span>
+                  <span>{isKm ? "អត្ថបទ & ការបង្រៀន" : "Articles & Exegesis"}</span>
+                </div>
+                <div className="hero-cred-item">
+                  <span className="cred-icon">🇰🇭</span>
+                  <span>{isKm ? "ធនធានជាភាសាខ្មែរ" : "Khmer Theological Resources"}</span>
+                </div>
+              </div>
             </div>
-          </div>
 
-          <span className="hero-eyebrow-classic" style={{ letterSpacing: "0.14em", marginBottom: "0.85rem" }}>
-            {isKm
-              ? "ប្លុកផ្ទាល់ខ្លួនរបស់ ហ៊ុន ចិត្ត • ជំនឿ ព្រះបន្ទូល និងជីវិត"
-              : "Hun Chet's Personal Blog • Faith, Scripture & Life"}
-          </span>
+            {/* Right Column: Executive Author Profile Card */}
+            <div>
+              <div className="hero-executive-card">
+                <div className="hero-exec-avatar-wrap">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={PORTRAIT}
+                    alt="Leader Hun Chet"
+                    className="hero-exec-avatar"
+                  />
+                  <div className="hero-exec-badge-verified" title="Verified Author">
+                    <CheckIcon style={{ width: 14, height: 14 }} />
+                  </div>
+                </div>
 
-          <h1 className="hero-title-classic" style={{ fontSize: "clamp(2rem, 4.5vw, 3.4rem)", marginBottom: "0.75rem" }}>
-            {isKm
-              ? "ចាក់ឬសក្នុងជំនឿ • ចែករំលែកសេចក្តីពិតនៃព្រះគ្រីស្ទ"
-              : "Rooted in Faith. Sharing Truth & Christ-Centered Hope."}
-          </h1>
+                <h3 className="hero-exec-name">
+                  {isKm ? "លោកគ្រូ ហ៊ុន ចិត្ត" : "Leader Hun Chet"}
+                </h3>
 
-          <h2 className="hero-sub-classic" style={{ fontSize: "clamp(1.05rem, 2.2vw, 1.35rem)", margin: "0 auto 1.25rem", fontStyle: "normal" }}>
-            {isKm
-              ? "ការបង្រៀនព្រះគម្ពីរ អត្ថបទសញ្ជឹងគិត ដំណើរជីវិត និងការបណ្តុះសិស្ស"
-              : "Biblical Exposition, Pastoral Reflections, Life Lessons & Discipleship"}
-          </h2>
+                <span className="hero-exec-role">
+                  {isKm ? "អ្នកនិពន្ធ • អ្នកចែករំលែកព្រះបន្ទូល" : "Author & Preacher"}
+                </span>
 
-          <div className="hero-divider-classic" style={{ margin: "0 auto 1.5rem" }} />
+                <p className="hero-exec-bio">
+                  {isKm
+                    ? "បម្រើការងារជាអ្នកផលិតមាតិកាឌីជីថល (CV) និងដឹកនាំការបង្រៀនព្រះបន្ទូល ការបណ្តុះសិស្ស និងការផ្សាយដំណឹងល្អក្នុងប្រទេសកម្ពុជា។"
+                    : "Serving in Christian media content strategy and passionate about biblical preaching, discipleship, and sharing hope."}
+                </p>
 
-          <p
-            style={{
-              fontSize: "clamp(0.92rem, 1.6vw, 1.08rem)",
-              color: "#e2e8f0",
-              maxWidth: "720px",
-              margin: "0 auto 2.25rem",
-              lineHeight: 1.8,
-            }}
-          >
-            {isKm
-              ? "សូមស្វាគមន៍មកកាន់ប្លុកផ្ទាល់ខ្លួនរបស់ខ្ញុំ។ ទីនេះជាកន្លែងកត់ត្រា និងចែករំលែកនូវសេចក្តីពិតនៃព្រះបន្ទូល ការពន្យល់ព្រះគម្ពីរ ការរៀនសូត្រពីជីវិត និងធនធានស្មារតីសម្រាប់ការរីកចម្រើនក្នុងព្រះគ្រីស្ទ។"
-              : "Welcome to my personal blog. A space dedicated to sharing biblical exposition, theological writings, life experiences, and resources for spiritual growth."}
-          </p>
+                <div className="hero-exec-verse">
+                  <p>
+                    {isKm
+                      ? "«ដ្បិតចំពោះខ្ញុំ ការរស់នៅគឺសម្រាប់ព្រះគ្រីស្ទ ហើយការស្លាប់ទៅ នោះជាកម្រៃវិញ»"
+                      : "“For to me, to live is Christ and to die is gain.”"}
+                  </p>
+                  <cite>{isKm ? "— ភីលីព ១:២១" : "— Philippians 1:21"}</cite>
+                </div>
 
-          <div className="hero-actions" style={{ gap: "0.85rem" }}>
-            <Link href="/articles" className="btn btn-primary" style={{ padding: "0.75rem 1.65rem", fontSize: "0.88rem" }}>
-              {isKm ? "អានអត្ថបទទាំងអស់" : "Explore All Articles"} →
-            </Link>
+                <div className="hero-exec-actions">
+                  <a
+                    href="https://t.me/+855966875886"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="author-btn btn-telegram"
+                    style={{ padding: "0.55rem 1.15rem", fontSize: "0.82rem" }}
+                  >
+                    <TelegramIcon width="14" height="14" />
+                    <span>Telegram</span>
+                  </a>
+                  <a
+                    href="tel:0966875886"
+                    className="author-btn btn-phone"
+                    style={{ padding: "0.55rem 1.15rem", fontSize: "0.82rem" }}
+                  >
+                    <PhoneIcon width="14" height="14" />
+                    <span>096 687 5886</span>
+                  </a>
+                </div>
 
-            <Link href="/devotions" className="btn btn-gold-glass" style={{ padding: "0.75rem 1.4rem", fontSize: "0.88rem" }}>
-              <BookOpenIcon style={{ width: 15, height: 15, marginRight: "0.4rem" }} />
-              <span>{isKm ? "ព្រះបន្ទូល ៣៦៥ ថ្ងៃ" : "365 Devotions"}</span>
-            </Link>
-
-            <Link href="/about" className="btn btn-outline-light" style={{ padding: "0.75rem 1.4rem", fontSize: "0.88rem" }}>
-              {isKm ? "អំពីខ្ញុំ" : "About Me"}
-            </Link>
+                <div className="hero-exec-seal">
+                  <CheckIcon style={{ width: 13, height: 13, color: "var(--gold)" }} />
+                  <span>{isKm ? "គេហទំព័រប្លុកផ្ទាល់ខ្លួនផ្លូវការ • hunchet.blog" : "Official Personal Blog • hunchet.blog"}</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       <main>
-        {/* 2. DAILY DEVOTION & SCRIPTURE BANNER */}
-        <section className="devotion-banner" style={{ borderBottom: "1px solid var(--border)" }}>
-          <div className="devotion-banner-bg" />
+        {/* 2. ILLUMINATED DAILY DEVOTION SCRIPTURE CARD */}
+        <section style={{ background: "#ffffff", padding: "3.5rem 0", borderBottom: "1px solid var(--border)" }}>
           <div className="container">
-            <div className="devotion-inner">
-              <div className="devotion-badge">
-                <BookOpenIcon />
-                <span>{currentScripture.tag}</span>
-              </div>
+            <div className="devotion-illuminated-card">
+              <span className="devotion-quote-watermark" aria-hidden="true">«</span>
 
-              <blockquote className="devotion-quote">
-                {currentScripture.text}
-              </blockquote>
+              <div style={{ position: "relative", zIndex: 2 }}>
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: "1rem", marginBottom: "1.25rem" }}>
+                  <div className="devotion-badge">
+                    <BookOpenIcon />
+                    <span>{currentScripture.tag}</span>
+                  </div>
+                  <span style={{ fontSize: "0.78rem", color: "var(--gold)", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" }}>
+                    {isKm ? "ខគម្ពីរលើកទឹកចិត្ត" : "Scripture of the Day"}
+                  </span>
+                </div>
 
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                  flexWrap: "wrap",
-                  gap: "1.25rem",
-                  borderTop: "1px solid rgba(255, 255, 255, 0.15)",
-                  paddingTop: "1rem",
-                }}
-              >
-                <cite className="devotion-ref">— {currentScripture.ref}</cite>
+                <blockquote
+                  style={{
+                    fontFamily: "var(--font-display)",
+                    fontSize: "clamp(1.18rem, 2.6vw, 1.7rem)",
+                    lineHeight: 1.65,
+                    color: "#ffffff",
+                    margin: "0 0 1.5rem",
+                    fontWeight: 600,
+                  }}
+                >
+                  {currentScripture.text}
+                </blockquote>
 
-                <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap" }}>
-                  <button
-                    type="button"
-                    onClick={handleShareTelegram}
-                    style={{
-                      background: "rgba(14, 165, 233, 0.2)",
-                      border: "1px solid rgba(14, 165, 233, 0.4)",
-                      color: "#38bdf8",
-                      padding: "0.5rem 1rem",
-                      borderRadius: "var(--radius-sm)",
-                      fontSize: "0.75rem",
-                      fontWeight: 700,
-                      cursor: "pointer",
-                      display: "inline-flex",
-                      alignItems: "center",
-                      gap: "0.4rem",
-                    }}
-                  >
-                    <TelegramIcon style={{ width: 14, height: 14 }} />
-                    <span>{isKm ? "ចែករំលែក" : "Share"}</span>
-                  </button>
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    flexWrap: "wrap",
+                    gap: "1.25rem",
+                    borderTop: "1px solid rgba(255, 255, 255, 0.15)",
+                    paddingTop: "1.25rem",
+                  }}
+                >
+                  <cite style={{ fontFamily: "var(--font-display)", fontSize: "1.05rem", color: "var(--gold)", fontStyle: "normal", fontWeight: 700 }}>
+                    — {currentScripture.ref}
+                  </cite>
 
-                  <Link
-                    href="/devotions"
-                    className="btn btn-primary"
-                    style={{ padding: "0.5rem 1.2rem", fontSize: "0.75rem" }}
-                  >
-                    <BookOpenIcon style={{ width: 14, height: 14, marginRight: "0.35rem" }} />
-                    {isKm ? "អានព្រះបន្ទូលប្រចាំថ្ងៃ" : "Read Daily Devotion"} →
-                  </Link>
+                  <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap" }}>
+                    <button
+                      type="button"
+                      onClick={handleShareTelegram}
+                      style={{
+                        background: "rgba(14, 165, 233, 0.2)",
+                        border: "1px solid rgba(14, 165, 233, 0.4)",
+                        color: "#38bdf8",
+                        padding: "0.55rem 1.15rem",
+                        borderRadius: "var(--radius-sm)",
+                        fontSize: "0.78rem",
+                        fontWeight: 700,
+                        cursor: "pointer",
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: "0.45rem",
+                        transition: "all 0.2s ease",
+                      }}
+                    >
+                      <TelegramIcon style={{ width: 14, height: 14 }} />
+                      <span>{isKm ? "ចែករំលែកលើ Telegram" : "Share to Telegram"}</span>
+                    </button>
+
+                    <Link
+                      href="/devotions"
+                      className="btn btn-primary"
+                      style={{ padding: "0.55rem 1.25rem", fontSize: "0.78rem" }}
+                    >
+                      <BookOpenIcon style={{ width: 14, height: 14, marginRight: "0.35rem" }} />
+                      {isKm ? "អានព្រះបន្ទូល ៣៦៥ ថ្ងៃ" : "Explore 365 Devotions"} →
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>
@@ -398,90 +498,34 @@ export default function Home({ posts = [], error }) {
         </section>
 
         {/* 3. AUTHOR WELCOME & HEART OF THE BLOG */}
-        <section className="section" style={{ background: "#ffffff", padding: "4.5rem 0" }}>
+        <section className="section" style={{ background: "#ffffff", padding: "5rem 0" }}>
           <div className="container">
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-                gap: "3rem",
-                alignItems: "center",
-              }}
-            >
-              {/* Left Column: Author Portrait & Card */}
-              <div style={{ textAlign: "center" }}>
-                <div
-                  style={{
-                    maxWidth: 340,
-                    margin: "0 auto",
-                    padding: "2rem",
-                    background: "var(--bg-alt)",
-                    borderRadius: "var(--radius-lg)",
-                    border: "1px solid var(--border)",
-                    boxShadow: "var(--shadow-md)",
-                    position: "relative",
-                  }}
-                >
+            <div className="welcome-editorial-grid">
+              {/* Left Column: Authentic Pulpit Ministry Photo Frame */}
+              <div>
+                <div className="welcome-photo-frame">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    src={PORTRAIT}
-                    alt="Leader Hun Chet"
-                    style={{
-                      width: 140,
-                      height: 140,
-                      borderRadius: "50%",
-                      objectFit: "cover",
-                      objectPosition: "top",
-                      margin: "0 auto 1.25rem",
-                      border: "3px solid var(--gold)",
-                      boxShadow: "0 4px 14px rgba(184, 155, 94, 0.25)",
-                    }}
+                    src="/images/pastors-pulpit.jpg"
+                    alt="Leader Hun Chet Pulpit Teaching"
                   />
-                  <h3 style={{ fontFamily: "var(--font-display)", color: "var(--navy-dark)", margin: "0 0 0.35rem", fontSize: "1.45rem" }}>
-                    {isKm ? "លោកគ្រូ ហ៊ុន ចិត្ត" : "Leader Hun Chet"}
-                  </h3>
-                  <span style={{ fontSize: "0.8rem", color: "var(--gold)", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", display: "block", marginBottom: "1rem" }}>
-                    {isKm ? "អ្នកនិពន្ធ • អ្នកចែករំលែកព្រះបន្ទូល" : "Author & Preacher"}
-                  </span>
-                  <p style={{ fontSize: "0.88rem", color: "var(--text)", lineHeight: 1.6, margin: "0 0 1.5rem" }}>
-                    {isKm
-                      ? "បម្រើការងារជាអ្នកផលិតមាតិកាឌីជីថល (CV) និងដឹកនាំការបង្រៀនព្រះបន្ទូល ការបណ្តុះសិស្ស និងការផ្សាយដំណឹងល្អក្នុងប្រទេសកម្ពុជា។"
-                      : "Serving in Christian media content strategy and passionate about biblical preaching, discipleship, and sharing hope."}
-                  </p>
-
-                  <div style={{ display: "flex", justifyContent: "center", gap: "0.6rem" }}>
-                    <a
-                      href="tel:0966875886"
-                      className="author-btn btn-phone"
-                      style={{ padding: "0.45rem 0.85rem", fontSize: "0.75rem" }}
-                    >
-                      <PhoneIcon width="13" height="13" />
-                      <span>096 687 5886</span>
-                    </a>
-                    <a
-                      href="https://t.me/+855966875886"
-                      target="_blank"
-                      rel="noreferrer"
-                      className="author-btn btn-telegram"
-                      style={{ padding: "0.45rem 0.85rem", fontSize: "0.75rem" }}
-                    >
-                      <TelegramIcon width="13" height="13" />
-                      <span>Telegram</span>
-                    </a>
+                  <div className="welcome-photo-badge">
+                    <strong>{isKm ? "លោកគ្រូ ហ៊ុន ចិត្ត លើវេទិកាទេសនា" : "Leader Hun Chet in the Pulpit"}</strong>
+                    <span>{isKm ? "ការចែករំលែកព្រះបន្ទូល និងការពន្យល់ព្រះគម្ពីរ" : "Biblical Exegesis & Proclamation"}</span>
                   </div>
                 </div>
               </div>
 
               {/* Right Column: Mission and Pillars of the Blog */}
               <div>
-                <span className="eyebrow" style={{ color: "var(--navy)", borderColor: "var(--gold)", marginBottom: "1rem" }}>
+                <span className="eyebrow" style={{ color: "var(--navy)", borderColor: "var(--gold)", marginBottom: "0.85rem" }}>
                   {isKm ? "សារស្វាគមន៍ពីម្ចាស់ប្លុក" : "Author Welcome & Mission"}
                 </span>
 
                 <h2
                   style={{
                     fontFamily: "var(--font-display)",
-                    fontSize: "clamp(1.75rem, 3vw, 2.35rem)",
+                    fontSize: "clamp(1.85rem, 3.2vw, 2.5rem)",
                     color: "var(--navy-dark)",
                     margin: "0 0 1rem",
                     lineHeight: 1.28,
@@ -492,43 +536,40 @@ export default function Home({ posts = [], error }) {
                     : "Why I Write and Share This Ministry"}
                 </h2>
 
-                <div className="hero-divider-classic" style={{ margin: "0 0 1.5rem" }} />
+                <div className="hero-editorial-divider" style={{ margin: "0 0 1.5rem" }} />
 
-                <p style={{ color: "var(--text)", lineHeight: 1.8, fontSize: "1rem", marginBottom: "1.25rem" }}>
+                <p style={{ color: "var(--text)", lineHeight: 1.85, fontSize: "1.02rem", marginBottom: "1.25rem" }}>
                   {isKm
                     ? "ខ្ញុំជឿជាក់ថា សេចក្តីជំនឿពិតត្រូវតែចាក់ឬសយ៉ាងរឹងមាំនៅក្នុងព្រះបន្ទូលនៃព្រះគម្ពីរ។ ជនជាតិខ្មែរគ្រប់រូបគួរតែមានឱកាសអាន សិក្សា និងយល់ដឹងនូវគោលលទ្ធិព្រះគម្ពីរយ៉ាងស៊ីជម្រៅជាភាសាកំណើតរបស់ខ្លួន។"
                     : "I believe enduring faith must be anchored in the inspired Word of God. Cambodian believers deserve rich, authentic theological teaching and devotional companions written with depth in their native Khmer language."}
                 </p>
 
-                <p style={{ color: "var(--text)", lineHeight: 1.8, fontSize: "1rem", marginBottom: "2rem" }}>
+                <p style={{ color: "var(--text)", lineHeight: 1.85, fontSize: "1.02rem", marginBottom: "1.75rem" }}>
                   {isKm
                     ? "ប្លុក hunchet.blog នេះ ជាកន្លែងដែលខ្ញុំចែករំលែករាល់អត្ថបទស្រាវជ្រាវ ធម្មទេសនា ព្រះបន្ទូលប្រចាំថ្ងៃ និងសៀវភៅបណ្ណាល័យដោយឥតគិតថ្លៃ ដើម្បីបំពាក់បំប៉នគ្រូគង្វាល និស្សិតព្រះគម្ពីរ និងអ្នកជឿគ្រប់រូប។"
                     : "This blog is freely provided for pastors, seminary students, and everyday believers who desire to grow deeper in Christ and advance the Gospel across our nation."}
                 </p>
 
                 {/* 3 Pillars List */}
-                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "1rem" }}>
-                  <div style={{ padding: "1rem", background: "var(--bg-alt)", borderRadius: "var(--radius-sm)", borderLeft: "3px solid var(--gold)" }}>
-                    <strong style={{ display: "block", color: "var(--navy-dark)", fontSize: "0.92rem", marginBottom: "0.25rem" }}>
-                      📖 {isKm ? "ព្រះគម្ពីរជាគ្រឹះ" : "Scripture First"}
-                    </strong>
-                    <span style={{ fontSize: "0.82rem", color: "var(--muted)", lineHeight: 1.5, display: "block" }}>
-                      {isKm ? "គ្រប់ការបង្រៀនទាំងអស់ផ្តើមចេញពីព្រះបន្ទូលពិត។" : "Grounded directly in verbatim biblical text."}
-                    </span>
+                <div className="welcome-pillar-grid">
+                  <div className="welcome-pillar-card">
+                    <strong>📖 {isKm ? "ព្រះគម្ពីរជាគ្រឹះ" : "Scripture First"}</strong>
+                    <span>{isKm ? "គ្រប់ការបង្រៀនទាំងអស់ផ្តើមចេញពីព្រះបន្ទូលពិត។" : "Grounded directly in verbatim biblical text."}</span>
                   </div>
 
-                  <div style={{ padding: "1rem", background: "var(--bg-alt)", borderRadius: "var(--radius-sm)", borderLeft: "3px solid var(--gold)" }}>
-                    <strong style={{ display: "block", color: "var(--navy-dark)", fontSize: "0.92rem", marginBottom: "0.25rem" }}>
-                      🇰🇭 {isKm ? "សរសេរជាភាសាខ្មែរ" : "Written in Khmer"}
-                    </strong>
-                    <span style={{ fontSize: "0.82rem", color: "var(--muted)", lineHeight: 1.5, display: "block" }}>
-                      {isKm ? "អត្ថបទ និងសៀវភៅគុណភាពខ្ពស់សម្រាប់ប្រជាជនកម្ពុជា។" : "High-caliber theological literature for Khmer readers."}
-                    </span>
+                  <div className="welcome-pillar-card">
+                    <strong>🇰🇭 {isKm ? "សរសេរជាភាសាខ្មែរ" : "Written in Khmer"}</strong>
+                    <span>{isKm ? "អត្ថបទ និងសៀវភៅគុណភាពខ្ពស់សម្រាប់ប្រជាជនកម្ពុជា។" : "High-caliber theological literature for Khmer readers."}</span>
+                  </div>
+
+                  <div className="welcome-pillar-card">
+                    <strong>🎁 {isKm ? "ចែករំលែកដោយឥតគិតថ្លៃ" : "Freely Shared"}</strong>
+                    <span>{isKm ? "ផ្តល់ជូនដោយឥតគិតថ្លៃ ដើម្បីកសាងពួកជំនុំ។" : "Freely available to enrich and equip the Church."}</span>
                   </div>
                 </div>
 
                 <div style={{ marginTop: "2rem" }}>
-                  <Link href="/about" className="btn btn-primary" style={{ padding: "0.7rem 1.5rem", fontSize: "0.85rem" }}>
+                  <Link href="/about" className="btn btn-primary" style={{ padding: "0.75rem 1.65rem", fontSize: "0.88rem" }}>
                     {isKm ? "ស្វែងយល់អំពីរឿងរ៉ាវរបស់ខ្ញុំ" : "Read My Full Testimony"} →
                   </Link>
                 </div>

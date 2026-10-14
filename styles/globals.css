@@ -5211,4 +5211,456 @@ iframe {
   margin: 0 0 1rem;
 }
 
+/* ==========================================================================
+   Global Executive Editorial Standards for Hun Chet Personal Blog
+   ========================================================================== */
+
+/* Typography & Khmer Baseline Polish */
+body {
+  font-family: var(--font-body);
+  line-height: 1.8;
+  color: #334155;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  line-height: 1.35;
+  color: #0f172a;
+}
+
+/* 1. Executive Editorial Split Hero */
+.hero-editorial {
+  position: relative;
+  min-height: 640px;
+  background: #091626;
+  border-bottom: 3px solid var(--gold);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.hero-editorial-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.28) saturate(1.1);
+  pointer-events: none;
+}
+
+.hero-editorial-scrim {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 60% 40%, rgba(13, 31, 56, 0.72) 0%, rgba(6, 14, 26, 0.96) 100%);
+  pointer-events: none;
+}
+
+.hero-split-grid {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1.3fr 0.95fr;
+  gap: 3.5rem;
+  align-items: center;
+  padding: 4.5rem 0;
+}
+
+@media (max-width: 992px) {
+  .hero-split-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    padding: 3.5rem 0;
+    text-align: center;
+  }
+}
+
+.hero-editorial-content {
+  color: #ffffff;
+}
+
+.hero-editorial-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.4rem 1rem;
+  border-radius: 9999px;
+  background: rgba(184, 155, 94, 0.16);
+  border: 1px solid rgba(184, 155, 94, 0.45);
+  color: #f1dfb8;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 1.25rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.hero-eyebrow-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 0 3px rgba(184, 155, 94, 0.35);
+  display: inline-block;
+}
+
+.hero-editorial-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4.2vw, 3.25rem);
+  font-weight: 800;
+  line-height: 1.28;
+  color: #ffffff;
+  margin: 0 0 1rem;
+  letter-spacing: -0.01em;
+}
+
+.hero-editorial-title .gold-accent {
+  background: linear-gradient(135deg, #fef3c7 0%, var(--gold-light) 50%, var(--gold) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline;
+}
+
+.hero-editorial-sub {
+  font-family: var(--font-display);
+  font-size: clamp(1.05rem, 2vw, 1.3rem);
+  font-weight: 500;
+  color: #e2e8f0;
+  line-height: 1.6;
+  margin: 0 0 1.25rem;
+  font-style: normal;
+}
+
+.hero-editorial-divider {
+  width: 72px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold) 0%, rgba(184, 155, 94, 0.2) 100%);
+  margin-bottom: 1.5rem;
+}
+
+@media (max-width: 992px) {
+  .hero-editorial-divider {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.hero-editorial-lede {
+  font-size: clamp(0.95rem, 1.6vw, 1.08rem);
+  color: #cbd5e1;
+  line-height: 1.85;
+  margin: 0 0 2rem;
+  max-width: 620px;
+}
+
+@media (max-width: 992px) {
+  .hero-editorial-lede {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.hero-editorial-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 2.25rem;
+}
+
+@media (max-width: 992px) {
+  .hero-editorial-actions {
+    justify-content: center;
+  }
+}
+
+.hero-cred-strip {
+  display: flex;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  padding-top: 1.5rem;
+}
+
+@media (max-width: 992px) {
+  .hero-cred-strip {
+    justify-content: center;
+  }
+}
+
+.hero-cred-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #e2e8f0;
+}
+
+.hero-cred-item .cred-icon {
+  color: var(--gold);
+}
+
+/* Executive Author Showcase Card */
+.hero-executive-card {
+  background: rgba(11, 25, 46, 0.78);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(184, 155, 94, 0.38);
+  border-radius: 16px;
+  padding: 2.5rem 2rem;
+  box-shadow: 0 24px 60px -12px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(255, 255, 255, 0.05);
+  text-align: center;
+  position: relative;
+  max-width: 440px;
+  margin: 0 auto;
+}
+
+.hero-executive-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 20%;
+  right: 20%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, var(--gold) 50%, transparent 100%);
+}
+
+.hero-exec-avatar-wrap {
+  position: relative;
+  width: 148px;
+  height: 148px;
+  margin: 0 auto 1.5rem;
+}
+
+.hero-exec-avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: top;
+  border: 3px solid var(--gold);
+  box-shadow: 0 8px 28px rgba(184, 155, 94, 0.4);
+  display: block;
+  background: #0b192c;
+}
+
+.hero-exec-badge-verified {
+  position: absolute;
+  bottom: 4px;
+  right: 8px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #0284c7;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #091626;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.hero-exec-name {
+  font-family: var(--font-display);
+  font-size: 1.65rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0 0 0.35rem;
+  line-height: 1.25;
+}
+
+.hero-exec-role {
+  display: inline-block;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.15rem;
+}
+
+.hero-exec-bio {
+  font-size: 0.88rem;
+  color: #cbd5e1;
+  line-height: 1.65;
+  margin: 0 0 1.5rem;
+}
+
+.hero-exec-verse {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(184, 155, 94, 0.25);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.hero-exec-verse p {
+  font-family: var(--font-display);
+  font-size: 0.86rem;
+  color: #f1f5f9;
+  font-style: italic;
+  margin: 0 0 0.25rem;
+  line-height: 1.5;
+}
+
+.hero-exec-verse cite {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--gold);
+  display: block;
+}
+
+.hero-exec-actions {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.25rem;
+}
+
+.hero-exec-seal {
+  font-size: 0.72rem;
+  color: #94a3b8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 1rem;
+}
+
+/* 2. Welcome Section Editorial Layout */
+.welcome-editorial-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 1.35fr;
+  gap: 3.5rem;
+  align-items: center;
+}
+
+@media (max-width: 920px) {
+  .welcome-editorial-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+
+.welcome-photo-frame {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 20px 45px -10px rgba(15, 23, 42, 0.16);
+  border: 1px solid var(--border);
+}
+
+.welcome-photo-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  aspect-ratio: 4 / 3;
+}
+
+.welcome-photo-badge {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  right: 1rem;
+  background: rgba(11, 25, 46, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(184, 155, 94, 0.35);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  color: #ffffff;
+}
+
+.welcome-photo-badge strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 0.92rem;
+  color: #ffffff;
+}
+
+.welcome-photo-badge span {
+  font-size: 0.76rem;
+  color: var(--gold);
+}
+
+.welcome-pillar-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin: 2rem 0;
+}
+
+@media (max-width: 768px) {
+  .welcome-pillar-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.welcome-pillar-card {
+  padding: 1.25rem 1rem;
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  border-top: 3px solid var(--gold);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.welcome-pillar-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow);
+}
+
+.welcome-pillar-card strong {
+  display: block;
+  color: var(--navy-dark);
+  font-size: 0.95rem;
+  margin-bottom: 0.35rem;
+}
+
+.welcome-pillar-card span {
+  display: block;
+  font-size: 0.82rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* 3. Illuminated Daily Scripture Card */
+.devotion-illuminated-card {
+  background: linear-gradient(135deg, #071526 0%, #0d2747 50%, #071526 100%);
+  border: 1px solid rgba(184, 155, 94, 0.45);
+  border-radius: 16px;
+  padding: 3rem 2.5rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.4);
+}
+
+@media (max-width: 768px) {
+  .devotion-illuminated-card {
+    padding: 2rem 1.5rem;
+  }
+}
+
+.devotion-quote-watermark {
+  position: absolute;
+  top: -20px;
+  right: 20px;
+  font-family: Georgia, serif;
+  font-size: 14rem;
+  line-height: 1;
+  color: rgba(184, 155, 94, 0.05);
+  pointer-events: none;
+  user-select: none;
+}
+
+
 

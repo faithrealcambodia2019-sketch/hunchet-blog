@@ -36,10 +36,10 @@ import {
 
 const STRINGS = {
   heroEyebrow: {
-    en: "Hun Chet Ministry • Daily Bread",
-    km: "ព័ន្ធកិច្ចលោកគ្រូ ហ៊ុន ចិត្ត • ព្រះបន្ទូលប្រចាំថ្ងៃ",
-    ko: "훈 쳇 사역 • 매일의 양식",
-    zh: "Hun Chet 事工 • 每日灵修",
+    en: "Hun Chet Personal Blog • Daily Bread",
+    km: "ប្លុកផ្ទាល់ខ្លួន ហ៊ុន ចិត្ត • ព្រះបន្ទូលប្រចាំថ្ងៃ",
+    ko: "훈 쳇 개인 블로그 • 매일의 양식",
+    zh: "Hun Chet 个人博客 • 每日灵修",
   },
   heroTitle: {
     en: "Daily Devotions & 365 Scripture Sanctuary",
