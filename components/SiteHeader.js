@@ -16,6 +16,7 @@ import {
   PhoneIcon,
   CalendarIcon,
   FacebookIcon,
+  ArrowRightIcon,
 } from "./Icons";
 
 const LANG_DISPLAY = {
@@ -314,16 +315,10 @@ export default function SiteHeader() {
             {/* Read Articles Quick CTA */}
             <Link
               href="/articles"
-              className="btn btn-primary"
-              style={{
-                padding: "0.45rem 1.15rem",
-                fontSize: "0.82rem",
-                borderRadius: "999px",
-                marginLeft: "0.25rem",
-                boxShadow: "0 2px 8px rgba(184, 155, 94, 0.25)",
-              }}
+              className="header-cta-btn"
             >
-              {tStr("readArticlesBtn")}
+              <span>{tStr("readArticlesBtn")}</span>
+              <ArrowRightIcon style={{ width: 12, height: 12 }} />
             </Link>
           </nav>
 

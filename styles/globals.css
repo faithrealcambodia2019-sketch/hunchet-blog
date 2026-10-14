@@ -249,13 +249,13 @@ iframe {
 }
 
 .site-header-inner {
-  max-width: 1240px;
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 0.85rem 1.75rem;
+  padding: 0.75rem 1.75rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1.5rem;
+  gap: 1rem;
 }
 
 .site-logo {
@@ -323,27 +323,70 @@ iframe {
 .site-nav {
   display: flex;
   align-items: center;
-  gap: 1.65rem;
+  gap: clamp(0.45rem, 0.95vw, 1.15rem);
+  flex-wrap: nowrap;
 }
 
 .nav-link {
   position: relative;
   display: inline-flex;
   align-items: center;
-  gap: 0.35rem;
+  gap: 0.3rem;
   text-decoration: none;
   color: #1e3a5f;
-  font-size: 0.94rem;
+  font-size: 0.88rem;
   font-weight: 600;
   letter-spacing: -0.01em;
   text-transform: none;
-  padding: 0.5rem 0.1rem;
+  padding: 0.45rem 0.2rem;
   background: transparent;
   border: none;
   cursor: pointer;
   font-family: inherit;
   transition: color 0.2s ease;
-  white-space: nowrap;
+  white-space: nowrap !important;
+  flex-shrink: 0;
+}
+
+.header-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.42rem 1.05rem;
+  background: var(--gold);
+  color: #081424 !important;
+  font-family: var(--font-body);
+  font-size: 0.80rem;
+  font-weight: 700;
+  text-decoration: none;
+  text-transform: none !important;
+  letter-spacing: 0.01em;
+  white-space: nowrap !important;
+  flex-shrink: 0 !important;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(184, 155, 94, 0.6);
+  box-shadow: 0 2px 6px rgba(184, 155, 94, 0.25);
+  transition: all 0.2s ease;
+  line-height: 1.25;
+  margin-left: 0.35rem;
+}
+
+.header-cta-btn:hover {
+  background: #081424;
+  color: #ffffff !important;
+  border-color: var(--gold);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(8, 20, 36, 0.3);
+}
+
+.header-cta-btn svg {
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.header-cta-btn:hover svg {
+  transform: translateX(2px);
 }
 
 .nav-link::after {
@@ -1713,6 +1756,7 @@ iframe {
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   cursor: pointer;
   box-shadow: var(--shadow-sm);
+  white-space: nowrap;
 }
 
 .btn:active {
@@ -3403,27 +3447,23 @@ iframe {
   }
 }
 
-@media (max-width: 1240px) {
+@media (max-width: 1280px) {
   .site-nav {
-    gap: 1.15rem;
+    gap: 0.65rem;
   }
   .site-nav .nav-link,
   .site-nav a {
-    font-size: 0.88rem;
-    padding: 0.4rem 0.1rem;
-  }
-  .btn-nav-partner {
-    padding: 0.45rem 0.85rem;
-    font-size: 0.68rem;
+    font-size: 0.84rem;
+    padding: 0.35rem 0.15rem;
   }
 }
 
-@media (max-width: 1080px) {
+@media (max-width: 1180px) {
   .site-header-inner {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 0.9rem 1.25rem;
+    padding: 0.85rem 1.25rem;
   }
 
   .desktop-nav {
