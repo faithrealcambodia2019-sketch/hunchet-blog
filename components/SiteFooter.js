@@ -45,7 +45,14 @@ export default function SiteFooter() {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={LOGO} alt={isKm ? "លោកគ្រូ ហ៊ុន ចិត្ត" : "Hun Chet"} />
             </span>
-            <span className="footer-brand-text">{isKm ? "លោកគ្រូ ហ៊ុន ចិត្ត" : "Hun Chet"}</span>
+            <div>
+              <span className="footer-brand-text" style={{ display: "block" }}>
+                {isKm ? "លោកគ្រូ ហ៊ុន ចិត្ត" : "Hun Chet"}
+              </span>
+              <span style={{ fontSize: "0.68rem", color: "var(--gold)", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.12em", display: "block", marginTop: "2px" }}>
+                {isKm ? "ប្លុកផ្ទាល់ខ្លួន" : "Personal Blog"}
+              </span>
+            </div>
           </Link>
           <p>{t("footer.tagline")}</p>
 

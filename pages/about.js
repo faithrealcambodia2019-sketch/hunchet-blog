@@ -99,12 +99,12 @@ export default function About() {
         </div>
       </section>
 
-      {/* Pulpit Ministry & Senior Pastor Partnership */}
+      {/* Preaching Ministry & Biblical Exposition */}
       <section className="section section-alt">
         <div className="container">
           <div className="section-head" style={{ textAlign: "center" }}>
-            <span className="eyebrow">{isKm ? "វេទិកាទេសនា និងកិច្ចការគង្វាល" : "Pulpit & Pastoral Ministry"}</span>
-            <h2>{isKm ? "កិច្ចការបម្រើព្រះរួមគ្នានៅលើវេទិកាទេសនា" : "Joint Pulpit Leadership & Preaching"}</h2>
+            <span className="eyebrow">{isKm ? "វេទិកាទេសនា និងការបង្រៀន" : "Preaching & Teaching Ministry"}</span>
+            <h2>{isKm ? "កិច្ចការបម្រើព្រះ និងការប្រកាសព្រះបន្ទូល" : "Preaching the Truth with Conviction"}</h2>
             <hr className="rule" />
           </div>
 
@@ -113,29 +113,29 @@ export default function About() {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="/images/pastors-pulpit.jpg"
-                alt="Pastor Kim Jong Ho and Leader Hun Chet preaching"
+                alt="Leader Hun Chet preaching from the pulpit"
               />
             </div>
             <div className="about-pulpit-body">
               <span className="article-spotlight-tag">
-                {isKm ? "វេទិកាទេសនា និងការបង្រៀន" : "Pulpit Preaching & Teaching"}
+                {isKm ? "វេទិកាទេសនា និងការបង្រៀន" : "Pulpit Exegesis & Teaching"}
               </span>
               <h3>
                 {isKm
-                  ? "លោកគ្រូគង្វាល គីម ជុងហូ និងលោកគ្រូ ហ៊ុន ចិត្ត"
-                  : "Senior Pastor Kim Jong Ho & Leader Hun Chet"}
+                  ? "ការបង្រៀនព្រះគម្ពីរ និងការបណ្តុះសិស្ស"
+                  : "Biblical Exposition & Next-Gen Discipleship"}
               </h3>
               <p>
                 {isKm
-                  ? "ការបម្រើព្រះរួមគ្នាដោយស្មោះត្រង់ ក្នុងការប្រកាសព្រះបន្ទូល បង្រៀនព្រះគម្ពីរ និងការបណ្តុះបណ្តាលសិស្សានុសិស្ស ដើម្បីពង្រឹងក្រុមជំនុំក្នុងរាជធានីភ្នំពេញ និងផ្សាយដំណឹងល្អទៅកាន់គ្រប់ប្រជាជាតិ។"
-                  : "Faithfully ministering side-by-side in declaring God's Word, systematic biblical exposition, and raising up disciples to strengthen the local body in Phnom Penh and reach all nations."}
+                  ? "ការបម្រើព្រះដោយស្មោះត្រង់ ក្នុងការប្រកាសព្រះបន្ទូល បង្រៀនព្រះគម្ពីរជាប្រព័ន្ធ និងការបណ្តុះបណ្តាលសិស្សានុសិស្ស ដើម្បីពង្រឹងជំនឿដល់អ្នកជឿ និងផ្សាយដំណឹងល្អនៃព្រះគ្រីស្ទ។"
+                  : "Faithfully declaring God's Word, systematic biblical exposition, and raising up disciples to strengthen believers and proclaim the Gospel of Jesus Christ."}
               </p>
               <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", marginTop: "1.25rem" }}>
-                <Link href="/contact" className="btn btn-primary" style={{ fontSize: "0.82rem" }}>
-                  {isKm ? "ចូលរួមថ្វាយបង្គំ" : "Join Sunday Service"}
+                <Link href="/articles" className="btn btn-primary" style={{ fontSize: "0.82rem" }}>
+                  {isKm ? "អានអត្ថបទ និងទេសនា" : "Read Articles & Sermons"} →
                 </Link>
                 <Link href="/resource" className="btn btn-ghost" style={{ fontSize: "0.82rem" }}>
-                  {isKm ? "ទស្សនាការបង្រៀន" : "Watch Sermons"}
+                  {isKm ? "ទស្សនាវីដេអូ" : "Watch Videos"}
                 </Link>
               </div>
             </div>
