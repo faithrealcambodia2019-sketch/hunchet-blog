@@ -89,11 +89,11 @@ export default function About() {
           <div className="reading-scripture-box" style={{ maxWidth: 760, margin: "2.5rem auto 0" }}>
             <p>
               {isKm
-                ? "«ដ្បិតចំពោះខ្ញុំ ការរស់នៅគឺសម្រាប់ព្រះគ្រីស្ទ ហើយការស្លាប់ទៅ នោះជាកម្រៃវិញ»"
-                : "“For to me, to live is Christ and to die is gain.”"}
+                ? "«ដ្បិត​ឯ​ខ្ញុំ ដែល​ខ្ញុំ​រស់​នៅ នោះ​គឺ​សំរាប់​ព្រះគ្រីស្ទ​ទេ ហើយ​ដែល​ស្លាប់​ទៅ នោះ​ជា​កំរៃ​វិញ»"
+                : "“For to me to live is Christ, and to die is gain.”"}
             </p>
             <span className="reading-scripture-ref">
-              {isKm ? "ភីលីព ១:២១" : "Philippians 1:21"}
+              {isKm ? "ភីលីព ១:២១ • ព្រះគម្ពីរខ្មែរ ១៩៥៤" : "Philippians 1:21 • 1954 Khmer Bible"}
             </span>
           </div>
         </div>
