@@ -110,25 +110,28 @@
    uppercase letter-spacing this theme uses on nav items and buttons. */
 
 html[lang="km"] body {
-  font-family: var(--font-khmer, "Koh Santepheap", -apple-system, sans-serif);
+  font-family: "Plus Jakarta Sans", "Inter", var(--font-khmer), "Koh Santepheap", "Kantumruy Pro", -apple-system, sans-serif;
   line-height: 1.85;
 }
 
 html[lang="km"] h1,
 html[lang="km"] h2,
 html[lang="km"] h3,
-html[lang="km"] h4 {
-  font-family: var(--font-khmer, "Koh Santepheap", serif);
+html[lang="km"] h4,
+html[lang="km"] h5,
+html[lang="km"] h6 {
+  font-family: "Plus Jakarta Sans", var(--font-khmer), "Koh Santepheap", "Kantumruy Pro", -apple-system, sans-serif;
   line-height: 1.45;
-  letter-spacing: 0;
+  letter-spacing: -0.01em;
 }
 
 html[lang="km"] .devotion-scripture-quote,
 html[lang="km"] .reading-scripture-box p,
 html[lang="km"] .devotion-prayer-quote,
 html[lang="km"] .devotion-quote,
-html[lang="km"] .scripture-banner p {
-  font-family: var(--font-khmer, "Koh Santepheap", serif);
+html[lang="km"] .scripture-banner p,
+html[lang="km"] .sermon-quote-card blockquote {
+  font-family: "Lora", var(--font-khmer), "Koh Santepheap", Georgia, serif;
   line-height: 2.05;
 }
 
