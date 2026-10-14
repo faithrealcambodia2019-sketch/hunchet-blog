@@ -26,6 +26,9 @@ import {
   CalendarIcon,
   CheckIcon,
 } from "../components/Icons";
+import { BOOKS } from "../lib/books";
+import Book3D from "../components/Book3D";
+
 
 const SERMON_KEYS = [
   {
@@ -852,18 +855,8 @@ export default function Home({ posts = [], error }) {
                 alignItems: "center",
               }}
             >
-              <div>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src="/images/bible-class-grade12-teaching.jpg"
-                  alt="Matthew Henry Commentary"
-                  style={{
-                    width: "100%",
-                    borderRadius: "var(--radius)",
-                    borderBottom: "3px solid var(--gold)",
-                    boxShadow: "var(--shadow-sm)",
-                  }}
-                />
+              <div style={{ display: "flex", justifyContent: "center" }}>
+                <Book3D book={BOOKS[0]} size="md" interactive={true} />
               </div>
 
               <div>

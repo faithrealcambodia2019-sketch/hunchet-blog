@@ -5,19 +5,26 @@ import SiteHeader from "../components/SiteHeader";
 import SiteFooter from "../components/SiteFooter";
 import { BOOKS } from "../lib/books";
 import { useT, useLocale, pick } from "../lib/i18n";
+import Book3D from "../components/Book3D";
+import BookPreviewModal from "../components/BookPreviewModal";
 import {
   BookOpenIcon,
   DownloadIcon,
   ArrowRightIcon,
   CheckIcon,
+  SearchIcon,
 } from "../components/Icons";
 
 export default function Library() {
   const t = useT();
   const locale = useLocale();
+  const isKm = locale === "km";
 
   const [activeCategory, setActiveCategory] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
+  const [viewMode, setViewMode] = useState("shelf"); // "shelf" | "catalog"
+  const [previewBook, setPreviewBook] = useState(null);
+  const [isPreviewOpen, setIsPreviewOpen] = useState(false);
 
   const categories = [
     { id: "all", label: t("library.filterAll") },
@@ -26,6 +33,16 @@ export default function Library() {
     { id: "reference", label: t("library.filterReference") },
     { id: "discipleship", label: t("library.filterDiscipleship") },
   ];
+
+  // Open Preview Modal
+  const handleOpenPreview = (book) => {
+    setPreviewBook(book);
+    setIsPreviewOpen(true);
+  };
+
+  const handleClosePreview = () => {
+    setIsPreviewOpen(false);
+  };
 
   // Filtered books
   const filteredBooks = useMemo(() => {
@@ -45,6 +62,7 @@ export default function Library() {
         const descEn = (book.desc?.en || "").toLowerCase();
         const descKm = (book.desc?.km || "").toLowerCase();
         const subtitle = (pick(book.subtitle, locale) || "").toLowerCase();
+        const callNum = (book.callNumber || "").toLowerCase();
 
         const matches =
           titleEn.includes(query) ||
@@ -53,7 +71,8 @@ export default function Library() {
           authorKm.includes(query) ||
           descEn.includes(query) ||
           descKm.includes(query) ||
-          subtitle.includes(query);
+          subtitle.includes(query) ||
+          callNum.includes(query);
 
         if (!matches) return false;
       }
@@ -62,7 +81,7 @@ export default function Library() {
     });
   }, [activeCategory, searchQuery, locale]);
 
-  // Featured book is Matthew Henry Commentary
+  // Featured book (Matthew Henry Commentary)
   const featuredBook = useMemo(() => {
     return BOOKS.find((b) => b.featured) || BOOKS[0];
   }, []);
@@ -73,7 +92,7 @@ export default function Library() {
   return (
     <>
       <Head>
-        <title>{`${t("library.title")} — ${locale === "km" ? "លោកគ្រូ ហ៊ុន ចិត្ត" : "Hun Chet"}`}</title>
+        <title>{`${t("library.title")} — ${isKm ? "លោកគ្រូ ហ៊ុន ចិត្ត" : "Hun Chet"}`}</title>
         <meta name="description" content={t("library.intro")} />
         <meta property="og:title" content={`${t("library.title")} — Hun Chet`} />
         <meta property="og:description" content={t("library.intro")} />
@@ -125,7 +144,7 @@ export default function Library() {
         </div>
       </section>
 
-      {/* 2. STICKY FILTER & SEARCH NAVIGATION */}
+      {/* 2. STICKY FILTER, SEARCH & VIEW SWITCHER */}
       <div className="library-filter-bar">
         <div className="container">
           <div className="library-filter-row">
@@ -152,6 +171,30 @@ export default function Library() {
               })}
             </div>
 
+            {/* View Switcher: Bookshelf vs Catalog */}
+            <div className="library-view-switcher">
+              <button
+                type="button"
+                onClick={() => setViewMode("shelf")}
+                className={`library-view-btn ${viewMode === "shelf" ? "is-active" : ""}`}
+                aria-label={t("library.shelfView")}
+                title={t("library.shelfView")}
+              >
+                <BookOpenIcon />
+                <span>{t("library.shelfView")}</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => setViewMode("catalog")}
+                className={`library-view-btn ${viewMode === "catalog" ? "is-active" : ""}`}
+                aria-label={t("library.catalogView")}
+                title={t("library.catalogView")}
+              >
+                <span>☰</span>
+                <span>{t("library.catalogView")}</span>
+              </button>
+            </div>
+
             {/* Realtime Search Input */}
             <div className="library-search-box">
               <input
@@ -167,31 +210,27 @@ export default function Library() {
         </div>
       </div>
 
-      {/* 3. MAIN CATALOG SECTION */}
-      <main className="section" style={{ background: "var(--bg-alt)" }}>
+      {/* 3. MAIN CATALOG & BOOKSHELF SECTION */}
+      <main className="section" style={{ background: "var(--bg-alt)", minHeight: "60vh" }}>
         <div className="container">
-          {/* FEATURED SPOTLIGHT CARD */}
+          {/* FEATURED SPOTLIGHT CARD (With authentic 3D Book on the left) */}
           {showFeatured && (
             <div className="library-featured-card">
-              <Link
-                href={`/library/${featuredBook.slug}`}
-                className="library-featured-cover"
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  padding: "2rem 1.5rem",
+                  background: "linear-gradient(135deg, #091523 0%, #040910 100%)",
+                }}
               >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={featuredBook.cover}
-                  alt={pick(featuredBook.title, locale)}
-                  loading="lazy"
+                <Book3D
+                  book={featuredBook}
+                  size="lg"
+                  onClick={() => handleOpenPreview(featuredBook)}
                 />
-                <div className="library-featured-cover-text">
-                  <span className="library-featured-cover-badge">
-                    {t("library.featuredBadge")}
-                  </span>
-                  <h2 className="library-featured-cover-title">
-                    {pick(featuredBook.title, locale)}
-                  </h2>
-                </div>
-              </Link>
+              </div>
 
               <div className="library-featured-body">
                 <div className="library-featured-meta-row">
@@ -199,9 +238,14 @@ export default function Library() {
                     {pick(featuredBook.categoryLabel, locale)}
                   </span>
                   <span className="library-meta-tag">
+                    {featuredBook.callNumber}
+                  </span>
+                  <span className="library-meta-tag">
                     {pick(featuredBook.lang, locale)}
                   </span>
-                  <span className="library-meta-tag">{featuredBook.pages}</span>
+                  <span className="library-meta-tag">
+                    {isKm ? (featuredBook.pagesKm || featuredBook.pages) : featuredBook.pages}
+                  </span>
                   <span className="library-meta-tag">
                     PDF · {featuredBook.size}
                   </span>
@@ -236,11 +280,18 @@ export default function Library() {
                 )}
 
                 <div className="library-featured-actions">
+                  <button
+                    type="button"
+                    onClick={() => handleOpenPreview(featuredBook)}
+                    className="library-btn is-gold"
+                  >
+                    <BookOpenIcon />
+                    <span>{t("library.lookInside")}</span>
+                  </button>
                   <Link
                     href={`/library/${featuredBook.slug}`}
                     className="library-btn is-primary"
                   >
-                    <BookOpenIcon />
                     <span>{t("library.readVolume")}</span>
                   </Link>
                   <a
@@ -258,7 +309,7 @@ export default function Library() {
             </div>
           )}
 
-          {/* CATALOG HEADER & RESULT COUNT */}
+          {/* SECTION HEADER: TITLE & RESULT COUNT */}
           <div
             style={{
               display: "flex",
@@ -267,6 +318,8 @@ export default function Library() {
               marginBottom: "1.75rem",
               paddingBottom: "0.75rem",
               borderBottom: "1px solid var(--border)",
+              flexWrap: "wrap",
+              gap: "1rem",
             }}
           >
             <div>
@@ -279,7 +332,7 @@ export default function Library() {
                   fontWeight: 700,
                 }}
               >
-                {t("library.allVolumes")}
+                {viewMode === "shelf" ? t("library.shelfView") : t("library.allVolumes")}
               </h2>
             </div>
             <span
@@ -291,88 +344,189 @@ export default function Library() {
                 color: "var(--muted)",
               }}
             >
-              {filteredBooks.length} / {BOOKS.length} Volumes
+              {filteredBooks.length} / {BOOKS.length} {isKm ? "កម្រងសៀវភៅ" : "Volumes"}
             </span>
           </div>
 
-          {/* BOOK CATALOG GRID */}
-          {filteredBooks.length > 0 ? (
-            <ul className="library-grid">
+          {/* VIEW MODE 1: AUTHENTIC 3D BOOKSHELF SHOWCASE */}
+          {filteredBooks.length > 0 && viewMode === "shelf" && (
+            <div className="bookshelf-showcase">
+              <div className="bookshelf-header-bar">
+                <div className="bookshelf-title-wrap">
+                  <div className="bookshelf-brass-crest">
+                    <BookOpenIcon />
+                  </div>
+                  <div>
+                    <h3 className="bookshelf-title-text">{t("library.shelfView")}</h3>
+                    <p className="bookshelf-notice-text">{t("library.shelfNotice")}</p>
+                  </div>
+                </div>
+
+                <button
+                  type="button"
+                  onClick={() => setViewMode("catalog")}
+                  className="bookshelf-action-btn"
+                  style={{ alignSelf: "center" }}
+                >
+                  <span>{isKm ? "មើលបែបកាតាឡុកលម្អិត" : "Switch to Detailed Catalog"} →</span>
+                </button>
+              </div>
+
+              {/* Shelf row with standing 3D physical volumes */}
+              <div className="bookshelf-row">
+                {filteredBooks.map((book) => {
+                  const title = pick(book.title, locale);
+                  const author = pick(book.author, locale);
+                  const pagesText = isKm ? (book.pagesKm || book.pages) : book.pages;
+
+                  return (
+                    <div key={book.slug} className="bookshelf-unit">
+                      {/* Physical 3D Book standing upright */}
+                      <Book3D
+                        book={book}
+                        size="md"
+                        onClick={() => handleOpenPreview(book)}
+                      />
+
+                      {/* Hardwood shelf board underneath */}
+                      <div className="bookshelf-wooden-board" aria-hidden="true" />
+
+                      {/* Under-shelf title plaque & actions */}
+                      <div className="bookshelf-unit-plaque">
+                        <div className="bookshelf-plaque-meta">
+                          {book.callNumber} • {pagesText}
+                        </div>
+                        <h4 className="bookshelf-plaque-title">{title}</h4>
+                        <div className="bookshelf-plaque-actions">
+                          <button
+                            type="button"
+                            onClick={() => handleOpenPreview(book)}
+                            className="bookshelf-action-btn"
+                            title={t("library.lookInside")}
+                          >
+                            <BookOpenIcon style={{ width: 12, height: 12 }} />
+                            <span>{t("library.lookInside")}</span>
+                          </button>
+                          <Link
+                            href={`/library/${book.slug}`}
+                            className="bookshelf-action-btn is-read"
+                            title={t("library.readOnline")}
+                          >
+                            <span>{t("library.readOnline")}</span>
+                          </Link>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+
+              {/* Brass shelf rail at bottom */}
+              <div className="bookshelf-brass-rail">
+                <span>{t("library.shelfBrassTag")}</span>
+              </div>
+            </div>
+          )}
+
+          {/* VIEW MODE 2: DETAILED STUDY CATALOG (3D Book + In-depth Notes) */}
+          {filteredBooks.length > 0 && viewMode === "catalog" && (
+            <ul className="library-catalog-grid">
               {filteredBooks.map((book) => {
                 const title = pick(book.title, locale);
                 const subtitle = pick(book.subtitle, locale);
                 const author = pick(book.author, locale);
                 const categoryLabel = pick(book.categoryLabel, locale);
                 const desc = pick(book.desc, locale);
+                const pagesText = isKm ? (book.pagesKm || book.pages) : book.pages;
                 const href = `/library/${book.slug}`;
 
                 return (
-                  <li key={book.slug} className="library-card">
-                    {/* Cover Header */}
-                    <Link href={href} className="library-card-cover">
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img src={book.cover} alt="" loading="lazy" />
+                  <li key={book.slug} className="library-catalog-card">
+                    {/* Left: 3D Physical Book */}
+                    <div className="catalog-book-anchor">
+                      <Book3D
+                        book={book}
+                        size="md"
+                        onClick={() => handleOpenPreview(book)}
+                      />
+                    </div>
 
-                      <div className="library-card-badges">
-                        <span className="library-pill-category">
+                    {/* Right: Detailed Study Metadata & Actions */}
+                    <div className="catalog-info-col">
+                      <div className="catalog-meta-row">
+                        <span className="library-meta-tag is-primary">
                           {categoryLabel}
                         </span>
-                        <span className="library-pill-format">PDF</span>
+                        <span className="library-meta-tag">
+                          {book.callNumber}
+                        </span>
+                        <span className="library-meta-tag">
+                          {pick(book.lang, locale)}
+                        </span>
+                        <span className="library-meta-tag">
+                          {pagesText}
+                        </span>
+                        <span className="library-meta-tag">
+                          PDF · {book.size}
+                        </span>
                       </div>
 
-                      <div className="library-card-cover-info">
-                        <h4 className="library-card-cover-title">{title}</h4>
-                        {subtitle && (
-                          <div className="library-card-cover-sub">
-                            {subtitle}
-                          </div>
-                        )}
-                      </div>
-                    </Link>
-
-                    {/* Card Body */}
-                    <div className="library-card-body">
-                      {author && (
-                        <div className="library-card-author">{author}</div>
-                      )}
-
-                      <h3>
+                      <h3 className="catalog-title">
                         <Link href={href}>{title}</Link>
                       </h3>
 
-                      {book.khmer && locale !== "km" && (
-                        <p className="library-card-khmer">{book.khmer}</p>
+                      {subtitle && (
+                        <p className="catalog-subtitle">{subtitle}</p>
                       )}
 
-                      <p className="library-card-desc">{desc}</p>
+                      {author && (
+                        <div className="catalog-author">{author}</div>
+                      )}
 
-                      <div className="library-card-meta-bar">
-                        <span>{pick(book.lang, locale)}</span>
-                        <span>{book.pages}</span>
-                        <span>{book.size}</span>
+                      <p className="catalog-desc">{desc}</p>
+
+                      {/* Highlights */}
+                      {book.highlights && (
+                        <ul className="library-highlight-list" style={{ marginBottom: "1.25rem" }}>
+                          {book.highlights.slice(0, 2).map((hl, i) => (
+                            <li key={i} className="library-highlight-item">
+                              <span className="library-highlight-bullet" />
+                              <span>{pick(hl, locale)}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+
+                      <div className="catalog-actions-row">
+                        <button
+                          type="button"
+                          onClick={() => handleOpenPreview(book)}
+                          className="library-btn is-gold"
+                        >
+                          <BookOpenIcon />
+                          <span>{t("library.lookInside")}</span>
+                        </button>
+                        <Link href={href} className="library-btn is-primary">
+                          <span>{t("library.readOnline")}</span>
+                        </Link>
+                        <a
+                          className="library-btn"
+                          href={book.file}
+                          download
+                        >
+                          <DownloadIcon />
+                          <span>{t("library.download")}</span>
+                        </a>
                       </div>
-                    </div>
-
-                    {/* Dual Action Buttons */}
-                    <div className="library-card-actions">
-                      <Link href={href} className="library-btn is-primary">
-                        <BookOpenIcon />
-                        <span>{t("library.readOnline")}</span>
-                      </Link>
-                      <a
-                        className="library-btn"
-                        href={book.file}
-                        download
-                      >
-                        <DownloadIcon />
-                        <span>{t("library.download")}</span>
-                      </a>
                     </div>
                   </li>
                 );
               })}
             </ul>
-          ) : (
+          )}
+
+          {/* EMPTY STATE */}
+          {filteredBooks.length === 0 && (
             <div
               style={{
                 textAlign: "center",
@@ -423,6 +577,13 @@ export default function Library() {
           </div>
         </div>
       </section>
+
+      {/* 5. OPEN-BOOK STUDY PREVIEW MODAL */}
+      <BookPreviewModal
+        book={previewBook}
+        isOpen={isPreviewOpen}
+        onClose={handleClosePreview}
+      />
 
       <SiteFooter />
     </>

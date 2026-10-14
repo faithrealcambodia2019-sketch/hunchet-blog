@@ -11,6 +11,8 @@ import {
   ArrowRightIcon,
   CheckIcon,
 } from "../../components/Icons";
+import Book3D from "../../components/Book3D";
+
 
 export async function getStaticPaths({ locales }) {
   const paths = [];
@@ -111,13 +113,9 @@ export default function BookReader({ book, relatedBooks }) {
           <div className="reader-layout">
             {/* LEFT COLUMN: COMPANION & TABLE OF CONTENTS */}
             <aside className="reader-sidebar">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={book.cover}
-                alt={title}
-                className="reader-sidebar-cover"
-                loading="lazy"
-              />
+              <div style={{ display: "flex", justifyContent: "center", marginBottom: "1.5rem" }}>
+                <Book3D book={book} size="md" interactive={true} />
+              </div>
 
               <div
                 style={{
