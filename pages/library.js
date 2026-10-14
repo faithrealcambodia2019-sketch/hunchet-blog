@@ -537,7 +537,26 @@ export default function Library() {
                       const author = pick(book.author, locale);
                       return (
                         <div key={book.slug} className="bookshelf-unit">
-                          <Book3D book={book} size="md" onClick={() => handleOpenPreview(book)} />
+                          <div
+                            style={{ cursor: "pointer", display: "flex", justifyContent: "center", marginBottom: "0.5rem" }}
+                            onClick={() => handleOpenPreview(book)}
+                            title={isKm ? "ចុចដើម្បីបើកមើលសៀវភៅ" : "Click to look inside book"}
+                          >
+                            {/* eslint-disable-next-line @next/next/no-img-element */}
+                            <img
+                              src={`/images/books/cover-${book.slug}.svg`}
+                              alt={title}
+                              className="bookshelf-real-cover"
+                              style={{
+                                maxHeight: "220px",
+                                width: "auto",
+                                maxWidth: "160px",
+                                objectFit: "contain",
+                                filter: "drop-shadow(0 10px 22px rgba(0, 0, 0, 0.35))",
+                                transition: "transform 0.3s ease",
+                              }}
+                            />
+                          </div>
                           <div className="bookshelf-wooden-board" aria-hidden="true" />
                           <div className="bookshelf-unit-plaque">
                             <div className="bookshelf-plaque-meta">{book.callNumber}</div>
@@ -602,13 +621,17 @@ export default function Library() {
                             className="portal-card-preview is-book"
                             onClick={() => handleOpenPreview(item.bookData)}
                             style={{ cursor: "pointer" }}
-                            title="Click to preview book"
+                            title={isKm ? "ចុចដើម្បីបើកមើលសៀវភៅ" : "Click to preview book"}
                           >
-                            <Book3D
-                              book={item.bookData}
-                              size="sm"
-                              onClick={() => handleOpenPreview(item.bookData)}
-                            />
+                            <div className="portal-book-real-wrap">
+                              {/* eslint-disable-next-line @next/next/no-img-element */}
+                              <img
+                                src={`/images/books/cover-${item.bookData.slug}.svg`}
+                                alt={title}
+                                className="portal-book-real-cover"
+                                loading="lazy"
+                              />
+                            </div>
                           </div>
                         )}
 

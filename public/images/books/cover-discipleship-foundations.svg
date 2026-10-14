@@ -1,0 +1,205 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 440" width="100%" height="100%">
+  <defs>
+    <!-- Realistic soft drop shadow -->
+    <filter id="shadow-discipleship-foundations" x="-15%" y="-15%" width="145%" height="145%">
+      <feDropShadow dx="12" dy="16" stdDeviation="14" flood-color="#020617" flood-opacity="0.36"/>
+      <feDropShadow dx="3" dy="5" stdDeviation="5" flood-color="#020617" flood-opacity="0.2"/>
+    </filter>
+
+    <!-- Cover leather gradient -->
+    <linearGradient id="coverGrad-discipleship-foundations" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0d5242"/>
+      <stop offset="50%" stop-color="#07362b"/>
+      <stop offset="100%" stop-color="#04211a"/>
+    </linearGradient>
+
+    <!-- Spine gradient with cylindrical 3D curve -->
+    <linearGradient id="spineGrad-discipleship-foundations" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#020d0a"/>
+      <stop offset="25%" stop-color="#051c16"/>
+      <stop offset="70%" stop-color="#051c16"/>
+      <stop offset="95%" stop-color="#020d0a"/>
+      <stop offset="100%" stop-color="#000000"/>
+    </linearGradient>
+
+    <!-- Spine hinge groove shadow -->
+    <linearGradient id="grooveGrad-discipleship-foundations" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="rgba(0,0,0,0.85)"/>
+      <stop offset="35%" stop-color="rgba(0,0,0,0.45)"/>
+      <stop offset="70%" stop-color="rgba(255,255,255,0.08)"/>
+      <stop offset="100%" stop-color="transparent"/>
+    </linearGradient>
+
+    <!-- Raised 3D gold rib gradient -->
+    <linearGradient id="ribGrad-discipleship-foundations" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fffbeb"/>
+      <stop offset="25%" stop-color="#fde047"/>
+      <stop offset="60%" stop-color="#d97706"/>
+      <stop offset="100%" stop-color="#78350f"/>
+    </linearGradient>
+
+    <!-- Gold Foil Gradient for Stamp Frame & Author Text -->
+    <linearGradient id="goldFoil-discipleship-foundations" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fef9c3"/>
+      <stop offset="25%" stop-color="#facc15"/>
+      <stop offset="50%" stop-color="#d97706"/>
+      <stop offset="75%" stop-color="#fde047"/>
+      <stop offset="100%" stop-color="#b45309"/>
+    </linearGradient>
+
+    <!-- Page block trim gradient on right -->
+    <linearGradient id="pageGrad-discipleship-foundations" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#e2ded4"/>
+      <stop offset="30%" stop-color="#fffef9"/>
+      <stop offset="60%" stop-color="#ddd6c6"/>
+      <stop offset="100%" stop-color="#b5ab96"/>
+    </linearGradient>
+
+    <!-- Hardcover surface lighting reflection -->
+    <linearGradient id="sheenGrad-discipleship-foundations" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.18)"/>
+      <stop offset="25%" stop-color="rgba(255,255,255,0.06)"/>
+      <stop offset="60%" stop-color="transparent"/>
+      <stop offset="100%" stop-color="rgba(0,0,0,0.2)"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Drop Shadow Wrap -->
+  <g filter="url(#shadow-discipleship-foundations)">
+    <!-- Right Physical Page Block (Paper Thickness) -->
+    <path d="M 288 24 L 298 29 L 298 418 L 288 412 Z" fill="url(#pageGrad-discipleship-foundations)"/>
+    <line x1="298" y1="29" x2="298" y2="418" stroke="#998e7b" stroke-width="0.8"/>
+    <line x1="293" y1="27" x2="293" y2="415" stroke="rgba(0,0,0,0.1)" stroke-width="0.6"/>
+
+    <!-- Bottom Page Edge -->
+    <path d="M 68 412 L 288 412 L 298 418 L 74 418 Z" fill="#c4bcab"/>
+
+    <!-- Front Hardcover Shell -->
+    <rect x="24" y="18" width="264" height="396" rx="4" fill="url(#coverGrad-discipleship-foundations)"/>
+
+    <!-- Left Black Spine (Classic Binding) -->
+    <path d="M 24 18 L 70 18 L 70 414 L 24 414 Z" fill="url(#spineGrad-discipleship-foundations)"/>
+
+    <!-- 4 Raised Gold Embossed Ribs on Spine -->
+    
+      <g>
+        <rect x="22" y="76" width="48" height="3" rx="1.5" fill="rgba(0,0,0,0.7)"/>
+        <rect x="22" y="72" width="48" height="5.5" rx="1.8" fill="url(#ribGrad-discipleship-foundations)"/>
+        <line x1="23" y1="73" x2="69" y2="73" stroke="#ffffff" stroke-width="0.75" stroke-opacity="0.85"/>
+        <line x1="23" y1="74.5" x2="69" y2="74.5" stroke="rgba(255,255,255,0.4)" stroke-width="0.5"/>
+      </g>
+    
+      <g>
+        <rect x="22" y="158" width="48" height="3" rx="1.5" fill="rgba(0,0,0,0.7)"/>
+        <rect x="22" y="154" width="48" height="5.5" rx="1.8" fill="url(#ribGrad-discipleship-foundations)"/>
+        <line x1="23" y1="155" x2="69" y2="155" stroke="#ffffff" stroke-width="0.75" stroke-opacity="0.85"/>
+        <line x1="23" y1="156.5" x2="69" y2="156.5" stroke="rgba(255,255,255,0.4)" stroke-width="0.5"/>
+      </g>
+    
+      <g>
+        <rect x="22" y="240" width="48" height="3" rx="1.5" fill="rgba(0,0,0,0.7)"/>
+        <rect x="22" y="236" width="48" height="5.5" rx="1.8" fill="url(#ribGrad-discipleship-foundations)"/>
+        <line x1="23" y1="237" x2="69" y2="237" stroke="#ffffff" stroke-width="0.75" stroke-opacity="0.85"/>
+        <line x1="23" y1="238.5" x2="69" y2="238.5" stroke="rgba(255,255,255,0.4)" stroke-width="0.5"/>
+      </g>
+    
+      <g>
+        <rect x="22" y="322" width="48" height="3" rx="1.5" fill="rgba(0,0,0,0.7)"/>
+        <rect x="22" y="318" width="48" height="5.5" rx="1.8" fill="url(#ribGrad-discipleship-foundations)"/>
+        <line x1="23" y1="319" x2="69" y2="319" stroke="#ffffff" stroke-width="0.75" stroke-opacity="0.85"/>
+        <line x1="23" y1="320.5" x2="69" y2="320.5" stroke="rgba(255,255,255,0.4)" stroke-width="0.5"/>
+      </g>
+    
+
+    <!-- Spine Hinge Crease Shadow -->
+    <rect x="66" y="18" width="10" height="396" fill="url(#grooveGrad-discipleship-foundations)"/>
+
+    <!-- Subtle Blind Embossed Border Line on Cover Face -->
+    <rect x="80" y="28" width="198" height="376" rx="2" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+
+    <!-- ============================================================== -->
+    <!-- REAL GOLD BOXED LABEL STAMP (MATCHING REFERENCE EXACTLY!)     -->
+    <!-- ============================================================== -->
+    <g transform="translate(99, 82)">
+      <!-- Box Background with subtle recess -->
+      <rect x="0" y="0" width="162" height="94" rx="2" 
+            fill="rgba(0,0,0,0.28)" 
+            stroke="url(#goldFoil-discipleship-foundations)" 
+            stroke-width="1.8"/>
+
+      <!-- Inner Fine Gold Inset Frame -->
+      <rect x="3.5" y="3.5" width="155" height="87" rx="1" 
+            fill="none" 
+            stroke="url(#goldFoil-discipleship-foundations)" 
+            stroke-width="0.7" 
+            stroke-opacity="0.8"/>
+
+      <!-- Corner Accent Squares -->
+      <rect x="5.5" y="5.5" width="2.5" height="2.5" fill="url(#goldFoil-discipleship-foundations)"/>
+      <rect x="154" y="5.5" width="2.5" height="2.5" fill="url(#goldFoil-discipleship-foundations)"/>
+      <rect x="5.5" y="86" width="2.5" height="2.5" fill="url(#goldFoil-discipleship-foundations)"/>
+      <rect x="154" y="86" width="2.5" height="2.5" fill="url(#goldFoil-discipleship-foundations)"/>
+
+      <!-- Author: HUN CHET / REV. MATTHEW HENRY -->
+      <text x="81" y="22" 
+            text-anchor="middle" 
+            fill="url(#goldFoil-discipleship-foundations)" 
+            font-family="'Plus Jakarta Sans', 'Inter', -apple-system, sans-serif" 
+            font-size="9.5" 
+            font-weight="800" 
+            letter-spacing="2.2">
+        HUN CHET
+      </text>
+
+      <!-- Thin Gold Separator Line -->
+      <line x1="45" y1="29" x2="117" y2="29" 
+            stroke="url(#goldFoil-discipleship-foundations)" 
+            stroke-width="0.7" 
+            stroke-opacity="0.8"/>
+
+      <!-- Main Book Title -->
+      <text x="81" y="49" 
+            text-anchor="middle" 
+            fill="#ffffff" 
+            font-family="'Plus Jakarta Sans', -apple-system, sans-serif" 
+            font-size="12.5" 
+            font-weight="700" 
+            letter-spacing="0.4">
+        Discipleship Essentials
+      </text>
+
+      
+      <!-- Subtitle (e.g. Translated by SamAth Em) -->
+      <text x="81" y="67" 
+            text-anchor="middle" 
+            fill="#cbd5e1" 
+            font-family="'Plus Jakarta Sans', 'Inter', sans-serif" 
+            font-size="7.5" 
+            font-weight="600" 
+            letter-spacing="0.5">
+        Rooted in Christ & Gospel Mission
+      </text>
+      
+
+      <!-- Khmer Identification Text -->
+      <text x="81" y="83" 
+            text-anchor="middle" 
+            fill="url(#goldFoil-discipleship-foundations)" 
+            font-family="'Koh Santepheap', 'Kantumruy Pro', sans-serif" 
+            font-size="8.5" 
+            font-weight="600"
+            fill-opacity="0.95">
+        គ្រឹះនៃការបណ្តុះសិស្ស
+      </text>
+    </g>
+
+    <!-- Classic Publisher Emblem at Cover Bottom -->
+    <g transform="translate(180, 366)" stroke="url(#goldFoil-discipleship-foundations)" stroke-width="0.75" stroke-opacity="0.6">
+      <line x1="-28" y1="0" x2="28" y2="0"/>
+      <circle cx="0" cy="0" r="2.2" fill="url(#goldFoil-discipleship-foundations)"/>
+    </g>
+
+    <!-- Hardcover Glare Overlay (Realistic Satin Shine) -->
+    <rect x="24" y="18" width="264" height="396" rx="4" fill="url(#sheenGrad-discipleship-foundations)" pointer-events="none"/>
+  </g>
+</svg>

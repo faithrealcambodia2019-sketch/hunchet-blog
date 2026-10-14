@@ -91,7 +91,12 @@ export default function BookPreviewModal({ book, isOpen, onClose }) {
             <div className="book-page-inner">
               <div className="book-page-mini-hero">
                 <div className="book-page-cover-preview">
-                  <Book3D book={book} size="sm" interactive={false} />
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={`/images/books/cover-${book.slug}.svg`}
+                    alt={title}
+                    className="book-modal-real-cover"
+                  />
                 </div>
                 <div className="book-page-id-block">
                   <span className="book-page-vol-stamp">{book.volCode}</span>

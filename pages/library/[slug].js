@@ -114,7 +114,20 @@ export default function BookReader({ book, relatedBooks }) {
             {/* LEFT COLUMN: COMPANION & TABLE OF CONTENTS */}
             <aside className="reader-sidebar">
               <div style={{ display: "flex", justifyContent: "center", marginBottom: "1.5rem" }}>
-                <Book3D book={book} size="md" interactive={true} />
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={`/images/books/cover-${book.slug}.svg`}
+                  alt={title}
+                  style={{
+                    maxHeight: "260px",
+                    width: "auto",
+                    maxWidth: "200px",
+                    objectFit: "contain",
+                    filter: "drop-shadow(0 12px 28px rgba(15, 23, 42, 0.28))",
+                    borderRadius: "4px",
+                    transition: "transform 0.3s ease",
+                  }}
+                />
               </div>
 
               <div
