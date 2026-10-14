@@ -66,10 +66,10 @@ const STRINGS = {
     zh: "365天灵修历程",
   },
   tabVerses: {
-    en: "500 Famous Verses",
-    km: "៥០០ ខគម្ពីរល្បីៗ",
-    ko: "500 구절 성경 말씀",
-    zh: "500节经典金句",
+    en: "500+ Famous Verses",
+    km: "៥០០+ ខគម្ពីរល្បីៗ",
+    ko: "500+ 구절 성경 말씀",
+    zh: "500+节经典金句",
   },
   btnListen: {
     en: "Listen Audio",
@@ -322,7 +322,7 @@ export default function DevotionsPage() {
     const ref = dev.verse?.ref?.km || dev.verse?.ref?.en || "";
     const km = dev.verse?.text?.km || "";
     const en = dev.verse?.text?.en || "";
-    const shareText = `【${ref}】\n\n${km}\n\n${en}\n\nHun Chet • Daily Devotion`;
+    const shareText = `【${ref}】\n\n«${km}»\n\n“${en}”\n\n— ព្រះគម្ពីរភាសាខ្មែរបកប្រែចាស់ ១៩៥៤\nប្លុកផ្ទាល់ខ្លួន ហ៊ុន ចិត្ត (https://www.hunchet.blog/devotions)`;
     if (navigator?.clipboard?.writeText) {
       navigator.clipboard.writeText(shareText);
       setToastMessage(
@@ -345,8 +345,8 @@ export default function DevotionsPage() {
     const ref = dev.verse?.ref?.km || dev.verse?.ref?.en || "";
     const km = dev.verse?.text?.km || "";
     const en = dev.verse?.text?.en || "";
-    const text = `📖 ព្រះបន្ទូលប្រចាំថ្ងៃ • Hun Chet\n【${ref}】\n\n«${km}»\n\n“${en}”\n\nដឹកនាំដោយលោកគ្រូ ហ៊ុន ចិត្ត (Leader Hun Chet)`;
-    const url = typeof window !== "undefined" ? window.location.href : "https://hunchet.org/devotions";
+    const text = `📖 ព្រះបន្ទូលប្រចាំថ្ងៃ • Hun Chet\n【${ref}】\n\n«${km}»\n\n“${en}”\n\n— ព្រះគម្ពីរភាសាខ្មែរបកប្រែចាស់ ១៩៥៤\nចែករំលែកដោយលោកគ្រូ ហ៊ុន ចិត្ត (Leader Hun Chet)`;
+    const url = typeof window !== "undefined" ? window.location.href : "https://www.hunchet.blog/devotions";
     const shareUrl = `https://t.me/share/url?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`;
     if (typeof window !== "undefined") {
       window.open(shareUrl, "_blank", "noopener,noreferrer");
@@ -359,7 +359,7 @@ export default function DevotionsPage() {
     const ref = v.ref?.km || v.ref?.en || "";
     const km = v.text?.km || "";
     const en = v.text?.en || "";
-    const shareText = `【${ref}】\n\n${km}\n\n${en}\n\n1954 Old Khmer Version • Hun Chet`;
+    const shareText = `【${ref}】\n\n«${km}»\n\n“${en}”\n\n— ព្រះគម្ពីរភាសាខ្មែរបកប្រែចាស់ ១៩៥៤\nប្លុកផ្ទាល់ខ្លួន ហ៊ុន ចិត្ត (https://www.hunchet.blog/devotions)`;
     if (navigator?.clipboard?.writeText) {
       navigator.clipboard.writeText(shareText);
       setToastMessage(
@@ -443,12 +443,13 @@ export default function DevotionsPage() {
     setPreviewDay(today);
   };
 
-  // Filter 500 verses
+  // Filter 500+ verses
   const filteredVerses = useMemo(() => {
     const q = searchQuery.trim().toLowerCase();
     return FAMOUS_KHMER_VERSES.filter((v) => {
       const matchCat =
-        activeCategory === "all" || v.category === activeCategory;
+        activeCategory === "all" ||
+        (activeCategory === "famous50" ? v.isFamous50 : v.category === activeCategory);
       if (!matchCat) return false;
       if (!q) return true;
 
@@ -597,7 +598,7 @@ export default function DevotionsPage() {
               <BookOpenIcon />
               <span>{pick(STRINGS.tabVerses, locale)}</span>
               <span className="devotion-tab-badge">
-                500
+                {FAMOUS_KHMER_VERSES.length}
               </span>
             </button>
           </div>
@@ -786,15 +787,17 @@ export default function DevotionsPage() {
                   <span className="devotion-key-truth-label">{pick(STRINGS.keyTruth, locale)}</span>
                   <p className="devotion-key-truth-text">
                     {currentDevotion.reflection?.keyTruth?.[locale === "km" ? "km" : "en"] ||
-                      currentDevotion.reflection?.keyTruth?.km}
+                      currentDevotion.reflection?.keyTruth?.km ||
+                      currentDevotion.easyMeaning?.[locale === "km" ? "km" : "en"] ||
+                      currentDevotion.easyMeaning?.km}
                   </p>
                 </div>
 
                 <div className="devotion-points-list">
-                  {currentDevotion.reflection?.points?.map((pt, idx) => (
+                  {(currentDevotion.reflection?.points || []).map((pt, idx) => (
                     <div key={idx} className="devotion-point-item">
                       <span className="devotion-point-num">{idx + 1}</span>
-                      <span>{pt[locale === "km" ? "km" : "en"] || pt.km}</span>
+                      <span>{pt[locale === "km" ? "km" : "en"] || pt.km || pt}</span>
                     </div>
                   ))}
                 </div>
@@ -1168,46 +1171,56 @@ export default function DevotionsPage() {
       <section className="devotion-crosslink-section">
         <div className="container">
           <h3 className="devotion-crosslink-title">
-            Hun Chet Ministry Sanctuary
+            {locale === "km"
+              ? "ធនធាន និងការបង្រៀនបន្ថែម • ប្លុកផ្ទាល់ខ្លួន ហ៊ុន ចិត្ត"
+              : "Hun Chet Personal Blog Sanctuary"}
           </h3>
           <p className="devotion-crosslink-sub">
-            Explore our sermon archives, theological library, and video productions.
+            {locale === "km"
+              ? "ស្វែងយល់បន្ថែមអំពីបណ្ណាល័យទ្រឹស្តីព្រះគម្ពីរ វីដេអូដំណឹងល្អ និងអត្ថបទបង្រៀនខាងវិញ្ញាណ។"
+              : "Explore our sermon archives, theological library, and video productions."}
           </p>
 
           <div className="devotion-crosslink-grid">
             <Link href="/library" className="devotion-crosslink-card">
               <div>
-                <h4>Theological Library</h4>
+                <h4>{locale === "km" ? "បណ្ណាល័យទ្រឹស្តីព្រះគម្ពីរ" : "Theological Library"}</h4>
                 <p>
-                  Verse-by-verse Matthew Henry commentaries, historical theology lectures, and bilingual reference dictionaries.
+                  {locale === "km"
+                    ? "ការអធិប្បាយពន្យល់ខគម្ពីរ លោក Matthew Henry ការបង្រៀនប្រវត្តិសាស្ត្រ និងវចនានុក្រមយោង។"
+                    : "Verse-by-verse Matthew Henry commentaries, historical theology lectures, and bilingual reference dictionaries."}
                 </p>
               </div>
               <span className="devotion-crosslink-link">
-                Open Library <ArrowRightIcon />
+                {locale === "km" ? "បើកបណ្ណាល័យ" : "Open Library"} <ArrowRightIcon />
               </span>
             </Link>
 
             <Link href="/resource" className="devotion-crosslink-card">
               <div>
-                <h4>Gospel Videos & Media</h4>
+                <h4>{locale === "km" ? "វីដេអូ និងប្រព័ន្ធផ្សព្វផ្សាយ" : "Gospel Videos & Media"}</h4>
                 <p>
-                  Watch gospel short films, sanctuary worship, and biblical teaching productions from True Friend Ministry.
+                  {locale === "km"
+                    ? "ខ្សែភាពយន្តខ្លីដំណឹងល្អ ការថ្វាយបង្គំ និងកម្មវិធីបង្រៀនព្រះបន្ទូលពីព័ន្ធកិច្ចមិត្តពិតកម្ពុជា។"
+                    : "Watch gospel short films, sanctuary worship, and biblical teaching productions from True Friend Ministry."}
                 </p>
               </div>
               <span className="devotion-crosslink-link">
-                Watch Productions <ArrowRightIcon />
+                {locale === "km" ? "ទស្សនាវីដេអូ" : "Watch Productions"} <ArrowRightIcon />
               </span>
             </Link>
 
             <Link href="/articles" className="devotion-crosslink-card">
               <div>
-                <h4>Articles & Pastoral Writing</h4>
+                <h4>{locale === "km" ? "អត្ថបទ និងការបង្រៀន" : "Articles & Pastoral Writing"}</h4>
                 <p>
-                  Biblical reflections on prayer, persevering faith in hardship, Christian walk, and discipleship.
+                  {locale === "km"
+                    ? "ការពិចារណាព្រះបន្ទូលលើការអធិស្ឋាន ជំនឿរឹងមាំក្នុងឧបសគ្គ ការដើរក្នុងជីវិតគ្រីស្ទបរិស័ទ និងការបណ្តុះសិស្ស។"
+                    : "Biblical reflections on prayer, persevering faith in hardship, Christian walk, and discipleship."}
                 </p>
               </div>
               <span className="devotion-crosslink-link">
-                Read Articles <ArrowRightIcon />
+                {locale === "km" ? "អានអត្ថបទទាំងអស់" : "Read Articles"} <ArrowRightIcon />
               </span>
             </Link>
           </div>
