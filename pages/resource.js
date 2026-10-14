@@ -24,8 +24,8 @@ const CORE_RESOURCES = [
       zh: "每日灵修与365天圣经安息地",
     },
     desc: {
-      en: "Verbatim 1954 Old Khmer Version scripture, daily reflections, application questions, and pastoral prayers.",
-      km: "ព្រះគម្ពីរខ្មែរបកប្រែចាស់ ១៩៥៤ Verbatim ការពិចារណា សំណួរអនុវត្ត និងសេចក្តីអធិស្ឋានប្រចាំថ្ងៃ។",
+      en: "1954 Old Khmer Version scripture, daily reflections, application questions, and pastoral prayers.",
+      km: "ព្រះគម្ពីរខ្មែរបកប្រែចាស់ ១៩៥៤ ការពិចារណា សំណួរអនុវត្ត និងសេចក្តីអធិស្ឋានប្រចាំថ្ងៃ។",
       ko: "1954 크메르어 고역 성경 원문 묵상, 나눔 질문 및 매일의 목회 기도문.",
       zh: "1954高棉传统圣经原文经文、每日灵修省思、生活应用与教牧代祷。",
     },

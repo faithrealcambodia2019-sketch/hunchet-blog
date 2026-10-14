@@ -48,8 +48,8 @@ const STRINGS = {
     zh: "每日灵修与365天圣经安息地",
   },
   heroSub: {
-    en: "Verbatim 1954/1962 Old Khmer Version scripture, daily biblical reflections, life applications, and pastoral prayers for quiet time and discipleship.",
-    km: "ព្រះគម្ពីរភាសាខ្មែរបកប្រែចាស់ ១៩៥៤ Verbatim ការពិចារណាព្រះបន្ទូល សំណួរអនុវត្ត និងសេចក្តីអធិស្ឋានប្រចាំថ្ងៃ សម្រាប់ជីវិតស្ងប់ស្ងាត់ និងការបណ្តុះសិស្ស។",
+    en: "1954/1962 Old Khmer Version scripture, daily biblical reflections, life applications, and pastoral prayers for quiet time and discipleship.",
+    km: "ព្រះគម្ពីរភាសាខ្មែរបកប្រែចាស់ ១៩៥៤ ការពិចារណាព្រះបន្ទូល សំណួរអនុវត្ត និងសេចក្តីអធិស្ឋានប្រចាំថ្ងៃ សម្រាប់ជីវិតស្ងប់ស្ងាត់ និងការបណ្តុះសិស្ស។",
     ko: "1954/1962 크메르어 고역 성경 원문과 묵상, 나눔 질문 및 목회 기도문.",
     zh: "1954/1962高棉语传统圣经原文经文、每日默想、应用省思与教牧祷告。",
   },
@@ -543,7 +543,7 @@ export default function DevotionsPage() {
             </div>
             <div className="devotion-stat-item">
               <span className="devotion-stat-dot" />
-              <span>1954 Verbatim Old Khmer</span>
+              <span>1954 Old Khmer Version</span>
             </div>
             <div className="devotion-stat-item">
               <span className="devotion-stat-dot" />
@@ -742,7 +742,7 @@ export default function DevotionsPage() {
                 </div>
               </div>
 
-              {/* Primary 1954 Old Khmer Verbatim Scripture */}
+              {/* Primary 1954 Old Khmer Scripture */}
               {(activeScriptureLang === "all" || activeScriptureLang === "km") && (
                 <blockquote className="devotion-scripture-quote">
                   «{currentDevotion.verse?.text?.km}»

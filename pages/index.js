@@ -554,7 +554,7 @@ export default function Home({ posts = [], error }) {
                 <div className="welcome-pillar-grid">
                   <div className="welcome-pillar-card">
                     <strong>📖 {isKm ? "ព្រះគម្ពីរជាគ្រឹះ" : "Scripture First"}</strong>
-                    <span>{isKm ? "គ្រប់ការបង្រៀនទាំងអស់ផ្តើមចេញពីព្រះបន្ទូលពិត។" : "Grounded directly in verbatim biblical text."}</span>
+                    <span>{isKm ? "គ្រប់ការបង្រៀនទាំងអស់ផ្តើមចេញពីព្រះបន្ទូលពិត។" : "Grounded directly in biblical text."}</span>
                   </div>
 
                   <div className="welcome-pillar-card">
