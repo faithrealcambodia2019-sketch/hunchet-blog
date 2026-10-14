@@ -91,8 +91,17 @@ export default function Book3D({
 
               {/* Book Title Block */}
               <div className="book-title-container">
-                <h3 className="book-foil-title">{title}</h3>
-                {subtitle && <p className="book-foil-subtitle">{subtitle}</p>}
+                {book.slug === "world-history" ? (
+                  <div className="book-boxed-label-stamp">
+                    <span className="boxed-label-author">HUN CHET</span>
+                    <h3 className="boxed-label-title">{title}</h3>
+                  </div>
+                ) : (
+                  <>
+                    <h3 className="book-foil-title">{title}</h3>
+                    {subtitle && <p className="book-foil-subtitle">{subtitle}</p>}
+                  </>
+                )}
               </div>
 
               {/* Classic Ornamental Divider */}

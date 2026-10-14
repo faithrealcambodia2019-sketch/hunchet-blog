@@ -2283,3 +2283,757 @@
     padding: 1.5rem;
   }
 }
+
+/* =====================================================================
+   PORTAL 3-COLUMN THEOLOGICAL DASHBOARD (MATCHING USER SCREENSHOT)
+   ===================================================================== */
+
+.portal-page-wrap {
+  background: #f8fafc;
+  padding: 2rem 0 4rem;
+  min-height: calc(100vh - 80px);
+}
+
+.portal-layout-grid {
+  display: grid;
+  grid-template-columns: 240px 1fr 280px;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+/* ---------------- LEFT SIDEBAR ---------------- */
+.portal-left-sidebar {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 1.25rem 0.85rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  position: sticky;
+  top: 90px;
+}
+
+.portal-sidebar-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.portal-group-heading {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #0f172a;
+  padding: 0 0.6rem 0.4rem;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.portal-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: #475569;
+  border-radius: 8px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  width: 100%;
+  text-align: left;
+  transition: all 0.15s ease;
+}
+
+.portal-nav-item:hover {
+  background: #f1f5f9;
+  color: #0f172a;
+}
+
+.portal-nav-item.is-active {
+  background: #eff6ff;
+  color: #2563eb;
+  font-weight: 700;
+}
+
+.portal-nav-icon {
+  width: 17px;
+  height: 17px;
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.portal-nav-icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+.portal-nav-badge {
+  margin-left: auto;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.1rem 0.45rem;
+  border-radius: 9999px;
+  background: #e2e8f0;
+  color: #475569;
+}
+
+.portal-nav-item.is-active .portal-nav-badge {
+  background: #2563eb;
+  color: #ffffff;
+}
+
+/* ---------------- CENTER MAIN COLUMN ---------------- */
+.portal-main-col {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.portal-main-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.portal-header-text h1 {
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 0.25rem;
+  letter-spacing: -0.02em;
+}
+
+.portal-header-text p {
+  font-size: 0.88rem;
+  color: #64748b;
+  margin: 0;
+}
+
+.portal-publish-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.55rem 1.15rem;
+  background: #2563eb;
+  color: #ffffff;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 1px 2px rgba(37, 99, 235, 0.2);
+  transition: all 0.15s ease;
+}
+
+.portal-publish-btn:hover {
+  background: #1d4ed8;
+  box-shadow: 0 3px 6px rgba(37, 99, 235, 0.3);
+}
+
+.portal-publish-btn svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* Filter Pills Bar */
+.portal-pills-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding: 0.25rem 0 1rem;
+  scrollbar-width: none;
+}
+
+.portal-pills-bar::-webkit-scrollbar {
+  display: none;
+}
+
+.portal-pill-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.45rem 0.95rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border-radius: 9999px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  color: #334155;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s ease;
+}
+
+.portal-pill-btn:hover {
+  border-color: #cbd5e1;
+  background: #f8fafc;
+}
+
+.portal-pill-btn.is-active {
+  background: #2563eb;
+  border-color: #2563eb;
+  color: #ffffff;
+  box-shadow: 0 1px 3px rgba(37, 99, 235, 0.25);
+}
+
+.portal-pill-btn svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* Search & Sort Controls Row */
+.portal-search-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.portal-search-wrapper {
+  position: relative;
+  flex: 1;
+  min-width: 240px;
+  max-width: 420px;
+}
+
+.portal-search-icon {
+  position: absolute;
+  left: 0.85rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  color: #94a3b8;
+  pointer-events: none;
+}
+
+.portal-search-input {
+  width: 100%;
+  padding: 0.55rem 1rem 0.55rem 2.4rem;
+  font-size: 0.84rem;
+  color: #0f172a;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  outline: none;
+  transition: all 0.15s ease;
+}
+
+.portal-search-input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+.portal-sort-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.portal-sort-select {
+  padding: 0.5rem 0.85rem;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: #334155;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  outline: none;
+  cursor: pointer;
+}
+
+.portal-count-tag {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #64748b;
+  white-space: nowrap;
+}
+
+/* Resource Cards Grid */
+.portal-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.25rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.portal-resource-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.portal-resource-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px -4px rgba(15, 23, 42, 0.1);
+  border-color: #cbd5e1;
+}
+
+/* Card Top Half */
+.portal-card-preview {
+  height: 220px;
+  position: relative;
+  background: #f8fafc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+/* Audio Card Style (Matching purple screenshot card!) */
+.portal-card-preview.is-audio {
+  background: linear-gradient(135deg, #6366f1 0%, #4338ca 100%);
+  color: #ffffff;
+  padding: 1.5rem;
+  text-align: center;
+  flex-direction: column;
+}
+
+.portal-audio-icon-wrap {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.85rem;
+  color: #ffffff;
+}
+
+.portal-audio-icon-wrap svg {
+  width: 24px;
+  height: 24px;
+}
+
+.portal-audio-inner-title {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 0.35rem;
+  line-height: 1.35;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.portal-audio-badge-overlay {
+  position: absolute;
+  bottom: 0.75rem;
+  right: 0.75rem;
+  padding: 0.2rem 0.55rem;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  color: #ffffff;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: 4px;
+}
+
+/* Video Card Style */
+.portal-card-preview.is-video img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.portal-video-play-btn {
+  position: relative;
+  z-index: 2;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(4px);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.portal-resource-card:hover .portal-video-play-btn {
+  transform: scale(1.1);
+  background: #2563eb;
+}
+
+/* Article Card Style */
+.portal-card-preview.is-article {
+  background: linear-gradient(135deg, #fdfbf7 0%, #f4ede0 100%);
+  padding: 1.5rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.portal-article-quote-glyph {
+  font-family: Georgia, serif;
+  font-size: 2.2rem;
+  line-height: 1;
+  color: rgba(184, 155, 94, 0.4);
+  margin-bottom: 0.35rem;
+}
+
+.portal-article-preview-title {
+  font-family: var(--font-khmer);
+  font-size: 0.86rem;
+  color: #334155;
+  font-weight: 600;
+  line-height: 1.6;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Book Card Style (Green/Navy hardcover standing proudly) */
+.portal-card-preview.is-book {
+  background: #f8fafc;
+  padding: 1rem;
+}
+
+/* Card Bottom Info */
+.portal-card-info {
+  padding: 1rem 1.15rem 1.15rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.portal-card-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 0.3rem;
+  line-height: 1.35;
+}
+
+.portal-card-title a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.portal-card-title a:hover {
+  color: #2563eb;
+}
+
+.portal-card-author {
+  font-size: 0.78rem;
+  color: #64748b;
+  font-weight: 500;
+  margin: 0 0 0.2rem;
+}
+
+.portal-card-translator {
+  font-size: 0.72rem;
+  color: #94a3b8;
+  font-style: italic;
+  margin: 0 0 0.85rem;
+}
+
+.portal-card-meta-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-top: 0.85rem;
+  border-top: 1px solid #f1f5f9;
+}
+
+.portal-format-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.22rem 0.6rem;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: 4px;
+}
+
+.portal-format-tag.tag-audio {
+  background: #f3e8ff;
+  color: #7e22ce;
+}
+
+.portal-format-tag.tag-pdf {
+  background: #eff6ff;
+  color: #2563eb;
+}
+
+.portal-format-tag.tag-article {
+  background: #f0fdf4;
+  color: #16a34a;
+}
+
+.portal-format-tag.tag-video {
+  background: #fef2f2;
+  color: #dc2626;
+}
+
+.portal-bookmark-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #94a3b8;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: all 0.15s ease;
+}
+
+.portal-bookmark-btn:hover {
+  color: #0f172a;
+  background: #f1f5f9;
+}
+
+.portal-bookmark-btn.is-saved {
+  color: #2563eb;
+}
+
+.portal-bookmark-btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* ---------------- RIGHT SIDEBAR ---------------- */
+.portal-right-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  position: sticky;
+  top: 90px;
+}
+
+.portal-widget-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 1.25rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.portal-verse-title {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 0.85rem;
+}
+
+.portal-verse-quote {
+  font-family: var(--font-khmer);
+  font-size: 0.92rem;
+  line-height: 1.85;
+  color: #334155;
+  margin: 0 0 0.75rem;
+  font-style: italic;
+}
+
+.portal-verse-ref {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #64748b;
+  margin: 0;
+}
+
+.portal-stats-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.85rem;
+  color: #2563eb;
+}
+
+.portal-stats-header svg {
+  width: 18px;
+  height: 18px;
+}
+
+.portal-stats-title {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0;
+}
+
+.portal-stats-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.portal-stat-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #f1f5f9;
+  font-size: 0.82rem;
+  color: #475569;
+}
+
+.portal-stat-row:last-child {
+  border-bottom: none;
+}
+
+.portal-stat-val {
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.portal-footer-links {
+  font-size: 0.72rem;
+  color: #94a3b8;
+  text-align: center;
+  line-height: 1.6;
+  padding: 0.5rem 0;
+}
+
+.portal-footer-links a {
+  color: inherit;
+  text-decoration: none;
+  margin: 0 0.25rem;
+}
+
+.portal-footer-links a:hover {
+  color: #2563eb;
+}
+
+/* Boxed Label Stamp for World History Book */
+.book-boxed-label-stamp {
+  border: 1.5px solid var(--book-accent, #f4d06f);
+  padding: 8px 6px;
+  background: rgba(0, 0, 0, 0.25);
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  width: 90%;
+}
+
+.boxed-label-author {
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: var(--book-accent, #f4d06f);
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+
+.boxed-label-title {
+  font-family: var(--font-display);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+  line-height: 1.25;
+}
+
+/* Audio Player Floating Bar */
+.portal-audio-player-bar {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  background: #0f172a;
+  color: #ffffff;
+  padding: 0.85rem 1.5rem;
+  border-radius: 9999px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  width: 90%;
+  max-width: 580px;
+  animation: audioBarSlideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes audioBarSlideUp {
+  from { transform: translate(-50%, 20px); opacity: 0; }
+  to { transform: translate(-50%, 0); opacity: 1; }
+}
+
+.portal-audio-track-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.portal-audio-track-title {
+  font-size: 0.82rem;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 0;
+}
+
+.portal-audio-track-author {
+  font-size: 0.72rem;
+  color: #94a3b8;
+  margin: 0;
+}
+
+/* Responsive Portal Layout */
+@media (max-width: 1100px) {
+  .portal-layout-grid {
+    grid-template-columns: 220px 1fr;
+  }
+  .portal-right-sidebar {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: static;
+  }
+}
+
+@media (max-width: 768px) {
+  .portal-layout-grid {
+    grid-template-columns: 1fr;
+  }
+  .portal-left-sidebar {
+    position: static;
+  }
+  .portal-right-sidebar {
+    grid-template-columns: 1fr;
+  }
+}
