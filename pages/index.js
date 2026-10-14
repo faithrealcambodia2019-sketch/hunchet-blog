@@ -28,6 +28,7 @@ import {
 } from "../components/Icons";
 import { BOOKS } from "../lib/books";
 import Book3D from "../components/Book3D";
+import RealBookCover from "../components/RealBookCover";
 
 
 const SERMON_KEYS = [
@@ -856,20 +857,7 @@ export default function Home({ posts = [], error }) {
               }}
             >
               <div style={{ display: "flex", justifyContent: "center" }}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src="/images/books/cover-matthew-henry-commentary.svg"
-                  alt={isKm ? "អត្ថាធិប្បាយព្រះគម្ពីរ ម៉ាថាយ ហេនរី" : "Matthew Henry's Bible Commentary"}
-                  style={{
-                    maxHeight: "260px",
-                    width: "auto",
-                    maxWidth: "200px",
-                    objectFit: "contain",
-                    filter: "drop-shadow(0 14px 28px rgba(15, 23, 42, 0.28))",
-                    borderRadius: "4px",
-                    transition: "transform 0.3s ease",
-                  }}
-                />
+                <RealBookCover book={BOOKS[0]} size="lg" />
               </div>
 
               <div>

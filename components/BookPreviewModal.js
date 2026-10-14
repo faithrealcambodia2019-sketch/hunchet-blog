@@ -9,6 +9,7 @@ import {
   ArrowRightIcon,
 } from "./Icons";
 import Book3D from "./Book3D";
+import RealBookCover from "./RealBookCover";
 
 /**
  * Open-Book Parchment Preview Modal ("Look Inside / បើកមើលសៀវភៅ")
@@ -91,12 +92,7 @@ export default function BookPreviewModal({ book, isOpen, onClose }) {
             <div className="book-page-inner">
               <div className="book-page-mini-hero">
                 <div className="book-page-cover-preview">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={`/images/books/cover-${book.slug}.svg`}
-                    alt={title}
-                    className="book-modal-real-cover"
-                  />
+                  <RealBookCover book={book} size="sm" />
                 </div>
                 <div className="book-page-id-block">
                   <span className="book-page-vol-stamp">{book.volCode}</span>

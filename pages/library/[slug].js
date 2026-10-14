@@ -12,6 +12,7 @@ import {
   CheckIcon,
 } from "../../components/Icons";
 import Book3D from "../../components/Book3D";
+import RealBookCover from "../../components/RealBookCover";
 
 
 export async function getStaticPaths({ locales }) {
@@ -114,20 +115,7 @@ export default function BookReader({ book, relatedBooks }) {
             {/* LEFT COLUMN: COMPANION & TABLE OF CONTENTS */}
             <aside className="reader-sidebar">
               <div style={{ display: "flex", justifyContent: "center", marginBottom: "1.5rem" }}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={`/images/books/cover-${book.slug}.svg`}
-                  alt={title}
-                  style={{
-                    maxHeight: "260px",
-                    width: "auto",
-                    maxWidth: "200px",
-                    objectFit: "contain",
-                    filter: "drop-shadow(0 12px 28px rgba(15, 23, 42, 0.28))",
-                    borderRadius: "4px",
-                    transition: "transform 0.3s ease",
-                  }}
-                />
+                <RealBookCover book={book} size="lg" />
               </div>
 
               <div

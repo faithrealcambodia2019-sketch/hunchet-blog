@@ -2718,7 +2718,7 @@
 
 /* Book Card Style (Authentic physical hardcover standing proudly) */
 .portal-card-preview.is-book {
-  background: #f8fafc;
+  background: #f1f5f9;
   height: 220px;
   display: flex;
   align-items: center;
@@ -2726,7 +2726,7 @@
   padding: 1rem;
   position: relative;
   overflow: hidden;
-  border-bottom: 1px solid #f1f5f9;
+  border-bottom: 1px solid #e2e8f0;
 }
 
 .portal-book-real-wrap {
@@ -2737,32 +2737,234 @@
   justify-content: center;
 }
 
-.portal-book-real-cover {
-  max-height: 185px;
-  width: auto;
-  max-width: 140px;
-  object-fit: contain;
-  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), filter 0.28s ease;
-  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.12));
+/* ==========================================================================
+   REAL PHYSICAL HARDCOVER BOOK COMPONENT
+   Matches the exact design from user screenshot (crop_green_book.png):
+   - Vertical rectangular book standing upright with soft realistic drop shadow
+   - Left dark leather spine with 3 horizontal gold ribs (dividing 4 sections)
+   - Vertical spine crease / hinge indentation
+   - Rich leather cover (Forest Green, Royal Navy, Burgundy, etc.)
+   - Gold rectangular stamped label box in upper third
+   - Gold author label on top ("HUN CHET"), thin gold divider, crisp white title
+   - Subtle realistic surface lighting / sheen
+   - Smooth hover lift effect
+   ========================================================================== */
+
+.real-book-cover {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  border-radius: 3px 5px 5px 3px;
+  overflow: hidden;
+  user-select: none;
+  cursor: pointer;
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow:
+    0 12px 24px -4px rgba(15, 23, 42, 0.28),
+    0 6px 12px -2px rgba(15, 23, 42, 0.16),
+    inset -1px 0 1px rgba(255, 255, 255, 0.15);
+  box-sizing: border-box;
+  flex-shrink: 0;
 }
 
-.portal-resource-card:hover .portal-book-real-cover {
-  transform: translateY(-5px) scale(1.03);
-  filter: drop-shadow(0 14px 24px rgba(0, 0, 0, 0.22));
+/* Sizing variants */
+/* Small: Card preview (fits 220px card preview height with nice margins) */
+.real-book-cover.size-sm {
+  width: 116px;
+  height: 164px;
 }
 
-.book-modal-real-cover {
-  max-height: 180px;
-  width: auto;
-  max-width: 130px;
-  object-fit: contain;
-  border-radius: 3px;
-  filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.35));
+/* Medium: Modal look-inside */
+.real-book-cover.size-md {
+  width: 148px;
+  height: 210px;
 }
 
-.bookshelf-real-cover:hover {
-  transform: translateY(-8px) scale(1.04);
-  filter: drop-shadow(0 18px 30px rgba(0, 0, 0, 0.45));
+/* Large: Detail reader sidebar & featured section */
+.real-book-cover.size-lg {
+  width: 185px;
+  height: 260px;
+}
+
+/* Hover Lift */
+.real-book-cover:hover,
+.portal-resource-card:hover .real-book-cover {
+  transform: translateY(-5px);
+  box-shadow:
+    0 18px 32px -4px rgba(15, 23, 42, 0.35),
+    0 10px 18px -2px rgba(15, 23, 42, 0.22),
+    inset -1px 0 1px rgba(255, 255, 255, 0.2);
+}
+
+/* 1. Left Spine */
+.real-book-spine {
+  width: 16%;
+  background: var(--spine-bg, #0b141e);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 10px 0;
+  box-sizing: border-box;
+  box-shadow: inset -2px 0 3px rgba(0, 0, 0, 0.4);
+  flex-shrink: 0;
+}
+
+/* Gold Ribs on Spine */
+.real-spine-rib {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, #b45309 0%, #fef08a 45%, #d4af37 80%, #92400e 100%);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.real-book-cover.size-lg .real-spine-rib {
+  height: 2.5px;
+}
+
+/* 2. Spine Crease / Hinge Indentation */
+.real-book-crease {
+  width: 3px;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.15) 60%, transparent);
+  box-shadow: inset -1px 0 0 rgba(255, 255, 255, 0.08);
+  flex-shrink: 0;
+}
+
+/* 3. Book Face */
+.real-book-face {
+  flex: 1;
+  background: var(--cover-bg, linear-gradient(135deg, #1b5634 0%, #123e24 100%));
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 14px 8px 10px 8px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.real-book-cover.size-md .real-book-face {
+  padding: 18px 12px 14px 12px;
+}
+
+.real-book-cover.size-lg .real-book-face {
+  padding: 24px 16px 18px 16px;
+}
+
+/* 4. Gold Rectangular Stamped Label Box */
+.real-book-stamp-box {
+  border: 1.5px solid var(--gold-accent, #d4af37);
+  border-radius: 1.5px;
+  padding: 6px 4px 6px 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.08);
+  box-shadow:
+    inset 0 1px 2px rgba(0, 0, 0, 0.25),
+    0 1px 1px rgba(255, 255, 255, 0.12);
+  margin-top: 2px;
+}
+
+.real-book-cover.size-md .real-book-stamp-box {
+  padding: 8px 6px 8px 6px;
+  border-width: 1.75px;
+}
+
+.real-book-cover.size-lg .real-book-stamp-box {
+  padding: 12px 8px 12px 8px;
+  border-width: 2px;
+}
+
+/* Author Name in Stamped Box */
+.real-book-stamp-author {
+  display: block;
+  color: var(--gold-accent, #d4af37);
+  font-family: var(--font-english, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  line-height: 1.1;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.6);
+  white-space: nowrap;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.real-book-cover.size-md .real-book-stamp-author {
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+}
+
+.real-book-cover.size-lg .real-book-stamp-author {
+  font-size: 0.82rem;
+  letter-spacing: 0.16em;
+}
+
+/* Gold Divider Line */
+.real-book-stamp-divider {
+  width: 86%;
+  height: 1px;
+  background: var(--gold-accent, #d4af37);
+  opacity: 0.9;
+  margin: 3.5px auto 4px auto;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+}
+
+.real-book-cover.size-md .real-book-stamp-divider {
+  margin: 4.5px auto 5.5px auto;
+}
+
+.real-book-cover.size-lg .real-book-stamp-divider {
+  margin: 6px auto 7px auto;
+}
+
+/* Book Title inside Stamped Box */
+.real-book-stamp-title {
+  color: #ffffff;
+  font-family: var(--font-english, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
+  font-size: 0.65rem;
+  font-weight: 700;
+  line-height: 1.25;
+  margin: 0;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7);
+  text-align: center;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.real-book-cover.size-md .real-book-stamp-title {
+  font-size: 0.78rem;
+  line-height: 1.28;
+}
+
+.real-book-cover.size-lg .real-book-stamp-title {
+  font-size: 0.95rem;
+  line-height: 1.3;
+}
+
+/* 5. Realistic Glare / Sheen Overlay */
+.real-book-glare {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    115deg,
+    rgba(255, 255, 255, 0.14) 0%,
+    rgba(255, 255, 255, 0.05) 25%,
+    rgba(255, 255, 255, 0) 50%,
+    rgba(0, 0, 0, 0.08) 100%
+  );
+  border-radius: inherit;
 }
 
 /* Card Bottom Info */

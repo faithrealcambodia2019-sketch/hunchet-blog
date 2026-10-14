@@ -7,6 +7,7 @@ import { BOOKS } from "../lib/books";
 import { ALL_RESOURCES, RESOURCE_FORMATS } from "../lib/libraryResources";
 import { useT, useLocale, pick } from "../lib/i18n";
 import Book3D from "../components/Book3D";
+import RealBookCover from "../components/RealBookCover";
 import BookPreviewModal from "../components/BookPreviewModal";
 import {
   BookOpenIcon,
@@ -542,20 +543,7 @@ export default function Library() {
                             onClick={() => handleOpenPreview(book)}
                             title={isKm ? "ចុចដើម្បីបើកមើលសៀវភៅ" : "Click to look inside book"}
                           >
-                            {/* eslint-disable-next-line @next/next/no-img-element */}
-                            <img
-                              src={`/images/books/cover-${book.slug}.svg`}
-                              alt={title}
-                              className="bookshelf-real-cover"
-                              style={{
-                                maxHeight: "220px",
-                                width: "auto",
-                                maxWidth: "160px",
-                                objectFit: "contain",
-                                filter: "drop-shadow(0 10px 22px rgba(0, 0, 0, 0.35))",
-                                transition: "transform 0.3s ease",
-                              }}
-                            />
+                            <RealBookCover book={book} size="md" />
                           </div>
                           <div className="bookshelf-wooden-board" aria-hidden="true" />
                           <div className="bookshelf-unit-plaque">
@@ -624,13 +612,7 @@ export default function Library() {
                             title={isKm ? "ចុចដើម្បីបើកមើលសៀវភៅ" : "Click to preview book"}
                           >
                             <div className="portal-book-real-wrap">
-                              {/* eslint-disable-next-line @next/next/no-img-element */}
-                              <img
-                                src={`/images/books/cover-${item.bookData.slug}.svg`}
-                                alt={title}
-                                className="portal-book-real-cover"
-                                loading="lazy"
-                              />
+                              <RealBookCover book={item.bookData} size="sm" />
                             </div>
                           </div>
                         )}
