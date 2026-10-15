@@ -253,16 +253,8 @@ export default function Home({ posts = [], error }) {
 
       <SiteHeader />
 
-      {/* 1. EXECUTIVE SPLIT HERO */}
+      {/* 1. CLEAN CLASSIC EDITORIAL HERO */}
       <section className="hero-editorial">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="/images/open-bible-morning.jpg"
-          alt="Hun Chet Personal Blog"
-          className="hero-editorial-bg"
-        />
-        <div className="hero-editorial-scrim" />
-
         <div className="container" style={{ width: "100%" }}>
           <div className="hero-split-grid">
             {/* Left Column: Author Narrative & Mission */}
@@ -313,7 +305,10 @@ export default function Home({ posts = [], error }) {
                   style={{
                     padding: "0.85rem 1.85rem",
                     fontSize: "0.9rem",
-                    boxShadow: "0 6px 20px rgba(184, 155, 94, 0.4)",
+                    background: "#0b192c",
+                    borderColor: "#0b192c",
+                    color: "#ffffff",
+                    boxShadow: "0 4px 14px rgba(11, 25, 44, 0.2)",
                   }}
                 >
                   {isKm ? "អានអត្ថបទទាំងអស់" : "Explore All Articles"} →
@@ -321,10 +316,16 @@ export default function Home({ posts = [], error }) {
 
                 <Link
                   href="/devotions"
-                  className="btn btn-gold-glass"
-                  style={{ padding: "0.85rem 1.6rem", fontSize: "0.9rem" }}
+                  className="btn btn-outline"
+                  style={{
+                    padding: "0.85rem 1.6rem",
+                    fontSize: "0.9rem",
+                    background: "#ffffff",
+                    border: "1px solid #cbd5e1",
+                    color: "#0b192c",
+                  }}
                 >
-                  <BookOpenIcon style={{ width: 16, height: 16, marginRight: "0.45rem", color: "var(--gold)" }} />
+                  <BookOpenIcon style={{ width: 16, height: 16, marginRight: "0.45rem", color: "#8c6d32" }} />
                   <span>{isKm ? "ព្រះបន្ទូល ៣៦៥ ថ្ងៃ" : "365 Devotions"}</span>
                 </Link>
               </div>
@@ -395,7 +396,13 @@ export default function Home({ posts = [], error }) {
                     target="_blank"
                     rel="noreferrer"
                     className="author-btn btn-telegram"
-                    style={{ padding: "0.55rem 1.15rem", fontSize: "0.82rem" }}
+                    style={{
+                      padding: "0.55rem 1.15rem",
+                      fontSize: "0.82rem",
+                      background: "#ffffff",
+                      border: "1px solid #cbd5e1",
+                      color: "#0b192c",
+                    }}
                   >
                     <TelegramIcon width="14" height="14" />
                     <span>Telegram</span>
@@ -403,7 +410,13 @@ export default function Home({ posts = [], error }) {
                   <a
                     href="tel:0966875886"
                     className="author-btn btn-phone"
-                    style={{ padding: "0.55rem 1.15rem", fontSize: "0.82rem" }}
+                    style={{
+                      padding: "0.55rem 1.15rem",
+                      fontSize: "0.82rem",
+                      background: "#ffffff",
+                      border: "1px solid #cbd5e1",
+                      color: "#0b192c",
+                    }}
                   >
                     <PhoneIcon width="14" height="14" />
                     <span>096 687 5886</span>
@@ -411,7 +424,7 @@ export default function Home({ posts = [], error }) {
                 </div>
 
                 <div className="hero-exec-seal">
-                  <CheckIcon style={{ width: 13, height: 13, color: "var(--gold)" }} />
+                  <CheckIcon style={{ width: 13, height: 13, color: "#8c6d32" }} />
                   <span>{isKm ? "គេហទំព័រប្លុកផ្ទាល់ខ្លួនផ្លូវការ • hunchet.blog" : "Official Personal Blog • hunchet.blog"}</span>
                 </div>
               </div>
@@ -429,11 +442,11 @@ export default function Home({ posts = [], error }) {
 
               <div style={{ position: "relative", zIndex: 2 }}>
                 <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: "1rem", marginBottom: "1.25rem" }}>
-                  <div className="devotion-badge">
-                    <BookOpenIcon />
+                  <div className="devotion-badge" style={{ background: "rgba(184, 155, 94, 0.14)", color: "#785a28", border: "1px solid rgba(184, 155, 94, 0.35)" }}>
+                    <BookOpenIcon style={{ color: "#8c6d32" }} />
                     <span>{currentScripture.tag}</span>
                   </div>
-                  <span style={{ fontSize: "0.78rem", color: "var(--gold)", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" }}>
+                  <span style={{ fontSize: "0.78rem", color: "#8c6d32", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" }}>
                     {isKm ? "ខគម្ពីរលើកទឹកចិត្តប្រចាំថ្ងៃ" : "Scripture of the Day"}
                   </span>
                 </div>
@@ -442,8 +455,8 @@ export default function Home({ posts = [], error }) {
                   style={{
                     fontFamily: "var(--font-display)",
                     fontSize: "clamp(1.18rem, 2.6vw, 1.7rem)",
-                    lineHeight: 1.65,
-                    color: "#ffffff",
+                    lineHeight: 1.75,
+                    color: "#0b192c",
                     margin: "0 0 1.5rem",
                     fontWeight: 600,
                   }}
@@ -458,11 +471,11 @@ export default function Home({ posts = [], error }) {
                     justifyContent: "space-between",
                     flexWrap: "wrap",
                     gap: "1.25rem",
-                    borderTop: "1px solid rgba(255, 255, 255, 0.15)",
+                    borderTop: "1px solid #e8e2d8",
                     paddingTop: "1.25rem",
                   }}
                 >
-                  <cite style={{ fontFamily: "var(--font-display)", fontSize: "1.05rem", color: "var(--gold)", fontStyle: "normal", fontWeight: 700 }}>
+                  <cite style={{ fontFamily: "var(--font-display)", fontSize: "1.05rem", color: "#8c6d32", fontStyle: "normal", fontWeight: 700 }}>
                     — {currentScripture.ref}
                   </cite>
 
@@ -470,20 +483,7 @@ export default function Home({ posts = [], error }) {
                     <button
                       type="button"
                       onClick={handleShareTelegram}
-                      style={{
-                        background: "rgba(14, 165, 233, 0.2)",
-                        border: "1px solid rgba(14, 165, 233, 0.4)",
-                        color: "#38bdf8",
-                        padding: "0.55rem 1.15rem",
-                        borderRadius: "var(--radius-sm)",
-                        fontSize: "0.78rem",
-                        fontWeight: 700,
-                        cursor: "pointer",
-                        display: "inline-flex",
-                        alignItems: "center",
-                        gap: "0.45rem",
-                        transition: "all 0.2s ease",
-                      }}
+                      className="btn-telegram-action"
                     >
                       <TelegramIcon style={{ width: 14, height: 14 }} />
                       <span>{isKm ? "ចែករំលែកលើ Telegram" : "Share to Telegram"}</span>
@@ -492,7 +492,7 @@ export default function Home({ posts = [], error }) {
                     <Link
                       href="/devotions"
                       className="btn btn-primary"
-                      style={{ padding: "0.55rem 1.25rem", fontSize: "0.78rem" }}
+                      style={{ padding: "0.55rem 1.25rem", fontSize: "0.78rem", background: "#0b192c", borderColor: "#0b192c", color: "#ffffff" }}
                     >
                       <BookOpenIcon style={{ width: 14, height: 14, marginRight: "0.35rem" }} />
                       {isKm ? "អានព្រះបន្ទូល ៣៦៥ ថ្ងៃ" : "Explore 365 Devotions"} →
@@ -611,9 +611,9 @@ export default function Home({ posts = [], error }) {
                   gap: "0.45rem",
                   padding: "0.35rem 0.95rem",
                   borderRadius: "var(--radius-sm)",
-                  background: "rgba(184, 155, 94, 0.2)",
-                  border: "1px solid rgba(184, 155, 94, 0.4)",
-                  color: "var(--gold)",
+                  background: "rgba(184, 155, 94, 0.14)",
+                  border: "1px solid rgba(184, 155, 94, 0.35)",
+                  color: "#785a28",
                   fontSize: "0.72rem",
                   fontWeight: 700,
                   letterSpacing: "0.14em",
@@ -621,22 +621,22 @@ export default function Home({ posts = [], error }) {
                   marginBottom: "0.75rem",
                 }}
               >
-                <BookOpenIcon style={{ width: 14, height: 14 }} />
+                <BookOpenIcon style={{ width: 14, height: 14, color: "#8c6d32" }} />
                 {isKm
                   ? "សារព្រះបន្ទូលពិសេស • មាគ៌ាឆ្ពោះទៅកាន់គោលបំណងជីវិត"
                   : "Featured Reflection • A Path to Purpose"}
               </span>
 
-              <h2 style={{ fontFamily: "var(--font-display)", color: "#ffffff", fontSize: "clamp(1.8rem, 3.5vw, 2.5rem)" }}>
+              <h2 style={{ fontFamily: "var(--font-display)", color: "var(--navy-dark, #0b192c)", fontSize: "clamp(1.8rem, 3.5vw, 2.5rem)" }}>
                 {isKm
                   ? "គន្លឹះ ៥ យ៉ាងដើម្បីរស់នៅប្រកបដោយអត្ថន័យក្នុងព្រះគ្រីស្ទ"
                   : "5 Keys to Living a Truly Great Life in Christ"}
               </h2>
 
-              <div style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", marginTop: "0.5rem", color: "#cbd5e1", fontSize: "0.85rem" }}>
-                <UserIcon style={{ width: 14, height: 14, color: "var(--gold)" }} />
+              <div style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", marginTop: "0.5rem", color: "#475569", fontSize: "0.85rem" }}>
+                <UserIcon style={{ width: 14, height: 14, color: "#8c6d32" }} />
                 <span>{isKm ? "អត្ថបទដោយ៖" : "Written by:"}</span>
-                <strong style={{ color: "var(--gold)" }}>{isKm ? "លោកគ្រូ ហ៊ុន ចិត្ត" : "Leader Hun Chet"}</strong>
+                <strong style={{ color: "#8c6d32" }}>{isKm ? "លោកគ្រូ ហ៊ុន ចិត្ត" : "Leader Hun Chet"}</strong>
               </div>
 
               <div className="hero-divider-classic" style={{ margin: "1rem auto 0" }} />
@@ -652,7 +652,7 @@ export default function Home({ posts = [], error }) {
                     fontWeight: 700,
                     letterSpacing: "0.12em",
                     textTransform: "uppercase",
-                    color: "var(--gold)",
+                    color: "#785a28",
                     marginBottom: "1rem",
                   }}
                 >
@@ -665,13 +665,13 @@ export default function Home({ posts = [], error }) {
                       <div style={{ display: "flex", alignItems: "center", gap: "0.85rem" }}>
                         <span className="sermon-key-num">{k.number}</span>
                         <div>
-                          <strong style={{ display: "block", fontSize: "0.95rem" }}>{loc(k.title)}</strong>
-                          <span style={{ fontSize: "0.75rem", color: "var(--gold)", fontFamily: "var(--font-display)" }}>
+                          <strong style={{ display: "block", fontSize: "0.95rem", color: "#0b192c" }}>{loc(k.title)}</strong>
+                          <span style={{ fontSize: "0.75rem", color: "#8c6d32", fontFamily: "var(--font-display)", fontWeight: 600 }}>
                             {k.ref}
                           </span>
                         </div>
                       </div>
-                      <ArrowRightIcon style={{ width: 16, height: 16, color: "rgba(255,255,255,0.4)" }} />
+                      <ArrowRightIcon style={{ width: 16, height: 16, color: "#94a3b8" }} />
                     </Link>
                   ))}
                 </div>
@@ -710,7 +710,7 @@ export default function Home({ posts = [], error }) {
                     <Link
                       href="/articles"
                       className="btn btn-primary"
-                      style={{ padding: "0.65rem 1.35rem", fontSize: "0.82rem" }}
+                      style={{ padding: "0.65rem 1.35rem", fontSize: "0.82rem", background: "#0b192c", borderColor: "#0b192c", color: "#ffffff" }}
                     >
                       {isKm ? "អានអត្ថបទទាំងអស់" : "Explore All Articles"} →
                     </Link>
