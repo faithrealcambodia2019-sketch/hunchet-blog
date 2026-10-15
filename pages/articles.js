@@ -75,44 +75,41 @@ export default function Articles({ posts, error }) {
 
       <SiteHeader />
 
-      {/* Stately Sanctuary Hero */}
+      {/* Stately Sanctuary Hero — Clean Classic Editorial */}
       <section className="sanctuary-hero">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="/images/sermon-purpose-congregation.jpg"
-          alt="Hun Chet Personal Blog Articles"
-          className="sanctuary-hero-bg"
-        />
-        <div className="sanctuary-hero-overlay" />
         <div className="sanctuary-hero-content">
           <div className="sanctuary-badge-tag">
-            <span>{isKm ? "អត្ថបទ និងការបង្រៀនព្រះគម្ពីរ" : "Biblical Articles & Teaching"}</span>
+            <span>{isKm ? "ការបង្រៀន និងអត្ថបទ" : "Biblical Teaching & Reflections"}</span>
           </div>
           <h1 className="sanctuary-hero-title">{t("articles.title")}</h1>
           <p className="sanctuary-hero-subtitle">
             {isKm
-              ? "ការបង្រៀនព្រះបន្ទូល ការពន្យល់ព្រះគម្ពីរ និងការបណ្តុះបណ្តាលជីវិតគ្រីស្ទបរិស័ទ"
-              : "Biblical Exegesis, Practical Christian Living, and Spiritual Guidance"}
+              ? "ការពន្យល់ព្រះគម្ពីរ ការរៀនសូត្រពីជីវិត និងការលើកទឹកចិត្តជំនឿ"
+              : "Biblical Exegesis, Life Lessons, and Pastoral Encouragement"}
           </p>
-          <p className="sanctuary-hero-lead">{t("articles.intro")}</p>
+          <p className="sanctuary-hero-lead">
+            {isKm
+              ? "អត្ថបទសរសេរដោយផ្ទាល់ដៃលោកគ្រូ ហ៊ុន ចិត្ត ដើម្បីពន្យល់ព្រះគម្ពីរ និងលើកទឹកចិត្តដល់បងប្អូនក្នុងការរស់នៅប្រចាំថ្ងៃ។"
+              : "Written by Leader Hun Chet to unpack Holy Scripture and encourage believers in their daily walk with Christ."}
+          </p>
 
           <div className="sanctuary-stat-strip">
             <div className="sanctuary-stat-card">
               <span className="sanctuary-stat-num">{posts.length}+</span>
               <span className="sanctuary-stat-label">
-                {isKm ? "អត្ថបទ និងទេសនា" : "Published Articles"}
+                {isKm ? "អត្ថបទសរុប" : "Total Articles"}
               </span>
             </div>
             <div className="sanctuary-stat-card">
-              <span className="sanctuary-stat-num">Weekly</span>
+              <span className="sanctuary-stat-num">{isKm ? "១៩៥៤" : "1954"}</span>
               <span className="sanctuary-stat-label">
-                {isKm ? "អត្ថបទថ្មីៗជាប្រចាំ" : "Regular Reflections"}
+                {isKm ? "ព្រះគម្ពីរខ្មែរ ១៩៥៤" : "1954 Khmer Bible"}
               </span>
             </div>
             <div className="sanctuary-stat-card">
-              <span className="sanctuary-stat-num">Bilingual</span>
+              <span className="sanctuary-stat-num">{isKm ? "១០០%" : "100%"}</span>
               <span className="sanctuary-stat-label">
-                {isKm ? "ភាសាខ្មែរ និងអង់គ្លេស" : "Khmer & English"}
+                {isKm ? "ចែករំលែកដោយឥតគិតថ្លៃ" : "Free Access"}
               </span>
             </div>
           </div>

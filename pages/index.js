@@ -294,8 +294,8 @@ export default function Home({ posts = [], error }) {
 
               <p className="hero-editorial-lede">
                 {isKm
-                  ? "សូមស្វាគមន៍មកកាន់ប្លុកផ្ទាល់ខ្លួនរបស់ខ្ញុំ។ ទីនេះជាកន្លែងកត់ត្រា និងចែករំលែកនូវសេចក្តីពិតនៃព្រះបន្ទូល ការពន្យល់ព្រះគម្ពីរ ការរៀនសូត្រពីជីវិត និងធនធានស្មារតីសម្រាប់ការរីកចម្រើនក្នុងព្រះគ្រីស្ទ។"
-                  : "Welcome to my personal blog. A space dedicated to sharing biblical exposition, theological writings, life experiences, and resources for spiritual growth."}
+                  ? "ខ្ញុំបាទ ហ៊ុន ចិត្ត សូមស្វាគមន៍បងប្អូនមកកាន់ប្លុកផ្ទាល់ខ្លួននេះ។ បំណងចិត្តដ៏ធំបំផុតរបស់ខ្ញុំ គឺការស្គាល់ព្រះយេស៊ូវគ្រីស្ទ និងការចែករំលែកសេចក្តីពិតនៃព្រះបន្ទូលទ្រង់ តាមរយៈការបង្រៀនព្រះគម្ពីរ និងការលើកទឹកចិត្តក្នុងជីវិតប្រចាំថ្ងៃ។"
+                  : "Welcome. My greatest calling is knowing Jesus Christ and sharing the living truth of His Word through faithful biblical teaching, pastoral reflections, and daily encouragement."}
               </p>
 
               <div className="hero-editorial-actions">

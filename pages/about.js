@@ -40,34 +40,39 @@ export default function About() {
 
       <SiteHeader />
 
-      {/* Stately Sanctuary Hero */}
+      {/* Stately Sanctuary Hero — Clean Classic Editorial */}
       <section className="sanctuary-hero">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="/images/history-sanctuary-worship.jpg"
-          alt="Hun Chet Ministry Sanctuary"
-          className="sanctuary-hero-bg"
-        />
-        <div className="sanctuary-hero-overlay" />
         <div className="sanctuary-hero-content">
           <div className="sanctuary-badge-tag">
-            <span>{isKm ? "ថ្នាក់ដឹកនាំ និងកិច្ចការបម្រើព្រះ" : "Ministry Leadership & Calling"}</span>
+            <span>{isKm ? "ដំណើរជីវិត និងការត្រាស់ហៅ" : "Personal Calling & Ministry"}</span>
           </div>
           <h1 className="sanctuary-hero-title">{t("about.title")}</h1>
           <p className="sanctuary-hero-subtitle">
             {isKm
-              ? "លោកគ្រូ ហ៊ុន ចិត្ត — អ្នកដឹកនាំកិច្ចការបម្រើព្រះ និងការបង្រៀនព្រះបន្ទូល"
-              : "Leader Hun Chet — Ministry Lead & Preacher"}
+              ? "លោកគ្រូ ហ៊ុន ចិត្ត • អ្នកបម្រើព្រះបន្ទូល និងការបណ្តុះសិស្ស"
+              : "Leader Hun Chet • Biblical Preacher & Discipleship Guide"}
           </p>
           <p className="sanctuary-hero-lead">{description}</p>
 
           <div className="sanctuary-stat-strip">
-            {STATS.map((s) => (
-              <div className="sanctuary-stat-card" key={s.key}>
-                <span className="sanctuary-stat-num">{s.num}</span>
-                <span className="sanctuary-stat-label">{t(s.key)}</span>
-              </div>
-            ))}
+            <div className="sanctuary-stat-card">
+              <span className="sanctuary-stat-num">12+</span>
+              <span className="sanctuary-stat-label">
+                {isKm ? "ឆ្នាំក្នុងកិច្ចការបម្រើព្រះ" : "Years in Ministry"}
+              </span>
+            </div>
+            <div className="sanctuary-stat-card">
+              <span className="sanctuary-stat-num">CV & EFC</span>
+              <span className="sanctuary-stat-label">
+                {isKm ? "ផ្សាយដំណឹងល្អឌីជីថល" : "Digital Media Ministry"}
+              </span>
+            </div>
+            <div className="sanctuary-stat-card">
+              <span className="sanctuary-stat-num">{isKm ? "១០០%" : "100%"}</span>
+              <span className="sanctuary-stat-label">
+                {isKm ? "ព្រះគម្ពីរជាគ្រឹះ" : "Scripture First"}
+              </span>
+            </div>
           </div>
         </div>
       </section>

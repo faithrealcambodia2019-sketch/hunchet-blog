@@ -207,17 +207,8 @@ export default function Resource() {
 
       <SiteHeader />
 
-      {/* 1. STATELY HERO SECTION */}
+      {/* 1. STATELY HERO SECTION — Clean Classic Editorial */}
       <section className="resource-hero">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="/images/worship-service.jpg"
-          alt=""
-          className="resource-hero-bg"
-          aria-hidden="true"
-        />
-        <div className="resource-hero-overlay" aria-hidden="true" />
-
         <div className="resource-hero-content">
           <div className="resource-badge-tag">
             <PlayIcon />

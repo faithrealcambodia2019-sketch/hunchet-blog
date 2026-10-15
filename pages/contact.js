@@ -28,50 +28,43 @@ export default function Contact() {
 
       <SiteHeader />
 
-      {/* Stately Personal Blog Hero */}
+      {/* Stately Personal Blog Hero — Clean Classic Editorial */}
       <section className="sanctuary-hero">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="/images/history-prayer-fellowship.jpg"
-          alt="Hun Chet Personal Contact"
-          className="sanctuary-hero-bg"
-        />
-        <div className="sanctuary-hero-overlay" />
         <div className="sanctuary-hero-content">
           <div className="sanctuary-badge-tag">
-            <span>{isKm ? "ទំនាក់ទំនងផ្ទាល់" : "Direct Contact"}</span>
+            <span>{isKm ? "ការប្រឹក្សា និងការអធិស្ឋាន" : "Counseling & Prayer Requests"}</span>
           </div>
           <h1 className="sanctuary-hero-title">
-            {isKm ? "ទាក់ទងលោកគ្រូ ហ៊ុន ចិត្ត" : "Contact Leader Hun Chet"}
+            {isKm ? "ទំនាក់ទំនងលោកគ្រូ ហ៊ុន ចិត្ត" : "Contact Leader Hun Chet"}
           </h1>
           <p className="sanctuary-hero-subtitle">
             {isKm
-              ? "ការប្រឹក្សាខាងវិញ្ញាណ សំណួរព្រះគម្ពីរ ការអញ្ជើញចែករំលែក និងសំណើអធិស្ឋាន"
-              : "Spiritual Guidance, Biblical Questions, Speaking Invitations & Prayer Requests"}
+              ? "លោកគ្រូ ហ៊ុន ចិត្ត • ទំនាក់ទំនងដោយផ្ទាល់"
+              : "Leader Hun Chet • Personal Fellowship"}
           </p>
           <p className="sanctuary-hero-lead">
             {isKm
-              ? "ខ្ញុំរីករាយនឹងឆ្លើយតប និងអធិស្ឋានជូនបងប្អូនទាំងអស់គ្នា។ សូមទាក់ទងមកខ្ញុំតាមរយៈបណ្តាញទំនាក់ទំនងខាងក្រោម។"
-              : "I would be honored to pray with you, answer your questions about faith, or connect for ministry fellowship."}
+              ? "ប្រសិនបើបងប្អូនមានសំណួរអំពីព្រះគម្ពីរ ត្រូវការការប្រឹក្សាខាងវិញ្ញាណ ឬចង់ឱ្យអធិស្ឋានជូន សូមកុំស្ទាក់ស្ទើរក្នុងការទាក់ទងមកខ្ញុំបាទ។"
+              : "If you have biblical questions, need pastoral prayer, or would like to connect for ministry, please feel free to reach out directly."}
           </p>
 
           <div className="sanctuary-stat-strip">
             <div className="sanctuary-stat-card">
               <span className="sanctuary-stat-num">096 687 5886</span>
               <span className="sanctuary-stat-label">
-                {isKm ? "ទូរស័ព្ទផ្ទាល់" : "Direct Phone"}
+                {isKm ? "លេខទូរស័ព្ទផ្ទាល់" : "Direct Phone"}
               </span>
             </div>
             <div className="sanctuary-stat-card">
               <span className="sanctuary-stat-num">Telegram</span>
               <span className="sanctuary-stat-label">
-                {isKm ? "ផ្ញើសាររហ័ស" : "Fast Message"}
+                {isKm ? "ផ្ញើសារផ្ទាល់ខ្លួន" : "Direct Message"}
               </span>
             </div>
             <div className="sanctuary-stat-card">
-              <span className="sanctuary-stat-num">Phnom Penh</span>
+              <span className="sanctuary-stat-num">{isKm ? "ភ្នំពេញ" : "Phnom Penh"}</span>
               <span className="sanctuary-stat-label">
-                {isKm ? "រាជធានីភ្នំពេញ" : "Location"}
+                {isKm ? "ទីតាំងបម្រើការងារ" : "Ministry Base"}
               </span>
             </div>
           </div>

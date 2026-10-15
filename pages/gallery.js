@@ -103,41 +103,34 @@ export default function Gallery() {
 
       <SiteHeader />
 
-      {/* 1. STATELY HERO SECTION */}
+      {/* 1. STATELY HERO SECTION — Clean Classic Editorial */}
       <section className="sanctuary-hero">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="/images/youth-fellowship-2025-group.jpg"
-          alt="Hun Chet Ministry Family and Youth"
-          className="sanctuary-hero-bg"
-        />
-        <div className="sanctuary-hero-overlay" />
         <div className="sanctuary-hero-content">
           <div className="sanctuary-badge-tag">
             <CameraIcon style={{ width: 14, height: 14 }} />
             <span>
               {locale === "km"
-                ? "ជីវិតរួមគ្នា • រូបភាព និងវីដេអូ"
-                : "Life Together • Photos & Videos"}
+                ? "ទិដ្ឋភាពនៃជីវិត និងការបម្រើព្រះ"
+                : "Life & Ministry Gallery"}
             </span>
           </div>
 
           <h1 className="sanctuary-hero-title">
             {locale === "km"
-              ? "កម្រងរូបភាពព័ន្ធកិច្ច និងក្រុមជំនុំ"
+              ? "កម្រងរូបភាពនៃការបម្រើព្រះ"
               : "Ministry & Church Gallery"}
           </h1>
 
           <p className="sanctuary-hero-subtitle">
             {locale === "km"
-              ? "ព័ន្ធកិច្ចលោកគ្រូ ហ៊ុន ចិត្ត • ព័ន្ធកិច្ចឌីជីថល • ការបណ្តុះសិស្សជំនាន់ក្រោយ"
-              : "Hun Chet Ministry • Digital Outreach • Generational Discipleship"}
+              ? "ការថ្វាយបង្គំ ការបង្រៀនព្រះបន្ទូល និងការប្រកបគ្នាក្នុងព្រះគ្រីស្ទ"
+              : "Worship, Biblical Teaching, and Christian Fellowship"}
           </p>
 
           <p className="sanctuary-hero-lead">
             {locale === "km"
-              ? "ទិដ្ឋភាពពិតនៃការថ្វាយបង្គំ ការផ្សាយព្រះបន្ទូលលើវេទិកា ពិធីបុណ្យជ្រមុជទឹក ការប្រកបគ្នារបស់យុវជន និងថ្នាក់រៀនព្រះគម្ពីរកុមារ នៅរាជធានីភ្នំពេញ។"
-              : "Authentic glimpses of heartfelt worship, pastoral preaching from the pulpit, water baptism celebrations, and loving fellowship in Hun Chet Ministry."}
+              ? "ទិដ្ឋភាពពិតជាក់ស្តែងពីការថ្វាយបង្គំ ពិធីបុណ្យជ្រមុជទឹក យុវជន និងសកម្មភាពបម្រើព្រះក្នុងសហគមន៍។"
+              : "Authentic glimpses of heartfelt worship, pastoral preaching from the pulpit, water baptism celebrations, and loving fellowship."}
           </p>
 
           <div className="sanctuary-stat-strip">
