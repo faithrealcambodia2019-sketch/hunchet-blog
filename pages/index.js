@@ -25,9 +25,12 @@ import {
   FacebookIcon,
   CalendarIcon,
   CheckIcon,
+  FeatherIcon,
+  GlobeIcon,
+  GiftIcon,
+  FileTextIcon,
 } from "../components/Icons";
 import { BOOKS } from "../lib/books";
-import Book3D from "../components/Book3D";
 import RealBookCover from "../components/RealBookCover";
 
 
@@ -334,15 +337,21 @@ export default function Home({ posts = [], error }) {
 
               <div className="hero-cred-strip">
                 <div className="hero-cred-item">
-                  <span className="cred-icon">📖</span>
+                  <span className="cred-icon-wrap" aria-hidden="true">
+                    <BookOpenIcon style={{ width: 15, height: 15 }} />
+                  </span>
                   <span>{isKm ? "ព្រះគម្ពីរជាគ្រឹះ" : "Scripture First"}</span>
                 </div>
                 <div className="hero-cred-item">
-                  <span className="cred-icon">✍️</span>
+                  <span className="cred-icon-wrap" aria-hidden="true">
+                    <FeatherIcon style={{ width: 15, height: 15 }} />
+                  </span>
                   <span>{isKm ? "អត្ថបទ & ការបង្រៀន" : "Articles & Exegesis"}</span>
                 </div>
                 <div className="hero-cred-item">
-                  <span className="cred-icon">🇰🇭</span>
+                  <span className="cred-icon-wrap" aria-hidden="true">
+                    <GlobeIcon style={{ width: 15, height: 15 }} />
+                  </span>
                   <span>{isKm ? "ធនធានជាភាសាខ្មែរ" : "Khmer Theological Resources"}</span>
                 </div>
               </div>
@@ -557,17 +566,32 @@ export default function Home({ posts = [], error }) {
                 {/* 3 Pillars List */}
                 <div className="welcome-pillar-grid">
                   <div className="welcome-pillar-card">
-                    <strong>📖 {isKm ? "ព្រះគម្ពីរជាគ្រឹះ" : "Scripture First"}</strong>
+                    <div className="welcome-pillar-header">
+                      <span className="pillar-icon-wrap" aria-hidden="true">
+                        <BookOpenIcon style={{ width: 17, height: 17 }} />
+                      </span>
+                      <strong>{isKm ? "ព្រះគម្ពីរជាគ្រឹះ" : "Scripture First"}</strong>
+                    </div>
                     <span>{isKm ? "គ្រប់ការបង្រៀនទាំងអស់ផ្តើមចេញពីព្រះបន្ទូលពិត។" : "Grounded directly in biblical text."}</span>
                   </div>
 
                   <div className="welcome-pillar-card">
-                    <strong>🇰🇭 {isKm ? "សរសេរជាភាសាខ្មែរ" : "Written in Khmer"}</strong>
+                    <div className="welcome-pillar-header">
+                      <span className="pillar-icon-wrap" aria-hidden="true">
+                        <GlobeIcon style={{ width: 17, height: 17 }} />
+                      </span>
+                      <strong>{isKm ? "សរសេរជាភាសាខ្មែរ" : "Written in Khmer"}</strong>
+                    </div>
                     <span>{isKm ? "អត្ថបទ និងសៀវភៅគុណភាពខ្ពស់សម្រាប់ប្រជាជនកម្ពុជា។" : "High-caliber theological literature for Khmer readers."}</span>
                   </div>
 
                   <div className="welcome-pillar-card">
-                    <strong>🎁 {isKm ? "ចែករំលែកដោយឥតគិតថ្លៃ" : "Freely Shared"}</strong>
+                    <div className="welcome-pillar-header">
+                      <span className="pillar-icon-wrap" aria-hidden="true">
+                        <GiftIcon style={{ width: 17, height: 17 }} />
+                      </span>
+                      <strong>{isKm ? "ចែករំលែកដោយឥតគិតថ្លៃ" : "Freely Shared"}</strong>
+                    </div>
                     <span>{isKm ? "ផ្តល់ជូនដោយឥតគិតថ្លៃ ដើម្បីកសាងពួកជំនុំ។" : "Freely available to enrich and equip the Church."}</span>
                   </div>
                 </div>
@@ -676,7 +700,7 @@ export default function Home({ posts = [], error }) {
                       ? "«ដ្បិតយើងដឹងពីគំនិតដែលយើងគិតពីឯងរាល់គ្នា គឺសុទ្ធតែជាគំនិតនៃសេចក្តីសុខសាន្ត មិនមែនជាគំនិតនៃសេចក្តីអាក្រក់ឡើយ ដើម្បីឲ្យឯងរាល់គ្នាមានសង្ឃឹមនៅចុងបំផុត»"
                       : "“For I know the plans I have for you,” declares the LORD, “plans to prosper you and not to harm you, plans to give you hope and a future.”"}
                   </blockquote>
-                  <cite>— {isKm ? "យេរេមា ២៩:១១" : "Jeremiah 29:11"}</cite>
+                  <cite>— {isKm ? "យេរេមា ២៩:១១ • ព្រះគម្ពីរខ្មែរ ១៩៥៤" : "Jeremiah 29:11"}</cite>
                 </div>
 
                 <div
@@ -861,17 +885,39 @@ export default function Home({ posts = [], error }) {
               </div>
 
               <div>
-                <span style={{ fontSize: "0.72rem", color: "var(--gold)", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.12em" }}>
-                  {isKm ? "សៀវភៅណែនាំពិសេស" : "Featured Study Volume"}
-                </span>
-                <h3 style={{ fontFamily: "var(--font-display)", color: "var(--navy-dark)", fontSize: "1.5rem", margin: "0.5rem 0" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginBottom: "0.5rem" }}>
+                  <span style={{ fontSize: "0.72rem", color: "var(--gold)", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.12em" }}>
+                    {isKm ? "សៀវភៅណែនាំពិសេស" : "Featured Study Volume"}
+                  </span>
+                  <span style={{ fontSize: "0.68rem", background: "rgba(184, 155, 94, 0.15)", color: "#7a632b", padding: "0.15rem 0.5rem", borderRadius: "2px", fontWeight: 700 }}>
+                    HC-COMM-01
+                  </span>
+                </div>
+
+                <h3 style={{ fontFamily: "var(--font-display)", color: "var(--navy-dark)", fontSize: "1.55rem", margin: "0.3rem 0 0.75rem", lineHeight: 1.3 }}>
                   {isKm ? "អត្ថាធិប្បាយព្រះគម្ពីរ ម៉ាថាយ ហេនរី" : "Matthew Henry's Bible Commentary"}
                 </h3>
-                <p style={{ fontSize: "0.9rem", color: "var(--text)", lineHeight: 1.7, marginBottom: "1.5rem" }}>
+
+                <p style={{ fontSize: "0.92rem", color: "var(--text)", lineHeight: 1.7, marginBottom: "1.25rem" }}>
                   {isKm
                     ? "អត្ថាធិប្បាយសង្ខេបខម្តងមួយៗលើព្រះគម្ពីរទាំងមូល ផ្តល់ជូនដោយឥតគិតថ្លៃសម្រាប់គ្រូគង្វាល និងអ្នកជឿទាំងអស់ដែលចង់រីកចម្រើនក្នុងព្រះបន្ទូល។"
                     : "The classic verse-by-verse commentary, provided freely for pastors, leaders, and growing believers."}
                 </p>
+
+                <div style={{ display: "flex", flexDirection: "column", gap: "0.45rem", marginBottom: "1.5rem", fontSize: "0.82rem", color: "#475569" }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+                    <CheckIcon style={{ width: 14, height: 14, color: "var(--gold)", flexShrink: 0 }} />
+                    <span>{isKm ? "កម្រងឯកសារពេញលេញ ១,២៤៨ ទំព័រ (Complete Digital Archive)" : "1,248 pages of complete digital study archive"}</span>
+                  </div>
+                  <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+                    <CheckIcon style={{ width: 14, height: 14, color: "var(--gold)", flexShrink: 0 }} />
+                    <span>{isKm ? "អត្ថាធិប្បាយខម្តងមួយៗ គ្របដណ្តប់គម្ពីរសញ្ញាចាស់ និងសញ្ញាថ្មី" : "Expository verse-by-verse commentary across both Testaments"}</span>
+                  </div>
+                  <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+                    <CheckIcon style={{ width: 14, height: 14, color: "var(--gold)", flexShrink: 0 }} />
+                    <span>{isKm ? "ទាញយកជាឯកសារ PDF ឥតគិតថ្លៃ ១០០% សម្រាប់កសាងជំនឿ" : "100% free digital PDF download to equip the church"}</span>
+                  </div>
+                </div>
 
                 <div style={{ display: "flex", gap: "0.85rem", flexWrap: "wrap" }}>
                   <Link href="/library/matthew-henry-commentary" className="btn btn-primary" style={{ fontSize: "0.82rem" }}>

@@ -4253,34 +4253,37 @@ iframe {
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  padding: 1rem 1.25rem;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: var(--radius-sm);
+  padding: 1.05rem 1.35rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
   text-decoration: none;
   color: #ffffff;
-  transition: all 0.22s ease;
-  margin-bottom: 0.65rem;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  margin-bottom: 0.75rem;
 }
 
 .sermon-key-item:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: var(--gold);
-  transform: translateX(4px);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(184, 155, 94, 0.6);
+  transform: translateX(6px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
 .sermon-key-num {
-  width: 32px;
-  height: 32px;
-  background: var(--gold);
-  color: var(--navy-dark);
+  width: 34px;
+  height: 34px;
+  background: linear-gradient(135deg, #d4b87d 0%, #b3924e 50%, #9c7d3c 100%);
+  color: #071526;
   font-weight: 900;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 2px;
+  border-radius: 6px;
   flex-shrink: 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .sermon-quote-card {
@@ -4446,10 +4449,16 @@ iframe {
 @media (max-width: 980px) {
   .announcement-grid,
   .pulpit-grid,
-  .sermon-spotlight-grid,
-  .anc-partnership-inner {
+  .sermon-spotlight-grid {
     grid-template-columns: 1fr;
     gap: 2rem;
+  }
+
+  .anc-partnership-inner {
+    flex-direction: column;
+    text-align: center;
+    gap: 2rem;
+    justify-content: center;
   }
 
   .announcement-meta {
@@ -5440,14 +5449,30 @@ h1, h2, h3, h4, h5, h6 {
 .hero-cred-item {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  font-size: 0.82rem;
+  gap: 0.65rem;
+  font-size: 0.85rem;
   font-weight: 600;
   color: #e2e8f0;
 }
 
-.hero-cred-item .cred-icon {
+.cred-icon-wrap {
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+  background: rgba(184, 155, 94, 0.16);
+  border: 1px solid rgba(184, 155, 94, 0.35);
   color: var(--gold);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+
+.hero-cred-item:hover .cred-icon-wrap {
+  background: rgba(184, 155, 94, 0.28);
+  border-color: var(--gold);
+  transform: translateY(-1px);
 }
 
 /* Executive Author Showcase Card */
@@ -5489,25 +5514,30 @@ h1, h2, h3, h4, h5, h6 {
   object-fit: cover;
   object-position: top;
   border: 3px solid var(--gold);
-  box-shadow: 0 8px 28px rgba(184, 155, 94, 0.4);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 0 4px rgba(184, 155, 94, 0.25);
   display: block;
   background: #0b192c;
+  transition: transform 0.3s ease;
+}
+
+.hero-executive-card:hover .hero-exec-avatar {
+  transform: scale(1.02);
 }
 
 .hero-exec-badge-verified {
   position: absolute;
   bottom: 4px;
   right: 8px;
-  width: 28px;
-  height: 28px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
-  background: #0284c7;
+  background: linear-gradient(135deg, #c5a059 0%, #9c7d3c 100%);
   color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid #091626;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  border: 2.5px solid #091626;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.35);
 }
 
 .hero-exec-name {
@@ -5651,24 +5681,53 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .welcome-pillar-card {
-  padding: 1.25rem 1rem;
+  padding: 1.35rem 1.15rem;
   background: var(--bg-alt);
   border: 1px solid var(--border);
-  border-radius: 10px;
+  border-radius: 12px;
   border-top: 3px solid var(--gold);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
 }
 
 .welcome-pillar-card:hover {
   transform: translateY(-3px);
-  box-shadow: var(--shadow);
+  box-shadow: var(--shadow-md);
+  border-top-color: var(--gold-hover);
+}
+
+.welcome-pillar-header {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-bottom: 0.6rem;
+}
+
+.pillar-icon-wrap {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: rgba(184, 155, 94, 0.14);
+  border: 1px solid rgba(184, 155, 94, 0.35);
+  color: var(--gold);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+
+.welcome-pillar-card:hover .pillar-icon-wrap {
+  background: var(--gold);
+  color: #091626;
+  border-color: var(--gold);
 }
 
 .welcome-pillar-card strong {
   display: block;
   color: var(--navy-dark);
-  font-size: 0.95rem;
-  margin-bottom: 0.35rem;
+  font-size: 0.96rem;
+  font-weight: 700;
+  margin: 0;
 }
 
 .welcome-pillar-card span {
