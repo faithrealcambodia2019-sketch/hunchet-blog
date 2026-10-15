@@ -273,13 +273,13 @@ export default function Home({ posts = [], error }) {
                   <>
                     ចាក់ឬសក្នុងជំនឿ
                     <span className="hero-title-break" />
-                    <span className="gold-accent">ចែករំលែកសេចក្តីពិតនៃព្រះគ្រីស្ទ</span>
+                    <span className="gold-accent" style={{ display: "inline-block" }}>ចែករំលែកសេចក្តីពិតនៃព្រះគ្រីស្ទ</span>
                   </>
                 ) : (
                   <>
                     Rooted in Faith
                     <span className="hero-title-break" />
-                    <span className="gold-accent">Sharing Christ-Centered Truth</span>
+                    <span className="gold-accent" style={{ display: "inline-block" }}>Sharing Christ-Centered Truth</span>
                   </>
                 )}
               </h1>
@@ -603,7 +603,7 @@ export default function Home({ posts = [], error }) {
         {/* 4. FEATURED TEACHING: 5 KEYS TO LIVING IN CHRIST */}
         <section className="sermon-spotlight-box">
           <div className="container">
-            <div className="section-head" style={{ textAlign: "center", marginBottom: "3rem" }}>
+            <div className="section-head" style={{ textAlign: "center", marginBottom: "3rem", maxWidth: "860px" }}>
               <span
                 style={{
                   display: "inline-flex",
@@ -627,10 +627,20 @@ export default function Home({ posts = [], error }) {
                   : "Featured Reflection • A Path to Purpose"}
               </span>
 
-              <h2 style={{ fontFamily: "var(--font-display)", color: "var(--navy-dark, #0b192c)", fontSize: "clamp(1.8rem, 3.5vw, 2.5rem)" }}>
-                {isKm
-                  ? "គន្លឹះ ៥ យ៉ាងដើម្បីរស់នៅប្រកបដោយអត្ថន័យក្នុងព្រះគ្រីស្ទ"
-                  : "5 Keys to Living a Truly Great Life in Christ"}
+              <h2 style={{ fontFamily: "var(--font-display)", color: "var(--navy-dark, #0b192c)", fontSize: "clamp(1.75rem, 2.9vw, 2.45rem)", lineHeight: 1.35 }}>
+                {isKm ? (
+                  <>
+                    គន្លឹះ ៥ យ៉ាងដើម្បីរស់នៅប្រកបដោយអត្ថន័យ
+                    <span className="hero-title-break" style={{ height: "0.25rem" }} />
+                    <span style={{ color: "#8c6d32", display: "inline-block" }}>ក្នុងព្រះគ្រីស្ទ</span>
+                  </>
+                ) : (
+                  <>
+                    5 Keys to Living a Truly Great Life
+                    <span className="hero-title-break" style={{ height: "0.25rem" }} />
+                    <span style={{ color: "#8c6d32", display: "inline-block" }}>in Christ</span>
+                  </>
+                )}
               </h2>
 
               <div style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", marginTop: "0.5rem", color: "#475569", fontSize: "0.85rem" }}>
