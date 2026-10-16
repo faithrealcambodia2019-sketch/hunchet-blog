@@ -25,12 +25,9 @@ import {
   FacebookIcon,
   CalendarIcon,
   CheckIcon,
-  FeatherIcon,
-  GlobeIcon,
-  GiftIcon,
-  FileTextIcon,
 } from "../components/Icons";
 import { BOOKS } from "../lib/books";
+import Book3D from "../components/Book3D";
 import RealBookCover from "../components/RealBookCover";
 
 
@@ -253,8 +250,16 @@ export default function Home({ posts = [], error }) {
 
       <SiteHeader />
 
-      {/* 1. CLEAN CLASSIC EDITORIAL HERO */}
+      {/* 1. EXECUTIVE SPLIT HERO */}
       <section className="hero-editorial">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/images/open-bible-morning.jpg"
+          alt="Hun Chet Personal Blog"
+          className="hero-editorial-bg"
+        />
+        <div className="hero-editorial-scrim" />
+
         <div className="container" style={{ width: "100%" }}>
           <div className="hero-split-grid">
             {/* Left Column: Author Narrative & Mission */}
@@ -271,15 +276,13 @@ export default function Home({ posts = [], error }) {
               <h1 className="hero-editorial-title">
                 {isKm ? (
                   <>
-                    ចាក់ឬសក្នុងជំនឿ
-                    <span className="hero-title-break" />
-                    <span className="gold-accent" style={{ display: "inline-block" }}>ចែករំលែកសេចក្តីពិតនៃព្រះគ្រីស្ទ</span>
+                    ចាក់ឬសក្នុងជំនឿ •{" "}
+                    <span className="gold-accent">ចែករំលែកសេចក្តីពិតនៃព្រះគ្រីស្ទ</span>
                   </>
                 ) : (
                   <>
-                    Rooted in Faith
-                    <span className="hero-title-break" />
-                    <span className="gold-accent" style={{ display: "inline-block" }}>Sharing Christ-Centered Truth</span>
+                    Rooted in Faith.{" "}
+                    <span className="gold-accent">Sharing Christ-Centered Truth.</span>
                   </>
                 )}
               </h1>
@@ -294,8 +297,8 @@ export default function Home({ posts = [], error }) {
 
               <p className="hero-editorial-lede">
                 {isKm
-                  ? "ខ្ញុំបាទ ហ៊ុន ចិត្ត សូមស្វាគមន៍បងប្អូនមកកាន់ប្លុកផ្ទាល់ខ្លួននេះ។ បំណងចិត្តដ៏ធំបំផុតរបស់ខ្ញុំ គឺការស្គាល់ព្រះយេស៊ូវគ្រីស្ទ និងការចែករំលែកសេចក្តីពិតនៃព្រះបន្ទូលទ្រង់ តាមរយៈការបង្រៀនព្រះគម្ពីរ និងការលើកទឹកចិត្តក្នុងជីវិតប្រចាំថ្ងៃ។"
-                  : "Welcome. My greatest calling is knowing Jesus Christ and sharing the living truth of His Word through faithful biblical teaching, pastoral reflections, and daily encouragement."}
+                  ? "សូមស្វាគមន៍មកកាន់ប្លុកផ្ទាល់ខ្លួនរបស់ខ្ញុំ។ ទីនេះជាកន្លែងកត់ត្រា និងចែករំលែកនូវសេចក្តីពិតនៃព្រះបន្ទូល ការពន្យល់ព្រះគម្ពីរ ការរៀនសូត្រពីជីវិត និងធនធានស្មារតីសម្រាប់ការរីកចម្រើនក្នុងព្រះគ្រីស្ទ។"
+                  : "Welcome to my personal blog. A space dedicated to sharing biblical exposition, theological writings, life experiences, and resources for spiritual growth."}
               </p>
 
               <div className="hero-editorial-actions">
@@ -305,10 +308,7 @@ export default function Home({ posts = [], error }) {
                   style={{
                     padding: "0.85rem 1.85rem",
                     fontSize: "0.9rem",
-                    background: "#0b192c",
-                    borderColor: "#0b192c",
-                    color: "#ffffff",
-                    boxShadow: "0 4px 14px rgba(11, 25, 44, 0.2)",
+                    boxShadow: "0 6px 20px rgba(184, 155, 94, 0.4)",
                   }}
                 >
                   {isKm ? "អានអត្ថបទទាំងអស់" : "Explore All Articles"} →
@@ -316,37 +316,33 @@ export default function Home({ posts = [], error }) {
 
                 <Link
                   href="/devotions"
-                  className="btn btn-outline"
-                  style={{
-                    padding: "0.85rem 1.6rem",
-                    fontSize: "0.9rem",
-                    background: "#ffffff",
-                    border: "1px solid #cbd5e1",
-                    color: "#0b192c",
-                  }}
+                  className="btn btn-gold-glass"
+                  style={{ padding: "0.85rem 1.5rem", fontSize: "0.9rem" }}
                 >
-                  <BookOpenIcon style={{ width: 16, height: 16, marginRight: "0.45rem", color: "#8c6d32" }} />
+                  <BookOpenIcon style={{ width: 16, height: 16, marginRight: "0.45rem", color: "var(--gold)" }} />
                   <span>{isKm ? "ព្រះបន្ទូល ៣៦៥ ថ្ងៃ" : "365 Devotions"}</span>
+                </Link>
+
+                <Link
+                  href="/about"
+                  className="btn btn-outline-light"
+                  style={{ padding: "0.85rem 1.5rem", fontSize: "0.9rem" }}
+                >
+                  {isKm ? "អំពីខ្ញុំ" : "About Me"}
                 </Link>
               </div>
 
               <div className="hero-cred-strip">
                 <div className="hero-cred-item">
-                  <span className="cred-icon-wrap" aria-hidden="true">
-                    <BookOpenIcon style={{ width: 15, height: 15 }} />
-                  </span>
+                  <span className="cred-icon">📖</span>
                   <span>{isKm ? "ព្រះគម្ពីរជាគ្រឹះ" : "Scripture First"}</span>
                 </div>
                 <div className="hero-cred-item">
-                  <span className="cred-icon-wrap" aria-hidden="true">
-                    <FeatherIcon style={{ width: 15, height: 15 }} />
-                  </span>
+                  <span className="cred-icon">✍️</span>
                   <span>{isKm ? "អត្ថបទ & ការបង្រៀន" : "Articles & Exegesis"}</span>
                 </div>
                 <div className="hero-cred-item">
-                  <span className="cred-icon-wrap" aria-hidden="true">
-                    <GlobeIcon style={{ width: 15, height: 15 }} />
-                  </span>
+                  <span className="cred-icon">🇰🇭</span>
                   <span>{isKm ? "ធនធានជាភាសាខ្មែរ" : "Khmer Theological Resources"}</span>
                 </div>
               </div>
@@ -396,13 +392,7 @@ export default function Home({ posts = [], error }) {
                     target="_blank"
                     rel="noreferrer"
                     className="author-btn btn-telegram"
-                    style={{
-                      padding: "0.55rem 1.15rem",
-                      fontSize: "0.82rem",
-                      background: "#ffffff",
-                      border: "1px solid #cbd5e1",
-                      color: "#0b192c",
-                    }}
+                    style={{ padding: "0.55rem 1.15rem", fontSize: "0.82rem" }}
                   >
                     <TelegramIcon width="14" height="14" />
                     <span>Telegram</span>
@@ -410,13 +400,7 @@ export default function Home({ posts = [], error }) {
                   <a
                     href="tel:0966875886"
                     className="author-btn btn-phone"
-                    style={{
-                      padding: "0.55rem 1.15rem",
-                      fontSize: "0.82rem",
-                      background: "#ffffff",
-                      border: "1px solid #cbd5e1",
-                      color: "#0b192c",
-                    }}
+                    style={{ padding: "0.55rem 1.15rem", fontSize: "0.82rem" }}
                   >
                     <PhoneIcon width="14" height="14" />
                     <span>096 687 5886</span>
@@ -424,7 +408,7 @@ export default function Home({ posts = [], error }) {
                 </div>
 
                 <div className="hero-exec-seal">
-                  <CheckIcon style={{ width: 13, height: 13, color: "#8c6d32" }} />
+                  <CheckIcon style={{ width: 13, height: 13, color: "var(--gold)" }} />
                   <span>{isKm ? "គេហទំព័រប្លុកផ្ទាល់ខ្លួនផ្លូវការ • hunchet.blog" : "Official Personal Blog • hunchet.blog"}</span>
                 </div>
               </div>
@@ -435,19 +419,19 @@ export default function Home({ posts = [], error }) {
 
       <main>
         {/* 2. ILLUMINATED DAILY DEVOTION SCRIPTURE CARD */}
-        <section className="devotion-editorial-section">
+        <section style={{ background: "#ffffff", padding: "3.5rem 0", borderBottom: "1px solid var(--border)" }}>
           <div className="container">
             <div className="devotion-illuminated-card">
               <span className="devotion-quote-watermark" aria-hidden="true">«</span>
 
               <div style={{ position: "relative", zIndex: 2 }}>
                 <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: "1rem", marginBottom: "1.25rem" }}>
-                  <div className="devotion-badge" style={{ background: "rgba(184, 155, 94, 0.14)", color: "#785a28", border: "1px solid rgba(184, 155, 94, 0.35)" }}>
-                    <BookOpenIcon style={{ color: "#8c6d32" }} />
+                  <div className="devotion-badge">
+                    <BookOpenIcon />
                     <span>{currentScripture.tag}</span>
                   </div>
-                  <span style={{ fontSize: "0.78rem", color: "#8c6d32", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" }}>
-                    {isKm ? "ខគម្ពីរលើកទឹកចិត្តប្រចាំថ្ងៃ" : "Scripture of the Day"}
+                  <span style={{ fontSize: "0.78rem", color: "var(--gold)", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" }}>
+                    {isKm ? "ខគម្ពីរលើកទឹកចិត្ត" : "Scripture of the Day"}
                   </span>
                 </div>
 
@@ -455,8 +439,8 @@ export default function Home({ posts = [], error }) {
                   style={{
                     fontFamily: "var(--font-display)",
                     fontSize: "clamp(1.18rem, 2.6vw, 1.7rem)",
-                    lineHeight: 1.75,
-                    color: "#0b192c",
+                    lineHeight: 1.65,
+                    color: "#ffffff",
                     margin: "0 0 1.5rem",
                     fontWeight: 600,
                   }}
@@ -471,11 +455,11 @@ export default function Home({ posts = [], error }) {
                     justifyContent: "space-between",
                     flexWrap: "wrap",
                     gap: "1.25rem",
-                    borderTop: "1px solid #e8e2d8",
+                    borderTop: "1px solid rgba(255, 255, 255, 0.15)",
                     paddingTop: "1.25rem",
                   }}
                 >
-                  <cite style={{ fontFamily: "var(--font-display)", fontSize: "1.05rem", color: "#8c6d32", fontStyle: "normal", fontWeight: 700 }}>
+                  <cite style={{ fontFamily: "var(--font-display)", fontSize: "1.05rem", color: "var(--gold)", fontStyle: "normal", fontWeight: 700 }}>
                     — {currentScripture.ref}
                   </cite>
 
@@ -483,7 +467,20 @@ export default function Home({ posts = [], error }) {
                     <button
                       type="button"
                       onClick={handleShareTelegram}
-                      className="btn-telegram-action"
+                      style={{
+                        background: "rgba(14, 165, 233, 0.2)",
+                        border: "1px solid rgba(14, 165, 233, 0.4)",
+                        color: "#38bdf8",
+                        padding: "0.55rem 1.15rem",
+                        borderRadius: "var(--radius-sm)",
+                        fontSize: "0.78rem",
+                        fontWeight: 700,
+                        cursor: "pointer",
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: "0.45rem",
+                        transition: "all 0.2s ease",
+                      }}
                     >
                       <TelegramIcon style={{ width: 14, height: 14 }} />
                       <span>{isKm ? "ចែករំលែកលើ Telegram" : "Share to Telegram"}</span>
@@ -492,7 +489,7 @@ export default function Home({ posts = [], error }) {
                     <Link
                       href="/devotions"
                       className="btn btn-primary"
-                      style={{ padding: "0.55rem 1.25rem", fontSize: "0.78rem", background: "#0b192c", borderColor: "#0b192c", color: "#ffffff" }}
+                      style={{ padding: "0.55rem 1.25rem", fontSize: "0.78rem" }}
                     >
                       <BookOpenIcon style={{ width: 14, height: 14, marginRight: "0.35rem" }} />
                       {isKm ? "អានព្រះបន្ទូល ៣៦៥ ថ្ងៃ" : "Explore 365 Devotions"} →
@@ -560,32 +557,17 @@ export default function Home({ posts = [], error }) {
                 {/* 3 Pillars List */}
                 <div className="welcome-pillar-grid">
                   <div className="welcome-pillar-card">
-                    <div className="welcome-pillar-header">
-                      <span className="pillar-icon-wrap" aria-hidden="true">
-                        <BookOpenIcon style={{ width: 17, height: 17 }} />
-                      </span>
-                      <strong>{isKm ? "ព្រះគម្ពីរជាគ្រឹះ" : "Scripture First"}</strong>
-                    </div>
+                    <strong>📖 {isKm ? "ព្រះគម្ពីរជាគ្រឹះ" : "Scripture First"}</strong>
                     <span>{isKm ? "គ្រប់ការបង្រៀនទាំងអស់ផ្តើមចេញពីព្រះបន្ទូលពិត។" : "Grounded directly in biblical text."}</span>
                   </div>
 
                   <div className="welcome-pillar-card">
-                    <div className="welcome-pillar-header">
-                      <span className="pillar-icon-wrap" aria-hidden="true">
-                        <GlobeIcon style={{ width: 17, height: 17 }} />
-                      </span>
-                      <strong>{isKm ? "សរសេរជាភាសាខ្មែរ" : "Written in Khmer"}</strong>
-                    </div>
+                    <strong>🇰🇭 {isKm ? "សរសេរជាភាសាខ្មែរ" : "Written in Khmer"}</strong>
                     <span>{isKm ? "អត្ថបទ និងសៀវភៅគុណភាពខ្ពស់សម្រាប់ប្រជាជនកម្ពុជា។" : "High-caliber theological literature for Khmer readers."}</span>
                   </div>
 
                   <div className="welcome-pillar-card">
-                    <div className="welcome-pillar-header">
-                      <span className="pillar-icon-wrap" aria-hidden="true">
-                        <GiftIcon style={{ width: 17, height: 17 }} />
-                      </span>
-                      <strong>{isKm ? "ចែករំលែកដោយឥតគិតថ្លៃ" : "Freely Shared"}</strong>
-                    </div>
+                    <strong>🎁 {isKm ? "ចែករំលែកដោយឥតគិតថ្លៃ" : "Freely Shared"}</strong>
                     <span>{isKm ? "ផ្តល់ជូនដោយឥតគិតថ្លៃ ដើម្បីកសាងពួកជំនុំ។" : "Freely available to enrich and equip the Church."}</span>
                   </div>
                 </div>
@@ -603,7 +585,7 @@ export default function Home({ posts = [], error }) {
         {/* 4. FEATURED TEACHING: 5 KEYS TO LIVING IN CHRIST */}
         <section className="sermon-spotlight-box">
           <div className="container">
-            <div className="section-head" style={{ textAlign: "center", marginBottom: "3rem", maxWidth: "860px" }}>
+            <div className="section-head" style={{ textAlign: "center", marginBottom: "3rem" }}>
               <span
                 style={{
                   display: "inline-flex",
@@ -611,9 +593,9 @@ export default function Home({ posts = [], error }) {
                   gap: "0.45rem",
                   padding: "0.35rem 0.95rem",
                   borderRadius: "var(--radius-sm)",
-                  background: "rgba(184, 155, 94, 0.14)",
-                  border: "1px solid rgba(184, 155, 94, 0.35)",
-                  color: "#785a28",
+                  background: "rgba(184, 155, 94, 0.2)",
+                  border: "1px solid rgba(184, 155, 94, 0.4)",
+                  color: "var(--gold)",
                   fontSize: "0.72rem",
                   fontWeight: 700,
                   letterSpacing: "0.14em",
@@ -621,32 +603,22 @@ export default function Home({ posts = [], error }) {
                   marginBottom: "0.75rem",
                 }}
               >
-                <BookOpenIcon style={{ width: 14, height: 14, color: "#8c6d32" }} />
+                <BookOpenIcon style={{ width: 14, height: 14 }} />
                 {isKm
                   ? "សារព្រះបន្ទូលពិសេស • មាគ៌ាឆ្ពោះទៅកាន់គោលបំណងជីវិត"
                   : "Featured Reflection • A Path to Purpose"}
               </span>
 
-              <h2 style={{ fontFamily: "var(--font-display)", color: "var(--navy-dark, #0b192c)", fontSize: "clamp(1.75rem, 2.9vw, 2.45rem)", lineHeight: 1.35 }}>
-                {isKm ? (
-                  <>
-                    គន្លឹះ ៥ យ៉ាងដើម្បីរស់នៅប្រកបដោយអត្ថន័យ
-                    <span className="hero-title-break" style={{ height: "0.25rem" }} />
-                    <span style={{ color: "#8c6d32", display: "inline-block" }}>ក្នុងព្រះគ្រីស្ទ</span>
-                  </>
-                ) : (
-                  <>
-                    5 Keys to Living a Truly Great Life
-                    <span className="hero-title-break" style={{ height: "0.25rem" }} />
-                    <span style={{ color: "#8c6d32", display: "inline-block" }}>in Christ</span>
-                  </>
-                )}
+              <h2 style={{ fontFamily: "var(--font-display)", color: "#ffffff", fontSize: "clamp(1.8rem, 3.5vw, 2.5rem)" }}>
+                {isKm
+                  ? "គន្លឹះ ៥ យ៉ាងដើម្បីរស់នៅប្រកបដោយអត្ថន័យក្នុងព្រះគ្រីស្ទ"
+                  : "5 Keys to Living a Truly Great Life in Christ"}
               </h2>
 
-              <div style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", marginTop: "0.5rem", color: "#475569", fontSize: "0.85rem" }}>
-                <UserIcon style={{ width: 14, height: 14, color: "#8c6d32" }} />
+              <div style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", marginTop: "0.5rem", color: "#cbd5e1", fontSize: "0.85rem" }}>
+                <UserIcon style={{ width: 14, height: 14, color: "var(--gold)" }} />
                 <span>{isKm ? "អត្ថបទដោយ៖" : "Written by:"}</span>
-                <strong style={{ color: "#8c6d32" }}>{isKm ? "លោកគ្រូ ហ៊ុន ចិត្ត" : "Leader Hun Chet"}</strong>
+                <strong style={{ color: "var(--gold)" }}>{isKm ? "លោកគ្រូ ហ៊ុន ចិត្ត" : "Leader Hun Chet"}</strong>
               </div>
 
               <div className="hero-divider-classic" style={{ margin: "1rem auto 0" }} />
@@ -662,7 +634,7 @@ export default function Home({ posts = [], error }) {
                     fontWeight: 700,
                     letterSpacing: "0.12em",
                     textTransform: "uppercase",
-                    color: "#785a28",
+                    color: "var(--gold)",
                     marginBottom: "1rem",
                   }}
                 >
@@ -675,62 +647,80 @@ export default function Home({ posts = [], error }) {
                       <div style={{ display: "flex", alignItems: "center", gap: "0.85rem" }}>
                         <span className="sermon-key-num">{k.number}</span>
                         <div>
-                          <strong style={{ display: "block", fontSize: "0.95rem", color: "#0b192c" }}>{loc(k.title)}</strong>
-                          <span style={{ fontSize: "0.75rem", color: "#8c6d32", fontFamily: "var(--font-display)", fontWeight: 600 }}>
+                          <strong style={{ display: "block", fontSize: "0.95rem" }}>{loc(k.title)}</strong>
+                          <span style={{ fontSize: "0.75rem", color: "var(--gold)", fontFamily: "var(--font-display)" }}>
                             {k.ref}
                           </span>
                         </div>
                       </div>
-                      <ArrowRightIcon style={{ width: 16, height: 16, color: "#94a3b8" }} />
+                      <ArrowRightIcon style={{ width: 16, height: 16, color: "rgba(255,255,255,0.4)" }} />
                     </Link>
                   ))}
                 </div>
               </div>
 
-              {/* Right: Unified Scripture Highlight & Teaching Companion Card */}
-              <div>
-                <div className="sermon-companion-card">
-                  <div className="sermon-companion-head">
-                    <span className="sermon-companion-kicker">
-                      {isKm ? "ខគម្ពីរគ្រឹះនៃជីវិត" : "Foundational Scripture"}
+              {/* Right: Scripture Highlight & Telegram Share */}
+              <div style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
+                <div className="sermon-quote-card">
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "0.75rem" }}>
+                    <span style={{ fontSize: "0.72rem", color: "var(--gold)", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.12em" }}>
+                      Jeremiah 29:11
                     </span>
-                    <span className="sermon-companion-badge">
-                      {isKm ? "យេរេមា ២៩:១១" : "Jeremiah 29:11"}
+                    <span style={{ fontSize: "0.72rem", color: "#94a3b8" }}>
+                      {isKm ? "ខគម្ពីរគោល" : "Foundational Verse"}
                     </span>
                   </div>
 
-                  <blockquote className="sermon-companion-quote">
+                  <blockquote>
                     {isKm
                       ? "«ដ្បិតយើងដឹងពីគំនិតដែលយើងគិតពីឯងរាល់គ្នា គឺសុទ្ធតែជាគំនិតនៃសេចក្តីសុខសាន្ត មិនមែនជាគំនិតនៃសេចក្តីអាក្រក់ឡើយ ដើម្បីឲ្យឯងរាល់គ្នាមានសង្ឃឹមនៅចុងបំផុត»"
                       : "“For I know the plans I have for you,” declares the LORD, “plans to prosper you and not to harm you, plans to give you hope and a future.”"}
                   </blockquote>
-                  <cite className="sermon-companion-cite">
-                    — {isKm ? "យេរេមា ២៩:១១ • ព្រះគម្ពីរខ្មែរ ១៩៥៤" : "Jeremiah 29:11 • 1954 Khmer Bible"}
-                  </cite>
+                  <cite>— {isKm ? "យេរេមា ២៩:១១" : "Jeremiah 29:11"}</cite>
+                </div>
 
-                  <div className="sermon-companion-divider" />
-
-                  <p className="sermon-companion-reflection">
+                <div
+                  style={{
+                    background: "rgba(184, 155, 94, 0.12)",
+                    border: "1px solid rgba(184, 155, 94, 0.3)",
+                    padding: "1.5rem",
+                    borderRadius: "var(--radius-lg)",
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "0.85rem",
+                  }}
+                >
+                  <strong style={{ fontSize: "0.95rem", color: "#ffffff" }}>
+                    {isKm ? "អានអត្ថបទពេញលេញ និងចែករំលែក" : "Read Full Reflection & Share"}
+                  </strong>
+                  <p style={{ fontSize: "0.82rem", color: "#cbd5e1", margin: 0, lineHeight: 1.5 }}>
                     {isKm
-                      ? "ព្រះបន្ទូលនេះរំលឹកយើងថា ទោះបីឆ្លងកាត់ការលំបាកយ៉ាងណា ក៏ផែនការរបស់ព្រះសម្រាប់ជីវិតយើងនៅតែពោរពេញដោយសង្ឃឹម និងសន្តិភាពជានិច្ច។ រៀនរស់នៅដោយជំនឿ និងផ្តោតលើព្រះគ្រីស្ទជារៀងរាល់ថ្ងៃ។"
-                      : "A timeless reminder that through every trial, God's plan for your life remains filled with peace, purpose, and enduring hope. Walk with faith and fixed gaze upon Christ."}
+                      ? "ការបកស្រាយលម្អិតតាមព្រះគម្ពីរ ការអនុវត្តជាក់ស្តែង និងសំណួរពិចារណា។"
+                      : "Complete with biblical exposition, practical daily applications, and reflection questions."}
                   </p>
-
-                  <div className="sermon-companion-actions">
-                    <Link
-                      href="/articles"
-                      className="btn btn-primary"
-                      style={{ padding: "0.65rem 1.35rem", fontSize: "0.82rem", background: "#0b192c", borderColor: "#0b192c", color: "#ffffff" }}
-                    >
-                      {isKm ? "អានអត្ថបទទាំងអស់" : "Explore All Articles"} →
+                  <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", marginTop: "0.25rem" }}>
+                    <Link href="/articles" className="btn btn-primary" style={{ padding: "0.6rem 1.25rem", fontSize: "0.75rem" }}>
+                      {isKm ? "អានអត្ថបទទាំងអស់" : "Read Articles"} →
                     </Link>
                     <button
                       type="button"
                       onClick={handleShareTelegram}
-                      className="btn-telegram-action"
+                      style={{
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: "0.4rem",
+                        padding: "0.6rem 1.1rem",
+                        borderRadius: "var(--radius-sm)",
+                        background: "rgba(14, 165, 233, 0.2)",
+                        border: "1px solid rgba(14, 165, 233, 0.4)",
+                        color: "#38bdf8",
+                        fontSize: "0.75rem",
+                        fontWeight: 700,
+                        cursor: "pointer",
+                      }}
                     >
                       <TelegramIcon style={{ width: 14, height: 14 }} />
-                      <span>{isKm ? "ចែករំលែក Telegram" : "Share Telegram"}</span>
+                      <span>Telegram</span>
                     </button>
                   </div>
                 </div>
@@ -851,47 +841,39 @@ export default function Home({ posts = [], error }) {
               <div className="hero-divider-classic" style={{ margin: "1rem auto 0" }} />
             </div>
 
-            <div className="library-spotlight-card">
-              <div className="library-spotlight-book-col">
+            <div
+              style={{
+                maxWidth: 880,
+                margin: "0 auto",
+                background: "#ffffff",
+                padding: "2.5rem",
+                borderRadius: "var(--radius-lg)",
+                border: "1px solid var(--border)",
+                boxShadow: "var(--shadow-md)",
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+                gap: "2.5rem",
+                alignItems: "center",
+              }}
+            >
+              <div style={{ display: "flex", justifyContent: "center" }}>
                 <RealBookCover book={BOOKS[0]} size="lg" />
               </div>
 
-              <div className="library-spotlight-info-col">
-                <div className="library-spotlight-meta">
-                  <span className="library-spotlight-kicker">
-                    {isKm ? "សៀវភៅណែនាំពិសេស" : "Featured Study Volume"}
-                  </span>
-                  <span className="library-spotlight-callnum">
-                    HC-COMM-01
-                  </span>
-                </div>
-
-                <h3 className="library-spotlight-title">
+              <div>
+                <span style={{ fontSize: "0.72rem", color: "var(--gold)", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.12em" }}>
+                  {isKm ? "សៀវភៅណែនាំពិសេស" : "Featured Study Volume"}
+                </span>
+                <h3 style={{ fontFamily: "var(--font-display)", color: "var(--navy-dark)", fontSize: "1.5rem", margin: "0.5rem 0" }}>
                   {isKm ? "អត្ថាធិប្បាយព្រះគម្ពីរ ម៉ាថាយ ហេនរី" : "Matthew Henry's Bible Commentary"}
                 </h3>
-
-                <p className="library-spotlight-desc">
+                <p style={{ fontSize: "0.9rem", color: "var(--text)", lineHeight: 1.7, marginBottom: "1.5rem" }}>
                   {isKm
                     ? "អត្ថាធិប្បាយសង្ខេបខម្តងមួយៗលើព្រះគម្ពីរទាំងមូល ផ្តល់ជូនដោយឥតគិតថ្លៃសម្រាប់គ្រូគង្វាល និងអ្នកជឿទាំងអស់ដែលចង់រីកចម្រើនក្នុងព្រះបន្ទូល។"
                     : "The classic verse-by-verse commentary, provided freely for pastors, leaders, and growing believers."}
                 </p>
 
-                <div className="library-spotlight-checklist">
-                  <div className="library-spotlight-check-item">
-                    <CheckIcon style={{ width: 14, height: 14, color: "var(--gold)", flexShrink: 0 }} />
-                    <span>{isKm ? "កម្រងឯកសារពេញលេញ ១,២៤៨ ទំព័រ (Complete Digital Archive)" : "1,248 pages of complete digital study archive"}</span>
-                  </div>
-                  <div className="library-spotlight-check-item">
-                    <CheckIcon style={{ width: 14, height: 14, color: "var(--gold)", flexShrink: 0 }} />
-                    <span>{isKm ? "អត្ថាធិប្បាយខម្តងមួយៗ គ្របដណ្តប់គម្ពីរសញ្ញាចាស់ និងសញ្ញាថ្មី" : "Expository verse-by-verse commentary across both Testaments"}</span>
-                  </div>
-                  <div className="library-spotlight-check-item">
-                    <CheckIcon style={{ width: 14, height: 14, color: "var(--gold)", flexShrink: 0 }} />
-                    <span>{isKm ? "ទាញយកជាឯកសារ PDF ឥតគិតថ្លៃ ១០០% សម្រាប់កសាងជំនឿ" : "100% free digital PDF download to equip the church"}</span>
-                  </div>
-                </div>
-
-                <div className="library-spotlight-actions">
+                <div style={{ display: "flex", gap: "0.85rem", flexWrap: "wrap" }}>
                   <Link href="/library/matthew-henry-commentary" className="btn btn-primary" style={{ fontSize: "0.82rem" }}>
                     {isKm ? "អាន និងទាញយក PDF" : "Read & Download PDF"} →
                   </Link>
@@ -986,7 +968,7 @@ export default function Home({ posts = [], error }) {
                 </p>
               </div>
 
-              <div className="anc-connect-actions">
+              <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", flexShrink: 0 }}>
                 <a
                   href="https://t.me/+855966875886"
                   target="_blank"

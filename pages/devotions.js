@@ -36,22 +36,22 @@ import {
 
 const STRINGS = {
   heroEyebrow: {
-    en: "Leader Hun Chet • Daily Bread",
-    km: "លោកគ្រូ ហ៊ុន ចិត្ត • ព្រះបន្ទូលប្រចាំថ្ងៃ",
-    ko: "훈 쳇 리더 • 매일의 양식",
-    zh: "Hun Chet 牧者 • 每日灵修",
+    en: "Hun Chet Personal Blog • Daily Bread",
+    km: "ប្លុកផ្ទាល់ខ្លួន ហ៊ុន ចិត្ត • ព្រះបន្ទូលប្រចាំថ្ងៃ",
+    ko: "훈 쳇 개인 블로그 • 매일의 양식",
+    zh: "Hun Chet 个人博客 • 每日灵修",
   },
   heroTitle: {
-    en: "Daily Bread • 365-Day Walk in Christ",
-    km: "ព្រះបន្ទូលប្រចាំថ្ងៃ • ដំណើរជីវិត ៣៦៥ ថ្ងៃក្នុងព្រះគ្រីស្ទ",
-    ko: "매일의 양식 • 그리스도 안에서 365일 여정",
-    zh: "每日灵修 • 在基督里365天同行",
+    en: "Daily Devotions & 365 Scripture Sanctuary",
+    km: "ព្រះបន្ទូលប្រចាំថ្ងៃ និងទីជម្រកព្រះគម្ពីរ ៣៦៥ ថ្ងៃ",
+    ko: "매일 묵상과 365일 성경 안식처",
+    zh: "每日灵修与365天圣经安息地",
   },
   heroSub: {
-    en: "Daily biblical reflections, quiet-time meditation, and pastoral prayers rooted in the 1954 Khmer Bible.",
-    km: "សញ្ជឹងគិតព្រះបន្ទូលពីព្រះគម្ពីរខ្មែរ ១៩៥៤ រៀងរាល់ថ្ងៃ ដើម្បីស្វែងរកកម្លាំងចិត្ត និងសន្តិភាពក្នុងព្រះយេស៊ូវគ្រីស្ទ។",
-    ko: "1954 크메르어 고역 성경 원문과 함께하는 매일 묵상, 나눔 질문 및 목회 기도문.",
-    zh: "基于1954高棉传统圣经原文经文的每日灵修默想、生命应用与教牧祷告。",
+    en: "1954/1962 Old Khmer Version scripture, daily biblical reflections, life applications, and pastoral prayers for quiet time and discipleship.",
+    km: "ព្រះគម្ពីរភាសាខ្មែរបកប្រែចាស់ ១៩៥៤ ការពិចារណាព្រះបន្ទូល សំណួរអនុវត្ត និងសេចក្តីអធិស្ឋានប្រចាំថ្ងៃ សម្រាប់ជីវិតស្ងប់ស្ងាត់ និងការបណ្តុះសិស្ស។",
+    ko: "1954/1962 크메르어 고역 성경 원문과 묵상, 나눔 질문 및 목회 기도문.",
+    zh: "1954/1962高棉语传统圣经原文经文、每日默想、应用省思与教牧祷告。",
   },
   tabToday: {
     en: "Today's Devotion",
@@ -345,7 +345,7 @@ export default function DevotionsPage() {
     const ref = dev.verse?.ref?.km || dev.verse?.ref?.en || "";
     const km = dev.verse?.text?.km || "";
     const en = dev.verse?.text?.en || "";
-    const text = `[ព្រះបន្ទូលប្រចាំថ្ងៃ] • លោកគ្រូ ហ៊ុន ចិត្ត\n【${ref}】\n\n«${km}»\n\n“${en}”\n\n— ព្រះគម្ពីរភាសាខ្មែរបកប្រែចាស់ ១៩៥៤\nចែករំលែកដោយលោកគ្រូ ហ៊ុន ចិត្ត (Leader Hun Chet)`;
+    const text = `📖 ព្រះបន្ទូលប្រចាំថ្ងៃ • Hun Chet\n【${ref}】\n\n«${km}»\n\n“${en}”\n\n— ព្រះគម្ពីរភាសាខ្មែរបកប្រែចាស់ ១៩៥៤\nចែករំលែកដោយលោកគ្រូ ហ៊ុន ចិត្ត (Leader Hun Chet)`;
     const url = typeof window !== "undefined" ? window.location.href : "https://www.hunchet.blog/devotions";
     const shareUrl = `https://t.me/share/url?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`;
     if (typeof window !== "undefined") {
@@ -511,8 +511,17 @@ export default function DevotionsPage() {
 
       <SiteHeader />
 
-      {/* 1. STATELY HERO BANNER — Clean Classic Editorial */}
+      {/* 1. STATELY HERO BANNER */}
       <section className="devotion-hero">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/images/open-bible-morning.jpg"
+          alt="Sanctuary Devotions"
+          className="devotion-hero-bg"
+          aria-hidden="true"
+        />
+        <div className="devotion-hero-overlay" aria-hidden="true" />
+
         <div className="devotion-hero-content">
           <div className="devotion-badge-tag">
             <BookOpenIcon />

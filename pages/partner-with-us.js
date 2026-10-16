@@ -84,41 +84,44 @@ export default function PartnerWithUs() {
       <SiteHeader />
 
       <main className="partner-page">
-        {/* Stately Sanctuary Hero — Clean Classic Editorial */}
+        {/* Stately Sanctuary Hero */}
         <section className="sanctuary-hero">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/images/church-family.jpg"
+            alt="Hun Chet Ministry Family"
+            className="sanctuary-hero-bg"
+          />
+          <div className="sanctuary-hero-overlay" />
           <div className="sanctuary-hero-content">
             <div className="sanctuary-badge-tag">
-              <span>{isKm ? "ការចូលរួមចំណែកក្នុងព័ន្ធកិច្ច" : "Kingdom Stewardship & Partnership"}</span>
+              <span>{isKm ? "ការចូលរួមចំណែកក្នុងព្រះរាជ្យព្រះ" : "Kingdom Mission & Stewardship"}</span>
             </div>
             <h1 className="sanctuary-hero-title">{t("partner.title")}</h1>
             <p className="sanctuary-hero-subtitle">
               {isKm
-                ? "រួមគ្នាផ្សាយដំណឹងល្អ ការបង្រៀនព្រះបន្ទូល និងការបម្រើក្រុមជំនុំនៅកម្ពុជា"
-                : "Advancing the Gospel, Biblical Teaching, and Christian Outreach in Cambodia"}
+                ? "ការរួមចំណែកពង្រីកដំណឹងល្អ ការបង្រៀនព្រះបន្ទូល និងការបម្រើសហគមន៍ក្នុងប្រទេសកម្ពុជា"
+                : "Advancing the Gospel, Biblical Teaching, and Christian Outreach Across Cambodia"}
             </p>
-            <p className="sanctuary-hero-lead">
-              {isKm
-                ? "ការចូលរួមចំណែកដោយស្ម័គ្រចិត្ត និងការអធិស្ឋានរបស់បងប្អូន ជួយឱ្យការបង្រៀនព្រះបន្ទូល និងធនធានជំនឿអាចទៅដល់មនុស្សកាន់តែច្រើន។"
-                : "Your faithful partnership and prayers help support biblical teaching, digital outreach, and practical ministry across Cambodia."}
-            </p>
+            <p className="sanctuary-hero-lead">{t("partner.intro")}</p>
 
             <div className="sanctuary-stat-strip">
               <div className="sanctuary-stat-card">
-                <span className="sanctuary-stat-num">{isKm ? "ដំណឹងល្អ" : "Gospel"}</span>
+                <span className="sanctuary-stat-num">Kingdom</span>
                 <span className="sanctuary-stat-label">
-                  {isKm ? "បេសកកម្មរួមគ្នា" : "Shared Mission"}
+                  {isKm ? "បេសកកម្មដំណឹងល្អ" : "Gospel Mission"}
                 </span>
               </div>
               <div className="sanctuary-stat-card">
-                <span className="sanctuary-stat-num">{isKm ? "១០០%" : "100%"}</span>
+                <span className="sanctuary-stat-num">100%</span>
                 <span className="sanctuary-stat-label">
-                  {isKm ? "តម្លាភាព & ទំនុកចិត្ត" : "Faithful Stewardship"}
+                  {isKm ? "ភាពស្មោះត្រង់ និងតម្លាភាព" : "Faithful Stewardship"}
                 </span>
               </div>
               <div className="sanctuary-stat-card">
-                <span className="sanctuary-stat-num">{isKm ? "ក្រុមជំនុំ" : "Church"}</span>
+                <span className="sanctuary-stat-num">Hun Chet</span>
                 <span className="sanctuary-stat-label">
-                  {isKm ? "ពង្រឹងជំនាន់ក្រោយ" : "Next Generation"}
+                  {isKm ? "ព័ន្ធកិច្ចលោកគ្រូ ហ៊ុន ចិត្ត" : "Ministry Stewardship"}
                 </span>
               </div>
             </div>
