@@ -253,19 +253,20 @@ export default function Home({ posts = [], error }) {
 
       <SiteHeader />
 
-      {/* 1. CLEAN CLASSIC EDITORIAL HERO */}
+      {/* 1. PRESTIGIOUS CLASSIC EDITORIAL HERO */}
       <section className="hero-editorial">
         <div className="container" style={{ width: "100%" }}>
           <div className="hero-split-grid">
-            {/* Left Column: Author Narrative & Mission */}
+            {/* Left Column: Author Narrative & Pastoral Calling */}
             <div className="hero-editorial-content">
-              <div className="hero-editorial-eyebrow">
-                <span className="hero-eyebrow-dot" />
+              <div className="hero-master-badge">
+                <span className="hero-badge-fleuron">❖</span>
                 <span>
                   {isKm
-                    ? "លោកគ្រូ ហ៊ុន ចិត្ត • ប្លុកផ្ទាល់ខ្លួនផ្លូវការ"
-                    : "Leader Hun Chet • Official Personal Blog"}
+                    ? "គេហទំព័រប្លុកផ្ទាល់ខ្លួនផ្លូវការ • លោកគ្រូ ហ៊ុន ចិត្ត"
+                    : "Official Editorial Ministry • Leader Hun Chet"}
                 </span>
+                <span className="hero-badge-fleuron">❖</span>
               </div>
 
               <h1 className="hero-editorial-title">
@@ -273,59 +274,47 @@ export default function Home({ posts = [], error }) {
                   <>
                     ចាក់ឬសក្នុងជំនឿ
                     <span className="hero-title-break" />
-                    <span className="gold-accent" style={{ display: "inline-block" }}>ចែករំលែកសេចក្តីពិតនៃព្រះគ្រីស្ទ</span>
+                    <span className="gold-accent">ចែករំលែកសេចក្តីពិតនៃព្រះគ្រីស្ទ</span>
                   </>
                 ) : (
                   <>
-                    Rooted in Faith
+                    Rooted in Living Faith
                     <span className="hero-title-break" />
-                    <span className="gold-accent" style={{ display: "inline-block" }}>Sharing Christ-Centered Truth</span>
+                    <span className="gold-accent">Sharing Christ-Centered Truth</span>
                   </>
                 )}
               </h1>
 
               <p className="hero-editorial-sub">
                 {isKm
-                  ? "ការបង្រៀនព្រះគម្ពីរ អត្ថបទសញ្ជឹងគិត ដំណើរជីវិត និងការបណ្តុះសិស្ស"
-                  : "Biblical Exposition, Pastoral Reflections, Life Lessons & Discipleship"}
+                  ? "ការបង្រៀនព្រះគម្ពីរ • អត្ថបទសញ្ជឹងគិត • ដំណើរជីវិត និងការបណ្តុះសិស្ស"
+                  : "Biblical Exegesis, Pastoral Reflections, Life Lessons & Discipleship"}
               </p>
 
-              <div className="hero-editorial-divider" />
+              <div className="hero-ornate-divider">
+                <span>❖</span>
+              </div>
 
               <p className="hero-editorial-lede">
                 {isKm
-                  ? "ខ្ញុំបាទ ហ៊ុន ចិត្ត សូមស្វាគមន៍បងប្អូនមកកាន់ប្លុកផ្ទាល់ខ្លួននេះ។ បំណងចិត្តដ៏ធំបំផុតរបស់ខ្ញុំ គឺការស្គាល់ព្រះយេស៊ូវគ្រីស្ទ និងការចែករំលែកសេចក្តីពិតនៃព្រះបន្ទូលទ្រង់ តាមរយៈការបង្រៀនព្រះគម្ពីរ និងការលើកទឹកចិត្តក្នុងជីវិតប្រចាំថ្ងៃ។"
-                  : "Welcome. My greatest calling is knowing Jesus Christ and sharing the living truth of His Word through faithful biblical teaching, pastoral reflections, and daily encouragement."}
+                  ? "ខ្ញុំបាទ ហ៊ុន ចិត្ត សូមស្វាគមន៍បងប្អូនមកកាន់ប្លុកផ្ទាល់ខ្លួននេះ។ បំណងចិត្ត និងការត្រាស់ហៅដ៏ធំបំផុតរបស់ខ្ញុំ គឺការស្គាល់ព្រះយេស៊ូវគ្រីស្ទ និងការចែករំលែកសេចក្តីពិតនៃព្រះបន្ទូលទ្រង់ តាមរយៈការបង្រៀនព្រះគម្ពីរយ៉ាងស៊ីជម្រៅ និងការលើកទឹកចិត្តក្នុងដំណើរជីវិតប្រចាំថ្ងៃ។"
+                  : "Welcome. My greatest calling is knowing Jesus Christ and sharing His living truth through faithful biblical teaching, pastoral reflections, and daily spiritual encouragement."}
               </p>
 
               <div className="hero-editorial-actions">
                 <Link
                   href="/articles"
-                  className="btn btn-primary"
-                  style={{
-                    padding: "0.85rem 1.85rem",
-                    fontSize: "0.9rem",
-                    background: "#0b192c",
-                    borderColor: "#0b192c",
-                    color: "#ffffff",
-                    boxShadow: "0 4px 14px rgba(11, 25, 44, 0.2)",
-                  }}
+                  className="btn btn-primary hero-btn-lead"
                 >
-                  {isKm ? "អានអត្ថបទទាំងអស់" : "Explore All Articles"} →
+                  <span>{isKm ? "អានអត្ថបទ និងការបង្រៀន" : "Explore All Teachings"}</span>
+                  <ArrowRightIcon style={{ width: 15, height: 15 }} />
                 </Link>
 
                 <Link
                   href="/devotions"
-                  className="btn btn-outline"
-                  style={{
-                    padding: "0.85rem 1.6rem",
-                    fontSize: "0.9rem",
-                    background: "#ffffff",
-                    border: "1px solid #cbd5e1",
-                    color: "#0b192c",
-                  }}
+                  className="btn btn-outline hero-btn-sub"
                 >
-                  <BookOpenIcon style={{ width: 16, height: 16, marginRight: "0.45rem", color: "#8c6d32" }} />
+                  <BookOpenIcon style={{ width: 16, height: 16, color: "#8c6d32" }} />
                   <span>{isKm ? "ព្រះបន្ទូល ៣៦៥ ថ្ងៃ" : "365 Devotions"}</span>
                 </Link>
               </div>
@@ -333,99 +322,83 @@ export default function Home({ posts = [], error }) {
               <div className="hero-cred-strip">
                 <div className="hero-cred-item">
                   <span className="cred-icon-wrap" aria-hidden="true">
-                    <BookOpenIcon style={{ width: 15, height: 15 }} />
+                    <BookOpenIcon style={{ width: 14, height: 14 }} />
                   </span>
-                  <span>{isKm ? "ព្រះគម្ពីរជាគ្រឹះ" : "Scripture First"}</span>
+                  <span>{isKm ? "ព្រះគម្ពីរ ១៩៥៤ ជាគ្រឹះ" : "1954 Scripture Anchored"}</span>
                 </div>
                 <div className="hero-cred-item">
                   <span className="cred-icon-wrap" aria-hidden="true">
-                    <FeatherIcon style={{ width: 15, height: 15 }} />
+                    <FeatherIcon style={{ width: 14, height: 14 }} />
                   </span>
-                  <span>{isKm ? "អត្ថបទ & ការបង្រៀន" : "Articles & Exegesis"}</span>
+                  <span>{isKm ? "ការបង្រៀន & អត្ថបទ" : "Biblical Exegesis"}</span>
                 </div>
                 <div className="hero-cred-item">
                   <span className="cred-icon-wrap" aria-hidden="true">
-                    <GlobeIcon style={{ width: 15, height: 15 }} />
+                    <GlobeIcon style={{ width: 14, height: 14 }} />
                   </span>
-                  <span>{isKm ? "ធនធានជាភាសាខ្មែរ" : "Khmer Theological Resources"}</span>
+                  <span>{isKm ? "ធនធានបណ្ណាល័យខ្មែរ" : "Khmer Theological Library"}</span>
                 </div>
               </div>
             </div>
 
-            {/* Right Column: Executive Author Profile Card */}
-            <div>
-              <div className="hero-executive-card">
-                <div className="hero-exec-avatar-wrap">
+            {/* Right Column: Cathedral Arch Framed Portrait & Plaque */}
+            <div className="hero-arch-column">
+              <div className="hero-arch-frame-wrap">
+                <div className="hero-arch-frame">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={PORTRAIT}
                     alt="Leader Hun Chet"
-                    className="hero-exec-avatar"
+                    className="hero-arch-photo"
                   />
-                  <div className="hero-exec-badge-verified" title="Verified Author">
-                    <CheckIcon style={{ width: 14, height: 14 }} />
+                  <div className="hero-arch-seal" title="Official Author Portal">
+                    <span className="hero-seal-fleuron">✦</span>
+                    <span>{isKm ? "ផ្លូវការ" : "OFFICIAL"}</span>
                   </div>
                 </div>
 
-                <h3 className="hero-exec-name">
-                  {isKm ? "លោកគ្រូ ហ៊ុន ចិត្ត" : "Leader Hun Chet"}
-                </h3>
+                <div className="hero-arch-plaque">
+                  <h3 className="hero-arch-plaque-name">
+                    {isKm ? "លោកគ្រូ ហ៊ុន ចិត្ត" : "Leader Hun Chet"}
+                  </h3>
+                  <span className="hero-arch-plaque-title">
+                    {isKm ? "អ្នកនិពន្ធ • អ្នកចែករំលែកព្រះបន្ទូល • ផ្សាយដំណឹងល្អ" : "Author • Preacher • Digital Outreach"}
+                  </span>
 
-                <span className="hero-exec-role">
-                  {isKm ? "អ្នកនិពន្ធ • អ្នកចែករំលែកព្រះបន្ទូល" : "Author & Preacher"}
-                </span>
+                  <div className="hero-arch-plaque-verse">
+                    <p>
+                      {isKm
+                        ? "«ដ្បិត​ឯ​ខ្ញុំ ដែល​ខ្ញុំ​រស់​នៅ នោះ​គឺ​សំរាប់​ព្រះគ្រីស្ទ​ទេ ហើយ​ដែល​ស្លាប់​ទៅ នោះ​ជា​កំរៃ​វិញ»"
+                        : "“For to me to live is Christ, and to die is gain.”"}
+                    </p>
+                    <cite className="hero-arch-plaque-ref">
+                      {isKm ? "— ភីលីព ១:២១ • ព្រះគម្ពីរខ្មែរ ១៩៥៤" : "— Philippians 1:21 • 1954 Khmer Bible"}
+                    </cite>
+                  </div>
 
-                <p className="hero-exec-bio">
-                  {isKm
-                    ? "បម្រើការងារជាអ្នកផលិតមាតិកាឌីជីថល (CV) និងដឹកនាំការបង្រៀនព្រះបន្ទូល ការបណ្តុះសិស្ស និងការផ្សាយដំណឹងល្អក្នុងប្រទេសកម្ពុជា។"
-                    : "Serving in Christian media content strategy and passionate about biblical preaching, discipleship, and sharing hope."}
-                </p>
-
-                <div className="hero-exec-verse">
-                  <p>
-                    {isKm
-                      ? "«ដ្បិត​ឯ​ខ្ញុំ ដែល​ខ្ញុំ​រស់​នៅ នោះ​គឺ​សំរាប់​ព្រះគ្រីស្ទ​ទេ ហើយ​ដែល​ស្លាប់​ទៅ នោះ​ជា​កំរៃ​វិញ»"
-                      : "“For to me to live is Christ, and to die is gain.”"}
-                  </p>
-                  <cite>{isKm ? "— ភីលីព ១:២១ • ព្រះគម្ពីរខ្មែរ ១៩៥៤" : "— Philippians 1:21 • 1954 Khmer Bible"}</cite>
-                </div>
-
-                <div className="hero-exec-actions">
-                  <a
-                    href="https://t.me/+855966875886"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="author-btn btn-telegram"
-                    style={{
-                      padding: "0.55rem 1.15rem",
-                      fontSize: "0.82rem",
-                      background: "#ffffff",
-                      border: "1px solid #cbd5e1",
-                      color: "#0b192c",
-                    }}
-                  >
-                    <TelegramIcon width="14" height="14" />
-                    <span>Telegram</span>
-                  </a>
-                  <a
-                    href="tel:0966875886"
-                    className="author-btn btn-phone"
-                    style={{
-                      padding: "0.55rem 1.15rem",
-                      fontSize: "0.82rem",
-                      background: "#ffffff",
-                      border: "1px solid #cbd5e1",
-                      color: "#0b192c",
-                    }}
-                  >
-                    <PhoneIcon width="14" height="14" />
-                    <span>096 687 5886</span>
-                  </a>
-                </div>
-
-                <div className="hero-exec-seal">
-                  <CheckIcon style={{ width: 13, height: 13, color: "#8c6d32" }} />
-                  <span>{isKm ? "គេហទំព័រប្លុកផ្ទាល់ខ្លួនផ្លូវការ • hunchet.blog" : "Official Personal Blog • hunchet.blog"}</span>
+                  <div className="hero-arch-actions">
+                    <a
+                      href="https://t.me/+855966875886"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="hero-arch-link"
+                    >
+                      <TelegramIcon width="13" height="13" />
+                      <span>Telegram</span>
+                    </a>
+                    <span className="hero-arch-sep">•</span>
+                    <a
+                      href="tel:0966875886"
+                      className="hero-arch-link"
+                    >
+                      <PhoneIcon width="13" height="13" />
+                      <span>096 687 5886</span>
+                    </a>
+                    <span className="hero-arch-sep">•</span>
+                    <Link href="/about" className="hero-arch-link">
+                      <span>{isKm ? "អំពីខ្ញុំ" : "About"}</span>
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>
@@ -670,10 +643,10 @@ export default function Home({ posts = [], error }) {
                 </h3>
 
                 <div>
-                  {SERMON_KEYS.map((k) => (
+                  {SERMON_KEYS.map((k, idx) => (
                     <Link key={k.number} href="/articles" className="sermon-key-item">
-                      <div style={{ display: "flex", alignItems: "center", gap: "0.85rem" }}>
-                        <span className="sermon-key-num">{k.number}</span>
+                      <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
+                        <span className="sermon-key-roman">{["I", "II", "III", "IV", "V"][idx] || k.number}</span>
                         <div>
                           <strong style={{ display: "block", fontSize: "0.95rem", color: "#0b192c" }}>{loc(k.title)}</strong>
                           <span style={{ fontSize: "0.75rem", color: "#8c6d32", fontFamily: "var(--font-display)", fontWeight: 600 }}>
@@ -837,7 +810,7 @@ export default function Home({ posts = [], error }) {
           </div>
         </section>
 
-        {/* 6. DIGITAL THEOLOGICAL LIBRARY SPOTLIGHT */}
+        {/* 6. CURATED 3D PHYSICAL BOOKSHELF SHOWCASE */}
         <section className="section section-alt">
           <div className="container">
             <div className="section-head" style={{ textAlign: "center" }}>
@@ -851,55 +824,36 @@ export default function Home({ posts = [], error }) {
               <div className="hero-divider-classic" style={{ margin: "1rem auto 0" }} />
             </div>
 
-            <div className="library-spotlight-card">
-              <div className="library-spotlight-book-col">
-                <RealBookCover book={BOOKS[0]} size="lg" />
+            <div className="bookshelf-stage">
+              <div className="bookshelf-books-row">
+                {[BOOKS[0], BOOKS[3], BOOKS[4], BOOKS[2]].filter(Boolean).map((book) => (
+                  <Link
+                    key={book.slug}
+                    href={`/library/${book.slug}`}
+                    className="bookshelf-book-slot"
+                    style={{ textDecoration: "none", color: "inherit" }}
+                  >
+                    <RealBookCover book={book} size="md" />
+                    <span className="bookshelf-callnum">{book.callNumber}</span>
+                    <h4 className="bookshelf-book-title">{loc(book.title)}</h4>
+                    <span className="bookshelf-read-link">
+                      <span>{isKm ? "អាន និងទាញយក PDF" : "Read & Download"}</span> →
+                    </span>
+                  </Link>
+                ))}
               </div>
 
-              <div className="library-spotlight-info-col">
-                <div className="library-spotlight-meta">
-                  <span className="library-spotlight-kicker">
-                    {isKm ? "សៀវភៅណែនាំពិសេស" : "Featured Study Volume"}
-                  </span>
-                  <span className="library-spotlight-callnum">
-                    HC-COMM-01
-                  </span>
-                </div>
-
-                <h3 className="library-spotlight-title">
-                  {isKm ? "អត្ថាធិប្បាយព្រះគម្ពីរ ម៉ាថាយ ហេនរី" : "Matthew Henry's Bible Commentary"}
-                </h3>
-
-                <p className="library-spotlight-desc">
-                  {isKm
-                    ? "អត្ថាធិប្បាយសង្ខេបខម្តងមួយៗលើព្រះគម្ពីរទាំងមូល ផ្តល់ជូនដោយឥតគិតថ្លៃសម្រាប់គ្រូគង្វាល និងអ្នកជឿទាំងអស់ដែលចង់រីកចម្រើនក្នុងព្រះបន្ទូល។"
-                    : "The classic verse-by-verse commentary, provided freely for pastors, leaders, and growing believers."}
-                </p>
-
-                <div className="library-spotlight-checklist">
-                  <div className="library-spotlight-check-item">
-                    <CheckIcon style={{ width: 14, height: 14, color: "var(--gold)", flexShrink: 0 }} />
-                    <span>{isKm ? "កម្រងឯកសារពេញលេញ ១,២៤៨ ទំព័រ (Complete Digital Archive)" : "1,248 pages of complete digital study archive"}</span>
-                  </div>
-                  <div className="library-spotlight-check-item">
-                    <CheckIcon style={{ width: 14, height: 14, color: "var(--gold)", flexShrink: 0 }} />
-                    <span>{isKm ? "អត្ថាធិប្បាយខម្តងមួយៗ គ្របដណ្តប់គម្ពីរសញ្ញាចាស់ និងសញ្ញាថ្មី" : "Expository verse-by-verse commentary across both Testaments"}</span>
-                  </div>
-                  <div className="library-spotlight-check-item">
-                    <CheckIcon style={{ width: 14, height: 14, color: "var(--gold)", flexShrink: 0 }} />
-                    <span>{isKm ? "ទាញយកជាឯកសារ PDF ឥតគិតថ្លៃ ១០០% សម្រាប់កសាងជំនឿ" : "100% free digital PDF download to equip the church"}</span>
-                  </div>
-                </div>
-
-                <div className="library-spotlight-actions">
-                  <Link href="/library/matthew-henry-commentary" className="btn btn-primary" style={{ fontSize: "0.82rem" }}>
-                    {isKm ? "អាន និងទាញយក PDF" : "Read & Download PDF"} →
-                  </Link>
-                  <Link href="/library" className="btn btn-ghost" style={{ fontSize: "0.82rem" }}>
-                    {isKm ? "មើលសៀវភៅទាំងអស់" : "View All Volumes"}
-                  </Link>
+              <div className="bookshelf-wood-plank">
+                <div className="bookshelf-brass-plaque">
+                  ✦ ARCHIVAL DIGITAL COLLECTION • HUNCHET.BLOG ✦
                 </div>
               </div>
+            </div>
+
+            <div style={{ textAlign: "center", marginTop: "3.5rem" }}>
+              <Link href="/library" className="btn btn-primary" style={{ padding: "0.85rem 2rem", fontSize: "0.9rem" }}>
+                {isKm ? "ចូលមើលសៀវភៅទាំងអស់ក្នុងបណ្ណាល័យ" : "Explore All Library Volumes"} →
+              </Link>
             </div>
           </div>
         </section>

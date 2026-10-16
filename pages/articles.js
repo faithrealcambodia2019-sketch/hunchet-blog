@@ -3,7 +3,7 @@ import Head from "next/head";
 import Link from "next/link";
 import SiteHeader from "../components/SiteHeader";
 import SiteFooter from "../components/SiteFooter";
-import { SearchIcon } from "../components/Icons";
+import { SearchIcon, BookOpenIcon, FeatherIcon, GlobeIcon } from "../components/Icons";
 import { useT, useLocale } from "../lib/i18n";
 import {
   getPosts,
@@ -95,18 +95,27 @@ export default function Articles({ posts, error }) {
 
           <div className="sanctuary-stat-strip">
             <div className="sanctuary-stat-card">
+              <span className="cred-icon-wrap" style={{ margin: "0 auto 0.6rem" }} aria-hidden="true">
+                <FeatherIcon style={{ width: 15, height: 15 }} />
+              </span>
               <span className="sanctuary-stat-num">{posts.length}+</span>
               <span className="sanctuary-stat-label">
                 {isKm ? "អត្ថបទសរុប" : "Total Articles"}
               </span>
             </div>
             <div className="sanctuary-stat-card">
+              <span className="cred-icon-wrap" style={{ margin: "0 auto 0.6rem" }} aria-hidden="true">
+                <BookOpenIcon style={{ width: 15, height: 15 }} />
+              </span>
               <span className="sanctuary-stat-num">{isKm ? "១៩៥៤" : "1954"}</span>
               <span className="sanctuary-stat-label">
                 {isKm ? "ព្រះគម្ពីរខ្មែរ ១៩៥៤" : "1954 Khmer Bible"}
               </span>
             </div>
             <div className="sanctuary-stat-card">
+              <span className="cred-icon-wrap" style={{ margin: "0 auto 0.6rem" }} aria-hidden="true">
+                <GlobeIcon style={{ width: 15, height: 15 }} />
+              </span>
               <span className="sanctuary-stat-num">{isKm ? "១០០%" : "100%"}</span>
               <span className="sanctuary-stat-label">
                 {isKm ? "ចែករំលែកដោយឥតគិតថ្លៃ" : "Free Access"}

@@ -5462,130 +5462,241 @@ h1, h2, h3, h4, h5, h6 {
   transform: translateY(-1px);
 }
 
-/* Executive Author Showcase Card - Clean Editorial */
-.hero-executive-card {
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
-  border-top: 4px solid var(--gold);
-  border-radius: 14px;
-  padding: 2.25rem 2rem;
-  box-shadow: 0 16px 40px -10px rgba(15, 23, 42, 0.08);
-  text-align: center;
-  position: relative;
-  max-width: 420px;
-  margin: 0 auto;
-}
-
-.hero-exec-avatar-wrap {
-  position: relative;
-  width: 136px;
-  height: 136px;
-  margin: 0 auto 1.25rem;
-}
-
-.hero-exec-avatar {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  object-fit: cover;
-  object-position: top;
-  border: 3px solid #b89b5e;
-  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.12), 0 0 0 3px rgba(184, 155, 94, 0.25);
-  display: block;
-  background: #f8fafc;
-  transition: transform 0.3s ease;
-}
-
-.hero-executive-card:hover .hero-exec-avatar {
-  transform: scale(1.02);
-}
-
-.hero-exec-badge-verified {
-  position: absolute;
-  bottom: 4px;
-  right: 6px;
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #c5a059 0%, #9c7d3c 100%);
-  color: #ffffff;
-  display: flex;
+/* Master Badge & Ornate Dividers */
+.hero-master-badge {
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  border: 2px solid #ffffff;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-}
-
-.hero-exec-name {
-  font-family: var(--font-display);
-  font-size: 1.6rem;
-  font-weight: 800;
-  color: #0b192c;
-  margin: 0 0 0.3rem;
-  line-height: 1.25;
-}
-
-.hero-exec-role {
-  display: inline-block;
+  gap: 0.65rem;
+  padding: 0.42rem 1.15rem;
+  border-radius: 9999px;
+  background: rgba(184, 155, 94, 0.12);
+  border: 1px solid rgba(184, 155, 94, 0.4);
+  color: #785a28;
   font-size: 0.76rem;
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #8c6d32;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 8px rgba(184, 155, 94, 0.08);
 }
 
-.hero-exec-bio {
-  font-size: 0.88rem;
-  color: #475569;
-  line-height: 1.65;
-  margin: 0 0 1.25rem;
+.hero-badge-fleuron {
+  color: #9d7837;
+  font-size: 0.8rem;
 }
 
-.hero-exec-verse {
+.hero-ornate-divider {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0 0 1.75rem;
+  max-width: 480px;
+}
+
+.hero-ornate-divider::before,
+.hero-ornate-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, #c5a059, transparent);
+}
+
+.hero-ornate-divider::before {
+  background: linear-gradient(90deg, transparent, #c5a059);
+}
+
+.hero-ornate-divider span {
+  color: #b89b5e;
+  font-size: 0.85rem;
+}
+
+.hero-btn-lead {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.88rem 1.85rem;
+  font-size: 0.92rem;
+  background: #0b192c;
+  border: 1px solid #1e3a5f;
+  color: #ffffff;
+  box-shadow: 0 8px 20px -4px rgba(11, 25, 44, 0.28);
+  transition: all 0.25s ease;
+}
+
+.hero-btn-lead:hover {
+  background: #112b4a;
+  border-color: #b89b5e;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px -4px rgba(11, 25, 44, 0.35);
+}
+
+.hero-btn-sub {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.88rem 1.6rem;
+  font-size: 0.92rem;
+  background: #ffffff;
+  border: 1px solid rgba(184, 155, 94, 0.45);
+  color: #0b192c;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04);
+  transition: all 0.25s ease;
+}
+
+.hero-btn-sub:hover {
   background: #fbf9f5;
-  border: 1px solid #eee8df;
-  border-left: 3px solid #b89b5e;
-  border-radius: 6px;
-  padding: 0.85rem 1rem;
-  margin-bottom: 1.35rem;
-  text-align: left;
+  border-color: #8c6d32;
+  transform: translateY(-2px);
 }
 
-.hero-exec-verse p {
+/* Cathedral Arch Framed Author Exhibition Masterpiece */
+.hero-arch-column {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-arch-frame-wrap {
+  position: relative;
+  max-width: 380px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.hero-arch-frame {
+  position: relative;
+  border-radius: 190px 190px 16px 16px;
+  overflow: hidden;
+  padding: 7px;
+  background: linear-gradient(145deg, #ffffff 0%, #f7f3ec 100%);
+  border: 2px solid #c5a059;
+  box-shadow: 0 24px 60px -12px rgba(11, 25, 44, 0.16), 0 0 0 4px rgba(197, 160, 89, 0.22);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.hero-arch-frame:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 32px 75px -12px rgba(11, 25, 44, 0.22), 0 0 0 5px rgba(197, 160, 89, 0.35);
+}
+
+.hero-arch-photo {
+  width: 100%;
+  height: 410px;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: 183px 183px 10px 10px;
+  display: block;
+  background: #f1f5f9;
+}
+
+.hero-arch-seal {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem 0.75rem;
+  border-radius: 9999px;
+  background: rgba(11, 25, 44, 0.88);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(197, 160, 89, 0.45);
+  color: #e5c378;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.hero-seal-fleuron {
+  color: #e5c378;
+  font-size: 0.75rem;
+}
+
+.hero-arch-plaque {
+  margin-top: 1.25rem;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-top: 3px solid #b89b5e;
+  border-radius: 12px;
+  padding: 1.35rem 1.5rem;
+  text-align: center;
+  box-shadow: 0 10px 30px -5px rgba(11, 25, 44, 0.08);
+  position: relative;
+}
+
+.hero-arch-plaque-name {
   font-family: var(--font-display);
-  font-size: 0.88rem;
-  color: #1e293b;
-  font-style: italic;
-  margin: 0 0 0.3rem;
-  line-height: 1.6;
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #0b192c;
+  margin: 0 0 0.25rem;
+  line-height: 1.25;
 }
 
-.hero-exec-verse cite {
+.hero-arch-plaque-title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #8c6d32;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+.hero-arch-plaque-verse {
+  background: #fcfbfa;
+  border: 1px solid #eee8df;
+  border-radius: 6px;
+  padding: 0.75rem 0.85rem;
+  margin-bottom: 0.85rem;
+}
+
+.hero-arch-plaque-verse p {
+  font-family: var(--font-display);
+  font-size: 0.84rem;
+  font-style: italic;
+  color: #1e293b;
+  line-height: 1.6;
+  margin: 0 0 0.3rem;
+}
+
+.hero-arch-plaque-ref {
   font-family: var(--font-body);
-  font-size: 0.74rem;
+  font-size: 0.72rem;
   font-weight: 700;
   color: #8c6d32;
   display: block;
+  font-style: normal;
 }
 
-.hero-exec-actions {
-  display: flex;
-  justify-content: center;
-  gap: 0.75rem;
-  flex-wrap: wrap;
-  margin-bottom: 1.25rem;
-}
-
-.hero-exec-seal {
-  font-size: 0.72rem;
-  color: #64748b;
+.hero-arch-actions {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.4rem;
-  border-top: 1px solid #f1f5f9;
-  padding-top: 1rem;
+  gap: 0.65rem;
+  padding-top: 0.5rem;
+  font-size: 0.78rem;
+}
+
+.hero-arch-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: #475569;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.hero-arch-link:hover {
+  color: #8c6d32;
+}
+
+.hero-arch-sep {
+  color: #cbd5e1;
 }
 
 /* 2. Welcome Section Editorial Layout */
@@ -5976,6 +6087,187 @@ h1, h2, h3, h4, h5, h6 {
     justify-content: center;
   }
 }
+
+/* ========================================================
+   CURATED 3D PHYSICAL BOOKSHELF SHOWCASE (Homepage Section 6)
+   ======================================================== */
+.bookshelf-stage {
+  position: relative;
+  max-width: 1040px;
+  margin: 2.5rem auto 0;
+  padding: 3rem 2.5rem 0;
+  background: radial-gradient(ellipse at 50% 25%, #ffffff 0%, #fcf9f2 60%, #f6efe2 100%);
+  border: 1px solid #e5dfd5;
+  border-top: 4px solid var(--gold);
+  border-radius: 20px;
+  box-shadow: 0 24px 60px -15px rgba(11, 25, 44, 0.12), 0 4px 12px rgba(184, 155, 94, 0.08);
+  overflow: hidden;
+}
+
+.bookshelf-books-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  align-items: flex-end;
+  justify-items: center;
+  padding-bottom: 2rem;
+  position: relative;
+  z-index: 2;
+}
+
+@media (max-width: 900px) {
+  .bookshelf-books-row {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem 1.5rem;
+  }
+}
+
+.bookshelf-book-slot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+}
+
+.bookshelf-book-slot .real-book-cover {
+  cursor: pointer;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+}
+
+.bookshelf-book-slot:hover .real-book-cover {
+  transform: translateY(-8px) scale(1.03);
+}
+
+.bookshelf-callnum {
+  margin-top: 1.15rem;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.68rem;
+  font-weight: 800;
+  color: #7a632b;
+  background: rgba(184, 155, 94, 0.15);
+  border: 1px solid rgba(184, 155, 94, 0.4);
+  padding: 0.15rem 0.65rem;
+  border-radius: 3px;
+  letter-spacing: 0.08em;
+}
+
+.bookshelf-book-title {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #0b192c;
+  margin: 0.5rem 0 0.25rem;
+  line-height: 1.35;
+  min-height: 2.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bookshelf-read-link {
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: #8c6d32;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-top: 0.35rem;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.bookshelf-read-link:hover {
+  color: #0b192c;
+  transform: translateX(2px);
+}
+
+.bookshelf-wood-plank {
+  position: relative;
+  height: 24px;
+  background: linear-gradient(180deg, #442a17 0%, #2a180b 100%);
+  border-radius: 4px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.28), inset 0 2px 2px rgba(255, 255, 255, 0.15);
+  margin: 0 -2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bookshelf-wood-plank::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #d4af37 25%, #f7e7b4 50%, #d4af37 75%, transparent);
+  opacity: 0.9;
+}
+
+.bookshelf-brass-plaque {
+  background: linear-gradient(180deg, #d4af37 0%, #a88428 100%);
+  color: #1a1204;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.65rem;
+  font-weight: 800;
+  padding: 0.18rem 1rem;
+  border-radius: 2px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  border: 1px solid #735414;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+}
+
+/* ========================================================
+   ENHANCED SERMON KEYS MANUSCRIPT STYLING
+   ======================================================== */
+.sermon-key-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.15rem 1.35rem;
+  background: #ffffff;
+  border: 1px solid #e8e2d8;
+  border-left: 3px solid #b89b5e;
+  border-radius: 10px;
+  margin-bottom: 0.85rem;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.03);
+}
+
+.sermon-key-item:hover {
+  background: #fffdf9;
+  border-color: #c5a059;
+  border-left-width: 4px;
+  transform: translateX(4px);
+  box-shadow: 0 8px 20px -4px rgba(184, 155, 94, 0.18);
+}
+
+.sermon-key-roman {
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  background: linear-gradient(145deg, #fbf7ee 0%, #f0e6d2 100%);
+  border: 1px solid rgba(184, 155, 94, 0.45);
+  color: #785a28;
+  font-family: var(--font-display);
+  font-size: 0.88rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 2px 6px rgba(184, 155, 94, 0.12);
+}
+
+.sermon-key-item:hover .sermon-key-roman {
+  background: #0b192c;
+  color: #e5c378;
+  border-color: #0b192c;
+}
+
 
 
 
