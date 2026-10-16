@@ -4,7 +4,6 @@ import SiteHeader from "../components/SiteHeader";
 import SiteFooter from "../components/SiteFooter";
 import AuthorCard from "../components/AuthorCard";
 import { PORTRAIT } from "../lib/media";
-import { BookOpenIcon, FeatherIcon, GlobeIcon } from "../components/Icons";
 import { useT, useLocale } from "../lib/i18n";
 
 const TIMELINE = [
@@ -57,27 +56,18 @@ export default function About() {
 
           <div className="sanctuary-stat-strip">
             <div className="sanctuary-stat-card">
-              <span className="cred-icon-wrap" style={{ margin: "0 auto 0.6rem" }} aria-hidden="true">
-                <FeatherIcon style={{ width: 15, height: 15 }} />
-              </span>
               <span className="sanctuary-stat-num">12+</span>
               <span className="sanctuary-stat-label">
                 {isKm ? "ឆ្នាំក្នុងកិច្ចការបម្រើព្រះ" : "Years in Ministry"}
               </span>
             </div>
             <div className="sanctuary-stat-card">
-              <span className="cred-icon-wrap" style={{ margin: "0 auto 0.6rem" }} aria-hidden="true">
-                <GlobeIcon style={{ width: 15, height: 15 }} />
-              </span>
               <span className="sanctuary-stat-num">CV & EFC</span>
               <span className="sanctuary-stat-label">
                 {isKm ? "ផ្សាយដំណឹងល្អឌីជីថល" : "Digital Media Ministry"}
               </span>
             </div>
             <div className="sanctuary-stat-card">
-              <span className="cred-icon-wrap" style={{ margin: "0 auto 0.6rem" }} aria-hidden="true">
-                <BookOpenIcon style={{ width: 15, height: 15 }} />
-              </span>
               <span className="sanctuary-stat-num">{isKm ? "១០០%" : "100%"}</span>
               <span className="sanctuary-stat-label">
                 {isKm ? "ព្រះគម្ពីរជាគ្រឹះ" : "Scripture First"}
