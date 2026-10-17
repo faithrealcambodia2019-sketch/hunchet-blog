@@ -34,8 +34,8 @@ const STRINGS = {
     zh: "个人博客",
   },
   topWelcome: {
-    km: "សូមស្វាគមន៍មកកាន់ប្លុកផ្ទាល់ខ្លួនរបស់ ហ៊ុន ចិត្ត — ចែករំលែកព្រះបន្ទូល ជំនឿ និងជីវិត",
-    en: "Welcome to Hun Chet's Personal Blog — Biblical Teaching, Faith & Reflections",
+    km: "សូមស្វាគមន៍មកកាន់គេហទំព័ររបស់លោកគ្រូ ហ៊ុន ចិត្ត — ចែករំលែកព្រះបន្ទូល ជំនឿ និងជីវិត",
+    en: "Welcome to Hun Chet's Official Blog — Biblical Teaching, Faith & Reflections",
     ko: "훈 쳇 사역 리더의 개인 블로그 — 성경 강해, 믿음과 삶의 나눔",
     zh: "欢迎访问 Hun Chet 个人博客 — 圣经讲道、真理与生命见证",
   },
@@ -46,8 +46,8 @@ const STRINGS = {
     zh: "Hun Chet",
   },
   blogSubtitle: {
-    km: "ប្លុកផ្ទាល់ខ្លួន • ជំនឿ & ការចែករំលែក",
-    en: "Personal Blog • Faith & Writing",
+    km: "គេហទំព័រផ្លូវការ • ការចែករំលែកព្រះបន្ទូល",
+    en: "Official Website • Faith & Biblical Writing",
     ko: "개인 블로그 • 믿음과 글",
     zh: "个人博客 • 信仰与写作",
   },

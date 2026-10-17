@@ -250,7 +250,7 @@ export default function Home({ posts = [], error }) {
 
       <SiteHeader />
 
-      {/* 1. EXECUTIVE SPLIT HERO */}
+      {/* 1. STATELY CLASSIC HERO */}
       <section className="hero-editorial">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
@@ -264,25 +264,24 @@ export default function Home({ posts = [], error }) {
           <div className="hero-split-grid">
             {/* Left Column: Author Narrative & Mission */}
             <div className="hero-editorial-content">
-              <div className="hero-editorial-eyebrow">
-                <span className="hero-eyebrow-dot" />
+              <div className="hero-classic-tag">
                 <span>
                   {isKm
-                    ? "លោកគ្រូ ហ៊ុន ចិត្ត • ប្លុកផ្ទាល់ខ្លួនផ្លូវការ"
-                    : "Leader Hun Chet • Official Personal Blog"}
+                    ? "គេហទំព័រផ្លូវការ • លោកគ្រូ ហ៊ុន ចិត្ត"
+                    : "Official Personal Blog • Leader Hun Chet"}
                 </span>
               </div>
 
-              <h1 className="hero-editorial-title">
+              <h1 className="hero-classic-title">
                 {isKm ? (
                   <>
-                    ចាក់ឬសក្នុងជំនឿ •{" "}
-                    <span className="gold-accent">ចែករំលែកសេចក្តីពិតនៃព្រះគ្រីស្ទ</span>
+                    ចាក់ឬសក្នុងព្រះបន្ទូល
+                    <span className="hero-classic-gold">រស់នៅដើម្បីសិរីល្អនៃព្រះគ្រីស្ទ</span>
                   </>
                 ) : (
                   <>
-                    Rooted in Faith.{" "}
-                    <span className="gold-accent">Sharing Christ-Centered Truth.</span>
+                    Rooted in the Word.{" "}
+                    <span className="hero-classic-gold">Living for the Glory of Christ.</span>
                   </>
                 )}
               </h1>
@@ -293,31 +292,25 @@ export default function Home({ posts = [], error }) {
                   : "Biblical Exposition, Pastoral Reflections, Life Lessons & Discipleship"}
               </p>
 
-              <div className="hero-editorial-divider" />
+              <div className="classic-gold-divider" />
 
               <p className="hero-editorial-lede">
                 {isKm
-                  ? "សូមស្វាគមន៍មកកាន់ប្លុកផ្ទាល់ខ្លួនរបស់ខ្ញុំ។ ទីនេះជាកន្លែងកត់ត្រា និងចែករំលែកនូវសេចក្តីពិតនៃព្រះបន្ទូល ការពន្យល់ព្រះគម្ពីរ ការរៀនសូត្រពីជីវិត និងធនធានស្មារតីសម្រាប់ការរីកចម្រើនក្នុងព្រះគ្រីស្ទ។"
+                  ? "សូមស្វាគមន៍មកកាន់គេហទំព័ររបស់ខ្ញុំបាទ ហ៊ុន ចិត្ត។ ទីនេះជាកន្លែងកត់ត្រា និងចែករំលែកនូវសេចក្តីពិតនៃព្រះបន្ទូល ការពន្យល់ព្រះគម្ពីរ ការរៀនសូត្រពីជីវិត និងធនធានស្មារតីសម្រាប់ការរីកចម្រើនក្នុងព្រះគ្រីស្ទ។"
                   : "Welcome to my personal blog. A space dedicated to sharing biblical exposition, theological writings, life experiences, and resources for spiritual growth."}
               </p>
 
               <div className="hero-editorial-actions">
                 <Link
                   href="/articles"
-                  className="btn btn-primary"
-                  style={{
-                    padding: "0.85rem 1.85rem",
-                    fontSize: "0.9rem",
-                    boxShadow: "0 6px 20px rgba(184, 155, 94, 0.4)",
-                  }}
+                  className="btn-classic-gold"
                 >
                   {isKm ? "អានអត្ថបទទាំងអស់" : "Explore All Articles"} →
                 </Link>
 
                 <Link
                   href="/devotions"
-                  className="btn btn-gold-glass"
-                  style={{ padding: "0.85rem 1.5rem", fontSize: "0.9rem" }}
+                  className="btn-classic-outline-gold"
                 >
                   <BookOpenIcon style={{ width: 16, height: 16, marginRight: "0.45rem", color: "var(--gold)" }} />
                   <span>{isKm ? "ព្រះបន្ទូល ៣៦៥ ថ្ងៃ" : "365 Devotions"}</span>
@@ -325,8 +318,7 @@ export default function Home({ posts = [], error }) {
 
                 <Link
                   href="/about"
-                  className="btn btn-outline-light"
-                  style={{ padding: "0.85rem 1.5rem", fontSize: "0.9rem" }}
+                  className="btn-classic-outline"
                 >
                   {isKm ? "អំពីខ្ញុំ" : "About Me"}
                 </Link>
@@ -339,7 +331,7 @@ export default function Home({ posts = [], error }) {
                 </div>
                 <div className="hero-cred-item">
                   <span className="cred-icon">✍️</span>
-                  <span>{isKm ? "អត្ថបទ & ការបង្រៀន" : "Articles & Exegesis"}</span>
+                  <span>{isKm ? "ការបង្រៀនជាប្រព័ន្ធ" : "Systematic Teaching"}</span>
                 </div>
                 <div className="hero-cred-item">
                   <span className="cred-icon">🇰🇭</span>
@@ -348,36 +340,32 @@ export default function Home({ posts = [], error }) {
               </div>
             </div>
 
-            {/* Right Column: Executive Author Profile Card */}
+            {/* Right Column: Classic Author Study Card */}
             <div>
-              <div className="hero-executive-card">
-                <div className="hero-exec-avatar-wrap">
+              <div className="hero-author-classic-box">
+                <div className="author-portrait-classic-frame">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={PORTRAIT}
                     alt="Leader Hun Chet"
-                    className="hero-exec-avatar"
                   />
-                  <div className="hero-exec-badge-verified" title="Verified Author">
-                    <CheckIcon style={{ width: 14, height: 14 }} />
-                  </div>
                 </div>
 
-                <h3 className="hero-exec-name">
+                <h3 className="hero-author-classic-name">
                   {isKm ? "លោកគ្រូ ហ៊ុន ចិត្ត" : "Leader Hun Chet"}
                 </h3>
 
-                <span className="hero-exec-role">
-                  {isKm ? "អ្នកនិពន្ធ • អ្នកចែករំលែកព្រះបន្ទូល" : "Author & Preacher"}
+                <span className="hero-author-classic-role">
+                  {isKm ? "អ្នកនិពន្ធ • អ្នកបង្រៀនព្រះគម្ពីរ • អ្នកដឹកនាំព័ន្ធកិច្ច" : "Author • Biblical Teacher • Ministry Leader"}
                 </span>
 
-                <p className="hero-exec-bio">
+                <p className="hero-author-classic-bio">
                   {isKm
-                    ? "បម្រើការងារជាអ្នកផលិតមាតិកាឌីជីថល (CV) និងដឹកនាំការបង្រៀនព្រះបន្ទូល ការបណ្តុះសិស្ស និងការផ្សាយដំណឹងល្អក្នុងប្រទេសកម្ពុជា។"
-                    : "Serving in Christian media content strategy and passionate about biblical preaching, discipleship, and sharing hope."}
+                    ? "ខ្ញុំបាទមានសេចក្តីអំណរក្នុងការបម្រើព្រះ តាមរយៈការបង្រៀនព្រះបន្ទូល ការបណ្តុះបណ្តាលសិស្ស និងការចែករំលែកដំណឹងល្អក្នុងប្រទេសកម្ពុជា។"
+                    : "Serving in biblical preaching, next-generation discipleship, and Christian digital media strategy in Cambodia."}
                 </p>
 
-                <div className="hero-exec-verse">
+                <div className="author-classic-verse">
                   <p>
                     {isKm
                       ? "«ដ្បិត​ឯ​ខ្ញុំ ដែល​ខ្ញុំ​រស់​នៅ នោះ​គឺ​សំរាប់​ព្រះគ្រីស្ទ​ទេ ហើយ​ដែល​ស្លាប់​ទៅ នោះ​ជា​កំរៃ​វិញ»"
@@ -386,30 +374,30 @@ export default function Home({ posts = [], error }) {
                   <cite>{isKm ? "— ភីលីព ១:២១ • ព្រះគម្ពីរខ្មែរ ១៩៥៤" : "— Philippians 1:21 • 1954 Khmer Bible"}</cite>
                 </div>
 
-                <div className="hero-exec-actions">
+                <div className="author-classic-connect">
                   <a
                     href="https://t.me/+855966875886"
                     target="_blank"
                     rel="noreferrer"
-                    className="author-btn btn-telegram"
-                    style={{ padding: "0.55rem 1.15rem", fontSize: "0.82rem" }}
+                    className="author-classic-link"
                   >
-                    <TelegramIcon width="14" height="14" />
+                    <TelegramIcon width="13" height="13" />
                     <span>Telegram</span>
                   </a>
                   <a
                     href="tel:0966875886"
-                    className="author-btn btn-phone"
-                    style={{ padding: "0.55rem 1.15rem", fontSize: "0.82rem" }}
+                    className="author-classic-link"
                   >
-                    <PhoneIcon width="14" height="14" />
+                    <PhoneIcon width="13" height="13" />
                     <span>096 687 5886</span>
                   </a>
+                  <Link href="/contact" className="author-classic-link">
+                    <span>{isKm ? "ទាក់ទង" : "Contact"}</span>
+                  </Link>
                 </div>
 
-                <div className="hero-exec-seal">
-                  <CheckIcon style={{ width: 13, height: 13, color: "var(--gold)" }} />
-                  <span>{isKm ? "គេហទំព័រប្លុកផ្ទាល់ខ្លួនផ្លូវការ • hunchet.blog" : "Official Personal Blog • hunchet.blog"}</span>
+                <div className="hero-author-classic-seal">
+                  <span>{isKm ? "គេហទំព័រផ្លូវការ • hunchet.blog" : "Official Website • hunchet.blog"}</span>
                 </div>
               </div>
             </div>
@@ -418,83 +406,60 @@ export default function Home({ posts = [], error }) {
       </section>
 
       <main>
-        {/* 2. ILLUMINATED DAILY DEVOTION SCRIPTURE CARD */}
-        <section style={{ background: "#ffffff", padding: "3.5rem 0", borderBottom: "1px solid var(--border)" }}>
+        {/* 2. ILLUMINATED DAILY DEVOTION SCRIPTURE PLATE */}
+        <section style={{ background: "#ffffff", padding: "3.5rem 0", borderBottom: "1px solid #e2dfd8" }}>
           <div className="container">
-            <div className="devotion-illuminated-card">
-              <span className="devotion-quote-watermark" aria-hidden="true">«</span>
-
-              <div style={{ position: "relative", zIndex: 2 }}>
-                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: "1rem", marginBottom: "1.25rem" }}>
-                  <div className="devotion-badge">
-                    <BookOpenIcon />
-                    <span>{currentScripture.tag}</span>
-                  </div>
-                  <span style={{ fontSize: "0.78rem", color: "var(--gold)", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" }}>
-                    {isKm ? "ខគម្ពីរលើកទឹកចិត្ត" : "Scripture of the Day"}
-                  </span>
+            <div className="devotion-classic-plate">
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: "1rem" }}>
+                <div className="devotion-classic-tag">
+                  <BookOpenIcon style={{ width: 14, height: 14 }} />
+                  <span>{currentScripture.tag}</span>
                 </div>
+                <span style={{ fontSize: "0.78rem", color: "var(--gold)", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" }}>
+                  {isKm ? "ខគម្ពីរលើកទឹកចិត្តប្រចាំថ្ងៃ" : "Daily Scripture Word"}
+                </span>
+              </div>
 
-                <blockquote
-                  style={{
-                    fontFamily: "var(--font-display)",
-                    fontSize: "clamp(1.18rem, 2.6vw, 1.7rem)",
-                    lineHeight: 1.65,
-                    color: "#ffffff",
-                    margin: "0 0 1.5rem",
-                    fontWeight: 600,
-                  }}
-                >
-                  {currentScripture.text}
-                </blockquote>
+              <blockquote className="devotion-classic-quote">
+                {currentScripture.text}
+              </blockquote>
 
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "space-between",
-                    flexWrap: "wrap",
-                    gap: "1.25rem",
-                    borderTop: "1px solid rgba(255, 255, 255, 0.15)",
-                    paddingTop: "1.25rem",
-                  }}
-                >
-                  <cite style={{ fontFamily: "var(--font-display)", fontSize: "1.05rem", color: "var(--gold)", fontStyle: "normal", fontWeight: 700 }}>
-                    — {currentScripture.ref}
-                  </cite>
+              <div className="devotion-classic-footer">
+                <cite className="devotion-classic-cite">
+                  — {currentScripture.ref}
+                </cite>
 
-                  <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap" }}>
-                    <button
-                      type="button"
-                      onClick={handleShareTelegram}
-                      style={{
-                        background: "rgba(14, 165, 233, 0.2)",
-                        border: "1px solid rgba(14, 165, 233, 0.4)",
-                        color: "#38bdf8",
-                        padding: "0.55rem 1.15rem",
-                        borderRadius: "var(--radius-sm)",
-                        fontSize: "0.78rem",
-                        fontWeight: 700,
-                        cursor: "pointer",
-                        display: "inline-flex",
-                        alignItems: "center",
-                        gap: "0.45rem",
-                        transition: "all 0.2s ease",
-                      }}
-                    >
-                      <TelegramIcon style={{ width: 14, height: 14 }} />
-                      <span>{isKm ? "ចែករំលែកលើ Telegram" : "Share to Telegram"}</span>
-                    </button>
+                <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap" }}>
+                  <button
+                    type="button"
+                    onClick={handleShareTelegram}
+                    style={{
+                      background: "rgba(14, 165, 233, 0.1)",
+                      border: "1px solid rgba(14, 165, 233, 0.35)",
+                      color: "#0284c7",
+                      padding: "0.55rem 1.15rem",
+                      borderRadius: "2px",
+                      fontSize: "0.8rem",
+                      fontWeight: 700,
+                      cursor: "pointer",
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: "0.45rem",
+                      transition: "all 0.2s ease",
+                    }}
+                  >
+                    <TelegramIcon style={{ width: 14, height: 14 }} />
+                    <span>{isKm ? "ចែករំលែកលើ Telegram" : "Share to Telegram"}</span>
+                  </button>
 
-                    <Link
-                      href="/devotions"
-                      className="btn btn-primary"
-                      style={{ padding: "0.55rem 1.25rem", fontSize: "0.78rem" }}
-                    >
-                      <BookOpenIcon style={{ width: 14, height: 14, marginRight: "0.35rem" }} />
-                      {isKm ? "អានព្រះបន្ទូល ៣៦៥ ថ្ងៃ" : "Explore 365 Devotions"} →
-                    </Link>
-                  </div>
+                  <Link
+                    href="/devotions"
+                    className="btn btn-primary"
+                    style={{ padding: "0.55rem 1.25rem", fontSize: "0.8rem", borderRadius: "2px" }}
+                  >
+                    <BookOpenIcon style={{ width: 14, height: 14, marginRight: "0.35rem" }} />
+                    {isKm ? "អានព្រះបន្ទូល ៣៦៥ ថ្ងៃ" : "Explore 365 Devotions"} →
+                  </Link>
                 </div>
               </div>
             </div>
@@ -520,7 +485,7 @@ export default function Home({ posts = [], error }) {
                 </div>
               </div>
 
-              {/* Right Column: Mission and Pillars of the Blog */}
+              {/* Right Column: Mission and Heart of the Blog */}
               <div>
                 <span className="eyebrow" style={{ color: "var(--navy)", borderColor: "var(--gold)", marginBottom: "0.85rem" }}>
                   {isKm ? "សារស្វាគមន៍ពីម្ចាស់ប្លុក" : "Author Welcome & Mission"}
@@ -536,15 +501,15 @@ export default function Home({ posts = [], error }) {
                   }}
                 >
                   {isKm
-                    ? "ហេតុអ្វីបានជាខ្ញុំបង្កើតប្លុកនេះ?"
-                    : "Why I Write and Share This Ministry"}
+                    ? "បេសកកម្ម និងបេះដូងនៃការចែករំលែក"
+                    : "The Heart and Mission Behind This Ministry"}
                 </h2>
 
-                <div className="hero-editorial-divider" style={{ margin: "0 0 1.5rem" }} />
+                <div className="classic-gold-divider" style={{ margin: "0 0 1.5rem" }} />
 
                 <p style={{ color: "var(--text)", lineHeight: 1.85, fontSize: "1.02rem", marginBottom: "1.25rem" }}>
                   {isKm
-                    ? "ខ្ញុំជឿជាក់ថា សេចក្តីជំនឿពិតត្រូវតែចាក់ឬសយ៉ាងរឹងមាំនៅក្នុងព្រះបន្ទូលនៃព្រះគម្ពីរ។ ជនជាតិខ្មែរគ្រប់រូបគួរតែមានឱកាសអាន សិក្សា និងយល់ដឹងនូវគោលលទ្ធិព្រះគម្ពីរយ៉ាងស៊ីជម្រៅជាភាសាកំណើតរបស់ខ្លួន។"
+                    ? "ខ្ញុំជឿជាក់ថា សេចក្តីជំនឿពិតត្រូវតែចាក់ឬសយ៉ាងរឹងមាំនៅក្នុងព្រះបន្ទូលនៃព្រះគម្ពីរ។ បងប្អូនជនជាតិខ្មែរគ្រប់រូប គួរតែមានឱកាសអាន សិក្សា និងយល់ដឹងនូវគោលលទ្ធិព្រះគម្ពីរយ៉ាងស៊ីជម្រៅជាភាសាកំណើតរបស់យើង។"
                     : "I believe enduring faith must be anchored in the inspired Word of God. Cambodian believers deserve rich, authentic theological teaching and devotional companions written with depth in their native Khmer language."}
                 </p>
 
@@ -554,26 +519,35 @@ export default function Home({ posts = [], error }) {
                     : "This blog is freely provided for pastors, seminary students, and everyday believers who desire to grow deeper in Christ and advance the Gospel across our nation."}
                 </p>
 
-                {/* 3 Pillars List */}
-                <div className="welcome-pillar-grid">
-                  <div className="welcome-pillar-card">
-                    <strong>📖 {isKm ? "ព្រះគម្ពីរជាគ្រឹះ" : "Scripture First"}</strong>
-                    <span>{isKm ? "គ្រប់ការបង្រៀនទាំងអស់ផ្តើមចេញពីព្រះបន្ទូលពិត។" : "Grounded directly in biblical text."}</span>
+                {/* 3 Classical Editorial Pillars */}
+                <div className="welcome-classic-pillars">
+                  <div className="welcome-classic-pillar">
+                    <strong>១. ព្រះបន្ទូលជាគ្រឹះ</strong>
+                    <span>គ្រប់អត្ថបទ និងការបង្រៀនទាំងអស់ផ្តើមចេញពីការពន្យល់ព្រះគម្ពីរដ៏ត្រឹមត្រូវ និងស្មោះត្រង់។</span>
                   </div>
 
-                  <div className="welcome-pillar-card">
-                    <strong>🇰🇭 {isKm ? "សរសេរជាភាសាខ្មែរ" : "Written in Khmer"}</strong>
-                    <span>{isKm ? "អត្ថបទ និងសៀវភៅគុណភាពខ្ពស់សម្រាប់ប្រជាជនកម្ពុជា។" : "High-caliber theological literature for Khmer readers."}</span>
+                  <div className="welcome-classic-pillar">
+                    <strong>២. សរសេរជាភាសាខ្មែរ</strong>
+                    <span>អត្ថបទ និងសៀវភៅទេវវិទ្យាគុណភាពខ្ពស់ ដែលរៀបចំឡើងជាពិសេសសម្រាប់អ្នកអានខ្មែរ។</span>
                   </div>
 
-                  <div className="welcome-pillar-card">
-                    <strong>🎁 {isKm ? "ចែករំលែកដោយឥតគិតថ្លៃ" : "Freely Shared"}</strong>
-                    <span>{isKm ? "ផ្តល់ជូនដោយឥតគិតថ្លៃ ដើម្បីកសាងពួកជំនុំ។" : "Freely available to enrich and equip the Church."}</span>
+                  <div className="welcome-classic-pillar">
+                    <strong>៣. ចែករំលែកដោយឥតគិតថ្លៃ</strong>
+                    <span>ផ្តល់ជូនដោយឥតគិតថ្លៃ ដើម្បីកសាង និងបំពាក់បំប៉នក្រុមជំនុំនៃព្រះគ្រីស្ទ។</span>
                   </div>
                 </div>
 
-                <div style={{ marginTop: "2rem" }}>
-                  <Link href="/about" className="btn btn-primary" style={{ padding: "0.75rem 1.65rem", fontSize: "0.88rem" }}>
+                <div style={{ marginTop: "1.5rem", fontStyle: "italic", color: "var(--text)" }}>
+                  <p style={{ margin: 0, fontSize: "0.92rem" }}>
+                    {isKm ? "ដោយក្តីស្រឡាញ់ក្នុងព្រះគ្រីស្ទ," : "In Christ's grace,"}
+                  </p>
+                  <strong style={{ fontFamily: "var(--font-display)", fontSize: "1.08rem", color: "#0f172a" }}>
+                    {isKm ? "លោកគ្រូ ហ៊ុន ចិត្ត" : "Leader Hun Chet"}
+                  </strong>
+                </div>
+
+                <div style={{ marginTop: "1.75rem" }}>
+                  <Link href="/about" className="btn btn-primary" style={{ padding: "0.75rem 1.65rem", fontSize: "0.88rem", borderRadius: "2px" }}>
                     {isKm ? "ស្វែងយល់អំពីរឿងរ៉ាវរបស់ខ្ញុំ" : "Read My Full Testimony"} →
                   </Link>
                 </div>
@@ -582,7 +556,7 @@ export default function Home({ posts = [], error }) {
           </div>
         </section>
 
-        {/* 4. FEATURED TEACHING: 5 KEYS TO LIVING IN CHRIST */}
+        {/* 4. FEATURED TEACHING: 5 FOUNDATIONAL KEYS */}
         <section className="sermon-spotlight-box">
           <div className="container">
             <div className="section-head" style={{ textAlign: "center", marginBottom: "3rem" }}>
@@ -592,8 +566,8 @@ export default function Home({ posts = [], error }) {
                   alignItems: "center",
                   gap: "0.45rem",
                   padding: "0.35rem 0.95rem",
-                  borderRadius: "var(--radius-sm)",
-                  background: "rgba(184, 155, 94, 0.2)",
+                  borderRadius: "2px",
+                  background: "rgba(184, 155, 94, 0.15)",
                   border: "1px solid rgba(184, 155, 94, 0.4)",
                   color: "var(--gold)",
                   fontSize: "0.72rem",
@@ -621,7 +595,7 @@ export default function Home({ posts = [], error }) {
                 <strong style={{ color: "var(--gold)" }}>{isKm ? "លោកគ្រូ ហ៊ុន ចិត្ត" : "Leader Hun Chet"}</strong>
               </div>
 
-              <div className="hero-divider-classic" style={{ margin: "1rem auto 0" }} />
+              <div className="classic-gold-divider" style={{ margin: "1rem auto 0" }} />
             </div>
 
             <div className="sermon-spotlight-grid">
@@ -643,13 +617,17 @@ export default function Home({ posts = [], error }) {
 
                 <div>
                   {SERMON_KEYS.map((k) => (
-                    <Link key={k.number} href="/articles" className="sermon-key-item">
-                      <div style={{ display: "flex", alignItems: "center", gap: "0.85rem" }}>
-                        <span className="sermon-key-num">{k.number}</span>
+                    <Link key={k.number} href="/articles" className="sermon-classic-item">
+                      <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
+                        <span className="sermon-classic-num">
+                          {isKm
+                            ? ["១", "២", "៣", "៤", "៥"][parseInt(k.number, 10) - 1] || k.number
+                            : k.number}
+                        </span>
                         <div>
                           <strong style={{ display: "block", fontSize: "0.95rem" }}>{loc(k.title)}</strong>
-                          <span style={{ fontSize: "0.75rem", color: "var(--gold)", fontFamily: "var(--font-display)" }}>
-                            {k.ref}
+                          <span style={{ fontSize: "0.78rem", color: "var(--gold)", fontFamily: "var(--font-display)" }}>
+                            {k.ref} • ព្រះគម្ពីរខ្មែរ ១៩៥៤
                           </span>
                         </div>
                       </div>
@@ -659,9 +637,9 @@ export default function Home({ posts = [], error }) {
                 </div>
               </div>
 
-              {/* Right: Scripture Highlight & Telegram Share */}
+              {/* Right: Scripture Highlight & Action */}
               <div style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
-                <div className="sermon-quote-card">
+                <div className="sermon-classic-quote-box">
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "0.75rem" }}>
                     <span style={{ fontSize: "0.72rem", color: "var(--gold)", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.12em" }}>
                       Jeremiah 29:11
@@ -676,15 +654,16 @@ export default function Home({ posts = [], error }) {
                       ? "«ដ្បិតយើងដឹងពីគំនិតដែលយើងគិតពីឯងរាល់គ្នា គឺសុទ្ធតែជាគំនិតនៃសេចក្តីសុខសាន្ត មិនមែនជាគំនិតនៃសេចក្តីអាក្រក់ឡើយ ដើម្បីឲ្យឯងរាល់គ្នាមានសង្ឃឹមនៅចុងបំផុត»"
                       : "“For I know the plans I have for you,” declares the LORD, “plans to prosper you and not to harm you, plans to give you hope and a future.”"}
                   </blockquote>
-                  <cite>— {isKm ? "យេរេមា ២៩:១១" : "Jeremiah 29:11"}</cite>
+                  <cite>— {isKm ? "យេរេមា ២៩:១១ • ព្រះគម្ពីរខ្មែរ ១៩៥៤" : "Jeremiah 29:11"}</cite>
                 </div>
 
                 <div
                   style={{
-                    background: "rgba(184, 155, 94, 0.12)",
+                    background: "rgba(184, 155, 94, 0.08)",
                     border: "1px solid rgba(184, 155, 94, 0.3)",
+                    borderTop: "3px solid var(--gold)",
                     padding: "1.5rem",
-                    borderRadius: "var(--radius-lg)",
+                    borderRadius: "3px",
                     display: "flex",
                     flexDirection: "column",
                     gap: "0.85rem",
@@ -699,7 +678,7 @@ export default function Home({ posts = [], error }) {
                       : "Complete with biblical exposition, practical daily applications, and reflection questions."}
                   </p>
                   <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", marginTop: "0.25rem" }}>
-                    <Link href="/articles" className="btn btn-primary" style={{ padding: "0.6rem 1.25rem", fontSize: "0.75rem" }}>
+                    <Link href="/articles" className="btn btn-primary" style={{ padding: "0.6rem 1.25rem", fontSize: "0.78rem", borderRadius: "2px" }}>
                       {isKm ? "អានអត្ថបទទាំងអស់" : "Read Articles"} →
                     </Link>
                     <button
@@ -710,11 +689,11 @@ export default function Home({ posts = [], error }) {
                         alignItems: "center",
                         gap: "0.4rem",
                         padding: "0.6rem 1.1rem",
-                        borderRadius: "var(--radius-sm)",
-                        background: "rgba(14, 165, 233, 0.2)",
+                        borderRadius: "2px",
+                        background: "rgba(14, 165, 233, 0.15)",
                         border: "1px solid rgba(14, 165, 233, 0.4)",
                         color: "#38bdf8",
-                        fontSize: "0.75rem",
+                        fontSize: "0.78rem",
                         fontWeight: 700,
                         cursor: "pointer",
                       }}
@@ -973,8 +952,8 @@ export default function Home({ posts = [], error }) {
                   href="https://t.me/+855966875886"
                   target="_blank"
                   rel="noreferrer"
-                  className="btn btn-primary"
-                  style={{ display: "inline-flex", alignItems: "center", gap: "0.4rem" }}
+                  className="btn-classic-gold"
+                  style={{ display: "inline-flex", alignItems: "center", gap: "0.45rem", padding: "0.75rem 1.4rem" }}
                 >
                   <TelegramIcon style={{ width: 14, height: 14 }} />
                   <span>Telegram</span>
@@ -982,14 +961,14 @@ export default function Home({ posts = [], error }) {
 
                 <a
                   href="tel:0966875886"
-                  className="btn btn-gold-glass"
-                  style={{ display: "inline-flex", alignItems: "center", gap: "0.4rem" }}
+                  className="btn-classic-outline-gold"
+                  style={{ display: "inline-flex", alignItems: "center", gap: "0.45rem", padding: "0.75rem 1.4rem" }}
                 >
                   <PhoneIcon width="14" height="14" />
                   <span>096 687 5886</span>
                 </a>
 
-                <Link href="/contact" className="btn btn-outline-light">
+                <Link href="/contact" className="btn-classic-outline" style={{ padding: "0.75rem 1.4rem" }}>
                   {t("nav.contact")}
                 </Link>
               </div>
