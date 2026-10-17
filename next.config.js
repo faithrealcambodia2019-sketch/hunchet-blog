@@ -15,6 +15,7 @@ const nextConfig = {
       { protocol: "https", hostname: "hunchet.blog" },
     ],
   },
+  staticPageGenerationTimeout: 180,
 };
 
 module.exports = nextConfig;

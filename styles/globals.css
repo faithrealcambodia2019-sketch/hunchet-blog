@@ -5866,5 +5866,739 @@ h1, h2, h3, h4, h5, h6 {
   display: block;
 }
 
+/* ==========================================================================
+   ALL NATIONS CHURCH SIGNATURE DESIGN SYSTEM (HUN CHET BLOG PORT)
+   Exact match to All Nations Church aesthetic in /Users/hunchet/Documents/New project
+   ========================================================================== */
+
+/* 1. Full-Width Grand Cinematic Hero */
+.anc-hero {
+  position: relative;
+  min-height: 620px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  border-bottom: 6px solid var(--gold);
+  background: #0b192c;
+  padding: 6.5rem 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .anc-hero {
+    min-height: 660px;
+    border-bottom: 8px solid var(--gold);
+  }
+}
+
+.anc-hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  filter: brightness(0.68);
+}
+
+.anc-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(11, 25, 44, 0.88) 0%,
+    rgba(15, 39, 68, 0.76) 50%,
+    rgba(11, 25, 44, 0.92) 100%
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
+.anc-hero-controls {
+  position: absolute;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.anc-hero-ctrl-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.4rem 0.85rem;
+  border-radius: 9999px;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  color: #fff;
+  font-size: 0.74rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s ease;
+}
+
+.anc-hero-ctrl-btn:hover {
+  background: rgba(0, 0, 0, 0.9);
+  border-color: var(--gold);
+}
+
+.anc-hero-ctrl-btn svg {
+  width: 14px;
+  height: 14px;
+}
+
+.anc-hero-content {
+  position: relative;
+  z-index: 10;
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.anc-hero-eyebrow {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.15rem;
+}
+
+.anc-hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.3rem, 5.2vw, 3.8rem);
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.18;
+  margin: 0 0 0.85rem;
+  letter-spacing: -0.01em;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+}
+
+.anc-hero-sub {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(1.35rem, 3vw, 2.2rem);
+  font-weight: 400;
+  color: var(--gold);
+  margin: 0 0 1.25rem;
+  line-height: 1.38;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+}
+
+.anc-gold-bar {
+  width: 88px;
+  height: 4px;
+  background: var(--gold);
+  margin: 0 auto 1.75rem;
+}
+
+.anc-hero-lead {
+  font-family: var(--font-body);
+  font-size: clamp(0.96rem, 1.8vw, 1.12rem);
+  color: #f1f5f9;
+  max-width: 720px;
+  margin: 0 auto 2.5rem;
+  line-height: 1.85;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+  font-weight: 400;
+  padding: 0 0.75rem;
+}
+
+.anc-hero-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+/* 2. Sharp Classic Buttons (All Nations Church Signature) */
+.anc-btn-gold {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.95rem 2.2rem;
+  border: 2px solid var(--gold);
+  background: var(--gold);
+  color: #0b192c;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  text-decoration: none;
+  border-radius: 2px;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+.anc-btn-gold:hover {
+  background: transparent;
+  color: var(--gold);
+}
+
+.anc-btn-glass {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.95rem 2rem;
+  border: 2px solid rgba(179, 146, 78, 0.8);
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #ffffff;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  text-decoration: none;
+  border-radius: 2px;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+.anc-btn-glass:hover {
+  background: var(--gold);
+  color: #0b192c;
+  border-color: var(--gold);
+}
+
+.anc-btn-white {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.95rem 2rem;
+  border: 2px solid #ffffff;
+  background: transparent;
+  color: #ffffff;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  text-decoration: none;
+  border-radius: 2px;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+.anc-btn-white:hover {
+  background: #ffffff;
+  color: #0b192c;
+}
+
+.anc-btn-navy {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.9rem 2rem;
+  border: 2px solid #0f172a;
+  background: #0f172a;
+  color: #ffffff;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  text-decoration: none;
+  border-radius: 2px;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.12);
+  cursor: pointer;
+}
+
+.anc-btn-navy:hover {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: #0f172a;
+}
+
+.anc-btn-outline-dark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.9rem 1.85rem;
+  border: 2px solid #e2dfd8;
+  background: transparent;
+  color: #0f172a;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  text-decoration: none;
+  border-radius: 2px;
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+
+.anc-btn-outline-dark:hover {
+  border-color: #0f172a;
+  color: #0f172a;
+}
+
+/* 3. Daily Scripture Spotlight Stripe */
+.anc-scripture-stripe {
+  background: linear-gradient(90deg, #071424 0%, #0c2340 50%, #071424 100%);
+  border-top: 1px solid rgba(179, 146, 78, 0.3);
+  border-bottom: 1px solid rgba(179, 146, 78, 0.3);
+  padding: 3rem 0;
+  position: relative;
+  overflow: hidden;
+  color: #ffffff;
+}
+
+.anc-scripture-stripe-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.1;
+  mix-blend-mode: luminosity;
+  pointer-events: none;
+}
+
+.anc-scripture-stripe-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.75rem;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+}
+
+.anc-scripture-stripe-left {
+  max-width: 820px;
+}
+
+.anc-scripture-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.3rem 0.85rem;
+  border-radius: 9999px;
+  background: rgba(179, 146, 78, 0.18);
+  border: 1px solid rgba(179, 146, 78, 0.5);
+  color: var(--gold);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.75rem;
+}
+
+.anc-scripture-quote {
+  font-family: var(--font-serif);
+  font-size: clamp(1.2rem, 2.4vw, 1.7rem);
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.65;
+  margin: 0 0 0.5rem;
+}
+
+.anc-scripture-ref {
+  font-family: var(--font-serif);
+  font-size: 0.9rem;
+  color: var(--gold);
+  font-weight: 600;
+  font-style: normal;
+  display: block;
+}
+
+.anc-scripture-stripe-right {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex-shrink: 0;
+}
+
+/* 4. Welcome / Mission & Pulpit Ministry Section */
+.anc-welcome-wrap {
+  padding: 5.5rem 0;
+  background: #fcfbf9;
+}
+
+.anc-welcome-layout {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+@media (max-width: 980px) {
+  .anc-welcome-layout {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}
+
+.anc-kicker-gray {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #0f172a;
+  opacity: 0.85;
+  margin-bottom: 0.75rem;
+}
+
+.anc-title-serif {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 3.8vw, 2.85rem);
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1.25;
+  margin: 0 0 1rem;
+}
+
+.anc-gold-rule-left {
+  width: 72px;
+  height: 3px;
+  background: var(--gold);
+  margin: 0 0 1.5rem;
+}
+
+.anc-lead-p {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  color: #334155;
+  line-height: 1.85;
+  margin: 0 0 1.75rem;
+}
+
+.anc-pillar-card {
+  background: #ffffff;
+  border: 1px solid #e2dfd8;
+  border-left: 4px solid var(--gold);
+  border-radius: 2px;
+  padding: 1.35rem 1.5rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+}
+
+.anc-pillar-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--gold);
+  margin-bottom: 0.3rem;
+}
+
+.anc-pillar-h4 {
+  font-family: var(--font-serif);
+  font-size: 1.18rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 0.35rem;
+}
+
+.anc-pillar-p {
+  font-size: 0.88rem;
+  color: #475569;
+  line-height: 1.65;
+  margin: 0;
+}
+
+.anc-framed-card {
+  padding: 0.75rem;
+  background: #ffffff;
+  border: 1px solid #e2dfd8;
+  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.08);
+  border-radius: 2px;
+}
+
+.anc-framed-img-wrap {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: #0b192c;
+}
+
+.anc-framed-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.anc-framed-caption {
+  position: absolute;
+  bottom: 0;
+  inset-x: 0;
+  background: linear-gradient(
+    to top,
+    rgba(11, 25, 44, 0.95) 0%,
+    rgba(11, 25, 44, 0.6) 60%,
+    transparent 100%
+  );
+  padding: 1.25rem 1.25rem 1rem;
+  color: #ffffff;
+}
+
+.anc-framed-caption h4 {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 0.25rem;
+}
+
+.anc-framed-caption p {
+  font-size: 0.78rem;
+  color: var(--gold);
+  margin: 0;
+}
+
+.anc-framed-quote {
+  padding: 1.15rem 0.85rem 0.65rem;
+  border-top: 1px solid #e2dfd8;
+  margin-top: 0.75rem;
+  text-align: center;
+}
+
+.anc-framed-quote p {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 0.9rem;
+  color: #334155;
+  line-height: 1.6;
+  margin: 0 0 0.35rem;
+}
+
+.anc-framed-quote cite {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--gold-hover);
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* 5. 5 Foundational Keys Section (Sermon Spotlight) */
+.anc-sermon-section {
+  padding: 5.5rem 0;
+  background: #0b192c;
+  color: #ffffff;
+  border-top: 4px solid var(--gold);
+  border-bottom: 4px solid var(--gold);
+}
+
+.anc-sermon-grid {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  gap: 3.5rem;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .anc-sermon-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+
+.anc-key-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.15rem 1.35rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-left: 4px solid var(--gold);
+  border-radius: 2px;
+  margin-bottom: 0.85rem;
+  text-decoration: none;
+  color: #ffffff;
+  transition: all 0.2s ease;
+}
+
+.anc-key-card:hover {
+  background: rgba(179, 146, 78, 0.12);
+  border-color: rgba(179, 146, 78, 0.45);
+  transform: translateX(5px);
+}
+
+.anc-key-num {
+  width: 34px;
+  height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(179, 146, 78, 0.18);
+  border: 1px solid var(--gold);
+  border-radius: 2px;
+  color: var(--gold);
+  font-weight: 700;
+  font-size: 0.95rem;
+  font-family: var(--font-display);
+  flex-shrink: 0;
+}
+
+/* 6. Recent Articles Grid (Ministries Style) */
+.anc-articles-wrap {
+  padding: 5.5rem 0;
+  background: #ffffff;
+  border-top: 1px solid #e2dfd8;
+}
+
+.anc-articles-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+@media (max-width: 980px) {
+  .anc-articles-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.anc-art-card {
+  background: #fcfbf9;
+  border: 1px solid #e2dfd8;
+  border-radius: 2px;
+  padding: 1rem;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+}
+
+.anc-art-card:hover {
+  border-color: var(--gold);
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+  transform: translateY(-3px);
+}
+
+.anc-art-thumb {
+  height: 220px;
+  position: relative;
+  overflow: hidden;
+  background: #e2e8f0;
+  border-radius: 2px;
+  margin-bottom: 1.25rem;
+}
+
+.anc-art-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.anc-art-card:hover .anc-art-thumb img {
+  transform: scale(1.05);
+}
+
+.anc-art-date {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.anc-art-title {
+  font-family: var(--font-serif);
+  font-size: 1.28rem;
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1.35;
+  margin: 0 0 0.65rem;
+  transition: color 0.2s;
+}
+
+.anc-art-card:hover .anc-art-title {
+  color: var(--gold-hover);
+}
+
+.anc-art-excerpt {
+  font-size: 0.88rem;
+  color: #475569;
+  line-height: 1.65;
+  margin: 0 0 1.25rem;
+  flex-grow: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.anc-art-link {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #0f172a;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: color 0.2s;
+}
+
+.anc-art-card:hover .anc-art-link {
+  color: var(--gold-hover);
+}
+
+/* 7. 3D Theological Library Section */
+.anc-library-wrap {
+  padding: 5.5rem 0;
+  background: #0f172a;
+  color: #ffffff;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 6px solid var(--gold);
+}
+
+.anc-library-showcase {
+  max-width: 960px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 4px solid var(--gold);
+  border-radius: 2px;
+  padding: 3rem 2.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1.35fr;
+  gap: 3.5rem;
+  align-items: center;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+}
+
+@media (max-width: 860px) {
+  .anc-library-showcase {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    padding: 2rem 1.5rem;
+  }
+}
+
+
 
 
