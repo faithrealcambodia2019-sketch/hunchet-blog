@@ -244,80 +244,26 @@ export default function SiteHeader() {
 
           {/* Desktop Navigation Menu for Personal Blog */}
           <nav className="site-nav desktop-nav" aria-label="Main Navigation">
-            {/* 1. Home */}
-            <Link
-              href="/"
-              className={`nav-link ${router.pathname === "/" ? "active" : ""}`}
-            >
-              {t("nav.home")}
-            </Link>
-
-            {/* 2. Articles */}
-            <Link
-              href="/articles"
-              className={`nav-link ${isRouteActive("/articles") ? "active" : ""}`}
-            >
-              {t("nav.article")}
-            </Link>
-
-            {/* 3. Daily Devotions [365] */}
-            <Link
-              href="/devotions"
-              className={`nav-link ${isRouteActive("/devotions") ? "active" : ""}`}
-            >
-              <span>{t("nav.devotions")}</span>
-              <span className="nav-badge-365">365</span>
-            </Link>
-
-            {/* 4. Library */}
-            <Link
-              href="/library"
-              className={`nav-link ${isRouteActive("/library") ? "active" : ""}`}
-            >
-              {t("nav.library")}
-            </Link>
-
-            {/* 5. Resource (Videos & Media) */}
-            <Link
-              href="/resource"
-              className={`nav-link ${isRouteActive("/resource") ? "active" : ""}`}
-            >
-              {t("nav.resource")}
-            </Link>
-
-            {/* 6. Gallery */}
-            <Link
-              href="/gallery"
-              className={`nav-link ${isRouteActive("/gallery") ? "active" : ""}`}
-            >
-              {t("nav.gallery")}
-            </Link>
-
-            {/* 7. About Me */}
-            <Link
-              href="/about"
-              className={`nav-link ${isRouteActive("/about") ? "active" : ""}`}
-            >
-              {t("nav.about")}
-            </Link>
-
-            {/* 8. Contact */}
-            <Link
-              href="/contact"
-              className={`nav-link ${isRouteActive("/contact") ? "active" : ""}`}
-            >
-              {t("nav.contact")}
-            </Link>
+            {[
+              ["/articles", "nav.article"],
+              ["/devotions", "nav.devotions"],
+              ["/library", "nav.library"],
+              ["/about", "nav.about"],
+            ].map(([href, label]) => (
+              <Link key={href} href={href} className={`nav-link ${isRouteActive(href) ? "active" : ""}`} aria-current={isRouteActive(href) ? "page" : undefined}>
+                {t(label)}
+              </Link>
+            ))}
 
             {/* Language Switcher */}
             <LanguageSwitch />
 
             {/* Read Articles Quick CTA */}
             <Link
-              href="/articles"
+              href="/contact"
               className="header-cta-btn"
             >
-              <span>{tStr("readArticlesBtn")}</span>
+              <span>{t("nav.contact")}</span>
               <ArrowRightIcon style={{ width: 12, height: 12 }} />
             </Link>
           </nav>

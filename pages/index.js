@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -14,10 +14,6 @@ import {
 } from "../lib/wordpress";
 import {
   BookOpenIcon,
-  PlayIcon,
-  PauseIcon,
-  VolumeOnIcon,
-  VolumeOffIcon,
   CloseIcon,
   ArrowRightIcon,
   TelegramIcon,
@@ -109,7 +105,16 @@ const LIFE_PHOTOS = [
 
 export async function getStaticProps() {
   try {
-    const posts = await getPosts({ perPage: 6 });
+    const sourcePosts = await getPosts({ perPage: 3 });
+    // Only send the fields needed by homepage cards to the browser.
+    const posts = sourcePosts.map((post) => ({
+      id: post.id,
+      slug: post.slug,
+      date: post.date,
+      title: post.title,
+      image: getFeaturedImage(post),
+      summary: getExcerptText(post),
+    }));
     return { props: { posts }, revalidate: 60 };
   } catch (err) {
     return { props: { posts: [], error: err.message }, revalidate: 60 };
@@ -123,29 +128,6 @@ export default function Home({ posts = [], error }) {
   const isKm = locale === "km";
 
   const [selectedPhoto, setSelectedPhoto] = useState(null);
-  const videoRef = useRef(null);
-  const [isHeroPlaying, setIsHeroPlaying] = useState(true);
-  const [isHeroMuted, setIsHeroMuted] = useState(true);
-
-  const toggleHeroPlay = () => {
-    if (videoRef.current) {
-      if (isHeroPlaying) {
-        videoRef.current.pause();
-        setIsHeroPlaying(false);
-      } else {
-        videoRef.current.play();
-        setIsHeroPlaying(true);
-      }
-    }
-  };
-
-  const toggleHeroMute = () => {
-    if (videoRef.current) {
-      videoRef.current.muted = !isHeroMuted;
-      setIsHeroMuted(!isHeroMuted);
-    }
-  };
-
   const handleShareTelegram = () => {
     if (typeof window === "undefined") return;
     const url = `${window.location.origin}/articles`;
@@ -229,104 +211,30 @@ export default function Home({ posts = [], error }) {
 
       <SiteHeader />
 
-      {/* 1. HERO SECTION — All Nations Church Signature Dynamic Ambient Background & Stately Typography */}
-      <section className="anc-hero">
-        {/* Ambient Worship Background Video */}
-        <video
-          ref={videoRef}
-          autoPlay
-          loop
-          muted={isHeroMuted}
-          playsInline
-          poster="/images/hero-cover.jpg"
-          className="anc-hero-video"
-        >
-          <source src="/videos/church-intro-480p.mp4" type="video/mp4" />
-        </video>
-
-        {/* Cinematic Gradient Vignette Overlay */}
-        <div className="anc-hero-overlay" />
-
-        {/* Ambient Video Audio & Playback Controls Badge */}
-        <div className="anc-hero-controls">
-          <button
-            type="button"
-            onClick={toggleHeroMute}
-            aria-label={isHeroMuted ? "Turn audio on" : "Mute audio"}
-            className="anc-hero-ctrl-btn"
-          >
-            {isHeroMuted ? (
-              <>
-                <VolumeOffIcon style={{ width: 14, height: 14, color: "#cbd5e1" }} />
-                <span style={{ color: "var(--gold)", fontWeight: 700, fontSize: "0.72rem" }}>
-                  {isKm ? "សំឡេងបិទ" : "Audio Muted"}
-                </span>
-              </>
-            ) : (
-              <>
-                <VolumeOnIcon style={{ width: 14, height: 14, color: "var(--gold)" }} />
-                <span style={{ color: "var(--gold)", fontWeight: 700, fontSize: "0.72rem" }}>
-                  {isKm ? "សំឡេងបើក" : "Audio On"}
-                </span>
-              </>
-            )}
-          </button>
-
-          <button
-            type="button"
-            onClick={toggleHeroPlay}
-            aria-label={isHeroPlaying ? "Pause video" : "Play video"}
-            className="anc-hero-ctrl-btn"
-            style={{ padding: "0.4rem 0.55rem" }}
-          >
-            {isHeroPlaying ? (
-              <PauseIcon style={{ width: 14, height: 14, color: "#ffffff" }} />
-            ) : (
-              <PlayIcon style={{ width: 14, height: 14, color: "var(--gold)" }} />
-            )}
-          </button>
-        </div>
-
-        {/* Hero Content */}
-        <div className="anc-hero-content">
-          <span className="anc-hero-eyebrow">
-            {isKm ? "គេហទំព័រផ្លូវការ • លោកគ្រូ ហ៊ុន ចិត្ត" : "Official Website • Leader Hun Chet"}
-          </span>
-
-          <h1 className="anc-hero-title">
-            {isKm ? "ចាក់ឬសក្នុងព្រះបន្ទូល" : "Rooted in the Word of Truth."}
-          </h1>
-
-          <h2 className="anc-hero-sub">
-            {isKm ? "រស់នៅដើម្បីសិរីល្អនៃព្រះគ្រីស្ទ" : "Living for the Glory of Christ."}
-          </h2>
-
-          <div className="anc-gold-bar" />
-
-          <p className="anc-hero-lead">
-            {isKm
-              ? "សូមស្វាគមន៍មកកាន់គេហទំព័ររបស់ខ្ញុំបាទ ហ៊ុន ចិត្ត។ ទីនេះជាកន្លែងកត់ត្រា និងចែករំលែកនូវសេចក្តីពិតនៃព្រះបន្ទូល ការបង្រៀនព្រះគម្ពីរ ការបណ្តុះសិស្ស និងធនធានស្មារតីសម្រាប់ការរីកចម្រើនក្នុងព្រះគ្រីស្ទ។"
-              : "Welcome to my personal blog. A space dedicated to sharing biblical exposition, theological writings, life experiences, and resources for spiritual growth."}
-          </p>
-
-          <div className="anc-hero-actions">
-            <Link href="/articles" className="anc-btn-gold">
-              {isKm ? "អានអត្ថបទទាំងអស់" : "Explore All Articles"}
-            </Link>
-
-            <Link href="/devotions" className="anc-btn-glass">
-              <BookOpenIcon style={{ width: 15, height: 15, marginRight: "0.5rem", color: "var(--gold)" }} />
-              <span>{isKm ? "ព្រះបន្ទូល ៣៦៥ ថ្ងៃ" : "365 Devotions"}</span>
-            </Link>
-
-            <Link href="/about" className="anc-btn-white">
-              {isKm ? "អំពីលោកគ្រូ ហ៊ុន ចិត្ត" : "Our Story & Ministry"}
-            </Link>
+      <a className="skip-link" href="#main-content">{isKm ? "ចូលទៅមាតិកា" : "Skip to content"}</a>
+      <section className="professional-hero" aria-labelledby="hero-title">
+        <div className="container professional-hero-grid">
+          <div className="professional-hero-copy">
+            <span className="professional-eyebrow">{isKm ? "លោកគ្រូ ហ៊ុន ចិត្ត • ជំនឿ និងជីវិត" : "HUN CHET · FAITH & LIFE"}</span>
+            <h1 id="hero-title">{isKm ? "ចាក់ឬសក្នុងព្រះបន្ទូល" : "Rooted in Scripture. Growing in faith."}</h1>
+            <p className="professional-hero-subtitle">{isKm ? "រស់នៅដើម្បីសិរីល្អនៃព្រះគ្រីស្ទ" : "Living for the glory of Christ."}</p>
+            <p className="professional-hero-description">{isKm
+              ? "សូមស្វាគមន៍។ ខ្ញុំបាទ ហ៊ុន ចិត្ត ចែករំលែកការបង្រៀនព្រះគម្ពីរ អត្ថបទសញ្ជឹងគិត និងធនធានជាភាសាខ្មែរ ដើម្បីជួយបងប្អូនរីកចម្រើនក្នុងជំនឿ និងការរស់នៅប្រចាំថ្ងៃ។"
+              : "Welcome. I’m Hun Chet. Explore biblical teaching, thoughtful reflections, and free Khmer resources to help you grow in faith and everyday life."}</p>
+            <div className="professional-hero-actions">
+              <Link href="/articles" className="anc-btn-navy">{isKm ? "អានអត្ថបទ" : "Explore the articles"}<ArrowRightIcon style={{width:16,height:16}} /></Link>
+              <Link href="/devotions" className="professional-text-link"><BookOpenIcon style={{width:18,height:18}} />{isKm ? "ព្រះបន្ទូលប្រចាំថ្ងៃ" : "Daily devotions"}</Link>
+            </div>
+            <div className="professional-hero-note">{isKm ? "ការបង្រៀនព្រះគម្ពីរ · ការបណ្តុះសិស្ស · ធនធានឥតគិតថ្លៃ" : "Biblical teaching · Discipleship · Free resources"}</div>
           </div>
+          <figure className="professional-portrait">
+            <img src={PORTRAIT} alt={isKm ? "លោកគ្រូ ហ៊ុន ចិត្ត" : "Hun Chet"} fetchPriority="high" width="600" height="720" />
+            <figcaption><span>{isKm ? "លោកគ្រូ ហ៊ុន ចិត្ត" : "Hun Chet"}</span><Link href="/about">{isKm ? "ស្វែងយល់អំពីខ្ញុំ" : "About my journey"} <span aria-hidden="true">↗</span></Link></figcaption>
+          </figure>
         </div>
       </section>
 
-      <main>
+      <main id="main-content" tabIndex={-1}>
         {/* 2. DAILY SCRIPTURE SPOTLIGHT STRIPE (All Nations Church Signature Devotion Banner) */}
         <section className="anc-scripture-stripe">
           <div
@@ -368,6 +276,72 @@ export default function Home({ posts = [], error }) {
               >
                 <span>{isKm ? "អានព្រះបន្ទូល ៣៦៥ ថ្ងៃ" : "Read Daily Devotion"}</span>
                 <ArrowRightIcon style={{ width: 14, height: 14, marginLeft: "0.45rem" }} />
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* 5. RECENT ARTICLES & TEACHINGS — Classic Editorial Grid (Ministries Style) */}
+        <section className="anc-articles-wrap">
+          <div className="container">
+            <div style={{ textAlign: "center", maxWidth: 760, margin: "0 auto 3.5rem" }}>
+              <span className="anc-kicker-gray">
+                {isKm ? "អត្ថបទ និងការបង្រៀនថ្មីៗ" : "Latest Articles & Teachings"}
+              </span>
+              <h2 className="anc-title-serif">
+                {isKm ? "អត្ថបទសញ្ជឹងគិត & ការបង្រៀនព្រះបន្ទូល" : "Reflections & Biblical Teaching"}
+              </h2>
+              <div className="anc-gold-bar" style={{ margin: "1rem auto 1.5rem" }} />
+              <p style={{ color: "#475569", fontSize: "1.02rem", margin: 0 }}>
+                {isKm
+                  ? "ស្វែងរកអត្ថបទថ្មីៗស្តីពីការបង្រៀនព្រះគម្ពីរ ជីវិតគ្រីស្ទបរិស័ទ ភាពជាអ្នកដឹកនាំ និងការលូតលាស់ខាងវិញ្ញាណ។"
+                  : "Explore articles on biblical exposition, Christian discipleship, leadership, and spiritual growth."}
+              </p>
+            </div>
+
+            {error && (
+              <p className="error" style={{ textAlign: "center", color: "#dc2626" }}>
+                {t("common.loadError")}
+              </p>
+            )}
+
+            {/* Posts Grid (3-column ministries style) */}
+            {posts && posts.length > 0 && (
+              <div className="anc-articles-grid">
+                {posts.slice(0, 3).map((post) => {
+                  const image = post.image;
+                  return (
+                    <Link key={post.id} href={`/posts/${post.slug}`} className="anc-art-card">
+                      <div className="anc-art-thumb">
+                        {image ? (
+                          <img src={image} alt="" loading="lazy" decoding="async" />
+                        ) : (
+                          <div style={{ width: "100%", height: "100%", background: "#0f172a", display: "flex", alignItems: "center", justifyContent: "center", color: "var(--gold)", fontSize: "2rem", fontWeight: 700 }}>
+                            H
+                          </div>
+                        )}
+                      </div>
+                      <span className="anc-art-date">{formatDate(post.date)}</span>
+                      <h3
+                        className="anc-art-title"
+                        dangerouslySetInnerHTML={{
+                          __html: post.title.rendered,
+                        }}
+                      />
+                      <p className="anc-art-excerpt">{post.summary}</p>
+                      <span className="anc-art-link">
+                        <span>{isKm ? "អានអត្ថបទពេញលេញ" : "Read Full Article"}</span>
+                        <ArrowRightIcon style={{ width: 14, height: 14 }} />
+                      </span>
+                    </Link>
+                  );
+                })}
+              </div>
+            )}
+
+            <div style={{ textAlign: "center", marginTop: "3.5rem" }}>
+              <Link href="/articles" className="anc-btn-outline-dark">
+                {isKm ? "មើលអត្ថបទទាំងអស់" : "View All Articles"} →
               </Link>
             </div>
           </div>
@@ -646,72 +620,6 @@ export default function Home({ posts = [], error }) {
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </section>
-
-        {/* 5. RECENT ARTICLES & TEACHINGS — Classic Editorial Grid (Ministries Style) */}
-        <section className="anc-articles-wrap">
-          <div className="container">
-            <div style={{ textAlign: "center", maxWidth: 760, margin: "0 auto 3.5rem" }}>
-              <span className="anc-kicker-gray">
-                {isKm ? "អត្ថបទ និងការបង្រៀនថ្មីៗ" : "Latest Articles & Teachings"}
-              </span>
-              <h2 className="anc-title-serif">
-                {isKm ? "អត្ថបទសញ្ជឹងគិត & ការបង្រៀនព្រះបន្ទូល" : "Reflections & Biblical Teaching"}
-              </h2>
-              <div className="anc-gold-bar" style={{ margin: "1rem auto 1.5rem" }} />
-              <p style={{ color: "#475569", fontSize: "1.02rem", margin: 0 }}>
-                {isKm
-                  ? "ស្វែងរកអត្ថបទថ្មីៗស្តីពីការបង្រៀនព្រះគម្ពីរ ជីវិតគ្រីស្ទបរិស័ទ ភាពជាអ្នកដឹកនាំ និងការលូតលាស់ខាងវិញ្ញាណ។"
-                  : "Explore articles on biblical exposition, Christian discipleship, leadership, and spiritual growth."}
-              </p>
-            </div>
-
-            {error && (
-              <p className="error" style={{ textAlign: "center", color: "#dc2626" }}>
-                {t("common.loadError")} {error}
-              </p>
-            )}
-
-            {/* Posts Grid (3-column ministries style) */}
-            {posts && posts.length > 0 && (
-              <div className="anc-articles-grid">
-                {posts.slice(0, 3).map((post) => {
-                  const image = getFeaturedImage(post);
-                  return (
-                    <Link key={post.id} href={`/posts/${post.slug}`} className="anc-art-card">
-                      <div className="anc-art-thumb">
-                        {image ? (
-                          <img src={image} alt="" />
-                        ) : (
-                          <div style={{ width: "100%", height: "100%", background: "#0f172a", display: "flex", alignItems: "center", justifyContent: "center", color: "var(--gold)", fontSize: "2rem", fontWeight: 700 }}>
-                            H
-                          </div>
-                        )}
-                      </div>
-                      <span className="anc-art-date">{formatDate(post.date)}</span>
-                      <h3
-                        className="anc-art-title"
-                        dangerouslySetInnerHTML={{
-                          __html: post.title.rendered,
-                        }}
-                      />
-                      <p className="anc-art-excerpt">{getExcerptText(post)}</p>
-                      <span className="anc-art-link">
-                        <span>{isKm ? "អានអត្ថបទពេញលេញ" : "Read Full Article"}</span>
-                        <ArrowRightIcon style={{ width: 14, height: 14 }} />
-                      </span>
-                    </Link>
-                  );
-                })}
-              </div>
-            )}
-
-            <div style={{ textAlign: "center", marginTop: "3.5rem" }}>
-              <Link href="/articles" className="anc-btn-outline-dark">
-                {isKm ? "មើលអត្ថបទទាំងអស់" : "View All Articles"} →
-              </Link>
             </div>
           </div>
         </section>

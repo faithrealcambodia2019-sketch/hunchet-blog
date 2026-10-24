@@ -8,6 +8,7 @@ import "../styles/video.css";
 import "../styles/devotion.css";
 import "../styles/lang.css";
 import "../styles/motion.css";
+import "../styles/professional.css";
 
 // Elements that fade + rise into view as you scroll. Listed here rather than
 // tagged in every page so the pages stay clean markup.
