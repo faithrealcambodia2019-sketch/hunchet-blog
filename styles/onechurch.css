@@ -102,7 +102,7 @@ body.oc-menu-open {
 .oc-site :lang(km),
 .oc-site .oc-hero-khmer,
 .oc-site .oc-khmer-caption {
-  font-family: 'Koh Santepheap', 'Noto Sans Khmer', sans-serif !important;
+  font-family: 'Koh Santepheap', serif !important;
 }
 section[id], [id] {
   scroll-margin-top: calc(var(--header) + 16px);
@@ -350,12 +350,12 @@ section[id], [id] {
 .oc-brand-khmer,
 .oc-brand-subtitle {
   display: block;
-  font-family: 'Koh Santepheap', 'Kantumruy Pro', Montserrat, sans-serif !important;
+  font-family: 'Koh Santepheap', serif !important;
   font-size: 11.5px;
-  font-weight: 600;
+  font-weight: 700;
   line-height: 1.35;
   margin-top: 2px;
-  letter-spacing: .03em;
+  letter-spacing: normal;
   color: rgba(255, 255, 255, 0.9);
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
   transition: color 0.2s ease;
@@ -1904,22 +1904,17 @@ html[lang='en'] .oc-site > main > :not(.oc-home) :is(h1,h2,h3,h4) { font-family:
 /* Khmer-Specific Typography Perfection (Koh Santepheap font) */
 html[lang='km'],
 html[lang='km'] body,
-html[lang='km'] .oc-site {
-  font-family: 'Koh Santepheap', 'Noto Sans Khmer', sans-serif !important;
+html[lang='km'] .oc-site,
+html[lang='km'] .oc-nav,
+html[lang='km'] .oc-header,
+html[lang='km'] .oc-footer,
+html[lang='km'] :is(h1, h2, h3, h4, h5, h6, p, a, button, span, small, strong, summary, input, textarea):not(.oc-brand-title):not([lang='en']) {
+  font-family: 'Koh Santepheap', serif !important;
 }
 
-html[lang='km'] h1,
-html[lang='km'] h2,
-html[lang='km'] h3,
-html[lang='km'] h4,
-html[lang='km'] p,
-html[lang='km'] a,
-html[lang='km'] button,
-html[lang='km'] span,
-html[lang='km'] small,
-html[lang='km'] strong {
+html[lang='km'] :is(h1, h2, h3, h4, h5, h6, p, a, button, span, small, strong, summary):not(.oc-brand-title):not([lang='en']) {
   text-transform: none !important;
-  letter-spacing: 0 !important;
+  letter-spacing: normal !important;
 }
 
 html[lang='km'] .oc-site main h1 {
