@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useMemo } from "react";
 import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -25,10 +25,10 @@ export default function Gallery() {
   const [activeCategory, setActiveCategory] = useState("all");
   const [selectedIndex, setSelectedIndex] = useState(null);
 
-  const filteredItems =
-    activeCategory === "all"
-      ? GALLERY_ITEMS
-      : GALLERY_ITEMS.filter((item) => item.category === activeCategory);
+  const filteredItems = useMemo(() => {
+    if (activeCategory === "all") return GALLERY_ITEMS;
+    return GALLERY_ITEMS.filter((item) => item.category === activeCategory);
+  }, [activeCategory]);
 
   const activeItem =
     selectedIndex !== null ? filteredItems[selectedIndex] : null;
@@ -77,13 +77,43 @@ export default function Gallery() {
     };
   }, [selectedIndex]);
 
+  // Curated 3 hero photos for the top editorial collage
+  const collageHero = GALLERY_ITEMS.find((i) => i.id === "photo-pastors-pulpit") || GALLERY_ITEMS[0];
+  const collageRight1 = GALLERY_ITEMS.find((i) => i.id === "photo-church-family") || GALLERY_ITEMS[1];
+  const collageRight2 = GALLERY_ITEMS.find((i) => i.id === "photo-baptism-2026-family") || GALLERY_ITEMS[2];
+
+  const openItemById = (id) => {
+    const idx = filteredItems.findIndex((item) => item.id === id);
+    if (idx !== -1) {
+      setSelectedIndex(idx);
+    } else {
+      const allIdx = GALLERY_ITEMS.findIndex((item) => item.id === id);
+      if (allIdx !== -1) {
+        setActiveCategory("all");
+        setSelectedIndex(allIdx);
+      }
+    }
+  };
+
+  const isItemPanoramic = (item, index) => {
+    if (item.type === "video") return true;
+    const panoramicIds = [
+      "photo-church-family",
+      "photo-baptism-2026-family",
+      "photo-youth-group-2025",
+      "photo-cv-efc-pastors",
+      "photo-baptism-2026-pavilion",
+    ];
+    return panoramicIds.includes(item.id) || index === 0;
+  };
+
   return (
     <div className="oc-site">
       <Head>
         <title>
           {isKm
             ? "កម្រងរូបភាពព័ន្ធកិច្ច និងជីវិតក្រុមជំនុំ — ហ៊ុន ចិត្ត"
-            : "Ministry & Church Gallery — Hun Chet"}
+            : "Ministry & Church Photo Gallery — Hun Chet"}
         </title>
         <meta
           name="description"
@@ -93,14 +123,8 @@ export default function Gallery() {
               : "Authentic photography and video records of Sunday worship, pastoral preaching, holy baptism, and next-gen youth ministry in Hun Chet Ministry, Phnom Penh."
           }
         />
-        <meta
-          property="og:title"
-          content="Ministry & Church Gallery — Hun Chet"
-        />
-        <meta
-          property="og:image"
-          content="/images/pastors-pulpit.jpg"
-        />
+        <meta property="og:title" content="Ministry & Church Photo Gallery — Hun Chet" />
+        <meta property="og:image" content="/images/pastors-pulpit.jpg" />
       </Head>
 
       <SiteHeader />
@@ -121,13 +145,13 @@ export default function Gallery() {
         ]}
         stats={[
           { number: "8", label: isKm ? "អាល់ប៊ុម" : "Albums" },
-          { number: `${GALLERY_ITEMS.length}+`, label: isKm ? "រូបភាព និងវីដេអូ" : "Moments" },
+          { number: `${GALLERY_ITEMS.length}`, label: isKm ? "រូបភាព និងវីដេអូ" : "Curated Moments" },
           { number: "HD", label: isKm ? "កម្រិតច្បាស់" : "Resolution" },
         ]}
       />
 
       {/* 2. STICKY CATEGORY FILTER BAR */}
-      <section className="oc-gallery-nav-bar" aria-label="Gallery categories">
+      <nav className="oc-gallery-nav-bar" aria-label="Gallery category tabs">
         <div className="container">
           <div className="oc-gallery-nav-scroll">
             {GALLERY_CATEGORIES.map((cat) => {
@@ -154,11 +178,105 @@ export default function Gallery() {
             })}
           </div>
         </div>
-      </section>
+      </nav>
 
-      {/* 3. CLEAN GALLERY GRID */}
+      {/* 3. NEW EDITORIAL GALLERY SHOWCASE */}
       <main className="oc-section" style={{ background: "#fcfbf7", paddingBlock: "3.5rem" }}>
         <div className="container">
+
+          {/* TOP EDITORIAL HERO COLLAGE (Displayed when viewing All) */}
+          {activeCategory === "all" && (
+            <div className="oc-gallery-collage">
+              {/* Feature Big Left */}
+              <div
+                className="oc-gallery-collage-left"
+                onClick={() => openItemById(collageHero.id)}
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={collageHero.src}
+                  alt={loc(collageHero.title)}
+                  style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                />
+                <div className="oc-gallery-scrim">
+                  <div className="oc-gallery-scrim-top">
+                    <span className="oc-gallery-kicker-tag">
+                      FEATURED • {loc(collageHero.badge)}
+                    </span>
+                    <span className="oc-gallery-zoom-pill">
+                      <ArrowUpRight width={14} height={14} />
+                    </span>
+                  </div>
+                  <div className="oc-gallery-scrim-bottom">
+                    <h3 className="oc-gallery-frame-title" style={{ fontSize: "1.25rem" }}>
+                      {loc(collageHero.title)}
+                    </h3>
+                    <p className="oc-gallery-frame-desc">
+                      {loc(collageHero.description)}
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right 2 Stacked Items */}
+              <div className="oc-gallery-collage-right">
+                <div
+                  className="oc-gallery-collage-item"
+                  onClick={() => openItemById(collageRight1.id)}
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={collageRight1.src}
+                    alt={loc(collageRight1.title)}
+                    style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                  />
+                  <div className="oc-gallery-scrim">
+                    <div className="oc-gallery-scrim-top">
+                      <span className="oc-gallery-kicker-tag">
+                        {loc(collageRight1.badge)}
+                      </span>
+                      <span className="oc-gallery-zoom-pill">
+                        <ArrowUpRight width={14} height={14} />
+                      </span>
+                    </div>
+                    <div className="oc-gallery-scrim-bottom">
+                      <h4 className="oc-gallery-frame-title">
+                        {loc(collageRight1.title)}
+                      </h4>
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  className="oc-gallery-collage-item"
+                  onClick={() => openItemById(collageRight2.id)}
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={collageRight2.src}
+                    alt={loc(collageRight2.title)}
+                    style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                  />
+                  <div className="oc-gallery-scrim">
+                    <div className="oc-gallery-scrim-top">
+                      <span className="oc-gallery-kicker-tag">
+                        {loc(collageRight2.badge)}
+                      </span>
+                      <span className="oc-gallery-zoom-pill">
+                        <ArrowUpRight width={14} height={14} />
+                      </span>
+                    </div>
+                    <div className="oc-gallery-scrim-bottom">
+                      <h4 className="oc-gallery-frame-title">
+                        {loc(collageRight2.title)}
+                      </h4>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
           {/* Quick Info Bar */}
           <div
             style={{
@@ -167,7 +285,7 @@ export default function Gallery() {
               alignItems: "center",
               borderBottom: "1px solid #dcdfda",
               paddingBottom: "1rem",
-              marginBottom: "2.5rem",
+              marginBottom: "2rem",
               fontSize: "12px",
               color: "#626868",
               fontFamily: "var(--font-display)",
@@ -182,24 +300,24 @@ export default function Gallery() {
               </strong>
             </div>
             <span style={{ fontSize: "11px", color: "#8e9595" }}>
-              {isKm ? "ចុចលើរូបភាពដើម្បីមើលទំហំធំ ↗" : "CLICK ANY MOMENT TO ENLARGE ↗"}
+              {isKm ? "ចុចលើរូបភាពដើម្បីមើលទំហំធំ ↗" : "CLICK ANY PHOTO TO ENLARGE ↗"}
             </span>
           </div>
 
-          {/* Cards Grid */}
-          <div className="oc-gallery-grid">
+          {/* PURE PHOTOGRAPHY SHOWCASE GRID */}
+          <div className="oc-gallery-showcase-grid">
             {filteredItems.map((item, idx) => {
               const isVideo = item.type === "video";
               const num = String(idx + 1).padStart(2, "0");
+              const isPanoramic = isItemPanoramic(item, idx);
 
               return (
                 <article
                   key={item.id}
                   onClick={() => setSelectedIndex(idx)}
-                  className="oc-gallery-card"
+                  className={`oc-gallery-photo-frame ${isPanoramic ? "is-panoramic" : ""}`}
                 >
-                  {/* Media Thumbnail Box */}
-                  <div className="oc-gallery-media-box">
+                  <div className="oc-gallery-img-wrap">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={isVideo ? item.poster : item.src}
@@ -207,55 +325,45 @@ export default function Gallery() {
                       loading="lazy"
                     />
 
-                    {/* Clean Kicker Badge (Number + Category) */}
-                    <div className="oc-gallery-kicker">
-                      {num} / {loc(item.badge)}
-                    </div>
+                    {/* Bottom Gradient Scrim with Titles & Metadata */}
+                    <div className="oc-gallery-scrim">
+                      <div className="oc-gallery-scrim-top">
+                        <span className="oc-gallery-kicker-tag">
+                          {num} / {loc(item.badge)}
+                        </span>
+                        <span className="oc-gallery-zoom-pill" title={isKm ? "មើលទំហំធំ" : "Enlarge"}>
+                          <ArrowUpRight width={14} height={14} />
+                        </span>
+                      </div>
 
-                    {/* Video Duration / Indicator */}
-                    {isVideo && (
-                      <>
-                        <div className="oc-gallery-video-pill">
-                          {item.duration || "VIDEO"}
-                        </div>
-                        <div className="oc-gallery-play-btn">
-                          <div className="oc-gallery-play-icon">
-                            <PlayIcon width={20} height={20} style={{ marginLeft: "2px", fill: "#141716", color: "#141716" }} />
+                      {/* Video Play Button Indicator */}
+                      {isVideo && (
+                        <div className="oc-gallery-center-play">
+                          <div className="oc-gallery-play-circle">
+                            <PlayIcon width={22} height={22} style={{ marginLeft: "2px", fill: "#141716", color: "#141716" }} />
                           </div>
                         </div>
-                      </>
-                    )}
-                  </div>
+                      )}
 
-                  {/* Card Content - Clean & Easy to Read */}
-                  <div className="oc-gallery-card-content">
-                    <div>
-                      <h3 className="oc-gallery-card-title">
-                        {loc(item.title)}
-                      </h3>
-                      <p className="oc-gallery-card-desc">
-                        {loc(item.description)}
-                      </p>
-                    </div>
-
-                    <div className="oc-gallery-card-footer">
-                      <span style={{ color: "var(--oc-navy)", fontWeight: 700 }}>
-                        {item.category.toUpperCase()}
-                      </span>
-                      <span className="oc-gallery-card-action">
-                        <span>{isVideo ? (isKm ? "ទស្សនាវីដេអូ" : "WATCH VIDEO") : (isKm ? "មើលទំហំធំ" : "VIEW FULL")}</span>
-                        <ArrowUpRight width={12} height={12} />
-                      </span>
+                      <div className="oc-gallery-scrim-bottom">
+                        <h3 className="oc-gallery-frame-title">
+                          {loc(item.title)}
+                        </h3>
+                        <p className="oc-gallery-frame-desc">
+                          {loc(item.description)}
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </article>
               );
             })}
           </div>
+
         </div>
       </main>
 
-      {/* 4. HIGH-RESOLUTION LIGHTBOX VIEWER */}
+      {/* 4. CINEMA-GRADE LIGHTBOX VIEWER */}
       {selectedIndex !== null && activeItem && (
         <div
           className="oc-lightbox-overlay"
@@ -264,10 +372,7 @@ export default function Gallery() {
           aria-modal="true"
           aria-label="Image viewer"
         >
-          <div
-            className="oc-lightbox-box"
-            onClick={(e) => e.stopPropagation()}
-          >
+          <div className="oc-lightbox-box" onClick={(e) => e.stopPropagation()}>
             {/* Top Bar */}
             <div className="oc-lightbox-top">
               <div>
