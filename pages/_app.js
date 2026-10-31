@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import "../styles/globals.css";
+import "../styles/onechurch.css";
 import "../styles/extra.css";
 import "../styles/library.css";
 import "../styles/video.css";

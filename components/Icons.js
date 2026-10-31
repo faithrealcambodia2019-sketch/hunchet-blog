@@ -1,6 +1,48 @@
 // Inline SVG icons — no icon library needed, they inherit currentColor
 // and stay crisp at any size.
 
+export function ArrowUpRight({ width = 14, height = 14, style, ...props } = {}) {
+  return (
+    <svg
+      width={width}
+      height={height}
+      style={{ width, height, ...style }}
+      viewBox="0 0 16 16"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2.2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      focusable="false"
+      {...props}
+    >
+      <path d="M4.5 11.5L11.5 4.5M11.5 4.5H6.5M11.5 4.5V9.5" />
+    </svg>
+  );
+}
+
+export function ArrowUp({ width = 14, height = 14, style, ...props } = {}) {
+  return (
+    <svg
+      width={width}
+      height={height}
+      style={{ width, height, ...style }}
+      viewBox="0 0 16 16"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2.2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      focusable="false"
+      {...props}
+    >
+      <path d="M8 12.5V3.5M3.5 8L8 3.5L12.5 8" />
+    </svg>
+  );
+}
+
 export function PhoneIcon(props) {
   return (
     <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false" {...props}>

@@ -493,7 +493,7 @@ export default function DevotionsPage() {
   }, [completedDays, currentDevotion]);
 
   return (
-    <>
+    <div className="oc-site">
       <Head>
         <title>{`${pick(STRINGS.heroTitle, locale)} — ${locale === "km" ? "លោកគ្រូ ហ៊ុន ចិត្ត" : "Hun Chet"}`}</title>
         <meta
@@ -1207,6 +1207,6 @@ export default function DevotionsPage() {
       <ConnectBanner />
 
       <SiteFooter />
-    </>
+    </div>
   );
 }

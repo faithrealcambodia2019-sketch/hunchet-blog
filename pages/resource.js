@@ -195,7 +195,7 @@ export default function Resource() {
   }, [activeModalVideo]);
 
   return (
-    <>
+    <div className="oc-site">
       <Head>
         <title>{`${t("resource.title")} — ${locale === "km" ? "លោកគ្រូ ហ៊ុន ចិត្ត" : "Hun Chet"}`}</title>
         <meta name="description" content={t("resource.intro")} />
@@ -685,7 +685,10 @@ export default function Resource() {
         </div>
       )}
 
+      {/* ONE CHURCH CONNECT BANNER */}
+      <ConnectBanner />
+
       <SiteFooter />
-    </>
+    </div>
   );
 }

@@ -1,0 +1,1912 @@
+
+.oc-site {
+  --ink: #202424;
+  --muted: #626868;
+  --paper: #fff;
+  --warm: #f5f4f0;
+  --line: #dcdfda;
+  --accent: #1c5080;
+  --header: 104px;
+  --font: 'Montserrat', 'Koh Santepheap', 'Noto Sans Khmer', Arial, sans-serif;
+}
+.oc-site *,
+.oc-home *,
+.oc-header *,
+.oc-footer * {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--header);
+}
+.oc-site {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font) !important;
+  font-size: 16px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+body.oc-menu-open {
+  overflow: hidden;
+}
+.oc-site img,
+.oc-home img,
+.oc-header img,
+.oc-footer img {
+  display: block;
+  max-width: 100%;
+}
+.oc-site a,
+.oc-home a,
+.oc-header a,
+.oc-footer a {
+  color: inherit;
+  text-decoration: none;
+}
+.oc-site button,
+.oc-home button,
+.oc-header button,
+.oc-footer button {
+  font: inherit;
+}
+.oc-site h1, .oc-site h2, .oc-site h3, .oc-site p,
+.oc-home h1, .oc-home h2, .oc-home h3, .oc-home p,
+.oc-header h1, .oc-header h2, .oc-header h3, .oc-header p,
+.oc-footer h1, .oc-footer h2, .oc-footer h3, .oc-footer p {
+  margin-top: 0;
+}
+.oc-site h1, .oc-site h2, .oc-site h3,
+.oc-home h1, .oc-home h2, .oc-home h3,
+.oc-header h1, .oc-header h2, .oc-header h3,
+.oc-footer h1, .oc-footer h2, .oc-footer h3 {
+  line-height: 1.12;
+  font-family: var(--font) !important;
+}
+.oc-site h1, .oc-site h2,
+.oc-home h1, .oc-home h2,
+.oc-header h1, .oc-header h2,
+.oc-footer h1, .oc-footer h2 {
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: .025em;
+}
+.oc-home h2,
+.oc-home .oc-welcome h2,
+.oc-home .oc-visit h2,
+.oc-home .oc-explore h2,
+.oc-home .oc-connect h2 {
+  margin-bottom: 22px;
+  font-size: clamp(26px, 3.4vw, 42px);
+  line-height: 1.2;
+}
+.oc-site h2 {
+  font-size: clamp(22px, 2.5vw, 32px);
+  margin-bottom: 18px;
+  line-height: 1.25;
+}
+.oc-site h3,
+.oc-home h3,
+.oc-header h3,
+.oc-footer h3 {
+  font-weight: 600 !important;
+}
+.oc-site p,
+.oc-home p,
+.oc-header p,
+.oc-footer p {
+  margin-bottom: 22px;
+}
+.oc-site [lang="km"],
+.oc-site :lang(km),
+.oc-site .oc-hero-khmer,
+.oc-site .oc-khmer-caption {
+  font-family: 'Koh Santepheap', 'Noto Sans Khmer', sans-serif !important;
+}
+section[id], [id] {
+  scroll-margin-top: calc(var(--header) + 16px);
+}
+.oc-site a, .oc-site button,
+.oc-home a, .oc-home button,
+.oc-header a, .oc-header button,
+.oc-footer a, .oc-footer button {
+  -webkit-tap-highlight-color: transparent;
+}
+.oc-site a:focus-visible, .oc-site button:focus-visible,
+.oc-home a:focus-visible, .oc-home button:focus-visible,
+.oc-header a:focus-visible, .oc-header button:focus-visible,
+.oc-footer a:focus-visible, .oc-footer button:focus-visible {
+  outline: 3px solid #1c5080;
+  outline-offset: 6px;
+}
+.oc-skip-link {
+  position: fixed;
+  left: 24px;
+  top: 12px;
+  padding: 10px 18px;
+  background: #fff;
+  color: #202424;
+  z-index: 100;
+  transform: translateY(-150%)
+}
+.oc-skip-link:focus {
+  transform: none
+}
+.oc-section {
+  width: min(1120px,86%);
+  margin-inline: auto;
+  padding-block: 100px
+}
+.oc-eyebrow {
+  font-size: 11.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .18em;
+  line-height: 1.6;
+  margin-bottom: 18px;
+  color: var(--accent);
+}
+.oc-eyebrow.oc-light {
+  color: #fff;
+}
+.oc-eyebrow span {
+  margin-inline: 12px;
+  opacity: .55;
+}
+.oc-text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 12.5px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  padding-bottom: 5px;
+  border-bottom: 1px solid currentColor;
+}
+.oc-text-link span {
+  font-size: 16px;
+  font-weight: 400;
+}
+.oc-text-link:hover {
+  color: var(--accent);
+}
+.oc-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  min-height: 48px;
+  padding: 13px 26px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  border: 1px solid;
+  transition: background .2s,color .2s;
+}
+.oc-button span {
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1;
+}
+.oc-button.oc-outline {
+  color: #fff;
+  border-color: #ffffff91;
+  background: transparent
+}
+.oc-button.oc-outline:hover {
+  background: #fff;
+  color: var(--ink)
+}
+.oc-button.oc-outline-dark {
+  color: var(--ink) !important;
+  border-color: #20242480 !important;
+  background: transparent !important;
+}
+.oc-button.oc-outline-dark:hover {
+  background: var(--ink) !important;
+  color: #fff !important;
+}
+.oc-button.oc-solid {
+  background: var(--ink);
+  color: #fff;
+  border-color: var(--ink)
+}
+.oc-button.oc-solid:hover {
+  background: #4c5351
+}
+.oc-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 30;
+  color: #fff;
+  border-bottom: 1px solid transparent;
+  transition: background .25s,color .25s,border-color .25s
+}
+.oc-header.oc-scrolled,body.oc-menu-open .oc-header {
+  background: rgba(255,255,255,.98);
+  color: var(--ink);
+  border-color: var(--line)
+}
+.oc-nav {
+  min-height: var(--header);
+  width: 90%;
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px
+}
+.oc-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 13px;
+  flex-shrink: 0;
+  text-decoration: none !important;
+  transition: opacity 0.2s ease;
+}
+.oc-brand:hover {
+  opacity: 0.95;
+}
+.oc-brand-logo-wrap {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  padding: 0;
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
+  background: transparent;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.28);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  overflow: hidden;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.oc-brand:hover .oc-brand-logo-wrap {
+  transform: scale(1.06);
+  border-color: rgba(255, 255, 255, 0.65);
+  box-shadow: 0 6px 20px rgba(112, 169, 198, 0.45);
+}
+.oc-header.oc-scrolled .oc-brand-logo-wrap {
+  border-color: rgba(28, 80, 128, 0.28);
+  box-shadow: 0 2px 10px rgba(28, 80, 128, 0.12);
+}
+.oc-brand-divider {
+  display: block;
+  width: 1px;
+  height: 32px;
+  background: rgba(255, 255, 255, 0.24);
+  margin: 0 2px;
+  flex-shrink: 0;
+  transition: background-color 0.25s ease;
+}
+.oc-header.oc-scrolled .oc-brand-divider {
+  background: rgba(28, 80, 128, 0.2);
+}
+.oc-footer .oc-brand-divider {
+  background: rgba(255, 255, 255, 0.2);
+}
+.oc-brand img,
+.oc-brand-logo-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 50%;
+  display: block;
+}
+.oc-brand-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+}
+.oc-brand strong,
+.oc-brand-title {
+  display: block;
+  font-family: Montserrat, -apple-system, BlinkMacSystemFont, sans-serif !important;
+  font-size: 15.5px;
+  line-height: 1.15;
+  letter-spacing: .12em;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  color: inherit;
+  white-space: nowrap;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+}
+.oc-header.oc-scrolled .oc-brand strong,
+.oc-header.oc-scrolled .oc-brand-title {
+  color: #141716;
+  text-shadow: none;
+}
+.oc-brand small,
+.oc-brand-khmer {
+  display: block;
+  font-family: 'Koh Santepheap', 'Kantumruy Pro', sans-serif !important;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.35;
+  margin-top: 3px;
+  letter-spacing: .03em;
+  color: rgba(255, 255, 255, 0.88);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  transition: color 0.2s ease;
+  white-space: nowrap;
+}
+.oc-header.oc-scrolled .oc-brand small,
+.oc-header.oc-scrolled .oc-brand-khmer {
+  color: #1c5080;
+  text-shadow: none;
+}
+.oc-footer .oc-brand-logo-wrap {
+  border-color: rgba(255, 255, 255, 0.3);
+}
+.oc-footer .oc-brand small,
+.oc-footer .oc-brand-khmer {
+  color: #cbd5e1;
+}
+.oc-nav-links {
+  display: flex;
+  gap: 28px;
+  align-items: center
+}
+.oc-nav-links>a {
+  font-size: 10px;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding-block: 13px;
+  position: relative
+}
+.oc-nav-links>a:not(.oc-nav-cta)::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 100%;
+  bottom: 6px;
+  height: 1px;
+  background: currentColor;
+  transition: right .2s
+}
+.oc-nav-links>a:hover::after {
+  right: 0
+}
+.oc-nav-links .oc-nav-cta {
+  padding: 12px 16px;
+  border: 1px solid #ffffff66;
+  display: flex;
+  gap: 20px;
+  align-items: center
+}
+.oc-scrolled .oc-nav-cta {
+  border-color: #30373755
+}
+.oc-nav-cta span {
+  font-size: 17px
+}
+.oc-menu-button {
+  display: none
+}
+.oc-photo-section {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  color: #fff
+}
+.oc-section-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2
+}
+.oc-photo-section::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(10,21,23,.57);
+  z-index: -1
+}
+.oc-hero {
+  height: 100svh;
+  min-height: 700px;
+  max-height: 1100px;
+  display: grid;
+  place-items: center;
+  text-align: center
+}
+.oc-hero::after {
+  background: linear-gradient(180deg, rgba(8, 22, 40, 0.62), rgba(12, 30, 56, 0.25) 38%, rgba(10, 24, 44, 0.45) 75%, rgba(8, 22, 40, 0.65))
+}
+.oc-hero-photo {
+  object-position: center 62%;
+  animation: oc-hero-reveal 1.3s ease both
+}
+.oc-hero-content {
+  padding: calc(var(--header) + 30px) 20px 130px;
+  max-width: 1150px;
+  width: 100%;
+  animation: oc-content-reveal .9s ease both
+}
+.oc-hero h1 {
+  font-size: clamp(34px, 4.8vw, 60px);
+  line-height: 1.12;
+  margin: 18px 0 22px;
+  letter-spacing: .03em;
+  font-weight: 700;
+}
+.oc-hero-khmer {
+  font-family: 'Koh Santepheap', 'Noto Sans Khmer', sans-serif !important;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.9;
+  margin-bottom: 30px;
+  color: #ffffff !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+  letter-spacing: 0 !important;
+}
+.oc-hero-side-note {
+  position: absolute;
+  left: 32px;
+  top: 50%;
+  writing-mode: vertical-rl;
+  font-size: 10px;
+  letter-spacing: .2em;
+  transform: rotate(180deg);
+  opacity: .75;
+}
+.oc-scroll-cue {
+  position: absolute;
+  bottom: 36px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: grid;
+  justify-items: center;
+  gap: 15px;
+  min-height: 44px;
+}
+.oc-scroll-cue>span:first-child {
+  font-size: 10.5px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .18em;
+}
+.oc-chevron {
+  display: block;
+  width: 14px;
+  height: 14px;
+  border-bottom: 1px solid #fff;
+  border-right: 1px solid #fff;
+  transform: rotate(45deg);
+}
+.oc-sunday-strip,
+.oc-quick-bar {
+  padding: 18px 7%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 18px;
+  background: #ffffff;
+  border-bottom: 1px solid var(--line);
+  font-size: 13px;
+}
+.oc-sunday-strip p,
+.oc-quick-bar p {
+  margin: 0;
+  color: var(--ink);
+}
+.oc-sunday-strip>p:first-child,
+.oc-quick-bar>p:first-child,
+.oc-live-dot {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  font-size: 11px;
+  font-weight: 700;
+  color: #1c5080;
+}
+.oc-sunday-strip strong,
+.oc-quick-bar strong,
+.oc-time strong {
+  margin-left: 8px;
+  font-weight: 700;
+  color: #141716;
+}
+.oc-status-dot {
+  width: 8px;
+  height: 8px;
+  background: #10b981;
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.25);
+}
+.oc-strip-divider {
+  margin-inline: 10px;
+  color: #b1b6b1;
+}
+.oc-sunday-strip a,
+.oc-quick-bar a,
+.oc-directions {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: #1c5080;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.2s;
+}
+.oc-sunday-strip a:hover,
+.oc-quick-bar a:hover,
+.oc-directions:hover {
+  color: #70a9c6;
+}
+.oc-sunday-strip a span,
+.oc-quick-bar a span {
+  margin-left: 6px;
+  font-size: 14px;
+}
+.oc-welcome {
+  text-align: center;
+  padding-top: 110px;
+  padding-bottom: 65px
+}
+.oc-welcome h2 {
+  font-size: clamp(26px, 3.2vw, 38px);
+  margin-bottom: 22px;
+}
+.oc-section-copy {
+  max-width: 650px;
+  margin: 0 auto 20px;
+  color: var(--muted);
+  line-height: 1.9;
+  font-size: 14px
+}
+.oc-khmer-caption {
+  font-family: 'Koh Santepheap', sans-serif;
+  color: var(--muted);
+  font-size: 13px;
+  margin-bottom: 30px
+}
+.oc-ministries {
+  padding-top: 40px;
+  padding-bottom: 110px
+}
+.oc-section-heading {
+  text-align: center;
+  margin-bottom: 38px
+}
+.oc-section-heading .oc-eyebrow {
+  margin-bottom: 12px
+}
+.oc-section-heading h2 {
+  font-size: 27px;
+  margin: 0
+}
+.oc-ministry-grid {
+  display: grid;
+  grid-template-columns: repeat(3,minmax(0,1fr));
+  gap: 25px
+}
+.oc-image-card {
+  position: relative;
+  display: block;
+  aspect-ratio: 4/4.3;
+  isolation: isolate;
+  overflow: hidden;
+  color: #ffffff !important;
+}
+.oc-image-card>img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+  transition: transform .65s ease;
+}
+.oc-image-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(10, 20, 22, 0.75) 0%,
+    rgba(10, 20, 22, 0.3) 30%,
+    rgba(10, 20, 22, 0.82) 65%,
+    rgba(10, 20, 22, 0.98) 100%
+  );
+  z-index: -1;
+  transition: background 0.3s ease;
+}
+.oc-image-card:hover img, .oc-image-card:focus-visible img {
+  transform: scale(1.05);
+}
+.oc-image-card:hover::after {
+  background: linear-gradient(
+    180deg,
+    rgba(10, 20, 22, 0.82) 0%,
+    rgba(10, 20, 22, 0.4) 30%,
+    rgba(10, 20, 22, 0.9) 65%,
+    rgba(10, 20, 22, 0.99) 100%
+  );
+}
+.oc-card-content {
+  position: absolute;
+  inset: 0;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  color: #ffffff !important;
+  z-index: 1;
+}
+.oc-card-number {
+  position: absolute;
+  top: 25px;
+  left: 30px;
+  font-size: 12px !important;
+  letter-spacing: .2em !important;
+  font-weight: 700 !important;
+  color: #8ec5e5 !important;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9) !important;
+  display: inline-flex !important;
+  align-items: center;
+}
+.oc-card-content h3 {
+  font-size: clamp(20px, 2.2vw, 24px) !important;
+  letter-spacing: .03em !important;
+  text-transform: uppercase !important;
+  margin-bottom: 8px !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  line-height: 1.25 !important;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.9) !important;
+}
+.oc-card-content p {
+  font-size: 14px !important;
+  line-height: 1.6 !important;
+  max-width: 280px !important;
+  margin-bottom: 22px !important;
+  color: #e6edea !important;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.85) !important;
+}
+.oc-card-arrow {
+  font-size: 24px !important;
+  line-height: 1 !important;
+  font-weight: 400 !important;
+  color: #ffffff !important;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9) !important;
+  transition: transform 0.25s ease, color 0.25s ease;
+}
+.oc-image-card:hover .oc-card-arrow {
+  transform: translate(4px, -4px);
+  color: #8ec5e5 !important;
+}
+.oc-feature-banner {
+  min-height: 560px;
+  display: grid;
+  place-items: center;
+  text-align: center;
+}
+.oc-banner-content {
+  width: min(900px,86%);
+  padding-block: 95px;
+}
+.oc-banner-content h2 {
+  font-size: clamp(26px, 3.5vw, 42px);
+  margin-bottom: 18px;
+  letter-spacing: .03em;
+}
+.oc-banner-content>p:not(.oc-eyebrow) {
+  font-size: 15px;
+  line-height: 1.7;
+  margin-bottom: 30px;
+  color: #ffffffe0;
+}
+.oc-message-banner .oc-section-photo {
+  object-position: center 40%
+}
+.oc-visit,
+.oc-worship {
+  display: grid;
+  grid-template-columns: .9fr 1.1fr;
+  gap: 100px;
+  padding-block: 110px;
+}
+.oc-visit-intro>p:not(.oc-eyebrow),
+.oc-worship>div:first-child>p:not(.oc-eyebrow) {
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.85;
+  max-width: 420px;
+  margin-bottom: 24px;
+}
+.oc-visit-intro .oc-button,
+.oc-worship .oc-button {
+  margin-top: 14px;
+}
+.oc-detail-row {
+  display: grid;
+  grid-template-columns: 32px 1fr;
+  gap: 25px;
+  padding: 26px 0;
+  border-top: 1px solid var(--line);
+}
+.oc-detail-row:first-child {
+  padding-top: 4px;
+  border-top: 0;
+}
+.oc-detail-row:last-child {
+  padding-bottom: 0;
+}
+.oc-detail-number {
+  font-size: 12px;
+  font-weight: 700;
+  color: #1c5080;
+  padding-top: 2px;
+  letter-spacing: .08em;
+}
+.oc-detail-row h3 {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  color: #141716;
+}
+.oc-detail-row p {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.75;
+  margin-bottom: 10px;
+}
+.oc-detail-row p[lang=km] {
+  font-family: 'Koh Santepheap', sans-serif;
+  font-size: 13.5px;
+}
+.oc-detail-row dl {
+  margin: 0;
+  font-size: 13px;
+  color: var(--muted);
+}
+.oc-detail-row dl>div {
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+  align-items: center;
+  padding-block: 7px;
+  border-bottom: 1px dashed rgba(220, 223, 218, 0.7);
+}
+.oc-detail-row dl>div:last-child {
+  border-bottom: none;
+}
+.oc-detail-row dt {
+  color: #4b5250;
+  font-weight: 500;
+  font-size: 13px;
+}
+.oc-detail-row dd {
+  margin: 0;
+  white-space: nowrap;
+  color: #141716;
+  font-weight: 700;
+  font-size: 13px;
+}
+.oc-detail-row .oc-text-link {
+  font-size: 12px;
+  margin-top: 8px;
+}
+.oc-community-banner::after {
+  background: #08191e80
+}
+.oc-explore {
+  display: grid;
+  grid-template-columns: .9fr 1.1fr;
+  gap: 100px;
+  padding-block: 110px
+}
+.oc-explore-links>a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+  padding: 24px 0;
+  border-bottom: 1px solid var(--line)
+}
+.oc-explore-links>a:first-child {
+  padding-top: 0
+}
+.oc-explore-links small {
+  display: block;
+  font-size: 11.5px;
+  letter-spacing: .16em;
+  color: var(--accent);
+  margin-bottom: 9px;
+  font-weight: 600;
+}
+.oc-explore-links strong {
+  display: block;
+  font-size: 18px;
+  line-height: 1.5;
+  font-weight: 500
+}
+.oc-explore-links>a>span:last-child {
+  font-size: 26px;
+  transition: transform .2s
+}
+.oc-explore-links>a:hover>span:last-child {
+  transform: translate(3px,-3px)
+}
+.oc-connect {
+  text-align: center;
+  padding: 95px 7%;
+  background: #293938;
+  color: #fff
+}
+.oc-connect h2 {
+  font-size: clamp(26px, 3.4vw, 40px);
+  letter-spacing: .025em;
+  margin-bottom: 28px;
+}
+.oc-connect .oc-eyebrow {
+  color: #bfc8b9;
+}
+.oc-footer {
+  background: #171b1b;
+  color: #c1c7c5;
+  padding: 80px 7% 24px;
+  font-size: 13px;
+  line-height: 1.8;
+}
+.oc-footer-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr 1fr 1.1fr;
+  gap: 45px;
+  padding-bottom: 65px;
+}
+.oc-footer .oc-brand {
+  color: #fff;
+  gap: 12px;
+}
+.oc-footer .oc-brand-logo-wrap {
+  width: 44px;
+  height: 44px;
+}
+.oc-footer .oc-brand strong,
+.oc-footer .oc-brand-title {
+  font-size: 15.5px;
+}
+.oc-footer .oc-brand small,
+.oc-footer .oc-brand-khmer {
+  font-size: 11.5px;
+  color: #8ec5e5;
+}
+.oc-footer-about>p {
+  margin-top: 20px;
+}
+.oc-footer-grid h3 {
+  font-size: 11.5px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: #fff;
+  margin: 0 0 20px;
+  line-height: 1.5;
+}
+.oc-footer-grid p {
+  margin-bottom: 16px;
+}
+.oc-footer-grid address {
+  font-style: normal;
+  margin-bottom: 16px;
+}
+.oc-footer-grid>div>a:not(.oc-brand) {
+  display: block;
+  margin-bottom: 10px;
+}
+.oc-footer a:hover {
+  color: #fff;
+}
+.oc-social-links {
+  display: flex;
+  gap: 20px;
+  font-size: 12px;
+}
+.oc-footer-bottom {
+  padding-top: 24px;
+  border-top: 1px solid #ffffff24;
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  font-size: 11.5px;
+  color: #b2bbb7;
+}
+.oc-footer-bottom p {
+  margin: 0;
+}
+.oc-footer-bottom>p:nth-child(2) {
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  font-size: 11px;
+}
+@keyframes oc-hero-reveal {
+  from {
+    transform: scale(1.03)
+  }
+  to {
+    transform: scale(1)
+  }
+}
+@keyframes oc-content-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(12px)
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0)
+  }
+}
+@media(min-width:1000px) and (prefers-reduced-motion:no-preference) {
+  .oc-feature-banner .oc-section-photo {
+    height: 115%;
+    top: -7.5%;
+    will-change: transform;
+    transform: translateY(var(--parallax,0px))
+  }
+}
+@media(max-width:1100px) {
+  .oc-nav-links {
+    gap: 18px
+  }
+  .oc-nav-links>a {
+    font-size: 11.5px;
+    letter-spacing: .08em;
+  }
+  .oc-brand-logo-wrap {
+    width: 44px;
+    height: 44px;
+  }
+  .oc-brand strong,
+  .oc-brand-title {
+    font-size: 15.5px;
+  }
+  .oc-brand small,
+  .oc-brand-khmer {
+    font-size: 11.5px;
+  }
+  .oc-visit,.oc-explore {
+    gap: 65px
+  }
+  .oc-footer-grid {
+    gap: 25px
+  }
+  .oc-card-content {
+    padding: 22px
+  }
+  .oc-card-number {
+    left: 22px
+  }
+  .oc-card-content h3 {
+    font-size: 20px
+  }
+}
+@media(max-width:1024px) {
+  .oc-site {
+    --header: 86px
+  }
+  .oc-nav {
+    width: 90%
+  }
+  .oc-menu-button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    width: 44px;
+    height: 44px;
+    background: rgba(20, 24, 24, 0.55);
+    border: 1.5px solid rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 6px;
+    cursor: pointer;
+    padding: 10px;
+    color: #fff;
+    flex-shrink: 0;
+  }
+  .oc-menu-button span {
+    height: 2px;
+    background: currentColor;
+    width: 22px;
+    border-radius: 1px;
+    transition: transform .2s;
+  }
+  .oc-scrolled .oc-menu-button,
+  body.oc-menu-open .oc-menu-button {
+    border-color: #20242450;
+    color: var(--ink);
+    background: #f5f4f0;
+  }
+  body.oc-menu-open .oc-menu-button span:first-child {
+    transform: translateY(4px) rotate(45deg);
+  }
+  body.oc-menu-open .oc-menu-button span:last-child {
+    transform: translateY(-4px) rotate(-45deg);
+  }
+  .oc-nav-links {
+    position: absolute;
+    top: var(--header);
+    left: 0;
+    right: 0;
+    max-height: calc(100svh - var(--header));
+    overflow: auto;
+    background: #fff;
+    color: var(--ink);
+    display: none;
+    padding: 20px 5% 38px;
+    border-bottom: 1px solid var(--line);
+    gap: 0
+  }
+  .oc-nav-links>a {
+    display: block;
+    font-size: 12px;
+    padding: 17px 0;
+    letter-spacing: .12em;
+    border-bottom: 1px solid var(--line)
+  }
+  .oc-nav-links .oc-nav-cta {
+    display: inline-flex;
+    border: 1px solid #20242455;
+    padding: 13px 22px;
+    margin-top: 24px
+  }
+  .oc-menu-open .oc-nav-links {
+    display: block
+  }
+  .oc-hero {
+    min-height: 680px
+  }
+  .oc-hero-side-note {
+    display: none
+  }
+  .oc-sunday-strip {
+    flex-wrap: wrap;
+    justify-content: center;
+    column-gap: 28px;
+    row-gap: 10px;
+    padding: 20px 7%
+  }
+  .oc-sunday-strip>p:first-child {
+    width: 100%;
+    justify-content: center
+  }
+  .oc-ministry-grid {
+    gap: 16px
+  }
+  .oc-image-card {
+    aspect-ratio: 3/4.4
+  }
+  .oc-card-content {
+    padding: 20px
+  }
+  .oc-card-number {
+    left: 20px;
+    top: 20px
+  }
+  .oc-card-content h3 {
+    font-size: 19px
+  }
+  .oc-visit,.oc-explore {
+    gap: 45px
+  }
+  .oc-detail-row {
+    gap: 15px
+  }
+  .oc-footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 45px
+  }
+  .oc-feature-banner {
+    min-height: 520px
+  }
+}
+@media(max-width:600px) {
+  .oc-section {
+    width: 86%;
+    padding-block: 70px
+  }
+  .oc-brand-logo-wrap {
+    width: 38px;
+    height: 38px;
+  }
+  .oc-brand strong,
+  .oc-brand-title {
+    font-size: 13.5px;
+    letter-spacing: .05em;
+  }
+  .oc-brand small,
+  .oc-brand-khmer {
+    font-size: 10.5px;
+    margin-top: 2px;
+  }
+  .oc-hero {
+    height: 100svh;
+    min-height: 680px;
+    max-height: 900px
+  }
+  .oc-hero-content {
+    padding: 105px 7% 135px
+  }
+  .oc-hero h1 {
+    font-size: clamp(32px, 8vw, 48px);
+    letter-spacing: .025em;
+    margin-top: 22px;
+    line-height: 1.15;
+  }
+  .oc-hero .oc-eyebrow {
+    font-size: 11px;
+    letter-spacing: .16em;
+  }
+  .oc-hero .oc-eyebrow span {
+    margin-inline: 8px
+  }
+  .oc-hero-khmer {
+    font-size: 14px;
+    max-width: 320px;
+    margin-inline: auto;
+    line-height: 2.1
+  }
+  .oc-hero-photo {
+    object-position: 52% center
+  }
+  .oc-scroll-cue {
+    bottom: 35px
+  }
+  .oc-sunday-strip {
+    font-size: 12px;
+    column-gap: 20px
+  }
+  .oc-sunday-strip>p:nth-child(3) {
+    width: 100%;
+    text-align: center;
+    order: 3
+  }
+  .oc-sunday-strip a {
+    font-size: 12px;
+  }
+  .oc-sunday-strip a span {
+    margin-left: 10px
+  }
+  .oc-welcome {
+    padding-bottom: 40px
+  }
+  .oc-welcome h2 {
+    font-size: 32px;
+  }
+  .oc-section-copy {
+    font-size: 15px;
+  }
+  .oc-khmer-caption {
+    font-size: 13px;
+  }
+  .oc-ministries {
+    padding-top: 25px
+  }
+  .oc-section-heading h2 {
+    font-size: 24px;
+  }
+  .oc-section-heading .oc-eyebrow {
+    font-size: 11px;
+  }
+  .oc-ministry-grid {
+    grid-template-columns: 1fr;
+    gap: 20px
+  }
+  .oc-image-card {
+    aspect-ratio: 1.08
+  }
+  .oc-card-content {
+    padding: 28px
+  }
+  .oc-card-number {
+    left: 28px;
+    top: 25px
+  }
+  .oc-card-content h3 {
+    font-size: 26px
+  }
+  .oc-card-content p {
+    font-size: 12px;
+    max-width: 260px
+  }
+  .oc-card-arrow {
+    position: absolute;
+    bottom: 28px;
+    right: 28px
+  }
+  .oc-feature-banner {
+    min-height: 490px
+  }
+  .oc-banner-content {
+    padding-block: 80px
+  }
+  .oc-banner-content h2 {
+    font-size: 39px;
+    letter-spacing: .025em
+  }
+  .oc-banner-content>p:not(.oc-eyebrow) {
+    font-size: 12px;
+    max-width: 280px;
+    margin-inline: auto
+  }
+  .oc-message-banner .oc-section-photo {
+    object-position: 45% center
+  }
+  .oc-visit,
+  .oc-worship,
+  .oc-explore {
+    grid-template-columns: 1fr;
+    gap: 46px;
+  }
+  .oc-visit h2,
+  .oc-worship h2,
+  .oc-explore h2 {
+    font-size: 34px;
+  }
+  .oc-visit-intro>p:not(.oc-eyebrow),
+  .oc-worship>div:first-child>p:not(.oc-eyebrow) {
+    font-size: 14px;
+    max-width: 100%;
+  }
+  .oc-detail-row {
+    grid-template-columns: 24px 1fr;
+    gap: 14px;
+    padding-block: 20px;
+  }
+  .oc-detail-row:first-child {
+    border-top: 1px solid var(--line);
+    padding-top: 20px;
+  }
+  .oc-detail-row dl {
+    font-size: 11.5px;
+    margin: 0;
+  }
+  .oc-detail-row dl>div {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 8px;
+    padding-block: 5px;
+    border-bottom: 1px dashed rgba(220, 223, 218, 0.6);
+  }
+  .oc-detail-row dl>div:last-child {
+    border-bottom: none;
+  }
+  .oc-detail-row dt {
+    font-size: 11.5px;
+    color: #4b5250;
+  }
+  .oc-detail-row dd {
+    font-size: 11.5px;
+    font-weight: 700;
+    color: #141716;
+    white-space: nowrap;
+  }
+  .oc-detail-row h3 {
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+  .oc-detail-row p {
+    font-size: 12.5px;
+    line-height: 1.65;
+  }
+  .oc-community-banner .oc-section-photo {
+    object-position: 43% center
+  }
+  .oc-explore-links strong {
+    font-size: 16px
+  }
+  .oc-connect {
+    padding-block: 75px
+  }
+  .oc-connect h2 {
+    font-size: 31px
+  }
+  .oc-footer {
+    padding-top: 60px
+  }
+  .oc-footer-grid {
+    grid-template-columns: 1fr;
+    gap: 35px;
+    padding-bottom: 40px
+  }
+  .oc-footer-grid h3 {
+    margin-bottom: 16px
+  }
+  .oc-footer-about .oc-brand strong {
+    font-size: 19px
+  }
+  .oc-footer-about .oc-brand strong span {
+    font-size: 10px
+  }
+  .oc-footer-about>p {
+    margin-top: 18px
+  }
+  .oc-footer-bottom {
+    flex-wrap: wrap;
+    row-gap: 12px
+  }
+  .oc-footer-bottom>p:first-child {
+    width: 100%
+  }
+  .oc-footer-bottom>p:nth-child(2) {
+    font-size: 11px;
+  }
+  .oc-eyebrow {
+    font-size: 11px;
+  }
+  .oc-button {
+    font-size: 12px;
+    min-height: 48px;
+    padding: 13px 22px;
+  }
+  .oc-text-link {
+    font-size: 12px;
+  }
+}
+@media(prefers-reduced-motion:reduce) {
+  html {
+    scroll-behavior: auto
+  }
+  .oc-site *, .oc-site *::before, .oc-site *::after,
+  .oc-home *, .oc-home *::before, .oc-home *::after {
+    animation: none!important;
+    transition: none!important
+  }
+  .oc-feature-banner .oc-section-photo {
+    transform: none!important
+  }
+}
+
+/* Shared navigation, translated content and native app interactions. */
+.oc-site { background: white; color: #202424; }
+.oc-header:not(.oc-header-home) { position: sticky; }
+.oc-header-tools { position: absolute; right: 5%; top: 5px; display: flex; align-items: center; gap: 16px; }
+.oc-languages { display: flex; align-items: center; gap: 12px; }
+.oc-languages button { font-size: 11.5px; opacity: .8; line-height: 1.7; min-height: 28px; cursor: pointer; }
+.oc-languages button[aria-pressed='true'] { opacity: 1; border-bottom: 1.5px solid currentColor; font-weight: 600; }
+.oc-search { display: grid; place-items: center; width: 28px; height: 28px; cursor: pointer; }
+.oc-nav-links { padding-top: 24px; }
+.oc-brand strong, .oc-brand strong span { font-family: Montserrat, 'Plus Jakarta Sans', sans-serif !important; }
+.oc-dropdown { position: relative; }
+.oc-dropdown summary { list-style: none; display: flex; align-items: center; gap: 6px; cursor: pointer; padding: 13px 0; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; }
+.oc-dropdown summary::-webkit-details-marker { display: none; }
+.oc-dropdown summary:focus-visible { outline: 2px solid #1c5080; outline-offset: 4px; }
+.oc-dropdown[open] summary svg { transform: rotate(180deg); }
+.oc-dropdown-panel { position: absolute; top: 100%; left: -20px; width: 245px; padding: 12px 0; background: white; color: #202424; border: 1px solid #dcdfda; box-shadow: 0 12px 30px #13242015; }
+.oc-dropdown-panel a { display: block; padding: 11px 20px; font-size: 13px; line-height: 1.6; letter-spacing: 0; }
+.oc-dropdown-panel a:hover, .oc-dropdown-panel a[aria-current='page'] { background: #f5f4f0; }
+.oc-nav-cta { cursor: pointer; color: inherit; background: none; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; font-weight: 600; }
+.oc-hero-actions { display: flex; align-items: center; flex-direction: column; gap: 18px; }
+.oc-watch-button { display: inline-flex; align-items: center; gap: 10px; color: #fff; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; min-height: 30px; cursor: pointer; }
+.oc-button, .oc-text-link { cursor: pointer; }
+.oc-home { background: #fff; }
+.oc-home .oc-hero-content { padding-bottom: 110px; }
+.oc-announcement { display: grid; grid-template-columns: .8fr 1.2fr; gap: 85px; align-items: center; border-bottom: 1px solid #dcdfda; }
+.oc-poster-button { width: 100%; cursor: zoom-in; background: #f5f4f0; padding: 25px; }
+.oc-poster-button img { width: 100%; max-height: 420px; object-fit: contain; }
+.oc-announcement h2 { font-size: clamp(24px, 2.8vw, 36px); line-height: 1.3; }
+.oc-announcement p:not(.oc-eyebrow) { font-size: 14px; color: #626868; line-height: 1.8; }
+.oc-class-schedule { display: flex; gap: 35px; margin-block: 25px; }
+.oc-class-schedule strong { font-size: 11px; text-transform: uppercase; color: #202424; }
+.oc-footer-link { display: block; margin-bottom: 10px; text-align: left; cursor: pointer; }
+.oc-footer .oc-footer-link:hover { color: #fff; }
+html[lang='km'] .oc-home h1 { font-size: clamp(30px, 4.2vw, 48px); line-height: 1.55; letter-spacing: 0; }
+html[lang='km'] .oc-home h2 { line-height: 1.6; letter-spacing: 0; }
+html[lang='km'] .oc-home h3 { line-height: 1.65; }
+html[lang='km'] .oc-eyebrow, html[lang='km'] .oc-dropdown summary, html[lang='km'] .oc-text-link, html[lang='km'] .oc-button { letter-spacing: 0; }
+html[lang='ko'] .oc-home h1 { line-height: 1.3; }
+html[lang='ko'] .oc-home h2 { line-height: 1.45; }
+.oc-footer-grid a[href^="mailto:"],
+.oc-footer-grid address {
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+.oc-footer-grid a,
+.oc-footer-grid button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  line-height: 1.6;
+}
+.oc-footer-grid a svg,
+.oc-footer-grid button svg {
+  flex-shrink: 0;
+}
+/* Prevent iOS WebKit from turning unicode symbols into Apple Color Emoji */
+@supports (font-variant-emoji: text) {
+  span[aria-hidden='true'],
+  .oc-card-arrow,
+  .oc-explore-arrow,
+  .oc-arrow {
+    font-variant-emoji: text !important;
+  }
+}
+span[aria-hidden='true'],
+.oc-card-arrow,
+.oc-explore-arrow,
+.oc-arrow {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+  text-decoration: none !important;
+}
+.oc-site:has(.oc-header-home) > .fixed.bottom-0 { display: none !important; }
+@media (max-width: 1100px) {
+  .oc-dropdown summary { font-size: 11px; letter-spacing: .04em; }
+}
+@media (max-width: 1024px) {
+  .oc-nav-links { padding-top: 15px; }
+  .oc-nav-links.oc-nav-open { display: block; }
+  .oc-dropdown { border-bottom: 1px solid #dcdfda; }
+  .oc-dropdown summary { font-size: 12px; letter-spacing: .1em; padding: 17px 0; justify-content: space-between; }
+  .oc-dropdown-panel { position: static; width: 100%; border: 0; box-shadow: none; background: #f5f4f0; margin-bottom: 12px; }
+  .oc-dropdown-panel a { padding: 12px 16px; }
+  .oc-header-tools { position: static; margin-top: 20px; justify-content: space-between; }
+  .oc-languages { gap: 22px; }
+  .oc-languages button { font-size: 12px; min-width: 42px; min-height: 44px; }
+  .oc-search { width: 44px; height: 44px; border: 1px solid #dcdfda; }
+  .oc-announcement { gap: 40px; }
+}
+@media (max-width: 640px) {
+  .oc-site > .fixed.bottom-0 { 
+    background: #141716f2; 
+    border-top: 1px solid #ffffff24; 
+    backdrop-filter: blur(12px); 
+    -webkit-backdrop-filter: blur(12px); 
+    box-shadow: 0 -4px 20px rgba(0,0,0,0.3);
+    padding-bottom: calc(10px + env(safe-area-inset-bottom, 0px));
+  }
+  .oc-site > .fixed.bottom-0 > a { 
+    background: rgba(255,255,255,0.06); 
+    border-color: rgba(255,255,255,0.18); 
+    color: white; 
+  }
+  .oc-site > .fixed.bottom-0 > button { 
+    background: #1c5080; 
+    color: white; 
+    border-color: #1c5080; 
+    letter-spacing: .03em; 
+  }
+  .oc-site > .fixed.bottom-0 svg { color: currentColor; }
+  .oc-hero .oc-scroll-cue { bottom: 88px; }
+  .oc-home .oc-hero-content { padding-top: 100px; padding-bottom: 150px; }
+  .oc-footer { 
+    padding-top: 50px;
+    padding-bottom: calc(110px + env(safe-area-inset-bottom, 0px)); 
+  }
+  .oc-footer-grid {
+    grid-template-columns: 1fr !important;
+    gap: 36px !important;
+    padding-bottom: 36px !important;
+  }
+  .oc-footer-bottom {
+    flex-direction: column !important;
+    gap: 14px !important;
+    align-items: flex-start !important;
+  }
+  .oc-announcement { grid-template-columns: 1fr; gap: 35px; }
+  .oc-poster-button { padding: 18px; }
+  .oc-announcement h2 { font-size: 27px; }
+  .oc-class-schedule { gap: 24px; flex-wrap: wrap; }
+  html[lang='km'] .oc-home h1 { font-size: clamp(29px, 7.8vw, 44px); line-height: 1.7; }
+  html[lang='km'] .oc-home h2 { font-size: 29px; }
+  html[lang='km'] .oc-hero-khmer { font-size: 11px; }
+  html[lang='km'] .oc-card-content h3 { font-size: 24px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .oc-home .oc-section-photo { transform: none !important; }
+}
+
+html .oc-brand strong, html .oc-brand strong span { font-family: Montserrat, 'Plus Jakarta Sans', sans-serif !important; }
+html[lang='km'] .oc-dropdown summary, html[lang='km'] .oc-nav-links > a, html[lang='km'] .oc-nav-cta { font-size: 12px; }
+html[lang='km'] .oc-hero .oc-eyebrow { font-size: 12px; }
+html[lang='km'] .oc-footer { font-size: 12px; }
+html[lang='en'] .oc-site > main > :not(.oc-home) :is(h1,h2,h3,h4) { font-family: Montserrat, 'Plus Jakarta Sans', sans-serif !important; }
+@media (max-width: 600px) { html[lang='km'] .oc-hero .oc-eyebrow { font-size: 10px; } }
+@media (max-width: 600px) {
+  html[lang='en'] .oc-home .oc-hero h1 {
+    font-size: clamp(25px, 7.5vw, 38px) !important;
+    letter-spacing: .02em !important;
+    line-height: 1.14 !important;
+    word-break: normal !important;
+  }
+}
+
+/* ==========================================================================
+   ONE CHURCH SUBPAGE DESIGN SYSTEM & UNIFIED TYPOGRAPHY
+   ========================================================================== */
+
+/* Subpage Hero */
+.oc-subpage-hero {
+  background-color: #0A1628;
+  position: relative;
+}
+
+/* General Subpage Container */
+.oc-subpage-container,
+.oc-container {
+  width: min(1160px, 90%);
+  margin-inline: auto;
+  padding-block: clamp(48px, 6vw, 84px);
+}
+
+/* Editorial Cards */
+.oc-subpage-card,
+.oc-site .oc-card {
+  background: #ffffff;
+  border: 1px solid #dcdfda;
+  border-radius: 2px;
+  padding: clamp(24px, 3.2vw, 36px);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.oc-subpage-card:hover,
+.oc-site .oc-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 36px rgba(20, 23, 22, 0.08);
+  border-color: #1c5080;
+}
+
+.oc-card-number {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: #1c5080;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  display: block;
+}
+
+/* One Church Button System */
+.oc-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: #141716;
+  color: #ffffff !important;
+  border: 1px solid #141716;
+  padding: 13px 26px;
+  min-height: 48px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  border-radius: 0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none !important;
+}
+.oc-btn-primary:hover {
+  background: #1c5080;
+  border-color: #1c5080;
+  color: #ffffff !important;
+}
+
+.oc-btn-gold,
+.oc-btn-navy {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: #1c5080;
+  color: #ffffff !important;
+  border: 1px solid #1c5080;
+  padding: 13px 26px;
+  min-height: 48px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  border-radius: 0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none !important;
+}
+.oc-btn-gold:hover,
+.oc-btn-navy:hover {
+  background: #13395c;
+  border-color: #13395c;
+  color: #ffffff !important;
+}
+
+.oc-btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: transparent;
+  color: #141716 !important;
+  border: 1px solid #dcdfda;
+  padding: 13px 26px;
+  min-height: 48px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  border-radius: 0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none !important;
+}
+.oc-btn-ghost:hover {
+  border-color: #141716;
+  background: #f5f4f0;
+}
+
+.oc-btn-outline-white {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: transparent !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.5) !important;
+  padding: 13px 26px;
+  min-height: 48px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  border-radius: 0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none !important;
+}
+.oc-btn-outline-white:hover {
+  background: #ffffff !important;
+  color: #141716 !important;
+  border-color: #ffffff !important;
+}
+
+/* ==========================================================================
+   GLOBAL SUBPAGE NORMALIZERS (Eliminating Old Dark Navy / Heavy Borders)
+   ========================================================================== */
+
+/* Replace dark navy hero backgrounds with One Church deep charcoal */
+.oc-site [class*='bg-[#0b192c]'],
+.oc-site [class*='bg-[#0F1E36]'],
+.oc-site [class*='bg-[#0f2744]'],
+.oc-site [class*='bg-[#1B2A5B]'],
+.oc-site [class*='bg-[#12243d]'],
+.oc-site [class*='bg-[#0A1626]'],
+.oc-site [class*='bg-[#0A1828]'],
+.oc-site [class*='bg-[#0F2A4A]'],
+.oc-site [class*='bg-[#0B172B]'],
+.oc-site .bg-brand-dark {
+  background-color: #141716 !important;
+}
+
+/* Soften gradients */
+.oc-site [class*='from-[#0b192c]'] {
+  --tw-gradient-from: #141716 !important;
+}
+.oc-site [class*='to-[#0b192c]'] {
+  --tw-gradient-to: #141716 !important;
+}
+.oc-site [class*='via-[#0f2744]'] {
+  --tw-gradient-stops: #141716, #141716, #141716 !important;
+}
+
+/* Neutralize old thick gold borders */
+.oc-site .border-b-8.border-brand-gold,
+.oc-site .border-b-4.border-brand-gold,
+.oc-site [class*='border-b-8'],
+.oc-site [class*='border-b-4'] {
+  border-bottom-width: 1px !important;
+  border-bottom-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Harmonize accent colors to Church Royal Navy & Sky Blue */
+.oc-site .text-brand-gold,
+.oc-site [class*='text-amber-200'],
+.oc-site [class*='text-amber-300'],
+.oc-site [class*='text-yellow-500'],
+.oc-site [class*='text-[#A8844B]'],
+.oc-site [class*='text-[#8C6B38]'] {
+  color: #1c5080 !important;
+}
+
+.oc-site .bg-brand-gold,
+.oc-site [class*='bg-[#A8844B]'] {
+  background-color: #1c5080 !important;
+  color: #ffffff !important;
+}
+
+.oc-site .border-brand-gold,
+.oc-site [class*='border-[#A8844B]'] {
+  border-color: #1c5080 !important;
+}
+
+/* Harmonize light page backgrounds to warm linen */
+.oc-site .bg-brand-light,
+.oc-site [class*='bg-stone-50'],
+.oc-site [class*='bg-gray-50'] {
+  background-color: #fcfbf7 !important;
+}
+
+/* Harmonize dark buttons to One Church charcoal/navy */
+.oc-site [class*='bg-[#1B2A5B]'],
+.oc-site [class*='bg-[#15477a]'] {
+  background-color: #141716 !important;
+}
+.oc-site [class*='bg-[#1B2A5B]']:hover,
+.oc-site [class*='bg-[#15477a]']:hover {
+  background-color: #1c5080 !important;
+  color: #ffffff !important;
+}
+
+/* ==========================================================================
+   TYPOGRAPHY & FONT SIZE OPTIMIZATION (Desktop, Tablet, Mobile)
+   ========================================================================== */
+
+/* Universal Heading & Body Proportions across all subpages */
+.oc-site main h1 {
+  font-size: clamp(28px, 3.8vw, 44px);
+  line-height: 1.18;
+  letter-spacing: 0.02em;
+  font-weight: 700;
+}
+
+.oc-site main h2 {
+  font-size: clamp(21px, 2.4vw, 32px);
+  line-height: 1.25;
+  letter-spacing: 0.015em;
+  font-weight: 600;
+}
+
+.oc-site main h3 {
+  font-size: clamp(17px, 1.6vw, 21px);
+  line-height: 1.35;
+  font-weight: 600;
+}
+
+/* Light page body text default */
+.oc-site main p {
+  font-size: 15.5px;
+  line-height: 1.75;
+  color: #3b4240;
+}
+
+/* HERO & DARK BANNER CONTRAST FIX - Ensure subtitles and descriptions are always bright & crisp */
+.oc-subpage-hero p,
+.oc-subpage-hero .oc-subpage-hero-subtitle,
+.oc-hero p,
+.oc-hero .oc-hero-khmer,
+.photo-section p,
+.feature-banner p,
+.oc-connect p,
+.oc-footer p,
+[class*='bg-[#141716]'] p,
+[class*='bg-[#0A1626]'] p,
+[class*='bg-[#0A1828]'] p,
+[class*='bg-[#171b1b]'] p {
+  color: #f0f4f2 !important;
+}
+
+.oc-subpage-hero-subtitle {
+  color: #ffffff !important;
+  font-size: clamp(14.5px, 1.3vw, 17.5px) !important;
+  line-height: 1.7 !important;
+  opacity: 0.95;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+/* Universal Subpage Card Headings (never blow out) */
+.oc-subpage-card h2,
+.oc-subpage-card h3,
+.oc-site .oc-card h2,
+.oc-site .oc-card h3 {
+  font-size: clamp(17px, 1.5vw, 21px) !important;
+  line-height: 1.35 !important;
+  letter-spacing: 0.015em !important;
+  margin-bottom: 10px !important;
+}
+
+/* Eliminate old sky-500, blue, and cyan buttons across subpages */
+.oc-site .bg-sky-500,
+.oc-site .bg-sky-600,
+.oc-site .bg-blue-600,
+.oc-site [class*='bg-[#00A3FF]'],
+.oc-site [class*='bg-[#1d4f7d]'] {
+  background-color: #202424 !important;
+  color: #ffffff !important;
+  border-color: #202424 !important;
+}
+.oc-site .bg-sky-500:hover,
+.oc-site .bg-sky-600:hover,
+.oc-site .bg-blue-600:hover,
+.oc-site [class*='bg-[#00A3FF]']:hover,
+.oc-site [class*='bg-[#1d4f7d]']:hover {
+  background-color: #1c5080 !important;
+  border-color: #1c5080 !important;
+  color: #ffffff !important;
+}
+
+/* Khmer-Specific Typography Perfection (Koh Santepheap font) */
+html[lang='km'],
+html[lang='km'] body,
+html[lang='km'] .oc-site {
+  font-family: 'Koh Santepheap', 'Noto Sans Khmer', sans-serif !important;
+}
+
+html[lang='km'] h1,
+html[lang='km'] h2,
+html[lang='km'] h3,
+html[lang='km'] h4,
+html[lang='km'] p,
+html[lang='km'] a,
+html[lang='km'] button,
+html[lang='km'] span,
+html[lang='km'] small,
+html[lang='km'] strong {
+  text-transform: none !important;
+  letter-spacing: 0 !important;
+}
+
+html[lang='km'] .oc-site main h1 {
+  font-family: 'Koh Santepheap', sans-serif !important;
+  font-size: clamp(24px, 3.2vw, 38px) !important;
+  line-height: 1.55 !important;
+}
+
+html[lang='km'] .oc-site main h2 {
+  font-family: 'Koh Santepheap', sans-serif !important;
+  font-size: clamp(20px, 2.5vw, 29px) !important;
+  line-height: 1.6 !important;
+}
+
+html[lang='km'] .oc-site main h3 {
+  font-family: 'Koh Santepheap', sans-serif !important;
+  font-size: clamp(16.5px, 1.6vw, 21px) !important;
+  line-height: 1.65 !important;
+}
+
+html[lang='km'] .oc-site main p {
+  font-family: 'Koh Santepheap', sans-serif !important;
+  font-size: 15.5px !important;
+  line-height: 1.85 !important;
+}
+
+html[lang='km'] .oc-site .oc-btn-primary,
+html[lang='km'] .oc-site .oc-btn-gold,
+html[lang='km'] .oc-site .oc-btn-ghost,
+html[lang='km'] .oc-site .oc-button,
+html[lang='km'] .oc-site .oc-nav-cta {
+  font-family: 'Koh Santepheap', sans-serif !important;
+  letter-spacing: 0 !important;
+  font-size: 13px !important;
+  line-height: 1.5 !important;
+}
+
+/* Mobile font tuning */
+@media (max-width: 640px) {
+  .oc-site main p {
+    font-size: 14px;
+    line-height: 1.75;
+  }
+  .oc-subpage-card,
+  .oc-site .oc-card {
+    padding: 20px;
+  }
+}

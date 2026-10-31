@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { useLocale, useT } from "../lib/i18n";
-import { TelegramIcon, ArrowRightIcon } from "./Icons";
+import { useLocale } from "../lib/i18n";
+import { ArrowUpRight } from "./Icons";
 
 export default function ConnectBanner({
   eyebrow,
@@ -11,58 +11,50 @@ export default function ConnectBanner({
   isExternal = true,
 }) {
   const locale = useLocale();
-  const t = useT();
   const isKm = locale === "km";
 
   const defaultEyebrow = isKm
-    ? "ទំនាក់ទំនង និងការប្រកបគ្នា"
-    : "Connect & Prayer • Phnom Penh";
+    ? "យើងរីករាយនឹងជួប និងអធិស្ឋានសម្រាប់អ្នក"
+    : "We'd Love to Connect & Pray With You";
 
   const defaultTitle = isKm
-    ? "ជំពូកថ្មីនៃជីវិតរបស់អ្នក ចាប់ផ្តើមពីការស្វាគមន៍មួយ"
-    : "Your Next Chapter Starts With A Hello.";
-
-  const defaultSubtitle = isKm
-    ? "មិនថាអ្នកត្រូវការការអធិស្ឋាន ការប្រឹក្សាខាងវិញ្ញាណ ឬចង់ដឹងបន្ថែមអំពីព្រះបន្ទូលព្រះទេ — ខ្ញុំបាទរីករាយនឹងជជែក និងអធិស្ឋានជាមួយអ្នក។"
-    : "Whether you need pastoral prayer, spiritual mentorship, or want to explore God's Word — we would love to connect with you.";
+    ? "ចូរឲ្យព្រះបន្ទូលព្រះបំភ្លឺគន្លងជីវិតរបស់អ្នក"
+    : "Let God's Living Word Illuminate Your Path.";
 
   const defaultButton = isKm
     ? "ទំនាក់ទំនងតាម Telegram"
     : "Connect on Telegram";
 
+  const effectiveEyebrow = eyebrow || defaultEyebrow;
+  const effectiveTitle = title || defaultTitle;
+  const effectiveButton = buttonText || defaultButton;
+
   return (
     <section className="oc-connect">
-      <div className="oc-connect-inner">
-        <p className="oc-eyebrow oc-light">
-          {eyebrow || defaultEyebrow}
+      <p className="oc-eyebrow oc-light">{effectiveEyebrow}</p>
+      <h2>{effectiveTitle}</h2>
+      {subtitle && (
+        <p style={{ color: "rgba(255, 255, 255, 0.8)", maxWidth: "600px", margin: "-12px auto 30px", fontSize: "15px", lineHeight: 1.7 }}>
+          {subtitle}
         </p>
-        <h2 className="oc-connect-title">
-          {title || defaultTitle}
-        </h2>
-        <p className="oc-connect-sub">
-          {subtitle || defaultSubtitle}
-        </p>
-        <div className="oc-connect-actions">
-          {isExternal ? (
-            <a
-              href={buttonLink}
-              target="_blank"
-              rel="noreferrer"
-              className="oc-button oc-outline"
-            >
-              <TelegramIcon style={{ width: 15, height: 15, marginRight: 8 }} />
-              <span>{buttonText || defaultButton}</span>
-            </a>
-          ) : (
-            <Link href={buttonLink} className="oc-button oc-outline">
-              <span>{buttonText || defaultButton}</span>
-            </Link>
-          )}
-
-          <Link href="/contact" className="oc-button oc-outline-white">
-            <span>{isKm ? "ផ្ញើសារ / សំណើអធិស្ឋាន" : "Send Message / Prayer"}</span>
+      )}
+      <div>
+        {isExternal ? (
+          <a
+            className="oc-button oc-outline"
+            href={buttonLink}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <span>{effectiveButton}</span>
+            <ArrowUpRight width={13} height={13} style={{ display: "inline-block", marginLeft: 8 }} />
+          </a>
+        ) : (
+          <Link className="oc-button oc-outline" href={buttonLink}>
+            <span>{effectiveButton}</span>
+            <ArrowUpRight width={13} height={13} style={{ display: "inline-block", marginLeft: 8 }} />
           </Link>
-        </div>
+        )}
       </div>
     </section>
   );

@@ -180,7 +180,7 @@ export default function Library() {
   const statAudio = ALL_RESOURCES.filter((r) => r.type === "audio").length;
 
   return (
-    <>
+    <div className="oc-site">
       <Head>
         <title>{`${isKm ? "បណ្ណាល័យធនធានទេវវិទ្យា" : "Theological Library & Resources"} — ${isKm ? "លោកគ្រូ ហ៊ុន ចិត្ត" : "Hun Chet"}`}</title>
         <meta name="description" content="Free biblical study companions, theological archives, audio teachings, and bilingual reference texts." />
@@ -960,6 +960,6 @@ export default function Library() {
       <ConnectBanner />
 
       <SiteFooter />
-    </>
+    </div>
   );
 }

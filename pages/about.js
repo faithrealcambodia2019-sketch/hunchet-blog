@@ -32,7 +32,7 @@ export default function About() {
   const description = t("about.intro");
 
   return (
-    <>
+    <div className="oc-site">
       <Head>
         <title>{`${t("about.title")} — ${isKm ? "លោកគ្រូ ហ៊ុន ចិត្ត" : "Hun Chet"}`}</title>
         <meta name="description" content={description} />
@@ -250,6 +250,6 @@ export default function About() {
       <ConnectBanner />
 
       <SiteFooter />
-    </>
+    </div>
   );
 }

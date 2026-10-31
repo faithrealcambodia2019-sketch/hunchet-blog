@@ -78,7 +78,7 @@ export default function Gallery() {
   }, [selectedIndex]);
 
   return (
-    <>
+    <div className="oc-site">
       <Head>
         <title>
           {locale === "km"
@@ -530,6 +530,6 @@ export default function Gallery() {
       <ConnectBanner />
 
       <SiteFooter />
-    </>
+    </div>
   );
 }
