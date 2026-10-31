@@ -97,6 +97,11 @@ iframe {
   height: auto;
 }
 
+svg:not([width]) {
+  max-width: 24px;
+  max-height: 24px;
+}
+
 .container {
   max-width: 1140px;
   margin: 0 auto;

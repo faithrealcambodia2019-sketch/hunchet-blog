@@ -193,9 +193,22 @@ export function CameraIcon(props) {
   );
 }
 
-export function SearchIcon(props) {
+export function SearchIcon({ width = 18, height = 18, style, ...props } = {}) {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false" {...props}>
+    <svg
+      width={width}
+      height={height}
+      style={{ width, height, ...style }}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      focusable="false"
+      {...props}
+    >
       <circle cx="11" cy="11" r="8" />
       <line x1="21" y1="21" x2="16.65" y2="16.65" />
     </svg>

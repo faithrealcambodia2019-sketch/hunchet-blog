@@ -66,7 +66,7 @@ export default function Articles({ posts = [], error }) {
   }, [posts, activeCategory, searchQuery]);
 
   return (
-    <>
+    <div className="oc-site">
       <Head>
         <title>{`${t("articles.title")} — ${isKm ? "លោកគ្រូ ហ៊ុន ចិត្ត" : "Hun Chet"}`}</title>
         <meta name="description" content={t("articles.intro")} />
@@ -74,149 +74,332 @@ export default function Articles({ posts = [], error }) {
 
       <SiteHeader />
 
-      {/* 1. ONE CHURCH HERO */}
-      <SubpageHero
-        eyebrow={isKm ? "អត្ថបទ និងការបង្រៀនព្រះគម្ពីរ" : "Biblical Articles & Exegesis"}
-        title={t("articles.title")}
-        subtitle={
-          isKm
-            ? "ការពន្យល់ព្រះគម្ពីរ ការបង្រៀនព្រះបន្ទូល និងការបណ្តុះបណ្តាលជីវិតគ្រីស្ទបរិស័ទជាភាសាខ្មែរ ដោយលោកគ្រូ ហ៊ុន ចិត្ត។"
-            : "Biblical exegesis, practical Christian living, and theological writings by Leader Hun Chet."
-        }
-        bgImage="/images/sermon-purpose-congregation.jpg"
-        stats={[
-          { num: `${posts.length}+`, label: isKm ? "អត្ថបទទាំងអស់" : "Articles" },
-          { num: "Weekly", label: isKm ? "បច្ចុប្បន្នភាព" : "Cadence" },
-          { num: "1954", label: isKm ? "ព្រះគម្ពីរខ្មែរ" : "Scripture" },
-        ]}
-      />
+      <main>
+        {/* 1. ONE CHURCH HERO */}
+        <SubpageHero
+          eyebrow={isKm ? "អត្ថបទ និងការបង្រៀនព្រះគម្ពីរ" : "BIBLICAL ARTICLES & EXEGESIS"}
+          title={t("articles.title")}
+          subtitle={
+            isKm
+              ? "ការពន្យល់ព្រះគម្ពីរ ការបង្រៀនព្រះបន្ទូល និងការបណ្តុះបណ្តាលជីវិតគ្រីស្ទបរិស័ទជាភាសាខ្មែរ ដោយលោកគ្រូ ហ៊ុន ចិត្ត។"
+              : "Biblical exegesis, practical Christian living, and theological writings by Leader Hun Chet."
+          }
+          bgImage="/images/sermon-purpose-congregation.jpg"
+          stats={[
+            { number: `${posts.length}+`, label: isKm ? "អត្ថបទទាំងអស់" : "Articles" },
+            { number: "Weekly", label: isKm ? "បច្ចុប្បន្នភាព" : "Cadence" },
+            { number: "1954", label: isKm ? "ព្រះគម្ពីរខ្មែរ" : "Scripture" },
+          ]}
+        />
 
-      {/* 2. FILTER & SEARCH BAR (One Church Clean Minimalist) */}
-      <div className="bg-white border-b border-[#dcdfda] sticky top-[88px] z-30 py-4 shadow-xs">
-        <div className="oc-section py-0 flex flex-col md:flex-row items-center justify-between gap-4">
-          {/* Category Tabs */}
-          <div className="flex flex-wrap items-center gap-2 overflow-x-auto w-full md:w-auto">
-            <button
-              type="button"
-              onClick={() => setActiveCategory("all")}
-              className={`px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider transition-all border ${
-                activeCategory === "all"
-                  ? "bg-[#141716] text-white border-[#141716]"
-                  : "bg-white text-[#626868] border-[#dcdfda] hover:border-[#141716]"
-              }`}
-            >
-              {isKm ? "ទាំងអស់" : "All"} ({posts.length})
-            </button>
-            {categories.map((cat) => (
-              <button
-                key={cat.slug}
-                type="button"
-                onClick={() => setActiveCategory(cat.slug)}
-                className={`px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider transition-all border ${
-                  activeCategory === cat.slug
-                    ? "bg-[#141716] text-white border-[#141716]"
-                    : "bg-white text-[#626868] border-[#dcdfda] hover:border-[#141716]"
-                }`}
-              >
-                {cat.name} ({cat.count})
-              </button>
-            ))}
-          </div>
-
-          {/* Search Box */}
-          <div className="relative w-full md:w-72">
-            <SearchIcon className="w-4 h-4 text-[#626868] absolute left-3.5 top-3" />
-            <input
-              type="text"
-              placeholder={isKm ? "ស្វែងរកអត្ថបទ ឬប្រធានបទ..." : "Search articles..."}
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 border border-[#dcdfda] text-xs focus:outline-none focus:border-[#141716] bg-[#fcfbf9]"
-            />
-          </div>
-        </div>
-      </div>
-
-      {/* 3. ARTICLES DIRECTORY */}
-      <main className="oc-section">
-        {error && (
-          <p style={{ textAlign: "center", color: "#dc2626", padding: "2rem" }}>
-            {t("common.loadError")} {error}
-          </p>
-        )}
-
-        {!error && filteredPosts.length === 0 && (
-          <div className="text-center py-24 bg-white border border-[#dcdfda] p-8 max-w-lg mx-auto">
-            <p className="text-stone-600 mb-4">
-              {isKm
-                ? "មិនមានអត្ថបទត្រូវនឹងការស្វែងរកនេះទេ។"
-                : "No articles found matching your criteria."}
-            </p>
-            <button
-              type="button"
-              className="oc-button oc-solid"
-              onClick={() => {
-                setActiveCategory("all");
-                setSearchQuery("");
+        {/* 2. FILTER & SEARCH BAR (One Church Clean Minimalist) */}
+        <div
+          style={{
+            background: "#ffffff",
+            borderBottom: "1px solid #dcdfda",
+            position: "sticky",
+            top: "76px",
+            zIndex: 30,
+            padding: "1rem 0",
+          }}
+        >
+          <div
+            className="container"
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              flexWrap: "wrap",
+              gap: "1rem",
+            }}
+          >
+            {/* Category Tabs */}
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                flexWrap: "wrap",
+                gap: "8px",
               }}
             >
-              <span>{isKm ? "កំណត់ឡើងវិញ" : "Clear Filters"}</span>
-            </button>
-          </div>
-        )}
+              <button
+                type="button"
+                onClick={() => setActiveCategory("all")}
+                style={{
+                  padding: "8px 16px",
+                  fontFamily: "var(--font-body)",
+                  fontSize: "11px",
+                  fontWeight: 700,
+                  letterSpacing: "0.14em",
+                  textTransform: "uppercase",
+                  borderRadius: 0,
+                  cursor: "pointer",
+                  transition: "all 0.2s",
+                  background: activeCategory === "all" ? "#141716" : "#ffffff",
+                  color: activeCategory === "all" ? "#ffffff" : "#626868",
+                  border: activeCategory === "all" ? "1px solid #141716" : "1px solid #dcdfda",
+                }}
+              >
+                {isKm ? "ទាំងអស់" : "ALL"} ({posts.length})
+              </button>
+              {categories.map((cat) => {
+                const isActive = activeCategory === cat.slug;
+                return (
+                  <button
+                    key={cat.slug}
+                    type="button"
+                    onClick={() => setActiveCategory(cat.slug)}
+                    style={{
+                      padding: "8px 16px",
+                      fontFamily: "var(--font-body)",
+                      fontSize: "11px",
+                      fontWeight: 700,
+                      letterSpacing: "0.14em",
+                      textTransform: "uppercase",
+                      borderRadius: 0,
+                      cursor: "pointer",
+                      transition: "all 0.2s",
+                      background: isActive ? "#141716" : "#ffffff",
+                      color: isActive ? "#ffffff" : "#626868",
+                      border: isActive ? "1px solid #141716" : "1px solid #dcdfda",
+                    }}
+                  >
+                    {cat.name} ({cat.count})
+                  </button>
+                );
+              })}
+            </div>
 
-        {/* 3-Column One Church Card Grid */}
-        {filteredPosts.length > 0 && (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredPosts.map((post) => {
-              const image = getFeaturedImage(post);
-              return (
-                <Link
-                  key={post.id}
-                  href={`/posts/${post.slug}`}
-                  className="oc-card group"
-                >
-                  <div className="aspect-[16/10] overflow-hidden bg-stone-100 border-b border-[#dcdfda]">
-                    {image ? (
-                      <img
-                        src={image}
-                        alt=""
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                        loading="lazy"
-                      />
-                    ) : (
-                      <div className="w-full h-full bg-[#141716] flex items-center justify-center text-white text-3xl font-bold">
-                        H
-                      </div>
-                    )}
-                  </div>
-                  <div className="oc-card-body">
-                    <span className="text-xs font-bold text-[#1c5080] tracking-[0.16em] uppercase block mb-2">
-                      {formatDate(post.date)}
-                    </span>
-                    <h3
-                      className="oc-card-title group-hover:text-[#1c5080] transition-colors"
-                      dangerouslySetInnerHTML={{ __html: post.title.rendered }}
-                    />
-                    <p className="oc-card-sub line-clamp-3">
-                      {getExcerptText(post)}
-                    </p>
-                    <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-[0.12em] text-[#141716] group-hover:text-[#1c5080] pt-2 border-t border-[#dcdfda]">
-                      <span>{isKm ? "អានអត្ថបទពេញលេញ" : "Read Full Article"}</span>
-                      <ArrowRightIcon style={{ width: 12, height: 12 }} />
-                    </span>
-                  </div>
-                </Link>
-              );
-            })}
+            {/* Search Box */}
+            <div
+              style={{
+                position: "relative",
+                width: "100%",
+                maxWidth: "300px",
+              }}
+            >
+              <span
+                style={{
+                  position: "absolute",
+                  left: "12px",
+                  top: "50%",
+                  transform: "translateY(-50%)",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  color: "#64748b",
+                  pointerEvents: "none",
+                  width: "16px",
+                  height: "16px",
+                }}
+              >
+                <SearchIcon width={16} height={16} style={{ width: 16, height: 16, flexShrink: 0 }} />
+              </span>
+              <input
+                type="text"
+                placeholder={isKm ? "ស្វែងរកអត្ថបទ..." : "Search articles..."}
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                style={{
+                  width: "100%",
+                  height: "40px",
+                  paddingLeft: "36px",
+                  paddingRight: "14px",
+                  background: "#fbfbf9",
+                  border: "1px solid #dcdfda",
+                  borderRadius: 0,
+                  fontFamily: "var(--font-body)",
+                  fontSize: "13px",
+                  color: "#141716",
+                  outline: "none",
+                }}
+              />
+            </div>
           </div>
-        )}
+        </div>
+
+        {/* 3. ARTICLES DIRECTORY */}
+        <section className="oc-section" style={{ background: "#ffffff", paddingBlock: "4rem" }}>
+          <div className="container">
+            {error && (
+              <p style={{ textAlign: "center", color: "#dc2626", padding: "2rem" }}>
+                {t("common.loadError")} {error}
+              </p>
+            )}
+
+            {!error && filteredPosts.length === 0 && (
+              <div
+                style={{
+                  textAlign: "center",
+                  padding: "4rem 2rem",
+                  background: "#fbfbf9",
+                  border: "1px solid #dcdfda",
+                  maxWidth: "520px",
+                  margin: "0 auto",
+                }}
+              >
+                <p style={{ color: "#64748b", fontSize: "1rem", margin: "0 0 1.5rem" }}>
+                  {isKm
+                    ? "មិនមានអត្ថបទត្រូវនឹងការស្វែងរកនេះទេ។"
+                    : "No articles found matching your criteria."}
+                </p>
+                <button
+                  type="button"
+                  className="oc-button oc-solid"
+                  onClick={() => {
+                    setActiveCategory("all");
+                    setSearchQuery("");
+                  }}
+                >
+                  <span>{isKm ? "កំណត់ឡើងវិញ" : "CLEAR FILTERS"}</span>
+                </button>
+              </div>
+            )}
+
+            {/* 3-Column One Church Card Grid */}
+            {filteredPosts.length > 0 && (
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))",
+                  gap: "32px",
+                }}
+              >
+                {filteredPosts.map((post) => {
+                  const image = getFeaturedImage(post);
+                  return (
+                    <Link
+                      key={post.id}
+                      href={`/posts/${post.slug}`}
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        background: "#ffffff",
+                        border: "1px solid #dcdfda",
+                        borderRadius: 0,
+                        textDecoration: "none",
+                        overflow: "hidden",
+                        transition: "border-color 0.2s",
+                      }}
+                    >
+                      <div
+                        style={{
+                          position: "relative",
+                          aspectRatio: "16 / 10",
+                          background: "#141716",
+                          overflow: "hidden",
+                        }}
+                      >
+                        {image ? (
+                          <img
+                            src={image}
+                            alt=""
+                            style={{
+                              width: "100%",
+                              height: "100%",
+                              objectFit: "cover",
+                              display: "block",
+                            }}
+                            loading="lazy"
+                          />
+                        ) : (
+                          <div
+                            style={{
+                              width: "100%",
+                              height: "100%",
+                              background: "#141716",
+                              display: "flex",
+                              alignItems: "center",
+                              justifyContent: "center",
+                              color: "#ffffff",
+                              fontFamily: "var(--font-display)",
+                              fontSize: "2rem",
+                              fontWeight: 800,
+                            }}
+                          >
+                            HUN CHET
+                          </div>
+                        )}
+                      </div>
+
+                      <div
+                        style={{
+                          padding: "1.75rem",
+                          display: "flex",
+                          flexDirection: "column",
+                          flex: 1,
+                          justifyContent: "space-between",
+                        }}
+                      >
+                        <div>
+                          <span
+                            style={{
+                              fontFamily: "var(--font-display)",
+                              fontSize: "11px",
+                              fontWeight: 700,
+                              letterSpacing: "0.14em",
+                              textTransform: "uppercase",
+                              color: "var(--oc-teal)",
+                              display: "block",
+                              marginBottom: "0.5rem",
+                            }}
+                          >
+                            {formatDate(post.date)}
+                          </span>
+                          <h3
+                            style={{
+                              fontFamily: "var(--font-display)",
+                              fontSize: "1.25rem",
+                              fontWeight: 700,
+                              lineHeight: 1.35,
+                              color: "#141716",
+                              margin: "0 0 0.75rem",
+                            }}
+                            dangerouslySetInnerHTML={{ __html: post.title.rendered }}
+                          />
+                          <p
+                            style={{
+                              color: "#4a5568",
+                              fontSize: "0.92rem",
+                              lineHeight: 1.65,
+                              margin: "0 0 1.25rem",
+                            }}
+                          >
+                            {getExcerptText(post, 120)}
+                          </p>
+                        </div>
+
+                        <span
+                          style={{
+                            fontSize: "11px",
+                            fontWeight: 700,
+                            textTransform: "uppercase",
+                            letterSpacing: "0.14em",
+                            color: "#141716",
+                            display: "inline-flex",
+                            alignItems: "center",
+                            gap: "6px",
+                            paddingTop: "0.85rem",
+                            borderTop: "1px solid #eef0eb",
+                          }}
+                        >
+                          <span>{isKm ? "អានអត្ថបទពេញលេញ" : "READ FULL ARTICLE"}</span>
+                          <ArrowRightIcon style={{ width: 12, height: 12 }} />
+                        </span>
+                      </div>
+                    </Link>
+                  );
+                })}
+              </div>
+            )}
+          </div>
+        </section>
+
+        {/* 4. ONE CHURCH CONNECT BANNER */}
+        <ConnectBanner />
       </main>
 
-      {/* 4. ONE CHURCH CONNECT BANNER */}
-      <ConnectBanner />
-
       <SiteFooter />
-    </>
+    </div>
   );
 }

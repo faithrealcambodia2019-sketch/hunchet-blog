@@ -2,6 +2,7 @@ import { useLocale } from "../lib/i18n";
 
 export default function SubpageHero({
   eyebrow,
+  kicker,
   title,
   subtitle,
   bgImage = "/images/church-campus-poster.jpg",
@@ -9,10 +10,12 @@ export default function SubpageHero({
   bgOpacity = 0.95,
   badgeText,
   stats,
+  breadcrumbs,
   children,
 }) {
   const locale = useLocale();
   const isKm = locale === "km";
+  const effectiveEyebrow = eyebrow || kicker;
 
   return (
     <section className="oc-subpage-hero">
@@ -34,9 +37,9 @@ export default function SubpageHero({
       {/* Hero content container */}
       <div className="oc-subpage-hero-content">
         {/* Eyebrow / Kicker */}
-        {eyebrow && (
+        {effectiveEyebrow && (
           <div className="oc-eyebrow oc-light">
-            {eyebrow}
+            {effectiveEyebrow}
           </div>
         )}
 
@@ -73,7 +76,7 @@ export default function SubpageHero({
           <div className="oc-hero-stats">
             {stats.map((s, idx) => (
               <div key={idx} className="oc-hero-stat-item">
-                <span className="oc-hero-stat-num">{s.num}</span>
+                <span className="oc-hero-stat-num">{s.num || s.number}</span>
                 <span className="oc-hero-stat-label">{s.label}</span>
               </div>
             ))}
