@@ -2,6 +2,8 @@ import Head from "next/head";
 import Link from "next/link";
 import SiteHeader from "../components/SiteHeader";
 import SiteFooter from "../components/SiteFooter";
+import SubpageHero from "../components/SubpageHero";
+import ConnectBanner from "../components/ConnectBanner";
 import { useT, useLocale } from "../lib/i18n";
 
 const TELEGRAM_URL = "https://t.me/+855966875886";
@@ -23,45 +25,75 @@ function GivingCard({ region, methods, href, externalLabel, featured = false }) 
   const t = useT();
 
   return (
-    <article className={`giving-card${featured ? " giving-card-featured" : ""}`} style={{ borderRadius: "var(--radius-lg)", borderTop: "3px solid var(--gold)" }}>
-      <div className="giving-card-head">
-        <span className="giving-region" style={{ color: "var(--gold)", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.12em" }}>
+    <article
+      style={{
+        background: "#ffffff",
+        border: "1px solid #dcdfda",
+        borderRadius: 0,
+        padding: "2.5rem 2rem",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
+      }}
+    >
+      <div>
+        <span
+          style={{
+            fontFamily: "var(--font-display)",
+            fontSize: "11px",
+            fontWeight: 700,
+            textTransform: "uppercase",
+            letterSpacing: "0.18em",
+            color: "var(--oc-teal)",
+            display: "block",
+            marginBottom: "0.5rem",
+          }}
+        >
           {t(`partner.${region}.label`)}
         </span>
-        <h3 style={{ fontFamily: "var(--font-display)", color: "var(--navy-dark)", margin: "0.5rem 0" }}>
+        <h3
+          style={{
+            fontFamily: "var(--font-display)",
+            fontSize: "1.5rem",
+            fontWeight: 700,
+            color: "#141716",
+            margin: "0 0 0.75rem",
+            letterSpacing: "-0.01em",
+          }}
+        >
           {t(`partner.${region}.title`)}
         </h3>
-        <p style={{ color: "var(--text)", fontSize: "0.95rem", lineHeight: 1.65 }}>
+        <p style={{ color: "#4a5568", fontSize: "0.95rem", lineHeight: 1.7, margin: "0 0 1.75rem" }}>
           {t(`partner.${region}.description`)}
         </p>
-      </div>
 
-      <ul className="giving-methods" style={{ margin: "1.5rem 0" }}>
-        {methods.map((method) => (
-          <li key={method} style={{ display: "flex", gap: "0.75rem", alignItems: "flex-start", marginBottom: "1rem" }}>
-            <span style={{ color: "var(--gold)", marginTop: "2px", flexShrink: 0 }}>
-              <CheckIcon />
-            </span>
-            <span>
-              <strong style={{ display: "block", color: "var(--navy-dark)", fontSize: "0.95rem" }}>
-                {t(`partner.${region}.${method}`)}
-              </strong>
-              <small style={{ color: "var(--muted)", fontSize: "0.85rem" }}>
-                {t(`partner.${region}.${method}Note`)}
-              </small>
-            </span>
-          </li>
-        ))}
-      </ul>
+        <ul style={{ listStyle: "none", padding: 0, margin: "0 0 2rem", borderTop: "1px solid #eef0eb", paddingTop: "1.25rem" }}>
+          {methods.map((method) => (
+            <li key={method} style={{ display: "flex", gap: "0.85rem", alignItems: "flex-start", marginBottom: "1rem" }}>
+              <span style={{ color: "var(--oc-teal)", marginTop: "3px", flexShrink: 0 }}>
+                <CheckIcon />
+              </span>
+              <span>
+                <strong style={{ display: "block", color: "#141716", fontSize: "0.92rem", fontWeight: 700 }}>
+                  {t(`partner.${region}.${method}`)}
+                </strong>
+                <small style={{ color: "#64748b", fontSize: "0.84rem", lineHeight: 1.5 }}>
+                  {t(`partner.${region}.${method}Note`)}
+                </small>
+              </span>
+            </li>
+          ))}
+        </ul>
+      </div>
 
       <a
         href={href}
         target="_blank"
         rel="noreferrer"
-        className={featured ? "btn btn-primary" : "btn btn-ghost"}
-        style={{ width: "100%", justifyContent: "center", fontSize: "0.82rem" }}
+        className={featured ? "oc-button oc-solid" : "oc-button oc-outline-dark"}
+        style={{ width: "100%", justifyContent: "center" }}
       >
-        {t(`partner.${region}.cta`)}
+        <span>{t(`partner.${region}.cta`)}</span>
         <span aria-hidden="true" style={{ marginLeft: 6 }}>→</span>
         <span className="sr-only"> {externalLabel}</span>
       </a>
@@ -75,7 +107,7 @@ export default function PartnerWithUs() {
   const isKm = locale === "km";
 
   return (
-    <>
+    <div className="oc-site">
       <Head>
         <title>{`${t("partner.title")} — ${isKm ? "លោកគ្រូ ហ៊ុន ចិត្ត" : "Hun Chet"}`}</title>
         <meta name="description" content={t("partner.intro")} />
@@ -83,71 +115,94 @@ export default function PartnerWithUs() {
 
       <SiteHeader />
 
-      <main className="partner-page">
-        {/* Stately Sanctuary Hero */}
-        <section className="sanctuary-hero">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/images/church-family.jpg"
-            alt="Hun Chet Ministry Family"
-            className="sanctuary-hero-bg"
-          />
-          <div className="sanctuary-hero-overlay" />
-          <div className="sanctuary-hero-content">
-            <div className="sanctuary-badge-tag">
-              <span>{isKm ? "ការចូលរួមចំណែកក្នុងព្រះរាជ្យព្រះ" : "Kingdom Mission & Stewardship"}</span>
-            </div>
-            <h1 className="sanctuary-hero-title">{t("partner.title")}</h1>
-            <p className="sanctuary-hero-subtitle">
-              {isKm
-                ? "ការរួមចំណែកពង្រីកដំណឹងល្អ ការបង្រៀនព្រះបន្ទូល និងការបម្រើសហគមន៍ក្នុងប្រទេសកម្ពុជា"
-                : "Advancing the Gospel, Biblical Teaching, and Christian Outreach Across Cambodia"}
-            </p>
-            <p className="sanctuary-hero-lead">{t("partner.intro")}</p>
-
-            <div className="sanctuary-stat-strip">
-              <div className="sanctuary-stat-card">
-                <span className="sanctuary-stat-num">Kingdom</span>
-                <span className="sanctuary-stat-label">
-                  {isKm ? "បេសកកម្មដំណឹងល្អ" : "Gospel Mission"}
-                </span>
-              </div>
-              <div className="sanctuary-stat-card">
-                <span className="sanctuary-stat-num">100%</span>
-                <span className="sanctuary-stat-label">
-                  {isKm ? "ភាពស្មោះត្រង់ និងតម្លាភាព" : "Faithful Stewardship"}
-                </span>
-              </div>
-              <div className="sanctuary-stat-card">
-                <span className="sanctuary-stat-num">Hun Chet</span>
-                <span className="sanctuary-stat-label">
-                  {isKm ? "ព័ន្ធកិច្ចលោកគ្រូ ហ៊ុន ចិត្ត" : "Ministry Stewardship"}
-                </span>
-              </div>
-            </div>
-          </div>
-        </section>
+      <main>
+        {/* ONE CHURCH SUBPAGE HERO */}
+        <SubpageHero
+          bgImage="/images/church-family.jpg"
+          kicker={isKm ? "ការចូលរួមចំណែកក្នុងព្រះរាជ្យព្រះ" : "KINGDOM STEWARDSHIP"}
+          title={t("partner.title")}
+          subtitle={
+            isKm
+              ? "ការរួមចំណែកពង្រីកដំណឹងល្អ ការបង្រៀនព្រះបន្ទូល និងការបម្រើសហគមន៍ក្នុងប្រទេសកម្ពុជា"
+              : "Advancing the Gospel, Biblical Teaching, and Christian Outreach Across Cambodia"
+          }
+          breadcrumbs={[
+            { label: isKm ? "ទំព័រដើម" : "Home", href: "/" },
+            { label: t("partner.title") },
+          ]}
+          stats={[
+            { number: "Kingdom", label: isKm ? "បេសកកម្មដំណឹងល្អ" : "Gospel Mission" },
+            { number: "100%", label: isKm ? "ភាពស្មោះត្រង់ និងតម្លាភាព" : "Faithful Stewardship" },
+            { number: "Hun Chet", label: isKm ? "ព័ន្ធកិច្ចលោកគ្រូ ហ៊ុន ចិត្ត" : "Ministry Stewardship" },
+          ]}
+        />
 
         {/* Why Partner / Impact Pillars */}
-        <section className="section" id="impact">
+        <section className="oc-section" style={{ background: "#ffffff" }}>
           <div className="container">
-            <div className="section-head" style={{ textAlign: "center" }}>
-              <span className="eyebrow">{t("partner.impactEyebrow")}</span>
-              <h2>{t("partner.impactTitle")}</h2>
-              <hr className="rule" />
-              <p style={{ maxWidth: 660, margin: "0.75rem auto 0", color: "var(--muted)" }}>
+            <div style={{ textAlign: "center", maxWidth: 760, margin: "0 auto 3rem" }}>
+              <span className="oc-eyebrow">{t("partner.impactEyebrow")}</span>
+              <h2
+                style={{
+                  fontFamily: "var(--font-display)",
+                  fontSize: "clamp(1.85rem, 3.5vw, 2.5rem)",
+                  fontWeight: 800,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.02em",
+                  color: "#141716",
+                  margin: "0 0 1rem",
+                }}
+              >
+                {t("partner.impactTitle")}
+              </h2>
+              <p style={{ color: "#4a5568", fontSize: "1.05rem", lineHeight: 1.75, margin: 0 }}>
                 {t("partner.impactIntro")}
               </p>
             </div>
 
-            <div className="value-grid" style={{ marginTop: "2.5rem" }}>
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+                gap: "24px",
+              }}
+            >
               {IMPACT_AREAS.map((area, index) => (
-                <article className="value-card" key={area}>
-                  <span style={{ display: "block", fontFamily: "var(--font-display)", fontSize: "1.4rem", fontWeight: 700, color: "var(--gold)", marginBottom: "0.5rem" }}>
+                <article
+                  key={area}
+                  style={{
+                    background: "#fbfbf9",
+                    border: "1px solid #dcdfda",
+                    borderRadius: 0,
+                    padding: "2.25rem 2rem",
+                  }}
+                >
+                  <span
+                    style={{
+                      display: "block",
+                      fontFamily: "var(--font-display)",
+                      fontSize: "1.25rem",
+                      fontWeight: 800,
+                      color: "var(--oc-teal)",
+                      marginBottom: "0.75rem",
+                    }}
+                  >
                     0{index + 1}
                   </span>
-                  <h3>{t(`partner.impact.${area}.title`)}</h3>
-                  <p>{t(`partner.impact.${area}.body`)}</p>
+                  <h3
+                    style={{
+                      fontFamily: "var(--font-display)",
+                      fontSize: "1.25rem",
+                      fontWeight: 700,
+                      color: "#141716",
+                      margin: "0 0 0.75rem",
+                    }}
+                  >
+                    {t(`partner.impact.${area}.title`)}
+                  </h3>
+                  <p style={{ color: "#4a5568", fontSize: "0.95rem", lineHeight: 1.7, margin: 0 }}>
+                    {t(`partner.impact.${area}.body`)}
+                  </p>
                 </article>
               ))}
             </div>
@@ -155,31 +210,83 @@ export default function PartnerWithUs() {
         </section>
 
         {/* Ways to Give Section */}
-        <section className="section section-alt" id="give">
+        <section className="oc-section" style={{ background: "#f4f5f3" }}>
           <div className="container">
-            <div className="section-head" style={{ textAlign: "center" }}>
-              <span className="eyebrow">{t("partner.giveEyebrow")}</span>
-              <h2>{t("partner.giveTitle")}</h2>
-              <hr className="rule" />
-              <p style={{ maxWidth: 660, margin: "0.75rem auto 0", color: "var(--muted)" }}>
+            <div style={{ textAlign: "center", maxWidth: 760, margin: "0 auto 3rem" }}>
+              <span className="oc-eyebrow">{t("partner.giveEyebrow")}</span>
+              <h2
+                style={{
+                  fontFamily: "var(--font-display)",
+                  fontSize: "clamp(1.85rem, 3.5vw, 2.5rem)",
+                  fontWeight: 800,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.02em",
+                  color: "#141716",
+                  margin: "0 0 1rem",
+                }}
+              >
+                {t("partner.giveTitle")}
+              </h2>
+              <p style={{ color: "#4a5568", fontSize: "1.05rem", lineHeight: 1.75, margin: 0 }}>
                 {t("partner.giveIntro")}
               </p>
             </div>
 
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "2rem", marginTop: "2.5rem" }}>
-              <GivingCard region="cambodia" methods={CAMBODIA_METHODS} href={TELEGRAM_URL} externalLabel="Telegram" featured />
-              <GivingCard region="global" methods={GLOBAL_METHODS} href={MESSENGER_URL} externalLabel="Messenger" />
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+                gap: "28px",
+                maxWidth: 1040,
+                margin: "0 auto",
+              }}
+            >
+              <GivingCard
+                region="cambodia"
+                methods={CAMBODIA_METHODS}
+                href={TELEGRAM_URL}
+                externalLabel="Telegram"
+                featured
+              />
+              <GivingCard
+                region="global"
+                methods={GLOBAL_METHODS}
+                href={MESSENGER_URL}
+                externalLabel="Messenger"
+              />
             </div>
 
-            <aside style={{ maxWidth: 720, margin: "3rem auto 0", padding: "1.5rem 1.75rem", background: "#ffffff", border: "1px solid var(--border)", borderLeft: "3px solid var(--gold)", borderRadius: "var(--radius-lg)", boxShadow: "var(--shadow-sm)", display: "flex", gap: "1rem", alignItems: "flex-start" }}>
-              <div style={{ color: "var(--gold)", marginTop: "2px" }}>
+            {/* Faithful Stewardship Note */}
+            <aside
+              style={{
+                maxWidth: 780,
+                margin: "3rem auto 0",
+                padding: "1.75rem 2rem",
+                background: "#ffffff",
+                border: "1px solid #dcdfda",
+                borderRadius: 0,
+                display: "flex",
+                gap: "1.25rem",
+                alignItems: "flex-start",
+              }}
+            >
+              <div style={{ color: "var(--oc-teal)", marginTop: "3px", flexShrink: 0 }}>
                 <CheckIcon />
               </div>
               <div>
-                <strong style={{ display: "block", color: "var(--navy-dark)", fontSize: "1rem", marginBottom: "0.25rem" }}>
+                <strong
+                  style={{
+                    display: "block",
+                    fontFamily: "var(--font-display)",
+                    color: "#141716",
+                    fontSize: "1.05rem",
+                    fontWeight: 700,
+                    marginBottom: "0.35rem",
+                  }}
+                >
                   {t("partner.safetyTitle")}
                 </strong>
-                <p style={{ color: "var(--text)", fontSize: "0.92rem", lineHeight: 1.65, margin: 0 }}>
+                <p style={{ color: "#4a5568", fontSize: "0.92rem", lineHeight: 1.7, margin: 0 }}>
                   {t("partner.safetyBody")}
                 </p>
               </div>
@@ -188,46 +295,78 @@ export default function PartnerWithUs() {
         </section>
 
         {/* Other Ways to Partner */}
-        <section className="section">
+        <section className="oc-section" style={{ background: "#ffffff" }}>
           <div className="container">
-            <div className="section-head" style={{ textAlign: "center" }}>
-              <span className="eyebrow">{t("partner.otherEyebrow")}</span>
-              <h2>{t("partner.otherTitle")}</h2>
-              <hr className="rule" />
-              <p style={{ maxWidth: 660, margin: "0.75rem auto 0", color: "var(--muted)" }}>
+            <div style={{ textAlign: "center", maxWidth: 760, margin: "0 auto 3rem" }}>
+              <span className="oc-eyebrow">{t("partner.otherEyebrow")}</span>
+              <h2
+                style={{
+                  fontFamily: "var(--font-display)",
+                  fontSize: "clamp(1.85rem, 3.5vw, 2.5rem)",
+                  fontWeight: 800,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.02em",
+                  color: "#141716",
+                  margin: "0 0 1rem",
+                }}
+              >
+                {t("partner.otherTitle")}
+              </h2>
+              <p style={{ color: "#4a5568", fontSize: "1.05rem", lineHeight: 1.75, margin: 0 }}>
                 {t("partner.otherIntro")}
               </p>
             </div>
 
-            <div className="value-grid" style={{ marginTop: "2.5rem" }}>
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+                gap: "24px",
+              }}
+            >
               {["pray", "share", "collaborate"].map((way) => (
-                <article className="value-card" key={way}>
-                  <h3>{t(`partner.other.${way}.title`)}</h3>
-                  <p>{t(`partner.other.${way}.body`)}</p>
+                <article
+                  key={way}
+                  style={{
+                    background: "#fbfbf9",
+                    border: "1px solid #dcdfda",
+                    borderRadius: 0,
+                    padding: "2.25rem 2rem",
+                  }}
+                >
+                  <h3
+                    style={{
+                      fontFamily: "var(--font-display)",
+                      fontSize: "1.2rem",
+                      fontWeight: 700,
+                      color: "#141716",
+                      margin: "0 0 0.75rem",
+                    }}
+                  >
+                    {t(`partner.other.${way}.title`)}
+                  </h3>
+                  <p style={{ color: "#4a5568", fontSize: "0.95rem", lineHeight: 1.7, margin: 0 }}>
+                    {t(`partner.other.${way}.body`)}
+                  </p>
                 </article>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Final CTA Bar */}
-        <section className="section section-navy" style={{ borderTop: "8px solid var(--gold)", textAlign: "center", padding: "4rem 1.5rem" }}>
-          <div className="container" style={{ maxWidth: 720 }}>
-            <span className="eyebrow" style={{ color: "var(--gold)" }}>{t("partner.finalEyebrow")}</span>
-            <h2 style={{ fontFamily: "var(--font-display)", color: "#ffffff", fontSize: "clamp(1.75rem, 3.5vw, 2.5rem)", margin: "0.75rem 0" }}>
-              {t("partner.finalTitle")}
-            </h2>
-            <p style={{ color: "rgba(255, 255, 255, 0.82)", fontSize: "1.05rem", lineHeight: 1.7, marginBottom: "2rem" }}>
-              {t("partner.finalBody")}
-            </p>
-            <Link href="/contact" className="btn btn-primary" style={{ padding: "0.85rem 2rem", fontSize: "0.92rem" }}>
-              {t("partner.finalCta")} →
-            </Link>
-          </div>
-        </section>
+        {/* ONE CHURCH CONNECT BANNER */}
+        <ConnectBanner
+          kicker={isKm ? "ទំនាក់ទំនងផ្ទាល់" : "GET IN TOUCH"}
+          title={t("partner.finalTitle") || "JOIN US IN PRAYER & FELLOWSHIP"}
+          subtitle={t("partner.finalBody")}
+          contactHref="/contact"
+          contactText={t("partner.finalCta") || "CONTACT US"}
+          telegramHref={TELEGRAM_URL}
+          telegramText="TELEGRAM"
+        />
       </main>
 
       <SiteFooter />
-    </>
+    </div>
   );
 }

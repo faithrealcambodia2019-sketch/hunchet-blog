@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import SiteHeader from "../components/SiteHeader";
 import SiteFooter from "../components/SiteFooter";
+import ConnectBanner from "../components/ConnectBanner";
 import { useT } from "../lib/i18n";
 import { PORTRAIT } from "../lib/media";
 import {
@@ -22,14 +23,13 @@ import {
   ArrowRightIcon,
   TelegramIcon,
   UserIcon,
-  PhoneIcon,
 } from "../components/Icons";
 import { BOOKS } from "../lib/books";
 import RealBookCover from "../components/RealBookCover";
 
 const SERMON_KEYS = [
   {
-    number: "1",
+    number: "01",
     ref: "ទំនុកតម្កើង ១១៩:១០៥",
     title: {
       km: "ចាប់ផ្តើមជាមួយព្រះបន្ទូលព្រះ (God's Word First)",
@@ -37,9 +37,15 @@ const SERMON_KEYS = [
       ko: "하나님의 말씀으로 시작하기",
       zh: "以神的话语为起点",
     },
+    desc: {
+      km: "ព្រះបន្ទូលព្រះជាចង្កៀងបំភ្លឺផ្លូវ និងជាពន្លឺបំភ្លឺគន្លងជីវិតរបស់អ្នកជឿជានិច្ច។",
+      en: "God's Word is a lamp to guide our feet and a light for our path.",
+      ko: "주의 말씀은 내 발의 등이요 내 길에 빛이니이다.",
+      zh: "你的话是我脚前的灯，是我路上的光。",
+    },
   },
   {
-    number: "2",
+    number: "02",
     ref: "យេរេមា ២៩:១១",
     title: {
       km: "មានក្តីសុបិនធំជាមួយព្រះ (Dream Big with God)",
@@ -47,19 +53,31 @@ const SERMON_KEYS = [
       ko: "하나님과 함께 큰 꿈을 꾸기",
       zh: "与神同行，心存盼望",
     },
+    desc: {
+      km: "ព្រះមានផែនការនៃសេចក្តីសុខសាន្ត មិនមែនជាសេចក្តីអាក្រក់ ដើម្បីឱ្យយើងមានសង្ឃឹមនៅចុងបំផុត។",
+      en: "God has plans to prosper you and not to harm you, plans to give you hope and a future.",
+      ko: "너희를 향한 나의 생각을 내가 아나니 평안이요 재앙이 아니니라.",
+      zh: "我知道我向你们所怀的意念是赐平安的意念，不是降灾祸的意念。",
+    },
   },
   {
-    number: "3",
+    number: "03",
     ref: "កូឡូស ៣:២៣",
     title: {
-      km: "កសាងចរិតលក្ខណៈតាមរយៈការឧស្សាហ៍ (Build Character Through Diligence)",
+      km: "កសាងចរិតលក្ខណៈតាមរយៈការឧស្សាហ៍ (Diligence & Character)",
       en: "Build Character Through Diligence",
       ko: "성실함으로 인격 세우기",
       zh: "以勤勉塑造基督品格",
     },
+    desc: {
+      km: "ធ្វើការអ្វីក៏ដោយ ត្រូវធ្វើឱ្យអស់ពីចិត្ត ដូចជាធ្វើថ្វាយព្រះអម្ចាស់ មិនមែនថ្វាយមនុស្សឡើយ។",
+      en: "Whatever you do, work at it with all your heart, as working for the Lord, not for human masters.",
+      ko: "무슨 일을 하든지 마음을 다하여 주께 하듯 하고 사람에게 하듯 하지 말라.",
+      zh: "无论做什么，都要从心里做，像是给主做的，不是给人做的。",
+    },
   },
   {
-    number: "4",
+    number: "04",
     ref: "សុភាសិត ១៨:២១",
     title: {
       km: "ជ្រើសរើសពាក្យសម្តីដែលពោរពេញដោយជំនឿ (Faith-Filled Words)",
@@ -67,9 +85,15 @@ const SERMON_KEYS = [
       ko: "믿음이 담긴 말 선택하기",
       zh: "选用满有信心的话语",
     },
+    desc: {
+      km: "សេចក្តីស្លាប់ និងជីវិត គឺនៅក្នុងអំណាចនៃអណ្តាត។ ពាក្យសម្តីនៃជំនឿបង្កើតឡើងនូវជីវិត។",
+      en: "Death and life are in the power of the tongue. Speak words of grace and faith.",
+      ko: "죽고 사는 것이 혀의 힘에 달렸나니 혀를 쓰기 좋아하는 자는 혀의 열매를 먹으리라.",
+      zh: "生死在舌头的权下，喜爱它的，必吃它所结的果子。",
+    },
   },
   {
-    number: "5",
+    number: "05",
     ref: "ហេព្រើរ ១២:២",
     title: {
       km: "សម្លឹងមើលទៅព្រះយេស៊ូវជានិច្ច (Keep Eyes on Jesus)",
@@ -77,13 +101,19 @@ const SERMON_KEYS = [
       ko: "예수님께 시선을 고정하기",
       zh: "定睛仰望主耶稣",
     },
+    desc: {
+      km: "សម្លឹងមើលទៅព្រះយេស៊ូវ ដែលជាមេផ្តើម និងជាមេសម្រេចនៃសេចក្តីជំនឿរបស់យើង។",
+      en: "Fixing our eyes on Jesus, the pioneer and perfecter of faith.",
+      ko: "믿음의 주요 또 온전하게 하시는 이인 예수를 바라보자.",
+      zh: "仰望为我们信心创始成终的耶稣。",
+    },
   },
 ];
 
 const LIFE_PHOTOS = [
   {
     src: "/images/pastors-pulpit.jpg",
-    title: { km: "ការបង្រៀនលើវេទិកា", en: "Pulpit Teaching", ko: "강단 사역", zh: "讲台宣道" },
+    title: { km: "ការបង្រៀនលើវេទិកា", en: "Pulpit Preaching", ko: "강단 사역", zh: "讲台宣道" },
     badge: { km: "ព្រះបន្ទូល", en: "Preaching", ko: "설교", zh: "讲道" },
     description: { km: "ការចែករំលែកព្រះបន្ទូល និងការពន្យល់ព្រះគម្ពីរយ៉ាងស៊ីជម្រៅ ដោយលោកគ្រូ គីម ជុងហូ និងលោកគ្រូ ហ៊ុន ចិត្ត។", en: "Preaching and biblical exegesis with Pastor Kim Jong Ho and Leader Hun Chet.", ko: "김종호 목사와 훈 쳇 리더의 강단 사역", zh: "传讲真道" },
   },
@@ -144,21 +174,6 @@ export default function Home({ posts = [], error }) {
       videoRef.current.muted = !isHeroMuted;
       setIsHeroMuted(!isHeroMuted);
     }
-  };
-
-  const handleShareTelegram = () => {
-    if (typeof window === "undefined") return;
-    const url = `${window.location.origin}/articles`;
-    const text = encodeURIComponent(
-      `គន្លឹះ ៥ យ៉ាងដើម្បីរស់នៅប្រកបដោយអត្ថន័យក្នុងព្រះគ្រីស្ទ — ប្លុកផ្ទាល់ខ្លួន លោកគ្រូ ហ៊ុន ចិត្ត\n\n` +
-      `១. ចាប់ផ្តើមជាមួយព្រះបន្ទូលព្រះ (ទំនុកតម្កើង ១១៩:១០៥ • ព្រះគម្ពីរខ្មែរ ១៩៥៤)\n` +
-      `២. មានក្តីសុបិនធំជាមួយព្រះ (យេរេមា ២៩:១១ • ព្រះគម្ពីរខ្មែរ ១៩៥៤)\n` +
-      `៣. កសាងចរិតលក្ខណៈតាមរយៈការឧស្សាហ៍ (កូឡូស ៣:២៣ • ព្រះគម្ពីរខ្មែរ ១៩៥៤)\n` +
-      `៤. ជ្រើសរើសពាក្យសម្តីដែលពោរពេញដោយជំនឿ (សុភាសិត ១៨:២១ • ព្រះគម្ពីរខ្មែរ ១៩៥៤)\n` +
-      `៥. សម្លឹងមើលទៅព្រះយេស៊ូវជានិច្ច (ហេព្រើរ ១២:២ • ព្រះគម្ពីរខ្មែរ ១៩៥៤)\n\n` +
-      `អានអត្ថបទពេញលេញនៅ៖ ${url}`
-    );
-    window.open(`https://t.me/share/url?url=${encodeURIComponent(url)}&text=${text}`, "_blank");
   };
 
   const scriptureData = {
@@ -229,9 +244,9 @@ export default function Home({ posts = [], error }) {
 
       <SiteHeader />
 
-      {/* 1. HERO SECTION — All Nations Church Signature Dynamic Ambient Background & Stately Typography */}
-      <section className="anc-hero">
-        {/* Ambient Worship Background Video */}
+      {/* 1. HERO SECTION — One Church Signature Cinematic Full-Bleed Atmospheric Hero */}
+      <section className="oc-home-hero">
+        {/* Background Video */}
         <video
           ref={videoRef}
           autoPlay
@@ -239,35 +254,31 @@ export default function Home({ posts = [], error }) {
           muted={isHeroMuted}
           playsInline
           poster="/images/hero-cover.jpg"
-          className="anc-hero-video"
+          className="oc-home-hero-video"
         >
           <source src="/videos/church-intro-480p.mp4" type="video/mp4" />
         </video>
 
-        {/* Cinematic Gradient Vignette Overlay */}
-        <div className="anc-hero-overlay" />
+        {/* Cinematic Scrim */}
+        <div className="oc-home-hero-scrim" />
 
-        {/* Ambient Video Audio & Playback Controls Badge */}
-        <div className="anc-hero-controls">
+        {/* Video Audio & Playback Controls Badge */}
+        <div className="oc-home-hero-controls">
           <button
             type="button"
             onClick={toggleHeroMute}
             aria-label={isHeroMuted ? "Turn audio on" : "Mute audio"}
-            className="anc-hero-ctrl-btn"
+            className="oc-hero-control-btn"
           >
             {isHeroMuted ? (
               <>
-                <VolumeOffIcon style={{ width: 14, height: 14, color: "#cbd5e1" }} />
-                <span style={{ color: "var(--gold)", fontWeight: 700, fontSize: "0.72rem" }}>
-                  {isKm ? "សំឡេងបិទ" : "Audio Muted"}
-                </span>
+                <VolumeOffIcon style={{ width: 13, height: 13 }} />
+                <span>{isKm ? "សំឡេងបិទ" : "Muted"}</span>
               </>
             ) : (
               <>
-                <VolumeOnIcon style={{ width: 14, height: 14, color: "var(--gold)" }} />
-                <span style={{ color: "var(--gold)", fontWeight: 700, fontSize: "0.72rem" }}>
-                  {isKm ? "សំឡេងបើក" : "Audio On"}
-                </span>
+                <VolumeOnIcon style={{ width: 13, height: 13, color: "#38bdf8" }} />
+                <span>{isKm ? "សំឡេងបើក" : "Sound On"}</span>
               </>
             )}
           </button>
@@ -276,645 +287,474 @@ export default function Home({ posts = [], error }) {
             type="button"
             onClick={toggleHeroPlay}
             aria-label={isHeroPlaying ? "Pause video" : "Play video"}
-            className="anc-hero-ctrl-btn"
-            style={{ padding: "0.4rem 0.55rem" }}
+            className="oc-hero-control-btn"
+            style={{ padding: "6px 8px" }}
           >
             {isHeroPlaying ? (
-              <PauseIcon style={{ width: 14, height: 14, color: "#ffffff" }} />
+              <PauseIcon style={{ width: 13, height: 13 }} />
             ) : (
-              <PlayIcon style={{ width: 14, height: 14, color: "var(--gold)" }} />
+              <PlayIcon style={{ width: 13, height: 13 }} />
             )}
           </button>
         </div>
 
-        {/* Hero Content */}
-        <div className="anc-hero-content">
-          <span className="anc-hero-eyebrow">
+        {/* Hero Content (One Church Bold Uppercase Sans) */}
+        <div className="oc-home-hero-content">
+          <p className="oc-eyebrow oc-light" style={{ marginBottom: "0.75rem" }}>
             {isKm ? "គេហទំព័រផ្លូវការ • លោកគ្រូ ហ៊ុន ចិត្ត" : "Official Website • Leader Hun Chet"}
-          </span>
-
-          <h1 className="anc-hero-title">
-            {isKm ? "ចាក់ឬសក្នុងព្រះបន្ទូល" : "Rooted in the Word of Truth."}
-          </h1>
-
-          <h2 className="anc-hero-sub">
-            {isKm ? "រស់នៅដើម្បីសិរីល្អនៃព្រះគ្រីស្ទ" : "Living for the Glory of Christ."}
-          </h2>
-
-          <div className="anc-gold-bar" />
-
-          <p className="anc-hero-lead">
-            {isKm
-              ? "សូមស្វាគមន៍មកកាន់គេហទំព័ររបស់ខ្ញុំបាទ ហ៊ុន ចិត្ត។ ទីនេះជាកន្លែងកត់ត្រា និងចែករំលែកនូវសេចក្តីពិតនៃព្រះបន្ទូល ការបង្រៀនព្រះគម្ពីរ ការបណ្តុះសិស្ស និងធនធានស្មារតីសម្រាប់ការរីកចម្រើនក្នុងព្រះគ្រីស្ទ។"
-              : "Welcome to my personal blog. A space dedicated to sharing biblical exposition, theological writings, life experiences, and resources for spiritual growth."}
           </p>
 
-          <div className="anc-hero-actions">
-            <Link href="/articles" className="anc-btn-gold">
-              {isKm ? "អានអត្ថបទទាំងអស់" : "Explore All Articles"}
+          <h1
+            className={`oc-home-hero-title ${isKm ? "is-khmer" : ""}`}
+          >
+            {isKm ? "ចាក់ឬសក្នុងព្រះបន្ទូល" : "Rooted In Truth."}
+            <br />
+            {isKm ? "រស់ដើម្បីព្រះគ្រីស្ទ" : "Living For Christ."}
+          </h1>
+
+          <p
+            className={`oc-home-hero-desc ${isKm ? "is-khmer" : ""}`}
+          >
+            {isKm
+              ? "សូមស្វាគមន៍មកកាន់គេហទំព័រផ្ទាល់ខ្លួនរបស់ខ្ញុំបាទ ហ៊ុន ចិត្ត។ ទីនេះជាកន្លែងកត់ត្រា និងចែករំលែកនូវសេចក្តីពិតនៃព្រះបន្ទូល ការបង្រៀនព្រះគម្ពីរ ការបណ្តុះសិស្ស និងធនធានស្មារតីសម្រាប់ការរីកចម្រើនក្នុងព្រះគ្រីស្ទ។"
+              : "Welcome to my personal blog. A space dedicated to faithful biblical exposition, theological writings, life journey reflections, and resources for spiritual maturity."}
+          </p>
+
+          <div className="oc-home-hero-actions">
+            <Link href="/articles" className="oc-button oc-white">
+              <span>{isKm ? "អានអត្ថបទទាំងអស់" : "Explore Articles"}</span>
+              <ArrowRightIcon style={{ width: 12, height: 12 }} />
             </Link>
 
-            <Link href="/devotions" className="anc-btn-glass">
-              <BookOpenIcon style={{ width: 15, height: 15, marginRight: "0.5rem", color: "var(--gold)" }} />
+            <Link href="/devotions" className="oc-button oc-outline">
+              <BookOpenIcon style={{ width: 14, height: 14, marginRight: 4 }} />
               <span>{isKm ? "ព្រះបន្ទូល ៣៦៥ ថ្ងៃ" : "365 Devotions"}</span>
             </Link>
 
-            <Link href="/about" className="anc-btn-white">
-              {isKm ? "អំពីលោកគ្រូ ហ៊ុន ចិត្ត" : "Our Story & Ministry"}
+            <Link href="/about" className="oc-button oc-outline">
+              <span>{isKm ? "អំពីលោកគ្រូ ហ៊ុន ចិត្ត" : "About Me"}</span>
+            </Link>
+          </div>
+        </div>
+
+        {/* Clean bottom line */}
+        <div className="oc-home-hero-divider" />
+      </section>
+
+      {/* 2. ONE CHURCH SIGNATURE 4-CARD PHOTOGRAPHIC GRID (Overlay Badges) */}
+      <section className="bg-white border-b border-[#dcdfda] py-14 sm:py-20">
+        <div className="oc-section py-0">
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <p className="oc-eyebrow">
+              {isKm ? "ស្វែងរកធនធាន និងព័ន្ធកិច្ច" : "Explore Ministry & Faith"}
+            </p>
+            <h2 className="text-2xl sm:text-4xl font-extrabold uppercase tracking-tight text-[#141716]">
+              {isKm ? "ផ្នែកសំខាន់ៗនៃគេហទំព័រ" : "Core Foundations"}
+            </h2>
+          </div>
+
+          <div className="oc-photo-grid">
+            {/* Card 1: Articles */}
+            <Link href="/articles" className="oc-photo-card group">
+              <img
+                src="/images/pastors-pulpit.jpg"
+                alt="Articles & Sermons"
+                className="oc-photo-card-img"
+                loading="lazy"
+              />
+              <span className="oc-card-badge-overlay oc-badge-teal">
+                {isKm ? "អត្ថបទបង្រៀន" : "Articles"}
+              </span>
+            </Link>
+
+            {/* Card 2: 365 Devotions */}
+            <Link href="/devotions" className="oc-photo-card group">
+              <img
+                src="/images/worship-service.jpg"
+                alt="365 Daily Devotion"
+                className="oc-photo-card-img"
+                loading="lazy"
+              />
+              <span className="oc-card-badge-overlay oc-badge-navy">
+                {isKm ? "ព្រះបន្ទូល ៣៦៥ ថ្ងៃ" : "365 Devotions"}
+              </span>
+            </Link>
+
+            {/* Card 3: Library */}
+            <Link href="/library" className="oc-photo-card group">
+              <img
+                src="/images/all-nations-institute-campus.jpg"
+                alt="Theological Library"
+                className="oc-photo-card-img"
+                loading="lazy"
+              />
+              <span className="oc-card-badge-overlay oc-badge-charcoal">
+                {isKm ? "បណ្ណាល័យសៀវភៅ" : "Library"}
+              </span>
+            </Link>
+
+            {/* Card 4: Gallery */}
+            <Link href="/gallery" className="oc-photo-card group">
+              <img
+                src="/images/youth-fellowship-2025-group.jpg"
+                alt="Ministry Gallery"
+                className="oc-photo-card-img"
+                loading="lazy"
+              />
+              <span className="oc-card-badge-overlay oc-badge-teal">
+                {isKm ? "កម្រងរូបភាព" : "Gallery"}
+              </span>
             </Link>
           </div>
         </div>
       </section>
 
-      <main>
-        {/* 2. DAILY SCRIPTURE SPOTLIGHT STRIPE (All Nations Church Signature Devotion Banner) */}
-        <section className="anc-scripture-stripe">
-          <div
-            className="anc-scripture-stripe-bg"
-            style={{ backgroundImage: "url('/images/worship-service.jpg')" }}
-          />
-
-          <div className="anc-scripture-stripe-inner">
-            <div className="anc-scripture-stripe-left">
-              <div className="anc-scripture-pill">
-                <BookOpenIcon style={{ width: 14, height: 14 }} />
-                <span>{currentScripture.tag}</span>
-              </div>
-
-              <blockquote className="anc-scripture-quote">
-                {currentScripture.text}
-              </blockquote>
-
-              <cite className="anc-scripture-ref">
-                — {currentScripture.ref}
-              </cite>
-            </div>
-
-            <div className="anc-scripture-stripe-right">
-              <button
-                type="button"
-                onClick={handleShareTelegram}
-                className="anc-btn-glass"
-                style={{ padding: "0.75rem 1.25rem", fontSize: "0.75rem" }}
+      {/* 3. DAILY SCRIPTURE SPOTLIGHT (One Church Editorial Band) */}
+      <section className="bg-[#fcfbf9] border-b border-[#dcdfda] py-16 sm:py-24">
+        <div className="oc-section py-0">
+          <div className="max-w-3xl mx-auto text-center space-y-5">
+            <p className="oc-eyebrow">
+              {currentScripture.tag}
+            </p>
+            <blockquote className="text-xl sm:text-2xl md:text-3xl font-semibold tracking-tight text-[#141716] leading-snug">
+              {currentScripture.text}
+            </blockquote>
+            <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.14em] text-[#1c5080]">
+              — {currentScripture.ref}
+            </p>
+            <div className="pt-4 flex justify-center gap-3">
+              <Link href="/devotions" className="oc-button oc-solid">
+                <span>{isKm ? "អានព្រះបន្ទូលថ្ងៃនេះ" : "Today's Devotion"}</span>
+                <ArrowRightIcon style={{ width: 12, height: 12 }} />
+              </Link>
+              <a
+                href="https://t.me/+855966875886"
+                target="_blank"
+                rel="noreferrer"
+                className="oc-button oc-outline-dark"
               >
-                <TelegramIcon style={{ width: 14, height: 14, marginRight: "0.45rem", color: "#38bdf8" }} />
+                <TelegramIcon style={{ width: 14, height: 14, marginRight: 6 }} />
                 <span>Telegram</span>
-              </button>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
 
-              <Link
-                href="/devotions"
-                className="anc-btn-gold"
-                style={{ padding: "0.75rem 1.5rem", fontSize: "0.75rem" }}
-              >
-                <span>{isKm ? "អានព្រះបន្ទូល ៣៦៥ ថ្ងៃ" : "Read Daily Devotion"}</span>
-                <ArrowRightIcon style={{ width: 14, height: 14, marginLeft: "0.45rem" }} />
+      {/* 4. MISSION & CALLING (One Church 2-Column Editorial) */}
+      <section className="oc-section">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          <div className="lg:col-span-6 space-y-5">
+            <p className="oc-eyebrow">
+              {isKm ? "រឿងរ៉ាវ និងបេសកកម្ម" : "Story & Calling"}
+            </p>
+            <h2 className="text-2xl sm:text-4xl font-extrabold uppercase tracking-tight text-[#141716]">
+              {isKm ? "ចាក់ឫសក្នុងព្រះបន្ទូល និងការកសាងជំនឿ" : "Rooted In Scripture, Growing In Faith"}
+            </h2>
+            <p className="text-[#626868] text-base leading-relaxed">
+              {isKm
+                ? "ខ្ញុំជឿជាក់ថា សេចក្តីជំនឿពិតត្រូវតែចាក់ឫសយ៉ាងរឹងមាំនៅក្នុងព្រះបន្ទូលនៃព្រះគម្ពីរ។ បងប្អូនជនជាតិខ្មែរគ្រប់រូប គួរតែមានឱកាសអាន សិក្សា និងយល់ដឹងនូវគោលលទ្ធិព្រះគម្ពីរយ៉ាងស៊ីជម្រៅជាភាសាកំណើតរបស់យើង។"
+                : "Enduring faith must be anchored in the inspired Word of God. Cambodian believers deserve rich, authentic theological teaching and devotional companions written with depth in their native Khmer language."}
+            </p>
+            <p className="text-[#626868] text-base leading-relaxed">
+              {isKm
+                ? "បម្រើការជាអ្នកដឹកនាំកិច្ចការបម្រើព្រះនៅក្រុមជំនុំអលណេសិន — ដឹកនាំការបង្រៀនព្រះគម្ពីរ ការបណ្តុះសិស្សយុវជន និងការកសាងធនធានស្មារតីឌីជីថល ដើម្បីបំពាក់បំប៉នគ្រីស្ទបរិស័ទជំនាន់ក្រោយ។"
+                : "Serving as Ministry Lead at All Nations Church in Phnom Penh — directing biblical teaching, student discipleship, and building digital resources to equip the next generation."}
+            </p>
+
+            <div className="pt-2 flex flex-wrap gap-4">
+              <Link href="/about" className="oc-button oc-solid">
+                <span>{isKm ? "អានរឿងរ៉ាវពេញលេញ" : "Read Full Story"}</span>
+                <ArrowRightIcon style={{ width: 12, height: 12 }} />
+              </Link>
+              <Link href="/contact" className="oc-button oc-outline-dark">
+                <span>{isKm ? "ទាក់ទងលោកគ្រូ ហ៊ុន ចិត្ត" : "Get In Touch"}</span>
               </Link>
             </div>
           </div>
-        </section>
 
-        {/* 3. WELCOME & PULPIT MINISTRY SECTION — Classic Framed Story */}
-        <section className="anc-welcome-wrap">
-          <div className="container">
-            <div className="anc-welcome-layout">
-              {/* Left Column: Mission Narrative & 3 Stately Pillars */}
+          <div className="lg:col-span-6">
+            <div className="relative aspect-[4/3] overflow-hidden border border-[#dcdfda]">
+              <img
+                src="/images/pastors-pulpit.jpg"
+                alt="Pastor Kim Jong Ho and Leader Hun Chet preaching from the pulpit"
+                className="w-full h-full object-cover"
+                loading="lazy"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 5. 5 KEYS TO LIVING A TRULY GREAT LIFE (One Church Numbered Cards) */}
+      <section className="bg-white border-y border-[#dcdfda] py-16 sm:py-24">
+        <div className="oc-section py-0">
+          <div className="text-center max-w-2xl mx-auto mb-16">
+            <p className="oc-eyebrow">
+              {isKm ? "សារព្រះបន្ទូលសង្ខេប • មាគ៌ាជីវិត" : "Biblical Wisdom • Life Principles"}
+            </p>
+            <h2 className="text-2xl sm:text-4xl font-extrabold uppercase tracking-tight text-[#141716]">
+              {isKm
+                ? "គន្លឹះ ៥ យ៉ាងដើម្បីរស់នៅប្រកបដោយអត្ថន័យក្នុងព្រះគ្រីស្ទ"
+                : "5 Keys to Living a Truly Great Life in Christ"}
+            </h2>
+            <p className="text-[#626868] text-sm sm:text-base leading-relaxed mt-2">
+              {isKm
+                ? "យោងតាមព្រះគម្ពីរខ្មែរបកប្រែចាស់ ១៩៥៤ — គោលការណ៍គ្រឹះសម្រាប់ការលូតលាស់ខាងវិញ្ញាណ និងការរស់នៅប្រចាំថ្ងៃ។"
+                : "Biblical foundational principles from the 1954 Khmer Scripture for spiritual maturity and everyday purpose."}
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {SERMON_KEYS.map((item) => (
+              <div
+                key={item.number}
+                className="bg-[#fcfbf7] border border-[#dcdfda] p-8 flex flex-col justify-between hover:border-[#141716] transition-all"
+              >
+                <div>
+                  <span className="text-xs font-bold text-[#1c5080] tracking-[0.2em] uppercase block mb-3">
+                    {item.number} / KEY
+                  </span>
+                  <h3 className="text-lg font-bold uppercase tracking-tight text-[#141716] mb-2">
+                    {loc(item.title)}
+                  </h3>
+                  <p className="text-[#626868] text-sm leading-relaxed mb-4">
+                    {loc(item.desc)}
+                  </p>
+                </div>
+                <div className="pt-3 border-t border-[#dcdfda] text-xs font-semibold text-[#1c5080]">
+                  {item.ref} • ព្រះគម្ពីរខ្មែរ ១៩៥៤
+                </div>
+              </div>
+            ))}
+
+            {/* Final CTA Card */}
+            <div className="bg-[#141716] text-white p-8 flex flex-col justify-between">
               <div>
-                <span className="anc-kicker-gray">
-                  {isKm ? "សារស្វាគមន៍ & បេសកកម្ម" : "Welcome & Ministry Vision"}
+                <span className="text-xs font-bold text-white/70 tracking-[0.2em] uppercase block mb-3">
+                  DEVOTION / REFLECTION
                 </span>
-
-                <h2 className="anc-title-serif">
-                  {isKm
-                    ? "ចាក់ឬសក្នុងព្រះបន្ទូល និងការកសាងជំនឿ"
-                    : "Rooted in Scripture, Growing in Faith"}
-                </h2>
-
-                <div className="anc-gold-rule-left" />
-
-                <p className="anc-lead-p">
-                  {isKm
-                    ? "ខ្ញុំជឿជាក់ថា សេចក្តីជំនឿពិតត្រូវតែចាក់ឬសយ៉ាងរឹងមាំនៅក្នុងព្រះបន្ទូលនៃព្រះគម្ពីរ។ បងប្អូនជនជាតិខ្មែរគ្រប់រូប គួរតែមានឱកាសអាន សិក្សា និងយល់ដឹងនូវគោលលទ្ធិព្រះគម្ពីរយ៉ាងស៊ីជម្រៅជាភាសាកំណើតរបស់យើង។"
-                    : "I believe enduring faith must be anchored in the inspired Word of God. Cambodian believers deserve rich, authentic theological teaching and devotional companions written with depth in their native Khmer language."}
-                </p>
-
-                {/* 3 Stately Pillars (All Nations Church Signature) */}
-                <div>
-                  <div className="anc-pillar-card">
-                    <div className="anc-pillar-meta">
-                      <span>{isKm ? "សសរស្តម្ភ ០១" : "Pillar 01"}</span>
-                      <span>•</span>
-                      <span>{isKm ? "ព្រះបន្ទូលជាគ្រឹះ" : "Biblical Foundation"}</span>
-                    </div>
-                    <h3 className="anc-pillar-h4">
-                      {isKm ? "ការពន្យល់ព្រះគម្ពីរដ៏ស្មោះត្រង់" : "Faithful Biblical Exegesis"}
-                    </h3>
-                    <p className="anc-pillar-p">
-                      {isKm
-                        ? "គ្រប់អត្ថបទ និងការបង្រៀនទាំងអស់ផ្តើមចេញពីការពន្យល់ព្រះគម្ពីរដ៏ត្រឹមត្រូវ និងស្មោះត្រង់ យោងតាមព្រះគម្ពីរខ្មែរ ១៩៥៤។"
-                        : "Every article and exposition is firmly grounded in faithful biblical hermeneutics and historic Christian orthodoxy."}
-                    </p>
-                  </div>
-
-                  <div className="anc-pillar-card" style={{ borderLeftColor: "#112b4a" }}>
-                    <div className="anc-pillar-meta">
-                      <span>{isKm ? "សសរស្តម្ភ ០២" : "Pillar 02"}</span>
-                      <span>•</span>
-                      <span>{isKm ? "ការបង្រៀនជាប្រព័ន្ធ" : "Systematic Discipleship"}</span>
-                    </div>
-                    <h3 className="anc-pillar-h4">
-                      {isKm ? "ការបណ្តុះបណ្តាលសិស្សជំនាន់ក្រោយ" : "Next-Generation Discipleship"}
-                    </h3>
-                    <p className="anc-pillar-p">
-                      {isKm
-                        ? "ការសិក្សាព្រះគម្ពីរជាប្រព័ន្ធ និងការបណ្តុះបណ្តាលសិស្សជំនាន់ក្រោយ ដើម្បីបំពាក់បំប៉នគ្រីស្ទបរិស័ទក្នុងការរស់នៅប្រចាំថ្ងៃ។"
-                        : "Equipping young adults, students, and church leaders through systematic theology and practical Christian living."}
-                    </p>
-                  </div>
-
-                  <div className="anc-pillar-card">
-                    <div className="anc-pillar-meta">
-                      <span>{isKm ? "សសរស្តម្ភ ០៣" : "Pillar 03"}</span>
-                      <span>•</span>
-                      <span>{isKm ? "ធនធានជាភាសាខ្មែរឥតគិតថ្លៃ" : "Free Khmer Resources"}</span>
-                    </div>
-                    <h3 className="anc-pillar-h4">
-                      {isKm ? "បណ្ណាល័យសៀវភៅ និងធនធានស្មារតី" : "Digital Library & Spiritual Resources"}
-                    </h3>
-                    <p className="anc-pillar-p">
-                      {isKm
-                        ? "សៀវភៅទេវវិទ្យា អត្ថាធិប្បាយ និងធនធានស្មារតី ផ្តល់ជូនដោយឥតគិតថ្លៃសម្រាប់បងប្អូនជនជាតិខ្មែរគ្រប់រូប។"
-                        : "Freely accessible commentaries, ebooks, and devotional writings to strengthen the local Cambodian church."}
-                    </p>
-                  </div>
-                </div>
-
-                {/* Pastoral Sign-off */}
-                <div style={{ marginTop: "1.75rem", fontStyle: "italic", color: "#475569" }}>
-                  <p style={{ margin: 0, fontSize: "0.92rem" }}>
-                    {isKm ? "ដោយក្តីស្រឡាញ់ក្នុងព្រះគ្រីស្ទ," : "In Christ's grace,"}
-                  </p>
-                  <strong style={{ fontFamily: "var(--font-display)", fontSize: "1.08rem", color: "#0f172a" }}>
-                    {isKm ? "លោកគ្រូ ហ៊ុន ចិត្ត" : "Leader Hun Chet"}
-                  </strong>
-                </div>
-
-                <div style={{ marginTop: "1.75rem", display: "flex", gap: "1rem", flexWrap: "wrap" }}>
-                  <Link href="/about" className="anc-btn-navy">
-                    {isKm ? "ស្វែងយល់អំពីរឿងរ៉ាវរបស់ខ្ញុំ" : "Read My Full Story"} →
-                  </Link>
-
-                  <Link href="/contact" className="anc-btn-outline-dark">
-                    {isKm ? "ទាក់ទងលោកគ្រូ ហ៊ុន ចិត្ត" : "Contact Me"}
-                  </Link>
-                </div>
-              </div>
-
-              {/* Right Column: Framed Media Card with Pulpit Teaching */}
-              <div>
-                <div className="anc-framed-card">
-                  <div className="anc-framed-img-wrap">
-                    <img
-                      src="/images/pastors-pulpit.jpg"
-                      alt="Pastor Kim Jong Ho and Leader Hun Chet preaching from the pulpit"
-                    />
-                    <div className="anc-framed-caption">
-                      <h4>
-                        {isKm
-                          ? "លោកគ្រូ គីម ជុងហូ និងលោកគ្រូ ហ៊ុន ចិត្ត លើវេទិកាទេសនា"
-                          : "Pastor Kim Jong Ho & Leader Hun Chet in the Pulpit"}
-                      </h4>
-                      <p>
-                        {isKm
-                          ? "ការផ្សាយព្រះបន្ទូលនៃសេចក្តីពិត • ភូមិត្រពាំងក្រសាំង រាជធានីភ្នំពេញ"
-                          : "Preaching the Word of Truth • Trapaing Krasang, Phnom Penh"}
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="anc-framed-quote">
-                    <p>
-                      {isKm
-                        ? "«ដ្បិត​ឯ​ខ្ញុំ ដែល​ខ្ញុំ​រស់​នៅ នោះ​គឺ​សំរាប់​ព្រះគ្រីស្ទ​ទេ ហើយ​ដែល​ស្លាប់​ទៅ នោះ​ជា​កំរៃ​វិញ»"
-                        : "“For to me to live is Christ, and to die is gain.”"}
-                    </p>
-                    <cite>
-                      {isKm ? "— ភីលីព ១:២១ • ព្រះគម្ពីរខ្មែរ ១៩៥៤" : "— Philippians 1:21 • 1954 Khmer Bible"}
-                    </cite>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* 4. FEATURED SHORT SERMON SPOTLIGHT — 5 Foundational Keys */}
-        <section className="anc-sermon-section">
-          <div className="container">
-            <div style={{ textAlign: "center", maxWidth: 840, margin: "0 auto 3.5rem" }}>
-              <span
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: "0.45rem",
-                  padding: "0.3rem 0.85rem",
-                  borderRadius: "2px",
-                  background: "rgba(184, 155, 94, 0.15)",
-                  border: "1px solid rgba(184, 155, 94, 0.4)",
-                  color: "var(--gold)",
-                  fontSize: "0.72rem",
-                  fontWeight: 700,
-                  letterSpacing: "0.14em",
-                  textTransform: "uppercase",
-                  marginBottom: "0.85rem",
-                }}
-              >
-                <BookOpenIcon style={{ width: 14, height: 14 }} />
-                {isKm
-                  ? "សារព្រះបន្ទូលពិសេស • មាគ៌ាឆ្ពោះទៅកាន់គោលបំណងជីវិត"
-                  : "Featured Short Sermon • A Path to Purpose"}
-              </span>
-
-              <h2 style={{ fontFamily: "var(--font-display)", color: "#ffffff", fontSize: "clamp(1.9rem, 3.8vw, 2.75rem)", margin: "0 0 0.75rem" }}>
-                {isKm
-                  ? "គន្លឹះ ៥ យ៉ាងដើម្បីរស់នៅប្រកបដោយអត្ថន័យក្នុងព្រះគ្រីស្ទ"
-                  : "5 Keys to Living a Truly Great Life in Christ"}
-              </h2>
-
-              <div style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", color: "#cbd5e1", fontSize: "0.85rem" }}>
-                <UserIcon style={{ width: 14, height: 14, color: "var(--gold)" }} />
-                <span>{isKm ? "អត្ថបទសញ្ជឹងគិតដោយ៖" : "Written by:"}</span>
-                <strong style={{ color: "var(--gold)" }}>{isKm ? "លោកគ្រូ ហ៊ុន ចិត្ត" : "Leader Hun Chet"}</strong>
-              </div>
-
-              <div className="anc-gold-bar" style={{ margin: "1.25rem auto 0" }} />
-            </div>
-
-            <div className="anc-sermon-grid">
-              {/* Left: 5 Keys List */}
-              <div>
-                <h3
-                  style={{
-                    fontFamily: "var(--font-display)",
-                    fontSize: "0.85rem",
-                    fontWeight: 700,
-                    letterSpacing: "0.12em",
-                    textTransform: "uppercase",
-                    color: "var(--gold)",
-                    marginBottom: "1.25rem",
-                  }}
-                >
-                  {isKm ? "គន្លឹះទាំង ៥ យ៉ាងសង្ខេប" : "The 5 Foundational Keys"}
+                <h3 className="text-xl font-bold uppercase tracking-tight text-white mb-3">
+                  {isKm ? "ស្វែងយល់អត្ថបទពេញលេញ" : "Read The Full Exposition"}
                 </h3>
-
-                <div>
-                  {SERMON_KEYS.map((k) => (
-                    <Link key={k.number} href="/articles" className="anc-key-card">
-                      <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
-                        <span className="anc-key-num">
-                          {isKm
-                            ? ["១", "២", "៣", "៤", "៥"][parseInt(k.number, 10) - 1] || k.number
-                            : k.number}
-                        </span>
-                        <div>
-                          <strong style={{ display: "block", fontSize: "0.95rem", color: "#ffffff" }}>
-                            {loc(k.title)}
-                          </strong>
-                          <span style={{ fontSize: "0.78rem", color: "var(--gold)", fontFamily: "var(--font-display)" }}>
-                            {k.ref} • ព្រះគម្ពីរខ្មែរ ១៩៥៤
-                          </span>
-                        </div>
-                      </div>
-                      <ArrowRightIcon style={{ width: 16, height: 16, color: "rgba(255,255,255,0.4)" }} />
-                    </Link>
-                  ))}
-                </div>
+                <p className="text-white/80 text-sm leading-relaxed mb-4">
+                  {isKm
+                    ? "ការបកស្រាយលម្អិតតាមព្រះគម្ពីរ ការអនុវត្តជាក់ស្តែង និងសំណួរពិចារណាសម្រាប់ការរីកចម្រើនក្នុងជំនឿ។"
+                    : "Dive deeper into scriptural applications, pastoral insights, and reflection questions."}
+                </p>
               </div>
-
-              {/* Right: Scripture Highlight & Action */}
-              <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
-                <div className="sermon-classic-quote-box">
-                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "0.75rem" }}>
-                    <span style={{ fontSize: "0.72rem", color: "var(--gold)", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.12em" }}>
-                      Jeremiah 29:11
-                    </span>
-                    <span style={{ fontSize: "0.72rem", color: "#94a3b8" }}>
-                      {isKm ? "ខគម្ពីរគោល" : "Foundational Verse"}
-                    </span>
-                  </div>
-
-                  <blockquote>
-                    {isKm
-                      ? "«ដ្បិតយើងដឹងពីគំនិតដែលយើងគិតពីឯងរាល់គ្នា គឺសុទ្ធតែជាគំនិតនៃសេចក្តីសុខសាន្ត មិនមែនជាគំនិតនៃសេចក្តីអាក្រក់ឡើយ ដើម្បីឲ្យឯងរាល់គ្នាមានសង្ឃឹមនៅចុងបំផុត»"
-                      : "“For I know the plans I have for you,” declares the LORD, “plans to prosper you and not to harm you, plans to give you hope and a future.”"}
-                  </blockquote>
-                  <cite>— {isKm ? "យេរេមា ២៩:១១ • ព្រះគម្ពីរខ្មែរ ១៩៥៤" : "Jeremiah 29:11"}</cite>
-                </div>
-
-                <div
-                  style={{
-                    background: "rgba(184, 155, 94, 0.08)",
-                    border: "1px solid rgba(184, 155, 94, 0.3)",
-                    borderTop: "3px solid var(--gold)",
-                    padding: "1.75rem",
-                    borderRadius: "2px",
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: "0.85rem",
-                  }}
-                >
-                  <strong style={{ fontSize: "0.95rem", color: "#ffffff" }}>
-                    {isKm ? "អានអត្ថបទពេញលេញ និងចែករំលែក" : "Read Full Reflection & Share"}
-                  </strong>
-                  <p style={{ fontSize: "0.85rem", color: "#cbd5e1", margin: 0, lineHeight: 1.6 }}>
-                    {isKm
-                      ? "ការបកស្រាយលម្អិតតាមព្រះគម្ពីរ ការអនុវត្តជាក់ស្តែង និងសំណួរពិចារណាសម្រាប់ការរីកចម្រើនក្នុងជំនឿ។"
-                      : "Complete with biblical exposition, practical applications, and reflection questions."}
-                  </p>
-                  <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", marginTop: "0.35rem" }}>
-                    <Link href="/articles" className="anc-btn-gold" style={{ padding: "0.75rem 1.4rem", fontSize: "0.75rem" }}>
-                      {isKm ? "អានអត្ថបទទាំងអស់" : "Read Articles"} →
-                    </Link>
-                    <button
-                      type="button"
-                      onClick={handleShareTelegram}
-                      className="anc-btn-glass"
-                      style={{ padding: "0.75rem 1.25rem", fontSize: "0.75rem" }}
-                    >
-                      <TelegramIcon style={{ width: 14, height: 14, marginRight: "0.45rem", color: "#38bdf8" }} />
-                      <span>Telegram</span>
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* 5. RECENT ARTICLES & TEACHINGS — Classic Editorial Grid (Ministries Style) */}
-        <section className="anc-articles-wrap">
-          <div className="container">
-            <div style={{ textAlign: "center", maxWidth: 760, margin: "0 auto 3.5rem" }}>
-              <span className="anc-kicker-gray">
-                {isKm ? "អត្ថបទ និងការបង្រៀនថ្មីៗ" : "Latest Articles & Teachings"}
-              </span>
-              <h2 className="anc-title-serif">
-                {isKm ? "អត្ថបទសញ្ជឹងគិត & ការបង្រៀនព្រះបន្ទូល" : "Reflections & Biblical Teaching"}
-              </h2>
-              <div className="anc-gold-bar" style={{ margin: "1rem auto 1.5rem" }} />
-              <p style={{ color: "#475569", fontSize: "1.02rem", margin: 0 }}>
-                {isKm
-                  ? "ស្វែងរកអត្ថបទថ្មីៗស្តីពីការបង្រៀនព្រះគម្ពីរ ជីវិតគ្រីស្ទបរិស័ទ ភាពជាអ្នកដឹកនាំ និងការលូតលាស់ខាងវិញ្ញាណ។"
-                  : "Explore articles on biblical exposition, Christian discipleship, leadership, and spiritual growth."}
-              </p>
-            </div>
-
-            {error && (
-              <p className="error" style={{ textAlign: "center", color: "#dc2626" }}>
-                {t("common.loadError")} {error}
-              </p>
-            )}
-
-            {/* Posts Grid (3-column ministries style) */}
-            {posts && posts.length > 0 && (
-              <div className="anc-articles-grid">
-                {posts.slice(0, 3).map((post) => {
-                  const image = getFeaturedImage(post);
-                  return (
-                    <Link key={post.id} href={`/posts/${post.slug}`} className="anc-art-card">
-                      <div className="anc-art-thumb">
-                        {image ? (
-                          <img src={image} alt="" />
-                        ) : (
-                          <div style={{ width: "100%", height: "100%", background: "#0f172a", display: "flex", alignItems: "center", justifyContent: "center", color: "var(--gold)", fontSize: "2rem", fontWeight: 700 }}>
-                            H
-                          </div>
-                        )}
-                      </div>
-                      <span className="anc-art-date">{formatDate(post.date)}</span>
-                      <h3
-                        className="anc-art-title"
-                        dangerouslySetInnerHTML={{
-                          __html: post.title.rendered,
-                        }}
-                      />
-                      <p className="anc-art-excerpt">{getExcerptText(post)}</p>
-                      <span className="anc-art-link">
-                        <span>{isKm ? "អានអត្ថបទពេញលេញ" : "Read Full Article"}</span>
-                        <ArrowRightIcon style={{ width: 14, height: 14 }} />
-                      </span>
-                    </Link>
-                  );
-                })}
-              </div>
-            )}
-
-            <div style={{ textAlign: "center", marginTop: "3.5rem" }}>
-              <Link href="/articles" className="anc-btn-outline-dark">
-                {isKm ? "មើលអត្ថបទទាំងអស់" : "View All Articles"} →
+              <Link href="/articles" className="oc-button oc-white" style={{ width: "fit-content" }}>
+                <span>{isKm ? "អានអត្ថបទទាំងអស់" : "Read Articles"}</span>
+                <ArrowRightIcon style={{ width: 12, height: 12 }} />
               </Link>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* 6. 3D THEOLOGICAL LIBRARY SPOTLIGHT — Preserving Realistic Books */}
-        <section className="anc-library-wrap">
-          <div className="container">
-            <div style={{ textAlign: "center", maxWidth: 760, margin: "0 auto 3.5rem" }}>
-              <span style={{ color: "var(--gold)", fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.16em", textTransform: "uppercase", display: "block", marginBottom: "0.75rem" }}>
-                {isKm ? "បណ្ណាល័យទេវវិទ្យាឌីជីថល" : "Digital Theological Library"}
-              </span>
-              <h2 style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(2rem, 3.8vw, 2.85rem)", fontWeight: 700, color: "#ffffff", margin: "0 0 1rem" }}>
-                {isKm ? "បណ្ណាល័យសៀវភៅ និងអត្ថាធិប្បាយព្រះគម្ពីរ" : "Theological Library & Bible Commentaries"}
-              </h2>
-              <div className="anc-gold-bar" style={{ margin: "1rem auto 1.5rem" }} />
-              <p style={{ color: "#cbd5e1", fontSize: "1.02rem", margin: 0 }}>
-                {isKm
-                  ? "បណ្ណាល័យសៀវភៅទេវវិទ្យាជាភាសាខ្មែរ រៀបចំជាទម្រង់ 3D ពិតៗ និងអាចទាញយកជា PDF ដោយឥតគិតថ្លៃសម្រាប់គ្រូគង្វាល និងអ្នកជឿទាំងអស់។"
-                  : "Explore classic commentaries and theological works in Khmer, presented in interactive 3D and available for free PDF download."}
-              </p>
-            </div>
+      {/* 6. RECENT ARTICLES (One Church Editorial Cards) */}
+      <section className="oc-section">
+        <div className="text-center max-w-2xl mx-auto mb-16">
+          <p className="oc-eyebrow">
+            {isKm ? "អត្ថបទ និងការបង្រៀនថ្មីៗ" : "Latest Articles & Teachings"}
+          </p>
+          <h2 className="text-2xl sm:text-4xl font-extrabold uppercase tracking-tight text-[#141716]">
+            {isKm ? "អត្ថបទសញ្ជឹងគិត & ការបង្រៀនព្រះបន្ទូល" : "Reflections & Biblical Teaching"}
+          </h2>
+          <p className="text-[#626868] text-sm sm:text-base leading-relaxed mt-2">
+            {isKm
+              ? "ស្វែងរកអត្ថបទថ្មីៗស្តីពីការបង្រៀនព្រះគម្ពីរ ជីវិតគ្រីស្ទបរិស័ទ ភាពជាអ្នកដឹកនាំ និងការលូតលាស់ខាងវិញ្ញាណ។"
+              : "Explore newly published writings on scripture exposition, discipleship, and spiritual life."}
+          </p>
+        </div>
 
-            {/* Featured Showcase */}
-            <div className="anc-library-showcase">
-              <div style={{ display: "flex", justifyContent: "center" }}>
+        {error && (
+          <p style={{ textAlign: "center", color: "#dc2626" }}>
+            {t("common.loadError")} {error}
+          </p>
+        )}
+
+        {posts && posts.length > 0 && (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {posts.slice(0, 3).map((post) => {
+              const image = getFeaturedImage(post);
+              return (
+                <Link
+                  key={post.id}
+                  href={`/posts/${post.slug}`}
+                  className="oc-card group"
+                >
+                  <div className="aspect-[16/10] overflow-hidden bg-stone-100 border-b border-[#dcdfda]">
+                    {image ? (
+                      <img
+                        src={image}
+                        alt=""
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        loading="lazy"
+                      />
+                    ) : (
+                      <div className="w-full h-full bg-[#141716] flex items-center justify-center text-white text-3xl font-bold">
+                        H
+                      </div>
+                    )}
+                  </div>
+                  <div className="oc-card-body">
+                    <span className="text-xs font-bold text-[#1c5080] tracking-[0.16em] uppercase block mb-2">
+                      {formatDate(post.date)}
+                    </span>
+                    <h3
+                      className="oc-card-title group-hover:text-[#1c5080] transition-colors"
+                      dangerouslySetInnerHTML={{ __html: post.title.rendered }}
+                    />
+                    <p className="oc-card-sub line-clamp-3">
+                      {getExcerptText(post)}
+                    </p>
+                    <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-[0.12em] text-[#141716] group-hover:text-[#1c5080] pt-2 border-t border-[#dcdfda]">
+                      <span>{isKm ? "អានអត្ថបទពេញលេញ" : "Read Full Article"}</span>
+                      <ArrowRightIcon style={{ width: 12, height: 12 }} />
+                    </span>
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+        )}
+
+        <div className="text-center mt-12">
+          <Link href="/articles" className="oc-button oc-outline-dark">
+            <span>{isKm ? "មើលអត្ថបទទាំងអស់" : "View All Articles"}</span>
+            <ArrowRightIcon style={{ width: 12, height: 12 }} />
+          </Link>
+        </div>
+      </section>
+
+      {/* 7. THEOLOGICAL LIBRARY (One Church Clean Feature) */}
+      <section className="bg-white border-t border-[#dcdfda] py-16 sm:py-24">
+        <div className="oc-section py-0">
+          <div className="bg-[#fcfbf7] border border-[#dcdfda] p-8 sm:p-12 lg:p-16">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+              <div className="lg:col-span-5 flex justify-center">
                 <RealBookCover book={BOOKS[0]} size="lg" />
               </div>
 
-              <div>
-                <span style={{ fontSize: "0.72rem", color: "var(--gold)", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.12em", display: "block", marginBottom: "0.5rem" }}>
-                  {isKm ? "សៀវភៅណែនាំពិសេស • សិក្សាព្រះគម្ពីរ" : "Featured Study Volume"}
-                </span>
-                <h3 style={{ fontFamily: "var(--font-serif)", color: "#ffffff", fontSize: "1.65rem", margin: "0 0 1rem", lineHeight: 1.3 }}>
-                  {isKm ? "អត្ថាធិប្បាយព្រះគម្ពីរ ម៉ាថាយ ហេនរី" : "Matthew Henry's Bible Commentary"}
-                </h3>
-                <p style={{ fontSize: "0.92rem", color: "#cbd5e1", lineHeight: 1.75, marginBottom: "1.75rem" }}>
+              <div className="lg:col-span-7 space-y-4">
+                <p className="oc-eyebrow">
+                  {isKm ? "បណ្ណាល័យទេវវិទ្យាឌីជីថល • ធនធានសិក្សា" : "Digital Theological Library"}
+                </p>
+                <h2 className="text-2xl sm:text-4xl font-extrabold uppercase tracking-tight text-[#141716]">
+                  {isKm ? "អត្ថាធិប្បាយព្រះគម្ពីរ ម៉ាថាយ ហេនរី" : "Matthew Henry's Commentary"}
+                </h2>
+                <p className="text-[#626868] text-base leading-relaxed">
                   {isKm
                     ? "អត្ថាធិប្បាយសង្ខេបខម្តងមួយៗលើព្រះគម្ពីរទាំងមូល ផ្តល់ជូនដោយឥតគិតថ្លៃសម្រាប់គ្រូគង្វាល និស្សិតព្រះគម្ពីរ និងអ្នកជឿទាំងអស់ដែលចង់រីកចម្រើនក្នុងព្រះបន្ទូល។"
-                    : "The classic verse-by-verse commentary, provided freely for pastors, leaders, and growing believers across Cambodia."}
+                    : "The classic verse-by-verse commentary, provided freely for pastors, teachers, and believers across Cambodia in high quality PDF format."}
                 </p>
-
-                <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
-                  <Link href="/library/matthew-henry-commentary" className="anc-btn-gold" style={{ padding: "0.75rem 1.5rem", fontSize: "0.78rem" }}>
-                    {isKm ? "អាន និងទាញយក PDF" : "Read & Download PDF"} →
+                <div className="pt-2 flex flex-wrap gap-4">
+                  <Link href="/library/matthew-henry-commentary" className="oc-button oc-solid">
+                    <span>{isKm ? "អាន និងទាញយក PDF" : "Read & Download PDF"}</span>
+                    <ArrowRightIcon style={{ width: 12, height: 12 }} />
                   </Link>
-                  <Link href="/library" className="anc-btn-glass" style={{ padding: "0.75rem 1.5rem", fontSize: "0.78rem" }}>
-                    {isKm ? "ចូលមើលសៀវភៅទាំង ៧ ក្បាល" : "View All 7 Volumes"}
+                  <Link href="/library" className="oc-button oc-outline-dark">
+                    <span>{isKm ? "ចូលមើលសៀវភៅទាំង ៧ ក្បាល" : "View All Volumes"}</span>
                   </Link>
                 </div>
               </div>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* 7. AUTHENTIC LIFE & MINISTRY MOMENTS (All Nations Church Signature Gallery Grid) */}
-        <section style={{ padding: "5.5rem 0", background: "#fcfbf9", borderTop: "1px solid #e2dfd8" }}>
-          <div className="container">
-            <div style={{ textAlign: "center", maxWidth: 760, margin: "0 auto 3.5rem" }}>
-              <span className="anc-kicker-gray">
-                {isKm ? "ទិដ្ឋភាពនៃជីវិត និងការបម្រើព្រះ" : "Life Together in Christ"}
-              </span>
-              <h2 className="anc-title-serif">
-                {isKm ? "សកម្មភាពនៃការបង្រៀន និងការប្រកបគ្នា" : "Moments from Life & Ministry"}
-              </h2>
-              <div className="anc-gold-bar" style={{ margin: "1rem auto 1.5rem" }} />
-              <p style={{ color: "#475569", fontSize: "1.02rem", margin: 0 }}>
-                {isKm
-                  ? "រូបភាពពិតនៃការបង្រៀនព្រះគម្ពីរ ការបណ្តុះសិស្ស យុវជន និងការអធិស្ឋានរបស់លោកគ្រូ ហ៊ុន ចិត្ត។"
-                  : "Authentic glimpses of worship, teaching, prayer, and discipleship in Cambodia."}
-              </p>
-            </div>
-
-            <div className="anc-photo-grid">
-              {LIFE_PHOTOS.map((photo, idx) => (
-                <div
-                  key={idx}
-                  className="anc-photo-card"
-                  onClick={() => setSelectedPhoto(photo)}
-                >
-                  <div className="anc-photo-thumb-wrap">
-                    <img src={photo.src} alt={loc(photo.title)} loading="lazy" />
-                    <span className="anc-photo-badge">{loc(photo.badge)}</span>
-                    <div className="anc-photo-title-bar">
-                      <span className="anc-photo-title">{loc(photo.title)}</span>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <div style={{ textAlign: "center", marginTop: "3rem" }}>
-              <Link href="/gallery" className="anc-btn-navy">
-                {isKm ? "ចូលមើលកម្រងរូបភាពទាំងអស់" : "Explore Full Gallery"} →
-              </Link>
-            </div>
+      {/* 8. AUTHENTIC MINISTRY MOMENTS (Clean Gallery Showcase) */}
+      <section className="bg-[#fcfbf9] border-t border-[#dcdfda] py-16 sm:py-24">
+        <div className="oc-section py-0">
+          <div className="text-center max-w-2xl mx-auto mb-16">
+            <p className="oc-eyebrow">
+              {isKm ? "ទិដ្ឋភាពនៃជីវិត និងការបម្រើព្រះ" : "Life Together In Christ"}
+            </p>
+            <h2 className="text-2xl sm:text-4xl font-extrabold uppercase tracking-tight text-[#141716]">
+              {isKm ? "សកម្មភាពនៃការបង្រៀន និងការប្រកបគ្នា" : "Moments from Life & Ministry"}
+            </h2>
+            <p className="text-[#626868] text-sm sm:text-base leading-relaxed mt-2">
+              {isKm
+                ? "រូបភាពពិតនៃការបង្រៀនព្រះគម្ពីរ ការបណ្តុះសិស្ស យុវជន និងការអធិស្ឋានរបស់លោកគ្រូ ហ៊ុន ចិត្ត។"
+                : "Authentic glimpses of worship, teaching, prayer, and discipleship in Cambodia."}
+            </p>
           </div>
-        </section>
 
-        {/* 8. DIRECT PASTORAL CONNECT BANNER (All Nations Church Signature Next Steps) */}
-        <section className="anc-partnership-banner" style={{ borderBottom: "8px solid var(--gold)" }}>
-          <div className="container">
-            <div className="anc-partnership-inner">
-              <div style={{ maxWidth: 640 }}>
-                <span
-                  style={{
-                    color: "var(--gold)",
-                    fontSize: "0.76rem",
-                    fontWeight: 700,
-                    letterSpacing: "0.14em",
-                    textTransform: "uppercase",
-                    display: "block",
-                    marginBottom: "0.5rem",
-                  }}
-                >
-                  {isKm ? "ភ្ជាប់ទំនាក់ទំនងផ្ទាល់" : "Direct Pastoral Connection"}
-                </span>
-
-                <h2
-                  style={{
-                    fontFamily: "var(--font-serif)",
-                    fontSize: "clamp(1.9rem, 3.5vw, 2.6rem)",
-                    color: "#ffffff",
-                    margin: "0 0 1rem",
-                    lineHeight: 1.25,
-                  }}
-                >
-                  {isKm
-                    ? "មានសំណួរ ឬចង់ឱ្យអធិស្ឋានជូន?"
-                    : "Have Questions or Need Prayer?"}
-                </h2>
-
-                <p style={{ color: "#cbd5e1", lineHeight: 1.75, margin: 0, fontSize: "1.02rem" }}>
-                  {isKm
-                    ? "លោកគ្រូ ហ៊ុន ចិត្ត រីករាយនឹងឆ្លើយតប និងអធិស្ឋានជូនបងប្អូនទាំងអស់គ្នា។ អ្នកអាចទាក់ទងមកខ្ញុំដោយផ្ទាល់តាមរយៈទូរស័ព្ទ Telegram ឬផ្ញើសារតាម Facebook។"
-                    : "I would be honored to pray for you, answer your biblical questions, or connect with you directly via Telegram, Facebook, or phone."}
-                </p>
-              </div>
-
-              <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", flexShrink: 0 }}>
-                <a
-                  href="https://t.me/+855966875886"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="anc-btn-gold"
-                  style={{ padding: "0.85rem 1.6rem" }}
-                >
-                  <TelegramIcon style={{ width: 15, height: 15, marginRight: "0.5rem" }} />
-                  <span>Telegram</span>
-                </a>
-
-                <a
-                  href="tel:0966875886"
-                  className="anc-btn-glass"
-                  style={{ padding: "0.85rem 1.5rem" }}
-                >
-                  <PhoneIcon style={{ width: 15, height: 15, marginRight: "0.5rem", color: "var(--gold)" }} />
-                  <span>096 687 5886</span>
-                </a>
-
-                <Link href="/contact" className="anc-btn-white" style={{ padding: "0.85rem 1.5rem" }}>
-                  {t("nav.contact")}
-                </Link>
-              </div>
-            </div>
-          </div>
-        </section>
-      </main>
-
-      {/* PHOTO LIGHTBOX MODAL */}
-      {selectedPhoto && (
-        <div className="anc-modal-overlay" onClick={() => setSelectedPhoto(null)}>
-          <div className="anc-modal-box" onClick={(e) => e.stopPropagation()}>
-            <button
-              type="button"
-              onClick={() => setSelectedPhoto(null)}
-              className="anc-modal-close"
-              aria-label="Close photo preview"
-            >
-              <CloseIcon />
-            </button>
-
-            <div className="anc-lightbox-content">
-              <img src={selectedPhoto.src} alt={loc(selectedPhoto.title)} />
-            </div>
-
-            <div className="anc-lightbox-info">
-              <span
-                style={{
-                  display: "inline-block",
-                  padding: "0.2rem 0.6rem",
-                  border: "1px solid var(--gold)",
-                  color: "var(--gold)",
-                  fontSize: "0.7rem",
-                  fontWeight: 700,
-                  textTransform: "uppercase",
-                  letterSpacing: "0.1em",
-                  marginBottom: "0.5rem",
-                }}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {LIFE_PHOTOS.map((photo, idx) => (
+              <div
+                key={idx}
+                className="bg-white border border-[#dcdfda] overflow-hidden group cursor-pointer"
+                onClick={() => setSelectedPhoto(photo)}
               >
+                <div className="aspect-[4/3] overflow-hidden bg-stone-100">
+                  <img
+                    src={photo.src}
+                    alt={loc(photo.title)}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="p-4 border-t border-[#dcdfda]">
+                  <span className="text-xs font-bold text-[#1c5080] tracking-[0.16em] uppercase block mb-1">
+                    {loc(photo.badge)}
+                  </span>
+                  <h4 className="text-sm font-bold uppercase tracking-tight text-[#141716]">
+                    {loc(photo.title)}
+                  </h4>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center mt-12">
+            <Link href="/gallery" className="oc-button oc-outline-dark">
+              <span>{isKm ? "ចូលមើលកម្រងរូបភាពទាំងអស់" : "Explore Full Gallery"}</span>
+              <ArrowRightIcon style={{ width: 12, height: 12 }} />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* 9. ONE CHURCH CONNECT BANNER */}
+      <ConnectBanner />
+
+      {/* Photo Lightbox Modal */}
+      {selectedPhoto && (
+        <div
+          className="fixed inset-0 z-50 bg-black/85 backdrop-blur-sm flex items-center justify-center p-4"
+          onClick={() => setSelectedPhoto(null)}
+        >
+          <div
+            className="max-w-3xl w-full bg-white border border-[#dcdfda] overflow-hidden"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="relative aspect-[16/10] bg-black">
+              <img
+                src={selectedPhoto.src}
+                alt={loc(selectedPhoto.title)}
+                className="w-full h-full object-contain"
+              />
+              <button
+                type="button"
+                onClick={() => setSelectedPhoto(null)}
+                className="absolute top-3 right-3 p-2 bg-black/50 text-white hover:bg-black transition-colors"
+                aria-label="Close"
+              >
+                <CloseIcon style={{ width: 18, height: 18 }} />
+              </button>
+            </div>
+            <div className="p-6">
+              <span className="text-xs font-bold text-[#1c5080] tracking-[0.16em] uppercase block mb-1">
                 {loc(selectedPhoto.badge)}
               </span>
-              <h3>{loc(selectedPhoto.title)}</h3>
-              <p>{loc(selectedPhoto.description)}</p>
+              <h3 className="text-xl font-bold uppercase text-[#141716] mb-2">
+                {loc(selectedPhoto.title)}
+              </h3>
+              <p className="text-[#626868] text-sm leading-relaxed">
+                {loc(selectedPhoto.description)}
+              </p>
             </div>
           </div>
         </div>

@@ -3,6 +3,8 @@ import Head from "next/head";
 import Link from "next/link";
 import SiteHeader from "../components/SiteHeader";
 import SiteFooter from "../components/SiteFooter";
+import SubpageHero from "../components/SubpageHero";
+import ConnectBanner from "../components/ConnectBanner";
 import { VIDEOS, CHANNEL_URL } from "../lib/videos";
 import { useT, useLocale, pick } from "../lib/i18n";
 import {
@@ -207,48 +209,23 @@ export default function Resource() {
 
       <SiteHeader />
 
-      {/* 1. STATELY HERO SECTION */}
-      <section className="resource-hero">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="/images/worship-service.jpg"
-          alt=""
-          className="resource-hero-bg"
-          aria-hidden="true"
-        />
-        <div className="resource-hero-overlay" aria-hidden="true" />
-
-        <div className="resource-hero-content">
-          <div className="resource-badge-tag">
-            <PlayIcon />
-            <span>{t("resource.badge")}</span>
-          </div>
-
-          <h1 className="resource-hero-title">{t("resource.title")}</h1>
-          <p className="resource-hero-sub">{t("resource.intro")}</p>
-
-          <div className="resource-gold-divider" />
-
-          <div className="resource-stats-strip">
-            <div className="resource-stat-item">
-              <span className="resource-stat-dot" />
-              <span>{t("resource.statVideos")}</span>
-            </div>
-            <div className="resource-stat-item">
-              <span className="resource-stat-dot" />
-              <span>{t("resource.statViews")}</span>
-            </div>
-            <div className="resource-stat-item">
-              <span className="resource-stat-dot" />
-              <span>{t("resource.statProduction")}</span>
-            </div>
-            <div className="resource-stat-item">
-              <span className="resource-stat-dot" />
-              <span>{t("resource.statFree")}</span>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* 1. ONE CHURCH HERO SECTION */}
+      <SubpageHero
+        bgImage="/images/worship-service.jpg"
+        kicker={t("resource.badge") || "MEDIA & RESOURCES"}
+        title={t("resource.title")}
+        subtitle={t("resource.intro")}
+        breadcrumbs={[
+          { label: locale === "km" ? "ទំព័រដើម" : "Home", href: "/" },
+          { label: t("resource.title") },
+        ]}
+        stats={[
+          { number: "18+", label: t("resource.statVideos") || "Productions" },
+          { number: "40K+", label: t("resource.statViews") || "Views" },
+          { number: "HD", label: t("resource.statProduction") || "1080p Studio" },
+          { number: "100%", label: t("resource.statFree") || "Free Gospel" },
+        ]}
+      />
 
       {/* 2. STICKY FILTER & SEARCH BAR */}
       <div className="resource-filter-bar">
@@ -637,24 +614,14 @@ export default function Resource() {
         </div>
       </section>
 
-      {/* 5. MISSION & YOUTUBE CHANNEL BANNER */}
-      <section className="resource-mission-banner">
-        <div className="container">
-          <div className="resource-mission-content">
-            <h3>{t("resource.missionTitle")}</h3>
-            <p>{t("resource.missionBody")}</p>
-            <a
-              className="resource-btn is-gold"
-              href={CHANNEL_URL}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <PlayIcon />
-              <span>{t("resource.missionBtn")}</span>
-            </a>
-          </div>
-        </div>
-      </section>
+      {/* 5. ONE CHURCH CONNECT BANNER */}
+      <ConnectBanner
+        kicker={locale === "km" ? "ចូលរួមតាមដាន" : "MEDIA & OUTREACH"}
+        title={t("resource.missionTitle") || "JOIN OUR GOSPEL MEDIA MISSION"}
+        subtitle={t("resource.missionBody")}
+        telegramHref={CHANNEL_URL}
+        telegramText={t("resource.missionBtn") || "SUBSCRIBE TO YOUTUBE"}
+      />
 
       {/* 6. CINEMATIC VIDEO MODAL PLAYER */}
       {activeModalVideo && (

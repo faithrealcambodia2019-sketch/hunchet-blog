@@ -3,7 +3,9 @@ import Head from "next/head";
 import Link from "next/link";
 import SiteHeader from "../components/SiteHeader";
 import SiteFooter from "../components/SiteFooter";
-import { SearchIcon } from "../components/Icons";
+import SubpageHero from "../components/SubpageHero";
+import ConnectBanner from "../components/ConnectBanner";
+import { SearchIcon, ArrowRightIcon } from "../components/Icons";
 import { useT, useLocale } from "../lib/i18n";
 import {
   getPosts,
@@ -22,7 +24,7 @@ export async function getStaticProps() {
   }
 }
 
-export default function Articles({ posts, error }) {
+export default function Articles({ posts = [], error }) {
   const t = useT();
   const locale = useLocale();
   const isKm = locale === "km";
@@ -63,9 +65,6 @@ export default function Articles({ posts, error }) {
     });
   }, [posts, activeCategory, searchQuery]);
 
-  const featuredPost = filteredPosts.length > 0 ? filteredPosts[0] : null;
-  const gridPosts = filteredPosts.length > 1 ? filteredPosts.slice(1) : [];
-
   return (
     <>
       <Head>
@@ -75,214 +74,147 @@ export default function Articles({ posts, error }) {
 
       <SiteHeader />
 
-      {/* Stately Sanctuary Hero */}
-      <section className="sanctuary-hero">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="/images/sermon-purpose-congregation.jpg"
-          alt="Hun Chet Personal Blog Articles"
-          className="sanctuary-hero-bg"
-        />
-        <div className="sanctuary-hero-overlay" />
-        <div className="sanctuary-hero-content">
-          <div className="sanctuary-badge-tag">
-            <span>{isKm ? "អត្ថបទ និងការបង្រៀនព្រះគម្ពីរ" : "Biblical Articles & Teaching"}</span>
-          </div>
-          <h1 className="sanctuary-hero-title">{t("articles.title")}</h1>
-          <p className="sanctuary-hero-subtitle">
-            {isKm
-              ? "ការបង្រៀនព្រះបន្ទូល ការពន្យល់ព្រះគម្ពីរ និងការបណ្តុះបណ្តាលជីវិតគ្រីស្ទបរិស័ទ"
-              : "Biblical Exegesis, Practical Christian Living, and Spiritual Guidance"}
-          </p>
-          <p className="sanctuary-hero-lead">{t("articles.intro")}</p>
+      {/* 1. ONE CHURCH HERO */}
+      <SubpageHero
+        eyebrow={isKm ? "អត្ថបទ និងការបង្រៀនព្រះគម្ពីរ" : "Biblical Articles & Exegesis"}
+        title={t("articles.title")}
+        subtitle={
+          isKm
+            ? "ការពន្យល់ព្រះគម្ពីរ ការបង្រៀនព្រះបន្ទូល និងការបណ្តុះបណ្តាលជីវិតគ្រីស្ទបរិស័ទជាភាសាខ្មែរ ដោយលោកគ្រូ ហ៊ុន ចិត្ត។"
+            : "Biblical exegesis, practical Christian living, and theological writings by Leader Hun Chet."
+        }
+        bgImage="/images/sermon-purpose-congregation.jpg"
+        stats={[
+          { num: `${posts.length}+`, label: isKm ? "អត្ថបទទាំងអស់" : "Articles" },
+          { num: "Weekly", label: isKm ? "បច្ចុប្បន្នភាព" : "Cadence" },
+          { num: "1954", label: isKm ? "ព្រះគម្ពីរខ្មែរ" : "Scripture" },
+        ]}
+      />
 
-          <div className="sanctuary-stat-strip">
-            <div className="sanctuary-stat-card">
-              <span className="sanctuary-stat-num">{posts.length}+</span>
-              <span className="sanctuary-stat-label">
-                {isKm ? "អត្ថបទ និងទេសនា" : "Published Articles"}
-              </span>
-            </div>
-            <div className="sanctuary-stat-card">
-              <span className="sanctuary-stat-num">Weekly</span>
-              <span className="sanctuary-stat-label">
-                {isKm ? "អត្ថបទថ្មីៗជាប្រចាំ" : "Regular Reflections"}
-              </span>
-            </div>
-            <div className="sanctuary-stat-card">
-              <span className="sanctuary-stat-num">Bilingual</span>
-              <span className="sanctuary-stat-label">
-                {isKm ? "ភាសាខ្មែរ និងអង់គ្លេស" : "Khmer & English"}
-              </span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Sticky Category Filter & Search Bar */}
-      <div className="archive-filter-bar">
-        <div className="container archive-filter-row">
-          <div className="archive-tab-group">
+      {/* 2. FILTER & SEARCH BAR (One Church Clean Minimalist) */}
+      <div className="bg-white border-b border-[#dcdfda] sticky top-[88px] z-30 py-4 shadow-xs">
+        <div className="oc-section py-0 flex flex-col md:flex-row items-center justify-between gap-4">
+          {/* Category Tabs */}
+          <div className="flex flex-wrap items-center gap-2 overflow-x-auto w-full md:w-auto">
             <button
               type="button"
-              className={`archive-tab-btn ${activeCategory === "all" ? "is-active" : ""}`}
               onClick={() => setActiveCategory("all")}
+              className={`px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider transition-all border ${
+                activeCategory === "all"
+                  ? "bg-[#141716] text-white border-[#141716]"
+                  : "bg-white text-[#626868] border-[#dcdfda] hover:border-[#141716]"
+              }`}
             >
-              {isKm ? "ទាំងអស់" : "All Articles"}
-              <span className="archive-tab-count">({posts.length})</span>
+              {isKm ? "ទាំងអស់" : "All"} ({posts.length})
             </button>
             {categories.map((cat) => (
               <button
                 key={cat.slug}
                 type="button"
-                className={`archive-tab-btn ${activeCategory === cat.slug ? "is-active" : ""}`}
                 onClick={() => setActiveCategory(cat.slug)}
+                className={`px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider transition-all border ${
+                  activeCategory === cat.slug
+                    ? "bg-[#141716] text-white border-[#141716]"
+                    : "bg-white text-[#626868] border-[#dcdfda] hover:border-[#141716]"
+                }`}
               >
-                {cat.name}
-                <span className="archive-tab-count">({cat.count})</span>
+                {cat.name} ({cat.count})
               </button>
             ))}
           </div>
 
-          <div className="archive-search-box">
-            <SearchIcon className="archive-search-icon" />
+          {/* Search Box */}
+          <div className="relative w-full md:w-72">
+            <SearchIcon className="w-4 h-4 text-[#626868] absolute left-3.5 top-3" />
             <input
               type="text"
-              className="archive-search-input"
-              placeholder={isKm ? "ស្វែងរកចំណងជើង ឬប្រធានបទ..." : "Search sermons & articles..."}
+              placeholder={isKm ? "ស្វែងរកអត្ថបទ ឬប្រធានបទ..." : "Search articles..."}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full pl-10 pr-4 py-2 border border-[#dcdfda] text-xs focus:outline-none focus:border-[#141716] bg-[#fcfbf9]"
             />
           </div>
         </div>
       </div>
 
-      <main className="section" style={{ paddingTop: 0 }}>
-        <div className="container">
-          {error && (
-            <p className="error">
-              {t("common.loadError")} {error}
+      {/* 3. ARTICLES DIRECTORY */}
+      <main className="oc-section">
+        {error && (
+          <p style={{ textAlign: "center", color: "#dc2626", padding: "2rem" }}>
+            {t("common.loadError")} {error}
+          </p>
+        )}
+
+        {!error && filteredPosts.length === 0 && (
+          <div className="text-center py-24 bg-white border border-[#dcdfda] p-8 max-w-lg mx-auto">
+            <p className="text-stone-600 mb-4">
+              {isKm
+                ? "មិនមានអត្ថបទត្រូវនឹងការស្វែងរកនេះទេ។"
+                : "No articles found matching your criteria."}
             </p>
-          )}
+            <button
+              type="button"
+              className="oc-button oc-solid"
+              onClick={() => {
+                setActiveCategory("all");
+                setSearchQuery("");
+              }}
+            >
+              <span>{isKm ? "កំណត់ឡើងវិញ" : "Clear Filters"}</span>
+            </button>
+          </div>
+        )}
 
-          {!error && filteredPosts.length === 0 && (
-            <div className="empty-state">
-              <p>{isKm ? "មិនមានអត្ថបទត្រូវនឹងការស្វែងរកនេះទេ។" : "No articles found matching your criteria."}</p>
-              <button
-                type="button"
-                className="btn btn-ghost"
-                onClick={() => {
-                  setActiveCategory("all");
-                  setSearchQuery("");
-                }}
-                style={{ marginTop: "1rem" }}
-              >
-                {isKm ? "កំណត់ឡើងវិញ" : "Clear Filters"}
-              </button>
-            </div>
-          )}
-
-          {/* Featured Spotlight Card */}
-          {featuredPost && (
-            <article className="article-spotlight-card">
-              <div className="article-spotlight-thumb">
-                <Link href={`/posts/${featuredPost.slug}`}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={getFeaturedImage(featuredPost)}
-                    alt=""
-                  />
-                </Link>
-              </div>
-              <div className="article-spotlight-body">
-                <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", flexWrap: "wrap" }}>
-                  <span className="article-spotlight-tag">
-                    {isKm ? "អត្ថបទទេសនាចម្បង" : "Featured Sermon"}
-                  </span>
-                  <time className="post-date">{formatDate(featuredPost.date)}</time>
-                </div>
-                <h2 className="article-spotlight-title">
-                  <Link
-                    href={`/posts/${featuredPost.slug}`}
-                    dangerouslySetInnerHTML={{ __html: featuredPost.title.rendered }}
-                    style={{ color: "inherit", textDecoration: "none" }}
-                  />
-                </h2>
-                <p className="article-spotlight-excerpt">{getExcerptText(featuredPost, 220)}</p>
-                <div style={{ marginTop: "0.5rem" }}>
-                  <Link href={`/posts/${featuredPost.slug}`} className="btn btn-primary" style={{ fontSize: "0.82rem" }}>
-                    {isKm ? "អានអត្ថបទពេញលេញ" : "Read Full Exposition"} →
-                  </Link>
-                </div>
-              </div>
-            </article>
-          )}
-
-          {/* Grid of Remaining Posts */}
-          {gridPosts.length > 0 && (
-            <div className="post-grid">
-              {gridPosts.map((post) => {
-                const image = getFeaturedImage(post);
-                const cats = getPostCategories(post);
-                return (
-                  <Link
-                    key={post.id}
-                    href={`/posts/${post.slug}`}
-                    className="post-card"
-                  >
-                    <div className="post-thumb-wrap">
-                      {image ? (
-                        // eslint-disable-next-line @next/next/no-img-element
-                        <img src={image} alt="" className="post-thumb" />
-                      ) : (
-                        <div className="post-thumb post-thumb-placeholder">
-                          <span>H</span>
-                        </div>
-                      )}
-                    </div>
-                    <div className="post-card-body">
-                      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                        <time className="post-date">{formatDate(post.date)}</time>
-                        {cats.length > 0 && (
-                          <span className="category-pill" style={{ fontSize: "0.68rem", padding: "0.2rem 0.5rem" }}>
-                            {cats[0].name}
-                          </span>
-                        )}
-                      </div>
-                      <h2
-                        dangerouslySetInnerHTML={{ __html: post.title.rendered }}
+        {/* 3-Column One Church Card Grid */}
+        {filteredPosts.length > 0 && (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {filteredPosts.map((post) => {
+              const image = getFeaturedImage(post);
+              return (
+                <Link
+                  key={post.id}
+                  href={`/posts/${post.slug}`}
+                  className="oc-card group"
+                >
+                  <div className="aspect-[16/10] overflow-hidden bg-stone-100 border-b border-[#dcdfda]">
+                    {image ? (
+                      <img
+                        src={image}
+                        alt=""
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        loading="lazy"
                       />
-                      <p className="excerpt">{getExcerptText(post)}</p>
-                      <span className="read-more">{t("common.readMore")} →</span>
-                    </div>
-                  </Link>
-                );
-              })}
-            </div>
-          )}
-        </div>
+                    ) : (
+                      <div className="w-full h-full bg-[#141716] flex items-center justify-center text-white text-3xl font-bold">
+                        H
+                      </div>
+                    )}
+                  </div>
+                  <div className="oc-card-body">
+                    <span className="text-xs font-bold text-[#1c5080] tracking-[0.16em] uppercase block mb-2">
+                      {formatDate(post.date)}
+                    </span>
+                    <h3
+                      className="oc-card-title group-hover:text-[#1c5080] transition-colors"
+                      dangerouslySetInnerHTML={{ __html: post.title.rendered }}
+                    />
+                    <p className="oc-card-sub line-clamp-3">
+                      {getExcerptText(post)}
+                    </p>
+                    <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-[0.12em] text-[#141716] group-hover:text-[#1c5080] pt-2 border-t border-[#dcdfda]">
+                      <span>{isKm ? "អានអត្ថបទពេញលេញ" : "Read Full Article"}</span>
+                      <ArrowRightIcon style={{ width: 12, height: 12 }} />
+                    </span>
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+        )}
       </main>
 
-      {/* Cross-Ministry Exploration */}
-      <section className="section section-alt">
-        <div className="container" style={{ textAlign: "center" }}>
-          <span className="eyebrow">{isKm ? "ធនធានបង្រៀនដទៃទៀត" : "More Ministry Resources"}</span>
-          <h2 style={{ fontFamily: "var(--font-display)", color: "var(--navy-dark)", margin: "0 0 1.5rem" }}>
-            {isKm ? "ចូលទៅកាន់បណ្ណាល័យ និងវីដេអូបង្រៀន" : "Explore The Study Library & Video Archives"}
-          </h2>
-          <div style={{ display: "flex", justifyContent: "center", gap: "1rem", flexWrap: "wrap" }}>
-            <Link href="/library" className="btn btn-primary">
-              {isKm ? "បណ្ណាល័យសៀវភៅ" : "Study Library & Books"}
-            </Link>
-            <Link href="/resource" className="btn btn-ghost">
-              {isKm ? "វីដេអូ និងភាពយន្តដំណឹងល្អ" : "Video Archives"}
-            </Link>
-            <Link href="/gallery" className="btn btn-ghost">
-              {isKm ? "វិចិត្រសាលរូបភាព" : "Photo Gallery"}
-            </Link>
-          </div>
-        </div>
-      </section>
+      {/* 4. ONE CHURCH CONNECT BANNER */}
+      <ConnectBanner />
 
       <SiteFooter />
     </>

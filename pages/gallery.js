@@ -4,6 +4,8 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import SiteHeader from "../components/SiteHeader";
 import SiteFooter from "../components/SiteFooter";
+import SubpageHero from "../components/SubpageHero";
+import ConnectBanner from "../components/ConnectBanner";
 import { useT } from "../lib/i18n";
 import { GALLERY_CATEGORIES, GALLERY_ITEMS } from "../lib/galleryData";
 import {
@@ -103,71 +105,30 @@ export default function Gallery() {
 
       <SiteHeader />
 
-      {/* 1. STATELY HERO SECTION */}
-      <section className="sanctuary-hero">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="/images/youth-fellowship-2025-group.jpg"
-          alt="Hun Chet Ministry Family and Youth"
-          className="sanctuary-hero-bg"
-        />
-        <div className="sanctuary-hero-overlay" />
-        <div className="sanctuary-hero-content">
-          <div className="sanctuary-badge-tag">
-            <CameraIcon style={{ width: 14, height: 14 }} />
-            <span>
-              {locale === "km"
-                ? "ជីវិតរួមគ្នា • រូបភាព និងវីដេអូ"
-                : "Life Together • Photos & Videos"}
-            </span>
-          </div>
-
-          <h1 className="sanctuary-hero-title">
-            {locale === "km"
-              ? "កម្រងរូបភាពព័ន្ធកិច្ច និងក្រុមជំនុំ"
-              : "Ministry & Church Gallery"}
-          </h1>
-
-          <p className="sanctuary-hero-subtitle">
-            {locale === "km"
-              ? "ព័ន្ធកិច្ចលោកគ្រូ ហ៊ុន ចិត្ត • ព័ន្ធកិច្ចឌីជីថល • ការបណ្តុះសិស្សជំនាន់ក្រោយ"
-              : "Hun Chet Ministry • Digital Outreach • Generational Discipleship"}
-          </p>
-
-          <p className="sanctuary-hero-lead">
-            {locale === "km"
-              ? "ទិដ្ឋភាពពិតនៃការថ្វាយបង្គំ ការផ្សាយព្រះបន្ទូលលើវេទិកា ពិធីបុណ្យជ្រមុជទឹក ការប្រកបគ្នារបស់យុវជន និងថ្នាក់រៀនព្រះគម្ពីរកុមារ នៅរាជធានីភ្នំពេញ។"
-              : "Authentic glimpses of heartfelt worship, pastoral preaching from the pulpit, water baptism celebrations, and loving fellowship in Hun Chet Ministry."}
-          </p>
-
-          <div className="sanctuary-stat-strip">
-            <div className="sanctuary-stat-card">
-              <span className="sanctuary-stat-num">8</span>
-              <span className="sanctuary-stat-label">
-                {locale === "km" ? "អាល់ប៊ុមព័ន្ធកិច្ច" : "Ministry Albums"}
-              </span>
-            </div>
-            <div className="sanctuary-stat-card">
-              <span className="sanctuary-stat-num">48+</span>
-              <span className="sanctuary-stat-label">
-                {locale === "km" ? "រូបភាព និងវីដេអូពិត" : "Curated Photos"}
-              </span>
-            </div>
-            <div className="sanctuary-stat-card">
-              <span className="sanctuary-stat-num">2013–2026</span>
-              <span className="sanctuary-stat-label">
-                {locale === "km" ? "ប្រវត្តិព័ន្ធកិច្ច" : "Ministry Timeline"}
-              </span>
-            </div>
-            <div className="sanctuary-stat-card">
-              <span className="sanctuary-stat-num">HD</span>
-              <span className="sanctuary-stat-label">
-                {locale === "km" ? "គុណភាពច្បាស់" : "Full Resolution"}
-              </span>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* 1. ONE CHURCH HERO */}
+      <SubpageHero
+        eyebrow={
+          locale === "km"
+            ? "ជីវិតរួមគ្នា • រូបភាព និងវីដេអូ"
+            : "Life Together • Photos & Videos"
+        }
+        title={
+          locale === "km"
+            ? "កម្រងរូបភាពព័ន្ធកិច្ច និងក្រុមជំនុំ"
+            : "Ministry & Church Gallery"
+        }
+        subtitle={
+          locale === "km"
+            ? "ទិដ្ឋភាពពិតនៃការថ្វាយបង្គំ ការផ្សាយព្រះបន្ទូលលើវេទិកា ពិធីបុណ្យជ្រមុជទឹក ការប្រកបគ្នារបស់យុវជន និងថ្នាក់រៀនព្រះគម្ពីរកុមារ នៅរាជធានីភ្នំពេញ។"
+            : "Authentic glimpses of heartfelt worship, pastoral preaching from the pulpit, water baptism celebrations, and loving fellowship in Hun Chet Ministry."
+        }
+        bgImage="/images/youth-fellowship-2025-group.jpg"
+        stats={[
+          { num: "8", label: locale === "km" ? "អាល់ប៊ុម" : "Albums" },
+          { num: "48+", label: locale === "km" ? "រូបភាព" : "Curated Photos" },
+          { num: "HD", label: locale === "km" ? "គុណភាព" : "Resolution" },
+        ]}
+      />
 
       {/* 2. STICKY CATEGORY FILTER BAR */}
       <nav className="gallery-nav-bar" aria-label="Gallery category filter">
@@ -564,6 +525,9 @@ export default function Gallery() {
           </div>
         </div>
       )}
+
+      {/* ONE CHURCH CONNECT BANNER */}
+      <ConnectBanner />
 
       <SiteFooter />
     </>

@@ -2,6 +2,8 @@ import Head from "next/head";
 import Link from "next/link";
 import SiteHeader from "../components/SiteHeader";
 import SiteFooter from "../components/SiteFooter";
+import SubpageHero from "../components/SubpageHero";
+import ConnectBanner from "../components/ConnectBanner";
 import { useLocale } from "../lib/i18n";
 import { getPages } from "../lib/wordpress";
 
@@ -29,7 +31,7 @@ export default function AllPages({ pages, error }) {
   const isKm = locale === "km";
 
   return (
-    <>
+    <div className="oc-site">
       <Head>
         <title>
           {isKm ? "បញ្ជីទំព័រទាំងអស់ — ហ៊ុន ចិត្ត" : "All Pages Directory — Hun Chet"}
@@ -46,92 +48,100 @@ export default function AllPages({ pages, error }) {
 
       <SiteHeader />
 
-      {/* Stately Sanctuary Hero */}
-      <section className="sanctuary-hero">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="/images/history-prayer-fellowship.jpg"
-          alt="Hun Chet Ministry"
-          className="sanctuary-hero-bg"
-        />
-        <div className="sanctuary-hero-overlay" />
-        <div className="sanctuary-hero-content">
-          <div className="sanctuary-badge-tag">
-            <span>{isKm ? "បណ្ដាញទំព័រ និងបញ្ជីធនធាន" : "Sitemap & Directory"}</span>
-          </div>
-          <h1 className="sanctuary-hero-title">
-            {isKm ? "បញ្ជីទំព័រទាំងអស់" : "All Pages Directory"}
-          </h1>
-          <p className="sanctuary-hero-subtitle">
-            {isKm
+      <main>
+        {/* ONE CHURCH SUBPAGE HERO */}
+        <SubpageHero
+          bgImage="/images/history-prayer-fellowship.jpg"
+          kicker={isKm ? "បណ្ដាញទំព័រ និងបញ្ជីធនធាន" : "SITEMAP & DIRECTORY"}
+          title={isKm ? "បញ្ជីទំព័រទាំងអស់" : "ALL PAGES"}
+          subtitle={
+            isKm
               ? "លិបិក្រមពេញលេញនៃទំព័រព័ន្ធកិច្ច បណ្ណសារ និងជីវិតក្រុមជំនុំ"
-              : "Complete Index of Ministry Pages, Archives, and Church Life"}
-          </p>
-          <p className="sanctuary-hero-lead">
-            {isKm
-              ? "ស្វែងរកផ្នែកនីមួយៗនៃព័ន្ធកិច្ច បណ្ណាល័យ និងបណ្ណសារផ្សាយព្រះបន្ទូលរបស់យើងយ៉ាងងាយស្រួល។"
-              : "Easily discover every section of our ministry, library, and biblical preaching archives."}
-          </p>
+              : "Complete Index of Ministry Pages, Archives, and Church Life"
+          }
+          breadcrumbs={[
+            { label: isKm ? "ទំព័រដើម" : "Home", href: "/" },
+            { label: isKm ? "បញ្ជីទំព័រ" : "All Pages" },
+          ]}
+          stats={[
+            { number: pages.length, label: isKm ? "ទំព័រដែលបានចុះផ្សាយ" : "Published Pages" },
+            { number: "Hun Chet", label: isKm ? "ជំនឿ និងព័ន្ធកិច្ច" : "Faith & Ministry" },
+          ]}
+        />
 
-          <div className="sanctuary-stat-strip">
-            <div className="sanctuary-stat-card">
-              <span className="sanctuary-stat-num">{pages.length}</span>
-              <span className="sanctuary-stat-label">
-                {isKm ? "ទំព័រដែលបានចុះផ្សាយ" : "Published Pages"}
-              </span>
-            </div>
-            <div className="sanctuary-stat-card">
-              <span className="sanctuary-stat-num">{isKm ? "លោកគ្រូ ហ៊ុន ចិត្ត" : "Hun Chet"}</span>
-              <span className="sanctuary-stat-label">
-                {isKm ? "ជំនឿ និងព័ន្ធកិច្ច" : "Faith & Ministry"}
-              </span>
-            </div>
-          </div>
-        </div>
-      </section>
+        <section className="oc-section" style={{ background: "#ffffff" }}>
+          <div className="container">
+            {error && (
+              <p style={{ color: "#e53e3e", textAlign: "center", marginBottom: "2rem" }}>
+                {isKm ? "មិនអាចទាញយកទំព័របានទេ: " : "Couldn't load pages: "}
+                {error}
+              </p>
+            )}
 
-      <main className="section">
-        <div className="container">
-          {error && (
-            <p className="error">
-              {isKm ? "មិនអាចទាញយកទំព័របានទេ: " : "Couldn't load pages: "}
-              {error}
-            </p>
-          )}
-
-          <div className="category-grid">
-            {pages.map((page) => {
-              const title = stripHtml(page.title?.rendered) || page.slug;
-              return (
-                <Link
-                  key={page.id}
-                  href={`/${page.slug}`}
-                  className="category-card"
-                  style={{ borderTop: "3px solid var(--gold)", borderRadius: "var(--radius)" }}
-                >
-                  <span
-                    className="category-card-name"
-                    style={{ fontFamily: "var(--font-display)", color: "var(--navy-dark)" }}
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
+                gap: "20px",
+              }}
+            >
+              {pages.map((page) => {
+                const title = stripHtml(page.title?.rendered) || page.slug;
+                return (
+                  <Link
+                    key={page.id}
+                    href={`/${page.slug}`}
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      justifyContent: "space-between",
+                      padding: "1.75rem",
+                      background: "#fbfbf9",
+                      border: "1px solid #dcdfda",
+                      borderRadius: 0,
+                      textDecoration: "none",
+                      transition: "border-color 0.2s, background 0.2s",
+                    }}
                   >
-                    {title}
-                  </span>
-                  <span className="category-card-count" style={{ color: "var(--muted)" }}>
-                    /{page.slug}
-                  </span>
-                </Link>
-              );
-            })}
-          </div>
+                    <span
+                      style={{
+                        fontFamily: "var(--font-display)",
+                        fontSize: "1.1rem",
+                        fontWeight: 700,
+                        color: "#141716",
+                        marginBottom: "0.5rem",
+                        display: "block",
+                      }}
+                    >
+                      {title}
+                    </span>
+                    <span
+                      style={{
+                        fontSize: "12px",
+                        fontFamily: "monospace",
+                        color: "#64748b",
+                      }}
+                    >
+                      /{page.slug}
+                    </span>
+                  </Link>
+                );
+              })}
+            </div>
 
-          <div style={{ textAlign: "center", marginTop: "3.5rem" }}>
-            <Link href="/" className="btn btn-primary">
-              {isKm ? "ត្រឡប់ទៅទំព័រដើម" : "Return to Home"}
-            </Link>
+            <div style={{ textAlign: "center", marginTop: "3.5rem" }}>
+              <Link href="/" className="oc-button oc-solid">
+                <span>{isKm ? "ត្រឡប់ទៅទំព័រដើម" : "RETURN TO HOME"}</span>
+              </Link>
+            </div>
           </div>
-        </div>
+        </section>
+
+        {/* ONE CHURCH CONNECT BANNER */}
+        <ConnectBanner />
       </main>
 
       <SiteFooter />
-    </>
+    </div>
   );
 }

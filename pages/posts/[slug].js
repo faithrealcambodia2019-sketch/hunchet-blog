@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import SiteHeader from "../../components/SiteHeader";
 import SiteFooter from "../../components/SiteFooter";
+import ConnectBanner from "../../components/ConnectBanner";
 import AuthorCard from "../../components/AuthorCard";
 import { useLocale } from "../../lib/i18n";
 import {
@@ -65,7 +66,7 @@ export default function Post({ post }) {
   );
 
   return (
-    <>
+    <div className="oc-site">
       <Head>
         <title>{`${plainTitle} — Hun Chet`}</title>
         <meta name="description" content={description} />
@@ -77,89 +78,87 @@ export default function Post({ post }) {
 
       <SiteHeader />
 
-      <main className="container">
-        {/* Scholarly Breadcrumb Bar */}
-        <div className="reading-room-breadcrumbs" style={{ marginTop: "2.5rem" }}>
-          <Link href="/">{isKm ? "ទំព័រដើម" : "Home"}</Link>
-          <span>/</span>
-          <Link href="/articles">{isKm ? "អត្ថបទ" : "Articles"}</Link>
-          {categories.length > 0 && (
-            <>
-              <span>/</span>
-              <Link href={`/category/${categories[0].slug}`}>{categories[0].name}</Link>
-            </>
-          )}
-          <span>/</span>
-          <span style={{ color: "var(--navy-dark)", fontWeight: 700 }}>
-            {isKm ? "បន្ទប់អានព្រះបន្ទូល" : "Reading Room"}
-          </span>
-        </div>
-
-        <article className="post-page" style={{ paddingTop: "0.5rem" }}>
-          {/* Article Header */}
-          <header className="reading-room-header">
+      <main style={{ background: "#ffffff", paddingBottom: "4rem" }}>
+        {/* EDITORIAL ARTICLE HERO / HEADER */}
+        <div style={{ background: "#141716", color: "#ffffff", padding: "4rem 1.5rem 3.5rem" }}>
+          <div className="container" style={{ maxWidth: 860 }}>
+            {/* Breadcrumb Bar */}
             <div
               style={{
                 display: "flex",
-                justifyContent: "space-between",
                 alignItems: "center",
                 flexWrap: "wrap",
-                gap: "0.5rem",
+                gap: "8px",
+                fontSize: "11px",
+                fontWeight: 700,
+                letterSpacing: "0.14em",
+                textTransform: "uppercase",
+                color: "rgba(255, 255, 255, 0.6)",
+                marginBottom: "1.75rem",
               }}
             >
-              <div className="reading-room-meta">
-                <span className="reading-room-meta-item">
-                  <time className="post-date">{formatDate(post.date)}</time>
-                </span>
-                <span>•</span>
-                <span
-                  className="reading-room-meta-item"
-                  style={{ color: "var(--gold)", fontWeight: 700 }}
-                >
-                  {readingTime}
-                </span>
-                <span>•</span>
-                <span className="reading-room-meta-item">
-                  {isKm ? "លោកគ្រូ ហ៊ុន ចិត្ត" : "Leader Hun Chet"}
-                </span>
-              </div>
-
+              <Link href="/" style={{ color: "rgba(255, 255, 255, 0.75)", textDecoration: "none" }}>
+                {isKm ? "ទំព័រដើម" : "HOME"}
+              </Link>
+              <span>/</span>
+              <Link href="/articles" style={{ color: "rgba(255, 255, 255, 0.75)", textDecoration: "none" }}>
+                {isKm ? "អត្ថបទ" : "ARTICLES"}
+              </Link>
               {categories.length > 0 && (
-                <div className="category-pills">
-                  {categories.map((cat) => (
-                    <Link
-                      key={cat.id}
-                      href={`/category/${cat.slug}`}
-                      className="category-pill"
-                    >
-                      {cat.name}
-                    </Link>
-                  ))}
-                </div>
+                <>
+                  <span>/</span>
+                  <Link href={`/category/${categories[0].slug}`} style={{ color: "var(--oc-teal)", textDecoration: "none" }}>
+                    {categories[0].name.toUpperCase()}
+                  </Link>
+                </>
               )}
+            </div>
+
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "12px",
+                flexWrap: "wrap",
+                fontSize: "12px",
+                color: "rgba(255, 255, 255, 0.7)",
+                marginBottom: "1rem",
+              }}
+            >
+              <time style={{ fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase" }}>
+                {formatDate(post.date)}
+              </time>
+              <span>•</span>
+              <span style={{ color: "var(--oc-teal)", fontWeight: 700 }}>
+                {readingTime}
+              </span>
+              <span>•</span>
+              <span>{isKm ? "លោកគ្រូ ហ៊ុន ចិត្ត" : "Leader Hun Chet"}</span>
             </div>
 
             <h1
               style={{
                 fontFamily: "var(--font-display)",
                 fontSize: "clamp(2rem, 4vw, 3rem)",
-                lineHeight: 1.22,
-                color: "var(--navy-dark)",
-                margin: "1rem 0 1rem",
+                fontWeight: 800,
+                lineHeight: 1.25,
+                color: "#ffffff",
+                margin: "0",
               }}
               dangerouslySetInnerHTML={{ __html: post.title.rendered }}
             />
-          </header>
+          </div>
+        </div>
 
+        <div className="container" style={{ maxWidth: 860, paddingTop: "3rem" }}>
           {/* Featured Image */}
           {image && (
             <div
               style={{
-                marginBottom: "2.5rem",
-                borderRadius: "var(--radius-lg)",
+                marginBottom: "3rem",
+                borderRadius: 0,
                 overflow: "hidden",
-                borderBottom: "3px solid var(--gold)",
-                boxShadow: "var(--shadow-md)",
+                border: "1px solid #dcdfda",
               }}
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -172,24 +171,29 @@ export default function Post({ post }) {
           )}
 
           {/* Main Article Content */}
-          <div
+          <article
             className="post-content"
+            style={{
+              fontSize: "1.08rem",
+              lineHeight: 1.85,
+              color: "#2d3748",
+            }}
             dangerouslySetInnerHTML={{ __html: content }}
           />
 
-          {/* Canonical Author Connection */}
+          {/* Author Connection */}
           <div
             style={{
               marginTop: "4rem",
-              paddingTop: "2rem",
-              borderTop: "1px solid var(--border)",
+              paddingTop: "2.5rem",
+              borderTop: "1px solid #dcdfda",
             }}
           >
             <span
-              className="eyebrow"
-              style={{ textAlign: "center", display: "block", marginBottom: "1rem" }}
+              className="oc-eyebrow"
+              style={{ textAlign: "center", display: "block", marginBottom: "1.5rem" }}
             >
-              {isKm ? "អំពីម្ចាស់ប្លុក និងអ្នកនិពន្ធ" : "About The Author"}
+              {isKm ? "អំពីម្ចាស់ប្លុក និងអ្នកនិពន្ធ" : "ABOUT THE AUTHOR"}
             </span>
             <AuthorCard />
           </div>
@@ -201,26 +205,33 @@ export default function Post({ post }) {
               justifyContent: "space-between",
               alignItems: "center",
               marginTop: "3.5rem",
+              paddingTop: "2rem",
+              borderTop: "1px solid #dcdfda",
               flexWrap: "wrap",
               gap: "1rem",
             }}
           >
-            <Link href="/articles" className="btn btn-primary" style={{ fontSize: "0.82rem" }}>
-              {isKm ? "← ត្រឡប់ទៅកាន់អត្ថបទទាំងអស់" : "← Back to all articles"}
+            <Link href="/articles" className="oc-button oc-solid">
+              <span>{isKm ? "← ត្រឡប់ទៅកាន់អត្ថបទទាំងអស់" : "← BACK TO ALL ARTICLES"}</span>
             </Link>
-            <div style={{ display: "flex", gap: "0.75rem" }}>
-              <Link href="/library" className="btn btn-ghost" style={{ fontSize: "0.82rem" }}>
-                {isKm ? "បណ្ណាល័យសិក្សា" : "Study Library"}
+            <div style={{ display: "flex", gap: "10px" }}>
+              <Link href="/library" className="oc-button oc-outline-dark">
+                <span>{isKm ? "បណ្ណាល័យ" : "LIBRARY"}</span>
               </Link>
-              <Link href="/resource" className="btn btn-ghost" style={{ fontSize: "0.82rem" }}>
-                {isKm ? "បណ្ណសារវីដេអូ" : "Video Archives"}
+              <Link href="/resource" className="oc-button oc-outline-dark">
+                <span>{isKm ? "វីដេអូ" : "VIDEOS"}</span>
               </Link>
             </div>
           </div>
-        </article>
+        </div>
+
+        {/* ONE CHURCH CONNECT BANNER */}
+        <div style={{ marginTop: "4rem" }}>
+          <ConnectBanner />
+        </div>
       </main>
 
       <SiteFooter />
-    </>
+    </div>
   );
 }

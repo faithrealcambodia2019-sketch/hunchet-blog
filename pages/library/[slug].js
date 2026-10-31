@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import SiteHeader from "../../components/SiteHeader";
 import SiteFooter from "../../components/SiteFooter";
+import ConnectBanner from "../../components/ConnectBanner";
 import { BOOKS, bookBySlug } from "../../lib/books";
 import { useT, useLocale, pick } from "../../lib/i18n";
 import {
@@ -60,9 +61,10 @@ export default function BookReader({ book, relatedBooks }) {
         <meta property="og:image" content={book.cover} />
       </Head>
 
-      <SiteHeader />
+      <div className="oc-site">
+        <SiteHeader />
 
-      <main className="reader-page-container">
+        <main className="reader-page-container">
         <div className="container">
           {/* 1. READER TOOLBAR */}
           <div className="reader-toolbar">
@@ -293,7 +295,10 @@ export default function BookReader({ book, relatedBooks }) {
         </div>
       </main>
 
-      <SiteFooter />
+        <ConnectBanner />
+
+        <SiteFooter />
+      </div>
     </>
   );
 }

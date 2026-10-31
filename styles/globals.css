@@ -1,44 +1,44 @@
 :root {
-  --ink: #0f172a;
-  --navy: #112b4a;           /* Prestigious Deep Navy */
-  --navy-deep: #0a1626;      /* Midnight Foundation */
-  --navy-dark: #0f172a;      /* Deep Slate */
+  --ink: #141716;
+  --navy: #141716;           /* One Church Slate / Charcoal Foundation */
+  --navy-deep: #0e1116;      /* Deep Midnight */
+  --navy-dark: #141716;      /* One Church Primary Dark */
   --crimson: #8b1c1c;        /* Traditional Crimson/Burgundy */
-  --gold: #b3924e;           /* Refined Antique Gold */
-  --gold-hover: #9c7d3c;
-  --gold-light: #d4b87d;
-  --gold-soft: rgba(179, 146, 78, 0.08);
-  --gold-border: rgba(179, 146, 78, 0.25);
-  --bg: #fcfbfa;             /* Warm Luxury Ivory */
-  --bg-alt: #f6f4f0;         /* Soft Editorial Cream */
+  --gold: #4a7c87;           /* One Church Refined Muted Teal (No AI Gold) */
+  --gold-hover: #3a636c;
+  --gold-light: #5b909c;
+  --gold-soft: rgba(74, 124, 135, 0.08);
+  --gold-border: #dcdfda;
+  --bg: #fbfbf9;             /* Warm Minimalist Off-white */
+  --bg-alt: #f3f4f1;         /* Crisp Minimalist Stone */
   --card-bg: #ffffff;
-  --border: rgba(15, 23, 42, 0.08);         /* Subtle modern border */
-  --border-light: rgba(15, 23, 42, 0.04);
-  --text: #334155;
+  --border: #dcdfda;         /* Clean 1px One Church Stone Border */
+  --border-light: #e6e9e5;
+  --text: #2d3748;
   --muted: #64748b;
-  --accent: #112b4a;
-  --accent-dark: #0a1626;
+  --accent: #4a7c87;
+  --accent-dark: #141716;
   --accent-soft: #edf3fa;
-  --radius: 8px;             /* Clean modern 8px rounding */
-  --radius-sm: 6px;
-  --radius-lg: 12px;
-  --radius-xl: 16px;
-  --radius-full: 9999px;
+  --radius: 0px;             /* Sharp Rectangular Corners (One Church Signature) */
+  --radius-sm: 0px;
+  --radius-lg: 0px;
+  --radius-xl: 0px;
+  --radius-full: 0px;
   /* Executive Professional Typography Pairing:
-     - Latin: Plus Jakarta Sans (executive geometric-humanist) & Inter & Lora
+     - Latin: Montserrat, Plus Jakarta Sans, Inter
      - Khmer: Koh Santepheap & Kantumruy Pro (authentic, readable, authoritative) */
-  --font-display: "Plus Jakarta Sans", "Koh Santepheap", "Kantumruy Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-display: "Montserrat", "Plus Jakarta Sans", "Koh Santepheap", "Kantumruy Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-body: "Plus Jakarta Sans", "Inter", "Koh Santepheap", "Kantumruy Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-serif: "Lora", "Koh Santepheap", Georgia, serif;
   --font-khmer: "Koh Santepheap", "Kantumruy Pro", sans-serif;
   --font-khmer-serif: "Koh Santepheap", "Lora", Georgia, serif;
-  --font-khmer-display: "Koh Santepheap", "Plus Jakarta Sans", sans-serif;
-  --font-brand: "Plus Jakarta Sans", "Cinzel", "Koh Santepheap", sans-serif;
-  --shadow-sm: 0 1px 3px 0 rgba(15, 23, 42, 0.04);
-  --shadow: 0 4px 16px -2px rgba(15, 23, 42, 0.06), 0 2px 4px -1px rgba(15, 23, 42, 0.03);
-  --shadow-md: 0 10px 28px -4px rgba(15, 23, 42, 0.08), 0 4px 10px -2px rgba(15, 23, 42, 0.04);
-  --shadow-lg: 0 20px 48px -8px rgba(15, 23, 42, 0.12), 0 8px 16px -3px rgba(15, 23, 42, 0.05);
-  --shadow-hover: 0 16px 36px -6px rgba(15, 23, 42, 0.12), 0 4px 12px -2px rgba(15, 23, 42, 0.04);
+  --font-khmer-display: "Koh Santepheap", "Montserrat", "Plus Jakarta Sans", sans-serif;
+  --font-brand: "Montserrat", "Plus Jakarta Sans", "Cinzel", "Koh Santepheap", sans-serif;
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.03);
+  --shadow: 0 4px 16px -2px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 8px 24px -4px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 16px 36px -6px rgba(0, 0, 0, 0.08);
+  --shadow-hover: 0 12px 28px -4px rgba(0, 0, 0, 0.08);
 }
 
 * {
@@ -1737,90 +1737,84 @@ iframe {
   border-color: var(--gold-hover);
 }
 
-/* ============ Buttons ============ */
+/* ============ One Church Buttons ============ */
 
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  padding: 0.8rem 1.85rem;
-  border-radius: var(--radius-sm);
+  padding: 0.85rem 1.85rem;
+  border-radius: 0;
   font-family: var(--font-body);
-  font-size: 0.76rem;
+  font-size: 11.5px;
   font-weight: 700;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   text-decoration: none;
   border: 1px solid transparent;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.2s ease;
   cursor: pointer;
-  box-shadow: var(--shadow-sm);
+  box-shadow: none;
   white-space: nowrap;
 }
 
 .btn:active {
-  transform: scale(0.98);
+  transform: scale(0.99);
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, #c4a257 0%, #b3924e 100%);
-  border-color: #b3924e;
-  color: #0a1626;
-  box-shadow: 0 2px 8px rgba(179, 146, 78, 0.28);
+  background: var(--navy-dark);
+  border-color: var(--navy-dark);
+  color: #ffffff;
 }
 
 .btn-primary:hover {
-  background: linear-gradient(135deg, #0a1626 0%, #112b4a 100%);
-  border-color: #0a1626;
+  background: #2a2e2b;
+  border-color: #2a2e2b;
   color: #ffffff;
-  box-shadow: 0 6px 18px rgba(10, 22, 38, 0.25);
-  transform: translateY(-2px);
+  transform: none;
 }
 
 .btn-light {
   background: #ffffff;
-  border-color: rgba(15, 23, 42, 0.1);
+  border-color: var(--border);
   color: var(--navy);
-  box-shadow: var(--shadow);
 }
 
 .btn-light:hover {
   background: var(--navy);
   border-color: var(--navy);
   color: #ffffff;
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
+  transform: none;
 }
 
 .btn-outline-light {
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  backdrop-filter: blur(8px);
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.4);
   color: #ffffff;
 }
 
 .btn-outline-light:hover {
   background: #ffffff;
   border-color: #ffffff;
-  color: #0a1626;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  color: var(--navy-dark);
+  transform: none;
 }
 
-.btn-gold-glass {
-  background: rgba(179, 146, 78, 0.16);
-  border: 1px solid rgba(179, 146, 78, 0.45);
-  backdrop-filter: blur(8px);
+.btn-gold-glass,
+.btn-ghost {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--navy-dark);
+}
+
+.btn-gold-glass:hover,
+.btn-ghost:hover {
+  background: var(--navy-dark);
+  border-color: var(--navy-dark);
   color: #ffffff;
-}
-
-.btn-gold-glass:hover {
-  background: #b3924e;
-  border-color: #b3924e;
-  color: #0a1626;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(179, 146, 78, 0.35);
+  transform: none;
 }
 
 .btn-outline {
@@ -1833,8 +1827,7 @@ iframe {
   background: var(--navy-dark);
   border-color: var(--navy-dark);
   color: #ffffff;
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
+  transform: none;
 }
 
 /* ============ Hero ============ */
@@ -6602,3 +6595,1490 @@ h1, h2, h3, h4, h5, h6 {
 
 
 
+
+
+/* ==========================================================================
+   ONE CHURCH SIGNATURE DESIGN SYSTEM (fidelity to https://www.onechurch.net/)
+   ========================================================================== */
+
+:root {
+  --oc-ink: #141716;
+  --oc-muted: #626868;
+  --oc-paper: #ffffff;
+  --oc-warm: #fcfbf9;
+  --oc-stone: #f5f4f0;
+  --oc-line: #dcdfda;
+  --oc-accent: #1c5080;
+  --oc-teal: #4a7c87;
+  --oc-dark: #0e1116;
+  --oc-header: 88px;
+}
+
+body.oc-menu-open {
+  overflow: hidden !important;
+}
+
+/* ---------------- 1. One Church Typography & Base ---------------- */
+.oc-eyebrow {
+  font-family: var(--font-body);
+  font-size: 11.5px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.2em !important;
+  line-height: 1.5;
+  color: var(--oc-accent);
+  margin-bottom: 12px;
+}
+
+.oc-eyebrow.oc-light {
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+.oc-section {
+  width: min(1180px, 90%);
+  margin-inline: auto;
+  padding-block: 84px;
+}
+
+@media (max-width: 768px) {
+  .oc-section {
+    padding-block: 56px;
+  }
+}
+
+/* ---------------- 2. One Church Sharp Rectangular Buttons ---------------- */
+.oc-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 48px;
+  padding: 13px 26px;
+  font-family: var(--font-body);
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  line-height: 1.4;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+  border-radius: 0 !important;
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-decoration: none !important;
+  transition: all 0.2s ease-in-out;
+}
+
+.oc-button.oc-solid {
+  background: var(--oc-dark) !important;
+  color: #ffffff !important;
+  border-color: var(--oc-dark) !important;
+}
+
+.oc-button.oc-solid:hover {
+  background: #232b35 !important;
+  border-color: #232b35 !important;
+  color: #ffffff !important;
+}
+
+.oc-button.oc-outline {
+  background: transparent !important;
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.oc-button.oc-outline:hover {
+  background: #ffffff !important;
+  color: var(--oc-dark) !important;
+  border-color: #ffffff !important;
+}
+
+.oc-button.oc-outline-dark {
+  background: transparent !important;
+  color: var(--oc-dark) !important;
+  border-color: rgba(20, 23, 22, 0.4) !important;
+}
+
+.oc-button.oc-outline-dark:hover {
+  background: var(--oc-dark) !important;
+  color: #ffffff !important;
+  border-color: var(--oc-dark) !important;
+}
+
+.oc-button.oc-outline-white {
+  background: transparent !important;
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.35) !important;
+}
+
+.oc-button.oc-outline-white:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-color: #ffffff !important;
+  color: #ffffff !important;
+}
+
+.oc-button.oc-white {
+  background: #ffffff !important;
+  color: var(--oc-dark) !important;
+  border-color: #ffffff !important;
+}
+
+.oc-button.oc-white:hover {
+  background: #e2e8f0 !important;
+  border-color: #e2e8f0 !important;
+}
+
+/* ---------------- 3. Header & Navigation (One Church Standard) ---------------- */
+.oc-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  min-height: var(--oc-header);
+  display: flex;
+  align-items: center;
+  color: #ffffff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(14, 17, 22, 0.65);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  transition: all 0.25s ease-in-out;
+}
+
+.oc-header.oc-scrolled,
+body.oc-menu-open .oc-header {
+  background: rgba(255, 255, 255, 0.98) !important;
+  color: var(--oc-ink) !important;
+  border-bottom-color: var(--oc-line) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.oc-nav {
+  width: min(1320px, 92%);
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+/* Brand */
+.oc-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none !important;
+  flex-shrink: 0;
+}
+
+.oc-brand-logo-wrap {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.oc-scrolled .oc-brand-logo-wrap {
+  border-color: var(--oc-line);
+  background: #ffffff;
+}
+
+.oc-brand-logo-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.oc-brand-divider {
+  width: 1px;
+  height: 28px;
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.oc-scrolled .oc-brand-divider {
+  background: var(--oc-line);
+}
+
+.oc-brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.oc-brand-title {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  line-height: 1.1;
+  color: inherit;
+}
+
+.oc-brand-subtitle {
+  font-family: var(--font-khmer), var(--font-body);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  color: inherit;
+  opacity: 0.8;
+  margin-top: 2px;
+}
+
+/* Desktop Nav */
+.oc-nav-desktop {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+@media (max-width: 1024px) {
+  .oc-nav-desktop {
+    display: none;
+  }
+}
+
+.oc-nav-link {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: inherit;
+  text-decoration: none !important;
+  opacity: 0.88;
+  transition: opacity 0.2s, color 0.2s;
+  padding-bottom: 2px;
+  border-bottom: 2px solid transparent;
+}
+
+.oc-nav-link:hover,
+.oc-nav-link.active {
+  opacity: 1;
+  border-bottom-color: currentColor;
+}
+
+.oc-nav-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 38px;
+  padding: 8px 18px;
+  background: transparent;
+  color: inherit;
+  border: 1px solid currentColor;
+  border-radius: 0;
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none !important;
+  transition: all 0.2s;
+}
+
+.oc-header:not(.oc-scrolled) .oc-nav-cta:hover {
+  background: #ffffff;
+  color: var(--oc-dark);
+}
+
+.oc-header.oc-scrolled .oc-nav-cta {
+  background: var(--oc-dark);
+  color: #ffffff;
+  border-color: var(--oc-dark);
+}
+
+.oc-header.oc-scrolled .oc-nav-cta:hover {
+  background: #232b35;
+  border-color: #232b35;
+}
+
+/* Language Switcher */
+.oc-lang-switch {
+  position: relative;
+}
+
+.oc-lang-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  color: inherit;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 6px 10px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 0;
+}
+
+.oc-scrolled .oc-lang-trigger {
+  border-color: var(--oc-line);
+}
+
+.oc-caret {
+  width: 0;
+  height: 0;
+  border-left: 3.5px solid transparent;
+  border-right: 3.5px solid transparent;
+  border-top: 4px solid currentColor;
+}
+
+.oc-lang-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  min-width: 130px;
+  background: #ffffff;
+  color: var(--oc-ink);
+  border: 1px solid var(--oc-line);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+  padding: 6px 0;
+  list-style: none;
+  margin: 0;
+  z-index: 100;
+}
+
+.oc-lang-menu li a {
+  display: block;
+  padding: 7px 16px;
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--oc-ink);
+  transition: background 0.15s;
+}
+
+.oc-lang-menu li a:hover,
+.oc-lang-menu li a.is-active {
+  background: var(--oc-stone);
+  color: var(--oc-accent);
+}
+
+/* Mobile Toggle */
+.oc-nav-mobile-toggle {
+  display: none;
+  align-items: center;
+  gap: 12px;
+}
+
+@media (max-width: 1024px) {
+  .oc-nav-mobile-toggle {
+    display: flex;
+  }
+}
+
+.oc-menu-button {
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  border: 1px solid currentColor;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 0;
+  border-radius: 0;
+  color: inherit;
+}
+
+.oc-menu-button span {
+  width: 18px;
+  height: 1.5px;
+  background: currentColor;
+  display: block;
+}
+
+/* Mobile Drawer Overlay */
+.oc-mobile-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(14, 17, 22, 0.7);
+  backdrop-filter: blur(8px);
+  z-index: 2000;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.oc-mobile-drawer {
+  width: min(380px, 88vw);
+  height: 100%;
+  background: #ffffff;
+  color: var(--oc-ink);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  box-shadow: -8px 0 30px rgba(0, 0, 0, 0.25);
+}
+
+.oc-mobile-drawer-head {
+  padding: 22px 24px;
+  border-bottom: 1px solid var(--oc-line);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.oc-mobile-close {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--oc-ink);
+  padding: 6px;
+}
+
+.oc-mobile-drawer-body {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.oc-mobile-nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px 0;
+  border-bottom: 1px solid var(--oc-line);
+  padding-bottom: 16px;
+}
+
+.oc-mobile-link {
+  display: block;
+  padding: 11px 0;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--oc-ink);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(220, 223, 218, 0.4);
+}
+
+.oc-mobile-link.active {
+  color: var(--oc-accent);
+}
+
+.oc-mobile-lang-row {
+  margin-bottom: 24px;
+}
+
+.oc-mobile-lang-pills {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+.oc-lang-pill {
+  padding: 8px 12px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+  border: 1px solid var(--oc-line);
+  text-decoration: none;
+  color: var(--oc-ink);
+  transition: all 0.15s;
+}
+
+.oc-lang-pill.is-active {
+  background: var(--oc-dark);
+  color: #ffffff;
+  border-color: var(--oc-dark);
+}
+
+/* ---------------- 4. SubpageHero Component (One Church Standard) ---------------- */
+.oc-subpage-hero {
+  position: relative;
+  background-color: var(--oc-dark);
+  color: #ffffff;
+  overflow: hidden;
+  text-align: center;
+}
+
+.oc-subpage-hero-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  pointer-events: none;
+  transform: scale(1.04);
+  transition: transform 1.2s ease-out;
+}
+
+.oc-subpage-hero-scrim {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgba(14, 17, 22, 0.74) 0%,
+    rgba(14, 17, 22, 0.5) 48%,
+    rgba(14, 17, 22, 0.9) 100%
+  );
+}
+
+.oc-subpage-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 860px;
+  margin-inline: auto;
+  padding: 140px 24px 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .oc-subpage-hero-content {
+    padding: 170px 24px 84px;
+  }
+}
+
+.oc-subpage-hero-title {
+  font-family: var(--font-display) !important;
+  font-size: clamp(2rem, 4.4vw, 3.75rem);
+  font-weight: 800 !important;
+  line-height: 1.15;
+  letter-spacing: 0.04em !important;
+  text-transform: uppercase !important;
+  color: #ffffff !important;
+  margin: 0 0 16px 0;
+}
+
+.oc-subpage-hero-title.is-khmer {
+  font-family: var(--font-khmer), sans-serif !important;
+  line-height: 1.45;
+  letter-spacing: 0 !important;
+}
+
+.oc-subpage-hero-subtitle {
+  font-family: var(--font-body);
+  font-size: clamp(0.95rem, 1.8vw, 1.15rem);
+  font-weight: 400;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.9);
+  max-width: 680px;
+  margin: 0 0 20px 0;
+}
+
+.oc-subpage-hero-subtitle.is-khmer {
+  font-family: var(--font-khmer), sans-serif;
+  line-height: 1.9;
+}
+
+.oc-badge-pill {
+  display: inline-block;
+  padding: 6px 14px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #ffffff;
+  border-radius: 0;
+  margin-top: 10px;
+}
+
+.oc-hero-stats {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 28px;
+}
+
+.oc-hero-stat-item {
+  padding: 12px 20px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.oc-hero-stat-num {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.oc-hero-stat-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.75);
+  margin-top: 3px;
+}
+
+.oc-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.oc-hero-bottom-line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* ---------------- 5. One Church 4-Card Photographic Grid (Overlay Badges) ---------------- */
+.oc-photo-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+@media (max-width: 1024px) {
+  .oc-photo-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .oc-photo-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.oc-photo-card {
+  position: relative;
+  display: block;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: var(--oc-dark);
+  text-decoration: none !important;
+  border-radius: 0;
+}
+
+.oc-photo-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s ease;
+}
+
+.oc-photo-card:hover .oc-photo-card-img {
+  transform: scale(1.07);
+  filter: brightness(0.9);
+}
+
+.oc-card-badge-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  padding: 12px 24px;
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #ffffff;
+  text-align: center;
+  border-radius: 0;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.oc-badge-teal {
+  background: #4a7c87;
+}
+
+.oc-badge-navy {
+  background: #1c5080;
+}
+
+.oc-badge-gold {
+  background: #b3924e;
+}
+
+.oc-badge-charcoal {
+  background: #1c2430;
+}
+
+/* ---------------- 6. One Church Editorial Cards & Clean Content ---------------- */
+.oc-card {
+  background: #ffffff;
+  border: 1px solid var(--oc-line);
+  border-radius: 0;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.oc-card:hover {
+  border-color: var(--oc-dark);
+  transform: translateY(-2px);
+}
+
+.oc-card-body {
+  padding: 32px 28px;
+}
+
+.oc-card-num {
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  color: var(--oc-accent);
+  display: block;
+  margin-bottom: 8px;
+}
+
+.oc-card-title {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--oc-ink);
+  line-height: 1.25;
+  margin: 0 0 12px 0;
+}
+
+.oc-card-sub {
+  font-family: var(--font-body);
+  font-size: 14.5px;
+  color: var(--oc-muted);
+  line-height: 1.7;
+  margin: 0 0 16px 0;
+}
+
+/* ---------------- 7. Connect Banner (One Church Signature) ---------------- */
+.oc-connect {
+  background-color: var(--oc-dark);
+  color: #ffffff;
+  padding: 88px 24px;
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.oc-connect-inner {
+  max-width: 760px;
+  margin-inline: auto;
+}
+
+.oc-connect-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3.5vw, 2.75rem);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: #ffffff;
+  line-height: 1.2;
+  margin: 0 0 16px 0;
+}
+
+.oc-connect-sub {
+  font-family: var(--font-body);
+  font-size: clamp(0.95rem, 1.6vw, 1.1rem);
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.75;
+  margin: 0 0 32px 0;
+}
+
+.oc-connect-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+}
+
+/* ---------------- 8. One Church Minimalist Deep Dark Footer ---------------- */
+.oc-footer {
+  background-color: var(--oc-dark);
+  color: rgba(255, 255, 255, 0.85);
+  font-family: var(--font-body);
+}
+
+.oc-footer-newsletter-wrap {
+  width: min(860px, 90%);
+  margin-inline: auto;
+  padding-top: 76px;
+  padding-bottom: 56px;
+  text-align: center;
+}
+
+.oc-footer-newsletter-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3vw, 2.3rem);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #ffffff;
+  margin: 0 0 12px 0;
+}
+
+.oc-footer-newsletter-sub {
+  font-size: 14.5px;
+  color: rgba(255, 255, 255, 0.75);
+  max-width: 580px;
+  margin: 0 auto 28px;
+  line-height: 1.7;
+}
+
+.oc-newsletter-form {
+  display: flex;
+  justify-content: center;
+  max-width: 520px;
+  margin-inline: auto;
+  gap: 0;
+}
+
+@media (max-width: 540px) {
+  .oc-newsletter-form {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+.oc-newsletter-input {
+  flex: 1;
+  min-height: 48px;
+  padding: 0 18px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+  font-size: 13.5px;
+  border-radius: 0;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.oc-newsletter-input:focus {
+  border-color: #ffffff;
+}
+
+.oc-newsletter-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 0 24px;
+  background: #ffffff;
+  color: var(--oc-dark);
+  font-family: var(--font-body);
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.oc-newsletter-btn:hover {
+  background: #e2e8f0;
+}
+
+.oc-newsletter-success {
+  padding: 14px 20px;
+  background: rgba(74, 124, 135, 0.2);
+  border: 1px solid var(--oc-teal);
+  color: #ffffff;
+  font-size: 13.5px;
+  font-weight: 600;
+  max-width: 520px;
+  margin-inline: auto;
+}
+
+.oc-footer-divider {
+  width: min(1320px, 92%);
+  margin-inline: auto;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.oc-footer-grid {
+  width: min(1320px, 92%);
+  margin-inline: auto;
+  padding-block: 64px;
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr 1.2fr;
+  gap: 40px;
+}
+
+@media (max-width: 1024px) {
+  .oc-footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 36px;
+  }
+}
+
+@media (max-width: 640px) {
+  .oc-footer-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+.oc-footer-brand-col {
+  padding-right: 20px;
+}
+
+.oc-footer-about-text {
+  font-size: 13.5px;
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 18px 0;
+}
+
+.oc-footer-socials {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.oc-social-icon-btn {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.oc-social-icon-btn:hover {
+  background: #ffffff;
+  color: var(--oc-dark);
+  border-color: #ffffff;
+}
+
+.oc-footer-heading {
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #ffffff;
+  margin: 0 0 20px 0;
+}
+
+.oc-footer-link-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+
+.oc-footer-link-list a {
+  font-size: 13.5px;
+  color: rgba(255, 255, 255, 0.75);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.oc-footer-link-list a:hover {
+  color: #ffffff;
+}
+
+.oc-footer-address {
+  font-style: normal;
+  font-size: 13.5px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 16px;
+}
+
+.oc-footer-contact-links {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.oc-footer-contact-item {
+  font-size: 13.5px;
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.oc-footer-contact-item:hover {
+  color: #ffffff;
+}
+
+.oc-footer-contact-link {
+  font-size: 12.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--oc-teal);
+  text-decoration: none;
+  margin-top: 6px;
+  display: inline-block;
+}
+
+.oc-footer-contact-link:hover {
+  color: #ffffff;
+}
+
+.oc-footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 24px 0;
+}
+
+.oc-footer-bottom-inner {
+  width: min(1320px, 92%);
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  font-size: 12.5px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.oc-footer-motto {
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.oc-back-to-top {
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.15s;
+}
+
+.oc-back-to-top:hover {
+  color: #ffffff;
+}
+
+/* =========================================================================
+   ONE CHURCH COMPONENT OVERRIDES (Zero AI Gold, Minimalist Human Classic)
+   ========================================================================= */
+
+.resource-filter-bar {
+  background: #f4f5f3 !important;
+  border-bottom: 1px solid #dcdfda !important;
+  padding: 1rem 0 !important;
+}
+
+.resource-filter-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.resource-category-tabs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.resource-tab-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 0.65rem 1.25rem !important;
+  background: #ffffff !important;
+  border: 1px solid #dcdfda !important;
+  border-radius: 0 !important;
+  color: #141716 !important;
+  font-family: var(--font-body) !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+}
+
+.resource-tab-btn:hover {
+  background: #e9ebe6 !important;
+  border-color: #141716 !important;
+}
+
+.resource-tab-btn.is-active {
+  background: #141716 !important;
+  border-color: #141716 !important;
+  color: #ffffff !important;
+}
+
+.resource-tab-count {
+  font-size: 10px !important;
+  opacity: 0.75;
+}
+
+.resource-search-input {
+  border-radius: 0 !important;
+  border: 1px solid #dcdfda !important;
+  padding: 0.65rem 1.25rem !important;
+  font-size: 13.5px !important;
+  outline: none !important;
+}
+
+.resource-search-input:focus {
+  border-color: #141716 !important;
+  box-shadow: none !important;
+}
+
+.resource-featured-card {
+  border-radius: 0 !important;
+  border: 1px solid #dcdfda !important;
+  border-left: 1px solid #dcdfda !important;
+  box-shadow: none !important;
+  background: #ffffff !important;
+}
+
+.resource-card {
+  border-radius: 0 !important;
+  border: 1px solid #dcdfda !important;
+  box-shadow: none !important;
+  background: #ffffff !important;
+}
+
+.resource-card:hover {
+  border-color: #141716 !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.resource-btn {
+  border-radius: 0 !important;
+  font-family: var(--font-body) !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+  box-shadow: none !important;
+}
+
+.resource-btn.is-primary {
+  background: #141716 !important;
+  border-color: #141716 !important;
+  color: #ffffff !important;
+}
+
+.resource-btn.is-gold {
+  background: var(--oc-teal) !important;
+  border-color: var(--oc-teal) !important;
+  color: #ffffff !important;
+}
+
+.resource-hub-section {
+  background: #ffffff !important;
+  padding: 5rem 0 !important;
+}
+
+.resource-hub-card {
+  border-radius: 0 !important;
+  border: 1px solid #dcdfda !important;
+  box-shadow: none !important;
+}
+
+.resource-hub-card:hover {
+  border-color: #141716 !important;
+  transform: none !important;
+}
+
+/* Library Clean Overrides */
+.library-card,
+.book-card-real {
+  border-radius: 0 !important;
+  border: 1px solid #dcdfda !important;
+  box-shadow: none !important;
+}
+
+.library-btn {
+  border-radius: 0 !important;
+  font-family: var(--font-body) !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+}
+
+.library-btn.is-primary {
+  background: #141716 !important;
+  border-color: #141716 !important;
+  color: #ffffff !important;
+}
+
+.library-btn.is-gold {
+  background: var(--oc-teal) !important;
+  border-color: var(--oc-teal) !important;
+  color: #ffffff !important;
+}
+
+/* ============ One Church Home Cinematic Hero ============ */
+.oc-home-hero {
+  position: relative;
+  min-height: 88vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: #0e1116;
+  color: #ffffff;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .oc-home-hero {
+    min-height: 94vh;
+  }
+}
+
+.oc-home-hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  z-index: 1;
+  filter: brightness(0.65);
+  transform: scale(1.04);
+}
+
+.oc-home-hero-scrim {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(14, 17, 22, 0.72) 0%, rgba(14, 17, 22, 0.45) 45%, rgba(14, 17, 22, 0.88) 100%);
+  z-index: 2;
+}
+
+.oc-home-hero-controls {
+  position: absolute;
+  top: 100px;
+  right: 24px;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.oc-hero-control-btn {
+  padding: 6px 12px;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 0;
+  transition: background 0.2s;
+}
+
+.oc-hero-control-btn:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.oc-home-hero-content {
+  position: relative;
+  z-index: 10;
+  max-width: 880px;
+  margin-inline: auto;
+  padding: 150px 24px 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.oc-home-hero-title {
+  font-family: var(--font-display) !important;
+  font-size: clamp(2.2rem, 5vw, 4.25rem);
+  font-weight: 800;
+  line-height: 1.12;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #ffffff;
+  margin: 0 0 1.25rem 0;
+}
+
+.oc-home-hero-title.is-khmer {
+  font-family: var(--font-khmer), sans-serif !important;
+  line-height: 1.45;
+  letter-spacing: 0;
+}
+
+.oc-home-hero-desc {
+  font-family: var(--font-body);
+  font-size: clamp(0.95rem, 1.8vw, 1.15rem);
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.9);
+  max-width: 680px;
+  margin: 0 0 2rem 0;
+}
+
+.oc-home-hero-desc.is-khmer {
+  font-family: var(--font-khmer), sans-serif;
+  line-height: 1.9;
+}
+
+.oc-home-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+}
+
+.oc-home-hero-divider {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.12);
+  z-index: 10;
+}
+
+/* =========================================================================
+   ESSENTIAL RESPONSIVE GRID & LAYOUT UTILITIES (One Church Standard)
+   ========================================================================= */
+
+.relative { position: relative; }
+.absolute { position: absolute; }
+.inset-0 { inset: 0; }
+.inset-x-0 { left: 0; right: 0; }
+.top-0 { top: 0; }
+.bottom-0 { bottom: 0; }
+.left-0 { left: 0; }
+.right-0 { right: 0; }
+.top-28 { top: 6.5rem; }
+.right-6 { right: 1.5rem; }
+.z-0 { z-index: 0; }
+.z-10 { z-index: 10; }
+.z-20 { z-index: 20; }
+.z-30 { z-index: 30; }
+
+.overflow-hidden { overflow: hidden; }
+.pointer-events-none { pointer-events: none; }
+.w-full { width: 100%; }
+.h-full { height: 100%; }
+.min-h-\[92vh\] { min-height: 92vh; }
+.scale-105 { transform: scale(1.05); }
+
+.object-cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.max-w-xl { max-width: 36rem; }
+.max-w-2xl { max-width: 42rem; }
+.max-w-3xl { max-width: 48rem; }
+.max-w-4xl { max-width: 56rem; }
+.mx-auto { margin-left: auto; margin-right: auto; }
+
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.flex-wrap { flex-wrap: wrap; }
+.items-center { align-items: center; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+
+.gap-2 { gap: 0.5rem; }
+.gap-3 { gap: 0.75rem; }
+.gap-4 { gap: 1rem; }
+.gap-6 { gap: 1.5rem; }
+.gap-8 { gap: 2rem; }
+.gap-12 { gap: 3rem; }
+
+.grid { display: grid; }
+.grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+
+@media (min-width: 640px) {
+  .sm\:min-h-screen { min-height: 100vh; }
+  .sm\:flex { display: flex; }
+  .sm\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (min-width: 768px) {
+  .md\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .md\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .md\:grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+
+@media (min-width: 1024px) {
+  .lg\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .lg\:grid-cols-12 { grid-template-columns: repeat(12, minmax(0, 1fr)); }
+  .lg\:col-span-6 { grid-column: span 6 / span 6; }
+  .lg\:col-span-7 { grid-column: span 7 / span 7; }
+  .lg\:col-span-5 { grid-column: span 5 / span 5; }
+  .lg\:gap-16 { gap: 4rem; }
+}
+
+.text-center { text-align: center; }
+.uppercase { text-transform: uppercase; }
+.font-normal { font-weight: 400; }
+.font-semibold { font-weight: 600; }
+.font-bold { font-weight: 700; }
+.font-extrabold { font-weight: 800; }
+
+.text-white { color: #ffffff; }
+.text-white\/90 { color: rgba(255, 255, 255, 0.9); }
+.text-white\/80 { color: rgba(255, 255, 255, 0.8); }
+.text-white\/70 { color: rgba(255, 255, 255, 0.7); }
+.text-white\/60 { color: rgba(255, 255, 255, 0.6); }
+
+.text-xs { font-size: 0.75rem; }
+.text-sm { font-size: 0.875rem; }
+.text-base { font-size: 1rem; }
+.text-lg { font-size: 1.125rem; }
+.text-xl { font-size: 1.25rem; }
+.text-2xl { font-size: 1.5rem; }
+
+.tracking-tight { letter-spacing: -0.02em; }
+.tracking-wider { letter-spacing: 0.05em; }
+
+.space-y-3 > * + * { margin-top: 0.75rem; }
+.space-y-4 > * + * { margin-top: 1rem; }
+.space-y-5 > * + * { margin-top: 1.25rem; }
+.space-y-6 > * + * { margin-top: 1.5rem; }
+
+.mb-2 { margin-bottom: 0.5rem; }
+.mb-3 { margin-bottom: 0.75rem; }
+.mb-4 { margin-bottom: 1rem; }
+.mb-6 { margin-bottom: 1.5rem; }
+.mb-8 { margin-bottom: 2rem; }
+.mb-12 { margin-bottom: 3rem; }
+.mb-16 { margin-bottom: 4rem; }
+.pt-2 { padding-top: 0.5rem; }
+.pt-4 { padding-top: 1rem; }
+.pt-36 { padding-top: 9rem; }
+.pb-20 { padding-bottom: 5rem; }
+.py-14 { padding-top: 3.5rem; padding-bottom: 3.5rem; }
+.py-16 { padding-top: 4rem; padding-bottom: 4rem; }
+.px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }

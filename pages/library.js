@@ -3,6 +3,8 @@ import Head from "next/head";
 import Link from "next/link";
 import SiteHeader from "../components/SiteHeader";
 import SiteFooter from "../components/SiteFooter";
+import SubpageHero from "../components/SubpageHero";
+import ConnectBanner from "../components/ConnectBanner";
 import { BOOKS } from "../lib/books";
 import { ALL_RESOURCES, RESOURCE_FORMATS } from "../lib/libraryResources";
 import { useT, useLocale, pick } from "../lib/i18n";
@@ -201,7 +203,24 @@ export default function Library() {
         />
       )}
 
-      {/* MAIN 3-COLUMN PORTAL DASHBOARD (MATCHING USER SCREENSHOT) */}
+      {/* 1. ONE CHURCH HERO */}
+      <SubpageHero
+        eyebrow={isKm ? "បណ្ណាល័យទេវវិទ្យាឌីជីថល • ធនធានសិក្សា" : "Theological Library & Digital Resources"}
+        title={isKm ? "បណ្ណាល័យសៀវភៅ និងអត្ថបទជំនឿ" : "Theological Library & Bible Volumes"}
+        subtitle={
+          isKm
+            ? "សៀវភៅទេវវិទ្យាជាភាសាខ្មែរ អត្ថាធិប្បាយព្រះគម្ពីរ ម៉ាថាយ ហេនរី និងធនធានសំឡេងសម្រាប់អ្នកជឿ និងគ្រូគង្វាលគ្រប់រូប។"
+            : "Free biblical study companions, theological archives, commentaries, audio teachings, and bilingual reference texts."
+        }
+        bgImage="/images/all-nations-institute-campus.jpg"
+        stats={[
+          { num: `${statBooks}`, label: isKm ? "សៀវភៅ" : "Books" },
+          { num: `${statAudio}`, label: isKm ? "សំឡេង" : "Audio" },
+          { num: "PDF", label: isKm ? "ទាញយកឥតគិតថ្លៃ" : "Free Download" },
+        ]}
+      />
+
+      {/* MAIN 3-COLUMN PORTAL DASHBOARD */}
       <main className="portal-page-wrap">
         <div className="container" style={{ maxWidth: 1280 }}>
           <div className="portal-layout-grid">
@@ -936,6 +955,9 @@ export default function Library() {
           </div>
         </div>
       )}
+
+      {/* ONE CHURCH CONNECT BANNER */}
+      <ConnectBanner />
 
       <SiteFooter />
     </>

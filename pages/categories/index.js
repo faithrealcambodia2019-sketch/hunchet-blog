@@ -2,6 +2,8 @@ import Head from "next/head";
 import Link from "next/link";
 import SiteHeader from "../../components/SiteHeader";
 import SiteFooter from "../../components/SiteFooter";
+import SubpageHero from "../../components/SubpageHero";
+import ConnectBanner from "../../components/ConnectBanner";
 import { useLocale } from "../../lib/i18n";
 import { getCategories } from "../../lib/wordpress";
 
@@ -20,7 +22,7 @@ export default function Categories({ categories, error }) {
   const totalArticles = categories.reduce((acc, cat) => acc + (cat.count || 0), 0);
 
   return (
-    <>
+    <div className="oc-site">
       <Head>
         <title>
           {isKm
@@ -39,109 +41,111 @@ export default function Categories({ categories, error }) {
 
       <SiteHeader />
 
-      {/* Stately Sanctuary Hero */}
-      <section className="sanctuary-hero">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="/images/sermon-purpose-congregation.jpg"
-          alt="Hun Chet Ministry Sanctuary"
-          className="sanctuary-hero-bg"
-        />
-        <div className="sanctuary-hero-overlay" />
-        <div className="sanctuary-hero-content">
-          <div className="sanctuary-badge-tag">
-            <span>{isKm ? "ប្រធានបទ និងគោលលទ្ធិព្រះគម្ពីរ" : "Theological Themes & Topics"}</span>
-          </div>
-          <h1 className="sanctuary-hero-title">
-            {isKm ? "រុករកតាមប្រធានបទ" : "Browse Topics"}
-          </h1>
-          <p className="sanctuary-hero-subtitle">
-            {isKm
+      <main>
+        {/* ONE CHURCH SUBPAGE HERO */}
+        <SubpageHero
+          bgImage="/images/sermon-purpose-congregation.jpg"
+          kicker={isKm ? "ប្រធានបទ និងគោលលទ្ធិព្រះគម្ពីរ" : "THEOLOGICAL TOPICS"}
+          title={isKm ? "រុករកតាមប្រធានបទ" : "TOPICS & CATEGORIES"}
+          subtitle={
+            isKm
               ? "ការបង្រៀនព្រះគម្ពីរជាប្រព័ន្ធ ចាត់តាមប្រធានបទទេវវិទ្យា"
-              : "Systematic Biblical Teaching Grouped by Theological Subject"}
-          </p>
-          <p className="sanctuary-hero-lead">
-            {isKm
-              ? "រុករកធម្មទេសនា ព្រះបន្ទូលប្រចាំថ្ងៃ និងការពន្យល់ជាក់ស្តែងសម្រាប់ការបណ្តុះសិស្ស។"
-              : "Explore sermons, devotions, and practical expositions organized for deep discipleship."}
-          </p>
+              : "Systematic Biblical Teaching Grouped by Theological Subject"
+          }
+          breadcrumbs={[
+            { label: isKm ? "ទំព័រដើម" : "Home", href: "/" },
+            { label: isKm ? "ប្រធានបទ" : "Topics" },
+          ]}
+          stats={[
+            { number: categories.length, label: isKm ? "ប្រធានបទសកម្ម" : "Active Topics" },
+            { number: `${totalArticles}+`, label: isKm ? "អត្ថបទសរុប" : "Total Articles" },
+            { number: "Hun Chet", label: isKm ? "ជំនឿ និងការបង្រៀន" : "Faith & Teaching" },
+          ]}
+        />
 
-          <div className="sanctuary-stat-strip">
-            <div className="sanctuary-stat-card">
-              <span className="sanctuary-stat-num">{categories.length}</span>
-              <span className="sanctuary-stat-label">
-                {isKm ? "ប្រធានបទសកម្ម" : "Active Topics"}
-              </span>
-            </div>
-            <div className="sanctuary-stat-card">
-              <span className="sanctuary-stat-num">{totalArticles}+</span>
-              <span className="sanctuary-stat-label">
-                {isKm ? "អត្ថបទសរុប" : "Total Articles"}
-              </span>
-            </div>
-            <div className="sanctuary-stat-card">
-              <span className="sanctuary-stat-num">
-                {isKm ? "ហ៊ុន ចិត្ត" : "Hun Chet"}
-              </span>
-              <span className="sanctuary-stat-label">
-                {isKm ? "ជំនឿ និងការបង្រៀន" : "Faith & Teaching"}
-              </span>
-            </div>
-          </div>
-        </div>
-      </section>
+        <section className="oc-section" style={{ background: "#ffffff" }}>
+          <div className="container">
+            {error && (
+              <p style={{ color: "#e53e3e", textAlign: "center", marginBottom: "2rem" }}>
+                {isKm ? "មិនអាចទាញយកប្រធានបទបានទេ: " : "Couldn't load topics: "}
+                {error}
+              </p>
+            )}
 
-      <main className="section">
-        <div className="container">
-          {error && (
-            <p className="error">
-              {isKm ? "មិនអាចទាញយកប្រធានបទបានទេ: " : "Couldn't load topics: "}
-              {error}
-            </p>
-          )}
-
-          <div className="category-grid">
-            {categories.map((cat) => (
-              <Link
-                key={cat.id}
-                href={`/category/${cat.slug}`}
-                className="category-card"
-                style={{ borderTop: "3px solid var(--gold)", borderRadius: "var(--radius)" }}
-              >
-                <span
-                  className="category-card-name"
-                  style={{ fontFamily: "var(--font-display)", color: "var(--navy-dark)" }}
-                >
-                  {cat.name}
-                </span>
-                <span className="category-card-count" style={{ color: "var(--muted)" }}>
-                  {cat.count} {isKm ? "អត្ថបទ" : cat.count === 1 ? "article" : "articles"}
-                </span>
-                <span
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
+                gap: "20px",
+              }}
+            >
+              {categories.map((cat) => (
+                <Link
+                  key={cat.id}
+                  href={`/category/${cat.slug}`}
                   style={{
-                    fontSize: "0.75rem",
-                    fontWeight: 700,
-                    textTransform: "uppercase",
-                    letterSpacing: "0.1em",
-                    color: "var(--gold)",
-                    marginTop: "0.75rem",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "space-between",
+                    padding: "2rem",
+                    background: "#fbfbf9",
+                    border: "1px solid #dcdfda",
+                    borderRadius: 0,
+                    textDecoration: "none",
+                    transition: "border-color 0.2s, background 0.2s",
                   }}
                 >
-                  {isKm ? "រុករកការបង្រៀន →" : "Explore Expositions →"}
-                </span>
-              </Link>
-            ))}
-          </div>
+                  <div>
+                    <span
+                      style={{
+                        fontFamily: "var(--font-display)",
+                        fontSize: "1.2rem",
+                        fontWeight: 700,
+                        color: "#141716",
+                        marginBottom: "0.5rem",
+                        display: "block",
+                      }}
+                    >
+                      {cat.name}
+                    </span>
+                    <span style={{ color: "#64748b", fontSize: "0.88rem" }}>
+                      {cat.count} {isKm ? "អត្ថបទ" : cat.count === 1 ? "article" : "articles"}
+                    </span>
+                  </div>
 
-          <div style={{ textAlign: "center", marginTop: "3.5rem" }}>
-            <Link href="/articles" className="btn btn-primary">
-              {isKm ? "មើលអត្ថបទ និងធម្មទេសនាទាំងអស់" : "View All Articles & Sermons"}
-            </Link>
+                  <span
+                    style={{
+                      fontSize: "11px",
+                      fontWeight: 700,
+                      textTransform: "uppercase",
+                      letterSpacing: "0.14em",
+                      color: "var(--oc-teal)",
+                      marginTop: "1.5rem",
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: "4px",
+                    }}
+                  >
+                    <span>{isKm ? "រុករកការបង្រៀន" : "EXPLORE TOPIC"}</span>
+                    <span>→</span>
+                  </span>
+                </Link>
+              ))}
+            </div>
+
+            <div style={{ textAlign: "center", marginTop: "3.5rem" }}>
+              <Link href="/articles" className="oc-button oc-solid">
+                <span>{isKm ? "មើលអត្ថបទ និងធម្មទេសនាទាំងអស់" : "VIEW ALL ARTICLES & SERMONS"}</span>
+              </Link>
+            </div>
           </div>
-        </div>
+        </section>
+
+        {/* ONE CHURCH CONNECT BANNER */}
+        <ConnectBanner />
       </main>
 
       <SiteFooter />
-    </>
+    </div>
   );
 }

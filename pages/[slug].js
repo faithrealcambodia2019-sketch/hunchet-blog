@@ -2,6 +2,8 @@ import Head from "next/head";
 import Link from "next/link";
 import SiteHeader from "../components/SiteHeader";
 import SiteFooter from "../components/SiteFooter";
+import SubpageHero from "../components/SubpageHero";
+import ConnectBanner from "../components/ConnectBanner";
 import { useLocale } from "../lib/i18n";
 import { getAllPageSlugs, getPageBySlug, cleanContentHtml } from "../lib/wordpress";
 
@@ -63,49 +65,48 @@ export default function WordPressPage({ page }) {
   const content = cleanContentHtml(page.content?.rendered || "");
 
   return (
-    <>
+    <div className="oc-site">
       <Head>
         <title>{plainTitle} — Hun Chet</title>
       </Head>
 
       <SiteHeader />
 
-      <main className="container" style={{ paddingBottom: "5rem" }}>
-        <div className="reading-room-breadcrumbs" style={{ marginTop: "2.5rem" }}>
-          <Link href="/">{isKm ? "ទំព័រដើម" : "Home"}</Link>
-          <span>/</span>
-          <span style={{ color: "var(--navy-dark)", fontWeight: 700 }}>{plainTitle}</span>
-        </div>
+      <main>
+        {/* ONE CHURCH SUBPAGE HERO */}
+        <SubpageHero
+          bgImage="/images/history-prayer-fellowship.jpg"
+          kicker={isKm ? "ទំព័រព័ត៌មាន" : "PAGE ARCHIVE"}
+          title={plainTitle}
+          breadcrumbs={[
+            { label: isKm ? "ទំព័រដើម" : "Home", href: "/" },
+            { label: plainTitle },
+          ]}
+        />
 
-        <article className="post-page" style={{ paddingTop: "0.5rem" }}>
-          <header className="reading-room-header">
-            <h1
-              style={{
-                fontFamily: "var(--font-display)",
-                fontSize: "clamp(2rem, 4vw, 2.75rem)",
-                lineHeight: 1.25,
-                color: "var(--navy-dark)",
-                margin: "0 0 1rem",
-              }}
-            >
-              {plainTitle}
-            </h1>
-          </header>
-
-          <div
+        <div className="container" style={{ maxWidth: 860, paddingBlock: "4rem" }}>
+          <article
             className="post-content"
+            style={{
+              fontSize: "1.08rem",
+              lineHeight: 1.85,
+              color: "#2d3748",
+            }}
             dangerouslySetInnerHTML={{ __html: content }}
           />
 
-          <div style={{ marginTop: "3.5rem" }}>
-            <Link href="/" className="btn btn-primary" style={{ fontSize: "0.82rem" }}>
-              {isKm ? "← ត្រឡប់ទៅទំព័រដើម" : "← Return to Home"}
+          <div style={{ marginTop: "3.5rem", paddingTop: "2rem", borderTop: "1px solid #dcdfda" }}>
+            <Link href="/" className="oc-button oc-solid">
+              <span>{isKm ? "← ត្រឡប់ទៅទំព័រដើម" : "← RETURN TO HOME"}</span>
             </Link>
           </div>
-        </article>
+        </div>
+
+        {/* ONE CHURCH CONNECT BANNER */}
+        <ConnectBanner />
       </main>
 
       <SiteFooter />
-    </>
+    </div>
   );
 }

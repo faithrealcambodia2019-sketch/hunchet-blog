@@ -6,117 +6,37 @@ import { LOGO } from "../lib/media";
 import { LOCALES, useT } from "../lib/i18n";
 import {
   GlobeIcon,
-  TelegramIcon,
-  BookOpenIcon,
-  UserIcon,
-  CameraIcon,
-  PlayIcon,
   CloseIcon,
-  CheckIcon,
-  PhoneIcon,
-  CalendarIcon,
-  FacebookIcon,
+  TelegramIcon,
   ArrowRightIcon,
 } from "./Icons";
 
-const LANG_DISPLAY = {
-  km: "ខ្មែរ",
-  en: "English",
-  ko: "한국어",
-  zh: "中文",
-};
-
-const STRINGS = {
-  blogBadge: {
-    km: "ប្លុកផ្ទាល់ខ្លួន",
-    en: "Personal Blog",
-    ko: "개인 블로그",
-    zh: "个人博客",
-  },
-  topWelcome: {
-    km: "សូមស្វាគមន៍មកកាន់គេហទំព័ររបស់លោកគ្រូ ហ៊ុន ចិត្ត — ចែករំលែកព្រះបន្ទូល ជំនឿ និងជីវិត",
-    en: "Welcome to Hun Chet's Official Blog — Biblical Teaching, Faith & Reflections",
-    ko: "훈 쳇 사역 리더의 개인 블로그 — 성경 강해, 믿음과 삶의 나눔",
-    zh: "欢迎访问 Hun Chet 个人博客 — 圣经讲道、真理与生命见证",
-  },
-  authorName: {
-    km: "ហ៊ុន ចិត្ត",
-    en: "Hun Chet",
-    ko: "훈 쳇",
-    zh: "Hun Chet",
-  },
-  blogSubtitle: {
-    km: "គេហទំព័រផ្លូវការ • ការចែករំលែកព្រះបន្ទូល",
-    en: "Official Website • Faith & Biblical Writing",
-    ko: "개인 블로그 • 믿음과 글",
-    zh: "个人博客 • 信仰与写作",
-  },
-  readArticlesBtn: {
-    km: "អានអត្ថបទ",
-    en: "Read Articles",
-    ko: "칼럼 읽기",
-    zh: "阅读文章",
-  },
-  daily365: {
-    km: "ព្រះបន្ទូល ៣៦៥ ថ្ងៃ",
-    en: "365 Devotions",
-    ko: "365일 말씀 묵상",
-    zh: "365每日灵修",
-  },
-  contactAuthor: {
-    km: "ទាក់ទងលោកគ្រូ ហ៊ុន ចិត្ត",
-    en: "Contact Hun Chet",
-    ko: "사역자에게 연락하기",
-    zh: "联系作者",
-  },
-};
-
-// 1. Hun Chet Personal Blog Top Bar
-function TopBlogBar({ locale }) {
-  const tStr = (key) => STRINGS[key]?.[locale] || STRINGS[key]?.km || STRINGS[key]?.en || "";
-
+export function Brand({ locale }) {
+  const isKm = locale === "km";
   return (
-    <div className="top-church-bar">
-      <div className="top-church-inner">
-        {/* Left: Blog badge + Welcome text */}
-        <div className="top-church-left">
-          <span
-            className="anc-btn-megaphone"
-            aria-hidden="true"
-            style={{ background: "rgba(184, 155, 94, 0.2)", color: "var(--gold)" }}
-          >
-            <span>{tStr("blogBadge")}</span>
-          </span>
-          <span className="anc-worship-text">{tStr("topWelcome")}</span>
-        </div>
-
-        {/* Right: 365 Devotions shortcut + Telegram */}
-        <div className="top-church-right">
-          <Link
-            href="/devotions"
-            className="anc-view-flyer-btn"
-            style={{ textDecoration: "none", color: "inherit" }}
-          >
-            {tStr("daily365")}
-          </Link>
-          <span className="top-church-sep" aria-hidden="true">•</span>
-          <a
-            href="https://t.me/+855966875886"
-            target="_blank"
-            rel="noreferrer"
-            className="top-church-link"
-          >
-            <TelegramIcon style={{ width: 13, height: 13, marginRight: 4 }} />
-            <span>Telegram</span>
-          </a>
-        </div>
-      </div>
-    </div>
+    <Link
+      href="/"
+      className="oc-brand"
+      aria-label="Hun Chet Personal Blog Home"
+      onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+    >
+      <span className="oc-brand-logo-wrap">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={LOGO} alt="Hun Chet Brand Mark" width="44" height="44" />
+      </span>
+      <span className="oc-brand-divider" aria-hidden="true" />
+      <span className="oc-brand-text">
+        <strong className="oc-brand-title">HUN CHET</strong>
+        <small className="oc-brand-subtitle">
+          {isKm ? "លោកគ្រូ ហ៊ុន ចិត្ត • ប្លុកផ្ទាល់ខ្លួន" : "Personal Blog & Ministry"}
+        </small>
+      </span>
+    </Link>
   );
 }
 
-// 2. Language Switcher Dropdown
-function LanguageSwitch() {
+// Language Switcher Dropdown
+function LanguageSwitch({ isScrolled, isHome }) {
   const router = useRouter();
   const t = useT();
   const [open, setOpen] = useState(false);
@@ -144,22 +64,22 @@ function LanguageSwitch() {
   }, [open]);
 
   return (
-    <div className="lang-switch" ref={wrapRef}>
+    <div className="oc-lang-switch" ref={wrapRef}>
       <button
         type="button"
-        className="lang-trigger"
+        className="oc-lang-trigger"
         onClick={() => setOpen((v) => !v)}
         aria-expanded={open}
         aria-haspopup="true"
         aria-label={t("lang.switch")}
       >
-        <GlobeIcon />
-        <span lang={current && current.code}>{current && current.short}</span>
-        <span className="lang-caret" aria-hidden="true" />
+        <GlobeIcon style={{ width: 14, height: 14 }} />
+        <span>{current ? current.short : "KM"}</span>
+        <span className="oc-caret" aria-hidden="true" />
       </button>
 
       {open && (
-        <ul className="lang-menu">
+        <ul className="oc-lang-menu">
           {LOCALES.map((l) => (
             <li key={l.code}>
               <Link
@@ -180,361 +100,185 @@ function LanguageSwitch() {
   );
 }
 
-// 3. Main Hun Chet Personal Blog Header Component
 export default function SiteHeader() {
   const router = useRouter();
   const t = useT();
   const locale = router.locale || "km";
+  const isKm = locale === "km";
+  const isHome = router.pathname === "/";
 
   const [mounted, setMounted] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     setMounted(true);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 40);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
-
-  const tStr = (key) => STRINGS[key]?.[locale] || STRINGS[key]?.km || STRINGS[key]?.en || "";
-
-  const isRouteActive = (href) => {
-    if (href === "/") return router.pathname === "/";
-    return router.pathname.startsWith(href);
-  };
 
   // Close mobile drawer on route change
   useEffect(() => {
     setMobileOpen(false);
   }, [router.asPath, router.locale]);
 
-  // Lock body and html scroll when mobile drawer is active
+  // Lock body scroll when mobile drawer is open
   useEffect(() => {
     if (mobileOpen) {
-      const origBodyOverflow = document.body.style.overflow;
-      const origHtmlOverflow = document.documentElement.style.overflow;
-      document.body.style.overflow = "hidden";
-      document.documentElement.style.overflow = "hidden";
-      return () => {
-        document.body.style.overflow = origBodyOverflow;
-        document.documentElement.style.overflow = origHtmlOverflow;
-      };
+      document.body.classList.add("oc-menu-open");
+      return () => document.body.classList.remove("oc-menu-open");
     }
   }, [mobileOpen]);
 
-  const authorName = tStr("authorName");
-  const blogSubtitle = tStr("blogSubtitle");
+  const navLinks = [
+    { href: "/", label: t("nav.home") },
+    { href: "/articles", label: t("nav.article") },
+    { href: "/devotions", label: t("nav.devotions") },
+    { href: "/gallery", label: t("nav.gallery") },
+    { href: "/library", label: t("nav.library") },
+    { href: "/resource", label: t("nav.resource") },
+    { href: "/about", label: t("nav.about") },
+    { href: "/contact", label: t("nav.contact") },
+  ];
+
+  const isLinkActive = (href) => {
+    if (href === "/") return router.pathname === "/";
+    return router.pathname.startsWith(href);
+  };
 
   return (
     <>
-      {/* 1. Hun Chet Personal Blog Top Notice Bar */}
-      <TopBlogBar locale={locale} />
+      <header
+        className={`oc-header ${isHome ? "oc-header-home" : ""} ${
+          scrolled || !isHome || mobileOpen ? "oc-scrolled" : ""
+        }`}
+        role="banner"
+      >
+        <nav className="oc-nav" aria-label="Main Navigation">
+          <Brand locale={locale} />
 
-      {/* 2. Main Sticky Header */}
-      <header className="site-header" role="banner">
-        <div className="site-header-inner">
-          {/* Logo & Author Personal Brand */}
-          <Link href="/" className="site-logo" aria-label="Hun Chet - Personal Blog">
-            <span className="brand-mark">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={LOGO} alt={authorName} />
-            </span>
-            <span className="site-logo-text-group">
-              <span className="site-logo-text">{authorName}</span>
-              <span className="site-logo-sub">{blogSubtitle}</span>
-            </span>
-          </Link>
-
-          {/* Desktop Navigation Menu for Personal Blog */}
-          <nav className="site-nav desktop-nav" aria-label="Main Navigation">
-            {/* 1. Home */}
-            <Link
-              href="/"
-              className={`nav-link ${router.pathname === "/" ? "active" : ""}`}
-            >
-              {t("nav.home")}
-            </Link>
-
-            {/* 2. Articles */}
-            <Link
-              href="/articles"
-              className={`nav-link ${isRouteActive("/articles") ? "active" : ""}`}
-            >
-              {t("nav.article")}
-            </Link>
-
-            {/* 3. Daily Devotions [365] */}
-            <Link
-              href="/devotions"
-              className={`nav-link ${isRouteActive("/devotions") ? "active" : ""}`}
-            >
-              <span>{t("nav.devotions")}</span>
-              <span className="nav-badge-365">365</span>
-            </Link>
-
-            {/* 4. Library */}
-            <Link
-              href="/library"
-              className={`nav-link ${isRouteActive("/library") ? "active" : ""}`}
-            >
-              {t("nav.library")}
-            </Link>
-
-            {/* 5. Resource (Videos & Media) */}
-            <Link
-              href="/resource"
-              className={`nav-link ${isRouteActive("/resource") ? "active" : ""}`}
-            >
-              {t("nav.resource")}
-            </Link>
-
-            {/* 6. Gallery */}
-            <Link
-              href="/gallery"
-              className={`nav-link ${isRouteActive("/gallery") ? "active" : ""}`}
-            >
-              {t("nav.gallery")}
-            </Link>
-
-            {/* 7. About Me */}
-            <Link
-              href="/about"
-              className={`nav-link ${isRouteActive("/about") ? "active" : ""}`}
-            >
-              {t("nav.about")}
-            </Link>
-
-            {/* 8. Contact */}
-            <Link
-              href="/contact"
-              className={`nav-link ${isRouteActive("/contact") ? "active" : ""}`}
-            >
-              {t("nav.contact")}
-            </Link>
+          {/* Desktop Nav Links */}
+          <div className="oc-nav-desktop">
+            {navLinks.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`oc-nav-link ${isLinkActive(item.href) ? "active" : ""}`}
+              >
+                {item.label}
+              </Link>
+            ))}
 
             {/* Language Switcher */}
-            <LanguageSwitch />
+            <LanguageSwitch isScrolled={scrolled} isHome={isHome} />
 
-            {/* Read Articles Quick CTA */}
-            <Link
-              href="/articles"
-              className="header-cta-btn"
-            >
-              <span>{tStr("readArticlesBtn")}</span>
+            {/* Sharp One Church CTA Button */}
+            <Link href="/articles" className="oc-nav-cta">
+              <span>{isKm ? "អានអត្ថបទ" : "Read Articles"}</span>
               <ArrowRightIcon style={{ width: 12, height: 12 }} />
             </Link>
-          </nav>
+          </div>
 
-          {/* Mobile Header Actions (Language Switcher + Hamburger) */}
-          <div className="mobile-header-actions">
-            <LanguageSwitch />
+          {/* Mobile Menu Button */}
+          <div className="oc-nav-mobile-toggle">
+            <LanguageSwitch isScrolled={scrolled} isHome={isHome} />
             <button
               type="button"
-              className="mobile-menu-btn"
-              onClick={() => setMobileOpen(!mobileOpen)}
-              aria-label="Toggle navigation menu"
+              className="oc-menu-button"
               aria-expanded={mobileOpen}
+              aria-label={mobileOpen ? "Close menu" : "Open menu"}
+              onClick={() => setMobileOpen(!mobileOpen)}
             >
-              {mobileOpen ? (
-                <CloseIcon style={{ width: 22, height: 22 }} />
-              ) : (
-                <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" strokeWidth="2.2" fill="none">
-                  <line x1="3" y1="12" x2="21" y2="12"></line>
-                  <line x1="3" y1="6" x2="21" y2="6"></line>
-                  <line x1="3" y1="18" x2="21" y2="18"></line>
-                </svg>
-              )}
+              <span />
+              <span />
             </button>
           </div>
-        </div>
+        </nav>
       </header>
 
-      {/* 3. Hun Chet Personal Blog Mobile Drawer */}
+      {/* One Church Minimalist Mobile Drawer */}
       {mounted && typeof document !== "undefined" && mobileOpen && createPortal(
         <div
-          className="mobile-drawer-overlay"
+          className="oc-mobile-overlay"
           onClick={() => setMobileOpen(false)}
           role="dialog"
           aria-modal="true"
-          aria-label="Mobile Navigation"
         >
           <div
-            className="mobile-drawer-sheet anc-style-sheet"
+            className="oc-mobile-drawer"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Drawer Top Header with Author Info */}
-            <div className="mobile-drawer-top">
-              <Link href="/" className="mobile-drawer-brand" onClick={() => setMobileOpen(false)}>
-                <span className="brand-mark" style={{ width: 42, height: 42 }}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={LOGO} alt={authorName} />
-                </span>
-                <div>
-                  <strong style={{ fontSize: "1.2rem", display: "block", lineHeight: 1.15, fontFamily: "var(--font-display)" }}>
-                    {authorName}
-                  </strong>
-                  <span style={{ fontSize: "0.65rem", color: "var(--gold)", letterSpacing: "0.14em", textTransform: "uppercase", fontWeight: 700 }}>
-                    {blogSubtitle}
-                  </span>
-                </div>
-              </Link>
-
+            <div className="oc-mobile-drawer-head">
+              <Brand locale={locale} />
               <button
                 type="button"
-                className="mobile-drawer-close-btn"
+                className="oc-mobile-close"
                 onClick={() => setMobileOpen(false)}
-                aria-label="Close navigation drawer"
+                aria-label="Close menu"
               >
-                <CloseIcon style={{ width: 18, height: 18 }} />
+                <CloseIcon style={{ width: 20, height: 20 }} />
               </button>
             </div>
 
-            {/* Mobile Drawer Body */}
-            <div className="anc-mobile-drawer-body">
-              {/* Language Selector Pills */}
-              <div className="anc-quick-bar" style={{ paddingBottom: "0.5rem" }}>
-                <div className="anc-lang-pills" style={{ width: "100%", justifyContent: "space-between" }}>
+            <div className="oc-mobile-drawer-body">
+              <ul className="oc-mobile-nav-list">
+                {navLinks.map((item) => (
+                  <li key={item.href}>
+                    <Link
+                      href={item.href}
+                      className={`oc-mobile-link ${isLinkActive(item.href) ? "active" : ""}`}
+                      onClick={() => setMobileOpen(false)}
+                    >
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+
+              {/* Language Pills in Mobile Drawer */}
+              <div className="oc-mobile-lang-row">
+                <span className="oc-eyebrow" style={{ marginBottom: "0.5rem" }}>
+                  {isKm ? "ជ្រើសរើសភាសា" : "Language"}
+                </span>
+                <div className="oc-mobile-lang-pills">
                   {LOCALES.map((l) => (
                     <Link
                       key={l.code}
                       href={router.asPath}
                       locale={l.code}
-                      className={`anc-lang-pill ${locale === l.code ? "is-active" : ""}`}
+                      className={`oc-lang-pill ${locale === l.code ? "is-active" : ""}`}
                       onClick={() => setMobileOpen(false)}
-                      style={{ flex: 1, textAlign: "center" }}
                     >
-                      {LANG_DISPLAY[l.code] || l.name}
+                      {l.name}
                     </Link>
                   ))}
                 </div>
               </div>
 
-              {/* Personal Blog Navigation Links */}
-              <div className="anc-nav-card">
-                <Link
-                  href="/"
-                  className={`anc-nav-link ${router.pathname === "/" ? "is-active" : ""}`}
-                  onClick={() => setMobileOpen(false)}
-                >
-                  <div className="anc-nav-link-left">
-                    <span className="anc-link-icon-box" style={{ background: "rgba(17, 43, 74, 0.08)", color: "var(--navy)" }}>
-                      <CheckIcon style={{ width: 14, height: 14 }} />
-                    </span>
-                    <span className="anc-link-title">{t("nav.home")}</span>
-                  </div>
-                </Link>
-
+              {/* Mobile Drawer CTA */}
+              <div className="oc-mobile-drawer-actions">
                 <Link
                   href="/articles"
-                  className={`anc-nav-link ${isRouteActive("/articles") ? "is-active" : ""}`}
+                  className="oc-button oc-solid"
+                  style={{ width: "100%", textAlign: "center" }}
                   onClick={() => setMobileOpen(false)}
                 >
-                  <div className="anc-nav-link-left">
-                    <span className="anc-link-icon-box" style={{ background: "rgba(184, 155, 94, 0.15)", color: "var(--gold)" }}>
-                      <BookOpenIcon style={{ width: 14, height: 14 }} />
-                    </span>
-                    <span className="anc-link-title">{t("nav.article")}</span>
-                  </div>
+                  <span>{isKm ? "អានអត្ថបទទាំងអស់" : "Explore Articles"}</span>
                 </Link>
 
-                <Link
-                  href="/devotions"
-                  className={`anc-nav-link ${isRouteActive("/devotions") ? "is-active" : ""}`}
-                  onClick={() => setMobileOpen(false)}
-                >
-                  <div className="anc-nav-link-left">
-                    <span className="anc-link-icon-box" style={{ background: "rgba(21, 58, 99, 0.1)", color: "#153a63" }}>
-                      <CalendarIcon style={{ width: 14, height: 14 }} />
-                    </span>
-                    <span className="anc-link-title">{t("nav.devotions")}</span>
-                  </div>
-                  <span className="anc-pill-badge" style={{ background: "#153a63", color: "#ffffff" }}>365</span>
-                </Link>
-
-                <Link
-                  href="/library"
-                  className={`anc-nav-link ${isRouteActive("/library") ? "is-active" : ""}`}
-                  onClick={() => setMobileOpen(false)}
-                >
-                  <div className="anc-nav-link-left">
-                    <span className="anc-link-icon-box" style={{ background: "rgba(2, 132, 199, 0.1)", color: "#0284c7" }}>
-                      <BookOpenIcon style={{ width: 14, height: 14 }} />
-                    </span>
-                    <span className="anc-link-title">{t("nav.library")}</span>
-                  </div>
-                </Link>
-
-                <Link
-                  href="/resource"
-                  className={`anc-nav-link ${isRouteActive("/resource") ? "is-active" : ""}`}
-                  onClick={() => setMobileOpen(false)}
-                >
-                  <div className="anc-nav-link-left">
-                    <span className="anc-link-icon-box" style={{ background: "rgba(239, 68, 68, 0.1)", color: "#ef4444" }}>
-                      <PlayIcon style={{ width: 14, height: 14 }} />
-                    </span>
-                    <span className="anc-link-title">{t("nav.resource")}</span>
-                  </div>
-                </Link>
-
-                <Link
-                  href="/gallery"
-                  className={`anc-nav-link ${isRouteActive("/gallery") ? "is-active" : ""}`}
-                  onClick={() => setMobileOpen(false)}
-                >
-                  <div className="anc-nav-link-left">
-                    <span className="anc-link-icon-box" style={{ background: "rgba(5, 150, 105, 0.1)", color: "#059669" }}>
-                      <CameraIcon style={{ width: 14, height: 14 }} />
-                    </span>
-                    <span className="anc-link-title">{t("nav.gallery")}</span>
-                  </div>
-                </Link>
-
-                <Link
-                  href="/about"
-                  className={`anc-nav-link ${isRouteActive("/about") ? "is-active" : ""}`}
-                  onClick={() => setMobileOpen(false)}
-                >
-                  <div className="anc-nav-link-left">
-                    <span className="anc-link-icon-box" style={{ background: "rgba(99, 102, 241, 0.1)", color: "#6366f1" }}>
-                      <UserIcon style={{ width: 14, height: 14 }} />
-                    </span>
-                    <span className="anc-link-title">{t("nav.about")}</span>
-                  </div>
-                </Link>
-
-                <Link
-                  href="/contact"
-                  className={`anc-nav-link ${isRouteActive("/contact") ? "is-active" : ""}`}
-                  onClick={() => setMobileOpen(false)}
-                >
-                  <div className="anc-nav-link-left">
-                    <span className="anc-link-icon-box" style={{ background: "rgba(184, 155, 94, 0.15)", color: "var(--gold)" }}>
-                      <PhoneIcon style={{ width: 14, height: 14 }} />
-                    </span>
-                    <span className="anc-link-title">{t("nav.contact")}</span>
-                  </div>
-                </Link>
-              </div>
-
-              {/* Direct Author Contact Footer */}
-              <div className="anc-drawer-footer-card">
                 <a
                   href="https://t.me/+855966875886"
                   target="_blank"
                   rel="noreferrer"
-                  className="anc-bottom-telegram-btn"
+                  className="oc-button oc-outline-dark"
+                  style={{ width: "100%", textAlign: "center", marginTop: "0.75rem" }}
                 >
-                  <TelegramIcon style={{ width: 15, height: 15 }} />
-                  <span>Telegram (+855 96 687 5886)</span>
-                </a>
-
-                <a
-                  href="https://www.facebook.com/hunchet2024/"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="anc-bottom-plan-btn"
-                  style={{ textDecoration: "none", marginTop: "0.5rem" }}
-                >
-                  <FacebookIcon style={{ width: 15, height: 15, color: "#1877f2" }} />
-                  <span>facebook.com/hunchet2024</span>
+                  <TelegramIcon style={{ width: 14, height: 14, marginRight: 8 }} />
+                  <span>Telegram</span>
                 </a>
               </div>
             </div>

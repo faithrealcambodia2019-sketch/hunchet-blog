@@ -3,6 +3,8 @@ import Head from "next/head";
 import Link from "next/link";
 import SiteHeader from "../components/SiteHeader";
 import SiteFooter from "../components/SiteFooter";
+import SubpageHero from "../components/SubpageHero";
+import ConnectBanner from "../components/ConnectBanner";
 import { useT, useLocale, pick } from "../lib/i18n";
 import {
   BookOpenIcon,
@@ -511,52 +513,18 @@ export default function DevotionsPage() {
 
       <SiteHeader />
 
-      {/* 1. STATELY HERO BANNER */}
-      <section className="devotion-hero">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="/images/open-bible-morning.jpg"
-          alt="Sanctuary Devotions"
-          className="devotion-hero-bg"
-          aria-hidden="true"
-        />
-        <div className="devotion-hero-overlay" aria-hidden="true" />
-
-        <div className="devotion-hero-content">
-          <div className="devotion-badge-tag">
-            <BookOpenIcon />
-            <span>{pick(STRINGS.heroEyebrow, locale)}</span>
-          </div>
-
-          <h1 className="devotion-hero-title">
-            {pick(STRINGS.heroTitle, locale)}
-          </h1>
-          <p className="devotion-hero-sub">
-            {pick(STRINGS.heroSub, locale)}
-          </p>
-
-          <div className="devotion-gold-divider" />
-
-          <div className="devotion-stats-strip">
-            <div className="devotion-stat-item">
-              <span className="devotion-stat-dot" />
-              <span>365 Daily Bread Journeys</span>
-            </div>
-            <div className="devotion-stat-item">
-              <span className="devotion-stat-dot" />
-              <span>1954 Old Khmer Version</span>
-            </div>
-            <div className="devotion-stat-item">
-              <span className="devotion-stat-dot" />
-              <span>Audio Scripture Listening</span>
-            </div>
-            <div className="devotion-stat-item">
-              <span className="devotion-stat-dot" />
-              <span>Guided Pastoral Prayers</span>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* 1. ONE CHURCH HERO */}
+      <SubpageHero
+        eyebrow={pick(STRINGS.heroEyebrow, locale)}
+        title={pick(STRINGS.heroTitle, locale)}
+        subtitle={pick(STRINGS.heroSub, locale)}
+        bgImage="/images/open-bible-morning.jpg"
+        stats={[
+          { num: "365", label: locale === "km" ? "ថ្ងៃនៃព្រះបន្ទូល" : "Daily Bread" },
+          { num: "1954", label: locale === "km" ? "ព្រះគម្ពីរខ្មែរ" : "Khmer Bible" },
+          { num: "Audio", label: locale === "km" ? "សំឡេងអាន" : "Listening" },
+        ]}
+      />
 
       {/* 2. STICKY FLOATING TABS CONTROLLER */}
       <nav className="devotion-tabs-bar" aria-label="Devotions Navigation">
@@ -1234,6 +1202,9 @@ export default function DevotionsPage() {
           <span>{toastMessage}</span>
         </div>
       )}
+
+      {/* ONE CHURCH CONNECT BANNER */}
+      <ConnectBanner />
 
       <SiteFooter />
     </>
