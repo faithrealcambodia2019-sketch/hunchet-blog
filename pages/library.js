@@ -269,7 +269,7 @@ export default function Library() {
                 <Link
                   href="/devotions"
                   className="portal-nav-item"
-                  style={{ color: "#2563eb", fontWeight: 600 }}
+                  style={{ color: "#141716", fontWeight: 700 }}
                 >
                   <span className="portal-nav-icon">
                     <BookOpenIcon />
@@ -379,7 +379,7 @@ export default function Library() {
                   }}
                   className={`portal-nav-item ${selectedCategory === "matthew-henry" ? "is-active" : ""}`}
                 >
-                  <span className="portal-nav-icon" style={{ color: "#2563eb" }}>
+                  <span className="portal-nav-icon" style={{ color: "var(--oc-teal)" }}>
                     <BookOpenIcon />
                   </span>
                   <span>{isKm ? "ម៉ាថាយ ហេនរី" : "Matthew Henry"}</span>
@@ -832,7 +832,7 @@ export default function Library() {
                   </li>
                   <li className="portal-stat-row">
                     <span>{isKm ? "បានរក្សាទុកដោយអ្នក" : "Saved by you"}</span>
-                    <span className="portal-stat-val" style={{ color: "#2563eb" }}>
+                    <span className="portal-stat-val" style={{ color: "var(--oc-teal)" }}>
                       {savedIds.length}
                     </span>
                   </li>

@@ -446,16 +446,16 @@
 }
 
 .resource-btn.is-gold {
-  background: var(--gold);
-  border-color: var(--gold);
-  color: #0b192c;
-  font-weight: 800;
+  background: #ffffff;
+  border-color: #dcdfda;
+  color: #141716;
+  font-weight: 700;
 }
 
 .resource-btn.is-gold:hover {
-  background: #a3884f;
-  border-color: #a3884f;
-  color: #ffffff;
+  background: #fbfbf9;
+  border-color: #141716;
+  color: #141716;
 }
 
 /* ---------------- Video Catalog Grid ---------------- */

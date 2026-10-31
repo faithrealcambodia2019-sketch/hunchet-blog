@@ -77,32 +77,32 @@ export default function About() {
 
       {/* 3. MINISTRY CALLING & BIOGRAPHY (2-COL) */}
       <section className="oc-section">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          <div className="lg:col-span-5 flex justify-center">
-            <div className="relative aspect-[4/5] w-full max-w-sm overflow-hidden border border-[#dcdfda] bg-stone-100 shadow-sm">
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "3.5rem", alignItems: "center" }}>
+          <div style={{ display: "flex", justifyContent: "center" }}>
+            <div className="oc-about-portrait">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={PORTRAIT}
                 alt="Leader Hun Chet"
-                className="w-full h-full object-cover object-top"
               />
             </div>
           </div>
 
-          <div className="lg:col-span-7 space-y-5">
+          <div style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
             <p className="oc-eyebrow">
               {isKm ? "ជីវប្រវត្តិ និងការត្រាស់ហៅ" : "Calling & Biography"}
             </p>
-            <h2 className="text-2xl sm:text-4xl font-extrabold uppercase tracking-tight text-[#141716]">
+            <h2 className="oc-heading-xl">
               {isKm ? "ការបម្រើព្រះ និងការប្រកាសព្រះបន្ទូល" : "Preaching the Truth with Conviction"}
             </h2>
-            <p className="text-[#626868] text-base leading-relaxed">
+            <p style={{ color: "#4a5568", fontSize: "1.05rem", lineHeight: 1.8, margin: 0 }}>
               {description}
             </p>
-            <p className="text-[#626868] text-base leading-relaxed">
+            <p style={{ color: "#4a5568", fontSize: "1.05rem", lineHeight: 1.8, margin: 0 }}>
               {t("about.quote")}
             </p>
 
-            <div className="pt-2 flex flex-wrap gap-4">
+            <div style={{ paddingTop: "0.5rem", display: "flex", flexWrap: "wrap", gap: "1rem" }}>
               <Link href="/articles" className="oc-button oc-solid">
                 <span>{isKm ? "អានអត្ថបទ និងទេសនា" : "Read Articles & Sermons"}</span>
                 <ArrowRightIcon style={{ width: 12, height: 12 }} />
@@ -116,22 +116,22 @@ export default function About() {
       </section>
 
       {/* 4. PULPIT PREACHING & TEACHING FEATURE */}
-      <section className="bg-white border-y border-[#dcdfda] py-16 sm:py-24">
-        <div className="oc-section py-0">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-            <div className="lg:col-span-6 space-y-4">
+      <section style={{ background: "#ffffff", borderTop: "1px solid #dcdfda", borderBottom: "1px solid #dcdfda", padding: "4.5rem 0" }}>
+        <div className="container">
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "3.5rem", alignItems: "center" }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
               <p className="oc-eyebrow">
                 {isKm ? "វេទិកាទេសនា និងការបង្រៀន" : "Pulpit Exegesis & Teaching"}
               </p>
-              <h2 className="text-2xl sm:text-4xl font-extrabold uppercase tracking-tight text-[#141716]">
+              <h2 className="oc-heading-xl">
                 {isKm ? "ការបង្រៀនព្រះគម្ពីរ និងការបណ្តុះសិស្ស" : "Biblical Exposition & Next-Gen Discipleship"}
               </h2>
-              <p className="text-[#626868] text-base leading-relaxed">
+              <p style={{ color: "#4a5568", fontSize: "1.05rem", lineHeight: 1.8, margin: 0 }}>
                 {isKm
                   ? "ការបម្រើព្រះដោយស្មោះត្រង់ ក្នុងការប្រកាសព្រះបន្ទូល បង្រៀនព្រះគម្ពីរជាប្រព័ន្ធ និងការបណ្តុះបណ្តាលសិស្សានុសិស្ស ដើម្បីពង្រឹងជំនឿដល់អ្នកជឿ និងផ្សាយដំណឹងល្អនៃព្រះគ្រីស្ទ។"
                   : "Faithfully declaring God's Word, systematic biblical exposition, and raising up disciples to strengthen believers and proclaim the Gospel of Jesus Christ in Cambodia."}
               </p>
-              <div className="pt-2 flex flex-wrap gap-4">
+              <div style={{ paddingTop: "0.5rem", display: "flex", flexWrap: "wrap", gap: "1rem" }}>
                 <Link href="/articles" className="oc-button oc-solid">
                   <span>{isKm ? "អានអត្ថបទទាំងអស់" : "Explore Articles"}</span>
                   <ArrowRightIcon style={{ width: 12, height: 12 }} />
@@ -142,12 +142,12 @@ export default function About() {
               </div>
             </div>
 
-            <div className="lg:col-span-6">
-              <div className="relative aspect-[16/10] overflow-hidden border border-[#dcdfda]">
+            <div>
+              <div className="oc-about-pulpit-frame">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src="/images/pastors-pulpit.jpg"
                   alt="Leader Hun Chet preaching from the pulpit"
-                  className="w-full h-full object-cover"
                 />
               </div>
             </div>
@@ -156,72 +156,87 @@ export default function About() {
       </section>
 
       {/* 5. HISTORICAL JOURNEY TIMELINE (One Church Clean Cards) */}
-      <section className="oc-section">
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <p className="oc-eyebrow">
-            {t("about.lifeStory")}
-          </p>
-          <h2 className="text-2xl sm:text-4xl font-extrabold uppercase tracking-tight text-[#141716]">
-            {t("about.road")}
-          </h2>
-        </div>
+      <section className="oc-section" style={{ background: "#fcfbf7" }}>
+        <div className="container">
+          <div style={{ textAlign: "center", maxWidth: 720, margin: "0 auto 3.5rem" }}>
+            <p className="oc-eyebrow">
+              {t("about.lifeStory")}
+            </p>
+            <h2 className="oc-heading-xl">
+              {t("about.road")}
+            </h2>
+          </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {TIMELINE.map((item) => {
-            const title = t(`tl.${item.year}.title`);
-            return (
-              <div key={item.year} className="oc-card group">
-                <div className="aspect-[16/10] overflow-hidden bg-stone-100 border-b border-[#dcdfda]">
-                  <img
-                    src={item.image}
-                    alt={title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    loading="lazy"
-                  />
-                </div>
-                <div className="oc-card-body">
-                  <span className="text-xs font-bold text-[#1c5080] tracking-[0.2em] uppercase block mb-1">
-                    {item.year} • {t(`tl.${item.year}.org`)}
-                  </span>
-                  <h3 className="oc-card-title text-xl">
-                    {title}
-                  </h3>
-                  <p className="oc-card-sub">
-                    {t(`tl.${item.year}.body`)}
-                  </p>
-                </div>
-              </div>
-            );
-          })}
+          <div className="oc-about-timeline-grid">
+            {TIMELINE.map((item) => {
+              const title = t(`tl.${item.year}.title`);
+              return (
+                <article
+                  key={item.year}
+                  style={{
+                    background: "#ffffff",
+                    border: "1px solid #dcdfda",
+                    borderRadius: 0,
+                    overflow: "hidden",
+                    display: "flex",
+                    flexDirection: "column",
+                  }}
+                >
+                  <div style={{ aspectRatio: "16 / 10", overflow: "hidden", background: "#f4f5f3", borderBottom: "1px solid #dcdfda" }}>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={item.image}
+                      alt={title}
+                      style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+                      loading="lazy"
+                    />
+                  </div>
+                  <div style={{ padding: "1.75rem", display: "flex", flexDirection: "column", flex: 1, justifyContent: "space-between" }}>
+                    <div>
+                      <span style={{ fontSize: "11px", fontWeight: 700, color: "var(--oc-teal)", letterSpacing: "0.14em", textTransform: "uppercase", display: "block", marginBottom: "0.5rem" }}>
+                        {item.year} • {t(`tl.${item.year}.org`)}
+                      </span>
+                      <h3 style={{ fontFamily: "var(--font-display)", fontSize: "1.25rem", fontWeight: 700, color: "#141716", margin: "0 0 0.75rem" }}>
+                        {title}
+                      </h3>
+                      <p style={{ color: "#4a5568", fontSize: "0.95rem", lineHeight: 1.7, margin: 0 }}>
+                        {t(`tl.${item.year}.body`)}
+                      </p>
+                    </div>
+                  </div>
+                </article>
+              );
+            })}
+          </div>
         </div>
       </section>
 
       {/* 6. CORE THEOLOGICAL VALUES (One Church Numbered Cards) */}
-      <section className="bg-white border-y border-[#dcdfda] py-16 sm:py-24">
-        <div className="oc-section py-0">
-          <div className="text-center max-w-2xl mx-auto mb-16">
+      <section style={{ background: "#ffffff", borderTop: "1px solid #dcdfda", borderBottom: "1px solid #dcdfda", padding: "4.5rem 0" }}>
+        <div className="container">
+          <div style={{ textAlign: "center", maxWidth: 720, margin: "0 auto 3.5rem" }}>
             <p className="oc-eyebrow">
               {t("about.guides")}
             </p>
-            <h2 className="text-2xl sm:text-4xl font-extrabold uppercase tracking-tight text-[#141716]">
+            <h2 className="oc-heading-xl">
               {t("about.believe")}
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="oc-about-values-grid">
             {VALUES.map((n) => (
               <div
                 key={n}
-                className="bg-[#fcfbf7] border border-[#dcdfda] p-8 flex flex-col justify-between hover:border-[#141716] transition-all"
+                className="oc-about-value-box"
               >
                 <div>
-                  <span className="text-xs font-bold text-[#1c5080] tracking-[0.2em] uppercase block mb-3">
+                  <span style={{ fontSize: "11.5px", fontWeight: 800, color: "var(--oc-teal)", letterSpacing: "0.14em", textTransform: "uppercase", display: "block", marginBottom: "0.75rem" }}>
                     0{n} / VALUE
                   </span>
-                  <h3 className="text-lg font-bold uppercase tracking-tight text-[#141716] mb-3">
+                  <h3 style={{ fontFamily: "var(--font-display)", fontSize: "1.18rem", fontWeight: 700, textTransform: "uppercase", color: "#141716", margin: "0 0 0.75rem" }}>
                     {t(`val.${n}.title`)}
                   </h3>
-                  <p className="text-[#626868] text-sm leading-relaxed">
+                  <p style={{ color: "#4a5568", fontSize: "0.92rem", lineHeight: 1.7, margin: 0 }}>
                     {t(`val.${n}.body`)}
                   </p>
                 </div>

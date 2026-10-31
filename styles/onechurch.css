@@ -1538,6 +1538,7 @@ span[aria-hidden='true'],
 html .oc-brand strong, html .oc-brand strong span { font-family: Montserrat, 'Plus Jakarta Sans', sans-serif !important; }
 html[lang='km'] .oc-dropdown summary, html[lang='km'] .oc-nav-links > a, html[lang='km'] .oc-nav-cta { font-size: 12px; }
 html[lang='km'] .oc-hero .oc-eyebrow { font-size: 12px; }
+html[lang='km'] .oc-hero h1 { line-height: 1.38 !important; letter-spacing: normal !important; }
 html[lang='km'] .oc-footer { font-size: 12px; }
 html[lang='en'] .oc-site > main > :not(.oc-home) :is(h1,h2,h3,h4) { font-family: Montserrat, 'Plus Jakarta Sans', sans-serif !important; }
 @media (max-width: 600px) { html[lang='km'] .oc-hero .oc-eyebrow { font-size: 10px; } }
@@ -2356,4 +2357,66 @@ html[lang='km'] .oc-gallery-tab {
   font-size: 11px;
   color: #94a3b8;
   letter-spacing: 0.05em;
+}
+
+/* ---------------- ABOUT PAGE REFINED ARCHITECTURE ---------------- */
+.oc-about-portrait {
+  aspect-ratio: 4 / 5;
+  width: 100%;
+  max-width: 360px;
+  overflow: hidden;
+  border: 1px solid #dcdfda;
+  background: #fbfbf9;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+.oc-about-portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+}
+.oc-about-pulpit-frame {
+  aspect-ratio: 16 / 10;
+  width: 100%;
+  overflow: hidden;
+  border: 1px solid #dcdfda;
+  background: #fbfbf9;
+}
+.oc-about-pulpit-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.oc-about-timeline-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 28px;
+}
+.oc-about-values-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+}
+.oc-about-value-box {
+  background: #fcfbf7;
+  border: 1px solid #dcdfda;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: border-color 0.2s, background 0.2s;
+}
+.oc-about-value-box:hover {
+  border-color: #141716;
+}
+.oc-heading-xl {
+  font-family: var(--font-display);
+  font-size: clamp(1.85rem, 3.5vw, 2.5rem);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  color: #141716;
+  line-height: 1.28;
 }

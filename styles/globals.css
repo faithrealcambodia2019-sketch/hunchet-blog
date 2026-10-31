@@ -2795,7 +2795,9 @@ svg:not([width]) {
   fill: #ffffff !important;
 }
 
-/* Suppress any embedded legacy author-bio blocks in WordPress HTML so only the canonical AuthorCard shows */
+/* Suppress any embedded legacy article-hero and author-bio blocks in WordPress HTML so only canonical Next.js layout shows */
+.post-content .article-hero,
+.fyi-article-wrapper .article-hero,
 .post-content .author-bio,
 .fyi-article-wrapper .author-bio {
   display: none !important;
@@ -7789,9 +7791,16 @@ body.oc-menu-open .oc-header {
 }
 
 .resource-btn.is-gold {
-  background: var(--oc-teal) !important;
-  border-color: var(--oc-teal) !important;
-  color: #ffffff !important;
+  background: #ffffff !important;
+  border: 1px solid #dcdfda !important;
+  color: #141716 !important;
+  border-radius: 0 !important;
+}
+
+.resource-btn.is-gold:hover {
+  background: #fbfbf9 !important;
+  border-color: #141716 !important;
+  color: #141716 !important;
 }
 
 .resource-hub-section {
@@ -7834,9 +7843,15 @@ body.oc-menu-open .oc-header {
 }
 
 .library-btn.is-gold {
-  background: var(--oc-teal) !important;
-  border-color: var(--oc-teal) !important;
-  color: #ffffff !important;
+  background: #ffffff !important;
+  border: 1px solid #dcdfda !important;
+  color: #141716 !important;
+}
+
+.library-btn.is-gold:hover {
+  background: #fbfbf9 !important;
+  border-color: #141716 !important;
+  color: #141716 !important;
 }
 
 /* ============ One Church Home Cinematic Hero ============ */
