@@ -9,18 +9,18 @@ import ConnectBanner from "../components/ConnectBanner";
 import { useT } from "../lib/i18n";
 import { GALLERY_CATEGORIES, GALLERY_ITEMS } from "../lib/galleryData";
 import {
-  CameraIcon,
   PlayIcon,
   CloseIcon,
   ChevronLeftIcon,
   ChevronRightIcon,
-  ArrowRightIcon,
+  ArrowUpRight,
 } from "../components/Icons";
 
 export default function Gallery() {
   const router = useRouter();
   const t = useT();
   const locale = router.locale || "km";
+  const isKm = locale === "km";
 
   const [activeCategory, setActiveCategory] = useState("all");
   const [selectedIndex, setSelectedIndex] = useState(null);
@@ -65,7 +65,7 @@ export default function Gallery() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [selectedIndex, handlePrev, handleNext]);
 
-  // Prevent background scroll when lightbox is open
+  // Lock body scroll when lightbox is open
   useEffect(() => {
     if (selectedIndex !== null) {
       document.body.style.overflow = "hidden";
@@ -81,14 +81,14 @@ export default function Gallery() {
     <div className="oc-site">
       <Head>
         <title>
-          {locale === "km"
-            ? "កម្រងរូបភាពព័ន្ធកិច្ច និងក្រុមជំនុំ — ហ៊ុន ចិត្ត"
+          {isKm
+            ? "កម្រងរូបភាពព័ន្ធកិច្ច និងជីវិតក្រុមជំនុំ — ហ៊ុន ចិត្ត"
             : "Ministry & Church Gallery — Hun Chet"}
         </title>
         <meta
           name="description"
           content={
-            locale === "km"
+            isKm
               ? "ទិដ្ឋភាពពិតនៃការថ្វាយបង្គំ ការផ្សាយព្រះបន្ទូល ពិធីបុណ្យជ្រមុជទឹក យុវជន និងព័ន្ធកិច្ចឌីជីថលលោកគ្រូ ហ៊ុន ចិត្ត រាជធានីភ្នំពេញ។"
               : "Authentic photography and video records of Sunday worship, pastoral preaching, holy baptism, and next-gen youth ministry in Hun Chet Ministry, Phnom Penh."
           }
@@ -107,33 +107,29 @@ export default function Gallery() {
 
       {/* 1. ONE CHURCH HERO */}
       <SubpageHero
-        eyebrow={
-          locale === "km"
-            ? "ជីវិតរួមគ្នា • រូបភាព និងវីដេអូ"
-            : "Life Together • Photos & Videos"
-        }
-        title={
-          locale === "km"
-            ? "កម្រងរូបភាពព័ន្ធកិច្ច និងក្រុមជំនុំ"
-            : "Ministry & Church Gallery"
-        }
+        bgImage="/images/youth-fellowship-2025-group.jpg"
+        kicker={isKm ? "ជីវិតរួមគ្នា • រូបភាព និងវីដេអូ" : "LIFE TOGETHER • PHOTOS & VIDEOS"}
+        title={isKm ? "កម្រងរូបភាពព័ន្ធកិច្ច" : "MINISTRY GALLERY"}
         subtitle={
-          locale === "km"
+          isKm
             ? "ទិដ្ឋភាពពិតនៃការថ្វាយបង្គំ ការផ្សាយព្រះបន្ទូលលើវេទិកា ពិធីបុណ្យជ្រមុជទឹក ការប្រកបគ្នារបស់យុវជន និងថ្នាក់រៀនព្រះគម្ពីរកុមារ នៅរាជធានីភ្នំពេញ។"
             : "Authentic glimpses of heartfelt worship, pastoral preaching from the pulpit, water baptism celebrations, and loving fellowship in Hun Chet Ministry."
         }
-        bgImage="/images/youth-fellowship-2025-group.jpg"
+        breadcrumbs={[
+          { label: isKm ? "ទំព័រដើម" : "Home", href: "/" },
+          { label: isKm ? "កម្រងរូបភាព" : "Gallery" },
+        ]}
         stats={[
-          { num: "8", label: locale === "km" ? "អាល់ប៊ុម" : "Albums" },
-          { num: "48+", label: locale === "km" ? "រូបភាព" : "Curated Photos" },
-          { num: "HD", label: locale === "km" ? "គុណភាព" : "Resolution" },
+          { number: "8", label: isKm ? "អាល់ប៊ុម" : "Albums" },
+          { number: `${GALLERY_ITEMS.length}+`, label: isKm ? "រូបភាព និងវីដេអូ" : "Moments" },
+          { number: "HD", label: isKm ? "កម្រិតច្បាស់" : "Resolution" },
         ]}
       />
 
       {/* 2. STICKY CATEGORY FILTER BAR */}
-      <nav className="gallery-nav-bar" aria-label="Gallery category filter">
+      <section className="oc-gallery-nav-bar" aria-label="Gallery categories">
         <div className="container">
-          <div className="gallery-nav-scroll">
+          <div className="oc-gallery-nav-scroll">
             {GALLERY_CATEGORIES.map((cat) => {
               const isActive = activeCategory === cat.id;
               const count =
@@ -149,54 +145,61 @@ export default function Gallery() {
                     setActiveCategory(cat.id);
                     setSelectedIndex(null);
                   }}
-                  className={`gallery-tab-item ${isActive ? "is-active" : ""}`}
+                  className={`oc-gallery-tab ${isActive ? "is-active" : ""}`}
                 >
                   <span>{loc(cat.label)}</span>
-                  <span className="gallery-tab-count">{count}</span>
+                  <span className="oc-gallery-tab-count">{count}</span>
                 </button>
               );
             })}
           </div>
         </div>
-      </nav>
+      </section>
 
-      {/* 3. GALLERY GRID */}
-      <main className="section" style={{ paddingTop: "2.5rem", paddingBottom: "5rem" }}>
+      {/* 3. CLEAN GALLERY GRID */}
+      <main className="oc-section" style={{ background: "#fcfbf7", paddingBlock: "3.5rem" }}>
         <div className="container">
+          {/* Quick Info Bar */}
           <div
             style={{
               display: "flex",
               justifyContent: "space-between",
               alignItems: "center",
-              borderBottom: "1px solid var(--border)",
-              paddingBottom: "0.75rem",
-              marginBottom: "1.5rem",
-              fontSize: "0.82rem",
-              color: "var(--muted)",
+              borderBottom: "1px solid #dcdfda",
+              paddingBottom: "1rem",
+              marginBottom: "2.5rem",
+              fontSize: "12px",
+              color: "#626868",
+              fontFamily: "var(--font-display)",
+              letterSpacing: "0.08em",
+              textTransform: "uppercase",
             }}
           >
             <div>
-              <span>{locale === "km" ? "កំពុងបង្ហាញ៖ " : "Showing: "}</span>
-              <strong style={{ color: "var(--navy)", fontWeight: 700 }}>
-                {filteredItems.length} {locale === "km" ? "រូបភាព និងវីដេអូ" : "Moments"}
+              <span>{isKm ? "កំពុងបង្ហាញ៖ " : "SHOWING: "}</span>
+              <strong style={{ color: "#141716", fontWeight: 700 }}>
+                {filteredItems.length} {isKm ? "រូបភាព និងវីដេអូ" : "MOMENTS"}
               </strong>
             </div>
-            <span style={{ fontSize: "0.75rem" }}>
-              {locale === "km" ? "ចុចលើរូបភាពដើម្បីមើលទំហំធំ" : "Click any moment to view full size"}
+            <span style={{ fontSize: "11px", color: "#8e9595" }}>
+              {isKm ? "ចុចលើរូបភាពដើម្បីមើលទំហំធំ ↗" : "CLICK ANY MOMENT TO ENLARGE ↗"}
             </span>
           </div>
 
-          <div className="gallery-cards-grid">
+          {/* Cards Grid */}
+          <div className="oc-gallery-grid">
             {filteredItems.map((item, idx) => {
               const isVideo = item.type === "video";
+              const num = String(idx + 1).padStart(2, "0");
 
               return (
                 <article
                   key={item.id}
                   onClick={() => setSelectedIndex(idx)}
-                  className="gallery-media-card"
+                  className="oc-gallery-card"
                 >
-                  <div className="gallery-thumb-box">
+                  {/* Media Thumbnail Box */}
+                  <div className="oc-gallery-media-box">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={isVideo ? item.poster : item.src}
@@ -204,128 +207,44 @@ export default function Gallery() {
                       loading="lazy"
                     />
 
-                    {/* Gradient Overlay */}
-                    <div
-                      style={{
-                        position: "absolute",
-                        inset: 0,
-                        background:
-                          "linear-gradient(to top, rgba(11, 25, 44, 0.92) 0%, rgba(11, 25, 44, 0.2) 60%, transparent 100%)",
-                        pointerEvents: "none",
-                      }}
-                    />
+                    {/* Clean Kicker Badge (Number + Category) */}
+                    <div className="oc-gallery-kicker">
+                      {num} / {loc(item.badge)}
+                    </div>
 
-                    {/* Video Play Button Overlay */}
+                    {/* Video Duration / Indicator */}
                     {isVideo && (
-                      <div className="gallery-play-btn">
-                        <div className="gallery-play-icon-box">
-                          <PlayIcon style={{ width: 18, height: 18, fill: "var(--navy-dark)", marginLeft: "2px" }} />
+                      <>
+                        <div className="oc-gallery-video-pill">
+                          {item.duration || "VIDEO"}
                         </div>
-                      </div>
+                        <div className="oc-gallery-play-btn">
+                          <div className="oc-gallery-play-icon">
+                            <PlayIcon width={20} height={20} style={{ marginLeft: "2px", fill: "#141716", color: "#141716" }} />
+                          </div>
+                        </div>
+                      </>
                     )}
-
-                    {/* Duration Badge for Videos */}
-                    {isVideo && (
-                      <div
-                        style={{
-                          position: "absolute",
-                          top: "0.6rem",
-                          right: "0.6rem",
-                          background: "rgba(0, 0, 0, 0.75)",
-                          color: "#ffffff",
-                          fontSize: "0.68rem",
-                          fontWeight: 700,
-                          padding: "0.15rem 0.45rem",
-                          borderRadius: "var(--radius-sm)",
-                          border: "1px solid rgba(255, 255, 255, 0.2)",
-                        }}
-                      >
-                        {item.duration}
-                      </div>
-                    )}
-
-                    {/* Category Badge */}
-                    <div
-                      style={{
-                        position: "absolute",
-                        top: "0.6rem",
-                        left: "0.6rem",
-                        background: "var(--gold)",
-                        color: "var(--navy-dark)",
-                        fontSize: "0.65rem",
-                        fontWeight: 700,
-                        letterSpacing: "0.08em",
-                        textTransform: "uppercase",
-                        padding: "0.2rem 0.5rem",
-                        borderRadius: "var(--radius-sm)",
-                        boxShadow: "0 2px 6px rgba(0, 0, 0, 0.3)",
-                      }}
-                    >
-                      {loc(item.badge)}
-                    </div>
-
-                    {/* Inside Thumbnail Title */}
-                    <div
-                      style={{
-                        position: "absolute",
-                        bottom: "0.6rem",
-                        left: "0.75rem",
-                        right: "0.75rem",
-                        color: "#ffffff",
-                        pointerEvents: "none",
-                      }}
-                    >
-                      <h4
-                        style={{
-                          fontFamily: "var(--font-display)",
-                          fontSize: "0.92rem",
-                          fontWeight: 700,
-                          margin: 0,
-                          lineHeight: 1.3,
-                          whiteSpace: "nowrap",
-                          overflow: "hidden",
-                          textOverflow: "ellipsis",
-                        }}
-                      >
-                        {loc(item.title)}
-                      </h4>
-                      {item.title.km && locale !== "km" && (
-                        <p
-                          style={{
-                            fontSize: "0.72rem",
-                            color: "var(--gold)",
-                            margin: "2px 0 0",
-                            whiteSpace: "nowrap",
-                            overflow: "hidden",
-                            textOverflow: "ellipsis",
-                          }}
-                        >
-                          {item.title.km}
-                        </p>
-                      )}
-                    </div>
                   </div>
 
-                  <div className="gallery-card-body">
-                    <p>{loc(item.description)}</p>
+                  {/* Card Content - Clean & Easy to Read */}
+                  <div className="oc-gallery-card-content">
+                    <div>
+                      <h3 className="oc-gallery-card-title">
+                        {loc(item.title)}
+                      </h3>
+                      <p className="oc-gallery-card-desc">
+                        {loc(item.description)}
+                      </p>
+                    </div>
 
-                    <div className="gallery-card-footer">
-                      <span style={{ textTransform: "capitalize", fontWeight: 600 }}>
-                        {item.category}
+                    <div className="oc-gallery-card-footer">
+                      <span style={{ color: "var(--oc-navy)", fontWeight: 700 }}>
+                        {item.category.toUpperCase()}
                       </span>
-                      <span
-                        style={{
-                          color: "var(--navy)",
-                          fontWeight: 700,
-                          display: "inline-flex",
-                          alignItems: "center",
-                          gap: "0.3rem",
-                        }}
-                      >
-                        {isVideo
-                          ? (locale === "km" ? "ទស្សនាវីដេអូ" : "Watch Video")
-                          : (locale === "km" ? "មើលទំហំធំ" : "View Full Size")}{" "}
-                        <ArrowRightIcon style={{ width: 12, height: 12 }} />
+                      <span className="oc-gallery-card-action">
+                        <span>{isVideo ? (isKm ? "ទស្សនាវីដេអូ" : "WATCH VIDEO") : (isKm ? "មើលទំហំធំ" : "VIEW FULL")}</span>
+                        <ArrowUpRight width={12} height={12} />
                       </span>
                     </div>
                   </div>
@@ -336,77 +255,41 @@ export default function Gallery() {
         </div>
       </main>
 
-      {/* 4. INTERACTIVE LIGHTBOX MODAL */}
-      {activeItem && (
-        <div className="anc-modal-overlay" onClick={() => setSelectedIndex(null)}>
+      {/* 4. HIGH-RESOLUTION LIGHTBOX VIEWER */}
+      {selectedIndex !== null && activeItem && (
+        <div
+          className="oc-lightbox-overlay"
+          onClick={() => setSelectedIndex(null)}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Image viewer"
+        >
           <div
-            className="anc-modal-box"
-            style={{ maxWidth: "940px" }}
+            className="oc-lightbox-box"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Modal Header */}
-            <div className="anc-modal-header">
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "0.6rem",
-                  overflow: "hidden",
-                }}
-              >
-                <span
-                  style={{
-                    padding: "0.25rem 0.65rem",
-                    background: "var(--gold)",
-                    color: "var(--navy-dark)",
-                    fontSize: "0.68rem",
-                    fontWeight: 700,
-                    textTransform: "uppercase",
-                    letterSpacing: "0.08em",
-                    borderRadius: "var(--radius-sm)",
-                    flexShrink: 0,
-                  }}
-                >
-                  {loc(activeItem.badge)}
+            {/* Top Bar */}
+            <div className="oc-lightbox-top">
+              <div>
+                <span className="oc-lightbox-kicker">
+                  {String(selectedIndex + 1).padStart(2, "0")} / {String(filteredItems.length).padStart(2, "0")} • {loc(activeItem.badge)}
                 </span>
-                <h3
-                  style={{
-                    whiteSpace: "nowrap",
-                    overflow: "hidden",
-                    textOverflow: "ellipsis",
-                  }}
-                >
+                <h3 className="oc-lightbox-title">
                   {loc(activeItem.title)}
                 </h3>
               </div>
-
-              <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", flexShrink: 0 }}>
-                <span style={{ fontSize: "0.75rem", color: "#94a3b8", fontFamily: "var(--font-body)" }}>
-                  {selectedIndex + 1} / {filteredItems.length}
-                </span>
-                <button
-                  type="button"
-                  onClick={() => setSelectedIndex(null)}
-                  className="anc-modal-close"
-                  aria-label="Close lightbox"
-                >
-                  <CloseIcon />
-                </button>
-              </div>
+              <button
+                type="button"
+                onClick={() => setSelectedIndex(null)}
+                className="oc-lightbox-close"
+                aria-label="Close viewer"
+              >
+                <CloseIcon width={16} height={16} />
+              </button>
             </div>
 
-            {/* Media Box */}
-            <div
-              style={{
-                position: "relative",
-                background: "#000",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                height: "56vh",
-                overflow: "hidden",
-              }}
-            >
+            {/* Media Center */}
+            <div className="oc-lightbox-media">
               {activeItem.type === "video" ? (
                 <video
                   key={activeItem.id}
@@ -414,7 +297,7 @@ export default function Gallery() {
                   controls
                   playsInline
                   poster={activeItem.poster}
-                  style={{ width: "100%", height: "100%", objectFit: "contain" }}
+                  className="oc-lightbox-video"
                 >
                   <source src={activeItem.src} type="video/mp4" />
                 </video>
@@ -424,11 +307,11 @@ export default function Gallery() {
                   key={activeItem.id}
                   src={activeItem.src}
                   alt={loc(activeItem.title)}
-                  style={{ width: "100%", height: "100%", objectFit: "contain" }}
+                  className="oc-lightbox-img"
                 />
               )}
 
-              {/* Prev / Next Navigation Arrows */}
+              {/* Prev / Next controls */}
               {filteredItems.length > 1 && (
                 <>
                   <button
@@ -437,26 +320,10 @@ export default function Gallery() {
                       e.stopPropagation();
                       handlePrev();
                     }}
-                    style={{
-                      position: "absolute",
-                      left: "0.75rem",
-                      top: "50%",
-                      transform: "translateY(-50%)",
-                      width: "42px",
-                      height: "42px",
-                      borderRadius: "var(--radius-full)",
-                      background: "rgba(0, 0, 0, 0.7)",
-                      border: "1px solid rgba(255, 255, 255, 0.25)",
-                      color: "#ffffff",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      cursor: "pointer",
-                      transition: "all 0.2s ease",
-                    }}
-                    aria-label="Previous item"
+                    className="oc-lightbox-arrow oc-lightbox-prev"
+                    aria-label="Previous image"
                   >
-                    <ChevronLeftIcon style={{ width: 22, height: 22 }} />
+                    <ChevronLeftIcon width={22} height={22} />
                   </button>
 
                   <button
@@ -465,68 +332,31 @@ export default function Gallery() {
                       e.stopPropagation();
                       handleNext();
                     }}
-                    style={{
-                      position: "absolute",
-                      right: "0.75rem",
-                      top: "50%",
-                      transform: "translateY(-50%)",
-                      width: "42px",
-                      height: "42px",
-                      borderRadius: "var(--radius-full)",
-                      background: "rgba(0, 0, 0, 0.7)",
-                      border: "1px solid rgba(255, 255, 255, 0.25)",
-                      color: "#ffffff",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      cursor: "pointer",
-                      transition: "all 0.2s ease",
-                    }}
-                    aria-label="Next item"
+                    className="oc-lightbox-arrow oc-lightbox-next"
+                    aria-label="Next image"
                   >
-                    <ChevronRightIcon style={{ width: 22, height: 22 }} />
+                    <ChevronRightIcon width={22} height={22} />
                   </button>
                 </>
               )}
             </div>
 
-            {/* Modal Caption Footer */}
-            <div
-              style={{
-                padding: "1.25rem 1.5rem",
-                background: "#081322",
-                borderTop: "1px solid rgba(255, 255, 255, 0.1)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "space-between",
-                gap: "1.5rem",
-                flexWrap: "wrap",
-              }}
-            >
-              <div style={{ maxWidth: "680px" }}>
-                <p style={{ color: "#ffffff", fontSize: "0.92rem", margin: "0 0 0.25rem", lineHeight: 1.5 }}>
-                  {loc(activeItem.description)}
-                </p>
-                {activeItem.title.km && locale !== "km" && (
-                  <p style={{ color: "var(--gold)", fontSize: "0.8rem", margin: 0 }}>
-                    {activeItem.title.km}
-                  </p>
-                )}
-              </div>
-
-              <Link
-                href="/about"
-                className="btn btn-primary"
-                style={{ padding: "0.6rem 1.25rem", fontSize: "0.72rem", whiteSpace: "nowrap" }}
-              >
-                {locale === "km" ? "អំពីរឿងរ៉ាវយើង" : "Our Church Story"} →
-              </Link>
+            {/* Bottom Caption Footer */}
+            <div className="oc-lightbox-caption">
+              <p className="oc-lightbox-desc">
+                {loc(activeItem.description)}
+              </p>
+              <span className="oc-lightbox-hint">
+                {isKm
+                  ? "ប្រើគ្រាប់ចុចព្រួញ ← → ដើម្បីផ្លាស់ប្តូររូបភាព • ចុច ESC ដើម្បីបិទ"
+                  : "Use ← → arrow keys to navigate • Press ESC to close"}
+              </span>
             </div>
           </div>
         </div>
       )}
 
-      {/* ONE CHURCH CONNECT BANNER */}
+      {/* 5. ONE CHURCH CONNECT BANNER */}
       <ConnectBanner />
 
       <SiteFooter />
