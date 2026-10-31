@@ -894,16 +894,46 @@ html[lang='en'] .oc-header.oc-scrolled .oc-brand-subtitle {
 .oc-connect {
   text-align: center;
   padding: 95px 7%;
-  background: #293938;
-  color: #fff
+  background: #192724;
+  color: #ffffff;
 }
 .oc-connect h2 {
+  color: #ffffff !important;
   font-size: clamp(26px, 3.4vw, 40px);
-  letter-spacing: .025em;
+  line-height: 1.5 !important;
+  letter-spacing: normal !important;
   margin-bottom: 28px;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.45) !important;
 }
 .oc-connect .oc-eyebrow {
-  color: #bfc8b9;
+  color: rgba(255, 255, 255, 0.9) !important;
+  font-size: 13.5px !important;
+  letter-spacing: normal !important;
+  margin-bottom: 16px !important;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.35);
+}
+.oc-connect .oc-button {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.75) !important;
+  color: #ffffff !important;
+  backdrop-filter: blur(6px);
+  padding: 13px 28px !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  transition: all 0.25s ease !important;
+}
+.oc-connect .oc-button:hover {
+  background: #ffffff !important;
+  color: #141716 !important;
+  border-color: #ffffff !important;
+}
+/* Ensure headings in all dark sections always render in pure white */
+.oc-photo-section :is(h1, h2, h3, h4),
+.oc-hero :is(h1, h2, h3, h4),
+.oc-connect :is(h1, h2, h3, h4),
+.oc-subpage-hero :is(h1, h2, h3, h4),
+.oc-footer :is(h1, h2, h3, h4) {
+  color: #ffffff !important;
 }
 .oc-footer {
   background: #171b1b;
@@ -1969,6 +1999,28 @@ html[lang='km'] .oc-site .oc-nav-cta {
   letter-spacing: 0 !important;
   font-size: 13px !important;
   line-height: 1.5 !important;
+}
+
+html[lang='km'] .oc-connect h2 {
+  color: #ffffff !important;
+  font-family: 'Koh Santepheap', serif !important;
+  font-size: clamp(24px, 3.2vw, 36px) !important;
+  line-height: 1.62 !important;
+  letter-spacing: normal !important;
+  font-weight: 700 !important;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.45) !important;
+}
+
+html[lang='km'] .oc-connect .oc-eyebrow {
+  color: rgba(255, 255, 255, 0.9) !important;
+  font-family: 'Koh Santepheap', serif !important;
+  font-size: 13.5px !important;
+  line-height: 1.6 !important;
+}
+
+html[lang='km'] .oc-connect .oc-button {
+  font-family: 'Koh Santepheap', serif !important;
+  color: #ffffff !important;
 }
 
 /* Mobile font tuning */
