@@ -17,7 +17,12 @@ export function Brand({ locale }) {
       <span className="oc-brand-seal" aria-hidden="true">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={LOGO} alt="Hun Chet" width="44" height="44" />
-        <span className="oc-seal-cross" aria-hidden="true">✝</span>
+        <span className="oc-seal-tick" aria-hidden="true" title="Verified">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none">
+            <path d="M22.5 12.5c0-1.58-.875-2.95-2.148-3.6.454-1.52.185-3.175-.82-4.18s-2.66-1.274-4.18-.82C14.7 2.625 13.33 1.75 11.75 1.75S8.8 2.625 8.148 3.9c-1.52-.454-3.175-.185-4.18.82s-1.274 2.66-.82 4.18C1.875 9.55 1 10.92 1 12.5s.875 2.95 2.148 3.6c-.454 1.52-.185 3.175.82 4.18s2.66 1.274 4.18.82c.652 1.275 2.022 2.15 3.602 2.15s2.95-.875 3.602-2.15c1.52.454 3.175.185 4.18-.82s1.274-2.66.82-4.18c1.273-.65 2.148-2.02 2.148-3.6z" fill="#1D9BF0"/>
+            <path d="M10.25 16.5L6 12.25L7.414 10.836L10.25 13.672L16.586 7.336L18 8.75L10.25 16.5Z" fill="#FFFFFF"/>
+          </svg>
+        </span>
       </span>
       <span className="oc-brand-divider" aria-hidden="true" />
       <span className="oc-brand-text">

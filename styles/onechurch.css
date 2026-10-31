@@ -277,26 +277,25 @@ section[id], [id] {
 .oc-header.oc-scrolled .oc-brand-seal {
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
 }
-.oc-seal-cross {
+.oc-seal-tick {
   position: absolute;
   bottom: -2px;
   right: -2px;
-  width: 15px;
-  height: 15px;
-  background: #0e1520;
-  border: 1px solid #d4af37;
-  border-radius: 50%;
+  width: 17px;
+  height: 17px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #f3dda2;
-  font-size: 9px;
-  font-weight: 700;
-  line-height: 1;
-  transition: background-color 0.2s ease;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.45));
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
-.oc-header.oc-scrolled .oc-seal-cross {
-  background: #141716;
+.oc-brand:hover .oc-seal-tick {
+  transform: scale(1.18);
+}
+.oc-seal-tick svg {
+  width: 17px;
+  height: 17px;
+  display: block;
 }
 .oc-brand-divider {
   display: block;
