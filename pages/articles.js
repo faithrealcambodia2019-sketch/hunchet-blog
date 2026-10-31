@@ -1,6 +1,7 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import Head from "next/head";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import SiteHeader from "../components/SiteHeader";
 import SiteFooter from "../components/SiteFooter";
 import SubpageHero from "../components/SubpageHero";
@@ -25,12 +26,20 @@ export async function getStaticProps() {
 }
 
 export default function Articles({ posts = [], error }) {
+  const router = useRouter();
   const t = useT();
   const locale = useLocale();
   const isKm = locale === "km";
 
   const [activeCategory, setActiveCategory] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
+
+  // Sync category from query string (?cat=salvation)
+  useEffect(() => {
+    if (router.query.cat) {
+      setActiveCategory(router.query.cat);
+    }
+  }, [router.query.cat]);
 
   // Extract all unique categories
   const categories = useMemo(() => {

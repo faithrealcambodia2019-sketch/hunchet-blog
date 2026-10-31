@@ -1390,13 +1390,30 @@ section[id], [id] {
 .oc-nav-links { padding-top: 24px; }
 .oc-brand strong, .oc-brand strong span { font-family: Montserrat, 'Plus Jakarta Sans', sans-serif !important; }
 .oc-dropdown { position: relative; }
-.oc-dropdown summary { list-style: none; display: flex; align-items: center; gap: 6px; cursor: pointer; padding: 13px 0; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; }
+.oc-dropdown summary { list-style: none; display: flex; align-items: center; gap: 6px; cursor: pointer; padding: 13px 0; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .12em; user-select: none; position: relative; }
 .oc-dropdown summary::-webkit-details-marker { display: none; }
 .oc-dropdown summary:focus-visible { outline: 2px solid #1c5080; outline-offset: 4px; }
+.oc-dropdown summary::after { content: ''; position: absolute; left: 0; right: 100%; bottom: 6px; height: 1px; background: currentColor; transition: right .2s; }
+.oc-dropdown:hover summary::after, .oc-dropdown[open] summary::after { right: 0; }
+.oc-dropdown summary svg { transition: transform 0.2s ease; }
 .oc-dropdown[open] summary svg { transform: rotate(180deg); }
-.oc-dropdown-panel { position: absolute; top: 100%; left: -20px; width: 245px; padding: 12px 0; background: white; color: #202424; border: 1px solid #dcdfda; box-shadow: 0 12px 30px #13242015; }
-.oc-dropdown-panel a { display: block; padding: 11px 20px; font-size: 13px; line-height: 1.6; letter-spacing: 0; }
-.oc-dropdown-panel a:hover, .oc-dropdown-panel a[aria-current='page'] { background: #f5f4f0; }
+.oc-dropdown-panel { position: absolute; top: calc(100% + 2px); left: 0; min-width: 290px; width: max-content; max-width: 360px; padding: 10px 0; background: white; color: #202424; border: 1px solid #dcdfda; box-shadow: 0 14px 34px rgba(20, 23, 22, 0.12); z-index: 100; border-radius: 0; }
+.oc-dropdown-panel a { display: block; padding: 10px 18px; font-size: 13px; line-height: 1.5; letter-spacing: 0; text-decoration: none; color: #202424; transition: background 0.15s, color 0.15s; }
+.oc-dropdown-panel a:hover, .oc-dropdown-panel a[aria-current='page'] { background: #f5f4f0; color: #1c5080; }
+.oc-dropdown-divider { padding: 8px 18px 4px; border-top: 1px solid #edf0ed; margin-top: 6px; font-family: Montserrat, sans-serif; font-size: 9.5px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #8e9595; }
+.oc-dropdown-link-inner { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.oc-dropdown-sub { display: block; font-size: 11px; color: #718096; line-height: 1.35; margin-top: 2px; }
+.oc-dropdown-badge { font-family: Montserrat, sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 0.08em; padding: 2px 6px; background: #f0f2ee; border: 1px solid #dcdfda; color: #1c5080; text-transform: uppercase; }
+@media (min-width: 1025px) {
+  .oc-dropdown:hover > .oc-dropdown-panel,
+  .oc-dropdown:focus-within > .oc-dropdown-panel {
+    display: block !important;
+  }
+  .oc-dropdown:hover summary svg,
+  .oc-dropdown:focus-within summary svg {
+    transform: rotate(180deg);
+  }
+}
 .oc-nav-cta { cursor: pointer; color: inherit; background: none; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; font-weight: 600; }
 .oc-hero-actions { display: flex; align-items: center; flex-direction: column; gap: 18px; }
 .oc-watch-button { display: inline-flex; align-items: center; gap: 10px; color: #fff; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; min-height: 30px; cursor: pointer; }
@@ -1459,8 +1476,9 @@ span[aria-hidden='true'],
   .oc-nav-links.oc-nav-open { display: block; }
   .oc-dropdown { border-bottom: 1px solid #dcdfda; }
   .oc-dropdown summary { font-size: 12px; letter-spacing: .1em; padding: 17px 0; justify-content: space-between; }
-  .oc-dropdown-panel { position: static; width: 100%; border: 0; box-shadow: none; background: #f5f4f0; margin-bottom: 12px; }
-  .oc-dropdown-panel a { padding: 12px 16px; }
+  .oc-dropdown-panel { position: static; width: 100%; min-width: 0; max-width: 100%; border: 0; box-shadow: none; background: #f5f4f0; margin-bottom: 12px; padding: 6px 0; }
+  .oc-dropdown-panel a { padding: 12px 16px 12px 24px; }
+  .oc-dropdown-divider { padding-left: 24px; }
   .oc-header-tools { position: static; margin-top: 20px; justify-content: space-between; }
   .oc-languages { gap: 22px; }
   .oc-languages button { font-size: 12px; min-width: 42px; min-height: 44px; }
