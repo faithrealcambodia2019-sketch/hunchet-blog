@@ -14,15 +14,16 @@ export function Brand({ locale }) {
       aria-label="Hun Chet Blog Home"
       onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
     >
-      <span className="oc-brand-logo-wrap">
+      <span className="oc-brand-seal" aria-hidden="true">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={LOGO} alt="Hun Chet" width="44" height="44" />
+        <span className="oc-seal-cross" aria-hidden="true">✝</span>
       </span>
       <span className="oc-brand-divider" aria-hidden="true" />
       <span className="oc-brand-text">
         <strong className="oc-brand-title" lang="en">HUN CHET</strong>
-        <small className="oc-brand-khmer" lang="km">
-          {isKm ? "លោកគ្រូ ហ៊ុន ចិត្ត" : "Leader Hun Chet"}
+        <small className="oc-brand-subtitle" lang={isKm ? "km" : "en"}>
+          {isKm ? "លោកគ្រូ ហ៊ុន ចិត្ត" : "PASTORAL MINISTRY"}
         </small>
       </span>
     </Link>

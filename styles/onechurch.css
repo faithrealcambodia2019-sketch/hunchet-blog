@@ -253,52 +253,75 @@ section[id], [id] {
 .oc-brand:hover {
   opacity: 0.95;
 }
-.oc-brand-logo-wrap {
+.oc-brand-logo-wrap,
+.oc-brand-seal {
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  padding: 0;
-  border: 1.5px solid rgba(255, 255, 255, 0.3);
-  background: transparent;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.28);
+  padding: 2px;
+  background: linear-gradient(135deg, #f3dda2 0%, #d4af37 50%, #785b00 100%);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.32);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  overflow: hidden;
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease, box-shadow 0.25s ease;
+  position: relative;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
 }
-.oc-brand:hover .oc-brand-logo-wrap {
+.oc-brand:hover .oc-brand-logo-wrap,
+.oc-brand:hover .oc-brand-seal {
   transform: scale(1.06);
-  border-color: rgba(255, 255, 255, 0.65);
-  box-shadow: 0 6px 20px rgba(112, 169, 198, 0.45);
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.45);
 }
-.oc-header.oc-scrolled .oc-brand-logo-wrap {
-  border-color: rgba(28, 80, 128, 0.28);
-  box-shadow: 0 2px 10px rgba(28, 80, 128, 0.12);
+.oc-header.oc-scrolled .oc-brand-logo-wrap,
+.oc-header.oc-scrolled .oc-brand-seal {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
+}
+.oc-seal-cross {
+  position: absolute;
+  bottom: -2px;
+  right: -2px;
+  width: 15px;
+  height: 15px;
+  background: #0e1520;
+  border: 1px solid #d4af37;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #f3dda2;
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 1;
+  transition: background-color 0.2s ease;
+}
+.oc-header.oc-scrolled .oc-seal-cross {
+  background: #141716;
 }
 .oc-brand-divider {
   display: block;
   width: 1px;
-  height: 32px;
+  height: 28px;
   background: rgba(255, 255, 255, 0.24);
   margin: 0 2px;
   flex-shrink: 0;
   transition: background-color 0.25s ease;
 }
 .oc-header.oc-scrolled .oc-brand-divider {
-  background: rgba(28, 80, 128, 0.2);
+  background: #dcdfda;
 }
 .oc-footer .oc-brand-divider {
   background: rgba(255, 255, 255, 0.2);
 }
 .oc-brand img,
-.oc-brand-logo-wrap img {
+.oc-brand-logo-wrap img,
+.oc-brand-seal img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
   border-radius: 50%;
   display: block;
+  border: 1px solid rgba(0, 0, 0, 0.15);
 }
 .oc-brand-text {
   display: flex;
@@ -310,10 +333,10 @@ section[id], [id] {
 .oc-brand-title {
   display: block;
   font-family: Montserrat, -apple-system, BlinkMacSystemFont, sans-serif !important;
-  font-size: 15.5px;
+  font-size: 15px;
   line-height: 1.15;
-  letter-spacing: .12em;
-  font-weight: 700 !important;
+  letter-spacing: .14em;
+  font-weight: 800 !important;
   text-transform: uppercase !important;
   color: inherit;
   white-space: nowrap;
@@ -325,23 +348,40 @@ section[id], [id] {
   text-shadow: none;
 }
 .oc-brand small,
-.oc-brand-khmer {
+.oc-brand-khmer,
+.oc-brand-subtitle {
   display: block;
-  font-family: 'Koh Santepheap', 'Kantumruy Pro', sans-serif !important;
-  font-size: 12px;
+  font-family: 'Koh Santepheap', 'Kantumruy Pro', Montserrat, sans-serif !important;
+  font-size: 11.5px;
   font-weight: 600;
   line-height: 1.35;
-  margin-top: 3px;
+  margin-top: 2px;
   letter-spacing: .03em;
-  color: rgba(255, 255, 255, 0.88);
+  color: rgba(255, 255, 255, 0.9);
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
   transition: color 0.2s ease;
   white-space: nowrap;
 }
+html[lang='en'] .oc-brand small,
+html[lang='en'] .oc-brand-khmer,
+html[lang='en'] .oc-brand-subtitle {
+  font-family: Montserrat, -apple-system, sans-serif !important;
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: #70a9c6;
+}
 .oc-header.oc-scrolled .oc-brand small,
-.oc-header.oc-scrolled .oc-brand-khmer {
+.oc-header.oc-scrolled .oc-brand-khmer,
+.oc-header.oc-scrolled .oc-brand-subtitle {
   color: #1c5080;
   text-shadow: none;
+}
+html[lang='en'] .oc-header.oc-scrolled .oc-brand small,
+html[lang='en'] .oc-header.oc-scrolled .oc-brand-khmer,
+html[lang='en'] .oc-header.oc-scrolled .oc-brand-subtitle {
+  color: #1c5080;
 }
 .oc-footer .oc-brand-logo-wrap {
   border-color: rgba(255, 255, 255, 0.3);
