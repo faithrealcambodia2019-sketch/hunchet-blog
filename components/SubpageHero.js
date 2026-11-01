@@ -56,12 +56,11 @@ export default function SubpageHero({
 
       {/* Hero content container */}
       <div
+        className="oc-subpage-hero-inner"
         style={{
           position: "relative",
           zIndex: 10,
-          maxWidth: "960px",
           margin: "0 auto",
-          padding: "135px 24px 65px",
           textAlign: "center",
           display: "flex",
           flexDirection: "column",
@@ -88,9 +87,10 @@ export default function SubpageHero({
         {/* Title: Authentic One Church Bold Uppercase Sans */}
         {title && (
           <h1
+            className="oc-subpage-hero-title"
             style={{
               fontFamily: isKm ? "'Koh Santepheap', sans-serif" : "Montserrat, sans-serif",
-              fontSize: "clamp(28px, 4.2vw, 52px)",
+              fontSize: "clamp(26px, 4.2vw, 50px)",
               fontWeight: 800,
               lineHeight: isKm ? 1.45 : 1.15,
               textTransform: "uppercase",
@@ -107,6 +107,7 @@ export default function SubpageHero({
         {/* Subtitle: Clean & Readable */}
         {subtitle && (
           <p
+            className="oc-subpage-hero-subtitle"
             style={{
               fontFamily: isKm ? "'Koh Santepheap', sans-serif" : "Montserrat, sans-serif",
               fontSize: "clamp(14px, 1.3vw, 17px)",
@@ -142,43 +143,13 @@ export default function SubpageHero({
 
         {/* Hero Stats */}
         {stats && stats.length > 0 && (
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              gap: "28px",
-              flexWrap: "wrap",
-              marginTop: "16px",
-              paddingTop: "20px",
-              borderTop: "1px solid rgba(255, 255, 255, 0.15)",
-              width: "100%",
-              maxWidth: "540px",
-            }}
-          >
+          <div className="oc-subpage-hero-stats">
             {stats.map((s, idx) => (
-              <div key={idx} style={{ textAlign: "center", minWidth: "90px" }}>
-                <span
-                  style={{
-                    display: "block",
-                    fontFamily: "Montserrat, sans-serif",
-                    fontSize: "24px",
-                    fontWeight: 700,
-                    color: "#ffffff",
-                    lineHeight: 1.1,
-                  }}
-                >
+              <div key={idx} className="oc-subpage-stat">
+                <span className="oc-subpage-stat-num">
                   {s.num || s.number}
                 </span>
-                <span
-                  style={{
-                    display: "block",
-                    fontSize: "11px",
-                    letterSpacing: "0.14em",
-                    textTransform: "uppercase",
-                    color: "rgba(255, 255, 255, 0.7)",
-                    marginTop: "4px",
-                  }}
-                >
+                <span className="oc-subpage-stat-label">
                   {s.label}
                 </span>
               </div>

@@ -2525,3 +2525,479 @@ html[lang='km'] .oc-gallery-tab {
   color: #141716;
   line-height: 1.28;
 }
+
+/* ==========================================================================
+   ONE CHURCH CONTACT PAGE & SUBPAGE HERO RESPONSIVE STYLES
+   ========================================================================== */
+
+/* Subpage Hero Base (Desktop) */
+.oc-subpage-hero-inner {
+  max-width: 960px;
+  padding: 135px 24px 65px;
+  box-sizing: border-box;
+}
+.oc-subpage-hero-stats {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  width: 100%;
+  max-width: 600px;
+  box-sizing: border-box;
+}
+.oc-subpage-stat {
+  text-align: center;
+  min-width: 100px;
+  box-sizing: border-box;
+}
+.oc-subpage-stat-num {
+  display: block;
+  font-family: Montserrat, sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.15;
+}
+.oc-subpage-stat-label {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.72);
+  margin-top: 4px;
+}
+
+/* Subpage Hero Responsive Adjustments (Mobile) */
+@media (max-width: 640px) {
+  .oc-subpage-hero {
+    min-height: 310px !important;
+  }
+  .oc-subpage-hero-inner {
+    padding: 100px 16px 32px !important;
+  }
+  .oc-subpage-hero-title {
+    font-size: clamp(24px, 6.8vw, 36px) !important;
+    margin-bottom: 12px !important;
+  }
+  .oc-subpage-hero-subtitle {
+    font-size: 14.5px !important;
+    line-height: 1.65 !important;
+    max-width: 96% !important;
+    margin-bottom: 16px !important;
+  }
+  .oc-subpage-hero-stats {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 8px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-top: 14px !important;
+    margin-top: 14px !important;
+  }
+  .oc-subpage-stat {
+    min-width: 0 !important;
+    text-align: center !important;
+  }
+  .oc-subpage-stat-num {
+    font-size: clamp(12px, 3.4vw, 15px) !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: clip !important;
+  }
+  .oc-subpage-stat-label {
+    font-size: 9.5px !important;
+    letter-spacing: 0.05em !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: clip !important;
+    color: rgba(255, 255, 255, 0.75) !important;
+  }
+}
+
+/* Contact Page Section */
+.oc-contact-section {
+  width: 100%;
+  background: #ffffff;
+  padding: 72px 0 96px;
+  box-sizing: border-box;
+}
+
+.oc-contact-container {
+  width: min(1140px, 92%);
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+/* Mobile Quick Touch Bar */
+.oc-contact-quick-bar {
+  display: none;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+.oc-quick-action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 0 14px;
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 3px;
+  transition: transform 0.15s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+  box-sizing: border-box;
+}
+.oc-quick-action-btn:active {
+  transform: scale(0.98);
+}
+.oc-quick-call {
+  background: #141716;
+  color: #ffffff !important;
+  border: 1px solid #141716;
+}
+.oc-quick-call:hover {
+  background: #252b29;
+}
+.oc-quick-telegram {
+  background: #229ed9;
+  color: #ffffff !important;
+  border: 1px solid #229ed9;
+}
+.oc-quick-telegram:hover {
+  background: #1e8ec3;
+}
+
+@media (max-width: 768px) {
+  .oc-contact-quick-bar {
+    display: grid;
+  }
+}
+@media (max-width: 420px) {
+  .oc-contact-quick-bar {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+}
+
+/* Main Grid Layout */
+.oc-contact-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 40px;
+  align-items: start;
+}
+
+@media (max-width: 960px) {
+  .oc-contact-section {
+    padding: 32px 0 54px;
+  }
+  .oc-contact-container {
+    width: 100%;
+    padding: 0 16px;
+  }
+  .oc-contact-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+/* Form Card */
+.oc-contact-form-card {
+  background: #fbfbf9;
+  border: 1px solid #dcdfda;
+  padding: clamp(20px, 4vw, 44px);
+  box-sizing: border-box;
+}
+.oc-form-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.8vw, 2.1rem);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: #141716;
+  margin: 0 0 0.85rem;
+  line-height: 1.25;
+}
+.oc-form-desc {
+  color: #4a5568;
+  font-size: 0.94rem;
+  line-height: 1.7;
+  margin: 0 0 1.75rem;
+}
+.oc-contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  width: 100%;
+}
+.oc-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  width: 100%;
+}
+@media (max-width: 640px) {
+  .oc-form-row {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+}
+.oc-form-field {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.oc-form-label {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #141716;
+  margin-bottom: 7px;
+}
+.oc-form-input,
+.oc-form-select,
+.oc-form-textarea {
+  width: 100%;
+  min-height: 48px;
+  padding: 0 14px;
+  background: #ffffff;
+  border: 1px solid #dcdfda;
+  border-radius: 2px;
+  font-family: var(--font-body);
+  font-size: 16px; /* Essential to prevent iOS Safari auto-zoom */
+  color: #141716;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.oc-form-select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23141716' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  background-size: 14px;
+  padding-right: 36px;
+  cursor: pointer;
+}
+.oc-form-textarea {
+  min-height: 120px;
+  padding: 12px 14px;
+  line-height: 1.6;
+  resize: vertical;
+}
+.oc-form-input:focus,
+.oc-form-select:focus,
+.oc-form-textarea:focus {
+  border-color: #141716;
+  box-shadow: 0 0 0 3px rgba(20, 23, 22, 0.08);
+}
+.oc-form-submit-btn {
+  width: 100%;
+  min-height: 48px;
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 6px;
+  cursor: pointer;
+}
+@media (min-width: 641px) {
+  .oc-form-submit-btn {
+    width: auto;
+    align-self: flex-start;
+    padding: 0 32px;
+  }
+}
+
+/* Success Card */
+.oc-form-success {
+  padding: 2.25rem 1.5rem;
+  background: rgba(74, 124, 135, 0.1);
+  border: 1px solid var(--oc-teal);
+  text-align: center;
+}
+.oc-success-icon {
+  width: 48px;
+  height: 48px;
+  background: var(--oc-teal);
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  border-radius: 50%;
+}
+.oc-success-title {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #141716;
+  margin: 0 0 0.5rem;
+}
+.oc-success-text {
+  color: #4a5568;
+  font-size: 0.94rem;
+  margin: 0 0 1.5rem;
+  line-height: 1.6;
+}
+
+/* Direct Channels Column */
+.oc-contact-channels {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.oc-channels-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 2.5vw, 1.65rem);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: #141716;
+  margin: 0 0 1.25rem;
+}
+.oc-channels-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.oc-channel-card {
+  background: #fbfbf9;
+  border: 1px solid #dcdfda;
+  padding: clamp(18px, 3.5vw, 24px);
+  box-sizing: border-box;
+  transition: transform 0.15s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.oc-channel-card:hover {
+  border-color: #141716;
+}
+.oc-channel-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 0.75rem;
+}
+.oc-channel-icon {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #ffffff;
+}
+.oc-icon-phone {
+  background: #141716;
+}
+.oc-icon-telegram {
+  background: #229ed9;
+}
+.oc-icon-facebook {
+  background: #1877f2;
+}
+.oc-channel-meta {
+  display: flex;
+  flex-direction: column;
+}
+.oc-channel-badge {
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--oc-teal);
+  display: block;
+}
+.oc-channel-value {
+  font-size: 1.15rem;
+  color: #141716;
+  font-family: var(--font-display);
+  font-weight: 700;
+}
+.oc-channel-desc {
+  color: #64748b;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  margin: 0 0 1rem;
+}
+.oc-channel-action {
+  width: 100% !important;
+  justify-content: center !important;
+  min-height: 44px !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.12em !important;
+}
+
+/* Location Card */
+.oc-channel-location {
+  padding: 18px 22px;
+}
+.oc-location-inner {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+.oc-location-icon {
+  color: var(--oc-teal);
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+.oc-location-title {
+  display: block;
+  color: #141716;
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+.oc-location-text {
+  color: #64748b;
+  font-size: 0.88rem;
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* Author Section on Contact */
+.oc-contact-author-section {
+  background: #f4f5f3;
+  padding: clamp(48px, 6vw, 80px) 0;
+}
+.oc-author-container {
+  width: min(860px, 92%);
+  margin: 0 auto;
+}
+.oc-author-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.oc-author-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: #141716;
+  margin: 0 0 0.5rem;
+}
+@media (max-width: 640px) {
+  .oc-contact-author-section {
+    padding: 36px 0 48px;
+  }
+  .oc-author-container {
+    width: 100%;
+    padding: 0 16px;
+  }
+}
