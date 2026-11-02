@@ -104,10 +104,10 @@ export default function SiteHeader() {
       {
         href: "/sermons/god-is-our-mighty-refuge",
         label: {
-          km: "ធម្មទេសនា៖ ព្រះជាទីជ្រកកោន (ទំនុកដំកើង ៤៦)",
-          en: "Sermon: God Our Refuge (Psalm 46)",
-          ko: "주일설교: 우리의 피난처 되신 하나님",
-          zh: "主日讲道：神是我们的避难所",
+          km: "អធិស្ឋាន៖ ព្រះជាទីជ្រកកោន (ទំនុកដំកើង ៤៦)",
+          en: "Prayer: God Our Refuge (Psalm 46)",
+          ko: "기도: 우리의 피난처 되신 하나님",
+          zh: "祷告：神是我们的避难所",
         },
         badge: "NEW",
       },
@@ -172,7 +172,7 @@ export default function SiteHeader() {
       },
       {
         href: "/resource",
-        label: { km: "វីដេអូបង្រៀន & ធម្មទេសនា", en: "Video Sermons & Teaching", ko: "설교 영상과 강의", zh: "讲道影片与教学" },
+        label: { km: "វីដេអូបង្រៀន & អធិស្ឋាន", en: "Video Prayer & Teaching", ko: "기도 영상과 강의", zh: "祷告影片与教学" },
         sub: { km: "ការបង្រៀនព្រះបន្ទូលតាមប្រព័ន្ធឌីជីថល", en: "Digital video expositions", ko: "디지털 말씀 영상", zh: "数码讲道影音" },
       },
       {

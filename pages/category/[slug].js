@@ -52,7 +52,7 @@ export default function CategoryPage({ category, posts }) {
           name="description"
           content={
             isKm
-              ? `អត្ថបទ និងធម្មទេសនាព្រះគម្ពីរអំពី ${category.name}។`
+              ? `អត្ថបទ និងការអធិស្ឋានព្រះគម្ពីរអំពី ${category.name}។`
               : `Biblical expositions and articles on ${category.name}.`
           }
         />

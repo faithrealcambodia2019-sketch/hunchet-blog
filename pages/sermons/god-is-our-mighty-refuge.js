@@ -41,7 +41,7 @@ ${sermon.bigIdea.km}
 ២. ${sermon.points[1].title} (${sermon.points[1].passage})
 ៣. ${sermon.points[2].title} (${sermon.points[2].passage})
 
-អានធម្មទេសនាពេញលេញនៅ៖ https://www.hunchet.blog/sermons/god-is-our-mighty-refuge
+អានអធិស្ឋានពេញលេញនៅ៖ https://www.hunchet.blog/sermons/god-is-our-mighty-refuge
     `.trim();
 
     if (navigator.clipboard) {
@@ -96,7 +96,7 @@ ${sermon.bigIdea.km}
               </Link>
               <span>/</span>
               <Link href="/articles" style={{ color: "rgba(255, 255, 255, 0.75)", textDecoration: "none" }}>
-                {isKm ? "ធម្មទេសនា & អត្ថបទ" : "Sermons & Articles"}
+                {isKm ? "អធិស្ឋាន & អត្ថបទ" : "Prayer & Articles"}
               </Link>
               <span>/</span>
               <span style={{ color: "var(--gold, #d4af37)" }}>
@@ -119,7 +119,7 @@ ${sermon.bigIdea.km}
                   borderRadius: "999px",
                 }}
               >
-                {isKm ? "ធម្មទេសនាថ្ងៃអាទិត្យ ០១ វិច្ឆិកា ២០២៦" : "Sunday Sermon • Nov 1, 2026"}
+                {isKm ? "អធិស្ឋានថ្ងៃអាទិត្យ ០១ វិច្ឆិកា ២០២៦" : "Sunday Prayer • Nov 1, 2026"}
               </span>
               <span
                 style={{
@@ -344,7 +344,7 @@ ${sermon.bigIdea.km}
                 fontSize: "14px",
               }}
             >
-              <span>← {isKm ? "ត្រឡប់ទៅកាន់អត្ថបទ & ធម្មទេសនាទាំងអស់" : "Back to All Articles"}</span>
+              <span>← {isKm ? "ត្រឡប់ទៅកាន់អត្ថបទ & ការអធិស្ឋានទាំងអស់" : "Back to All Articles"}</span>
             </Link>
 
             <Link

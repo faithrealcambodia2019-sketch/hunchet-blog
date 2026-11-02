@@ -312,7 +312,7 @@ export default function Library() {
                   <span className="portal-nav-icon" style={{ color: "#16a34a" }}>
                     <BookOpenIcon />
                   </span>
-                  <span>{isKm ? "អត្ថបទ & ធម្មទេសនា" : "Articles & Devotionals"}</span>
+                  <span>{isKm ? "អត្ថបទ & អធិស្ឋាន" : "Articles & Devotionals"}</span>
                   <span className="portal-nav-badge">{statArticles}</span>
                 </button>
 
@@ -819,7 +819,7 @@ export default function Library() {
                     <span className="portal-stat-val">{statBooks}</span>
                   </li>
                   <li className="portal-stat-row">
-                    <span>{isKm ? "អត្ថបទ & ធម្មទេសនា" : "Articles"}</span>
+                    <span>{isKm ? "អត្ថបទ & អធិស្ឋាន" : "Articles"}</span>
                     <span className="portal-stat-val">{statArticles}</span>
                   </li>
                   <li className="portal-stat-row">

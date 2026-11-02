@@ -409,14 +409,14 @@ export default function Home({ posts = [], error }) {
         >
           <p>
             <span className="oc-status-dot" aria-hidden="true" />
-            {isKm ? "ធម្មទេសនា ០១ វិច្ឆិកា ២០២៦" : "Sunday Sermon • Nov 1, 2026"}
+            {isKm ? "អធិស្ឋាន ០១ វិច្ឆិកា ២០២៦" : "Sunday Prayer • Nov 1, 2026"}
           </p>
           <p>
             {isKm ? "ប្រធានបទ" : "Topic"}{" "}
             <strong>{isKm ? "ទំនុកដំកើង ៤៦ • ព្រះជាទីជ្រកកោន" : "Psalm 46 • God Our Refuge"}</strong>
           </p>
           <Link href="/sermons/god-is-our-mighty-refuge" style={{ fontWeight: 800 }}>
-            {isKm ? "អានធម្មទេសនាពេញ" : "Read Sermon"}
+            {isKm ? "អានអធិស្ឋានពេញ" : "Read Prayer"}
             <ArrowUpRight width={12} height={12} style={{ display: "inline-block", marginLeft: 4 }} />
           </Link>
           <Link href="/contact">
@@ -453,7 +453,7 @@ export default function Home({ posts = [], error }) {
               />
               <div className="oc-card-content">
                 <span className="oc-card-number">01</span>
-                <h3>{isKm ? "ធម្មទេសនា & ព្រះបន្ទូល" : "Sermon & Word"}</h3>
+                <h3>{isKm ? "អធិស្ឋាន & ព្រះបន្ទូល" : "Prayer & Word"}</h3>
                 <p>{isKm ? "ទំនុកដំកើង ៤៦៖ ព្រះជាម្ចាស់ជាទីជ្រកកោនដ៏រឹងមាំរបស់យើង។" : "Psalm 46: God Is Our Mighty Refuge."}</p>
                 <span className="oc-card-arrow">↗</span>
               </div>

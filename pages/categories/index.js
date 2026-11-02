@@ -26,15 +26,15 @@ export default function Categories({ categories, error }) {
       <Head>
         <title>
           {isKm
-            ? "ប្រធានបទ និងប្រភេទធម្មទេសនា — ហ៊ុន ចិត្ត"
-            : "Topics & Sermon Categories — Hun Chet"}
+            ? "ប្រធានបទ និងប្រភេទអធិស្ឋាន — ហ៊ុន ចិត្ត"
+            : "Topics & Prayer Categories — Hun Chet"}
         </title>
         <meta
           name="description"
           content={
             isKm
-              ? "រុករកបណ្ណសារធម្មទេសនា និងអត្ថបទរបស់លោកគ្រូ ហ៊ុន ចិត្ត តាមប្រធានបទ។"
-              : "Browse Hun Chet sermon archives and articles by topic."
+              ? "រុករកបណ្ណសារអធិស្ឋាន និងអត្ថបទរបស់លោកគ្រូ ហ៊ុន ចិត្ត តាមប្រធានបទ។"
+              : "Browse Hun Chet prayer archives and articles by topic."
           }
         />
       </Head>
@@ -135,7 +135,7 @@ export default function Categories({ categories, error }) {
 
             <div style={{ textAlign: "center", marginTop: "3.5rem" }}>
               <Link href="/articles" className="oc-button oc-solid">
-                <span>{isKm ? "មើលអត្ថបទ និងធម្មទេសនាទាំងអស់" : "VIEW ALL ARTICLES & SERMONS"}</span>
+                <span>{isKm ? "មើលអត្ថបទ និងការអធិស្ឋានទាំងអស់" : "VIEW ALL ARTICLES & PRAYERS"}</span>
               </Link>
             </div>
           </div>
