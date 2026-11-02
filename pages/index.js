@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -15,10 +15,6 @@ import {
 } from "../lib/wordpress";
 import {
   BookOpenIcon,
-  PlayIcon,
-  PauseIcon,
-  VolumeOnIcon,
-  VolumeOffIcon,
   CloseIcon,
   ArrowRightIcon,
   ArrowUpRight,
@@ -173,28 +169,6 @@ export default function Home({ posts = [], error }) {
   const isKm = locale === "km";
 
   const [selectedPhoto, setSelectedPhoto] = useState(null);
-  const videoRef = useRef(null);
-  const [isHeroPlaying, setIsHeroPlaying] = useState(true);
-  const [isHeroMuted, setIsHeroMuted] = useState(true);
-
-  const toggleHeroPlay = () => {
-    if (videoRef.current) {
-      if (isHeroPlaying) {
-        videoRef.current.pause();
-        setIsHeroPlaying(false);
-      } else {
-        videoRef.current.play();
-        setIsHeroPlaying(true);
-      }
-    }
-  };
-
-  const toggleHeroMute = () => {
-    if (videoRef.current) {
-      videoRef.current.muted = !isHeroMuted;
-      setIsHeroMuted(!isHeroMuted);
-    }
-  };
 
   const scriptureData = {
     km: {
@@ -265,93 +239,14 @@ export default function Home({ posts = [], error }) {
       <SiteHeader />
 
       <main id="main-content">
-        {/* 1. HERO SECTION (All Nations Church Visual Architecture) */}
+        {/* 1. HERO SECTION (One Church Authentic Style) */}
         <section className="oc-hero oc-photo-section" id="home" aria-labelledby="oc-hero-title">
-          {/* Background Video */}
-          <video
-            ref={videoRef}
-            autoPlay
-            loop
-            muted={isHeroMuted}
-            playsInline
-            poster="/images/hero-cover.jpg"
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/images/hero-cover.jpg"
+            alt="All Nations Church Sanctuary Worship"
             className="oc-section-photo oc-hero-photo"
-          >
-            <source src="/videos/church-intro-480p.mp4" type="video/mp4" />
-          </video>
-
-          {/* Video Audio & Playback Controls Badge */}
-          <div
-            style={{
-              position: "absolute",
-              bottom: "32px",
-              right: "32px",
-              zIndex: 20,
-              display: "flex",
-              alignItems: "center",
-              gap: "8px",
-              background: "rgba(10, 20, 24, 0.82)",
-              backdropFilter: "blur(8px)",
-              padding: "6px 14px",
-              border: "1px solid rgba(255, 255, 255, 0.2)",
-              color: "#ffffff",
-              fontSize: "11px",
-              letterSpacing: "0.1em",
-              textTransform: "uppercase",
-            }}
-          >
-            <button
-              type="button"
-              onClick={toggleHeroMute}
-              aria-label={isHeroMuted ? "Turn audio on" : "Mute audio"}
-              style={{
-                background: "none",
-                border: "none",
-                color: "#ffffff",
-                cursor: "pointer",
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "6px",
-                padding: 0,
-                fontSize: "11px",
-              }}
-            >
-              {isHeroMuted ? (
-                <>
-                  <VolumeOffIcon style={{ width: 13, height: 13 }} />
-                  <span>{isKm ? "សំឡេងបិទ" : "Muted"}</span>
-                </>
-              ) : (
-                <>
-                  <VolumeOnIcon style={{ width: 13, height: 13, color: "#70a9c6" }} />
-                  <span>{isKm ? "សំឡេងបើក" : "Sound On"}</span>
-                </>
-              )}
-            </button>
-
-            <span style={{ opacity: 0.3 }}>|</span>
-
-            <button
-              type="button"
-              onClick={toggleHeroPlay}
-              aria-label={isHeroPlaying ? "Pause video" : "Play video"}
-              style={{
-                background: "none",
-                border: "none",
-                color: "#ffffff",
-                cursor: "pointer",
-                display: "inline-flex",
-                alignItems: "center",
-                padding: 0,
-              }}
-            >
-              {isHeroPlaying ? (
-                <PauseIcon style={{ width: 13, height: 13 }} />
-              ) : (
-                <PlayIcon style={{ width: 13, height: 13, color: "#70a9c6" }} />
-              )}
-            </button>
-          </div>
+          />
 
           {/* Hero Content */}
           <div className="oc-hero-content">
@@ -364,7 +259,7 @@ export default function Home({ posts = [], error }) {
             <h1 id="oc-hero-title">
               {isKm ? (
                 <>
-                  ចាក់ឬសក្នុងព្រះបន្ទូល។
+                  ចាក់ឫសក្នុងព្រះបន្ទូល។
                   <br />
                   រស់ដើម្បីព្រះគ្រីស្ទ។
                 </>
@@ -384,8 +279,12 @@ export default function Home({ posts = [], error }) {
             </p>
 
             <div className="oc-hero-actions">
-              <Link href="/articles" className="oc-button oc-outline">
+              <Link href="/articles" className="oc-button oc-solid">
                 <span>{isKm ? "អានអត្ថបទទាំងអស់" : "Explore Articles"}</span>
+                <ArrowUpRight width={13} height={13} style={{ display: "inline-block", marginLeft: 6 }} />
+              </Link>
+              <Link href="/sermons/god-is-our-mighty-refuge" className="oc-button oc-outline">
+                <span>{isKm ? "ការអធិស្ឋានថ្ងៃអាទិត្យ" : "Sunday Prayer"}</span>
                 <ArrowUpRight width={13} height={13} style={{ display: "inline-block", marginLeft: 6 }} />
               </Link>
             </div>
@@ -509,7 +408,34 @@ export default function Home({ posts = [], error }) {
           </div>
         </section>
 
-        {/* 4. DAILY SCRIPTURE SPOTLIGHT (One Church Minimalist Clean Band) */}
+                {/* ONE CHURCH SIGNATURE BANNER 1: COME TOGETHER */}
+        <section className="oc-photo-section oc-feature-banner" aria-label={isKm ? "ជួបជុំគ្នាថ្វាយបង្គំព្រះ" : "Come Together in Worship"}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/images/worship-2026-11-01-congregation.jpg"
+            alt="Sunday Worship Congregation at All Nations Church"
+            className="oc-section-photo"
+          />
+          <div className="oc-banner-content">
+            <p className="oc-eyebrow oc-light">
+              {isKm ? "ការជួបជុំថ្វាយបង្គំព្រះ • ALL NATIONS CHURCH" : "SUNDAY WORSHIP • ALL NATIONS CHURCH"}
+            </p>
+            <h2>
+              {isKm ? "ជួបជុំគ្នាថ្វាយបង្គំព្រះ" : "Come Together"}
+            </h2>
+            <p>
+              {isKm
+                ? "រៀងរាល់ព្រឹកថ្ងៃអាទិត្យ ម៉ោង ១០:០០ ព្រឹក — ថ្វាយបង្គំដោយអំណរ ចាក់ឫសក្នុងព្រះបន្ទូល និងរួបរួមគ្នាក្នុងព្រះគ្រីស្ទ។"
+                : "Join us every Sunday morning at 10:00 AM for joyful worship, biblical preaching, and genuine fellowship in Christ."}
+            </p>
+            <Link href="/contact" className="oc-button oc-outline">
+              <span>{isKm ? "ព័ត៌មានការថ្វាយបង្គំ" : "Plan Your Visit"}</span>
+              <ArrowUpRight width={13} height={13} style={{ display: "inline-block", marginLeft: 6 }} />
+            </Link>
+          </div>
+        </section>
+
+{/* 4. DAILY SCRIPTURE SPOTLIGHT (One Church Minimalist Clean Band) */}
         <section
           style={{
             backgroundColor: "#fcfbf7",
@@ -634,7 +560,34 @@ export default function Home({ posts = [], error }) {
           </div>
         </section>
 
-        {/* 6. 5 KEYS TO LIVING A TRULY GREAT LIFE IN CHRIST (Numbered Clean Cards) */}
+                {/* ONE CHURCH SIGNATURE BANNER 2: ROOTED IN TRUTH */}
+        <section className="oc-photo-section oc-feature-banner" aria-label={isKm ? "ចាក់ឫសក្នុងព្រះបន្ទូល" : "Rooted in Truth"}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/images/pastors-pulpit.jpg"
+            alt="Pastoral Teaching and Biblical Exegesis"
+            className="oc-section-photo"
+          />
+          <div className="oc-banner-content">
+            <p className="oc-eyebrow oc-light">
+              {isKm ? "ការបង្រៀនព្រះគម្ពីរ • EXPOSITORY PREACHING" : "BIBLICAL TRUTH • EXPOSITORY PREACHING"}
+            </p>
+            <h2>
+              {isKm ? "ចាក់ឫសក្នុងព្រះបន្ទូល" : "Rooted in Truth"}
+            </h2>
+            <p>
+              {isKm
+                ? "ការបកស្រាយព្រះគម្ពីរខម្តងមួយៗ ការពន្យល់ដោយស្មោះត្រង់ និងការអនុវត្តជាក់ស្តែងក្នុងជីវិតប្រចាំថ្ងៃ ដើម្បីកសាងជំនឿរឹងមាំ។"
+                : "Faithful verse-by-verse exposition of the Scriptures to anchor your heart and grow in spiritual maturity."}
+            </p>
+            <Link href="/sermons/god-is-our-mighty-refuge" className="oc-button oc-outline">
+              <span>{isKm ? "អានការអធិស្ឋានចុងក្រោយ" : "Read Latest Prayer"}</span>
+              <ArrowUpRight width={13} height={13} style={{ display: "inline-block", marginLeft: 6 }} />
+            </Link>
+          </div>
+        </section>
+
+{/* 6. 5 KEYS TO LIVING A TRULY GREAT LIFE IN CHRIST (Numbered Clean Cards) */}
         <section style={{ backgroundColor: "#ffffff", padding: "90px 7%", borderBottom: "1px solid #dcdfda" }}>
           <div style={{ maxWidth: "720px", margin: "0 auto 3.5rem", textAlign: "center" }}>
             <p className="oc-eyebrow">
@@ -1047,7 +1000,34 @@ export default function Home({ posts = [], error }) {
           </div>
         </section>
 
-        {/* 10. CONNECT BANNER */}
+                {/* ONE CHURCH SIGNATURE BANNER 3: ONE COMMUNITY */}
+        <section className="oc-photo-section oc-feature-banner" aria-label={isKm ? "គ្រួសារតែមួយក្នុងព្រះគ្រីស្ទ" : "One Community"}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/images/church-family.jpg"
+            alt="Church Family Fellowship in Christ"
+            className="oc-section-photo"
+          />
+          <div className="oc-banner-content">
+            <p className="oc-eyebrow oc-light">
+              {isKm ? "សហគមន៍នៃជំនឿ • ONE BODY IN CHRIST" : "COMMUNITY OF FAITH • ONE BODY IN CHRIST"}
+            </p>
+            <h2>
+              {isKm ? "គ្រួសារតែមួយក្នុងព្រះគ្រីស្ទ" : "One Community"}
+            </h2>
+            <p>
+              {isKm
+                ? "យើងដើរជាមួយគ្នា បម្រើគ្នាទៅវិញទៅមកដោយក្តីស្រឡាញ់ និងរីកចម្រើនជាគ្រួសារនៃព្រះរាជ្យព្រះនៅកម្ពុជា។"
+                : "Walking together in faith, serving each other in love, and discipling the next generation across Cambodia."}
+            </p>
+            <Link href="/gallery" className="oc-button oc-outline">
+              <span>{isKm ? "មើលសកម្មភាពក្រុមជំនុំ" : "Explore Ministry Gallery"}</span>
+              <ArrowUpRight width={13} height={13} style={{ display: "inline-block", marginLeft: 6 }} />
+            </Link>
+          </div>
+        </section>
+
+{/* 10. CONNECT BANNER */}
         <ConnectBanner />
       </main>
 

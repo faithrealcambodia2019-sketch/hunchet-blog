@@ -176,47 +176,57 @@ section[id], [id] {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 20px;
+  gap: 12px;
   min-height: 48px;
-  padding: 13px 26px;
-  font-size: 12px;
-  font-weight: 600;
+  padding: 13px 28px;
+  font-size: 11.5px;
+  font-weight: 700;
   line-height: 1.4;
-  letter-spacing: .12em;
+  letter-spacing: .18em;
   text-transform: uppercase;
+  border-radius: 3px !important;
   border: 1px solid;
-  transition: background .2s,color .2s;
+  transition: all .25s ease;
 }
 .oc-button span {
-  font-size: 17px;
-  font-weight: 400;
+  font-size: 13px;
+  font-weight: 600;
   line-height: 1;
 }
 .oc-button.oc-outline {
   color: #fff;
-  border-color: #ffffff91;
-  background: transparent
+  border-color: rgba(255, 255, 255, 0.75);
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(6px);
 }
 .oc-button.oc-outline:hover {
   background: #fff;
-  color: var(--ink)
+  color: #141716;
+  border-color: #fff;
+  transform: translateY(-1px);
 }
 .oc-button.oc-outline-dark {
-  color: var(--ink) !important;
-  border-color: #20242480 !important;
+  color: #141716 !important;
+  border-color: rgba(20, 23, 22, 0.6) !important;
   background: transparent !important;
 }
 .oc-button.oc-outline-dark:hover {
-  background: var(--ink) !important;
+  background: #141716 !important;
   color: #fff !important;
+  border-color: #141716 !important;
+  transform: translateY(-1px);
 }
 .oc-button.oc-solid {
-  background: var(--ink);
-  color: #fff;
-  border-color: var(--ink)
+  background: #ffffff;
+  color: #141716;
+  border-color: #ffffff;
+  font-weight: 700;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
 }
 .oc-button.oc-solid:hover {
-  background: #4c5351
+  background: #f0f0f0;
+  border-color: #f0f0f0;
+  transform: translateY(-1px);
 }
 .oc-header {
   position: fixed;
@@ -229,9 +239,12 @@ section[id], [id] {
   transition: background .25s,color .25s,border-color .25s
 }
 .oc-header.oc-scrolled,body.oc-menu-open .oc-header {
-  background: rgba(255,255,255,.98);
-  color: var(--ink);
-  border-color: var(--line)
+  background: rgba(14, 20, 26, 0.94);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
 }
 .oc-nav {
   min-height: var(--header);
@@ -307,7 +320,7 @@ section[id], [id] {
   transition: background-color 0.25s ease;
 }
 .oc-header.oc-scrolled .oc-brand-divider {
-  background: #dcdfda;
+  background: rgba(255, 255, 255, 0.2);
 }
 .oc-footer .oc-brand-divider {
   background: rgba(255, 255, 255, 0.2);
@@ -343,8 +356,8 @@ section[id], [id] {
 }
 .oc-header.oc-scrolled .oc-brand strong,
 .oc-header.oc-scrolled .oc-brand-title {
-  color: #141716;
-  text-shadow: none;
+  color: #ffffff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
 }
 .oc-brand small,
 .oc-brand-khmer,
@@ -369,18 +382,18 @@ html[lang='en'] .oc-brand-subtitle {
   font-weight: 700;
   letter-spacing: .2em;
   text-transform: uppercase;
-  color: #70a9c6;
+  color: #8ec5e5;
 }
 .oc-header.oc-scrolled .oc-brand small,
 .oc-header.oc-scrolled .oc-brand-khmer,
 .oc-header.oc-scrolled .oc-brand-subtitle {
-  color: #1c5080;
-  text-shadow: none;
+  color: rgba(255, 255, 255, 0.85);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
 }
 html[lang='en'] .oc-header.oc-scrolled .oc-brand small,
 html[lang='en'] .oc-header.oc-scrolled .oc-brand-khmer,
 html[lang='en'] .oc-header.oc-scrolled .oc-brand-subtitle {
-  color: #1c5080;
+  color: #8ec5e5;
 }
 .oc-footer .oc-brand-logo-wrap {
   border-color: rgba(255, 255, 255, 0.3);
@@ -1004,6 +1017,91 @@ html[lang='en'] .oc-header.oc-scrolled .oc-brand-subtitle {
   font-size: 11.5px;
   color: #b2bbb7;
 }
+
+/* One Church Signature Newsletter & Service Times Footer Sections */
+.oc-footer-newsletter {
+  padding-bottom: 52px;
+  margin-bottom: 52px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+.oc-footer-newsletter-text h2 {
+  font-family: Montserrat, 'Plus Jakarta Sans', sans-serif !important;
+  font-size: clamp(22px, 2.5vw, 28px) !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase !important;
+  color: #ffffff !important;
+  margin: 0 0 6px !important;
+}
+html[lang='km'] .oc-footer-newsletter-text h2 {
+  font-family: 'Koh Santepheap', serif !important;
+  letter-spacing: normal !important;
+  text-transform: none !important;
+}
+.oc-footer-newsletter-text p {
+  color: rgba(255, 255, 255, 0.75) !important;
+  font-size: 14px !important;
+  margin: 0 !important;
+}
+.oc-footer-newsletter-form {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 480px;
+}
+.oc-footer-newsletter-input {
+  flex: 1;
+  min-width: 220px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 3px;
+  padding: 13px 18px;
+  color: #ffffff;
+  font-size: 13px;
+  outline: none;
+  transition: border-color 0.2s, background 0.2s;
+}
+.oc-footer-newsletter-input:focus {
+  border-color: #ffffff;
+  background: rgba(255, 255, 255, 0.12);
+}
+.oc-footer-service-times {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 4px;
+  padding: 24px 28px;
+  margin-bottom: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.oc-footer-service-times h3 {
+  font-size: 13px !important;
+  letter-spacing: 0.16em !important;
+  font-weight: 700 !important;
+  color: #ffffff !important;
+  text-transform: uppercase !important;
+  margin: 0 0 6px !important;
+}
+html[lang='km'] .oc-footer-service-times h3 {
+  font-family: 'Koh Santepheap', serif !important;
+  letter-spacing: normal !important;
+  text-transform: none !important;
+}
+.oc-footer-service-times p {
+  color: rgba(255, 255, 255, 0.8) !important;
+  font-size: 13.5px !important;
+  margin: 0 !important;
+}
 .oc-footer-bottom p {
   margin: 0;
 }
@@ -1471,13 +1569,13 @@ html[lang='en'] .oc-header.oc-scrolled .oc-brand-subtitle {
 .oc-dropdown:hover summary::after, .oc-dropdown[open] summary::after { right: 0; }
 .oc-dropdown summary svg { transition: transform 0.2s ease; }
 .oc-dropdown[open] summary svg { transform: rotate(180deg); }
-.oc-dropdown-panel { position: absolute; top: calc(100% + 2px); left: 0; min-width: 290px; width: max-content; max-width: 360px; padding: 10px 0; background: white; color: #202424; border: 1px solid #dcdfda; box-shadow: 0 14px 34px rgba(20, 23, 22, 0.12); z-index: 100; border-radius: 0; }
-.oc-dropdown-panel a { display: block; padding: 10px 18px; font-size: 13px; line-height: 1.5; letter-spacing: 0; text-decoration: none; color: #202424; transition: background 0.15s, color 0.15s; }
-.oc-dropdown-panel a:hover, .oc-dropdown-panel a[aria-current='page'] { background: #f5f4f0; color: #1c5080; }
-.oc-dropdown-divider { padding: 8px 18px 4px; border-top: 1px solid #edf0ed; margin-top: 6px; font-family: Montserrat, sans-serif; font-size: 9.5px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #8e9595; }
+.oc-dropdown-panel { position: absolute; top: calc(100% + 4px); left: 0; min-width: 290px; width: max-content; max-width: 360px; padding: 10px 0; background: rgba(16, 22, 28, 0.98); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.12); box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); z-index: 100; border-radius: 4px; }
+.oc-dropdown-panel a { display: block; padding: 10px 18px; font-size: 13px; line-height: 1.5; letter-spacing: 0; text-decoration: none; color: rgba(255, 255, 255, 0.9); transition: background 0.15s, color 0.15s; }
+.oc-dropdown-panel a:hover, .oc-dropdown-panel a[aria-current='page'] { background: rgba(255, 255, 255, 0.08); color: #ffffff; }
+.oc-dropdown-divider { padding: 8px 18px 4px; border-top: 1px solid rgba(255, 255, 255, 0.08); margin-top: 6px; font-family: Montserrat, sans-serif; font-size: 9.5px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255, 255, 255, 0.45); }
 .oc-dropdown-link-inner { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-.oc-dropdown-sub { display: block; font-size: 11px; color: #718096; line-height: 1.35; margin-top: 2px; }
-.oc-dropdown-badge { font-family: Montserrat, sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 0.08em; padding: 2px 6px; background: #f0f2ee; border: 1px solid #dcdfda; color: #1c5080; text-transform: uppercase; }
+.oc-dropdown-sub { display: block; font-size: 11px; color: rgba(255, 255, 255, 0.55); line-height: 1.35; margin-top: 2px; }
+.oc-dropdown-badge { font-family: Montserrat, sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 0.08em; padding: 2px 6px; background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); color: #fef08a; text-transform: uppercase; }
 @media (min-width: 1025px) {
   .oc-dropdown:hover > .oc-dropdown-panel,
   .oc-dropdown:focus-within > .oc-dropdown-panel {
@@ -1489,7 +1587,7 @@ html[lang='en'] .oc-header.oc-scrolled .oc-brand-subtitle {
   }
 }
 .oc-nav-cta { cursor: pointer; color: inherit; background: none; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; font-weight: 600; }
-.oc-hero-actions { display: flex; align-items: center; flex-direction: column; gap: 18px; }
+.oc-hero-actions { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 16px; margin-top: 10px; }
 .oc-watch-button { display: inline-flex; align-items: center; gap: 10px; color: #fff; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; min-height: 30px; cursor: pointer; }
 .oc-button, .oc-text-link { cursor: pointer; }
 .oc-home { background: #fff; }
@@ -1966,16 +2064,48 @@ html[lang='km'] :is(h1, h2, h3, h4, h5, h6, p, a, button, span, small, strong, s
   letter-spacing: normal !important;
 }
 
-html[lang='km'] .oc-site main h1 {
+html[lang='km'] .oc-site main h1:not(#oc-hero-title):not(.oc-hero h1) {
   font-family: 'Koh Santepheap', sans-serif !important;
   font-size: clamp(24px, 3.2vw, 38px) !important;
   line-height: 1.55 !important;
 }
 
-html[lang='km'] .oc-site main h2 {
+html[lang='km'] .oc-site main h2:not(.oc-connect h2):not(.oc-feature-banner h2):not(.oc-banner-content h2) {
   font-family: 'Koh Santepheap', sans-serif !important;
   font-size: clamp(20px, 2.5vw, 29px) !important;
   line-height: 1.6 !important;
+}
+
+html[lang='km'] .oc-hero h1,
+html[lang='km'] .oc-hero #oc-hero-title {
+  color: #ffffff !important;
+  font-family: 'Koh Santepheap', serif !important;
+  font-size: clamp(34px, 5.2vw, 62px) !important;
+  line-height: 1.45 !important;
+  letter-spacing: normal !important;
+  font-weight: 700 !important;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.95), 0 6px 36px rgba(0, 0, 0, 0.85) !important;
+}
+
+html[lang='km'] .oc-connect h2,
+html[lang='km'] .oc-feature-banner h2,
+html[lang='km'] .oc-banner-content h2 {
+  color: #ffffff !important;
+  font-family: 'Koh Santepheap', serif !important;
+  font-size: clamp(28px, 4.2vw, 48px) !important;
+  line-height: 1.5 !important;
+  letter-spacing: normal !important;
+  font-weight: 700 !important;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.85), 0 6px 30px rgba(0, 0, 0, 0.65) !important;
+}
+
+html[lang='km'] .oc-feature-banner p,
+html[lang='km'] .oc-banner-content p {
+  color: rgba(255, 255, 255, 0.95) !important;
+  font-family: 'Koh Santepheap', serif !important;
+  font-size: clamp(14px, 1.4vw, 17px) !important;
+  line-height: 1.85 !important;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8) !important;
 }
 
 html[lang='km'] .oc-site main h3 {

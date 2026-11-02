@@ -3042,9 +3042,9 @@
 .real-book-stamp-author {
   display: block;
   font-family: "Cinzel", "Lora", Georgia, serif;
-  font-size: 0.44rem;
+  font-size: 0.42rem;
   font-weight: 700;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.03em;
   text-transform: uppercase;
   line-height: 1.15;
   color: #fae69e !important;
@@ -3053,17 +3053,23 @@
     0 -0.5px 0.5px rgba(255, 255, 255, 0.25);
   white-space: nowrap;
   max-width: 100%;
+  overflow: visible !important;
+  text-overflow: clip !important;
   margin: 0;
 }
 
 .real-book-cover.size-md .real-book-stamp-author {
-  font-size: 0.54rem;
-  letter-spacing: 0.05em;
+  font-size: 0.48rem;
+  letter-spacing: 0.035em;
+  overflow: visible !important;
+  text-overflow: clip !important;
 }
 
 .real-book-cover.size-lg .real-book-stamp-author {
-  font-size: 0.70rem;
-  letter-spacing: 0.06em;
+  font-size: 0.56rem;
+  letter-spacing: 0.035em;
+  overflow: visible !important;
+  text-overflow: clip !important;
 }
 
 /* Gold Filigree Divider */
