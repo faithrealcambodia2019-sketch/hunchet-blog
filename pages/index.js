@@ -409,18 +409,18 @@ export default function Home({ posts = [], error }) {
         >
           <p>
             <span className="oc-status-dot" aria-hidden="true" />
-            {isKm ? "ការបង្រៀនព្រះបន្ទូល & ព័ន្ធកិច្ច" : "Biblical Teaching & Ministry"}
+            {isKm ? "ធម្មទេសនា ០១ វិច្ឆិកា ២០២៦" : "Sunday Sermon • Nov 1, 2026"}
           </p>
           <p>
-            {isKm ? "ទីតាំង" : "Location"}{" "}
-            <strong>{isKm ? "ភ្នំពេញ កម្ពុជា" : "Phnom Penh, Cambodia"}</strong>
+            {isKm ? "ប្រធានបទ" : "Topic"}{" "}
+            <strong>{isKm ? "ទំនុកដំកើង ៤៦ • ព្រះជាទីជ្រកកោន" : "Psalm 46 • God Our Refuge"}</strong>
           </p>
-          <p>
-            {isKm ? "ភាសា" : "Languages"} <span className="oc-strip-divider">/</span>{" "}
-            <strong>{isKm ? "ខ្មែរ • English • 한국어" : "Khmer, English & Korean"}</strong>
-          </p>
+          <Link href="/sermons/god-is-our-mighty-refuge" style={{ fontWeight: 800 }}>
+            {isKm ? "អានធម្មទេសនាពេញ" : "Read Sermon"}
+            <ArrowUpRight width={12} height={12} style={{ display: "inline-block", marginLeft: 4 }} />
+          </Link>
           <Link href="/contact">
-            {isKm ? "ទំនាក់ទំនង និងអធិស្ឋាន" : "Connect & Prayer"}
+            {isKm ? "ទំនាក់ទំនង" : "Connect"}
             <ArrowUpRight width={12} height={12} style={{ display: "inline-block", marginLeft: 4 }} />
           </Link>
         </div>
@@ -443,18 +443,18 @@ export default function Home({ posts = [], error }) {
               gap: "24px",
             }}
           >
-            {/* Card 1: Articles */}
-            <Link href="/articles" className="oc-image-card" style={{ aspectRatio: "4/3.5" }}>
+            {/* Card 1: Articles & Sermons */}
+            <Link href="/sermons/god-is-our-mighty-refuge" className="oc-image-card" style={{ aspectRatio: "4/3.5" }}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/images/pastors-pulpit.jpg"
-                alt="Articles & Sermons"
+                src="/images/worship-2026-11-01-fellowship.jpg"
+                alt="Sunday Sermon - God Is Our Mighty Refuge"
                 loading="lazy"
               />
               <div className="oc-card-content">
                 <span className="oc-card-number">01</span>
-                <h3>{isKm ? "អត្ថបទបង្រៀន" : "Articles"}</h3>
-                <p>{isKm ? "ការបកស្រាយព្រះគម្ពីរ និងការបង្រៀនជីវិតគ្រីស្ទបរិស័ទ។" : "Scripture exposition and practical Christian living."}</p>
+                <h3>{isKm ? "ធម្មទេសនា & ព្រះបន្ទូល" : "Sermon & Word"}</h3>
+                <p>{isKm ? "ទំនុកដំកើង ៤៦៖ ព្រះជាម្ចាស់ជាទីជ្រកកោនដ៏រឹងមាំរបស់យើង។" : "Psalm 46: God Is Our Mighty Refuge."}</p>
                 <span className="oc-card-arrow">↗</span>
               </div>
             </Link>

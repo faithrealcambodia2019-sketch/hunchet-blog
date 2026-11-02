@@ -28,7 +28,7 @@ export function Brand({ locale }) {
       <span className="oc-brand-text">
         <strong className="oc-brand-title" lang="en">HUN CHET</strong>
         <small className="oc-brand-subtitle" lang={isKm ? "km" : "en"}>
-          {isKm ? "លោកគ្រូ ហ៊ុន ចិត្ត" : "PASTORAL MINISTRY"}
+          {isKm ? "លោកគ្រូ ហ៊ុន ចិត្ត" : "Leader Hun Chet"}
         </small>
       </span>
     </Link>
@@ -101,6 +101,16 @@ export default function SiteHeader() {
       zh: "文章专栏",
     },
     items: [
+      {
+        href: "/sermons/god-is-our-mighty-refuge",
+        label: {
+          km: "ធម្មទេសនា៖ ព្រះជាទីជ្រកកោន (ទំនុកដំកើង ៤៦)",
+          en: "Sermon: God Our Refuge (Psalm 46)",
+          ko: "주일설교: 우리의 피난처 되신 하나님",
+          zh: "主日讲道：神是我们的避难所",
+        },
+        badge: "NEW",
+      },
       {
         href: "/articles",
         label: { km: "អត្ថបទទាំងអស់", en: "All Articles", ko: "전체 칼럼", zh: "所有文章" },
