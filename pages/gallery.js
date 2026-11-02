@@ -78,9 +78,9 @@ export default function Gallery() {
   }, [selectedIndex]);
 
   // Curated 3 hero photos for the top editorial collage
-  const collageHero = GALLERY_ITEMS.find((i) => i.id === "photo-pastors-pulpit") || GALLERY_ITEMS[0];
-  const collageRight1 = GALLERY_ITEMS.find((i) => i.id === "photo-church-family") || GALLERY_ITEMS[1];
-  const collageRight2 = GALLERY_ITEMS.find((i) => i.id === "photo-baptism-2026-family") || GALLERY_ITEMS[2];
+  const collageHero = GALLERY_ITEMS.find((i) => i.id === "photo-worship-2026-11-01-family") || GALLERY_ITEMS.find((i) => i.id === "photo-pastors-pulpit") || GALLERY_ITEMS[0];
+  const collageRight1 = GALLERY_ITEMS.find((i) => i.id === "photo-worship-2026-11-01-congregation") || GALLERY_ITEMS.find((i) => i.id === "photo-church-family") || GALLERY_ITEMS[1];
+  const collageRight2 = GALLERY_ITEMS.find((i) => i.id === "photo-worship-2026-11-01-fellowship") || GALLERY_ITEMS.find((i) => i.id === "photo-baptism-2026-family") || GALLERY_ITEMS[2];
 
   const openItemById = (id) => {
     const idx = filteredItems.findIndex((item) => item.id === id);

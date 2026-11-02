@@ -112,47 +112,47 @@ const SERMON_KEYS = [
 
 const LIFE_PHOTOS = [
   {
-    src: "/images/pastors-pulpit.jpg",
-    title: { km: "ការបង្រៀនលើវេទិកា", en: "Pulpit Preaching", ko: "강단 사역", zh: "讲台宣道" },
+    src: "/images/worship-2026-11-01-family.jpg",
+    title: { km: "គ្រួសារក្រុមជំនុំ — ០១ វិច្ឆិកា ២០២៦", en: "Church Family Gathering", ko: "주일 성도 연합", zh: "主日全体会友" },
+    badge: { km: "ការថ្វាយបង្គំ", en: "Sunday Worship", ko: "주일 예배", zh: "主日敬拜" },
+    description: {
+      km: "ការជួបជុំគ្នាដោយអំណរ និងការរួបរួមគ្នាក្នុងព្រះគ្រីស្ទ នៅព្រះវិហារ All Nations Church នាថ្ងៃអាទិត្យ ទី១ ខែវិច្ឆិកា ឆ្នាំ២០២៦។",
+      en: "Joyful church family gathering in Christ at All Nations Church on Sunday, November 1, 2026.",
+      ko: "2026년 11월 1일 올네이션스 교회에서 주일예배 후 모든 성도가 함께 모인 은혜의 순간.",
+      zh: "2026年11月1日主日全体会友齐聚敬拜主的恩典时刻。",
+    },
+  },
+  {
+    src: "/images/worship-2026-11-01-congregation.jpg",
+    title: { km: "ការផ្សាយព្រះបន្ទូល & ថ្វាយបង្គំ", en: "Pulpit & Sanctuary Worship", ko: "강단 말씀과 예배", zh: "讲台信息与敬拜" },
     badge: { km: "ព្រះបន្ទូល", en: "Preaching", ko: "설교", zh: "讲道" },
     description: {
-      km: "ការចែករំលែកព្រះបន្ទូល និងការពន្យល់ព្រះគម្ពីរយ៉ាងស៊ីជម្រៅ ដោយលោកគ្រូ គីម ជុងហូ និងលោកគ្រូ ហ៊ុន ចិត្ត។",
-      en: "Preaching and biblical exegesis with Pastor Kim Jong Ho and Leader Hun Chet.",
-      ko: "김종호 목사와 훈 쳇 리더의 강단 사역",
-      zh: "传讲真道",
+      km: "លោកគ្រូ ហ៊ុន ចិត្ត ចែករំលែកព្រះបន្ទូលពីគម្ពីរទំនុកដំកើង ៤៦ ពីលើវេទិកាទៅកាន់ក្រុមជំនុំ។",
+      en: "Leader Hun Chet preaching from Psalm 46 on 'God Is Our Mighty Refuge' to the congregation.",
+      ko: "훈 쳇 리더가 강단에서 시편 46편 '하나님은 우리의 피난처' 말씀을 전하고 있습니다.",
+      zh: "Hun Chet传道在讲台宣讲诗篇46篇“神是我们的避难所”。",
     },
   },
   {
-    src: "/images/bible-class-grade12-teaching.jpg",
-    title: { km: "ថ្នាក់សិក្សាព្រះគម្ពីរ", en: "Bible Study Class", ko: "성경 공부", zh: "查经研读" },
-    badge: { km: "ការបណ្តុះសិស្ស", en: "Discipleship", ko: "제자 양육", zh: "门徒训练" },
+    src: "/images/worship-2026-11-01-fellowship.jpg",
+    title: { km: "ការរាក់ទាក់ និងការប្រកបគ្នា", en: "Christian Fellowship", ko: "성도의 교제", zh: "主内团契" },
+    badge: { km: "ការប្រកបគ្នា", en: "Fellowship", ko: "교제", zh: "团契" },
     description: {
-      km: "ការបង្រៀនព្រះគម្ពីរ និងការបណ្តុះបណ្តាលសិស្សជំនាន់ក្រោយ។",
-      en: "Teaching and discipling the next generation in God's truth.",
-      ko: "다음 세대 제자 훈련",
-      zh: "培训年轻一代门徒",
+      km: "ការចាប់ដៃរាក់ទាក់ដោយសេចក្តីស្រឡាញ់ និងការលើកទឹកចិត្តគ្នាទៅវិញទៅមកបន្ទាប់ពីថ្វាយបង្គំ។",
+      en: "Warm brotherly greetings, loving encouragement, and fellowship following the service.",
+      ko: "예배 후 서로 손을 잡고 사랑으로 축복하며 나누는 성도의 친교.",
+      zh: "崇拜结束后充满主爱的亲切问候与彼此勉励。",
     },
   },
   {
-    src: "/images/history-prayer-fellowship.jpg",
-    title: { km: "ការអធិស្ឋាន និងការប្រកបគ្នា", en: "Prayer & Fellowship", ko: "기도와 교제", zh: "祷告团契" },
-    badge: { km: "ការអធិស្ឋាន", en: "Prayer", ko: "기도", zh: "同心祷告" },
+    src: "/images/worship-2026-11-01-choir.jpg",
+    title: { km: "ការសរសើរតម្កើងពីក្រុមចម្រៀង", en: "Choir Special Praise", ko: "찬양대 특별 찬양", zh: "诗班特别赞美" },
+    badge: { km: "ការសរសើរ", en: "Praise", ko: "찬양", zh: "赞美" },
     description: {
-      km: "ពេលនៃការអធិស្ឋាន និងការលើកទឹកចិត្តគ្នាទៅវិញទៅមកក្នុងព្រះគ្រីស្ទ។",
-      en: "Earnest prayer, mutual encouragement, and spiritual fellowship in Christ.",
-      ko: "기도와 교제의 시간",
-      zh: "恒切祷告与互勉",
-    },
-  },
-  {
-    src: "/images/youth-fellowship-2025-group.jpg",
-    title: { km: "ក្រុមយុវជន និងការរួបរួម", en: "Youth Discipleship", ko: "청년 모임", zh: "青年团契" },
-    badge: { km: "យុវជន", en: "Youth", ko: "청년부", zh: "青年团契" },
-    description: {
-      km: "ការកសាងជំនឿ និងការបណ្តុះបណ្តាលយុវជនគ្រីស្ទបរិស័ទសម្រាប់អនាគត។",
-      en: "Equipping young people in Christ for Cambodia's future.",
-      ko: "청년들의 믿음 성장",
-      zh: "造就属灵青年",
+      km: "ក្រុមចម្រៀងលើកតម្កើងព្រះតាមរយៈបទចម្រៀងពិសេស «ក្បាលនៃដួងចិត្ត» យ៉ាងពិរោះរណ្តំ។",
+      en: "Church choir in uniform offering praise through the special anthem 'Head of My Heart'.",
+      ko: "찬양대가 한마음으로 하나님께 감사와 찬양을 올려드리는 모습.",
+      zh: "诗班同心向神献上悠扬感人的特别赞美诗歌。",
     },
   },
 ];
@@ -463,7 +463,7 @@ export default function Home({ posts = [], error }) {
             <Link href="/devotions" className="oc-image-card" style={{ aspectRatio: "4/3.5" }}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/images/worship-service.jpg"
+                src="/images/worship-2026-11-01-congregation.jpg"
                 alt="365 Daily Devotion"
                 loading="lazy"
               />
@@ -495,7 +495,7 @@ export default function Home({ posts = [], error }) {
             <Link href="/gallery" className="oc-image-card" style={{ aspectRatio: "4/3.5" }}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/images/youth-fellowship-2025-group.jpg"
+                src="/images/worship-2026-11-01-family.jpg"
                 alt="Ministry Gallery"
                 loading="lazy"
               />

@@ -631,7 +631,7 @@ export default function Library() {
                             title={isKm ? "ចុចដើម្បីបើកមើលសៀវភៅ" : "Click to preview book"}
                           >
                             <div className="portal-book-real-wrap">
-                              <RealBookCover book={item.bookData} size="sm" />
+                              <RealBookCover book={item.bookData} size="md" />
                             </div>
                           </div>
                         )}
